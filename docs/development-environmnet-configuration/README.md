@@ -41,17 +41,29 @@ The process for building `C++` executables following the instructions reported i
    $> mkdir -p build/
    $> cd build/
    ```
-3. Run `cmake` making sure to point the directory containing the root `CMakeLists.txt` file:
+3. Run `cmake` making sure to point the directory containing the root `CMakeLists.txt` file (note, you can optionally specify the build type, as one of `Debug` or `Release`):
    ```sh
-   $> cmake ..
+   $> cmake [-D CMAKE_BUILD_TYPE={Debug|Release} ]..
    ```
    This will generate compilation instructions for the (default) generator: GNU Make
 4. Build the executables using the generated resources (alway from within the `build/`  directory):
    ```sh
-   $> make
+   $> make [-j<N>]
    ```
 
-These steps will compile and link the examples in the [`examples`](../../examples/) folder and generate executables in the [`examples/build/bin`](../../examples/build/bin/) target directory.
+These steps will compile and link the examples in the [`examples`](../../examples/) folder and generate executables in the `examples/build/<debug|release>/bin` target directory.
+
+#### Building the example (fast)
+A utility [`Makefile`](../../Makefile) with a rule to build all examples is available, and can be invoked from the root of the repository to compile all examples in the `examples`  folder:
+```sh
+$> make examples
+```
+or, if building in debug mode:
+```
+$> DEBUG=1 make examples
+```
+
+This will automatically run the steps defined above, and compile/link the examples for you in one command.
 
 ## Linting
 The [root Makefile](../../Makefile) contains a rule for _linting_ the `C++` code in this repository. The linting process relies on [clang-format](https://clang.llvm.org/docs/ClangFormat.html): a tool that can be used to format a codebase following some [configurable rules](../../.clang-format).

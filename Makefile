@@ -10,5 +10,12 @@ examples:
 	@echo "Setting up examples..."
 	@cd examples/ && mkdir -p build && cd build
 	@echo "Building examples..."
-	@cd examples/build/ && cmake .. && make -j 4
+	@if [ -n "$$DEBUG" ]; then \
+		echo "Debug mode is enabled"; \
+		cd examples/build && cmake -D CMAKE_BUILD_TYPE=Debug ..; \
+	else \
+		echo "Release mode is enabled"; \
+		cd examples/build && cmake -D CMAKE_BUILD_TYPE=Release ..; \
+	fi
+	@cd examples/build && make -j 4
 	@echo "Done building examples."
