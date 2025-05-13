@@ -1,4 +1,5 @@
 # irsol-camera
 
 Quickstart:
- 1. [Setup](./docs/setup)
+ 1. [Physical Setup](./docs/physical-setup)
+ 2. [Development Environment Configuration](./docs/development-environmnet-configuration)
