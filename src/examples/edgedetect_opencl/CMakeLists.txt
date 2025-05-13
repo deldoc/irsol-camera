@@ -1,16 +1,16 @@
 cmake_minimum_required(VERSION 3.9.3)
 
 # set project properties
-project(edgedetect_cuda)
+project(edgedetect_opencl)
 
 include_directories(
     SYSTEM
-    ${NEOAPI_ROOT_DIR}/include
+    ${REPO_ROOT_DIR}/external/include
     ${OpenCV_INCLUDE_DIRS}
 )
 
 add_executable(${PROJECT_NAME}
-    edgedetect_cuda.cpp)
+    edgedetect_opencl.cpp)
 
 target_link_libraries(${PROJECT_NAME}
     neoapi_cpp

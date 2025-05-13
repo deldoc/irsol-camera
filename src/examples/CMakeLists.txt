@@ -23,8 +23,8 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
 endif()
 
 # set up some cxx compiler flags
-# enable C++11 support
-set(CMAKE_CXX_STANDARD 11)
+# enable C++14 support
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 message(STATUS "CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
@@ -47,11 +47,11 @@ endif()
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${BUILD_OUTPUT_PREFIX}/bin)
 
 # add the lib folder to the link path
-get_filename_component(NEOAPI_ROOT_DIR ${PROJECT_SOURCE_DIR}/.. ABSOLUTE)
-if(NOT EXISTS "${NEOAPI_ROOT_DIR}/lib/neoapi")
-    message(FATAL_ERROR "NEOAPI_ROOT_DIR does not contain the required lib/neoapi folder. Please check your installation.")
+get_filename_component(REPO_ROOT_DIR ${PROJECT_SOURCE_DIR}/../.. ABSOLUTE)
+if(NOT EXISTS "${REPO_ROOT_DIR}/external/lib/neoapi")
+    message(FATAL_ERROR "REPO_ROOT_DIR does not contain the required external/lib/neoapi folder. Please check your installation.")
 endif()
-link_directories(${NEOAPI_ROOT_DIR}/lib/neoapi)
+link_directories(${REPO_ROOT_DIR}/external/lib/neoapi)
 
 # Add each example to the project with the appropriate build directory
 add_subdirectory(getting_started ${BUILD_OUTPUT_PREFIX}/build/getting_started)

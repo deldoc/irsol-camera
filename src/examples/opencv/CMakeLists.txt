@@ -6,7 +6,7 @@ if(OPENCV_HIGHGUI_FOUND)
 
     include_directories(
         SYSTEM
-        ${NEOAPI_ROOT_DIR}/include
+        ${REPO_ROOT_DIR}/external/include
         ${OpenCV_INCLUDE_DIRS}
     )
 

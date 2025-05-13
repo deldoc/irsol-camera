@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.9.3)
 
 # set project properties
-project(user_buffer)
+project(getting_started)
 
 include_directories(
     SYSTEM
-    ${NEOAPI_ROOT_DIR}/include
+    ${REPO_ROOT_DIR}/external/include
 )
 
 add_executable(${PROJECT_NAME}
-    user_buffer.cpp)
+    getting_started.cpp)
 
 target_link_libraries(${PROJECT_NAME}
     neoapi_cpp
