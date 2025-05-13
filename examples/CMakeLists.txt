@@ -33,6 +33,11 @@ endif()
 
 # add the lib folder to the link path
 get_filename_component(NEOAPI_ROOT_DIR ${PROJECT_SOURCE_DIR}/.. ABSOLUTE)
+message(STATUS "NEOAPI_ROOT_DIR: ${NEOAPI_ROOT_DIR}")
+if(NOT EXISTS "${NEOAPI_ROOT_DIR}/lib/neoapi")
+    message(FATAL_ERROR "NEOAPI_ROOT_DIR does not contain the required lib/neoapi folder. Please check your installation.")
+endif()
+message(STATUS "Adding ${NEOAPI_ROOT_DIR}/lib/neoapi to the link directories.")
 link_directories(${NEOAPI_ROOT_DIR}/lib/neoapi)
 
 # add each example to the project
