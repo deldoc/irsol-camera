@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.9.3)
 
 # set project properties
-project(user_buffer_cpp)
-message(STATUS "## invoking ${CMAKE_CURRENT_SOURCE_DIR}/CMakelist.txt")
+project(user_buffer)
 
 include_directories(
     SYSTEM

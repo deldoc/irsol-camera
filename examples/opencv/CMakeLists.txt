@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 3.9.3)
 
 if(OPENCV_HIGHGUI_FOUND)
     # set project properties
-    project(opencv_cpp)
-    message(STATUS "## invoking ${CMAKE_CURRENT_SOURCE_DIR}/CMakelist.txt")
+    project(opencv)
 
     include_directories(
         SYSTEM
