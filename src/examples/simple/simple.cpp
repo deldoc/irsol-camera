@@ -12,7 +12,7 @@ int main() {
     spdlog::error("Failed to connect to camera: {0}", e.GetDescription());
     return -1;
   }
-  irsol::utils::discover_cameras(cam);
+  irsol::utils::discover_cameras();
   spdlog::info("Connected to camera");
   return 0;
 }
