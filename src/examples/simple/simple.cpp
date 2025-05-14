@@ -1,14 +1,11 @@
+#include "irsol/logging.hpp"
 #include "irsol/utils.hpp"
 #include "neoapi/neoapi.hpp"
 #include "spdlog/spdlog.h"
 
 int main() {
 
-#ifdef DEBUG
-  spdlog::set_level(spdlog::level::debug);
-#else
-  spdlog::set_level(spdlog::level::info);
-#endif
+  irsol::init_logging("log/simple.log");
 
   spdlog::info("Starting simple example");
   NeoAPI::Cam cam = NeoAPI::Cam();
