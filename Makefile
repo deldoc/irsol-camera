@@ -22,6 +22,18 @@ build:
 	@echo "Done building."
 .PHONY: build
 
+clean:
+	@echo "Cleaning build files..."
+	@cd src/build && make clean
+	@echo "Done cleaning."
+.PHONY: clean
+
+deepclean: clean
+	@echo "Removing build and dist directories..."
+	@cd src && rm -rf build/ && rm -rf dist/
+	@echo "Done deep-cleaning."
+.PHONY: deepclean
+
 all: lint build
 	@echo "All tasks completed."
 .PHONY: all
