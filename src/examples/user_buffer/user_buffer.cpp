@@ -5,8 +5,8 @@
    please see the provided license for full details.
 */
 
-#include "neoapi/neoapi.hpp"
 #include "irsol/logging.hpp"
+#include "neoapi/neoapi.hpp"
 #include <iostream>
 #include <utility>
 #include <vector>
@@ -81,7 +81,7 @@ int main() {
         size_t index = resolution.ToIndex(coords);
         if (buffer->GetMemory()[index] != 0) {
           IRSOL_LOG_INFO("Pixel at ({0:d}, {1:d}) is non-zero: {2:d}", i, j,
-                       buffer->GetMemory()[index]);
+                         buffer->GetMemory()[index]);
           non_zero_pixels.push_back(index);
         }
       }
@@ -124,10 +124,10 @@ int main() {
       delete buffer;
     }
   } catch (NeoAPI::NeoException &exc) {
-    IRSOL_LOG_CRITICAL("error: {0}", exc.GetDescription());
+    IRSOL_LOG_FATAL("error: {0}", exc.GetDescription());
     result = 1;
   } catch (...) {
-    IRSOL_LOG_CRITICAL("oops, error");
+    IRSOL_LOG_FATAL("oops, error");
     result = 1;
   }
 

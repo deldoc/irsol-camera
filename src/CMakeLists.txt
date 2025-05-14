@@ -27,16 +27,35 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${DIST_TARGET_DIRECTORY}/bin)
 if(CMAKE_BUILD_TYPE MATCHES Debug)
     message(STATUS "Adding debug flags and definitions.")
     add_compile_options(-Wall -Wextra -pedantic)
-    add_definitions(-DDEBUG)
+    add_compile_definitions(DEBUG)
 endif()
+
+# Compilation options, based on build type
+set(IRSOL_DISABLE_ASSERT_OPTION false)
+if(CMAKE_BUILD_TYPE  MATCHES Release)
+    set(IRSOL_DISABLE_ASSERT_OPTION true)
+endif()
+
+if(IRSOL_DISABLE_ASSERT_OPTION)
+    message(STATUS "Irsol assertions are disabled.")
+    add_compile_definitions(IRSOL_DISABLE_ASSERT)
+else()
+    message(STATUS "Irsol assertions are enabled.")
+endif()
+
 
 # Log compiler information
 message(STATUS "CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 
-# Add subdirectories
+# Add subdirectories for external dependencies
 add_subdirectory(external/spdlog)
 add_subdirectory(external/neoapi)
+add_subdirectory(external/ppk_assert)
+
+# Add subdirectories for the main project
 add_subdirectory(irsol)
+
+# Add subdirectories for examples
 add_subdirectory(examples)

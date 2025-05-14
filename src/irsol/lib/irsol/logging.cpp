@@ -33,5 +33,8 @@ void init_logging(const char *log_file_path) {
       std::make_shared<spdlog::logger>("irsol", spdlog::sinks_init_list{console_sink, file_sink});
   logger->set_level(global_level);
   spdlog::set_default_logger(logger);
+
+  // Force flush on error level and above
+  spdlog::flush_on(spdlog::level::err);
 }
 } // namespace irsol
