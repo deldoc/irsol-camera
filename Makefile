@@ -2,8 +2,8 @@
 lint:
 	@echo "Running clang-format..."
 	@clang-format --style=file -i -- src/examples/**/*.cpp
-	@clang-format --style=file -i -- src/lib/**/*.cpp
-	@clang-format --style=file -i -- src/include/**/*.hpp
+	@clang-format --style=file -i -- src/irsol/lib/**/*.cpp
+	@clang-format --style=file -i -- src/irsol/include/**/*.hpp
 	@echo "Done running clang-format."
 
 

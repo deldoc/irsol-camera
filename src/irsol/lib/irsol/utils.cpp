@@ -4,7 +4,7 @@
 namespace irsol {
 namespace utils {
 
-void log_camera_info(const NeoAPI::CamInfo& info) {
+void log_camera_info(const NeoAPI::CamInfo &info) {
   const auto model = info.GetModelName();
   const auto cam_id = info.GetId();
   const auto serial = info.GetSerialNumber();
@@ -30,7 +30,7 @@ void log_camera_info(const NeoAPI::CamInfo& info) {
   spdlog::info("Is connectable: {0:s}", info.IsConnectable() ? "true" : "false");
 }
 
-NeoAPI::CamInfoList& discover_cameras() {
+NeoAPI::CamInfoList &discover_cameras() {
   spdlog::debug("Discovering cameras...");
   NeoAPI::CamInfoList &infolist = NeoAPI::CamInfoList::Get();
   infolist.Refresh();

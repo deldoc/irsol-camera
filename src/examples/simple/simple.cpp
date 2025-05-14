@@ -1,6 +1,6 @@
-#include "spdlog/spdlog.h"
-#include "neoapi/neoapi.hpp"
 #include "irsol/utils.hpp"
+#include "neoapi/neoapi.hpp"
+#include "spdlog/spdlog.h"
 
 int main() {
 
