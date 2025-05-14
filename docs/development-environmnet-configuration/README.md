@@ -1,74 +1,65 @@
 # Development Environment Configuration
 
-This guide will lead you through the setup of a development environment that will allow you to edit/compile and test new code.
+This guide will lead you through the setup of a development environment that will allow you to edit, compile, and test new code.
 
-## Repository structure
+## Repository Structure
 This section presents the structure of the repository:
-* [`docs`](../../docs/): a folder containing all documentation associated with this repository
-* [`examples`](../../examples/): a folder containing some example applications showing how one might want to integrate the `neoAPI` into a custom `C++` executable.
-* [`include`](../../include/): contains the *header* files for libraries that the examples are using. This folder includes the *header* files for the following libraries:
-  * [`include/neoapi`](../../include/neoapi/): the header files of the `neoAPI` library, essential for building code for the *Baumer* cameras using the high-level API.
-  * [`include/spdlog`](../../include/spdlog/): a performant `C++` logging [library](https://github.com/gabime/spdlog).
-* [`lib`](../../lib/): contains *pre-compiled* dynamic libraries that the examples are linking towards. This folder contains the *pre-compiled* dynamic libraries for:
-  * [`lib/neoapi`](../../lib/neoapi/): the *pre-compiled* dynamic libraries of the `neoAPI` library, essential for building code for the *Baumer* cameras using the high-level API.
+- [`docs`](../../docs/): Contains all documentation associated with this repository.
+- [`src`](../../src/): Contains the source code for the project:
+  - [`irsol`](../../src/irsol/): Core library for interacting with the cameras.
+  - [`examples`](../../src/examples/): Example applications demonstrating how to use the `neoAPI` with the `irsol` library.
+  - [`external`](../../src/external/): External dependencies, such as `spdlog` and `neoAPI`.
+    - [spdlog](../../src/external/spdlog/): Contains the *header-only* logging library.
+    - [neoapi](../../src/external/neoapi/): Contains the library provided by the camera vendor for interacting with the cameras programmatically.
+      - [headers](../../src/external/neoapi/include/): Contains the public headers for the `neoAPI` library.
+      - [lib](../../src/external/neoapi/lib/): Contains the *pre-compiled* library for the `neoAPI` library.
 
-## Code examples
-The [`examples`](../../examples/) folder contains a set of example projects, with associated build configuration files that allow to explore the capabilities of `neoAPI`.
 
-### Building the examples
-The examples are all structured in a way that they can be compiled via [`cmake`](https://cmake.org/). In order to build the examples, you'll need to make sure to have `cmake` installed in your environment. For openSuse, this can be done via:
-```
+### Building the source code
+The source code is structured to be compiled via [`cmake`](https://cmake.org/). Ensure `cmake` is installed in your environment. For openSUSE, this can be done via:
+```sh
 $> sudo zypper refresh
 $> sudo zypper install cmake
 ```
 
-#### `cmake`  configuration
-The [`CMakeLists.txt`](../../examples/CMakeLists.txt) file at the root of the [`examples`](../../examples/) directory is the main configuration file for all the examples.
+#### `cmake` Configuration
+The [`CMakeLists.txt`](../../src/CMakeLists.txt) file at the root of the [`src`](../../src/) directory is the main configuration file for all the source code contained in this repository: it builds the `irsol` library, links against dependencies and also builds the examples.
 
-It contains instructions on where the compiler should find header files, where to find pre-compiled dynamic libraries, and where to find the actual example source code.
+Each specific example (e.g., [`getting_started`](../../src/examples/getting_started/)) folder contains its own `CMakeLists.txt` file, invoked by the root `CMakeLists.txt`. These files contain configuration and instructions for building the specific examples.
 
-Each specific example (e.g. [`getting_started](../../examples/getting_started/)) folder contains a specific `CMakeLists.txt` file that is invoked by the root `CMakeLists.txt`. The example-specific `CMakeLists.txt` file contains configuration and instructions for how that specific example should be built.
-
-#### Building the examples
-The process for building `C++` executables following the instructions reported in the associated `CMakeLists.txt` files, is the following:
-
-1. Navigate the to `examples`  folder:
+#### Building Steps
+1. Navigate to the `src` folder:
    ```sh
-   $> cd examples/
+   $> cd src/
    ```
-2. If not already created, create a `build` directory and enter it:
+2. Create a `build` directory and enter it:
    ```sh
    $> mkdir -p build/
    $> cd build/
    ```
-3. Run `cmake` making sure to point the directory containing the root `CMakeLists.txt` file (note, you can optionally specify the build type, as one of `Debug` or `Release`):
+3. Run `cmake`, pointing to the directory containing the root `CMakeLists.txt` file:
    ```sh
-   $> cmake [-D CMAKE_BUILD_TYPE={Debug|Release} ]..
+   $> cmake [-D CMAKE_BUILD_TYPE={Debug|Release} ] ..
    ```
-   This will generate compilation instructions for the (default) generator: GNU Make
-4. Build the executables using the generated resources (alway from within the `build/`  directory):
+4. Build the `irsol` library and the example executables:
    ```sh
    $> make [-j<N>]
    ```
 
-These steps will compile and link the examples in the [`examples`](../../examples/) folder and generate executables in the `examples/build/<debug|release>/bin` target directory.
+Executables will be generated in the `src/build/<debug|release>/bin` directory.
 
-#### Building the example (fast)
-A utility [`Makefile`](../../Makefile) with a rule to build all examples is available, and can be invoked from the root of the repository to compile all examples in the `examples`  folder:
+#### Fast Build
+A utility [`Makefile`](../../Makefile) is available to build all examples from the repository root:
 ```sh
 $> make examples
 ```
-or, if building in debug mode:
-```
+or, for debug mode:
+```sh
 $> DEBUG=1 make examples
 ```
 
-This will automatically run the steps defined above, and compile/link the examples for you in one command.
-
 ## Linting
-The [root Makefile](../../Makefile) contains a rule for _linting_ the `C++` code in this repository. The linting process relies on [clang-format](https://clang.llvm.org/docs/ClangFormat.html): a tool that can be used to format a codebase following some [configurable rules](../../.clang-format).
-
-In order to run linting on the repository source files, run the following command from the root of the repository:
+The [root Makefile](../../Makefile) contains a rule for linting the `C++` code in this repository using [clang-format](https://clang.llvm.org/docs/ClangFormat.html). To lint the source files:
 ```sh
 $> make lint
 ```
