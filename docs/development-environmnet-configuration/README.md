@@ -58,6 +58,20 @@ or, for debug mode:
 $> DEBUG=1 make examples
 ```
 
+### Optional development dependencies
+OpenCV is an optional dependency you can install into your development environment in order to compile and run some extra examples that allow interactive visualization of images.
+In order to do so, make sure to:
+1. Install OpenCV via `zypper`:
+   ```sh
+   $> sudo zypper install opencv-devel
+   ```
+2. Make sure the following command returns a valid path:
+   ```sh
+   $> sudo find / -name "OpenCVConfig.cmake"
+   ```
+   such as `/usr/share/OpenCV/OpenCVConfig.cmake`
+
+
 ## Linting
 The [root Makefile](../../Makefile) contains a rule for linting the `C++` code in this repository using [clang-format](https://clang.llvm.org/docs/ClangFormat.html). To lint the source files:
 ```sh
