@@ -1,37 +1,36 @@
 #include "irsol/logging.hpp"
 #include "irsol/utils.hpp"
 #include "neoapi/neoapi.hpp"
-#include "spdlog/spdlog.h"
 #include <opencv2/opencv.hpp>
 int main() {
 
   irsol::init_logging("log/simple.log");
 
-  spdlog::info("Starting simple example");
+  IRSOL_LOG_INFO("Starting simple example");
   NeoAPI::Cam cam = NeoAPI::Cam();
-  spdlog::debug("Created camera object");
+  IRSOL_LOG_DEBUG("Created camera object");
   try {
-    spdlog::debug("Connecting to camera");
+    IRSOL_LOG_DEBUG("Connecting to camera");
     cam.Connect();
-    spdlog::debug("Connection successful");
+    IRSOL_LOG_DEBUG("Connection successful");
   } catch (NeoAPI::NotConnectedException &e) {
-    spdlog::error("Failed to connect to camera: {0}", e.GetDescription());
+    IRSOL_LOG_CRITICAL("Failed to connect to camera: {0}", e.GetDescription());
     return -1;
   }
-  spdlog::debug("Discovering cameras");
+  IRSOL_LOG_DEBUG("Discovering cameras");
   const auto &discovery = irsol::utils::discover_cameras();
-  spdlog::debug("Number of cameras found: {0:d}", discovery.size());
+  IRSOL_LOG_DEBUG("Number of cameras found: {0:d}", discovery.size());
 
-  spdlog::info("Connected to camera");
+  IRSOL_LOG_INFO("Connected to camera");
 
   uint64_t frame_count = 0;
   while (true) {
     NeoAPI::Image image = cam.GetImage();
-    spdlog::info("Image captured");
+    IRSOL_LOG_INFO("Image captured");
 
     auto image_data = image.GetImageData();
     if (image_data == nullptr) {
-      spdlog::error("Image data is null");
+      IRSOL_LOG_CRITICAL("Image data is null");
       return -1;
     }
     cv::Mat mat(image.GetHeight(), image.GetWidth(), CV_8UC1);
@@ -45,7 +44,7 @@ int main() {
     frame_count++;
 
     auto diff = image_id - frame_count;
-    spdlog::info("Image ID: {0:d}, Frame Count: {1:d}, Difference: {2:d}", image_id, frame_count,
+    IRSOL_LOG_INFO("Image ID: {0:d}, Frame Count: {1:d}, Difference: {2:d}", image_id, frame_count,
                  diff);
     cv::putText(mat, "image-id: " + std::to_string(image_id), cv::Point(10, 30),
                 cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
@@ -54,13 +53,13 @@ int main() {
     cv::imshow("image", mat);
     auto ret = cv::waitKey(1);
     if (ret == 27) { // ESC key
-      spdlog::info("ESC key pressed, exiting");
+      IRSOL_LOG_INFO("ESC key pressed, exiting");
       break;
     }
   }
-  spdlog::info("Disconnecting from camera");
+  IRSOL_LOG_INFO("Disconnecting from camera");
   cam.Disconnect();
-  spdlog::info("Disconnected from camera");
-  spdlog::info("Exiting simple example");
+  IRSOL_LOG_INFO("Disconnected from camera");
+  IRSOL_LOG_INFO("Exiting simple example");
   return 0;
 }

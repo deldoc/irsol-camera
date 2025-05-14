@@ -9,7 +9,7 @@ add_executable(${PROJECT_NAME}
     user_buffer.cpp)
 
 target_link_libraries(${PROJECT_NAME}
-    spdlog::spdlog
     neoapi::neoapi
+    irsol::irsol
     ${NEOAPI_LIBRARY}
 )

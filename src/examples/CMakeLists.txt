@@ -11,9 +11,8 @@ if(NOT OpenCV_FOUND)
 endif()
 message(STATUS "Found OpenCV version: ${OpenCV_VERSION}")
 
-add_subdirectory(getting_started)
-add_subdirectory(user_buffer)
 add_subdirectory(simple)
+add_subdirectory(user_buffer)
 
 if (OpenCV_FOUND)
     add_subdirectory(simple_opencv)

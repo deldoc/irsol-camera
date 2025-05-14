@@ -6,7 +6,7 @@
 */
 
 #include "neoapi/neoapi.hpp"
-#include "spdlog/spdlog.h"
+#include "irsol/logging.hpp"
 #include <iostream>
 #include <utility>
 #include <vector>
@@ -53,12 +53,12 @@ int main() {
     camera.Connect();
     const Resolution resolution = Resolution{static_cast<size_t>(camera.f().Width.Get()),
                                              static_cast<size_t>(camera.f().Height.Get())};
-    spdlog::info("Resolution: {0:d} x {1:d}", resolution.height, resolution.width);
+    IRSOL_LOG_INFO("Resolution: {0:d} x {1:d}", resolution.height, resolution.width);
     size_t payloadsize = static_cast<size_t>(camera.f().PayloadSize.Get());
-    spdlog::info("Payload size: {0:d}", payloadsize);
+    IRSOL_LOG_INFO("Payload size: {0:d}", payloadsize);
     std::vector<TestBuffer *> buffers;
     while (buffers.size() < 5) {
-      spdlog::info("Adding user buffer {0:d}", buffers.size());
+      IRSOL_LOG_INFO("Adding user buffer {0:d}", buffers.size());
       TestBuffer *buffer = new TestBuffer(payloadsize);
       camera.AddUserBuffer(buffer);
       buffers.push_back(buffer);
@@ -68,7 +68,7 @@ int main() {
     camera.SetUserBufferMode();
     NeoAPI::Image image = camera.GetImage();
 
-    spdlog::info("Image captured");
+    IRSOL_LOG_INFO("Image captured");
 
     image.Save("user_buffer.bmp");
     auto *buffer = image.GetUserBuffer<TestBuffer *>();
@@ -80,7 +80,7 @@ int main() {
         Coordinates coords{j, i};
         size_t index = resolution.ToIndex(coords);
         if (buffer->GetMemory()[index] != 0) {
-          spdlog::info("Pixel at ({0:d}, {1:d}) is non-zero: {2:d}", i, j,
+          IRSOL_LOG_INFO("Pixel at ({0:d}, {1:d}) is non-zero: {2:d}", i, j,
                        buffer->GetMemory()[index]);
           non_zero_pixels.push_back(index);
         }
@@ -91,7 +91,7 @@ int main() {
     for (size_t non_zero_pixel : non_zero_pixels) {
 
       Coordinates coord = resolution.FromIndex(non_zero_pixel);
-      spdlog::info("Modifying pixel at ({0:d}, {1:d})", coord.x, coord.y);
+      IRSOL_LOG_INFO("Modifying pixel at ({0:d}, {1:d})", coord.x, coord.y);
 
       for (int dy = -10; dy <= 10; ++dy) {
         for (int dx = -20; dx <= 20; ++dx) {
@@ -115,7 +115,7 @@ int main() {
 
     // Save the modified image
     image.Save("user_buffer_modified.bmp");
-    spdlog::info("Modified image saved");
+    IRSOL_LOG_INFO("Modified image saved");
 
     while (buffers.size()) {
       TestBuffer *buffer = buffers.back();
@@ -124,10 +124,10 @@ int main() {
       delete buffer;
     }
   } catch (NeoAPI::NeoException &exc) {
-    std::cout << "error: " << exc.GetDescription() << std::endl;
+    IRSOL_LOG_CRITICAL("error: {0}", exc.GetDescription());
     result = 1;
   } catch (...) {
-    std::cout << "oops, error" << std::endl;
+    IRSOL_LOG_CRITICAL("oops, error");
     result = 1;
   }
 
