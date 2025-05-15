@@ -1,6 +1,12 @@
 # Set the project name
 project (irsol)
 
+# Find and link threading library for Linux
+if(UNIX AND NOT APPLE)
+    find_package(Threads REQUIRED)
+    message(STATUS "Threading support enabled for Linux.")
+endif()
+
 find_library(NEOAPI_LIBRARY neoapi_cpp HINTS ${neoapi_PRECOMPILED_LIBS_ROOT_DIR})
 
 # Core irsol library
@@ -8,6 +14,7 @@ add_library(${PROJECT_NAME}
     lib/irsol/assert.cpp
     lib/irsol/discovery.cpp
     lib/irsol/logging.cpp
+    lib/irsol/monitor.cpp
     lib/irsol/utils.cpp
 )
 add_library(irsol::core ALIAS ${PROJECT_NAME})
@@ -21,7 +28,9 @@ target_link_libraries(${PROJECT_NAME}
     spdlog::spdlog
     neoapi::neoapi
     ppk_assert::ppk_assert
+    tabulate::tabulate
     ${NEOAPI_LIBRARY}
+    Threads::Threads
 )
 
 # Opencv irsol library

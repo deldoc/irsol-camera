@@ -2,7 +2,8 @@
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "neoapi/neoapi.hpp"
-
+#include "tabulate/tabulate.hpp"
+#include <thread>
 namespace irsol {
 namespace utils {
 
@@ -35,18 +36,24 @@ void log_camera_info(const NeoAPI::CamInfo &info) {
   const auto gev_subnet_mask = info.GetGevSubnetMask();
   const auto gev_gateway = info.GetGevGateway();
   const auto gev_mac_address = info.GetGevMACAddress();
-  IRSOL_LOG_INFO("Camera Model Name: {0:s}", model.c_str());
-  IRSOL_LOG_INFO("Camera ID: {0:s}", cam_id.c_str());
-  IRSOL_LOG_INFO("Camera Serial Number: {0:s}", serial.c_str());
-  IRSOL_LOG_INFO("Camera Transport Layer Type: {0:s}", tl_type.c_str());
-  IRSOL_LOG_INFO("Camera Vendor Name: {0:s}", vendor.c_str());
-  IRSOL_LOG_INFO("Camera USB3 Vision GUID: {0:s}", usb3_vision_guid.c_str());
-  IRSOL_LOG_INFO("Camera USB Port ID: {0:s}", usb_port_id.c_str());
-  IRSOL_LOG_INFO("Camera GEV IP Address: {0:s}", gev_ip_address.c_str());
-  IRSOL_LOG_INFO("Camera GEV Subnet Mask: {0:s}", gev_subnet_mask.c_str());
-  IRSOL_LOG_INFO("Camera GEV Gateway: {0:s}", gev_gateway.c_str());
-  IRSOL_LOG_INFO("Camera GEV MAC Address: {0:s}", gev_mac_address.c_str());
-  IRSOL_LOG_INFO("Is connectable: {0:s}", info.IsConnectable() ? "true" : "false");
+
+  tabulate::Table cam_info;
+  cam_info.add_row({"Name", "Value"});
+  cam_info.add_row({"Camera Model Name", model.c_str()});
+  cam_info.add_row({"Camera ID", cam_id.c_str()});
+  cam_info.add_row({"Camera Serial Number", serial.c_str()});
+  cam_info.add_row({"Camera Transport Layer Type", tl_type.c_str()});
+  cam_info.add_row({"Camera Vendor Name", vendor.c_str()});
+  cam_info.add_row({"Camera USB3 Vision GUID", usb3_vision_guid.c_str()});
+  cam_info.add_row({"Camera USB Port ID", usb_port_id.c_str()});
+  cam_info.add_row({"Camera GEV IP Address", gev_ip_address.c_str()});
+  cam_info.add_row({"Camera GEV Subnet Mask", gev_subnet_mask.c_str()});
+  cam_info.add_row({"Camera GEV Gateway", gev_gateway.c_str()});
+  cam_info.add_row({"Camera GEV MAC Address", gev_mac_address.c_str()});
+  cam_info.add_row({"Is connectable", info.IsConnectable() ? "true" : "false"});
+
+  cam_info.column(0).format().font_align(tabulate::FontAlign::right);
+  IRSOL_LOG_INFO("\n{0:s}", cam_info.str());
 }
 
 NeoAPI::CamInfoList &discover_cameras() {

@@ -43,7 +43,6 @@ else()
     message(STATUS "Irsol assertions are enabled.")
 endif()
 
-
 # Log compiler information
 message(STATUS "CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
@@ -53,6 +52,7 @@ message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 add_subdirectory(external/spdlog)
 add_subdirectory(external/neoapi)
 add_subdirectory(external/ppk_assert)
+add_subdirectory(external/tabulate)
 
 # Add subdirectories for the main project
 add_subdirectory(irsol)

@@ -19,13 +19,13 @@ void init_logging(const char *log_file_path) {
 
   auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
   console_sink->set_level(console_sink_level);
-  console_sink->set_pattern("[%^%l%$] %v");
+  console_sink->set_pattern("[%^%l%$][pid %P][tid %t] %v");
 
   const auto max_file_size = 1024 * 1024 * 5; // 5 MB
   const auto max_files = 24;                  // Keep 24 rotated files
   auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
       log_file_path, max_file_size, max_files, false);
-  file_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v");
+  file_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%^%l%$][pid %P][tid %t] %v");
   file_sink->set_level(file_sink_level);
 
   // Set the loggers as default loggers

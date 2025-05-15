@@ -161,7 +161,6 @@ The initial (factory) parameters for the _Baumer_ camera are the following:
   * `OffsetX`: 0
   * `OffsetY`: 0
   * `PayloadSize`: 5013504
-  * `Permissions`: is_available`: true, is_readable`: true, is_writable`: true
   * `PixelFormat`: Mono8
   * `ReadOutTime`: 27889
   * `ReadoutMode`: Overlapped
