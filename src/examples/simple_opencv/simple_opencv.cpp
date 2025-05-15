@@ -1,31 +1,20 @@
-#include "irsol/assert.hpp"
-#include "irsol/logging.hpp"
-#include "irsol/utils.hpp"
-#include "neoapi/neoapi.hpp"
+#include "irsol/irsol.hpp"
 #include <opencv2/opencv.hpp>
-int main() {
 
-  irsol::init_logging("log/simple_opencv.log");
-  irsol::init_assert_handler();
-
-  NeoAPI::Cam cam = irsol::utils::load_default_camera();
-
+void frame_display(NeoAPI::Cam &cam) {
   uint64_t frame_count = 0;
   while (true) {
     NeoAPI::Image image = cam.GetImage();
-    IRSOL_LOG_INFO("Image captured");
+    IRSOL_LOG_DEBUG("Image number {0} captured", frame_count);
 
-    auto image_data = image.GetImageData();
-    if (image_data == nullptr) {
-      IRSOL_LOG_FATAL("Image data is null");
-      return -1;
+    auto cv_image = irsol::opencv::convert_image_to_mat(image);
+    if (cv_image.empty()) {
+      IRSOL_LOG_ERROR("Image {0} is empty", frame_count);
+      continue;
     }
-    cv::Mat mat(image.GetHeight(), image.GetWidth(), CV_8UC1);
-    // fill the image data into the cv::Mat
-    std::memcpy(mat.data, image_data, image.GetSize());
 
     // Resize the image by 50%
-    cv::resize(mat, mat, cv::Size(), 0.5, 0.5);
+    cv::resize(cv_image, cv_image, cv::Size(), 0.5, 0.5);
 
     auto image_id = image.GetImageID();
     frame_count++;
@@ -33,20 +22,29 @@ int main() {
     auto diff = image_id - frame_count;
     IRSOL_LOG_INFO("Image ID: {0:d}, Frame Count: {1:d}, Difference: {2:d}", image_id, frame_count,
                    diff);
-    cv::putText(mat, "image-id: " + std::to_string(image_id), cv::Point(10, 30),
+    cv::putText(cv_image, "image-id: " + std::to_string(image_id), cv::Point(10, 30),
                 cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
-    cv::putText(mat, "frame-count: " + std::to_string(frame_count), cv::Point(10, 50),
+    cv::putText(cv_image, "frame-count: " + std::to_string(frame_count), cv::Point(10, 50),
                 cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
-    cv::imshow("image", mat);
+    cv::imshow("image", cv_image);
     auto ret = cv::waitKey(1);
     if (ret == 27) { // ESC key
       IRSOL_LOG_INFO("ESC key pressed, exiting");
       break;
     }
   }
-  IRSOL_LOG_INFO("Disconnecting from camera");
-  cam.Disconnect();
-  IRSOL_LOG_INFO("Disconnected from camera");
-  IRSOL_LOG_INFO("Exiting simple example");
+}
+
+int main() {
+
+  irsol::init_logging("log/simple_opencv.log");
+  irsol::init_assert_handler();
+
+  IRSOL_LOG_DEBUG("Starting simple example with OpenCV");
+
+  auto cam = irsol::utils::load_default_camera();
+
+  frame_display(cam);
+  IRSOL_LOG_INFO("Successful execution, shutting down.");
   return 0;
 }

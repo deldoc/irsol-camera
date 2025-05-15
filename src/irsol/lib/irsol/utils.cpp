@@ -16,6 +16,7 @@ NeoAPI::Cam load_default_camera() {
     cam.Connect(camera_serial_number);
   } catch (NeoAPI::NotConnectedException &e) {
     IRSOL_ASSERT_FATAL(false, "Camera connection failed: %s", e.GetDescription());
+    throw e;
   }
   IRSOL_ASSERT_FATAL(cam.IsConnected(), "Camera is not connected");
   IRSOL_LOG_DEBUG("Camera connection successful");

@@ -2,18 +2,9 @@ cmake_minimum_required(VERSION 3.13.0)
 
 project(neoapi_examples)
 
-# Find OpenCV via the FindOpenCV module in the 'cmake' directory
-find_package(OpenCV)
-if(NOT OpenCV_FOUND)
-    message(STATUS  
-    "OpenCV not found. Some examples will not be available. "
-    "If you want to use OpenCV, please install it following the instructions provided in the `docs/` folder. ")
-endif()
-message(STATUS "Found OpenCV version: ${OpenCV_VERSION}")
-
 add_subdirectory(simple)
 add_subdirectory(user_buffer)
 
-if (OpenCV_FOUND)
+if(IRSOL_USE_OPENCV)
     add_subdirectory(simple_opencv)
 endif()

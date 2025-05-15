@@ -1,7 +1,4 @@
-#include "irsol/assert.hpp"
-#include "irsol/logging.hpp"
-#include "irsol/utils.hpp"
-#include "neoapi/neoapi.hpp"
+#include "irsol/irsol.hpp"
 
 int main() {
 
@@ -10,7 +7,7 @@ int main() {
 
   IRSOL_LOG_DEBUG("Starting simple example");
 
-  NeoAPI::Cam cam = irsol::utils::load_default_camera();
+  auto cam = irsol::utils::load_default_camera();
 
   IRSOL_LOG_DEBUG("Camera connection successful");
   irsol::utils::log_camera_info(cam.GetInfo());

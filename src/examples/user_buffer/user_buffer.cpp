@@ -5,8 +5,7 @@
    please see the provided license for full details.
 */
 
-#include "irsol/logging.hpp"
-#include "neoapi/neoapi.hpp"
+#include "irsol/irsol.hpp"
 #include <iostream>
 #include <utility>
 #include <vector>
