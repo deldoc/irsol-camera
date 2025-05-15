@@ -6,6 +6,7 @@ find_library(NEOAPI_LIBRARY neoapi_cpp HINTS ${neoapi_PRECOMPILED_LIBS_ROOT_DIR}
 # Core irsol library
 add_library(${PROJECT_NAME}
     lib/irsol/assert.cpp
+    lib/irsol/discovery.cpp
     lib/irsol/logging.cpp
     lib/irsol/utils.cpp
 )
