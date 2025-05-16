@@ -12,15 +12,12 @@
 
 namespace irsol {
 
-Server::Server(int port, int maxClients)
+Server::Server(uint16_t port, uint16_t maxClients)
     : m_port(port), m_maxClients(maxClients), m_terminate(false), m_fds(maxClients) {
-    IRSOL_LOG_INFO("Initializing server on port {}", m_port);
+    IRSOL_LOG_INFO("Initializing server on port {0:d} with {1:d} max clients.", m_port, m_maxClients);
     for (auto& fd : m_fds) {
-        fd.fd = 0;
-        fd.events = 0;
+        fd.fd = -1;
     }
-    m_fds[0].fd = -1; // Placeholder for server socket initialization
-    m_fds[0].events = POLLIN;
     initServer();
 }
 
@@ -52,7 +49,7 @@ void Server::initServer() {
     }
 
     m_fds[0].fd = m_serverSocket; // Assign server socket to fds[0]
-    IRSOL_LOG_INFO("Server initialized successfully on port {}", m_port);
+    IRSOL_LOG_INFO("Server initialized successfully on port {0:d}", m_port);
 }
 
 void Server::run() {
