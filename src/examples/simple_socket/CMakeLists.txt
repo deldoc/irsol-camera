@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13.0)
 
 # set project properties
-project(socket)
+project(simple-socket)
 
 add_executable(
     ${PROJECT_NAME}-server

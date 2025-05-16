@@ -7,6 +7,41 @@
 namespace irsol {
 namespace utils {
 
+std::vector<std::string> split(const std::string &s, char delimiter) {
+  std::vector<std::string> tokens;
+  std::string token;
+  for (char c : s) {
+    if (c == delimiter) {
+      if (!token.empty()) {
+        tokens.push_back(token);
+        token.clear();
+      }
+    } else {
+      token += c;
+    }
+  }
+  if (!token.empty()) {
+    tokens.push_back(token);
+  }
+  return tokens;
+}
+
+std::string strip(const std::string &s, const std::string &delimiters) {
+  size_t start = 0;
+  size_t end = s.size();
+  IRSOL_LOG_TRACE("Stripping delimiters '{0:s}' from string '{1:s}'", delimiters, s);
+  while ((start < end) && (delimiters.find(s[start]) != std::string::npos)) {
+    start++;
+  }
+  while ((start < end) && (delimiters.find(s[end - 1]) != std::string::npos)) {
+    end--;
+  }
+
+  auto result = s.substr(start, end - start);
+  IRSOL_LOG_TRACE("Stripped string '{0:s}' is '{1:s}'", s, result);
+  return result;
+}
+
 NeoAPI::Cam loadDefaultCamera() {
   IRSOL_LOG_DEBUG("Loading default camera");
   NeoAPI::Cam cam = NeoAPI::Cam();
