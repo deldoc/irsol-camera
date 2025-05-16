@@ -9,12 +9,12 @@
 
 class ServerExample {
 public:
-  ServerExample(uint16_t port = 15099, uint16_t maxClients = 16)
-      : m_port(port), m_maxClients(maxClients), m_server(m_port, m_maxClients) {
+  ServerExample(uint16_t port = 15099, uint16_t maxClients = 16,
+                int16_t stdInputCommunicationId = -1)
+      : m_port(port), m_maxClients(maxClients), m_stdInputCommunicationId(stdInputCommunicationId),
+        m_server(m_port, m_maxClients, stdInputCommunicationId) {
     m_running = false;
 
-    irsol::initLogging("log/server.log");
-    irsol::initAssertHandler();
     // Register signal handler for graceful shutdown
     std::signal(SIGINT, ServerExample::signal_handler);
     std::signal(SIGTERM, ServerExample::signal_handler);
@@ -33,6 +33,9 @@ public:
         "Number of clients allowed to connect simultaneously, defaults to " +
             std::to_string(defaultMaxClients),
         {'c', "num-clients"});
+    args::ValueFlag<int16_t> stdInputCommunicationId(parser, "stdInputCommunicationId",
+                                                     "The ID to assign to std input communication.",
+                                                     {'s', "std-input"});
 
     try {
       parser.ParseCLI(argc, argv);
@@ -65,7 +68,14 @@ public:
       maxClientsValue = defaultMaxClients;
     }
 
-    return ServerExample(portValue, maxClientsValue);
+    int16_t stdInputCommunicationIdValue = -1;
+    if (stdInputCommunicationId) {
+      stdInputCommunicationIdValue = args::get(stdInputCommunicationId);
+    } else {
+      IRSOL_LOG_DEBUG("No std input communication id specified.");
+    }
+
+    return ServerExample(portValue, maxClientsValue, stdInputCommunicationIdValue);
   }
 
   void run() {
@@ -102,12 +112,16 @@ private:
   static std::atomic<bool> m_running;
   const uint16_t m_port;
   const uint16_t m_maxClients;
-  irsol::Server m_server;
+  const int16_t m_stdInputCommunicationId;
+  irsol::server::Server m_server;
 };
 
 std::atomic<bool> ServerExample::m_running;
 
 int main(int argc, char *argv[]) {
+  irsol::initLogging("log/server.log");
+  irsol::initAssertHandler();
+
   ServerExample example = ServerExample::fromArgs(argc, argv);
   example.run();
 }

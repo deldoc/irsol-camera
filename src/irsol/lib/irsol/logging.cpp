@@ -36,5 +36,12 @@ void initLogging(const char *logFilePath) {
 
   // Force flush on error level and above
   spdlog::flush_on(spdlog::level::err);
+
+#ifdef DEBUG
+  spdlog::info("Logging initialized with sync levels");
+  spdlog::info("Console {}", spdlog::level::to_string_view(consoleSinkLevel));
+  spdlog::info("File: {}", spdlog::level::to_string_view(fileSinkLevel));
+  spdlog::info("Global: {}", spdlog::level::to_string_view(globalLevel));
+#endif
 }
 } // namespace irsol
