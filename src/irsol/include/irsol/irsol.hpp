@@ -7,3 +7,4 @@
 #ifdef IRSOL_USE_OPENCV
 #include "irsol/opencv.hpp"
 #endif
+#include "irsol/server.hpp"
