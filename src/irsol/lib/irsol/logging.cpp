@@ -5,33 +5,33 @@
 #include "spdlog/spdlog.h"
 
 namespace irsol {
-void init_logging(const char *log_file_path) {
+void initLogging(const char *logFilePath) {
 #ifdef DEBUG
   // Set the logging level to debug if in debug mode
-  const auto console_sink_level = spdlog::level::debug;
-  const auto file_sink_level = spdlog::level::trace;
+  const auto consoleSinkLevel = spdlog::level::debug;
+  const auto fileSinkLevel = spdlog::level::trace;
 #else
   // Set the logging level to info if not in debug mode
-  const auto console_sink_level = spdlog::level::info;
-  const auto file_sink_level = spdlog::level::info;
+  const auto consoleSinkLevel = spdlog::level::info;
+  const auto fileSinkLevel = spdlog::level::info;
 #endif
-  const auto global_level = std::min({console_sink_level, file_sink_level});
+  const auto globalLevel = std::min({consoleSinkLevel, fileSinkLevel});
 
-  auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-  console_sink->set_level(console_sink_level);
-  console_sink->set_pattern("[%^%l%$][pid %P][tid %t] %v");
+  auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+  consoleSink->set_level(consoleSinkLevel);
+  consoleSink->set_pattern("[%^%l%$][pid %P][tid %t] %v");
 
-  const auto max_file_size = 1024 * 1024 * 5; // 5 MB
-  const auto max_files = 24;                  // Keep 24 rotated files
-  auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
-      log_file_path, max_file_size, max_files, false);
-  file_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%^%l%$][pid %P][tid %t] %v");
-  file_sink->set_level(file_sink_level);
+  const auto maxFileSize = 1024 * 1024 * 5; // 5 MB
+  const auto maxFiles = 24;                 // Keep 24 rotated files
+  auto fileSink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(logFilePath, maxFileSize,
+                                                                         maxFiles, false);
+  fileSink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%^%l%$][pid %P][tid %t] %v");
+  fileSink->set_level(fileSinkLevel);
 
   // Set the loggers as default loggers
   auto logger =
-      std::make_shared<spdlog::logger>("irsol", spdlog::sinks_init_list{console_sink, file_sink});
-  logger->set_level(global_level);
+      std::make_shared<spdlog::logger>("irsol", spdlog::sinks_init_list{consoleSink, fileSink});
+  logger->set_level(globalLevel);
   spdlog::set_default_logger(logger);
 
   // Force flush on error level and above

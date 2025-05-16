@@ -10,5 +10,5 @@
 #define IRSOL_LOG_FATAL(...) spdlog::critical(__VA_ARGS__)
 
 namespace irsol {
-void init_logging(const char *file_sink_filename = "log/irsol.log");
-}
+void initLogging(const char *fileSinkFilename = "log/irsol.log");
+} // namespace irsol

@@ -3,17 +3,17 @@
 
 namespace irsol {
 
-void CommandHandler::process_command(const char* command, int client_socket) {
+void CommandHandler::processCommand(const char* command, int clientSocket) {
     IRSOL_LOG_DEBUG("Processing command: {}", command);
 
     // Example command handling
     if (strcmp(command, "PING") == 0) {
         const char* response = "PONG\n";
-        write(client_socket, response, strlen(response));
+        write(clientSocket, response, strlen(response));
     } else {
         IRSOL_LOG_WARN("Unknown command: {}", command);
         const char* response = "ERROR: Unknown command\n";
-        write(client_socket, response, strlen(response));
+        write(clientSocket, response, strlen(response));
     }
 }
 

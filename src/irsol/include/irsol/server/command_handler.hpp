@@ -4,7 +4,7 @@ namespace irsol {
 
 class CommandHandler {
 public:
-    static void process_command(const char* command, int client_socket);
+    static void processCommand(const char* command, int clientSocket);
 };
 
 } // namespace irsol

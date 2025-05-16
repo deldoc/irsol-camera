@@ -12,8 +12,8 @@
 
 namespace irsol {
 
-Server::Server(int port, int max_clients)
-    : m_port(port), m_maxClients(max_clients), m_terminate(false), m_fds(max_clients) {
+Server::Server(int port, int maxClients)
+    : m_port(port), m_maxClients(maxClients), m_terminate(false), m_fds(maxClients) {
     IRSOL_LOG_INFO("Initializing server on port {}", m_port);
     for (auto& fd : m_fds) {
         fd.fd = 0;
@@ -21,7 +21,7 @@ Server::Server(int port, int max_clients)
     }
     m_fds[0].fd = -1; // Placeholder for server socket initialization
     m_fds[0].events = POLLIN;
-    init_server();
+    initServer();
 }
 
 Server::~Server() {
@@ -29,19 +29,19 @@ Server::~Server() {
     IRSOL_LOG_INFO("Server shut down.");
 }
 
-void Server::init_server() {
+void Server::initServer() {
     m_serverSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (m_serverSocket < 0) {
         IRSOL_LOG_FATAL("Failed to create socket: {}", strerror(errno));
         throw std::runtime_error("Socket creation failed");
     }
 
-    sockaddr_in server_addr{};
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(m_port);
-    server_addr.sin_addr.s_addr = INADDR_ANY;
+    sockaddr_in serverAddr{};
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(m_port);
+    serverAddr.sin_addr.s_addr = INADDR_ANY;
 
-    if (bind(m_serverSocket, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
+    if (bind(m_serverSocket, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) < 0) {
         IRSOL_LOG_FATAL("Failed to bind socket: {}", strerror(errno));
         throw std::runtime_error("Socket bind failed");
     }
@@ -58,8 +58,8 @@ void Server::init_server() {
 void Server::run() {
     IRSOL_LOG_INFO("Server is running...");
     while (!m_terminate) {
-        int poll_count = poll(m_fds.data(), m_maxClients, 1000);
-        if (poll_count < 0) {
+        int pollCount = poll(m_fds.data(), m_maxClients, 1000);
+        if (pollCount < 0) {
             IRSOL_LOG_ERROR("Poll error: {}", strerror(errno));
             continue;
         }
@@ -68,9 +68,9 @@ void Server::run() {
             if(m_terminate) break;
             if (m_fds[i].revents & POLLIN) {
                 if (m_fds[i].fd == m_serverSocket) {
-                    accept_connection();
+                    acceptConnection();
                 } else {
-                    handle_client(m_fds[i].fd);
+                    handleClient(m_fds[i].fd);
                 }
             }
         }
@@ -82,39 +82,39 @@ void Server::terminate() {
     m_terminate = true;
 }
 
-void Server::accept_connection() {
-    sockaddr_in client_addr{};
-    socklen_t client_len = sizeof(client_addr);
-    int client_socket = accept(m_serverSocket, (struct sockaddr*)&client_addr, &client_len);
+void Server::acceptConnection() {
+    sockaddr_in clientAddr{};
+    socklen_t clientLen = sizeof(clientAddr);
+    int clientSocket = accept(m_serverSocket, (struct sockaddr*)&clientAddr, &clientLen);
 
-    if (client_socket < 0) {
+    if (clientSocket < 0) {
         IRSOL_LOG_WARN("Failed to accept connection: {}", strerror(errno));
         return;
     }
 
-    IRSOL_LOG_INFO("Accepted new connection: socket {}", client_socket);
+    IRSOL_LOG_INFO("Accepted new connection: socket {}", clientSocket);
     for (auto& fd : m_fds) {
         if (fd.fd == 0) {
-            fd.fd = client_socket;
+            fd.fd = clientSocket;
             fd.events = POLLIN;
             break;
         }
     }
 }
 
-void Server::handle_client(int client_socket) {
+void Server::handleClient(int clientSocket) {
     char buffer[1024];
     memset(buffer, 0, sizeof(buffer));
-    int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
+    int bytesRead = read(clientSocket, buffer, sizeof(buffer) - 1);
 
-    if (bytes_read <= 0) {
-        IRSOL_LOG_INFO("Client disconnected: socket {}", client_socket);
-        close(client_socket);
+    if (bytesRead <= 0) {
+        IRSOL_LOG_INFO("Client disconnected: socket {}", clientSocket);
+        close(clientSocket);
         return;
     }
 
-    IRSOL_LOG_DEBUG("Received data from client {}: {}", client_socket, buffer);
-    CommandHandler::process_command(buffer, client_socket);
+    IRSOL_LOG_DEBUG("Received data from client {}: {}", clientSocket, buffer);
+    CommandHandler::processCommand(buffer, clientSocket);
 }
 
 } // namespace irsol

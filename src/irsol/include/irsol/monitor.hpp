@@ -6,6 +6,7 @@
 #include <thread>
 
 namespace irsol {
+
 class CameraStatusMonitor {
 public:
   CameraStatusMonitor(const NeoAPI::Cam &cam,
@@ -15,7 +16,7 @@ public:
   void stop();
 
 protected:
-  void run_monitor() const;
+  virtual void runMonitor() const;
 
 private:
   const NeoAPI::Cam &m_cam;

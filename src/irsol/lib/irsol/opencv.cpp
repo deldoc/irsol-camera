@@ -5,7 +5,7 @@
 
 namespace irsol {
 namespace opencv {
-cv::Mat convert_image_to_mat(const NeoAPI::Image &image, ColorConversionMode mode) {
+cv::Mat convertImageToMat(const NeoAPI::Image &image, ColorConversionMode mode) {
   IRSOL_ASSERT_ERROR(image.GetImageData() != nullptr, "Image data is null");
   IRSOL_ASSERT_ERROR(image.GetWidth() > 0 && image.GetHeight() > 0,
                      "Invalid image dimensions: %lu x %lu", image.GetWidth(), image.GetHeight());

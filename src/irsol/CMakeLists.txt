@@ -35,15 +35,14 @@ target_link_libraries(${PROJECT_NAME}
     Threads::Threads
 )
 
-# Opencv irsol library
+# OpenCV irsol library
 find_package(OpenCV)
 if(NOT OpenCV_FOUND)
-    message(STATUS  
-    "OpenCV not found. irsol-cv library will not be built.")
+    message(STATUS "OpenCV not found. irsol-cv library will not be built.")
     return()
 endif()
 
-message(STATUS "Irsol built with opencv support, with version: ${OpenCV_VERSION}")
+message(STATUS "Irsol built with OpenCV support, version: ${OpenCV_VERSION}")
 set(IRSOL_USE_OPENCV ON PARENT_SCOPE)
 
 add_library(${PROJECT_NAME}-cv

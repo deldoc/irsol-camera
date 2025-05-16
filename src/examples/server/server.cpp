@@ -11,8 +11,8 @@ public:
       : m_port(port), m_maxClients(maxClients), m_server(m_port, m_maxClients) {
     m_running = false;
 
-    irsol::init_logging("log/server.log");
-    irsol::init_assert_handler();
+    irsol::initLogging("log/server.log");
+    irsol::initAssertHandler();
     // Register signal handler for graceful shutdown
     std::signal(SIGINT, ServerExample::signal_handler);
     std::signal(SIGTERM, ServerExample::signal_handler);

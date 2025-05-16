@@ -31,14 +31,12 @@ typedef ppk::assert::implementation::AssertAction::AssertAction (*AssertHandler)
     const char *file, int line, const char *function, const char *expression, int level,
     const char *message);
 
-void set_assert_handler(AssertHandler handler);
-
-void init_assert_handler();
+void setAssertHandler(AssertHandler handler);
+void initAssertHandler();
 
 namespace internal {
 ppk::assert::implementation::AssertAction::AssertAction
-assert_handler(const char *file, int line, const char *function, const char *expression, int level,
-               const char *message);
+assertHandler(const char *file, int line, const char *function, const char *expression, int level,
+              const char *message);
 } // namespace internal
-
 } // namespace irsol

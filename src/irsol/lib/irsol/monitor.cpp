@@ -17,9 +17,9 @@ CameraStatusMonitor::~CameraStatusMonitor() {
   }
 }
 
-void CameraStatusMonitor::run_monitor() const {
+void CameraStatusMonitor::runMonitor() const {
   IRSOL_LOG_DEBUG("Monitoring camera status...");
-  static const char *const feature_names[] = {"AcquisitionFrameCount",
+  static const char *const FEATURE_NAMES[] = {"AcquisitionFrameCount",
                                               "AcquisitionFrameRate",
                                               "AcquisitionMode",
                                               "DeviceTemperatureStatus",
@@ -34,47 +34,44 @@ void CameraStatusMonitor::run_monitor() const {
                                               "PixelFormat",
                                               "ReadOutTime"};
   while (m_hasStartedMonitor) {
-    auto next_iteration_time = std::chrono::steady_clock::now() + m_monitorInterval;
+    auto nextIterationTime = std::chrono::steady_clock::now() + m_monitorInterval;
 
-    tabulate::Table feature_results;
-    feature_results.add_row({"Feature", "Value"});
+    tabulate::Table featureResults;
+    featureResults.add_row({"Feature", "Value"});
 
-    bool stop_requested = false;
+    bool stopRequested = false;
 
-    for (const auto feature_name : feature_names) {
-      auto feature = m_cam.GetFeature(feature_name);
-      auto feature_value = NeoAPI::NeoString(feature).c_str();
-      feature_results.add_row({feature_name, feature_value});
-      IRSOL_LOG_TRACE("{0:s}: {1:s}", feature_name, feature_value);
+    for (const auto featureName : FEATURE_NAMES) {
+      auto feature = m_cam.GetFeature(featureName);
+      auto featureValue = NeoAPI::NeoString(feature).c_str();
+      featureResults.add_row({featureName, featureValue});
+      IRSOL_LOG_TRACE("{0:s}: {1:s}", featureName, featureValue);
       if (!m_hasStartedMonitor) {
-        stop_requested = true;
+        stopRequested = true;
         break;
       }
     }
-    feature_results.column(0).format().font_align(tabulate::FontAlign::right);
-    IRSOL_LOG_INFO("\n{0:s}", feature_results.str());
+    featureResults.column(0).format().font_align(tabulate::FontAlign::right);
+    IRSOL_LOG_INFO("\n{0:s}", featureResults.str());
 
-    if (stop_requested) {
+    if (stopRequested) {
       break;
     }
 
-    std::this_thread::sleep_until(next_iteration_time);
+    std::this_thread::sleep_until(nextIterationTime);
   }
 }
 
 void CameraStatusMonitor::start() {
-  // acquire the mutex
   std::lock_guard<std::mutex> guard(m_startStopMutex);
   IRSOL_ASSERT_ERROR(!m_hasStartedMonitor, "Monitor is already running!");
   m_hasStartedMonitor = true;
 
-  // start the thread with the monitoring pipeline
-  m_monitorThread = std::thread([this]() { run_monitor(); });
+  m_monitorThread = std::thread([this]() { runMonitor(); });
   IRSOL_LOG_DEBUG("Camera monitor has started.");
 }
 
 void CameraStatusMonitor::stop() {
-  // acquire the mutex
   std::lock_guard<std::mutex> guard(m_startStopMutex);
   IRSOL_ASSERT_ERROR(m_hasStartedMonitor,
                      "Cannot 'stop' monitor without having started it before!");

@@ -2,15 +2,15 @@
 #include <chrono>
 int main() {
 
-  irsol::init_logging("log/simple.log");
-  irsol::init_assert_handler();
+  irsol::initLogging("log/simple.log");
+  irsol::initAssertHandler();
 
   IRSOL_LOG_DEBUG("Starting simple example");
 
-  auto cam = irsol::utils::load_default_camera();
+  auto cam = irsol::utils::loadDefaultCamera();
 
   IRSOL_LOG_DEBUG("Camera connection successful");
-  irsol::utils::log_camera_info(cam.GetInfo());
+  irsol::utils::logCameraInfo(cam.GetInfo());
 
   irsol::CameraStatusMonitor monitor{cam, std::chrono::milliseconds(200)};
   monitor.start();

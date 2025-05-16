@@ -4,12 +4,11 @@
 
 namespace irsol {
 namespace utils {
-NeoAPI::Cam load_default_camera();
-
-void log_camera_info(const NeoAPI::CamInfo &info);
-NeoAPI::CamInfoList &discover_cameras();
+NeoAPI::Cam loadDefaultCamera();
+void logCameraInfo(const NeoAPI::CamInfo &info);
+NeoAPI::CamInfoList &discoverCameras();
 namespace internal {
-constexpr const char *default_camera_serial_number();
+constexpr const char *defaultCameraSerialNumber();
 }
 } // namespace utils
 } // namespace irsol

@@ -7,7 +7,7 @@ namespace irsol {
 
 class Server {
 public:
-    Server(int port, int max_clients);
+    Server(int port, int maxClients);
     ~Server();
 
     void run();
@@ -20,9 +20,9 @@ private:
     bool m_terminate;
     std::vector<struct pollfd> m_fds;
 
-    void init_server();
-    void accept_connection();
-    void handle_client(int client_socket);
+    void initServer();
+    void acceptConnection();
+    void handleClient(int clientSocket);
 };
 
 } // namespace irsol

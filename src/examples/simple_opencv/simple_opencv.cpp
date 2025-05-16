@@ -3,15 +3,15 @@
 
 int main() {
 
-  irsol::init_logging("log/simple_opencv.log");
-  irsol::init_assert_handler();
+  irsol::initLogging("log/simple_opencv.log");
+  irsol::initAssertHandler();
 
   IRSOL_LOG_DEBUG("Starting simple example with OpenCV");
 
-  auto cam = irsol::utils::load_default_camera();
+  auto cam = irsol::utils::loadDefaultCamera();
 
   IRSOL_LOG_DEBUG("Camera connection successful");
-  irsol::utils::log_camera_info(cam.GetInfo());
+  irsol::utils::logCameraInfo(cam.GetInfo());
 
   irsol::CameraStatusMonitor monitor{cam, std::chrono::milliseconds(200)};
   monitor.start();
@@ -23,8 +23,8 @@ int main() {
 
     auto current_exposure = static_cast<double>(cam.f().ExposureTime);
 
-    cv::Mat cv_image = irsol::opencv::convert_image_to_mat(
-        image, irsol::opencv::ColorConversionMode::GRAY_TO_COLOR);
+    cv::Mat cv_image =
+        irsol::opencv::convertImageToMat(image, irsol::opencv::ColorConversionMode::GRAY_TO_COLOR);
     cv::putText(cv_image, "Exposure: " + std::to_string(current_exposure), {20, 50},
                 cv::FONT_HERSHEY_COMPLEX, 1.5, {0, 0, 255}, 1, cv::LINE_AA);
     cv::putText(cv_image, "Timestamp: " + std::to_string(image_ts), {20, 80},
