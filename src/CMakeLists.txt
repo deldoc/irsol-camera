@@ -49,9 +49,10 @@ message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 
 # Add subdirectories for external dependencies
-add_subdirectory(external/spdlog)
+add_subdirectory(external/args)
 add_subdirectory(external/neoapi)
 add_subdirectory(external/ppk_assert)
+add_subdirectory(external/spdlog)
 add_subdirectory(external/tabulate)
 
 # Add subdirectories for the main project
