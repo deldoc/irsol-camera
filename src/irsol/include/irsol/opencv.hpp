@@ -7,6 +7,8 @@
 
 namespace irsol {
 namespace opencv {
-cv::Mat convert_image_to_mat(const NeoAPI::Image &image);
-}
+enum class ColorConversionMode { NONE = 1, GRAY_TO_COLOR = 2 };
+cv::Mat convert_image_to_mat(const NeoAPI::Image &image,
+                             ColorConversionMode mode = ColorConversionMode::NONE);
+} // namespace opencv
 } // namespace irsol

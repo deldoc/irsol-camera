@@ -1,40 +1,6 @@
 #include "irsol/irsol.hpp"
 #include <opencv2/opencv.hpp>
 
-void frame_display(NeoAPI::Cam &cam) {
-  uint64_t frame_count = 0;
-  while (true) {
-    NeoAPI::Image image = cam.GetImage();
-    IRSOL_LOG_DEBUG("Image number {0} captured", frame_count);
-
-    auto cv_image = irsol::opencv::convert_image_to_mat(image);
-    if (cv_image.empty()) {
-      IRSOL_LOG_ERROR("Image {0} is empty", frame_count);
-      continue;
-    }
-
-    // Resize the image by 50%
-    cv::resize(cv_image, cv_image, cv::Size(), 0.5, 0.5);
-
-    auto image_id = image.GetImageID();
-    frame_count++;
-
-    auto diff = image_id - frame_count;
-    IRSOL_LOG_INFO("Image ID: {0:d}, Frame Count: {1:d}, Difference: {2:d}", image_id, frame_count,
-                   diff);
-    cv::putText(cv_image, "image-id: " + std::to_string(image_id), cv::Point(10, 30),
-                cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
-    cv::putText(cv_image, "frame-count: " + std::to_string(frame_count), cv::Point(10, 50),
-                cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2);
-    cv::imshow("image", cv_image);
-    auto ret = cv::waitKey(1);
-    if (ret == 27) { // ESC key
-      IRSOL_LOG_INFO("ESC key pressed, exiting");
-      break;
-    }
-  }
-}
-
 int main() {
 
   irsol::init_logging("log/simple_opencv.log");
@@ -44,7 +10,56 @@ int main() {
 
   auto cam = irsol::utils::load_default_camera();
 
-  frame_display(cam);
-  IRSOL_LOG_INFO("Successful execution, shutting down.");
+  IRSOL_LOG_DEBUG("Camera connection successful");
+  irsol::utils::log_camera_info(cam.GetInfo());
+
+  irsol::CameraStatusMonitor monitor{cam, std::chrono::milliseconds(200)};
+  monitor.start();
+
+  for (int i = 0; i < 50; ++i) {
+    IRSOL_LOG_INFO("Iteration {0:d}", i);
+    auto image = cam.GetImage();
+    auto image_ts = image.GetTimestamp();
+
+    auto current_exposure = static_cast<double>(cam.f().ExposureTime);
+
+    cv::Mat cv_image = irsol::opencv::convert_image_to_mat(
+        image, irsol::opencv::ColorConversionMode::GRAY_TO_COLOR);
+    cv::putText(cv_image, "Exposure: " + std::to_string(current_exposure), {20, 50},
+                cv::FONT_HERSHEY_COMPLEX, 1.5, {0, 0, 255}, 1, cv::LINE_AA);
+    cv::putText(cv_image, "Timestamp: " + std::to_string(image_ts), {20, 80},
+                cv::FONT_HERSHEY_COMPLEX, 1, {0, 255, 0}, 1, cv::LINE_AA);
+    cv::imshow("image", cv_image);
+
+    bool closeWindow = false;
+    const int keyPressed = cv::waitKey(1) & 0xFF;
+    switch (keyPressed) {
+    case 27: { // Esc
+      IRSOL_LOG_INFO("Closing window request accepted");
+      closeWindow = true;
+      break;
+    }
+    case 113: { // q
+      IRSOL_LOG_INFO("Closing window request accepted");
+      closeWindow = true;
+      break;
+    }
+    }
+
+    if (closeWindow) {
+      break;
+    }
+
+    uint64_t newExposureTime = i * 100;
+    IRSOL_LOG_DEBUG("Setting exposure time to {0:d}ms", newExposureTime);
+    cam.f().ExposureTime = newExposureTime;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  }
+
+  cv::destroyAllWindows();
+
+  monitor.stop();
+
+  IRSOL_LOG_INFO("Successful execution, shutting down");
   return 0;
 }
