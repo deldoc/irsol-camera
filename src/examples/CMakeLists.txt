@@ -5,6 +5,7 @@ project(neoapi_examples)
 add_subdirectory(simple)
 add_subdirectory(user_buffer)
 add_subdirectory(server)
+add_subdirectory(socket)
 
 if(IRSOL_USE_OPENCV)
     add_subdirectory(simple_opencv)

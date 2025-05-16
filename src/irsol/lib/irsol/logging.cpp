@@ -37,6 +37,8 @@ void initLogging(const char *logFilePath) {
   // Force flush on error level and above
   spdlog::flush_on(spdlog::level::err);
 
+  // Force flush every N seconds
+  spdlog::flush_every(std::chrono::seconds(2));
 #ifdef DEBUG
   spdlog::info("Logging initialized with sync levels");
   spdlog::info("Console {}", spdlog::level::to_string_view(consoleSinkLevel));

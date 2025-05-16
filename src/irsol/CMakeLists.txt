@@ -27,6 +27,7 @@ target_include_directories(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
+    Sockpp::sockpp
     spdlog::spdlog
     neoapi::neoapi
     ppk_assert::ppk_assert
