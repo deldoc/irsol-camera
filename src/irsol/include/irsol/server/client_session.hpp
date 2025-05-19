@@ -17,6 +17,7 @@ public:
   ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app);
   void run();
   void send(const std::string &message);
+  void send(void *data, size_t size);
 
   const ServerApp &app() const { return m_app; }
   ServerApp &app() { return m_app; }

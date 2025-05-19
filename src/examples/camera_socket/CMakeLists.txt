@@ -11,3 +11,18 @@ add_executable(
 target_link_libraries(${PROJECT_NAME}-server
     irsol::core
 )
+
+if(IRSOL_USE_OPENCV)
+
+add_executable(
+    ${PROJECT_NAME}-viewer
+    viewer_client.cpp
+)
+
+target_link_libraries(${PROJECT_NAME}-viewer
+    irsol::cv
+)
+
+else()
+message(STATUS, "OpenCV not found, viewer target skipped")
+endif()

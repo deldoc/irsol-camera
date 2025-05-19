@@ -5,9 +5,15 @@
 
 namespace irsol {
 namespace internal {
+
+struct BinaryData {
+  std::shared_ptr<void> data{};
+  size_t size{};
+};
 struct CommandResponse {
   std::string message;
-  std::string broadcastMessage = "";
+  BinaryData binaryData{};
+  std::string broadcastMessage{};
 };
 
 class CommandProcessor {

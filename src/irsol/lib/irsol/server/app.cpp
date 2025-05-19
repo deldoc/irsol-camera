@@ -107,11 +107,12 @@ void ServerApp::removeClient(const std::shared_ptr<internal::ClientSession> &cli
 }
 
 void ServerApp::broadcast(const std::string &msg) {
-  IRSOL_LOG_DEBUG("Broadcasting message to {} clients", m_clients.size());
+  IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   for (auto &client : m_clients) {
     client->send(msg);
   }
+  IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
 }
 
 CameraInterface &ServerApp::camera() { return m_cameraInterface; }

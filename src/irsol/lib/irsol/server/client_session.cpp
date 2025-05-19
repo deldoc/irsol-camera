@@ -114,6 +114,12 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
       IRSOL_NAMED_LOG_DEBUG(m_id, "No response for: '{}'", strippedMessage);
     }
 
+    // Send data if available
+    if (response.binaryData.size) {
+      IRSOL_NAMED_LOG_DEBUG(m_id, "Sending binary data ({} bytes).", response.binaryData.size);
+      send(response.binaryData.data.get(), response.binaryData.size);
+    }
+
     // Send broadcast message if available
     if (!response.broadcastMessage.empty()) {
       IRSOL_NAMED_LOG_DEBUG(m_id, "Broadcasting message: '{}'", response.broadcastMessage);
@@ -124,9 +130,6 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
 
 void ClientSession::send(const std::string &msg) {
   std::string preparedMessage = msg;
-  if (preparedMessage.back() != '\n') {
-    preparedMessage += '\n';
-  }
 
   std::lock_guard<std::mutex> lock(m_sendMutex);
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending message of size {}", preparedMessage.size());
@@ -137,6 +140,18 @@ void ClientSession::send(const std::string &msg) {
   } else if (result.value() != preparedMessage.size()) {
     IRSOL_NAMED_LOG_WARN(m_id, "Incomplete message sent: {} of {} bytes", result.value(),
                          preparedMessage.size());
+  }
+}
+
+void ClientSession::send(void *data, size_t size) {
+  std::lock_guard<std::mutex> lock(m_sendMutex);
+  IRSOL_NAMED_LOG_TRACE(m_id, "Sending binary data of size {}", size);
+
+  auto result = m_sock.write(data, size);
+  if (!result) {
+    IRSOL_NAMED_LOG_ERROR(m_id, "Failed to send binary data: {}", result.error().message());
+  } else if (result.value() != size) {
+    IRSOL_NAMED_LOG_WARN(m_id, "Incomplete binary data sent: {} of {} bytes", result.value(), size);
   }
 }
 } // namespace internal
