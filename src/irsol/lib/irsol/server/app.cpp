@@ -1,8 +1,10 @@
 // ServerApp.cpp
 #include "irsol/server/app.hpp"
 #include "irsol/logging.hpp"
+#include "irsol/utils.hpp"
 
 namespace irsol {
+
 ServerApp::ServerApp(int port)
     : m_port(port), m_running(false), m_acceptor({}), m_cameraController() {
   IRSOL_LOG_DEBUG("ServerApp created on port {}", m_port);
@@ -73,15 +75,21 @@ void ServerApp::acceptLoop() {
     auto clientAddress = sock.address().to_string();
     IRSOL_LOG_INFO("New client connection from {}", clientAddress);
 
-    auto session = std::make_shared<ClientSession>(std::move(sock), *this);
+    // Generate a unique ID for this client session
+    std::string clientId = utils::uuid();
+    IRSOL_LOG_DEBUG("Generated client ID: {}", clientId);
+
+    auto session = std::make_shared<ClientSession>(clientId, std::move(sock), *this);
     {
       std::lock_guard<std::mutex> lock(m_clientsMutex);
       m_clients.insert(session);
-      IRSOL_LOG_DEBUG("Client added to session list, total clients: {}", m_clients.size());
+      IRSOL_LOG_DEBUG("Client {} added to session list, total clients: {}", clientId,
+                      m_clients.size());
     }
 
     std::thread([session, clientAddress, this]() {
-      IRSOL_LOG_DEBUG("Starting client session thread for {}", clientAddress);
+      IRSOL_LOG_DEBUG("Starting client session thread for {} with ID {}", clientAddress,
+                      session->id());
       session->run();
       // Once the session is done, remove it from the list and join the thread.
       removeClient(session);
@@ -94,7 +102,8 @@ void ServerApp::acceptLoop() {
 void ServerApp::removeClient(const std::shared_ptr<ClientSession> &client) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   m_clients.erase(client);
-  IRSOL_LOG_DEBUG("Client removed from session list, remaining clients: {}", m_clients.size());
+  IRSOL_LOG_DEBUG("Client {} removed from session list, remaining clients: {}", client->id(),
+                  m_clients.size());
 }
 
 void ServerApp::broadcast(const std::string &msg) {

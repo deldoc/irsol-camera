@@ -6,6 +6,7 @@
 
 namespace irsol {
 namespace utils {
+std::string uuid();
 std::vector<std::string> split(const std::string &s, char delimiter);
 std::string strip(const std::string &s, const std::string &delimiters = " \t\r\n ");
 std::string stripString(const std::string &s, const std::string &strippedString);

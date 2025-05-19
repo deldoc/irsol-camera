@@ -20,7 +20,7 @@ build:
 		echo "Release mode is enabled"; \
 		cd src/build && cmake -D CMAKE_BUILD_TYPE=Release ..; \
 	fi
-	@cd src/build && make -j 4
+	@cd src/build && make -j 8
 	@echo "Done building."
 .PHONY: build
 

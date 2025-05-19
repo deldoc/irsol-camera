@@ -5,6 +5,10 @@
 #include "spdlog/spdlog.h"
 
 namespace irsol {
+namespace internal {
+std::unordered_map<std::string, NamedLoggerRegistry::LoggerInfo> NamedLoggerRegistry::m_loggers;
+
+}
 void initLogging(const char *logFilePath) {
 #ifdef DEBUG
   // Set the logging level to debug if in debug mode
@@ -19,13 +23,13 @@ void initLogging(const char *logFilePath) {
 
   auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
   consoleSink->set_level(consoleSinkLevel);
-  consoleSink->set_pattern("[%^%l%$][pid %P][tid %t] %v");
+  consoleSink->set_pattern("[%^%l%$][%n][pid %P][tid %t] %v");
 
   const auto maxFileSize = 1024 * 1024 * 5; // 5 MB
   const auto maxFiles = 24;                 // Keep 24 rotated files
   auto fileSink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(logFilePath, maxFileSize,
                                                                          maxFiles, false);
-  fileSink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%^%l%$][pid %P][tid %t] %v");
+  fileSink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%n][%^%l%$][pid %P][tid %t] %v");
   fileSink->set_level(fileSinkLevel);
 
   // Set the loggers as default loggers

@@ -3,9 +3,44 @@
 #include "irsol/logging.hpp"
 #include "neoapi/neoapi.hpp"
 #include "tabulate/tabulate.hpp"
+#include <iomanip>
+#include <random>
+#include <sstream>
 #include <thread>
+
 namespace irsol {
 namespace utils {
+std::string uuid() {
+  static std::random_device rd;
+  static std::mt19937 gen(rd());
+  std::uniform_int_distribution<> dis(0, 15);
+  std::uniform_int_distribution<> dis2(8, 11);
+
+  std::stringstream ss;
+  ss << std::hex;
+
+  for (int i = 0; i < 8; i++) {
+    ss << dis(gen);
+  }
+  ss << "-";
+  for (int i = 0; i < 4; i++) {
+    ss << dis(gen);
+  }
+  ss << "-4"; // Version 4
+  for (int i = 0; i < 3; i++) {
+    ss << dis(gen);
+  }
+  ss << "-";
+  ss << dis2(gen);
+  for (int i = 0; i < 3; i++) {
+    ss << dis(gen);
+  }
+  ss << "-";
+  for (int i = 0; i < 12; i++) {
+    ss << dis(gen);
+  }
+  return ss.str();
+}
 
 std::vector<std::string> split(const std::string &s, char delimiter) {
   std::vector<std::string> tokens;

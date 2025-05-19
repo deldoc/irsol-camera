@@ -7,15 +7,15 @@
 
 namespace irsol {
 
-ClientSession::ClientSession(sockpp::tcp_socket &&sock, ServerApp &app)
-    : m_sock(std::move(sock)), m_app(app) {}
+ClientSession::ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app)
+    : m_id(id), m_sock(std::move(sock)), m_app(app) {}
 
 void ClientSession::run() {
   constexpr size_t INITIAL_BUFFER_SIZE = 1024;
   std::vector<char> buffer(INITIAL_BUFFER_SIZE);
   std::string messageBuffer;
 
-  IRSOL_LOG_DEBUG("Client session started running");
+  IRSOL_NAMED_LOG_DEBUG(m_id, "Client session started running");
 
   while (true) {
     // Read data from socket
@@ -23,33 +23,33 @@ void ClientSession::run() {
 
     // Handle read errors or connection closure
     if (!readResult) {
-      IRSOL_LOG_ERROR("Socket read error: {}", readResult.error().message());
+      IRSOL_NAMED_LOG_ERROR(m_id, "Socket read error: {}", readResult.error().message());
       break;
     }
 
     size_t bytesRead = readResult.value();
     if (bytesRead == 0) {
-      IRSOL_LOG_INFO("Connection closed by client");
+      IRSOL_NAMED_LOG_INFO(m_id, "Connection closed by client");
       break;
     }
 
     // Append received data to message buffer
     messageBuffer.append(buffer.data(), bytesRead);
-    IRSOL_LOG_TRACE("Read {} bytes: '{}'", bytesRead,
-                    messageBuffer.substr(messageBuffer.size() - bytesRead));
+    IRSOL_NAMED_LOG_TRACE(m_id, "Read {} bytes: '{}'", bytesRead,
+                          messageBuffer.substr(messageBuffer.size() - bytesRead));
 
     // Process all complete messages in the buffer
     processMessageBuffer(messageBuffer);
 
     // Dynamically resize buffer if it was filled completely
     if (bytesRead == buffer.size()) {
-      IRSOL_LOG_DEBUG("Increasing buffer size to {}", buffer.size());
+      IRSOL_NAMED_LOG_DEBUG(m_id, "Increasing buffer size to {}", buffer.size());
       buffer.resize(buffer.size() * 2);
     }
   }
 
   m_sock.close();
-  IRSOL_LOG_INFO("Client session terminated");
+  IRSOL_NAMED_LOG_INFO(m_id, "Client session terminated");
 }
 
 void ClientSession::processMessageBuffer(std::string &messageBuffer) {
@@ -69,12 +69,12 @@ void ClientSession::processMessageBuffer(std::string &messageBuffer) {
 }
 
 void ClientSession::processRawMessage(const std::string &rawMessage) {
-  IRSOL_LOG_DEBUG("Processing raw message: '{}'", rawMessage);
+  IRSOL_NAMED_LOG_DEBUG(m_id, "Processing raw message: '{}'", rawMessage);
 
   // Strip whitespace and check if message is empty
   std::string strippedMessage = utils::strip(rawMessage);
   if (strippedMessage.empty()) {
-    IRSOL_LOG_WARN("Empty message received, ignoring");
+    IRSOL_NAMED_LOG_WARN(m_id, "Empty message received, ignoring");
     return;
   }
 
@@ -86,28 +86,28 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
   if (strippedMessage.back() == '?') {
     strippedMessage = utils::strip(strippedMessage, "?");
     responses = CommandProcessor::handleQuery(strippedMessage, *this);
-    IRSOL_LOG_DEBUG("Query processed: '{}'", strippedMessage);
+    IRSOL_NAMED_LOG_DEBUG(m_id, "Query processed: '{}'", strippedMessage);
   } else {
     responses = CommandProcessor::handleCommand(strippedMessage, *this);
-    IRSOL_LOG_DEBUG("Command processed: '{}'", strippedMessage);
+    IRSOL_NAMED_LOG_DEBUG(m_id, "Command processed: '{}'", strippedMessage);
   }
 
   if (responses.empty()) {
-    IRSOL_LOG_DEBUG("No responses for: '{}'", strippedMessage);
+    IRSOL_NAMED_LOG_DEBUG(m_id, "No responses for: '{}'", strippedMessage);
     return;
   }
   for (const auto &response : responses) {
     // Send response if available
     if (!response.message.empty()) {
-      IRSOL_LOG_DEBUG("Sending response: '{}'", response.message);
+      IRSOL_NAMED_LOG_DEBUG(m_id, "Sending response: '{}'", response.message);
       send(response.message);
     } else {
-      IRSOL_LOG_DEBUG("No response for: '{}'", strippedMessage);
+      IRSOL_NAMED_LOG_DEBUG(m_id, "No response for: '{}'", strippedMessage);
     }
 
     // Send broadcast message if available
     if (!response.broadcastMessage.empty()) {
-      IRSOL_LOG_DEBUG("Broadcasting message: '{}'", response.broadcastMessage);
+      IRSOL_NAMED_LOG_DEBUG(m_id, "Broadcasting message: '{}'", response.broadcastMessage);
       m_app.broadcast(response.broadcastMessage);
     }
   }
@@ -120,14 +120,14 @@ void ClientSession::send(const std::string &msg) {
   }
 
   std::lock_guard<std::mutex> lock(m_sendMutex);
-  IRSOL_LOG_TRACE("Sending message of size {}", preparedMessage.size());
+  IRSOL_NAMED_LOG_TRACE(m_id, "Sending message of size {}", preparedMessage.size());
 
   auto result = m_sock.write(preparedMessage);
   if (!result) {
-    IRSOL_LOG_ERROR("Failed to send message: {}", result.error().message());
+    IRSOL_NAMED_LOG_ERROR(m_id, "Failed to send message: {}", result.error().message());
   } else if (result.value() != preparedMessage.size()) {
-    IRSOL_LOG_WARN("Incomplete message sent: {} of {} bytes", result.value(),
-                   preparedMessage.size());
+    IRSOL_NAMED_LOG_WARN(m_id, "Incomplete message sent: {} of {} bytes", result.value(),
+                         preparedMessage.size());
   }
 }
 
