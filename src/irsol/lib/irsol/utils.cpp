@@ -42,6 +42,26 @@ std::string strip(const std::string &s, const std::string &delimiters) {
   return result;
 }
 
+std::string stripString(const std::string &s, const std::string &strippedString) {
+  // Check if the stripped string is present in the input string at the beginning
+  std::string result{s};
+  IRSOL_LOG_TRACE("Stripping string '{0:s}' from string '{1:s}'", strippedString, s);
+
+  if (result.find(strippedString) == 0) {
+    result = result.substr(strippedString.length());
+  }
+
+  // Check if the stripped string is present in the input string at the end
+  if (result.rfind(strippedString) == result.size() - strippedString.size()) {
+    result = result.substr(0, result.size() - strippedString.size());
+  }
+
+  IRSOL_LOG_TRACE("Stripped string '{0:s}' from string '{1:s}' is '{2:s}'", s, strippedString,
+                  result);
+
+  return result;
+}
+
 NeoAPI::Cam loadDefaultCamera() {
   IRSOL_LOG_DEBUG("Loading default camera");
   NeoAPI::Cam cam = NeoAPI::Cam();

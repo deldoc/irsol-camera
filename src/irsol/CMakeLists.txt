@@ -16,8 +16,10 @@ add_library(${PROJECT_NAME}
     lib/irsol/logging.cpp
     lib/irsol/monitor.cpp
     lib/irsol/utils.cpp
-    lib/irsol/server/command_handler.cpp
-    lib/irsol/server/server.cpp
+    lib/irsol/server/app.cpp
+    lib/irsol/server/camera_controller.cpp
+    lib/irsol/server/client_session.cpp
+    lib/irsol/server/command_processor.cpp
 )
 add_library(irsol::core ALIAS ${PROJECT_NAME})
 
