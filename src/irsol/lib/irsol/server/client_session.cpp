@@ -6,6 +6,7 @@
 #include <vector>
 
 namespace irsol {
+namespace internal {
 
 ClientSession::ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app)
     : m_id(id), m_sock(std::move(sock)), m_app(app) {}
@@ -88,7 +89,15 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
     responses = CommandProcessor::handleQuery(strippedMessage, *this);
     IRSOL_NAMED_LOG_DEBUG(m_id, "Query processed: '{}'", strippedMessage);
   } else {
-    responses = CommandProcessor::handleCommand(strippedMessage, *this);
+    auto commandParts = utils::split(strippedMessage, '=');
+    if (commandParts.size() != 2) {
+      IRSOL_NAMED_LOG_ERROR(m_id, "Invalid command format: '{}', expected <command=value>",
+                            strippedMessage);
+      return;
+    }
+    auto commandName = commandParts[0];
+    auto commandValue = commandParts[1];
+    responses = CommandProcessor::handleCommand(commandName, commandValue, *this);
     IRSOL_NAMED_LOG_DEBUG(m_id, "Command processed: '{}'", strippedMessage);
   }
 
@@ -130,5 +139,5 @@ void ClientSession::send(const std::string &msg) {
                          preparedMessage.size());
   }
 }
-
+} // namespace internal
 } // namespace irsol

@@ -1,13 +1,10 @@
-#include "irsol/discovery.hpp"
-#include "irsol/assert.hpp"
+
+#include "irsol/camera/discovery.hpp"
 #include "irsol/logging.hpp"
-#include "neoapi/neoapi.hpp"
-#include <map>
-#include <tuple>
-#include <vector>
+
+using namespace std;
 
 namespace irsol {
-
 namespace internal {
 
 enum FeaturePermissionValue {
@@ -68,8 +65,10 @@ extractCameraFeatures(NeoAPI::Cam &cam) {
 
 } // namespace internal
 
-void discoverCameraFeatures(NeoAPI::Cam &cam) {
-  const auto &featurePermissionsMap = internal::extractCameraFeatures(cam);
+CameraFeatureDiscovery::CameraFeatureDiscovery(CameraInterface &cam) : m_cam(cam) {}
+
+void CameraFeatureDiscovery::run() {
+  const auto &featurePermissionsMap = internal::extractCameraFeatures(m_cam.getNeoCam());
   for (const auto &[permissions, features] : featurePermissionsMap) {
     IRSOL_LOG_INFO("Permissions: isAvailable: {0}, isReadable: {1}, isWritable: {2}",
                    permissions.isAvailable(), permissions.isReadable(), permissions.isWritable());

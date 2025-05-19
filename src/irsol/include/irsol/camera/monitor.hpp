@@ -1,6 +1,6 @@
 #pragma once
 
-#include "neoapi/neoapi.hpp"
+#include "irsol/camera/interface.hpp"
 #include <chrono>
 #include <mutex>
 #include <thread>
@@ -9,7 +9,7 @@ namespace irsol {
 
 class CameraStatusMonitor {
 public:
-  CameraStatusMonitor(const NeoAPI::Cam &cam,
+  CameraStatusMonitor(const CameraInterface &cam,
                       std::chrono::milliseconds monitorInterval = std::chrono::milliseconds(100));
   ~CameraStatusMonitor();
   void start();
@@ -19,7 +19,7 @@ protected:
   virtual void runMonitor() const;
 
 private:
-  const NeoAPI::Cam &m_cam;
+  const CameraInterface &m_cam;
   std::chrono::milliseconds m_monitorInterval;
 
   std::mutex m_startStopMutex;

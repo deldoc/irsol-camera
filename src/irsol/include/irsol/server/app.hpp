@@ -1,6 +1,6 @@
 #pragma once
 
-#include "irsol/server/camera_controller.hpp"
+#include "irsol/camera/interface.hpp"
 #include "irsol/server/client_session.hpp"
 #include <atomic>
 #include <mutex>
@@ -9,8 +9,12 @@
 #include <unordered_set>
 
 namespace irsol {
+
+namespace internal {
+
 // Forward declaration
 class ClientSession;
+} // namespace internal
 
 class ServerApp {
 public:
@@ -18,7 +22,7 @@ public:
   bool start();
   void stop();
   void broadcast(const std::string &message);
-  CameraController &camera();
+  CameraInterface &camera();
 
 private:
   int m_port;
@@ -26,10 +30,9 @@ private:
   sockpp::tcp_acceptor m_acceptor;
   std::thread m_acceptThread;
   std::mutex m_clientsMutex;
-  std::unordered_set<std::shared_ptr<ClientSession>> m_clients;
-  CameraController m_cameraController;
-
+  std::unordered_set<std::shared_ptr<internal::ClientSession>> m_clients;
+  CameraInterface m_cameraInterface;
   void acceptLoop();
-  void removeClient(const std::shared_ptr<ClientSession> &client);
+  void removeClient(const std::shared_ptr<internal::ClientSession> &client);
 };
 } // namespace irsol

@@ -12,12 +12,12 @@ find_library(NEOAPI_LIBRARY neoapi_cpp HINTS ${neoapi_PRECOMPILED_LIBS_ROOT_DIR}
 # Core irsol library
 add_library(${PROJECT_NAME}
     lib/irsol/assert.cpp
-    lib/irsol/discovery.cpp
+    lib/irsol/camera/interface.cpp
+    lib/irsol/camera/discovery.cpp
+    lib/irsol/camera/monitor.cpp
     lib/irsol/logging.cpp
-    lib/irsol/monitor.cpp
     lib/irsol/utils.cpp
     lib/irsol/server/app.cpp
-    lib/irsol/server/camera_controller.cpp
     lib/irsol/server/client_session.cpp
     lib/irsol/server/command_processor.cpp
 )

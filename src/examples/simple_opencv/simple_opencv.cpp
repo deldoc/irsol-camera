@@ -8,20 +8,22 @@ int main() {
 
   IRSOL_LOG_DEBUG("Starting simple example with OpenCV");
 
-  auto cam = irsol::utils::loadDefaultCamera();
+  irsol::CameraInterface cam;
 
   IRSOL_LOG_DEBUG("Camera connection successful");
-  irsol::utils::logCameraInfo(cam.GetInfo());
+  irsol::utils::logCameraInfo(cam.getNeoCam().GetInfo());
 
   irsol::CameraStatusMonitor monitor{cam, std::chrono::milliseconds(200)};
   monitor.start();
 
   for (int i = 0; i < 50; ++i) {
     IRSOL_LOG_INFO("Iteration {0:d}", i);
-    auto image = cam.GetImage();
+    auto image = cam.captureImage();
+    auto image_size = image.GetSize();
+    IRSOL_LOG_INFO("Image size: {0:d}", image_size);
     auto image_ts = image.GetTimestamp();
 
-    auto current_exposure = static_cast<double>(cam.f().ExposureTime);
+    double current_exposure = cam.getParam<float>("ExposureTime");
 
     cv::Mat cv_image =
         irsol::opencv::convertImageToMat(image, irsol::opencv::ColorConversionMode::GRAY_TO_COLOR);
@@ -52,7 +54,7 @@ int main() {
 
     uint64_t newExposureTime = i * 100;
     IRSOL_LOG_DEBUG("Setting exposure time to {0:d}ms", newExposureTime);
-    cam.f().ExposureTime = newExposureTime;
+    cam.setParam("ExposureTime", newExposureTime);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
 

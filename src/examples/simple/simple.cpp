@@ -7,20 +7,19 @@ int main() {
 
   IRSOL_LOG_DEBUG("Starting simple example");
 
-  auto cam = irsol::utils::loadDefaultCamera();
-
+  irsol::CameraInterface cam;
   IRSOL_LOG_DEBUG("Camera connection successful");
-  irsol::utils::logCameraInfo(cam.GetInfo());
+  irsol::utils::logCameraInfo(cam.getNeoCam().GetInfo());
 
   irsol::CameraStatusMonitor monitor{cam, std::chrono::milliseconds(200)};
   monitor.start();
 
   for (int i = 0; i < 50; ++i) {
     IRSOL_LOG_INFO("Iteration {0:d}", i);
-    cam.GetImage();
+    cam.captureImage();
     uint64_t newExposureTime = i * 100;
     IRSOL_LOG_INFO("Setting exposure time to {0:d}ms", newExposureTime);
-    cam.f().ExposureTime = newExposureTime;
+    cam.setParam("ExposureTime", newExposureTime);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
 

@@ -1,13 +1,13 @@
-#include "irsol/monitor.hpp"
+#include "irsol/camera/monitor.hpp"
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "tabulate/tabulate.hpp"
 
 namespace irsol {
-CameraStatusMonitor::CameraStatusMonitor(const NeoAPI::Cam &cam,
+CameraStatusMonitor::CameraStatusMonitor(const CameraInterface &cam,
                                          std::chrono::milliseconds monitorInterval)
     : m_cam(cam), m_monitorInterval(monitorInterval), m_hasStartedMonitor(false) {
-  IRSOL_ASSERT_ERROR(cam.IsConnected(), "Camera is not connected.");
+  IRSOL_ASSERT_ERROR(cam.isConnected(), "Camera is not connected.");
 }
 
 CameraStatusMonitor::~CameraStatusMonitor() {
@@ -42,8 +42,7 @@ void CameraStatusMonitor::runMonitor() const {
     bool stopRequested = false;
 
     for (const auto featureName : FEATURE_NAMES) {
-      auto feature = m_cam.GetFeature(featureName);
-      auto featureValue = NeoAPI::NeoString(feature).c_str();
+      std::string featureValue = m_cam.getParam(featureName);
       featureResults.add_row({featureName, featureValue});
       IRSOL_LOG_TRACE("{0:s}: {1:s}", featureName, featureValue);
       if (!m_hasStartedMonitor) {

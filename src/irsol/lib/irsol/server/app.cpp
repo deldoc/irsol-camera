@@ -6,7 +6,7 @@
 namespace irsol {
 
 ServerApp::ServerApp(int port)
-    : m_port(port), m_running(false), m_acceptor({}), m_cameraController() {
+    : m_port(port), m_running(false), m_acceptor({}), m_cameraInterface() {
   IRSOL_LOG_DEBUG("ServerApp created on port {}", m_port);
 }
 
@@ -79,7 +79,7 @@ void ServerApp::acceptLoop() {
     std::string clientId = utils::uuid();
     IRSOL_LOG_DEBUG("Generated client ID: {}", clientId);
 
-    auto session = std::make_shared<ClientSession>(clientId, std::move(sock), *this);
+    auto session = std::make_shared<internal::ClientSession>(clientId, std::move(sock), *this);
     {
       std::lock_guard<std::mutex> lock(m_clientsMutex);
       m_clients.insert(session);
@@ -99,7 +99,7 @@ void ServerApp::acceptLoop() {
   IRSOL_LOG_INFO("Accept loop ended");
 }
 
-void ServerApp::removeClient(const std::shared_ptr<ClientSession> &client) {
+void ServerApp::removeClient(const std::shared_ptr<internal::ClientSession> &client) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   m_clients.erase(client);
   IRSOL_LOG_DEBUG("Client {} removed from session list, remaining clients: {}", client->id(),
@@ -114,5 +114,5 @@ void ServerApp::broadcast(const std::string &msg) {
   }
 }
 
-CameraController &ServerApp::camera() { return m_cameraController; }
+CameraInterface &ServerApp::camera() { return m_cameraInterface; }
 } // namespace irsol

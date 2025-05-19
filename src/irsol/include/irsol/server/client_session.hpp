@@ -11,6 +11,7 @@ namespace irsol {
 // Forward declaration
 class ServerApp;
 
+namespace internal {
 class ClientSession : public std::enable_shared_from_this<ClientSession> {
 public:
   ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app);
@@ -29,4 +30,5 @@ private:
   ServerApp &m_app;
   std::mutex m_sendMutex;
 };
+} // namespace internal
 } // namespace irsol
