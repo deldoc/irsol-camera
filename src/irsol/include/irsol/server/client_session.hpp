@@ -1,7 +1,8 @@
 #pragma once
 
-#include "irsol/server/app.hpp"
 #include "sockpp/tcp_socket.h"
+#include <atomic>
+#include <chrono>
 #include <memory>
 #include <mutex>
 #include <string>
@@ -13,37 +14,42 @@ class ServerApp;
 
 namespace internal {
 
-struct SessionData {
-
-  SessionData(sockpp::tcp_socket &&sock) noexcept
-      : m_sock(std::move(sock))
-  // m_mutex is default-initialized
-  {}
-
-  sockpp::tcp_socket m_sock;
-  std::mutex m_mutex{};
-
-  std::string address() const { return m_sock.address().to_string(); }
+struct FrameListeningParams {
+  std::atomic<bool> active{false};
+  std::chrono::time_point<std::chrono::high_resolution_clock> lastFrameSent{
+      std::chrono::high_resolution_clock::now()};
+  double frameRate;
 };
 
-class ClientSession : public std::enable_shared_from_this<ClientSession> {
+struct UserSessionData {
+
+  UserSessionData(sockpp::tcp_socket &&sock);
+
+  FrameListeningParams frameListeningParams{};
+
+  sockpp::tcp_socket sock;
+  std::mutex mutex{};
+};
+
+class ClientSession {
 public:
   ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app);
   void run();
+
   void send(const std::string &message);
   void send(void *data, size_t size);
 
   const ServerApp &app() const { return m_app; }
   ServerApp &app() { return m_app; }
   const std::string &id() const { return m_id; }
-  const SessionData &sessionData() const { return m_sessionData; }
-  SessionData &sessionData() { return m_sessionData; }
+  const UserSessionData &sessionData() const { return m_sessionData; }
+  UserSessionData &sessionData() { return m_sessionData; }
 
 private:
   void processMessageBuffer(std::string &messageBuffer);
   void processRawMessage(const std::string &rawMessage);
   std::string m_id;
-  SessionData m_sessionData;
+  UserSessionData m_sessionData;
   ServerApp &m_app;
 };
 } // namespace internal

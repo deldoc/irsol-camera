@@ -4,6 +4,7 @@
 #include <opencv2/opencv.hpp>
 #include <optional>
 
+#include "args/args.hpp"
 #include "irsol/irsol.hpp"
 #include "sockpp/tcp_connector.h"
 #include "sockpp/tcp_socket.h"
@@ -116,9 +117,7 @@ createConnectionWithRetry(const std::string &host, in_port_t port,
   return std::nullopt;
 }
 
-void run() {
-  irsol::initLogging("log/viewer-client.log");
-  irsol::initAssertHandler();
+void run(double fps) {
 
   IRSOL_LOG_INFO("TCP client viewer");
 
@@ -146,19 +145,12 @@ void run() {
   auto start = std::chrono::steady_clock::now();
   bool firstFrame = true;
 
+  // Start listening for incoming images
+  std::string query = "start_frame_listening=" + std::to_string(fps) + "\n";
+  IRSOL_LOG_INFO("Starting frame listening with FPS: {}", fps);
+  conn.write(query);
+
   while (!g_terminate.load()) {
-    std::string message = "image?\n";
-    size_t sz = message.length();
-    if (conn.write(message) != sz) {
-      IRSOL_LOG_ERROR("Error writing to the TCP, trying to re-connect..");
-      if (auto connOpt = createConnectionWithRetry(server_host, port, std::chrono::seconds(5));
-          !connOpt.has_value()) {
-        return;
-      } else {
-        conn = std::move(connOpt.value());
-      }
-      continue;
-    }
 
     auto imageOpt = receiveImage(conn);
     if (!imageOpt.has_value()) {
@@ -178,11 +170,11 @@ void run() {
     auto ms = std::max<int64_t>(
         1, std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count());
     double fps = 1000.0 / ms;
-    IRSOL_LOG_DEBUG("FPS: {:.2f}", fps);
+    IRSOL_LOG_DEBUG("Measured FPS: {:.2f}", fps);
     start = now;
 
-    cv::putText(image, "FPS: " + std::to_string(fps), {20, 80}, cv::FONT_HERSHEY_COMPLEX, 1.0,
-                {0, 255, 0}, 1, cv::LINE_AA);
+    cv::putText(image, "Measured FPS: " + std::to_string(fps), {20, 80}, cv::FONT_HERSHEY_COMPLEX,
+                1.0, {0, 255, 0}, 1, cv::LINE_AA);
 
     cv::imshow("Viewer", image);
 
@@ -193,13 +185,38 @@ void run() {
     }
   }
 
+  conn.write("stop_frame_listening\n");
+
   IRSOL_LOG_INFO("Exiting viewer");
 }
 
-int main() {
+int main(int argc, char **argv) {
+  irsol::initLogging("log/viewer-client.log");
+  irsol::initAssertHandler();
+
   // Register signal handler
   std::signal(SIGTERM, signalHandler);
   std::signal(SIGINT, signalHandler); // Also handle Ctrl+C
 
-  run();
+  args::ArgumentParser parser("TCP client viewer");
+  args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
+  args::ValueFlag<double> listen_fps_flag(parser, "fps", "The FPS at which to listen.", {'f'});
+  try {
+    parser.ParseCLI(argc, argv);
+  } catch (args::Help) {
+    IRSOL_LOG_INFO("{0:s}", parser.Help());
+    return 0;
+  } catch (args::ParseError e) {
+    IRSOL_LOG_ERROR("Error parsing command-line arguments: {}\n", e.what(), parser.Help());
+    return 1;
+  } catch (args::ValidationError e) {
+    IRSOL_LOG_ERROR("Error parsing command-line arguments: {}\n", e.what(), parser.Help());
+    return 1;
+  }
+  double listen_fps = 5.0;
+  if (listen_fps_flag) {
+    listen_fps = args::get(listen_fps_flag);
+  }
+
+  run(listen_fps);
 }

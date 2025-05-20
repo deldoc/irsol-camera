@@ -97,6 +97,28 @@ std::string stripString(const std::string &s, const std::string &strippedString)
   return result;
 }
 
+std::string timestamp_to_str(std::chrono::high_resolution_clock::time_point tp) {
+  // Convert to system_clock time_point for compatibility with time_t
+  auto now_sys = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
+      tp - std::chrono::high_resolution_clock::now() + std::chrono::system_clock::now());
+
+  // Extract milliseconds
+  auto ms =
+      std::chrono::duration_cast<std::chrono::milliseconds>(now_sys.time_since_epoch()) % 1000;
+
+  // Convert to time_t for formatting date/time
+  std::time_t t_c = std::chrono::system_clock::to_time_t(now_sys);
+  std::tm tm = *std::localtime(&t_c); // thread-safe alternative: std::localtime_s on Windows, or
+                                      // use std::chrono::zoned_time in C++20
+
+  // Format time with milliseconds
+  std::stringstream ss;
+  ss << std::put_time(&tm, "%F %T");                            // %F = YYYY-MM-DD, %T = HH:MM:SS
+  ss << '.' << std::setfill('0') << std::setw(3) << ms.count(); // milliseconds
+
+  return ss.str();
+}
+
 NeoAPI::Cam loadDefaultCamera() {
   IRSOL_LOG_DEBUG("Loading default camera");
   NeoAPI::Cam cam = NeoAPI::Cam();

@@ -1,5 +1,8 @@
 #include "irsol/server/command_processor.hpp"
 #include "irsol/logging.hpp"
+#include "irsol/server/app.hpp"
+#include "irsol/server/image_data.hpp"
+#include "irsol/utils.hpp"
 #include <memory>
 #include <sstream>
 
@@ -64,20 +67,48 @@ std::vector<CommandResponse> CommandProcessor::handleCommand(const std::string &
                                                              const std::string &params,
                                                              ClientSession &session) {
   auto &camera = session.app().camera();
+  auto &frameCollector = session.app().frameCollector();
 
   IRSOL_LOG_DEBUG("Processing command: '{}'", command);
 
-  if (command == "fr") {
-    // Make sure to enable the ability to set frame rate
-    camera.setParam("AcquisitionFrameRateEnable", true);
-
-    auto old_fps = camera.getParam<float>("AcquisitionFrameRate");
+  if (command == "start_frame_listening") {
+    session.sessionData().frameListeningParams.active.store(true);
     double fps = std::stod(params);
-    IRSOL_LOG_INFO("Setting frame rate to {}", fps);
-    camera.setParam("AcquisitionFrameRate", fps);
-    auto new_fps = camera.getParam<float>("AcquisitionFrameRate");
-    IRSOL_LOG_DEBUG("Frame rate updated from {} to {}", old_fps, new_fps);
-    return {CommandResponse{"", {}, "fr=" + params + "\n"}};
+    session.sessionData().frameListeningParams.frameRate = fps;
+
+    // Register this client as a listener for frame data
+    auto sessionPtr = std::shared_ptr<ClientSession>(&session, [](ClientSession *) {
+      // no-op deleter: do nothing
+    });
+    frameCollector.addClient(sessionPtr, [sessionPtr](ImageData imageData) {
+      IRSOL_NAMED_LOG_INFO(sessionPtr->id(), "Received image-buffer at tstamp {}",
+                           utils::timestamp_to_str(imageData.timestamp));
+
+      // Create header
+      std::ostringstream header;
+      header << "image_data:" << imageData.width << "x" << imageData.height << "x"
+             << imageData.channels << ":";
+      std::string headerStr = header.str();
+
+      internal::BinaryData binaryData{imageData.data, imageData.size};
+      {
+        std::lock_guard<std::mutex> lock(sessionPtr->sessionData().mutex);
+        sessionPtr->send(headerStr);
+        sessionPtr->send(binaryData.data.get(), binaryData.size);
+      }
+    });
+    IRSOL_LOG_INFO("Started frame listening for {} fps", fps);
+    return {};
+  }
+  if (command == "stop_frame_listening") {
+    // Remove this client from the list of listeners for frame data
+    session.sessionData().frameListeningParams.active.store(false);
+    auto sessionPtr = std::shared_ptr<ClientSession>(&session, [](ClientSession *) {
+      // no-op deleter: do nothing
+    });
+    frameCollector.removeClient(sessionPtr);
+    IRSOL_LOG_INFO("Stopped frame listening");
+    return {};
   }
 
   IRSOL_LOG_ERROR("Unknown command: '{}'", command);

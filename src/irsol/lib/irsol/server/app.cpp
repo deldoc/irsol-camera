@@ -5,8 +5,10 @@
 
 namespace irsol {
 
-ServerApp::ServerApp(int port)
-    : m_port(port), m_running(false), m_acceptor({}), m_cameraInterface() {
+ServerApp::ServerApp(uint32_t port)
+    : m_port(port), m_running(false), m_acceptor({}),
+      m_cameraInterface(std::make_unique<CameraInterface>()),
+      m_frameCollector(std::make_unique<internal::FrameCollector>(*m_cameraInterface.get())) {
   IRSOL_LOG_DEBUG("ServerApp created on port {}", m_port);
 }
 
@@ -31,6 +33,7 @@ void ServerApp::stop() {
     IRSOL_LOG_DEBUG("Joining accept thread");
     m_acceptThread.join();
   }
+  m_frameCollector->stop();
   IRSOL_LOG_INFO("Server stopped");
 }
 
@@ -74,25 +77,31 @@ void ServerApp::acceptLoop() {
     std::string clientId = utils::uuid();
     IRSOL_LOG_DEBUG("Generated client ID: {}", clientId);
     auto session = std::make_shared<internal::ClientSession>(clientId, sockResult.release(), *this);
-    IRSOL_LOG_INFO("New client connection from {}", session->sessionData().address());
-    {
-      std::lock_guard<std::mutex> lock(m_clientsMutex);
-      m_clients.insert({clientId, session});
-      IRSOL_LOG_DEBUG("Client {} added to session list, total clients: {}", clientId,
-                      m_clients.size());
-    }
-
-    std::thread([session, this]() {
-      std::string clientAddress = session->sessionData().address();
-      IRSOL_LOG_DEBUG("Starting client session thread for {} with ID {}", clientAddress,
-                      session->id());
-      session->run();
-      // Once the session is done, remove it from the list and join the thread.
-      removeClient(session->id());
-    })
-        .detach();
+    addClient(clientId, session);
   }
   IRSOL_LOG_INFO("Accept loop ended");
+}
+
+void ServerApp::addClient(const std::string &clientId,
+                          std::shared_ptr<internal::ClientSession> session) {
+  std::lock_guard<std::mutex> lock(m_clientsMutex);
+  IRSOL_LOG_INFO("New client connection from {}",
+                 session->sessionData().sock.address().to_string());
+  {
+    m_clients.insert({clientId, session});
+    IRSOL_LOG_DEBUG("Client {} added to session list, total clients: {}", clientId,
+                    m_clients.size());
+  }
+
+  std::thread([session, this]() {
+    std::string clientAddress = session->sessionData().sock.address().to_string();
+    IRSOL_LOG_DEBUG("Starting client session thread for {} with ID {}", clientAddress,
+                    session->id());
+
+    session->run();
+    removeClient(session->id());
+  })
+      .detach();
 }
 
 void ServerApp::removeClient(const std::string &clientId) {
@@ -102,22 +111,24 @@ void ServerApp::removeClient(const std::string &clientId) {
     IRSOL_LOG_ERROR("Client '{}' not found in session list", clientId);
   } else {
     m_clients.erase(client);
+    m_frameCollector->removeClient(client->second);
     IRSOL_LOG_DEBUG("Client {} removed from session list, remaining clients: {}", clientId,
                     m_clients.size());
   }
 }
 
 void ServerApp::broadcast(const std::string &msg) {
-  IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
   std::lock_guard<std::mutex> lock(m_clientsMutex);
+  IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
   for (auto &[clientId, client] : m_clients) {
     IRSOL_LOG_TRACE("Broadcasting message '{}' to client '{}'", msg, clientId);
     // Lock the client's session to prevent race conditions
-    std::lock_guard<std::mutex> clientLock(client->sessionData().m_mutex);
+    std::lock_guard<std::mutex> clientLock(client->sessionData().mutex);
     client->send(msg);
   }
   IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
 }
 
-CameraInterface &ServerApp::camera() { return m_cameraInterface; }
+CameraInterface &ServerApp::camera() { return *m_cameraInterface; }
+internal::FrameCollector &ServerApp::frameCollector() { return *m_frameCollector; }
 } // namespace irsol
