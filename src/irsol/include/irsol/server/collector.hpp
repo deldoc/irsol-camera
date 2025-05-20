@@ -62,6 +62,8 @@ public:
   void stop();
 
 private:
+  bool hasClient(std::shared_ptr<ClientSession> client) const;
+
   std::atomic<bool> m_running{false};
 
   CameraInterface &m_cam;
@@ -69,7 +71,7 @@ private:
   std::mutex m_frameRateMutex;
   std::atomic<double> m_frameRate{0.0};
 
-  std::mutex m_clientsMutex;
+  mutable std::mutex m_clientsMutex; // also used in const-method
   std::vector<std::pair<std::shared_ptr<ClientSession>, CollectedFrameCallback>> m_clients;
 
   std::mutex m_frameQueueMutex;

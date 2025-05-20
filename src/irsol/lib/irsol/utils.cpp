@@ -97,10 +97,10 @@ std::string stripString(const std::string &s, const std::string &strippedString)
   return result;
 }
 
-std::string timestamp_to_str(std::chrono::high_resolution_clock::time_point tp) {
+std::string timestamp_to_str(std::chrono::steady_clock::time_point tp) {
   // Convert to system_clock time_point for compatibility with time_t
   auto now_sys = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
-      tp - std::chrono::high_resolution_clock::now() + std::chrono::system_clock::now());
+      tp - std::chrono::steady_clock::now() + std::chrono::system_clock::now());
 
   // Extract milliseconds
   auto ms =
@@ -133,6 +133,7 @@ NeoAPI::Cam loadDefaultCamera() {
   }
   IRSOL_ASSERT_FATAL(cam.IsConnected(), "Camera is not connected");
   IRSOL_LOG_DEBUG("Camera connection successful");
+
   return cam;
 }
 

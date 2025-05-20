@@ -89,7 +89,7 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
   std::vector<CommandResponse> responses;
   if (strippedMessage.back() == '?') {
     strippedMessage = utils::strip(strippedMessage, "?");
-    responses = CommandProcessor::handleQuery(strippedMessage, *this);
+    responses = CommandProcessor::handleQuery(strippedMessage, shared_from_this());
     IRSOL_NAMED_LOG_DEBUG(m_id, "Query processed: '{}'", strippedMessage);
   } else {
     auto commandParts = utils::split(strippedMessage, '=');
@@ -103,7 +103,7 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
     }
     auto commandName = commandParts[0];
     auto commandValue = commandParts[1];
-    responses = CommandProcessor::handleCommand(commandName, commandValue, *this);
+    responses = CommandProcessor::handleCommand(commandName, commandValue, shared_from_this());
     IRSOL_NAMED_LOG_DEBUG(m_id, "Command processed: '{}'", strippedMessage);
   }
 

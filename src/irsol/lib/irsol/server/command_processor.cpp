@@ -1,6 +1,7 @@
 #include "irsol/server/command_processor.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/server/app.hpp"
+#include "irsol/server/client_session.hpp"
 #include "irsol/server/image_data.hpp"
 #include "irsol/utils.hpp"
 #include <memory>
@@ -10,8 +11,8 @@ namespace irsol {
 namespace internal {
 
 std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &query,
-                                                           ClientSession &session) {
-  auto &camera = session.app().camera();
+                                                           std::shared_ptr<ClientSession> session) {
+  auto &camera = session->app().camera();
 
   if (query == "camera_status") {
     IRSOL_LOG_DEBUG("Querying camera status");
@@ -63,38 +64,33 @@ std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &qu
   IRSOL_LOG_ERROR("Unknown query: '{}'", query);
   return {};
 }
-std::vector<CommandResponse> CommandProcessor::handleCommand(const std::string &command,
-                                                             const std::string &params,
-                                                             ClientSession &session) {
-  auto &camera = session.app().camera();
-  auto &frameCollector = session.app().frameCollector();
+std::vector<CommandResponse>
+CommandProcessor::handleCommand(const std::string &command, const std::string &params,
+                                std::shared_ptr<ClientSession> session) {
+  auto &camera = session->app().camera();
+  auto &frameCollector = session->app().frameCollector();
 
   IRSOL_LOG_DEBUG("Processing command: '{}'", command);
 
   if (command == "start_frame_listening") {
-    session.sessionData().frameListeningParams.active.store(true);
     double fps = std::stod(params);
-    session.sessionData().frameListeningParams.frameRate = fps;
+    session->sessionData().frameListeningParams.frameRate = fps;
 
-    // Register this client as a listener for frame data
-    auto sessionPtr = std::shared_ptr<ClientSession>(&session, [](ClientSession *) {
-      // no-op deleter: do nothing
-    });
-    frameCollector.addClient(sessionPtr, [sessionPtr](ImageData imageData) {
-      IRSOL_NAMED_LOG_INFO(sessionPtr->id(), "Received image-buffer at tstamp {}",
+    frameCollector.addClient(session, [session](ImageData imageData) {
+      IRSOL_NAMED_LOG_INFO(session->id(), "Received image-buffer at tstamp {}",
                            utils::timestamp_to_str(imageData.timestamp));
 
       // Create header
       std::ostringstream header;
-      header << "image_data:" << imageData.width << "x" << imageData.height << "x"
-             << imageData.channels << ":";
+      header << "image_data:" << imageData.imageId << "x" << imageData.width << "x"
+             << imageData.height << "x" << imageData.channels << ":";
       std::string headerStr = header.str();
 
       internal::BinaryData binaryData{imageData.data, imageData.size};
       {
-        std::lock_guard<std::mutex> lock(sessionPtr->sessionData().mutex);
-        sessionPtr->send(headerStr);
-        sessionPtr->send(binaryData.data.get(), binaryData.size);
+        std::lock_guard<std::mutex> lock(session->sessionData().mutex);
+        session->send(headerStr);
+        session->send(binaryData.data.get(), binaryData.size);
       }
     });
     IRSOL_LOG_INFO("Started frame listening for {} fps", fps);
@@ -102,11 +98,7 @@ std::vector<CommandResponse> CommandProcessor::handleCommand(const std::string &
   }
   if (command == "stop_frame_listening") {
     // Remove this client from the list of listeners for frame data
-    session.sessionData().frameListeningParams.active.store(false);
-    auto sessionPtr = std::shared_ptr<ClientSession>(&session, [](ClientSession *) {
-      // no-op deleter: do nothing
-    });
-    frameCollector.removeClient(sessionPtr);
+    frameCollector.removeClient(session);
     IRSOL_LOG_INFO("Stopped frame listening");
     return {};
   }

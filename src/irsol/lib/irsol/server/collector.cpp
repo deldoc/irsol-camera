@@ -1,6 +1,7 @@
 #include "irsol/server/collector.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/server/app.hpp"
+#include "irsol/utils.hpp"
 
 namespace irsol {
 namespace internal {
@@ -55,8 +56,20 @@ void FrameCollector::refreshFrameRate() {
   }
 }
 
+bool FrameCollector::hasClient(std::shared_ptr<ClientSession> client) const {
+  std::lock_guard<std::mutex> lock(m_clientsMutex);
+  return std::any_of(m_clients.begin(), m_clients.end(),
+                     [client](const auto &pair) { return pair.first == client; });
+}
+
 void FrameCollector::addClient(std::shared_ptr<ClientSession> client,
                                CollectedFrameCallback callback) {
+
+  if (hasClient(client)) {
+    IRSOL_LOG_WARN(
+        "Client already exists in frame collector, removing old one and replacing with new one.");
+    removeClient(client);
+  }
   {
     std::lock_guard<std::mutex> lock(m_clientsMutex);
     m_clients.emplace_back(client, callback);
@@ -101,8 +114,7 @@ void FrameCollector::stop() {
 
 void FrameCollector::collectFrames() {
 
-  auto lastFrameTime = std::chrono::high_resolution_clock::now();
-
+  auto lastFrameTime = std::chrono::steady_clock::now();
   std::unique_lock<std::mutex> frameRateCondLock(m_frameRateCondMutex);
 
   while (true) {
@@ -126,25 +138,21 @@ void FrameCollector::collectFrames() {
       }
       // A positive frame rate is available, exit the condition
       // and allow the collection to start.
-      IRSOL_LOG_INFO("Frame collection resumed with frame rate {:.2f} fps", currentFrameRate);
       return true;
     });
 
+    // we woke up: figure out why
     if (!m_running.load()) {
+      IRSOL_LOG_DEBUG("Frame collection stop request from inside thread received");
       break;
     }
 
-    // Calculate next frame time based on current frame rate
     const double currentFrameRate = m_frameRate.load();
+    const auto timeBetweenFrames =
+        std::chrono::microseconds(static_cast<uint64_t>(1000000 / currentFrameRate));
 
     // Calculate next frame capture time
-    auto timeBetweenFrames =
-        std::chrono::microseconds(static_cast<uint64_t>(1000000 / currentFrameRate));
     auto nextFrameTime = lastFrameTime + timeBetweenFrames;
-
-    IRSOL_LOG_DEBUG(
-        "Frame rate: {:.2f} fps, time between frames: {} ms", currentFrameRate,
-        std::chrono::duration_cast<std::chrono::milliseconds>(timeBetweenFrames).count());
 
     // Here we unlock condLock before sleeping because:
     // - We want to allow other threads to notify the condition variable and/or update m_frameRate
@@ -152,18 +160,19 @@ void FrameCollector::collectFrames() {
     // - Keeping frameRateCondLock locked during sleep_until() would block those other threads from
     // acquiring the mutex and modifying m_frameRate or notifying the condition variable.
     // - Unlocking is critical to avoid deadlocks or delays
-    IRSOL_LOG_DEBUG("Sleeping until time for capturing next frame");
+    IRSOL_LOG_TRACE("Sleeping until time for capturing next frame");
     frameRateCondLock.unlock();
     std::this_thread::sleep_until(nextFrameTime);
-    IRSOL_LOG_DEBUG("Waking up from sleep");
+    IRSOL_LOG_TRACE("Waking up from sleep");
 
     auto image = m_cam.captureImage();
-    lastFrameTime = std::chrono::high_resolution_clock::now();
-    // Extract the image data into a structure suitable for transmission
+    IRSOL_LOG_DEBUG("Captured frame at time {}", utils::timestamp_to_str(nextFrameTime));
 
+    // Extract the image data into a structure suitable for transmission
     size_t width = image.GetWidth();
     size_t height = image.GetHeight();
     size_t dataSize = image.GetSize();
+    size_t imageId = image.GetImageID();
 
     const void *imageBuffer = image.GetImageData();
     void *rawBuffer = new char[dataSize];
@@ -173,10 +182,14 @@ void FrameCollector::collectFrames() {
 
     {
       std::lock_guard<std::mutex> lock(m_frameQueueMutex);
-      ImageData imageData{buffer, dataSize, lastFrameTime,
-                          height, width,    1}; // Assuming 1 channel for now (RGB)
+      ImageData imageData{buffer, dataSize, nextFrameTime, height,
+                          width,  1,        imageId}; // Assuming 1 channel for now (RGB)
       m_frameQueue.push(std::move(imageData));
     }
+
+    // Update the time of the last frame capture for the next iteration.
+    lastFrameTime = nextFrameTime;
+
     m_frameAvailableCond.notify_all();
 
     // Lock the condition's variable lock for the next frame
@@ -204,14 +217,14 @@ void FrameCollector::broadcastFrames() {
       if (numClients == 0 || numFrames == 0) {
         // In this case, there's no clients, nor frames to be broadcasted.
         // So we keep the condition variable's lock until there's something to do.
-        IRSOL_LOG_DEBUG(
+        IRSOL_LOG_TRACE(
             "Frame broadcast paused, as no clients ({}) or no frames ({}) are available.",
             numClients, numFrames);
         return false;
       }
 
       // There's work to do, so release the condition variable.
-      IRSOL_LOG_DEBUG("Frame broadcaster thread is awakened for {} clients, and {} frames.",
+      IRSOL_LOG_TRACE("Frame broadcaster thread is awakened for {} clients, and {} frames.",
                       numClients, numFrames);
       return true;
     });
@@ -229,18 +242,21 @@ void FrameCollector::broadcastFrames() {
     {
       std::lock_guard<std::mutex> clientLock(m_clientsMutex);
       for (auto &[client, callback] : m_clients) {
-        // Check if the client should receive the frame
         auto &params = client->sessionData().frameListeningParams;
-        if (!params.active.load())
+
+        // Compute when this client should have gotten its next frame
+        auto interval =
+            std::chrono::microseconds(static_cast<uint64_t>(1000000 / params.frameRate));
+        auto clientDesiredNextFrameTime = params.lastFrameSent + interval;
+
+        // Only send if we've reached (or passed) that scheduled point
+        if (imageData.timestamp < clientDesiredNextFrameTime)
           continue;
 
-        auto nextTime =
-            params.lastFrameSent +
-            std::chrono::microseconds(static_cast<uint64_t>(1000000 / params.frameRate));
-        if (nextTime > imageData.timestamp)
-          continue;
         callback(imageData);
-        params.lastFrameSent = imageData.timestamp;
+
+        // Re-anchor to the scheduled time, so we stay on a clean grid
+        params.lastFrameSent = clientDesiredNextFrameTime;
       }
     }
 
