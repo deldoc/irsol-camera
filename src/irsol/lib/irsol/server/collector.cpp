@@ -35,6 +35,20 @@ void FrameCollector::refreshFrameRate() {
 
   double clientsMaxFrameRate = *std::max_element(frameRates.begin(), frameRates.end());
 
+  for (double r : frameRates) {
+    if (r <= 0.0) {
+      continue;
+    }
+    double ratio = clientsMaxFrameRate / r;
+    double rounded = std::round(ratio);
+    const double eps = 1e-6;
+    if (std::abs(ratio - rounded) > eps) {
+      IRSOL_LOG_WARN("Client rate {:.2f} fps is not an integer divisor of max fps {:.2f}; "
+                     "that client's frames may never land exactly on its desired schedule",
+                     r, clientsMaxFrameRate);
+    }
+  }
+
   {
     // Protect the update of the frameRate
     // as this variable is living in a multithreaded environment.
