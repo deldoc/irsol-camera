@@ -28,7 +28,7 @@ std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &qu
     auto img = camera.captureImage(std::chrono::milliseconds(10000));
     if (img.IsEmpty()) {
       IRSOL_LOG_ERROR("Failed to capture image.");
-      return {CommandResponse{"ERR Failed to capture image\n"}};
+      return {};
     }
     int imageId = img.GetImageID();
     int width = img.GetWidth();
@@ -58,7 +58,7 @@ std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &qu
   }
 
   IRSOL_LOG_ERROR("Unknown query: '{}'", query);
-  return {CommandResponse{"ERR Unknown query\n"}};
+  return {};
 }
 std::vector<CommandResponse> CommandProcessor::handleCommand(const std::string &command,
                                                              const std::string &params,
@@ -77,12 +77,11 @@ std::vector<CommandResponse> CommandProcessor::handleCommand(const std::string &
     camera.setParam("AcquisitionFrameRate", fps);
     auto new_fps = camera.getParam<float>("AcquisitionFrameRate");
     IRSOL_LOG_DEBUG("Frame rate updated from {} to {}", old_fps, new_fps);
-    // return {CommandResponse{"", {}, "fr=" + params + "\n"}};
-    return {CommandResponse{"fr=" + params + "\n", {}, ""}};
+    return {CommandResponse{"", {}, "fr=" + params + "\n"}};
   }
 
   IRSOL_LOG_ERROR("Unknown command: '{}'", command);
-  return {CommandResponse{"ERR Unknown command\n"}};
+  return {};
 }
 } // namespace internal
 } // namespace irsol

@@ -30,19 +30,28 @@ std::optional<cv::Mat> receiveImage(sockpp::tcp_connector &conn) {
   // Step 1: Read ASCII header until ':' is found
   std::string headerTitle;
   char ch;
+
+  // Loop until we get the correct header start
   while (true) {
-    auto res = conn.read(&ch, 1);
-    if (res.value() <= 0) {
-      IRSOL_LOG_WARN("Error reading header");
-      return std::nullopt;
+    headerTitle.clear();
+    while (true) {
+      auto res = conn.read(&ch, 1);
+      if (res.value() <= 0)
+        return std::nullopt;
+      if (ch == ':' || ch == '\n')
+        break;
+      headerTitle += ch;
     }
-    if (ch == ':')
-      break;
-    headerTitle += ch;
-  }
-  if (headerTitle != "image_data") {
-    IRSOL_LOG_ERROR("Invalid header title: {}", headerTitle);
-    return std::nullopt;
+
+    if (headerTitle == "image_data") {
+      break; // valid header found
+    } else {
+      IRSOL_LOG_WARN("Skipping non-image message: {}", headerTitle);
+      // skip until next newline or next header
+      while (ch != '\n' && conn.read(&ch, 1).value() > 0) {
+        continue;
+      }
+    }
   }
 
   std::string header;
