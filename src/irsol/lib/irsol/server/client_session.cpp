@@ -9,7 +9,7 @@ namespace irsol {
 namespace internal {
 
 ClientSession::ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app)
-    : m_id(id), m_sock(std::move(sock)), m_app(app) {}
+    : m_id(id), m_sessionData(std::move(sock)), m_app(app) {}
 
 void ClientSession::run() {
   constexpr size_t INITIAL_BUFFER_SIZE = 1024;
@@ -20,7 +20,7 @@ void ClientSession::run() {
 
   while (true) {
     // Read data from socket
-    sockpp::result<size_t> readResult = m_sock.read(buffer.data(), buffer.size());
+    sockpp::result<size_t> readResult = m_sessionData.m_sock.read(buffer.data(), buffer.size());
 
     // Handle read errors or connection closure
     if (!readResult) {
@@ -49,7 +49,7 @@ void ClientSession::run() {
     }
   }
 
-  m_sock.close();
+  m_sessionData.m_sock.close();
   IRSOL_NAMED_LOG_INFO(m_id, "Client session terminated");
 }
 
@@ -106,18 +106,23 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
     return;
   }
   for (const auto &response : responses) {
-    // Send response if available
-    if (!response.message.empty()) {
-      IRSOL_NAMED_LOG_DEBUG(m_id, "Sending response: '{}'", response.message);
-      send(response.message);
-    } else {
-      IRSOL_NAMED_LOG_DEBUG(m_id, "No response for: '{}'", strippedMessage);
-    }
+    {
 
-    // Send data if available
-    if (response.binaryData.size) {
-      IRSOL_NAMED_LOG_DEBUG(m_id, "Sending binary data ({} bytes).", response.binaryData.size);
-      send(response.binaryData.data.get(), response.binaryData.size);
+      // Lock the current session's mutex for both ascii and binary data
+      std::lock_guard<std::mutex> lock(m_sessionData.m_mutex);
+      // Send response if available
+      if (!response.message.empty()) {
+        IRSOL_NAMED_LOG_DEBUG(m_id, "Sending response: '{}'", response.message);
+        send(response.message);
+      } else {
+        IRSOL_NAMED_LOG_DEBUG(m_id, "No response for: '{}'", strippedMessage);
+      }
+
+      // Send data if available
+      if (response.binaryData.size) {
+        IRSOL_NAMED_LOG_DEBUG(m_id, "Sending binary data ({} bytes).", response.binaryData.size);
+        send(response.binaryData.data.get(), response.binaryData.size);
+      }
     }
 
     // Send broadcast message if available
@@ -131,10 +136,9 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
 void ClientSession::send(const std::string &msg) {
   std::string preparedMessage = msg;
 
-  std::lock_guard<std::mutex> lock(m_sendMutex);
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending message of size {}", preparedMessage.size());
 
-  auto result = m_sock.write(preparedMessage);
+  auto result = m_sessionData.m_sock.write(preparedMessage);
   if (!result) {
     IRSOL_NAMED_LOG_ERROR(m_id, "Failed to send message: {}", result.error().message());
   } else if (result.value() != preparedMessage.size()) {
@@ -144,10 +148,9 @@ void ClientSession::send(const std::string &msg) {
 }
 
 void ClientSession::send(void *data, size_t size) {
-  std::lock_guard<std::mutex> lock(m_sendMutex);
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending binary data of size {}", size);
 
-  auto result = m_sock.write(data, size);
+  auto result = m_sessionData.m_sock.write(data, size);
   if (!result) {
     IRSOL_NAMED_LOG_ERROR(m_id, "Failed to send binary data: {}", result.error().message());
   } else if (result.value() != size) {

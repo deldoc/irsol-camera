@@ -2,6 +2,7 @@
 
 #include "irsol/logging.hpp"
 #include "neoapi/neoapi.hpp"
+#include <chrono>
 #include <mutex>
 #include <string>
 #include <type_traits>
@@ -17,7 +18,6 @@ public:
   bool isConnected() const { return m_cam.IsConnected(); }
 
   template <typename T> T getParam(const std::string &param) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
     IRSOL_LOG_DEBUG("Getting parameter '{}'", param);
     try {
       NeoAPI::NeoString neoParam(param.c_str());
@@ -49,7 +49,6 @@ public:
   }
 
   std::string getParam(const std::string &param) const {
-    std::lock_guard<std::mutex> lock(m_mutex);
     IRSOL_LOG_DEBUG("Getting parameter '{}'", param);
     try {
       NeoAPI::NeoString neoParam(param.c_str());
@@ -61,7 +60,7 @@ public:
     }
   }
   template <typename T> void setParam(const std::string &param, T value) {
-    std::lock_guard<std::mutex> lock(m_mutex);
+    std::lock_guard<std::mutex> lock(m_paramMutex);
     IRSOL_LOG_DEBUG("Setting parameter '{}' to value '{}'", param, value);
     try {
       if constexpr (std::is_same_v<std::decay_t<T>, std::string>) {
@@ -81,11 +80,12 @@ public:
       IRSOL_LOG_ERROR("Failed to set parameter '{}': {}", param, e.what());
     }
   }
-  NeoAPI::Image captureImage(); // Returns path or base64
+  NeoAPI::Image captureImage(std::chrono::milliseconds timeout = std::chrono::milliseconds(400));
 
 private:
-  mutable std::mutex m_mutex; // mutex is mutable, so we can use it in const method as well.
-  NeoAPI::Cam m_cam;          // NeoAPI camera object
+  mutable std::mutex m_imageMutex; // mutex is mutable, so we can use it in const method as well.
+  mutable std::mutex m_paramMutex; // mutex is mutable, so we can use it in const method as well.
+  NeoAPI::Cam m_cam;               // NeoAPI camera object
 };
 
 } // namespace irsol

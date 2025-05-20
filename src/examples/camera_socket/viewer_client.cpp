@@ -89,11 +89,11 @@ std::optional<cv::Mat> receiveImage(sockpp::tcp_connector &conn) {
   return createMat(buffer.data(), height, width, channels);
 }
 
-sockpp::tcp_connector
+std::optional<sockpp::tcp_connector>
 createConnectionWithRetry(const std::string &host, in_port_t port,
                           std::chrono::seconds retryTimeout = std::chrono::seconds(1)) {
   std::error_code ec;
-  while (true) {
+  while (!g_terminate.load()) {
     sockpp::tcp_connector conn({host, port}, ec);
     if (ec) {
       IRSOL_LOG_WARN("Failed to connect to server at {}:{}: {}, retrying in {} seconds", host, port,
@@ -104,6 +104,7 @@ createConnectionWithRetry(const std::string &host, in_port_t port,
       return std::move(conn);
     }
   }
+  return std::nullopt;
 }
 
 void run() {
@@ -117,15 +118,20 @@ void run() {
 
   sockpp::initialize();
 
-  sockpp::tcp_connector conn = createConnectionWithRetry(server_host, port);
+  sockpp::tcp_connector conn;
+  if (auto connOpt = createConnectionWithRetry(server_host, port); !connOpt.has_value()) {
+    return;
+  } else {
+    conn = std::move(connOpt.value());
+  }
 
   IRSOL_LOG_INFO("Connected to server");
 
   // Set a timeout for the responses
-  if (auto res = conn.read_timeout(std::chrono::seconds(2)); !res) {
+  if (auto res = conn.read_timeout(std::chrono::seconds(10)); !res) {
     IRSOL_LOG_ERROR("Error setting TCP read timeout: {}", res.error_message());
   } else {
-    IRSOL_LOG_DEBUG("Read timeout set to 2 seconds");
+    IRSOL_LOG_DEBUG("Read timeout set to 10 seconds");
   }
 
   auto start = std::chrono::steady_clock::now();
@@ -136,7 +142,12 @@ void run() {
     size_t sz = message.length();
     if (conn.write(message) != sz) {
       IRSOL_LOG_ERROR("Error writing to the TCP, trying to re-connect..");
-      conn = createConnectionWithRetry(server_host, port, std::chrono::seconds(5));
+      if (auto connOpt = createConnectionWithRetry(server_host, port, std::chrono::seconds(5));
+          !connOpt.has_value()) {
+        return;
+      } else {
+        conn = std::move(connOpt.value());
+      }
       continue;
     }
 

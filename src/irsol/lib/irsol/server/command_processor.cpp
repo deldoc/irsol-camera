@@ -25,7 +25,7 @@ std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &qu
 
   if (query == "image") {
     IRSOL_LOG_DEBUG("Querying image");
-    auto img = camera.captureImage();
+    auto img = camera.captureImage(std::chrono::milliseconds(10000));
     if (img.IsEmpty()) {
       IRSOL_LOG_ERROR("Failed to capture image.");
       return {CommandResponse{"ERR Failed to capture image\n"}};
@@ -77,7 +77,8 @@ std::vector<CommandResponse> CommandProcessor::handleCommand(const std::string &
     camera.setParam("AcquisitionFrameRate", fps);
     auto new_fps = camera.getParam<float>("AcquisitionFrameRate");
     IRSOL_LOG_DEBUG("Frame rate updated from {} to {}", old_fps, new_fps);
-    return {CommandResponse{"", {}, "fr=" + params + "\n"}};
+    // return {CommandResponse{"", {}, "fr=" + params + "\n"}};
+    return {CommandResponse{"fr=" + params + "\n", {}, ""}};
   }
 
   IRSOL_LOG_ERROR("Unknown command: '{}'", command);

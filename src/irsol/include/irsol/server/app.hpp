@@ -6,7 +6,7 @@
 #include <mutex>
 #include <sockpp/tcp_acceptor.h>
 #include <thread>
-#include <unordered_set>
+#include <unordered_map>
 
 namespace irsol {
 
@@ -30,9 +30,9 @@ private:
   sockpp::tcp_acceptor m_acceptor;
   std::thread m_acceptThread;
   std::mutex m_clientsMutex;
-  std::unordered_set<std::shared_ptr<internal::ClientSession>> m_clients;
+  std::unordered_map<std::string, std::shared_ptr<internal::ClientSession>> m_clients;
   CameraInterface m_cameraInterface;
   void acceptLoop();
-  void removeClient(const std::shared_ptr<internal::ClientSession> &client);
+  void removeClient(const std::string &clientId);
 };
 } // namespace irsol

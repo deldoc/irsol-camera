@@ -70,46 +70,50 @@ void ServerApp::acceptLoop() {
       continue;
     }
 
-    // Accept the new client connection and push it into a new handler thread.
-    auto sock = sockResult.release();
-    auto clientAddress = sock.address().to_string();
-    IRSOL_LOG_INFO("New client connection from {}", clientAddress);
-
     // Generate a unique ID for this client session
     std::string clientId = utils::uuid();
     IRSOL_LOG_DEBUG("Generated client ID: {}", clientId);
-
-    auto session = std::make_shared<internal::ClientSession>(clientId, std::move(sock), *this);
+    auto session = std::make_shared<internal::ClientSession>(clientId, sockResult.release(), *this);
+    IRSOL_LOG_INFO("New client connection from {}", session->sessionData().address());
     {
       std::lock_guard<std::mutex> lock(m_clientsMutex);
-      m_clients.insert(session);
+      m_clients.insert({clientId, session});
       IRSOL_LOG_DEBUG("Client {} added to session list, total clients: {}", clientId,
                       m_clients.size());
     }
 
-    std::thread([session, clientAddress, this]() {
+    std::thread([session, this]() {
+      std::string clientAddress = session->sessionData().address();
       IRSOL_LOG_DEBUG("Starting client session thread for {} with ID {}", clientAddress,
                       session->id());
       session->run();
       // Once the session is done, remove it from the list and join the thread.
-      removeClient(session);
+      removeClient(session->id());
     })
         .detach();
   }
   IRSOL_LOG_INFO("Accept loop ended");
 }
 
-void ServerApp::removeClient(const std::shared_ptr<internal::ClientSession> &client) {
+void ServerApp::removeClient(const std::string &clientId) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
-  m_clients.erase(client);
-  IRSOL_LOG_DEBUG("Client {} removed from session list, remaining clients: {}", client->id(),
-                  m_clients.size());
+  auto client = m_clients.find(clientId);
+  if (client == m_clients.end()) {
+    IRSOL_LOG_ERROR("Client '{}' not found in session list", clientId);
+  } else {
+    m_clients.erase(client);
+    IRSOL_LOG_DEBUG("Client {} removed from session list, remaining clients: {}", clientId,
+                    m_clients.size());
+  }
 }
 
 void ServerApp::broadcast(const std::string &msg) {
   IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
   std::lock_guard<std::mutex> lock(m_clientsMutex);
-  for (auto &client : m_clients) {
+  for (auto &[clientId, client] : m_clients) {
+    IRSOL_LOG_TRACE("Broadcasting message '{}' to client '{}'", msg, clientId);
+    // Lock the client's session to prevent race conditions
+    std::lock_guard<std::mutex> clientLock(client->sessionData().m_mutex);
     client->send(msg);
   }
   IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
