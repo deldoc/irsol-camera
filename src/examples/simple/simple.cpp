@@ -1,6 +1,9 @@
 #include "irsol/irsol.hpp"
+
 #include <chrono>
-int main() {
+int
+main()
+{
 
   irsol::initLogging("log/simple.log");
   irsol::initAssertHandler();
@@ -14,7 +17,7 @@ int main() {
   irsol::camera::StatusMonitor monitor{cam, std::chrono::milliseconds(200)};
   monitor.start();
 
-  for (int i = 0; i < 50; ++i) {
+  for(int i = 0; i < 50; ++i) {
     IRSOL_LOG_INFO("Iteration {0:d}", i);
     cam.captureImage();
     uint64_t newExposureTime = i * 100;

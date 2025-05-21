@@ -1,6 +1,7 @@
 #pragma once
 
 #include "spdlog/spdlog.h"
+
 #include <chrono>
 #include <unordered_map>
 
@@ -13,33 +14,35 @@
 
 namespace irsol {
 namespace internal {
-struct LoggerInfo {
-  std::shared_ptr<spdlog::logger> logger;
+struct LoggerInfo
+{
+  std::shared_ptr<spdlog::logger>                    logger;
   std::chrono::time_point<std::chrono::system_clock> lastRetrieved;
 };
-class NamedLoggerRegistry {
+class NamedLoggerRegistry
+{
 public:
-  static spdlog::logger *getLogger(const std::string &name);
+  static spdlog::logger* getLogger(const std::string& name);
 
 private:
   static std::unordered_map<std::string, LoggerInfo> m_loggers;
 };
-} // namespace internal
-} // namespace irsol
+}  // namespace internal
+}  // namespace irsol
 
-#define IRSOL_NAMED_LOG_TRACE(name, ...)                                                           \
+#define IRSOL_NAMED_LOG_TRACE(name, ...) \
   irsol::internal::NamedLoggerRegistry::getLogger(name)->trace(__VA_ARGS__)
-#define IRSOL_NAMED_LOG_DEBUG(name, ...)                                                           \
+#define IRSOL_NAMED_LOG_DEBUG(name, ...) \
   irsol::internal::NamedLoggerRegistry::getLogger(name)->debug(__VA_ARGS__)
-#define IRSOL_NAMED_LOG_INFO(name, ...)                                                            \
+#define IRSOL_NAMED_LOG_INFO(name, ...) \
   irsol::internal::NamedLoggerRegistry::getLogger(name)->info(__VA_ARGS__)
-#define IRSOL_NAMED_LOG_WARN(name, ...)                                                            \
+#define IRSOL_NAMED_LOG_WARN(name, ...) \
   irsol::internal::NamedLoggerRegistry::getLogger(name)->warn(__VA_ARGS__)
-#define IRSOL_NAMED_LOG_ERROR(name, ...)                                                           \
+#define IRSOL_NAMED_LOG_ERROR(name, ...) \
   irsol::internal::NamedLoggerRegistry::getLogger(name)->error(__VA_ARGS__)
-#define IRSOL_NAMED_LOG_FATAL(name, ...)                                                           \
+#define IRSOL_NAMED_LOG_FATAL(name, ...) \
   irsol::internal::NamedLoggerRegistry::getLogger(name)->critical(__VA_ARGS__)
 
 namespace irsol {
-void initLogging(const char *fileSinkFilename = "log/irsol.log");
-} // namespace irsol
+void initLogging(const char* fileSinkFilename = "log/irsol.log");
+}  // namespace irsol

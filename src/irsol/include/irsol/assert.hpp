@@ -14,29 +14,37 @@
 
 #include "ppk_assert/ppk_assert.hpp"
 
-#define IRSOL_ASSERT_DEBUG                                                                         \
-  PPK_ASSERT_DEBUG // Prints assertion to console and allows taking interactive action via user
-                   // input
-#define IRSOL_ASSERT_ERROR PPK_ASSERT_ERROR // Prints assertion to console and throws an exception
-#define IRSOL_ASSERT_FATAL                                                                         \
-  PPK_ASSERT_FATAL // Prints assertion to console and terminates the program
+#define IRSOL_ASSERT_DEBUG \
+  PPK_ASSERT_DEBUG  // Prints assertion to console and allows taking interactive action via user
+                    // input
+#define IRSOL_ASSERT_ERROR PPK_ASSERT_ERROR  // Prints assertion to console and throws an exception
+#define IRSOL_ASSERT_FATAL \
+  PPK_ASSERT_FATAL  // Prints assertion to console and terminates the program
 
-#define IRSOL_STATIC_ASSERT                                                                        \
-  PPK_STATIC_ASSERT // Prints assertion to console at compile time and terminates the compilation
+#define IRSOL_STATIC_ASSERT \
+  PPK_STATIC_ASSERT  // Prints assertion to console at compile time and terminates the compilation
 
 namespace irsol {
-using AssertionException = ppk::assert::AssertionException; // Exception thrown by PPK_ASSERT_ERROR
+using AssertionException = ppk::assert::AssertionException;  // Exception thrown by PPK_ASSERT_ERROR
 
 typedef ppk::assert::implementation::AssertAction::AssertAction (*AssertHandler)(
-    const char *file, int line, const char *function, const char *expression, int level,
-    const char *message);
+  const char* file,
+  int         line,
+  const char* function,
+  const char* expression,
+  int         level,
+  const char* message);
 
 void setAssertHandler(AssertHandler handler);
 void initAssertHandler();
 
 namespace internal {
-ppk::assert::implementation::AssertAction::AssertAction
-assertHandler(const char *file, int line, const char *function, const char *expression, int level,
-              const char *message);
-} // namespace internal
-} // namespace irsol
+ppk::assert::implementation::AssertAction::AssertAction assertHandler(
+  const char* file,
+  int         line,
+  const char* function,
+  const char* expression,
+  int         level,
+  const char* message);
+}  // namespace internal
+}  // namespace irsol

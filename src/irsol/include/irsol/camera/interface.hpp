@@ -1,6 +1,7 @@
 #pragma once
 
 #include "neoapi/neoapi.hpp"
+
 #include <chrono>
 #include <mutex>
 #include <string>
@@ -16,7 +17,8 @@ namespace camera {
  * Interface initializes the default camera device and provides thread-safe
  * methods to capture images and get/set camera features via templated helpers.
  */
-class Interface {
+class Interface
+{
 public:
   /**
    * @brief Constructs the Interface by loading the default camera.
@@ -32,7 +34,7 @@ public:
    *
    * @return A reference to the NeoAPI::Cam object.
    */
-  NeoAPI::Cam &getNeoCam();
+  NeoAPI::Cam& getNeoCam();
 
   /**
    * @brief Check if the camera is currently connected and valid.
@@ -41,7 +43,10 @@ public:
    *
    * @return true if the camera is connected; false otherwise.
    */
-  bool isConnected() const { return m_cam.IsConnected(); }
+  bool isConnected() const
+  {
+    return m_cam.IsConnected();
+  }
 
   /**
    * @brief Retrieve a camera parameter of arbitrary type T.
@@ -60,7 +65,8 @@ public:
    * @param param Name of the camera feature.
    * @return The feature value as type T, or fallback on error.
    */
-  template <typename T> T getParam(const std::string &param) const;
+  template<typename T>
+  T getParam(const std::string& param) const;
 
   /**
    * @brief Convenience overload to always return a std::string parameter.
@@ -71,7 +77,7 @@ public:
    * @param param Name of the camera feature.
    * @return Feature value as std::string or "Unknown" on error.
    */
-  std::string getParam(const std::string &param) const;
+  std::string getParam(const std::string& param) const;
 
   /**
    * @brief Set a camera parameter of arbitrary type T.
@@ -86,7 +92,8 @@ public:
    * @param param Name of the camera feature.
    * @param value Value to set for the feature.
    */
-  template <typename T> void setParam(const std::string &param, T value);
+  template<typename T>
+  void setParam(const std::string& param, T value);
 
   /**
    * @brief Capture a single image from the camera, blocking up to timeout.
@@ -109,7 +116,7 @@ private:
   /// Underlying NeoAPI camera handle.
   NeoAPI::Cam m_cam;
 };
-} // namespace camera
-} // namespace irsol
+}  // namespace camera
+}  // namespace irsol
 
 #include "irsol/camera/interface.tpp"

@@ -3,6 +3,7 @@
 #include "irsol/camera/interface.hpp"
 #include "irsol/server/client_session.hpp"
 #include "irsol/server/image_data.hpp"
+
 #include <atomic>
 #include <condition_variable>
 #include <memory>
@@ -48,17 +49,18 @@ using CollectedFrameCallback = std::function<void(ImageData)>;
  * - Internal synchronization uses separate mutexes for clients, frame queue, and frame rate state.
  * - Condition variables avoid busy-waiting and enable prompt thread wakeups on state changes.
  */
-class FrameCollector {
+class FrameCollector
+{
 
   static constexpr uint8_t MAX_FRAME_QUEUE_SIZE = 16;
   using clients_pool_t =
-      std::vector<std::pair<std::shared_ptr<ClientSession>, CollectedFrameCallback>>;
+    std::vector<std::pair<std::shared_ptr<ClientSession>, CollectedFrameCallback>>;
   using frame_queue_t = std::queue<ImageData>;
 
 public:
-  FrameCollector(camera::Interface &cam);
-  FrameCollector(const FrameCollector &) = delete;
-  FrameCollector &operator=(const FrameCollector &) = delete;
+  FrameCollector(camera::Interface& cam);
+  FrameCollector(const FrameCollector&) = delete;
+  FrameCollector& operator=(const FrameCollector&) = delete;
 
   void refreshFrameRate();
   void addClient(std::shared_ptr<ClientSession> client, CollectedFrameCallback callback);
@@ -70,31 +72,31 @@ private:
 
   std::atomic<bool> m_running{false};
 
-  camera::Interface &m_cam;
+  camera::Interface& m_cam;
 
-  std::mutex m_frameRateMutex;
+  std::mutex          m_frameRateMutex;
   std::atomic<double> m_frameRate{0.0};
 
-  mutable std::mutex m_clientsMutex; // also used in const-method
-  clients_pool_t m_clients;
+  mutable std::mutex m_clientsMutex;  // also used in const-method
+  clients_pool_t     m_clients;
 
-  std::mutex m_frameQueueMutex;
+  std::mutex    m_frameQueueMutex;
   frame_queue_t m_frameQueue;
 
   // mutex and condition_variable for collectFrames waiting on m_frameRate changes
-  std::mutex m_frameRateCondMutex;
+  std::mutex              m_frameRateCondMutex;
   std::condition_variable m_frameRateCond;
 
   // mutex and condition_variable for broadcastFrames waiting on new frames/clients
-  std::mutex m_frameAvailableCondMutex;
+  std::mutex              m_frameAvailableCondMutex;
   std::condition_variable m_frameAvailableCond;
 
   std::thread m_frameCollectionThread;
-  void collectFrames();
+  void        collectFrames();
 
   std::thread m_broadcastThread;
-  void broadcastFrames();
+  void        broadcastFrames();
 };
-} // namespace internal
-} // namespace server
-} // namespace irsol
+}  // namespace internal
+}  // namespace server
+}  // namespace irsol

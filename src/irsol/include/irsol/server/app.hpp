@@ -4,6 +4,7 @@
 #include "irsol/server/client_session.hpp"
 #include "irsol/server/collector.hpp"
 #include "irsol/server/types.hpp"
+
 #include <atomic>
 #include <mutex>
 #include <thread>
@@ -19,7 +20,7 @@ namespace internal {
 class ClientSession;
 class FrameCollector;
 
-} // namespace internal
+}  // namespace internal
 
 /**
  * @brief Main server application that manages client connections and camera streaming.
@@ -30,7 +31,8 @@ class FrameCollector;
  * and the FrameCollector, ensuring that captured frames are distributed to
  * all active clients according to their needs.
  */
-class App {
+class App
+{
 
   using client_map_t = std::unordered_map<client_id_t, std::shared_ptr<internal::ClientSession>>;
 
@@ -67,10 +69,10 @@ public:
    *
    * @param message The serialized message to send.
    */
-  void broadcast(const std::string &message);
+  void broadcast(const std::string& message);
 
-  camera::Interface &camera();
-  internal::FrameCollector &frameCollector();
+  camera::Interface&        camera();
+  internal::FrameCollector& frameCollector();
 
 private:
   /// TCP port on which the server listens for incoming connections.
@@ -113,7 +115,7 @@ private:
    * @param clientId Unique ID for the new client.
    * @param session  Shared pointer to the created ClientSession.
    */
-  void addClient(const client_id_t &clientId, std::shared_ptr<internal::ClientSession> session);
+  void addClient(const client_id_t& clientId, std::shared_ptr<internal::ClientSession> session);
 
   /**
    * @brief Unregisters a disconnected client.
@@ -123,7 +125,7 @@ private:
    *
    * @param clientId ID of the client to remove.
    */
-  void removeClient(const client_id_t &clientId);
+  void removeClient(const client_id_t& clientId);
 };
-} // namespace server
-} // namespace irsol
+}  // namespace server
+}  // namespace irsol

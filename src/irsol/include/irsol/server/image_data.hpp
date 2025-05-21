@@ -6,14 +6,20 @@
 namespace irsol {
 namespace server {
 namespace internal {
-struct ImageData {
-  ImageData(std::shared_ptr<void> d, size_t s,
-            std::chrono::time_point<std::chrono::steady_clock> ts, size_t h, size_t w, size_t c,
-            size_t imageId);
+struct ImageData
+{
+  ImageData(
+    std::shared_ptr<void>                              d,
+    size_t                                             s,
+    std::chrono::time_point<std::chrono::steady_clock> ts,
+    size_t                                             h,
+    size_t                                             w,
+    size_t                                             c,
+    size_t                                             imageId);
   ImageData() = default;
 
-  std::shared_ptr<void> data;
-  size_t size;
+  std::shared_ptr<void>                              data;
+  size_t                                             size;
   std::chrono::time_point<std::chrono::steady_clock> timestamp;
 
   size_t height;
@@ -23,6 +29,6 @@ struct ImageData {
   size_t imageId;
 };
 
-} // namespace internal
-} // namespace server
-} // namespace irsol
+}  // namespace internal
+}  // namespace server
+}  // namespace irsol

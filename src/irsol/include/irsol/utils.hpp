@@ -1,6 +1,7 @@
 #pragma once
 
 #include "neoapi/neoapi.hpp"
+
 #include <chrono>
 #include <string>
 #include <vector>
@@ -25,7 +26,7 @@ std::string uuid();
  * @param delimiter The character at which to split.
  * @return A vector of substrings.
  */
-std::vector<std::string> split(const std::string &s, char delimiter);
+std::vector<std::string> split(const std::string& s, char delimiter);
 
 /**
  * @brief Strip leading and trailing characters from a string.
@@ -38,7 +39,7 @@ std::vector<std::string> split(const std::string &s, char delimiter);
  * @param delimiters A string containing all characters to remove.
  * @return A new string with the specified characters removed from both ends.
  */
-std::string strip(const std::string &s, const std::string &delimiters = " \t\r\n ");
+std::string strip(const std::string& s, const std::string& delimiters = " \t\r\n ");
 
 /**
  * @brief Remove all occurrences of a substring from a string start and end.
@@ -48,7 +49,7 @@ std::string strip(const std::string &s, const std::string &delimiters = " \t\r\n
  * @param strippedString The substring to remove.
  * @return A new string with all occurrences of `strippedString` removed from its start and end.
  */
-std::string stripString(const std::string &s, const std::string &strippedString);
+std::string stripString(const std::string& s, const std::string& strippedString);
 
 /**
  * @brief Convert a steady_clock time point to a human-readable string.
@@ -78,7 +79,7 @@ NeoAPI::Cam loadDefaultCamera();
  *
  * @param info The camera info structure to log.
  */
-void logCameraInfo(const NeoAPI::CamInfo &info);
+void logCameraInfo(const NeoAPI::CamInfo& info);
 
 /**
  * @brief Discover all cameras connected to the system.
@@ -89,7 +90,7 @@ void logCameraInfo(const NeoAPI::CamInfo &info);
  *
  * @return A reference to a NeoAPI::CamInfoList containing all discovered cameras.
  */
-NeoAPI::CamInfoList &discoverCameras();
+NeoAPI::CamInfoList& discoverCameras();
 
 namespace internal {
 
@@ -101,8 +102,8 @@ namespace internal {
  *
  * @return A C-string of the default camera serial (e.g., "ABC1234").
  */
-constexpr const char *defaultCameraSerialNumber();
+constexpr const char* defaultCameraSerialNumber();
 
-} // namespace internal
-} // namespace utils
-} // namespace irsol
+}  // namespace internal
+}  // namespace utils
+}  // namespace irsol

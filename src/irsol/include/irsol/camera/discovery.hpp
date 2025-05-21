@@ -4,14 +4,15 @@
 
 namespace irsol {
 namespace camera {
-class FeatureDiscovery {
+class FeatureDiscovery
+{
 
 public:
-  FeatureDiscovery(Interface &cam);
+  FeatureDiscovery(Interface& cam);
   void run();
 
 private:
-  Interface &m_cam;
+  Interface& m_cam;
 };
-} // namespace camera
-} // namespace irsol
+}  // namespace camera
+}  // namespace irsol
