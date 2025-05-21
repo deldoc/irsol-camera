@@ -4,17 +4,18 @@
 #include "neoapi/neoapi.hpp"
 
 namespace irsol {
+namespace camera {
 
-CameraInterface::CameraInterface() : m_cam(utils::loadDefaultCamera()) {
+Interface::Interface() : m_cam(utils::loadDefaultCamera()) {
 
   // Set the mode to manual
   IRSOL_LOG_INFO("Setting camera mode to 'TriggerMode::On'.");
   setParam("TriggerMode", "On");
 }
 
-NeoAPI::Cam &CameraInterface::getNeoCam() { return m_cam; }
+NeoAPI::Cam &Interface::getNeoCam() { return m_cam; }
 
-std::string CameraInterface::getParam(const std::string &param) const {
+std::string Interface::getParam(const std::string &param) const {
   IRSOL_LOG_DEBUG("Getting parameter '{}'", param);
   try {
     NeoAPI::NeoString neoParam(param.c_str());
@@ -26,11 +27,11 @@ std::string CameraInterface::getParam(const std::string &param) const {
   }
 }
 
-NeoAPI::Image CameraInterface::captureImage(std::chrono::milliseconds timeout) {
+NeoAPI::Image Interface::captureImage(std::chrono::milliseconds timeout) {
   std::lock_guard<std::mutex> lock(m_imageMutex);
   m_cam.f().TriggerSoftware.Execute(); // execute a software trigger to get an image
   return m_cam.GetImage(
       static_cast<uint32_t>(timeout.count())); // retrieve the image to work with it
 }
-
+} // namespace camera
 } // namespace irsol

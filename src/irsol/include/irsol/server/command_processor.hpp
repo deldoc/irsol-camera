@@ -4,6 +4,7 @@
 #include <vector>
 
 namespace irsol {
+namespace server {
 namespace internal {
 
 // Forward declaration
@@ -28,4 +29,5 @@ public:
                                                     std::shared_ptr<ClientSession> session);
 };
 } // namespace internal
+} // namespace server
 } // namespace irsol

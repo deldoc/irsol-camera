@@ -1,18 +1,19 @@
-// ServerApp.cpp
+// App.cpp
 #include "irsol/server/app.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/utils.hpp"
 
 namespace irsol {
+namespace server {
 
-ServerApp::ServerApp(uint32_t port)
+App::App(uint32_t port)
     : m_port(port), m_running(false), m_acceptor({}),
-      m_cameraInterface(std::make_unique<CameraInterface>()),
+      m_cameraInterface(std::make_unique<camera::Interface>()),
       m_frameCollector(std::make_unique<internal::FrameCollector>(*m_cameraInterface.get())) {
-  IRSOL_LOG_DEBUG("ServerApp created on port {}", m_port);
+  IRSOL_LOG_DEBUG("App created on port {}", m_port);
 }
 
-bool ServerApp::start() {
+bool App::start() {
   IRSOL_LOG_INFO("Starting server on port {}", m_port);
   if (auto openResult = m_acceptor.open(sockpp::inet_address(m_port)); !openResult) {
     IRSOL_LOG_ERROR("Failed to open acceptor on port {}: {}", m_port, openResult.error().message());
@@ -20,12 +21,12 @@ bool ServerApp::start() {
   }
   m_running = true;
   IRSOL_LOG_DEBUG("Starting accept thread");
-  m_acceptThread = std::thread(&ServerApp::acceptLoop, this);
+  m_acceptThread = std::thread(&App::acceptLoop, this);
   IRSOL_LOG_INFO("Server started successfully");
   return true;
 }
 
-void ServerApp::stop() {
+void App::stop() {
   IRSOL_LOG_INFO("Stopping server");
   m_running = false;
   m_acceptor.close();
@@ -37,7 +38,7 @@ void ServerApp::stop() {
   IRSOL_LOG_INFO("Server stopped");
 }
 
-void ServerApp::acceptLoop() {
+void App::acceptLoop() {
   IRSOL_LOG_INFO("Accept loop started");
   while (m_running) {
 
@@ -82,8 +83,7 @@ void ServerApp::acceptLoop() {
   IRSOL_LOG_INFO("Accept loop ended");
 }
 
-void ServerApp::addClient(const std::string &clientId,
-                          std::shared_ptr<internal::ClientSession> session) {
+void App::addClient(const std::string &clientId, std::shared_ptr<internal::ClientSession> session) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   IRSOL_LOG_INFO("New client connection from {}",
                  session->sessionData().sock.address().to_string());
@@ -98,13 +98,17 @@ void ServerApp::addClient(const std::string &clientId,
     IRSOL_LOG_DEBUG("Starting client session thread for {} with ID {}", clientAddress,
                     session->id());
 
-    session->run();
+    try {
+      session->run();
+    } catch (std::exception &e) {
+      IRSOL_LOG_ERROR("Error in client session thread for {}: {}", clientAddress, e.what());
+    }
     removeClient(session->id());
   })
       .detach();
 }
 
-void ServerApp::removeClient(const std::string &clientId) {
+void App::removeClient(const std::string &clientId) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   auto client = m_clients.find(clientId);
   if (client == m_clients.end()) {
@@ -117,7 +121,7 @@ void ServerApp::removeClient(const std::string &clientId) {
   }
 }
 
-void ServerApp::broadcast(const std::string &msg) {
+void App::broadcast(const std::string &msg) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
   for (auto &[clientId, client] : m_clients) {
@@ -129,6 +133,8 @@ void ServerApp::broadcast(const std::string &msg) {
   IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
 }
 
-CameraInterface &ServerApp::camera() { return *m_cameraInterface; }
-internal::FrameCollector &ServerApp::frameCollector() { return *m_frameCollector; }
+camera::Interface &App::camera() { return *m_cameraInterface; }
+internal::FrameCollector &App::frameCollector() { return *m_frameCollector; }
+
+} // namespace server
 } // namespace irsol

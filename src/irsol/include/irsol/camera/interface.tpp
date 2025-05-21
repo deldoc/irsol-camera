@@ -5,8 +5,9 @@
 #include <type_traits>
 
 namespace irsol {
+namespace camera {
 
-template <typename T> T CameraInterface::getParam(const std::string &param) const {
+template <typename T> T Interface::getParam(const std::string &param) const {
   IRSOL_LOG_DEBUG("Getting parameter '{}'", param);
   try {
     NeoAPI::NeoString neoParam(param.c_str());
@@ -37,7 +38,7 @@ template <typename T> T CameraInterface::getParam(const std::string &param) cons
   }
 }
 
-template <typename T> void CameraInterface::setParam(const std::string &param, T value) {
+template <typename T> void Interface::setParam(const std::string &param, T value) {
   std::lock_guard<std::mutex> lock(m_paramMutex);
   IRSOL_LOG_DEBUG("Setting parameter '{}' to value '{}'", param, value);
   try {
@@ -58,5 +59,5 @@ template <typename T> void CameraInterface::setParam(const std::string &param, T
     IRSOL_LOG_ERROR("Failed to set parameter '{}': {}", param, e.what());
   }
 }
-
+} // namespace camera
 } // namespace irsol

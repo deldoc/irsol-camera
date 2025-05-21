@@ -5,6 +5,7 @@
 using namespace std;
 
 namespace irsol {
+namespace camera {
 namespace internal {
 
 enum FeaturePermissionValue {
@@ -65,9 +66,9 @@ extractCameraFeatures(NeoAPI::Cam &cam) {
 
 } // namespace internal
 
-CameraFeatureDiscovery::CameraFeatureDiscovery(CameraInterface &cam) : m_cam(cam) {}
+FeatureDiscovery::FeatureDiscovery(Interface &cam) : m_cam(cam) {}
 
-void CameraFeatureDiscovery::run() {
+void FeatureDiscovery::run() {
   const auto &featurePermissionsMap = internal::extractCameraFeatures(m_cam.getNeoCam());
   for (const auto &[permissions, features] : featurePermissionsMap) {
     IRSOL_LOG_INFO("Permissions: isAvailable: {0}, isReadable: {1}, isWritable: {2}",
@@ -91,5 +92,5 @@ void CameraFeatureDiscovery::run() {
     }
   }
 }
-
+} // namespace camera
 } // namespace irsol

@@ -11,6 +11,8 @@
 
 namespace irsol {
 
+namespace server {
+
 namespace internal {
 
 // Forward declarations
@@ -22,20 +24,20 @@ class FrameCollector;
 /**
  * @brief Main server application that manages client connections and camera streaming.
  *
- * ServerApp listens for incoming TCP connections on a specified port, creates
+ * App listens for incoming TCP connections on a specified port, creates
  * ClientSession instances for each connected client, and orchestrates
  * broadcasting of messages. It owns the camera interface
  * and the FrameCollector, ensuring that captured frames are distributed to
  * all active clients according to their needs.
  */
-class ServerApp {
+class App {
 public:
   /**
    * @brief Constructs the server application bound to a given port.
    *
    * @param port TCP port to listen on for client connections.
    */
-  explicit ServerApp(uint32_t port);
+  explicit App(uint32_t port);
 
   /**
    * @brief Starts the server: begins listening and accepting clients.
@@ -64,7 +66,7 @@ public:
    */
   void broadcast(const std::string &message);
 
-  CameraInterface &camera();
+  camera::Interface &camera();
   internal::FrameCollector &frameCollector();
 
 private:
@@ -87,7 +89,7 @@ private:
   std::unordered_map<std::string, std::shared_ptr<internal::ClientSession>> m_clients;
 
   /// Owned interface to the camera hardware.
-  std::unique_ptr<CameraInterface> m_cameraInterface;
+  std::unique_ptr<camera::Interface> m_cameraInterface;
 
   /// Owned collector that captures frames and dispatches them to clients.
   std::unique_ptr<internal::FrameCollector> m_frameCollector;
@@ -120,5 +122,5 @@ private:
    */
   void removeClient(const std::string &clientId);
 };
-
+} // namespace server
 } // namespace irsol

@@ -6,9 +6,69 @@
 
 namespace irsol {
 namespace internal {
-std::unordered_map<std::string, NamedLoggerRegistry::LoggerInfo> NamedLoggerRegistry::m_loggers;
+std::unordered_map<std::string, LoggerInfo> NamedLoggerRegistry::m_loggers;
 
+spdlog::logger *NamedLoggerRegistry::getLogger(const std::string &name) {
+  spdlog::logger *result;
+  auto it = m_loggers.find(name);
+  if (it != m_loggers.end()) {
+    result = it->second.logger.get();
+    it->second.lastRetrieved = std::chrono::system_clock::now();
+  } else {
+    auto newLogger = spdlog::default_logger()->clone(name);
+
+#ifdef DEBUG
+    // Extract the current logFilePath from the default logger
+    auto &all_sinks = newLogger->sinks();
+    // Find a logger of type rotating_file_sink_mt and determine the logFilePath
+    // for the named logger.
+    bool fileSinkFound = false;
+    std::string newLogFilePath;
+    for (auto &existing_sink : all_sinks) {
+      if (spdlog::sinks::rotating_file_sink_mt *rotating_sink =
+              dynamic_cast<spdlog::sinks::rotating_file_sink_mt *>(existing_sink.get())) {
+        std::string logFilePath = rotating_sink->filename();
+        // strip the suffix from the logFilePath
+        size_t pos = logFilePath.rfind('.');
+        if (pos != std::string::npos) {
+          logFilePath = logFilePath.substr(0, pos);
+        }
+        newLogFilePath = logFilePath + "_" + name + ".log";
+        fileSinkFound = true;
+        break;
+      }
+    }
+    if (!fileSinkFound) {
+      newLogFilePath = name + ".log";
+    }
+
+    // Also create a new named sink for debug mode
+    const auto maxFileSize = 1024 * 1024 * 5; // 5 MB
+    const auto maxFiles = 24;                 // Keep 24 rotated files
+    auto fileSink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
+        newLogFilePath, maxFileSize, maxFiles, false);
+
+    // Add the dedicated file sink to the named logger
+    newLogger->sinks().push_back(fileSink);
+#endif
+    LoggerInfo info = {newLogger, std::chrono::system_clock::now()};
+    m_loggers[name] = info;
+    result = newLogger.get();
+  }
+
+  // If there's more than 256 loggers, delete the oldest one
+  if (m_loggers.size() > 256) {
+    IRSOL_LOG_INFO("Automatic deletion of old named loggers.");
+    auto oldestLogger =
+        std::min_element(m_loggers.begin(), m_loggers.end(), [](const auto &a, const auto &b) {
+          return a.second.lastRetrieved < b.second.lastRetrieved;
+        });
+    m_loggers.erase(oldestLogger);
+  }
+  return result;
 }
+
+} // namespace internal
 void initLogging(const char *logFilePath) {
 #ifdef DEBUG
   // Set the logging level to debug if in debug mode

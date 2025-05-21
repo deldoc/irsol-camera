@@ -9,9 +9,9 @@
 
 namespace irsol {
 
+namespace server {
 // Forward declaration
-class ServerApp;
-
+class App;
 namespace internal {
 
 /**
@@ -59,7 +59,7 @@ struct UserSessionData {
  * client's connection: reading incoming messages, sending data, and participating
  * in frame streaming. It holds the client's unique identifier, the socket and
  * session-specific data in UserSessionData, and a reference to the central
- * ServerApp for routing messages and integrating with server-wide logic.
+ * App for routing messages and integrating with server-wide logic.
  *
  * std::enable_shared_from_this is used to allow safe creation of std::shared_ptr
  * instances referring to *this. This enables passing shared ownership of the
@@ -73,9 +73,9 @@ public:
    *
    * @param id     A unique identifier for this client (e.g., UUID or socket-based ID).
    * @param sock   The TCP socket that is already connected to the client.
-   * @param app    Reference to the ServerApp for which this session is associated.
+   * @param app    Reference to the App for which this session is associated.
    */
-  ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app);
+  ClientSession(const std::string &id, sockpp::tcp_socket &&sock, App &app);
 
   /**
    * @brief Entry point to start processing this client's lifecycle.
@@ -106,10 +106,10 @@ public:
    */
   void send(void *data, size_t size);
 
-  /// Accessor for the immutable ServerApp reference.
-  const ServerApp &app() const { return m_app; }
-  /// Accessor for the mutable ServerApp reference.
-  ServerApp &app() { return m_app; }
+  /// Accessor for the immutable App reference.
+  const App &app() const { return m_app; }
+  /// Accessor for the mutable App reference.
+  App &app() { return m_app; }
 
   /// Get the unique client identifier.
   const std::string &id() const { return m_id; }
@@ -143,7 +143,8 @@ private:
   UserSessionData m_sessionData;
 
   /// Reference back to the owning server application for callbacks and state.
-  ServerApp &m_app;
+  App &m_app;
 };
 } // namespace internal
+} // namespace server
 } // namespace irsol

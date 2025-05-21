@@ -13,7 +13,7 @@ int main() {
 
   in_port_t port = 15099; // port used by existing clients
 
-  irsol::ServerApp app(port); // TCP port
+  irsol::server::App app(port);
   if (!app.start()) {
     IRSOL_LOG_FATAL("Failed to start server.");
     return 1;

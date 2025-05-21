@@ -6,12 +6,13 @@
 #include <thread>
 
 namespace irsol {
+namespace camera {
 
-class CameraStatusMonitor {
+class StatusMonitor {
 public:
-  CameraStatusMonitor(const CameraInterface &cam,
-                      std::chrono::milliseconds monitorInterval = std::chrono::milliseconds(100));
-  ~CameraStatusMonitor();
+  StatusMonitor(const Interface &cam,
+                std::chrono::milliseconds monitorInterval = std::chrono::milliseconds(100));
+  ~StatusMonitor();
   void start();
   void stop();
 
@@ -19,7 +20,7 @@ protected:
   virtual void runMonitor() const;
 
 private:
-  const CameraInterface &m_cam;
+  const Interface &m_cam;
   std::chrono::milliseconds m_monitorInterval;
 
   std::mutex m_startStopMutex;
@@ -27,4 +28,5 @@ private:
 
   std::thread m_monitorThread;
 };
+} // namespace camera
 } // namespace irsol

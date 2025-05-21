@@ -7,23 +7,25 @@
 
 namespace irsol {
 
+namespace camera {
+
 /**
- * @class CameraInterface
+ * @class Interface
  * @brief High-level wrapper around the NeoAPI camera for synchronized access.
  *
- * CameraInterface initializes the default camera device and provides thread-safe
+ * Interface initializes the default camera device and provides thread-safe
  * methods to capture images and get/set camera features via templated helpers.
  */
-class CameraInterface {
+class Interface {
 public:
   /**
-   * @brief Constructs the CameraInterface by loading the default camera.
+   * @brief Constructs the Interface by loading the default camera.
    *
    * Internally calls utils::loadDefaultCamera(), which discovers available
    * devices and opens the one matching the default serial number.
    * Throws if the camera cannot be initialized.
    */
-  CameraInterface();
+  Interface();
 
   /**
    * @brief Provides direct access to the underlying NeoAPI camera handle.
@@ -107,7 +109,7 @@ private:
   /// Underlying NeoAPI camera handle.
   NeoAPI::Cam m_cam;
 };
-
+} // namespace camera
 } // namespace irsol
 
 #include "irsol/camera/interface.tpp"

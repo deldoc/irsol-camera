@@ -4,6 +4,7 @@
 #include <memory>
 
 namespace irsol {
+namespace server {
 namespace internal {
 struct ImageData {
   ImageData(std::shared_ptr<void> d, size_t s,
@@ -23,4 +24,5 @@ struct ImageData {
 };
 
 } // namespace internal
+} // namespace server
 } // namespace irsol

@@ -8,12 +8,12 @@ int main() {
 
   IRSOL_LOG_DEBUG("Starting simple example with OpenCV");
 
-  irsol::CameraInterface cam;
+  irsol::camera::Interface cam;
 
   IRSOL_LOG_DEBUG("Camera connection successful");
   irsol::utils::logCameraInfo(cam.getNeoCam().GetInfo());
 
-  irsol::CameraStatusMonitor monitor{cam, std::chrono::milliseconds(200)};
+  irsol::camera::StatusMonitor monitor{cam, std::chrono::milliseconds(200)};
   monitor.start();
 
   for (int i = 0; i < 50; ++i) {

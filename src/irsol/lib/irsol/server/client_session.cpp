@@ -7,11 +7,12 @@
 #include <vector>
 
 namespace irsol {
+namespace server {
 namespace internal {
 
 UserSessionData::UserSessionData(sockpp::tcp_socket &&sock) : sock(std::move(sock)) {}
 
-ClientSession::ClientSession(const std::string &id, sockpp::tcp_socket &&sock, ServerApp &app)
+ClientSession::ClientSession(const std::string &id, sockpp::tcp_socket &&sock, App &app)
     : m_id(id), m_sessionData(std::move(sock)), m_app(app) {}
 
 void ClientSession::run() {
@@ -164,4 +165,5 @@ void ClientSession::send(void *data, size_t size) {
   }
 }
 } // namespace internal
+} // namespace server
 } // namespace irsol

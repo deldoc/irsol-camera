@@ -3,13 +3,15 @@
 #include "irsol/camera/interface.hpp"
 
 namespace irsol {
-class CameraFeatureDiscovery {
+namespace camera {
+class FeatureDiscovery {
 
 public:
-  CameraFeatureDiscovery(CameraInterface &cam);
+  FeatureDiscovery(Interface &cam);
   void run();
 
 private:
-  CameraInterface &m_cam;
+  Interface &m_cam;
 };
+} // namespace camera
 } // namespace irsol

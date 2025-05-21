@@ -4,20 +4,20 @@
 #include "tabulate/tabulate.hpp"
 
 namespace irsol {
-CameraStatusMonitor::CameraStatusMonitor(const CameraInterface &cam,
-                                         std::chrono::milliseconds monitorInterval)
+namespace camera {
+StatusMonitor::StatusMonitor(const Interface &cam, std::chrono::milliseconds monitorInterval)
     : m_cam(cam), m_monitorInterval(monitorInterval), m_hasStartedMonitor(false) {
   IRSOL_ASSERT_ERROR(cam.isConnected(), "Camera is not connected.");
 }
 
-CameraStatusMonitor::~CameraStatusMonitor() {
+StatusMonitor::~StatusMonitor() {
   if (m_hasStartedMonitor) {
     IRSOL_LOG_DEBUG("Automatic stopping monitoring of camera.");
     stop();
   }
 }
 
-void CameraStatusMonitor::runMonitor() const {
+void StatusMonitor::runMonitor() const {
   IRSOL_LOG_DEBUG("Monitoring camera status...");
   static const char *const FEATURE_NAMES[] = {"AcquisitionFrameCount",
                                               "AcquisitionFrameRate",
@@ -61,7 +61,7 @@ void CameraStatusMonitor::runMonitor() const {
   }
 }
 
-void CameraStatusMonitor::start() {
+void StatusMonitor::start() {
   std::lock_guard<std::mutex> guard(m_startStopMutex);
   IRSOL_ASSERT_ERROR(!m_hasStartedMonitor, "Monitor is already running!");
   m_hasStartedMonitor = true;
@@ -70,7 +70,7 @@ void CameraStatusMonitor::start() {
   IRSOL_LOG_DEBUG("Camera monitor has started.");
 }
 
-void CameraStatusMonitor::stop() {
+void StatusMonitor::stop() {
   std::lock_guard<std::mutex> guard(m_startStopMutex);
   IRSOL_ASSERT_ERROR(m_hasStartedMonitor,
                      "Cannot 'stop' monitor without having started it before!");
@@ -81,4 +81,5 @@ void CameraStatusMonitor::stop() {
   }
   IRSOL_LOG_DEBUG("Camera monitor has stopped.");
 }
+} // namespace camera
 } // namespace irsol

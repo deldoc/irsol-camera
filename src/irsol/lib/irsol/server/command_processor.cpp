@@ -8,6 +8,7 @@
 #include <sstream>
 
 namespace irsol {
+namespace server {
 namespace internal {
 
 std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &query,
@@ -107,4 +108,5 @@ CommandProcessor::handleCommand(const std::string &command, const std::string &p
   return {};
 }
 } // namespace internal
+} // namespace server
 } // namespace irsol

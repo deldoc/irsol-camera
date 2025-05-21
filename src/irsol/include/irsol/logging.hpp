@@ -13,38 +13,15 @@
 
 namespace irsol {
 namespace internal {
+struct LoggerInfo {
+  std::shared_ptr<spdlog::logger> logger;
+  std::chrono::time_point<std::chrono::system_clock> lastRetrieved;
+};
 class NamedLoggerRegistry {
 public:
-  static spdlog::logger *getLogger(const std::string &name) {
-    spdlog::logger *result;
-    auto it = m_loggers.find(name);
-    if (it != m_loggers.end()) {
-      result = it->second.logger.get();
-      it->second.lastRetrieved = std::chrono::system_clock::now();
-    } else {
-      auto newLogger = spdlog::default_logger()->clone(name);
-      LoggerInfo info = {newLogger, std::chrono::system_clock::now()};
-      m_loggers[name] = info;
-      result = newLogger.get();
-    }
-
-    // If there's more than 256 loggers, delete the oldest one
-    if (m_loggers.size() > 256) {
-      IRSOL_LOG_INFO("Automatic deletion of old named loggers.");
-      auto oldestLogger =
-          std::min_element(m_loggers.begin(), m_loggers.end(), [](const auto &a, const auto &b) {
-            return a.second.lastRetrieved < b.second.lastRetrieved;
-          });
-      m_loggers.erase(oldestLogger);
-    }
-    return result;
-  }
+  static spdlog::logger *getLogger(const std::string &name);
 
 private:
-  struct LoggerInfo {
-    std::shared_ptr<spdlog::logger> logger;
-    std::chrono::time_point<std::chrono::system_clock> lastRetrieved;
-  };
   static std::unordered_map<std::string, LoggerInfo> m_loggers;
 };
 } // namespace internal

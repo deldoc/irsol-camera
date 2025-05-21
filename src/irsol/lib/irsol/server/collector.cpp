@@ -4,9 +4,10 @@
 #include "irsol/utils.hpp"
 
 namespace irsol {
+namespace server {
 namespace internal {
 
-FrameCollector::FrameCollector(CameraInterface &cam) : m_cam(cam) {
+FrameCollector::FrameCollector(camera::Interface &cam) : m_cam(cam) {
   m_running = true;
   // Start frame collection thread
   m_frameCollectionThread = std::thread([this]() { collectFrames(); });
@@ -171,8 +172,8 @@ void FrameCollector::collectFrames() {
     // Here we unlock condLock before sleeping because:
     // - We want to allow other threads to notify the condition variable and/or update m_frameRate
     // while this thread is sleeping.
-    // - Keeping frameRateCondLock locked during sleep_until() would block those other threads from
-    // acquiring the mutex and modifying m_frameRate or notifying the condition variable.
+    // - Keeping frameRateCondLock locked during sleep_until() would block those other threads
+    // from acquiring the mutex and modifying m_frameRate or notifying the condition variable.
     // - Unlocking is critical to avoid deadlocks or delays
     IRSOL_LOG_TRACE("Sleeping until time for capturing next frame");
     frameRateCondLock.unlock();
@@ -284,4 +285,5 @@ void FrameCollector::broadcastFrames() {
   }
 }
 } // namespace internal
+} // namespace server
 } // namespace irsol

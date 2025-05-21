@@ -13,6 +13,7 @@
 #include <vector>
 
 namespace irsol {
+namespace server {
 namespace internal {
 
 using CollectedFrameCallback = std::function<void(ImageData)>;
@@ -22,7 +23,7 @@ using CollectedFrameCallback = std::function<void(ImageData)>;
  * @brief Manages the continuous capture and distribution of image frames from a camera device.
  *
  * The FrameCollector operates using two dedicated threads:
- * - A **frame collection thread** that captures images from the associated CameraInterface
+ * - A **frame collection thread** that captures images from the associated Interface
  *   at a dynamically adjustable frame rate, determined by connected clients' demands.
  * - A **frame broadcast thread** that distributes captured frames to all registered clients,
  *   ensuring that each client receives frames according to their individual requested frame rates.
@@ -38,7 +39,7 @@ using CollectedFrameCallback = std::function<void(ImageData)>;
  * capture rates based on current client demands.
  *
  * Usage:
- * - Constructed with a reference to a CameraInterface.
+ * - Constructed with a reference to a Interface.
  * - Clients can be added or removed at runtime via thread-safe methods.
  * - The collector can be stopped cleanly, joining internal threads and releasing resources.
  *
@@ -52,7 +53,7 @@ class FrameCollector {
   static constexpr uint8_t MAX_FRAME_QUEUE_SIZE = 16;
 
 public:
-  FrameCollector(CameraInterface &cam);
+  FrameCollector(camera::Interface &cam);
   FrameCollector(const FrameCollector &) = delete;
   FrameCollector &operator=(const FrameCollector &) = delete;
 
@@ -66,7 +67,7 @@ private:
 
   std::atomic<bool> m_running{false};
 
-  CameraInterface &m_cam;
+  camera::Interface &m_cam;
 
   std::mutex m_frameRateMutex;
   std::atomic<double> m_frameRate{0.0};
@@ -92,4 +93,5 @@ private:
   void broadcastFrames();
 };
 } // namespace internal
+} // namespace server
 } // namespace irsol
