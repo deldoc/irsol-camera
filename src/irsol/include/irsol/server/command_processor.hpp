@@ -22,11 +22,10 @@ struct CommandResponse {
 
 class CommandProcessor {
 public:
-  static std::vector<CommandResponse> handleQuery(const std::string &query,
-                                                  std::shared_ptr<ClientSession> session);
-  static std::vector<CommandResponse> handleCommand(const std::string &command,
-                                                    const std::string &params,
-                                                    std::shared_ptr<ClientSession> session);
+  using responses_t = std::vector<CommandResponse>;
+  static responses_t handleQuery(const std::string &query, std::shared_ptr<ClientSession> session);
+  static responses_t handleCommand(const std::string &command, const std::string &params,
+                                   std::shared_ptr<ClientSession> session);
 };
 } // namespace internal
 } // namespace server

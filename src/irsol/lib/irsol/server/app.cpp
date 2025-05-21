@@ -6,7 +6,7 @@
 namespace irsol {
 namespace server {
 
-App::App(uint32_t port)
+App::App(port_t port)
     : m_port(port), m_running(false), m_acceptor({}),
       m_cameraInterface(std::make_unique<camera::Interface>()),
       m_frameCollector(std::make_unique<internal::FrameCollector>(*m_cameraInterface.get())) {
@@ -15,7 +15,7 @@ App::App(uint32_t port)
 
 bool App::start() {
   IRSOL_LOG_INFO("Starting server on port {}", m_port);
-  if (auto openResult = m_acceptor.open(sockpp::inet_address(m_port)); !openResult) {
+  if (auto openResult = m_acceptor.open(inet_address_t(m_port)); !openResult) {
     IRSOL_LOG_ERROR("Failed to open acceptor on port {}: {}", m_port, openResult.error().message());
     return false;
   }
@@ -75,7 +75,7 @@ void App::acceptLoop() {
     }
 
     // Generate a unique ID for this client session
-    std::string clientId = utils::uuid();
+    client_id_t clientId = utils::uuid();
     IRSOL_LOG_DEBUG("Generated client ID: {}", clientId);
     auto session = std::make_shared<internal::ClientSession>(clientId, sockResult.release(), *this);
     addClient(clientId, session);
@@ -83,7 +83,7 @@ void App::acceptLoop() {
   IRSOL_LOG_INFO("Accept loop ended");
 }
 
-void App::addClient(const std::string &clientId, std::shared_ptr<internal::ClientSession> session) {
+void App::addClient(const client_id_t &clientId, std::shared_ptr<internal::ClientSession> session) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   IRSOL_LOG_INFO("New client connection from {}",
                  session->sessionData().sock.address().to_string());
@@ -108,7 +108,7 @@ void App::addClient(const std::string &clientId, std::shared_ptr<internal::Clien
       .detach();
 }
 
-void App::removeClient(const std::string &clientId) {
+void App::removeClient(const client_id_t &clientId) {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   auto client = m_clients.find(clientId);
   if (client == m_clients.end()) {

@@ -10,9 +10,8 @@
 namespace irsol {
 namespace server {
 namespace internal {
-
-std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &query,
-                                                           std::shared_ptr<ClientSession> session) {
+CommandProcessor::responses_t
+CommandProcessor::handleQuery(const std::string &query, std::shared_ptr<ClientSession> session) {
   auto &camera = session->app().camera();
 
   if (query == "camera_status") {
@@ -65,13 +64,19 @@ std::vector<CommandResponse> CommandProcessor::handleQuery(const std::string &qu
   IRSOL_LOG_ERROR("Unknown query: '{}'", query);
   return {};
 }
-std::vector<CommandResponse>
+CommandProcessor::responses_t
 CommandProcessor::handleCommand(const std::string &command, const std::string &params,
                                 std::shared_ptr<ClientSession> session) {
   auto &camera = session->app().camera();
   auto &frameCollector = session->app().frameCollector();
 
   IRSOL_LOG_DEBUG("Processing command: '{}'", command);
+
+  if (command == "it") {
+    double exposureTime = std::stod(params);
+    camera.setParam("ExposureTime", exposureTime);
+    return {CommandResponse{"", {}, "it=" + params + "\n"}};
+  }
 
   if (command == "start_frame_listening") {
     double fps = std::stod(params);

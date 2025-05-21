@@ -10,9 +10,9 @@ namespace irsol {
 namespace server {
 namespace internal {
 
-UserSessionData::UserSessionData(sockpp::tcp_socket &&sock) : sock(std::move(sock)) {}
+UserSessionData::UserSessionData(socket_t &&sock) : sock(std::move(sock)) {}
 
-ClientSession::ClientSession(const std::string &id, sockpp::tcp_socket &&sock, App &app)
+ClientSession::ClientSession(const std::string &id, socket_t &&sock, App &app)
     : m_id(id), m_sessionData(std::move(sock)), m_app(app) {}
 
 void ClientSession::run() {
@@ -24,7 +24,7 @@ void ClientSession::run() {
 
   while (true) {
     // Read data from socket
-    sockpp::result<size_t> readResult = m_sessionData.sock.read(buffer.data(), buffer.size());
+    auto readResult = m_sessionData.sock.read(buffer.data(), buffer.size());
 
     // Handle read errors or connection closure
     if (!readResult) {
@@ -87,7 +87,7 @@ void ClientSession::processRawMessage(const std::string &rawMessage) {
   strippedMessage = utils::stripString(strippedMessage, "bypass ");
 
   // Process the message and get response
-  std::vector<CommandResponse> responses;
+  CommandProcessor::responses_t responses;
   if (strippedMessage.back() == '?') {
     strippedMessage = utils::strip(strippedMessage, "?");
     responses = CommandProcessor::handleQuery(strippedMessage, shared_from_this());

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "sockpp/tcp_socket.h"
+#include "irsol/server/types.hpp"
 #include <atomic>
 #include <chrono>
 #include <memory>
@@ -40,13 +40,13 @@ struct UserSessionData {
    *
    * @param sock The TCP socket representing the client's connection.
    */
-  UserSessionData(sockpp::tcp_socket &&sock);
+  UserSessionData(socket_t &&sock);
 
   /// Controls the parameters for streaming image frames to the client.
   FrameListeningParams frameListeningParams{};
 
   /// The TCP socket used to communicate with the client.
-  sockpp::tcp_socket sock;
+  socket_t sock;
 
   /// Mutex to protect access to the socket and associated buffers.
   std::mutex mutex{};
@@ -75,7 +75,7 @@ public:
    * @param sock   The TCP socket that is already connected to the client.
    * @param app    Reference to the App for which this session is associated.
    */
-  ClientSession(const std::string &id, sockpp::tcp_socket &&sock, App &app);
+  ClientSession(const client_id_t &id, socket_t &&sock, App &app);
 
   /**
    * @brief Entry point to start processing this client's lifecycle.
@@ -112,7 +112,7 @@ public:
   App &app() { return m_app; }
 
   /// Get the unique client identifier.
-  const std::string &id() const { return m_id; }
+  const client_id_t &id() const { return m_id; }
 
   /// Immutable access to this session's UserSessionData.
   const UserSessionData &sessionData() const { return m_sessionData; }
@@ -137,7 +137,7 @@ private:
   void processRawMessage(const std::string &rawMessage);
 
   /// Unique identifier for this client session.
-  std::string m_id;
+  client_id_t m_id;
 
   /// Holds the socket, mutex, and frame streaming parameters.
   UserSessionData m_sessionData;

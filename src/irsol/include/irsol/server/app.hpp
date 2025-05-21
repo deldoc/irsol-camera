@@ -3,9 +3,9 @@
 #include "irsol/camera/interface.hpp"
 #include "irsol/server/client_session.hpp"
 #include "irsol/server/collector.hpp"
+#include "irsol/server/types.hpp"
 #include <atomic>
 #include <mutex>
-#include <sockpp/tcp_acceptor.h>
 #include <thread>
 #include <unordered_map>
 
@@ -31,13 +31,16 @@ class FrameCollector;
  * all active clients according to their needs.
  */
 class App {
+
+  using client_map_t = std::unordered_map<client_id_t, std::shared_ptr<internal::ClientSession>>;
+
 public:
   /**
    * @brief Constructs the server application bound to a given port.
    *
    * @param port TCP port to listen on for client connections.
    */
-  explicit App(uint32_t port);
+  explicit App(port_t port);
 
   /**
    * @brief Starts the server: begins listening and accepting clients.
@@ -71,7 +74,7 @@ public:
 
 private:
   /// TCP port on which the server listens for incoming connections.
-  const uint32_t m_port;
+  const port_t m_port;
 
   /// Atomic flag controlling the server's running state.
   std::atomic<bool> m_running;
@@ -80,13 +83,13 @@ private:
   std::thread m_acceptThread;
 
   /// Acceptor socket bound to m_port.
-  sockpp::tcp_acceptor m_acceptor;
+  acceptor_t m_acceptor;
 
   /// Protects concurrent access to the client sessions map.
   std::mutex m_clientsMutex;
 
   /// Maps client IDs to their active ClientSession instances.
-  std::unordered_map<std::string, std::shared_ptr<internal::ClientSession>> m_clients;
+  client_map_t m_clients;
 
   /// Owned interface to the camera hardware.
   std::unique_ptr<camera::Interface> m_cameraInterface;
@@ -110,7 +113,7 @@ private:
    * @param clientId Unique ID for the new client.
    * @param session  Shared pointer to the created ClientSession.
    */
-  void addClient(const std::string &clientId, std::shared_ptr<internal::ClientSession> session);
+  void addClient(const client_id_t &clientId, std::shared_ptr<internal::ClientSession> session);
 
   /**
    * @brief Unregisters a disconnected client.
@@ -120,7 +123,7 @@ private:
    *
    * @param clientId ID of the client to remove.
    */
-  void removeClient(const std::string &clientId);
+  void removeClient(const client_id_t &clientId);
 };
 } // namespace server
 } // namespace irsol

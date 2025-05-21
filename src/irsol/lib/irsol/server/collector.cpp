@@ -2,6 +2,7 @@
 #include "irsol/logging.hpp"
 #include "irsol/server/app.hpp"
 #include "irsol/utils.hpp"
+#include <vector>
 
 namespace irsol {
 namespace server {

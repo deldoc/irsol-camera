@@ -6,8 +6,6 @@
 
 #include "args/args.hpp"
 #include "irsol/irsol.hpp"
-#include "sockpp/tcp_connector.h"
-#include "sockpp/tcp_socket.h"
 
 // Global flag to indicate shutdown request
 std::atomic<bool> g_terminate{false};
@@ -27,7 +25,7 @@ cv::Mat createMat(unsigned char *data, int rows, int cols, int chs = 1) {
   return mat;
 }
 
-std::optional<std::pair<size_t, cv::Mat>> receiveImage(sockpp::tcp_connector &conn) {
+std::optional<std::pair<size_t, cv::Mat>> receiveImage(irsol::server::connector_t &conn) {
   // Step 1: Read ASCII header until ':' is found
   std::string headerTitle;
   char ch;
@@ -100,12 +98,12 @@ std::optional<std::pair<size_t, cv::Mat>> receiveImage(sockpp::tcp_connector &co
   return std::make_pair(imageId, createMat(buffer.data(), height, width, channels));
 }
 
-std::optional<sockpp::tcp_connector>
-createConnectionWithRetry(const std::string &host, in_port_t port,
+std::optional<irsol::server::connector_t>
+createConnectionWithRetry(const std::string &host, irsol::server::port_t port,
                           std::chrono::seconds retryTimeout = std::chrono::seconds(1)) {
   std::error_code ec;
   while (!g_terminate.load()) {
-    sockpp::tcp_connector conn({host, port}, ec);
+    irsol::server::connector_t conn({host, port}, ec);
     if (ec) {
       IRSOL_LOG_WARN("Failed to connect to server at {}:{}: {}, retrying in {} seconds", host, port,
                      ec.message(), retryTimeout.count());
@@ -123,11 +121,11 @@ void run(double inFps) {
   IRSOL_LOG_INFO("TCP client viewer");
 
   std::string server_host = "localhost";
-  in_port_t port = 15099; // port used by existing clients
+  irsol::server::port_t port = 15099; // port used by existing clients
 
   sockpp::initialize();
 
-  sockpp::tcp_connector conn;
+  irsol::server::connector_t conn;
   if (auto connOpt = createConnectionWithRetry(server_host, port); !connOpt.has_value()) {
     return;
   } else {

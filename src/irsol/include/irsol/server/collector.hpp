@@ -51,6 +51,9 @@ using CollectedFrameCallback = std::function<void(ImageData)>;
 class FrameCollector {
 
   static constexpr uint8_t MAX_FRAME_QUEUE_SIZE = 16;
+  using clients_pool_t =
+      std::vector<std::pair<std::shared_ptr<ClientSession>, CollectedFrameCallback>>;
+  using frame_queue_t = std::queue<ImageData>;
 
 public:
   FrameCollector(camera::Interface &cam);
@@ -73,10 +76,10 @@ private:
   std::atomic<double> m_frameRate{0.0};
 
   mutable std::mutex m_clientsMutex; // also used in const-method
-  std::vector<std::pair<std::shared_ptr<ClientSession>, CollectedFrameCallback>> m_clients;
+  clients_pool_t m_clients;
 
   std::mutex m_frameQueueMutex;
-  std::queue<ImageData> m_frameQueue;
+  frame_queue_t m_frameQueue;
 
   // mutex and condition_variable for collectFrames waiting on m_frameRate changes
   std::mutex m_frameRateCondMutex;

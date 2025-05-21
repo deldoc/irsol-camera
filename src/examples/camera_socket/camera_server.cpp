@@ -2,7 +2,6 @@
 #include <thread>
 
 #include "irsol/irsol.hpp"
-#include "sockpp/tcp_acceptor.h"
 
 int main() {
 
