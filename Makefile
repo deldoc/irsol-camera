@@ -6,24 +6,36 @@ lint:
 	@clang-format --style=file -i -- src/irsol/lib/**/**/*.cpp
 	@clang-format --style=file -i -- src/irsol/include/**/**/*.hpp
 	@clang-format --style=file -i -- src/irsol/include/**/**/*.tpp
+	@clang-format --style=file -i -- src/tests/**/*.cpp
 	@echo "Done running clang-format."
 .PHONY: lint
 
 
 build:
 	@echo "Setting up build environment..."
-	@cd src/ && mkdir -p build && cd build
-	@echo "Building code..."
 	@if [ -n "$$DEBUG" ]; then \
-		echo "Debug mode is enabled"; \
-		cd src/build && cmake -D CMAKE_BUILD_TYPE=Debug ..; \
+		BUILD_DIR=src/build/debug; \
+		CONFIG=Debug; \
 	else \
-		echo "Release mode is enabled"; \
-		cd src/build && cmake -D CMAKE_BUILD_TYPE=Release ..; \
-	fi
-	@cd src/build && make -j 8
+		BUILD_DIR=src/build/release; \
+		CONFIG=Release; \
+	fi; \
+	mkdir -p $$BUILD_DIR && cd $$BUILD_DIR && \
+	cmake -DCMAKE_BUILD_TYPE=$$CONFIG -DIRSOL_BUILD_TESTS=ON ../.. && \
+	make -j8
 	@echo "Done building."
 .PHONY: build
+
+tests: build
+	@echo "Running unit-tests"
+	@if [ -n "$$DEBUG" ]; then \
+		echo "Debug mode is enabled"; \
+		./src/dist/debug/bin/unit_tests --log-level trace; \
+	else \
+		echo "Release mode is enabled"; \
+		./src/dist/release/bin/unit_tests --log-level warn; \
+	fi
+.PHONY: tests
 
 clean:
 	@echo "Cleaning build files..."

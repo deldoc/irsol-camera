@@ -5,5 +5,6 @@
 #ifdef IRSOL_USE_OPENCV
 #include "irsol/opencv.hpp"
 #endif
+#include "irsol/protocol.hpp"
 #include "irsol/server.hpp"
 #include "irsol/utils.hpp"

@@ -73,8 +73,40 @@ NamedLoggerRegistry::getLogger(const std::string& name)
 }
 
 }  // namespace internal
+
 void
-initLogging(const char* logFilePath)
+setLoggerName(const char* name)
+{
+  auto logger = spdlog::default_logger()->clone(name);
+  spdlog::set_default_logger(logger);
+}
+
+void
+setLoggingFormat(LoggingFormat format, std::optional<std::shared_ptr<spdlog::logger>> logger)
+{
+  auto thisLogger = logger.value_or(spdlog::default_logger());
+  for(auto& sink : thisLogger->sinks()) {
+    setSinkLoggingFormat(format, sink);
+  }
+}
+void
+setSinkLoggingFormat(LoggingFormat format, std::shared_ptr<spdlog::sinks::sink> sink)
+{
+  switch(format) {
+    case LoggingFormat::DEFAULT:
+      sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%n][%^%l%$][pid %P][tid %t] %v");
+      break;
+    case LoggingFormat::DEFAULT_NO_TIME:
+      sink->set_pattern("[%^%l%$][%n][pid %P][tid %t] %v");
+      break;
+    case LoggingFormat::SIMPLE:
+      sink->set_pattern("[%^%l%$][%n] %v");
+      break;
+  }
+}
+
+void
+initLogging(const char* logFilePath, std::optional<spdlog::level::level_enum> minLogLevel)
 {
 #ifdef DEBUG
   // Set the logging level to debug if in debug mode
@@ -85,18 +117,24 @@ initLogging(const char* logFilePath)
   const auto consoleSinkLevel = spdlog::level::info;
   const auto fileSinkLevel    = spdlog::level::info;
 #endif
-  const auto globalLevel = std::min({consoleSinkLevel, fileSinkLevel});
+
+  spdlog::level::level_enum globalLevel;
+  if(minLogLevel.has_value()) {
+    globalLevel = *minLogLevel;
+  } else {
+    globalLevel = std::min({consoleSinkLevel, fileSinkLevel});
+  }
 
   auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-  consoleSink->set_level(consoleSinkLevel);
-  consoleSink->set_pattern("[%^%l%$][%n][pid %P][tid %t] %v");
+  consoleSink->set_level(std::min({consoleSinkLevel, globalLevel}));
+  setSinkLoggingFormat(LoggingFormat::DEFAULT_NO_TIME, consoleSink);
 
   const auto maxFileSize = 1024 * 1024 * 5;  // 5 MB
   const auto maxFiles    = 24;               // Keep 24 rotated files
   auto       fileSink    = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
     logFilePath, maxFileSize, maxFiles, false);
-  fileSink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%n][%^%l%$][pid %P][tid %t] %v");
-  fileSink->set_level(fileSinkLevel);
+  fileSink->set_level(std::min({fileSinkLevel, globalLevel}));
+  setSinkLoggingFormat(LoggingFormat::DEFAULT, fileSink);
 
   // Set the loggers as default loggers
   auto logger =
@@ -113,7 +151,11 @@ initLogging(const char* logFilePath)
   spdlog::info("Logging initialized with sync levels");
   spdlog::info("Console {}", spdlog::level::to_string_view(consoleSinkLevel));
   spdlog::info("File: {}", spdlog::level::to_string_view(fileSinkLevel));
-  spdlog::info("Global: {}", spdlog::level::to_string_view(globalLevel));
+  if(minLogLevel.has_value()) {
+    spdlog::info("Global: {} (overridden)", spdlog::level::to_string_view(minLogLevel.value()));
+  } else {
+    spdlog::info("Global: {}", spdlog::level::to_string_view(globalLevel));
+  }
 #endif
 }
 }  // namespace irsol

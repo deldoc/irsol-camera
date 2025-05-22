@@ -3,6 +3,7 @@
 #include "spdlog/spdlog.h"
 
 #include <chrono>
+#include <optional>
 #include <unordered_map>
 
 #define IRSOL_LOG_TRACE(...) spdlog::trace(__VA_ARGS__)
@@ -44,5 +45,18 @@ private:
   irsol::internal::NamedLoggerRegistry::getLogger(name)->critical(__VA_ARGS__)
 
 namespace irsol {
-void initLogging(const char* fileSinkFilename = "log/irsol.log");
+enum class LoggingFormat
+{
+  DEFAULT,
+  DEFAULT_NO_TIME,
+  SIMPLE
+};
+void setLoggingFormat(
+  LoggingFormat                                  format = LoggingFormat::DEFAULT,
+  std::optional<std::shared_ptr<spdlog::logger>> logger = std::nullopt);
+void setSinkLoggingFormat(LoggingFormat format, std::shared_ptr<spdlog::sinks::sink> sink);
+void setLoggerName(const char* name);
+void initLogging(
+  const char*                              fileSinkFilename = "log/irsol.log",
+  std::optional<spdlog::level::level_enum> minLogLevel      = std::nullopt);
 }  // namespace irsol

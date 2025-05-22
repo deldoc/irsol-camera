@@ -17,11 +17,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Output directories for build artifacts
-set(TARGET_DIR_NAME $<LOWER_CASE:${CMAKE_BUILD_TYPE}>)
-set(DIST_TARGET_DIRECTORY ${CMAKE_SOURCE_DIR}/dist/${TARGET_DIR_NAME})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${DIST_TARGET_DIRECTORY}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${DIST_TARGET_DIRECTORY}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${DIST_TARGET_DIRECTORY}/bin)
+foreach(OUTPUTCONFIG DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+    string(TOLOWER "${OUTPUTCONFIG}" OUTPUTCONFIG_LOWER)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${OUTPUTCONFIG} "${CMAKE_SOURCE_DIR}/dist/${OUTPUTCONFIG_LOWER}/bin")
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${OUTPUTCONFIG} "${CMAKE_SOURCE_DIR}/dist/${OUTPUTCONFIG_LOWER}/lib")
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${OUTPUTCONFIG} "${CMAKE_SOURCE_DIR}/dist/${OUTPUTCONFIG_LOWER}/lib")
+endforeach()
 
 # Add debug flags and definitions if in Debug mode
 if(CMAKE_BUILD_TYPE MATCHES Debug)
@@ -61,3 +62,13 @@ add_subdirectory(irsol)
 
 # Add subdirectories for examples
 add_subdirectory(examples)
+
+# Check if IRSOL_BUILD_TESTS is defined and set to ON
+option(IRSOL_BUILD_TESTS "Build irsol tests" OFF)
+if(IRSOL_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests/unit)
+else()
+    message(STATUS "IRSOL_BUILD_TEST is OFF. Skipping building irsol-camera tests.")
+endif()
+

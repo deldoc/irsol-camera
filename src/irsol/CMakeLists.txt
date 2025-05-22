@@ -17,6 +17,10 @@ add_library(${PROJECT_NAME}
     lib/irsol/camera/monitor.cpp
     lib/irsol/logging.cpp
     lib/irsol/utils.cpp
+    lib/irsol/protocol/binary_header.cpp
+    lib/irsol/protocol/message.cpp
+    lib/irsol/protocol/parser.cpp
+    lib/irsol/protocol/serializer.cpp
     lib/irsol/server/app.cpp
     lib/irsol/server/client_session.cpp
     lib/irsol/server/collector.cpp
