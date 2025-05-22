@@ -96,5 +96,65 @@ Error::toString() const
   return oss.str();
 }
 
+InMessageKind
+getMessageKind(const InMessage& msg)
+{
+  return std::visit(
+    [](auto&& value) -> InMessageKind {
+      using T = std::decay_t<decltype(value)>;
+      if constexpr(std::is_same_v<T, Assignment>)
+        return InMessageKind::ASSIGNMENT;
+      else if constexpr(std::is_same_v<T, Inquiry>)
+        return InMessageKind::INQUIRY;
+      else if constexpr(std::is_same_v<T, Command>)
+        return InMessageKind::COMMAND;
+    },
+    msg);
+}
+
+OutMessageKind
+getMessageKind(const OutMessage& msg)
+{
+  return std::visit(
+    [](auto&& value) -> OutMessageKind {
+      using T = std::decay_t<decltype(value)>;
+      if constexpr(std::is_same_v<T, Status>)
+        return OutMessageKind::STATUS;
+      else if constexpr(std::is_same_v<T, Error>)
+        return OutMessageKind::ERROR;
+    },
+    msg);
+}
+
+bool
+isAssignment(const InMessage& msg)
+{
+  return std::holds_alternative<Assignment>(msg);
+}
+
+bool
+isInquiry(const InMessage& msg)
+{
+  return std::holds_alternative<Inquiry>(msg);
+}
+
+bool
+isCommand(const InMessage& msg)
+{
+  return std::holds_alternative<Command>(msg);
+}
+
+bool
+isStatus(const OutMessage& msg)
+{
+  return std::holds_alternative<Status>(msg);
+}
+
+bool
+isError(const OutMessage& msg)
+{
+  return std::holds_alternative<Error>(msg);
+}
+
 }  // namespace protocol
 }  // namespace irsol

@@ -53,3 +53,115 @@ TEST_CASE("Status.hasBody()", "[Protocol][Protocol::Message]")
     CHECK_FALSE(m.hasBody());
   }
 }
+
+TEST_CASE("getMessageKind<InMessage>()", "[Protocol][Protocol::Message]")
+{
+  {
+    auto m = irsol::protocol::Assignment{"x", 42};
+    CHECK(irsol::protocol::getMessageKind(m) == irsol::protocol::InMessageKind::ASSIGNMENT);
+  }
+  {
+    auto m = irsol::protocol::Inquiry{"x"};
+    CHECK(irsol::protocol::getMessageKind(m) == irsol::protocol::InMessageKind::INQUIRY);
+  }
+  {
+    auto m = irsol::protocol::Command{"x"};
+    CHECK(irsol::protocol::getMessageKind(m) == irsol::protocol::InMessageKind::COMMAND);
+  }
+}
+
+TEST_CASE("getMessageKind<OutMessage>()", "[Protocol][Protocol::Message]")
+{
+  {
+    auto m = irsol::protocol::Status{"x", std::make_optional("body")};
+    CHECK(irsol::protocol::getMessageKind(m) == irsol::protocol::OutMessageKind::STATUS);
+  }
+  {
+    auto m = irsol::protocol::Status{"x"};
+    CHECK(irsol::protocol::getMessageKind(m) == irsol::protocol::OutMessageKind::STATUS);
+  }
+  {
+    auto m = irsol::protocol::Error{"x", "error message"};
+    CHECK(irsol::protocol::getMessageKind(m) == irsol::protocol::OutMessageKind::ERROR);
+  }
+}
+
+TEST_CASE("isAssignment()", "[Protocol][Protocol::Message]")
+{
+  {
+    auto m = irsol::protocol::Assignment{"x", 42};
+    CHECK(irsol::protocol::isAssignment(m));
+  }
+  {
+    auto m = irsol::protocol::Inquiry{"x"};
+    CHECK_FALSE(irsol::protocol::isAssignment(m));
+  }
+  {
+    auto m = irsol::protocol::Command{"x"};
+    CHECK_FALSE(irsol::protocol::isAssignment(m));
+  }
+}
+
+TEST_CASE("isInquiry()", "[Protocol][Protocol::Message]")
+{
+  {
+    auto m = irsol::protocol::Inquiry{"x"};
+    CHECK(irsol::protocol::isInquiry(m));
+  }
+  {
+    auto m = irsol::protocol::Assignment{"x", 42};
+    CHECK_FALSE(irsol::protocol::isInquiry(m));
+  }
+  {
+    auto m = irsol::protocol::Command{"x"};
+    CHECK_FALSE(irsol::protocol::isInquiry(m));
+  }
+}
+
+TEST_CASE("isCommand()", "[Protocol][Protocol::Message]")
+{
+  {
+    auto m = irsol::protocol::Command{"x"};
+    CHECK(irsol::protocol::isCommand(m));
+  }
+  {
+    auto m = irsol::protocol::Inquiry{"x"};
+    CHECK_FALSE(irsol::protocol::isCommand(m));
+  }
+  {
+    auto m = irsol::protocol::Assignment{"x", 42};
+    CHECK_FALSE(irsol::protocol::isCommand(m));
+  }
+}
+
+TEST_CASE("isStatus()", "[Protocol][Protocol::Message]")
+{
+  {
+    auto m = irsol::protocol::Status{"x", std::make_optional("body")};
+    CHECK(irsol::protocol::isStatus(m));
+  }
+  {
+    auto m = irsol::protocol::Status{"x"};
+    CHECK(irsol::protocol::isStatus(m));
+  }
+  {
+    auto m = irsol::protocol::Error{"x", "error message"};
+    CHECK_FALSE(irsol::protocol::isStatus(m));
+  }
+}
+
+TEST_CASE("isError()", "[Protocol][Protocol::Message]")
+{
+  {
+    auto m = irsol::protocol::Error{"x", "error message"};
+    CHECK(irsol::protocol::isError(m));
+  }
+  {
+    auto m = irsol::protocol::Status{"x", std::make_optional("body")};
+    CHECK_FALSE(irsol::protocol::isError(m));
+  }
+  {
+    auto m = irsol::protocol::Status{"x"};
+    CHECK_FALSE(irsol::protocol::isError(m));
+  }
+}

@@ -10,6 +10,12 @@ namespace protocol {
 class Serializer
 {
 public:
+  /*
+   * Serialize an OutMessage into a string.
+   *
+   * @param msg The message to serialize.
+   * @return A string containing the serialized message.
+   */
   static std::string serialize(const OutMessage& msg);
 
 private:

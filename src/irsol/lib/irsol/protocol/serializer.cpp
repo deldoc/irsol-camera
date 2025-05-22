@@ -13,7 +13,7 @@ Serializer::serialize(const OutMessage& msg)
 {
 
   return std::visit(
-    [](const auto& msg) -> std::string {
+    [](auto&& msg) -> std::string {
       using T = std::decay_t<decltype(msg)>;
       if constexpr(std::is_same_v<T, Status>) {
         return msg.identifier + ";";
@@ -31,7 +31,7 @@ std::string
 Serializer::serializeValue(const internal::value_t& value)
 {
   return std::visit(
-    [](const auto& val) -> std::string {
+    [](auto&& val) -> std::string {
       using T = std::decay_t<decltype(val)>;
       if constexpr(std::is_same_v<T, std::string>) {
         return "{" + val + "}";  // wrap string in braces as per protocol specification
