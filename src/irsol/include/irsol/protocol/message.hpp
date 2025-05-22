@@ -17,7 +17,10 @@ namespace protocol {
  */
 struct Assignment
 {
-  /// The variable or parameter name being assigned.
+  Assignment(const std::string& identifier, internal::value_t value);
+
+  /// The variable or parameter name being assigned. Must start with a character, followed by
+  /// alphanumeric characters and underscores.
   std::string identifier;
 
   /// The value assigned to the identifier (int, double, or string).
@@ -46,7 +49,10 @@ struct Assignment
  */
 struct Inquiry
 {
-  /// The identifier whose value is being requested.
+  Inquiry(const std::string& identifier);
+
+  /// The identifier whose value is being requested. Must start with a character, followed by
+  /// alphanumeric characters and underscores.
   std::string identifier;
 
   /**
@@ -63,7 +69,10 @@ struct Inquiry
  */
 struct Command
 {
-  /// The name of the command to execute.
+  Command(const std::string& identifier);
+
+  /// The name of the command to execute. Must start with a character, followed by alphanumeric
+  /// characters and underscores.
   std::string identifier;
 
   /**
@@ -80,7 +89,10 @@ struct Command
  */
 struct Status
 {
-  /// The identifier associated with the status.
+  Status(const std::string& identifier, std::optional<std::string> body = std::nullopt);
+
+  /// The identifier associated with the status. Must start with a character, followed by
+  /// alphanumeric characters and underscores.
   std::string identifier;
 
   /// Optional body providing further detail about the status.
@@ -103,7 +115,10 @@ struct Status
  */
 struct Error
 {
-  /// Identifier related to the error (e.g., the failed command).
+  Error(const std::string& identifier, const std::string& description);
+
+  /// Identifier related to the error (e.g., the failed command). Must start with a character,
+  /// followed by alphanumeric characters and underscores.
   std::string identifier;
 
   /// Human-readable error description.

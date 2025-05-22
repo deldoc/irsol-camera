@@ -52,13 +52,17 @@ Parser::parseAssignment(const std::string& line)
   // braces={sting value}
   static const std::regex re(R"(^([a-zA-Z0-9_]+(?:\[\d+\])*)=(.+)$)");
   std::smatch             m;
+  std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
-    std::string identifier = utils::trim(m[1]);
-    if(identifier.empty()) {
-      return std::nullopt;
+    try {
+      return Assignment{utils::trim(m[1]), parseValue(utils::trim(m[2]))};
+    } catch(const std::invalid_argument& e) {
+      errorMessage = e.what();
     }
-    return Assignment{identifier, parseValue(utils::trim(m[2]))};
+  } else {
+    errorMessage = "Regex pattern did not match";
   }
+  IRSOL_LOG_ERROR("Error parsing assignment string '{}': {}", line, errorMessage);
   return std::nullopt;
 }
 
@@ -80,15 +84,18 @@ Parser::parseInquiry(const std::string& line)
   // nested_array_like[1][2]?
 
   static const std::regex re(R"(^([a-zA-Z0-9_]+(?:\[\d+\])*)\?$)");
-
-  std::smatch m;
+  std::smatch             m;
+  std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
-    std::string identifier = utils::trim(m[1]);
-    if(identifier.empty()) {
-      return std::nullopt;
+    try {
+      return Inquiry{utils::trim(m[1])};
+    } catch(const std::invalid_argument& e) {
+      errorMessage = e.what();
     }
-    return Inquiry{identifier};
+  } else {
+    errorMessage = "Regex pattern did not match";
   }
+  IRSOL_LOG_ERROR("Error parsing inquiry string '{}': {}", line, errorMessage);
   return std::nullopt;
 }
 
@@ -108,13 +115,15 @@ Parser::parseCommand(const std::string& line)
 
   static const std::regex re(R"(^([a-zA-Z0-9_]+)$)");
   std::smatch             m;
+  std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
-    std::string identifier = utils::trim(m[1]);
-    if(identifier.empty()) {
-      return std::nullopt;
+    try {
+      return Command{utils::trim(m[1])};
+    } catch(const std::invalid_argument& e) {
+      errorMessage = e.what();
     }
-    return Command{identifier};
   }
+  IRSOL_LOG_ERROR("Error parsing inquiry string '{}': {}", line, errorMessage);
   return std::nullopt;
 }
 

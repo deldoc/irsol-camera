@@ -12,6 +12,10 @@
 namespace irsol {
 namespace protocol {
 
+Assignment::Assignment(const std::string& identifier, internal::value_t value)
+  : identifier(utils::validateIdentifier(identifier)), value(value)
+{}
+
 std::string
 Assignment::toString() const
 {
@@ -50,6 +54,9 @@ Assignment::hasString() const
   return std::holds_alternative<std::string>(value);
 }
 
+Inquiry::Inquiry(const std::string& identifier): identifier(utils::validateIdentifier(identifier))
+{}
+
 std::string
 Inquiry::toString() const
 {
@@ -59,6 +66,9 @@ Inquiry::toString() const
   return oss.str();
 }
 
+Command::Command(const std::string& identifier): identifier(utils::validateIdentifier(identifier))
+{}
+
 std::string
 Command::toString() const
 {
@@ -67,6 +77,10 @@ Command::toString() const
       << "identifier: " << identifier << "}";
   return oss.str();
 }
+
+Status::Status(const std::string& identifier, std::optional<std::string> body)
+  : identifier(utils::validateIdentifier(identifier)), body(body)
+{}
 
 std::string
 Status::toString() const
@@ -86,6 +100,10 @@ Status::hasBody() const
 {
   return body.has_value();
 }
+
+Error::Error(const std::string& identifier, const std::string& description)
+  : identifier(utils::validateIdentifier(identifier)), description(description)
+{}
 
 std::string
 Error::toString() const

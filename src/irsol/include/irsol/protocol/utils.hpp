@@ -2,6 +2,7 @@
 #include "irsol/logging.hpp"
 #include "irsol/protocol/types.hpp"
 
+#include <regex>
 #include <sstream>
 #include <string>
 #include <type_traits>
@@ -9,6 +10,24 @@
 namespace irsol {
 namespace protocol {
 namespace utils {
+
+/**
+ * Validate that the given string is a valid identifier according to the following rules:
+ * - Starts with an alphabetic character or underscore.
+ * - Contains only alphanumeric characters, underscores, and optionally square brackets for array
+ * indexing.
+ */
+inline std::string
+validateIdentifier(const std::string& identifier)
+{
+  static const std::regex re(R"(^[a-zA-Z_][a-zA-Z0-9_]*(?:\[\d+\])*$)");
+  std::smatch             m;
+  if(!std::regex_match(identifier, m, re)) {
+    IRSOL_LOG_ERROR("Invalid identifier '{}'", identifier);
+    throw std::invalid_argument("Invalid identifier");
+  }
+  return identifier;
+}
 
 template<typename T>
 T
