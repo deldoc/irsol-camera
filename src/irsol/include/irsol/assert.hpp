@@ -23,6 +23,14 @@
 
 #define IRSOL_STATIC_ASSERT \
   PPK_STATIC_ASSERT  // Prints assertion to console at compile time and terminates the compilation
+#define _IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION(T, fullMessageLiteral) \
+  IRSOL_STATIC_ASSERT((std::is_same_v<T, void>), fullMessageLiteral)
+#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)                                  \
+  _IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION(                                            \
+    T,                                                                                             \
+    "Function '" funcNameLiteral "' does not implement a template specialization for a type that " \
+    "would like to instantiate this template. Look at the above error message for the missing "    \
+    "type specialization.")
 
 namespace irsol {
 using AssertionException = ppk::assert::AssertionException;  // Exception thrown by PPK_ASSERT_ERROR

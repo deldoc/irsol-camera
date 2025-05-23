@@ -15,20 +15,7 @@ Serializer::serialize(const OutMessage& msg)
   return std::visit(
     [](auto&& msg) -> std::string {
       using T = std::decay_t<decltype(msg)>;
-      if constexpr(std::is_same_v<T, Status>) {
-        return msg.identifier + ";";
-      } else if constexpr(std::is_same_v<T, BinaryDataBuffer>) {
-        return "todo";
-      } else if constexpr(std::is_same_v<T, ImageBinaryData>) {
-        return "todo";
-      } else if constexpr(std::is_same_v<T, ColorImageBinaryData>) {
-        return "todo";
-      } else if constexpr(std::is_same_v<T, Error>) {
-        return msg.identifier + ": ERROR: " + msg.description;
-      } else {
-        static_assert(sizeof(T) == 0, "serialize: unsupported type");
-        return "";
-      }
+      return serialize<T>(msg);
     },
     msg);
 }
@@ -39,11 +26,7 @@ Serializer::serializeValue(const internal::value_t& value)
   return std::visit(
     [](auto&& val) -> std::string {
       using T = std::decay_t<decltype(val)>;
-      if constexpr(std::is_same_v<T, std::string>) {
-        return "{" + val + "}";  // wrap string in braces as per protocol specification
-      } else {
-        return std::to_string(val);  // int and double
-      }
+      return serializeValue<T>(val);
     },
     value);
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/protocol/types.hpp"
 
@@ -41,16 +42,16 @@ fromString(const std::string& str)
     if(pos != str.length())
       throw std::invalid_argument("Extra characters after integer");
     return res;
-  } else if constexpr(std::is_floating_point_v<T>) {
-    IRSOL_LOG_TRACE("Converting string '{}' to double", str);
-    double res = std::stod(str, &pos);
-    if(pos != str.length())
-      throw std::invalid_argument("Extra characters after double");
-    return res;
+    } else if constexpr(std::is_floating_point_v<T>) {
+      IRSOL_LOG_TRACE("Converting string '{}' to double", str);
+      double res = std::stod(str, &pos);
+      if(pos != str.length())
+        throw std::invalid_argument("Extra characters after double");
+      return res;
   } else if constexpr(std::is_same_v<T, std::string>) {
     return str;
   } else {
-    static_assert(sizeof(T) == 0, "fromString: unsupported type");
+    IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "utils::fromString()");
   }
 }
 

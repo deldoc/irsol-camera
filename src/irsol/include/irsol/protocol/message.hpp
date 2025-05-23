@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/assert.hpp"
 #include "irsol/protocol/binary_message.hpp"
 #include "irsol/protocol/types.hpp"
 
@@ -174,37 +175,27 @@ enum class OutMessageKind
 using OutMessage =
   std::variant<Status, BinaryDataBuffer, ImageBinaryData, ColorImageBinaryData, Error>;
 
-namespace internal {
-// Create trait helpers to limit the compilation possibility of some template functions
-// to only types that are part of the InMessage/OutMessage variants.
-
-template<typename T, typename Variant>
-struct _IsTypeInVariant;
-
-template<typename T, typename... Ts>
-struct _IsTypeInVariant<T, std::variant<Ts...>> : std::disjunction<std::is_same<T, Ts>...>
-{};
-
+namespace traits {
 // To be used as:
-// template <typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+// template <typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
 // void myFunctionTemplate(const T& msg) { ... }
 // in this way, the 'myFunctionTemplate' will only accept types that are part of the InMessage
 // variant. and if used with a type that is not part of the InMessage variant, the compiler will
 // issue a compilation error.
 template<typename T>
-using IsInMessageVariant = _IsTypeInVariant<T, InMessage>;
+using IsInMessageVariant = internal::traits::_IsTypeInVariant<T, InMessage>;
 
 // To be used as:
-// template <typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+// template <typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
 // void myFunctionTemplate(const T& msg) { ... }
 // in this way, the 'myFunctionTemplate' will only accept types that are part of the OutMessage
 // variant. and if used with a type that is not part of the OutMessage variant, the compiler will
 // issue a compilation error.
 template<typename T>
-using IsOutMessageVariant = _IsTypeInVariant<T, OutMessage>;
-}  // namespace internal
+using IsOutMessageVariant = internal::traits::_IsTypeInVariant<T, OutMessage>;
+}  // namespace traits
 
-template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
 constexpr InMessageKind
 getInMessageKind(const T&)
 {
@@ -215,8 +206,7 @@ getInMessageKind(const T&)
   else if constexpr(std::is_same_v<T, Command>)
     return InMessageKind::COMMAND;
   else
-    static_assert(
-      std::is_same_v<T, void>, "Unsupported InMessage type");  // This line should never be reached.
+    IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "getInMessageKind()");
 }
 
 /**
@@ -226,7 +216,7 @@ getInMessageKind(const T&)
  */
 InMessageKind getInMessageKind(const InMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
 constexpr bool
 isAssignment(const T&)
 {
@@ -234,7 +224,7 @@ isAssignment(const T&)
 }
 bool isAssignment(const InMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
 constexpr bool
 isInquiry(const T&)
 {
@@ -242,7 +232,7 @@ isInquiry(const T&)
 }
 bool isInquiry(const InMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
 constexpr bool
 isCommand(const T&)
 {
@@ -250,7 +240,7 @@ isCommand(const T&)
 }
 bool isCommand(const InMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
 constexpr OutMessageKind
 getOutMessageKind(const T&)
 {
@@ -265,9 +255,7 @@ getOutMessageKind(const T&)
   else if constexpr(std::is_same_v<T, ColorImageBinaryData>)
     return OutMessageKind::COLOR_IMAGE;
   else
-    static_assert(
-      std::is_same_v<T, void>,
-      "Unsupported OutMessage type");  // This line should never be reached.
+    IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "getOutMessageKind()");
 }
 /**
  * @brief Returns the kind of the given OutMessage.
@@ -276,7 +264,7 @@ getOutMessageKind(const T&)
  */
 OutMessageKind getOutMessageKind(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
 constexpr bool
 isStatus(const T&)
 {
@@ -284,7 +272,7 @@ isStatus(const T&)
 }
 bool isStatus(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
 constexpr bool
 isBinaryDataBuffer(const T&)
 {
@@ -292,7 +280,7 @@ isBinaryDataBuffer(const T&)
 }
 bool isBinaryDataBuffer(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
 constexpr bool
 isImageBinaryData(const T&)
 {
@@ -300,7 +288,7 @@ isImageBinaryData(const T&)
 }
 bool isImageBinaryData(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
 constexpr bool
 isColorImageBinaryData(const T&)
 {
@@ -308,7 +296,7 @@ isColorImageBinaryData(const T&)
 }
 bool isColorImageBinaryData(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
 constexpr bool
 isError(const T&)
 {

@@ -47,7 +47,7 @@ namespace internal {
 template<typename T, std::uint8_t N>
 struct BinaryData
 {
-  static_assert(N >= 1, "Binary data dimensionality must be at least 1");
+  IRSOL_STATIC_ASSERT(N >= 1, "Binary data dimensionality must be at least 1");
 
   /// @brief  The dimensionality of the binary data.
   static constexpr uint8_t dim = N;

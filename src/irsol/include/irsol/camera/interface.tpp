@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 
 #include <type_traits>
@@ -28,7 +29,7 @@ Interface::getParam(const std::string& param) const
     if constexpr(std::is_floating_point_v<std::decay_t<T>>) {
       return feature.GetDouble();
     } else {
-      static_assert(sizeof(T) == 0, "Unsupported parameter type for getParam");
+      IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Interface::getParam()");
     }
   } catch(const std::exception& e) {
     IRSOL_LOG_ERROR("Failed to get parameter '{}': {}", param, e.what());
@@ -59,7 +60,7 @@ Interface::setParam(const std::string& param, T value)
     } else if constexpr(std::is_floating_point_v<std::decay_t<T>>) {
       m_cam.SetFeature(NeoAPI::NeoString(param.c_str()), static_cast<double>(value));
     } else {
-      static_assert(sizeof(T) == 0, "Unsupported parameter type for setParam");
+      IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Interface::setParam()");
     }
   } catch(const std::exception& e) {
     IRSOL_LOG_ERROR("Failed to set parameter '{}': {}", param, e.what());
