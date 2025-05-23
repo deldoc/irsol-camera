@@ -80,6 +80,28 @@ struct BinaryData
       this->numElements);
   }
 
+  /**
+   * @brief Move constructor for binary data object
+   * @param other The binary data object to move from.
+   * @note data and attributes are moved from the input to the constructed object.
+   */
+  BinaryData(BinaryData&& other) noexcept
+    : data(std::move(other.data))
+    , shape(std::move(other.shape))
+    , numElements(other.numElements)
+    , numBytes(other.numBytes)
+    , attributes(std::move(other.attributes))
+  {
+    IRSOL_LOG_TRACE("BinaryData moved: {}", toString());
+  }
+
+  // Delete the copy-constructor to prevent accidental copying of binary data attributes.
+  BinaryData(const BinaryData&) = delete;
+  // Delete the assignment operator to prevent accidental assignment of binary data attributes.
+  BinaryData& operator=(const BinaryData&) = delete;
+  // Delete the move-assignment operator to prevent accidental moving of binary data attributes.
+  BinaryData& operator=(BinaryData&& other) noexcept = delete;
+
   /// Owning pointer to the binary data.
   const std::vector<T> data;
   /// Shape of the binary data.

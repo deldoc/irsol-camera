@@ -1,13 +1,17 @@
 
 #include "irsol/protocol/message/success.hpp"
+
 #include "irsol/protocol/utils.hpp"
 
 #include <sstream>
 
 namespace irsol {
 namespace protocol {
-    Success::Success(const std::string& identifier, std::optional<internal::value_t> body)
-  : identifier(utils::validateIdentifier(identifier)), body(body)
+Success::Success(
+  const std::string&               identifier,
+  InMessageKind                    source,
+  std::optional<internal::value_t> body)
+  : identifier(utils::validateIdentifier(identifier)), source(source), body(body)
 {}
 
 std::string
@@ -15,7 +19,7 @@ Success::toString() const
 {
   std::ostringstream oss;
   oss << "Success{"
-      << "identifier: " << identifier;
+      << "identifier: " << identifier << ", source: " << InMessageKindToString(source);
   if(hasBody()) {
     oss << ", body: ";
     if(hasInt()) {
@@ -29,7 +33,6 @@ Success::toString() const
   oss << "}";
   return oss.str();
 }
-
 
 bool
 Success::hasBody() const
@@ -52,15 +55,5 @@ Success::hasString() const
   return hasBody() && std::holds_alternative<std::string>(*body);
 }
 
-Success
-Success::from(const InMessage& msg)
-{
-  return std::visit(
-    [](auto&& value) -> Success {
-      using T = std::decay_t<decltype(value)>;
-      return Success::from<T>(value);
-    },
-    msg);
-}
 }  // namespace protocol
 }  // namespace irsol

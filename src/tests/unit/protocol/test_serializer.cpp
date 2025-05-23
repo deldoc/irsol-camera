@@ -2,6 +2,7 @@
 #include "irsol/protocol/serializer.hpp"
 
 #include <catch2/catch_all.hpp>
+#include <utility>
 
 TEST_CASE("Serializer::serializeValue<direct>()", "[Protocol][Protocol::Serializer]")
 {
@@ -43,10 +44,15 @@ TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Seriali
   }
   {
     // From a string
-    std::string                        value = GENERATE("", "hello", "world", "test", "12345");
+    auto [value, expected] = GENERATE(
+      std::make_pair("", "{}"),
+      std::make_pair("hello", "{hello}"),
+      std::make_pair("world", "{world}"),
+      std::make_pair("test", "{test}"),
+      std::make_pair("12345", "{12345}"));
     irsol::protocol::internal::value_t variantValue(value);
     std::string serialized = irsol::protocol::Serializer::serializeValue(variantValue);
-    CHECK(serialized == "{" + value + "}");
+    CHECK(serialized == expected);
   }
 }
 
@@ -60,8 +66,9 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
       irsol::protocol::internal::value_t{42},
       irsol::protocol::internal::value_t{3.15},
       irsol::protocol::internal::value_t{"my string"});
+
     irsol::protocol::Assignment assignment{identifier, value};
-    auto                        success = irsol::protocol::Success::from(assignment);
+    irsol::protocol::Success    success = irsol::protocol::Success::from(assignment);
 
     std::string serialized = irsol::protocol::Serializer::serialize(success);
     std::string expected =
@@ -72,11 +79,16 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
     // From a successful Inquiry
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
+    auto inquery_result = GENERATE(
+      irsol::protocol::internal::value_t{42},
+      irsol::protocol::internal::value_t{3.15},
+      irsol::protocol::internal::value_t{"my string"});
     irsol::protocol::Inquiry inquiry{identifier};
-    auto                     success = irsol::protocol::Success::from(inquiry);
+    auto                     success = irsol::protocol::Success::from(inquiry, inquery_result);
 
     std::string serialized = irsol::protocol::Serializer::serialize(success);
-    std::string expected   = std::string(identifier);
+    std::string expected =
+      std::string(identifier) + "=" + irsol::protocol::Serializer::serializeValue(inquery_result);
     CHECK(serialized == expected);
   }
   {
@@ -86,7 +98,7 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
     auto                     success = irsol::protocol::Success::from(command);
 
     std::string serialized = irsol::protocol::Serializer::serialize(success);
-    std::string expected   = std::string(identifier);
+    std::string expected   = std::string(identifier) + ";";
     CHECK(serialized == expected);
   }
 }
@@ -114,12 +126,17 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
     // From a successful Inquiry
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
+    auto inquery_result = GENERATE(
+      irsol::protocol::internal::value_t{42},
+      irsol::protocol::internal::value_t{3.15},
+      irsol::protocol::internal::value_t{"my string"});
     irsol::protocol::Inquiry inquiry{identifier};
-    auto                     success        = irsol::protocol::Success::from(inquiry);
+    auto                     success = irsol::protocol::Success::from(inquiry, inquery_result);
     auto                     successVariant = irsol::protocol::OutMessage(success);
 
     std::string serialized = irsol::protocol::Serializer::serialize(successVariant);
-    std::string expected   = std::string(identifier);
+    std::string expected =
+      std::string(identifier) + "=" + irsol::protocol::Serializer::serializeValue(inquery_result);
     CHECK(serialized == expected);
   }
   {
@@ -130,7 +147,7 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
     auto                     successVariant = irsol::protocol::OutMessage(success);
 
     std::string serialized = irsol::protocol::Serializer::serialize(successVariant);
-    std::string expected   = std::string(identifier);
+    std::string expected   = std::string(identifier) + ";";
     CHECK(serialized == expected);
   }
 }

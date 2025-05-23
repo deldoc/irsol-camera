@@ -1,7 +1,6 @@
 #pragma once
 
 #include "irsol/assert.hpp"
-#include "irsol/logging.hpp"
 #include "irsol/protocol/message.hpp"
 
 #include <string>
@@ -30,28 +29,15 @@ public:
   static std::string serialize(const T& msg)
   {
     if constexpr(std::is_same_v<T, Success>) {
-      IRSOL_LOG_TRACE("Serializing status message: {}", msg.toString());
-      std::string result = msg.identifier;
-      if(msg.hasBody()) {
-        result += "=" + serializeValue(*msg.body);
-      }
-      return result;
+      return serializeSuccess(msg);
     } else if constexpr(std::is_same_v<T, BinaryDataBuffer>) {
-      IRSOL_LOG_TRACE("Serializing binary buffer: {}", msg.toString());
-      //TODO: implement serialization
-      throw std::runtime_error("Binary data serialization not supported");
-      return "test" + msg.toString();
+      return serializeBinaryDataBuffer(msg);
     } else if constexpr(std::is_same_v<T, ImageBinaryData>) {
-      IRSOL_LOG_TRACE("Serializing image binary data: {}", msg.toString());
-      //TODO: implement serialization
-      throw std::runtime_error("Binary data serialization not supported");
+      return serializeImageBinaryData(msg);
     } else if constexpr(std::is_same_v<T, ColorImageBinaryData>) {
-      IRSOL_LOG_TRACE("Serializing color image binary data: {}", msg.toString());
-      //TODO: implement serialization
-      throw std::runtime_error("Binary data serialization not supported");
+      return serializeColorImageBinaryData(msg);
     } else if constexpr(std::is_same_v<T, Error>) {
-      IRSOL_LOG_TRACE("Serializing error message: {}", msg.toString());
-      return msg.identifier + ": Error: " + msg.description;
+      return serializeError(msg);
     } else
       IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Serializer::serialize()");
   }
@@ -69,6 +55,15 @@ public:
     } else
       IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Serializer::serializeValue()");
   }
+
+private:
+  Serializer() = delete;
+
+  static std::string serializeSuccess(const Success& msg);
+  static std::string serializeBinaryDataBuffer(const BinaryDataBuffer& msg);
+  static std::string serializeImageBinaryData(const ImageBinaryData& msg);
+  static std::string serializeColorImageBinaryData(const ColorImageBinaryData& msg);
+  static std::string serializeError(const Error& msg);
 };
 
 }  // namespace protocol

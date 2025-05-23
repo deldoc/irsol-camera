@@ -30,7 +30,12 @@
     T,                                                                                             \
     "Function '" funcNameLiteral "' does not implement a template specialization for a type that " \
     "would like to instantiate this template. Look at the above error message for the missing "    \
-    "type specialization.")
+    "type specialization.");
+
+#define IRSOL_UNREACHABLE(messageLiteral)                                              \
+  IRSOL_STATIC_ASSERT(                                                                 \
+    (std::is_same_v<void, void>), "This code should be unreachable. " messageLiteral); \
+  __builtin_unreachable()
 
 namespace irsol {
 using AssertionException = ppk::assert::AssertionException;  // Exception thrown by PPK_ASSERT_ERROR
