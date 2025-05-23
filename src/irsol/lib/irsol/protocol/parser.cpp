@@ -1,7 +1,6 @@
 #include "irsol/protocol/parser.hpp"
 
 #include "irsol/logging.hpp"
-#include "irsol/protocol/types.hpp"
 #include "irsol/protocol/utils.hpp"
 
 #include <regex>

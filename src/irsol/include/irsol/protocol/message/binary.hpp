@@ -2,10 +2,9 @@
 
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
-#include "irsol/protocol/types.hpp"
+#include "irsol/protocol/message/types.hpp"
 
 #include <array>
-#include <memory>
 #include <numeric>
 #include <sstream>
 #include <vector>

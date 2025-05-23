@@ -1,9 +1,8 @@
 #pragma once
+
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/protocol/message.hpp"
-#include "irsol/protocol/types.hpp"
-#include "irsol/utils.hpp"
 
 #include <string>
 
@@ -30,7 +29,7 @@ public:
   template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
   static std::string serialize(const T& msg)
   {
-    if constexpr(std::is_same_v<T, Status>) {
+    if constexpr(std::is_same_v<T, Success>) {
       IRSOL_LOG_INFO("Serializing status message: {}", msg.toString());
       return "test" + msg.toString();
     } else if constexpr(std::is_same_v<T, BinaryDataBuffer>) {

@@ -14,10 +14,16 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(unit_tests
   main.cpp
-  test_protocol_message.cpp
-  test_protocol_parser.cpp
-  test_protocol_serializer.cpp
-  test_protocol_utils.cpp
+  protocol/message/test_assignment.cpp
+  protocol/message/test_binary.cpp
+  protocol/message/test_command.cpp
+  protocol/message/test_error.cpp
+  protocol/message/test_inquiry.cpp
+  protocol/message/test_success.cpp
+  protocol/message/test_variants.cpp
+  protocol/test_parser.cpp
+  protocol/test_serializer.cpp
+  protocol/test_utils.cpp
 )
 
 target_link_libraries(unit_tests PRIVATE

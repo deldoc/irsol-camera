@@ -1,22 +1,22 @@
-#include "irsol/protocol/binary_message.hpp"
+#include "irsol/protocol/message/assignment.hpp"
 
 #include "irsol/assert.hpp"
-#include "irsol/protocol/types.hpp"
 #include "irsol/protocol/utils.hpp"
 
 #include <sstream>
 
 namespace irsol {
 namespace protocol {
-BinaryDataAttribute::BinaryDataAttribute(const std::string& identifier, internal::value_t value)
+
+Assignment::Assignment(const std::string& identifier, internal::value_t value)
   : identifier(utils::validateIdentifier(identifier)), value(value)
 {}
 
 std::string
-BinaryDataAttribute::toString() const
+Assignment::toString() const
 {
   std::ostringstream oss;
-  oss << "BinaryDataAttribute{"
+  oss << "Assignment{"
       << "identifier: " << identifier << ", value: ";
   if(hasInt()) {
     oss << "<int> " << std::get<int>(value);
@@ -25,30 +25,29 @@ BinaryDataAttribute::toString() const
   } else if(hasString()) {
     oss << "<string> \"" << std::get<std::string>(value) << "\"";
   } else {
-    IRSOL_ASSERT_ERROR(false, "Invalid binary data attribute value type");
-    throw std::runtime_error("Invalid binary data attribute value type");
+    IRSOL_ASSERT_ERROR(false, "Invalid assignment value type");
+    throw std::runtime_error("Invalid assignment value type");
   }
   oss << '}';
   return oss.str();
 }
 
 bool
-BinaryDataAttribute::hasInt() const
+Assignment::hasInt() const
 {
   return std::holds_alternative<int>(value);
 }
 
 bool
-BinaryDataAttribute::hasDouble() const
+Assignment::hasDouble() const
 {
   return std::holds_alternative<double>(value);
 }
 
 bool
-BinaryDataAttribute::hasString() const
+Assignment::hasString() const
 {
   return std::holds_alternative<std::string>(value);
 }
-
-}
-}
+} // namespace protocol
+} // namespace irsol

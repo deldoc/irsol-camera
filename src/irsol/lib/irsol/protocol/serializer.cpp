@@ -1,6 +1,5 @@
 #include "irsol/protocol/serializer.hpp"
 
-#include "irsol/protocol/types.hpp"
 #include "irsol/protocol/utils.hpp"
 
 #include <variant>

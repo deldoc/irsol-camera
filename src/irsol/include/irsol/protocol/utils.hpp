@@ -1,7 +1,7 @@
 #pragma once
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
-#include "irsol/protocol/types.hpp"
+#include "irsol/protocol/message/types.hpp"
 
 #include <regex>
 #include <sstream>
@@ -42,12 +42,12 @@ fromString(const std::string& str)
     if(pos != str.length())
       throw std::invalid_argument("Extra characters after integer");
     return res;
-    } else if constexpr(std::is_floating_point_v<T>) {
-      IRSOL_LOG_TRACE("Converting string '{}' to double", str);
-      double res = std::stod(str, &pos);
-      if(pos != str.length())
-        throw std::invalid_argument("Extra characters after double");
-      return res;
+  } else if constexpr(std::is_floating_point_v<T>) {
+    IRSOL_LOG_TRACE("Converting string '{}' to double", str);
+    double res = std::stod(str, &pos);
+    if(pos != str.length())
+      throw std::invalid_argument("Extra characters after double");
+    return res;
   } else if constexpr(std::is_same_v<T, std::string>) {
     return str;
   } else {

@@ -1,0 +1,191 @@
+#pragma once
+
+#include "irsol/protocol/message/types.hpp"
+#include "irsol/protocol/message/binary.hpp"
+
+#include <variant>
+
+namespace irsol {
+namespace protocol {
+
+
+/**
+ * @brief Represents the type of an incoming message.
+ */
+enum class InMessageKind
+{
+  ASSIGNMENT,
+  INQUIRY,
+  COMMAND
+};
+
+// Forward declarations
+struct Assignment;
+struct Inquiry;
+struct Command;
+
+/**
+ * @brief Represents any incoming message type that can be parsed.
+ *
+ * This includes assignments, inquiries, and commands.
+ */
+using InMessage = std::variant<Assignment, Inquiry, Command>;
+
+/**
+ * @brief Represents the type of an outgoing message.
+ */
+enum class OutMessageKind
+{
+  STATUS,
+  BINARY_BUFFER,
+  BW_IMAGE,
+  COLOR_IMAGE,
+  ERROR
+};
+
+// Forward declarations
+struct Success;
+struct Error;
+
+/**
+ * @brief Represents any outgoing message type sent in response.
+ *
+ * This includes status messages and errors.
+ */
+using OutMessage =
+  std::variant<Success, BinaryDataBuffer, ImageBinaryData, ColorImageBinaryData, Error>;
+
+
+namespace traits {
+// To be used as:
+// template <typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+// void myFunctionTemplate(const T& msg) { ... }
+// in this way, the 'myFunctionTemplate' will only accept types that are part of the InMessage
+// variant. and if used with a type that is not part of the InMessage variant, the compiler will
+// issue a compilation error.
+template<typename T>
+using IsInMessageVariant = internal::traits::_IsTypeInVariant<T, InMessage>;
+
+// To be used as:
+// template <typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+// void myFunctionTemplate(const T& msg) { ... }
+// in this way, the 'myFunctionTemplate' will only accept types that are part of the OutMessage
+// variant. and if used with a type that is not part of the OutMessage variant, the compiler will
+// issue a compilation error.
+template<typename T>
+using IsOutMessageVariant = internal::traits::_IsTypeInVariant<T, OutMessage>;
+}  // namespace traits
+
+
+
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+constexpr InMessageKind
+getInMessageKind(const T&)
+{
+  if constexpr(std::is_same_v<T, Assignment>)
+    return InMessageKind::ASSIGNMENT;
+  else if constexpr(std::is_same_v<T, Inquiry>)
+    return InMessageKind::INQUIRY;
+  else if constexpr(std::is_same_v<T, Command>)
+    return InMessageKind::COMMAND;
+  else
+    IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "getInMessageKind()");
+}
+
+/**
+ * @brief Returns the kind of the given InMessage.
+ * @param msg The incoming message.
+ * @return The InMessageKind enum value representing the actual type.
+ */
+InMessageKind getInMessageKind(const InMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+constexpr bool
+isAssignment(const T&)
+{
+  return std::is_same_v<T, Assignment>;
+}
+bool isAssignment(const InMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+constexpr bool
+isInquiry(const T&)
+{
+  return std::is_same_v<T, Inquiry>;
+}
+bool isInquiry(const InMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+constexpr bool
+isCommand(const T&)
+{
+  return std::is_same_v<T, Command>;
+}
+bool isCommand(const InMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+constexpr OutMessageKind
+getOutMessageKind(const T&)
+{
+  if constexpr(std::is_same_v<T, Success>)
+    return OutMessageKind::STATUS;
+  else if constexpr(std::is_same_v<T, Error>)
+    return OutMessageKind::ERROR;
+  else if constexpr(std::is_same_v<T, BinaryDataBuffer>)
+    return OutMessageKind::BINARY_BUFFER;
+  else if constexpr(std::is_same_v<T, ImageBinaryData>)
+    return OutMessageKind::BW_IMAGE;
+  else if constexpr(std::is_same_v<T, ColorImageBinaryData>)
+    return OutMessageKind::COLOR_IMAGE;
+  else
+    IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "getOutMessageKind()");
+}
+/**
+ * @brief Returns the kind of the given OutMessage.
+ * @param msg The outgoing message.
+ * @return The OutMessageKind enum value representing the actual type.
+ */
+OutMessageKind getOutMessageKind(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isSuccess(const T&)
+{
+  return std::is_same_v<T, Success>;
+}
+bool isSuccess(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isBinaryDataBuffer(const T&)
+{
+  return std::is_same_v<T, BinaryDataBuffer>;
+}
+bool isBinaryDataBuffer(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isImageBinaryData(const T&)
+{
+  return std::is_same_v<T, ImageBinaryData>;
+}
+bool isImageBinaryData(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isColorImageBinaryData(const T&)
+{
+  return std::is_same_v<T, ColorImageBinaryData>;
+}
+bool isColorImageBinaryData(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isError(const T&)
+{
+  return std::is_same_v<T, Error>;
+}
+bool isError(const OutMessage& msg);
+
+}  // namespace protocol
+}  // namespace irsol

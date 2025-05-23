@@ -1,6 +1,8 @@
 #pragma once
+
 #include <string>
 #include <variant>
+
 namespace irsol {
 namespace protocol {
 namespace internal {

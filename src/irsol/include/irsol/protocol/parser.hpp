@@ -1,6 +1,5 @@
 #pragma once
 #include "irsol/protocol/message.hpp"
-#include "irsol/protocol/types.hpp"
 
 #include <optional>
 #include <string>
