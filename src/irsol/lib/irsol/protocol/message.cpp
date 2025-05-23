@@ -115,31 +115,12 @@ Error::toString() const
 }
 
 InMessageKind
-getMessageKind(const InMessage& msg)
+getInMessageKind(const InMessage& msg)
 {
   return std::visit(
     [](auto&& value) -> InMessageKind {
       using T = std::decay_t<decltype(value)>;
-      if constexpr(std::is_same_v<T, Assignment>)
-        return InMessageKind::ASSIGNMENT;
-      else if constexpr(std::is_same_v<T, Inquiry>)
-        return InMessageKind::INQUIRY;
-      else if constexpr(std::is_same_v<T, Command>)
-        return InMessageKind::COMMAND;
-    },
-    msg);
-}
-
-OutMessageKind
-getMessageKind(const OutMessage& msg)
-{
-  return std::visit(
-    [](auto&& value) -> OutMessageKind {
-      using T = std::decay_t<decltype(value)>;
-      if constexpr(std::is_same_v<T, Status>)
-        return OutMessageKind::STATUS;
-      else if constexpr(std::is_same_v<T, Error>)
-        return OutMessageKind::ERROR;
+      return getInMessageKind<T>(value);
     },
     msg);
 }
@@ -147,31 +128,59 @@ getMessageKind(const OutMessage& msg)
 bool
 isAssignment(const InMessage& msg)
 {
-  return std::holds_alternative<Assignment>(msg);
+  return getInMessageKind(msg) == InMessageKind::ASSIGNMENT;
 }
 
 bool
 isInquiry(const InMessage& msg)
 {
-  return std::holds_alternative<Inquiry>(msg);
+  return getInMessageKind(msg) == InMessageKind::INQUIRY;
 }
 
 bool
 isCommand(const InMessage& msg)
 {
-  return std::holds_alternative<Command>(msg);
+  return getInMessageKind(msg) == InMessageKind::COMMAND;
+}
+
+OutMessageKind
+getOutMessageKind(const OutMessage& msg)
+{
+  return std::visit(
+    [](auto&& value) -> OutMessageKind {
+      using T = std::decay_t<decltype(value)>;
+      return getOutMessageKind<T>(value);
+    },
+    msg);
 }
 
 bool
 isStatus(const OutMessage& msg)
 {
-  return std::holds_alternative<Status>(msg);
+  return getOutMessageKind(msg) == OutMessageKind::STATUS;
 }
 
 bool
+isBinaryDataBuffer(const OutMessage& msg)
+{
+  return getOutMessageKind(msg) == OutMessageKind::BINARY_BUFFER;
+}
+
+bool
+isImageBinaryData(const OutMessage& msg)
+{
+  return getOutMessageKind(msg) == OutMessageKind::BW_IMAGE;
+}
+
+bool
+isColorImageBinaryData(const OutMessage& msg)
+{
+  return getOutMessageKind(msg) == OutMessageKind::COLOR_IMAGE;
+}
+bool
 isError(const OutMessage& msg)
 {
-  return std::holds_alternative<Error>(msg);
+  return getOutMessageKind(msg) == OutMessageKind::ERROR;
 }
 
 }  // namespace protocol

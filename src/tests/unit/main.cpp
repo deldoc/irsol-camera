@@ -74,18 +74,19 @@ configureLogging(int argc, char** argv)
     }
   }
 
-  std::optional<spdlog::level::level_enum> parsedLoglevel;
+  spdlog::level::level_enum parsedLoglevel;
   if(logLevelStr != "") {
     parsedLoglevel = spdlog::level::from_str(logLevelStr);
     if(parsedLoglevel == spdlog::level::off) {
       std::cerr << "Error: Invalid log level provided: '" << logLevelStr << "'\n";
       std::exit(1);
     }
+    irsol::initLogging("log/unit-tests.log", parsedLoglevel);
   } else {
-    parsedLoglevel = std::nullopt;
+    // Logging disabled
+    std::cout << "Logging disabled.\n";
+    irsol::initLogging("log/unit-tests.log", spdlog::level::off);
   }
-
-  irsol::initLogging("log/unit-tests.log", parsedLoglevel);
 
   return filteredArgs;
 }

@@ -1,10 +1,16 @@
 #pragma once
 
+#include "irsol/protocol/binary_message.hpp"
 #include "irsol/protocol/types.hpp"
 
+#include <array>
+#include <memory>
 #include <optional>
+#include <sstream>
 #include <string>
+#include <type_traits>
 #include <variant>
+#include <vector>
 
 namespace irsol {
 namespace protocol {
@@ -21,10 +27,10 @@ struct Assignment
 
   /// The variable or parameter name being assigned. Must start with a character, followed by
   /// alphanumeric characters and underscores.
-  std::string identifier;
+  const std::string identifier;
 
   /// The value assigned to the identifier (int, double, or string).
-  internal::value_t value;
+  const internal::value_t value;
 
   /**
    * @brief Converts the assignment to a protocol-formatted string.
@@ -53,7 +59,7 @@ struct Inquiry
 
   /// The identifier whose value is being requested. Must start with a character, followed by
   /// alphanumeric characters and underscores.
-  std::string identifier;
+  const std::string identifier;
 
   /**
    * @brief Converts the inquiry to a protocol-formatted string.
@@ -73,7 +79,7 @@ struct Command
 
   /// The name of the command to execute. Must start with a character, followed by alphanumeric
   /// characters and underscores.
-  std::string identifier;
+  const std::string identifier;
 
   /**
    * @brief Converts the command to a protocol-formatted string.
@@ -93,10 +99,10 @@ struct Status
 
   /// The identifier associated with the status. Must start with a character, followed by
   /// alphanumeric characters and underscores.
-  std::string identifier;
+  const std::string identifier;
 
   /// Optional body providing further detail about the status.
-  std::optional<std::string> body{};
+  const std::optional<std::string> body{};
 
   /**
    * @brief Converts the status to a protocol-formatted string.
@@ -119,10 +125,10 @@ struct Error
 
   /// Identifier related to the error (e.g., the failed command). Must start with a character,
   /// followed by alphanumeric characters and underscores.
-  std::string identifier;
+  const std::string identifier;
 
   /// Human-readable error description.
-  std::string description;
+  const std::string description;
 
   /**
    * @brief Converts the error to a protocol-formatted string.
@@ -149,18 +155,14 @@ enum class InMessageKind
 using InMessage = std::variant<Assignment, Inquiry, Command>;
 
 /**
- * @brief Returns the kind of the given InMessage.
- * @param msg The incoming message.
- * @return The InMessageKind enum value representing the actual type.
- */
-InMessageKind getMessageKind(const InMessage& msg);
-
-/**
  * @brief Represents the type of an outgoing message.
  */
 enum class OutMessageKind
 {
   STATUS,
+  BINARY_BUFFER,
+  BW_IMAGE,
+  COLOR_IMAGE,
   ERROR
 };
 
@@ -169,23 +171,149 @@ enum class OutMessageKind
  *
  * This includes status messages and errors.
  */
-using OutMessage = std::variant<Status, Error>;
+using OutMessage =
+  std::variant<Status, BinaryDataBuffer, ImageBinaryData, ColorImageBinaryData, Error>;
 
+namespace internal {
+// Create trait helpers to limit the compilation possibility of some template functions
+// to only types that are part of the InMessage/OutMessage variants.
+
+template<typename T, typename Variant>
+struct _IsTypeInVariant;
+
+template<typename T, typename... Ts>
+struct _IsTypeInVariant<T, std::variant<Ts...>> : std::disjunction<std::is_same<T, Ts>...>
+{};
+
+// To be used as:
+// template <typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+// void myFunctionTemplate(const T& msg) { ... }
+// in this way, the 'myFunctionTemplate' will only accept types that are part of the InMessage
+// variant. and if used with a type that is not part of the InMessage variant, the compiler will
+// issue a compilation error.
+template<typename T>
+using IsInMessageVariant = _IsTypeInVariant<T, InMessage>;
+
+// To be used as:
+// template <typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+// void myFunctionTemplate(const T& msg) { ... }
+// in this way, the 'myFunctionTemplate' will only accept types that are part of the OutMessage
+// variant. and if used with a type that is not part of the OutMessage variant, the compiler will
+// issue a compilation error.
+template<typename T>
+using IsOutMessageVariant = _IsTypeInVariant<T, OutMessage>;
+}  // namespace internal
+
+template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+constexpr InMessageKind
+getInMessageKind(const T&)
+{
+  if constexpr(std::is_same_v<T, Assignment>)
+    return InMessageKind::ASSIGNMENT;
+  else if constexpr(std::is_same_v<T, Inquiry>)
+    return InMessageKind::INQUIRY;
+  else if constexpr(std::is_same_v<T, Command>)
+    return InMessageKind::COMMAND;
+  else
+    static_assert(
+      std::is_same_v<T, void>, "Unsupported InMessage type");  // This line should never be reached.
+}
+
+/**
+ * @brief Returns the kind of the given InMessage.
+ * @param msg The incoming message.
+ * @return The InMessageKind enum value representing the actual type.
+ */
+InMessageKind getInMessageKind(const InMessage& msg);
+
+template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+constexpr bool
+isAssignment(const T&)
+{
+  return std::is_same_v<T, Assignment>;
+}
+bool isAssignment(const InMessage& msg);
+
+template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+constexpr bool
+isInquiry(const T&)
+{
+  return std::is_same_v<T, Inquiry>;
+}
+bool isInquiry(const InMessage& msg);
+
+template<typename T, std::enable_if_t<internal::IsInMessageVariant<T>::value, int> = 0>
+constexpr bool
+isCommand(const T&)
+{
+  return std::is_same_v<T, Command>;
+}
+bool isCommand(const InMessage& msg);
+
+template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+constexpr OutMessageKind
+getOutMessageKind(const T&)
+{
+  if constexpr(std::is_same_v<T, Status>)
+    return OutMessageKind::STATUS;
+  else if constexpr(std::is_same_v<T, Error>)
+    return OutMessageKind::ERROR;
+  else if constexpr(std::is_same_v<T, BinaryDataBuffer>)
+    return OutMessageKind::BINARY_BUFFER;
+  else if constexpr(std::is_same_v<T, ImageBinaryData>)
+    return OutMessageKind::BW_IMAGE;
+  else if constexpr(std::is_same_v<T, ColorImageBinaryData>)
+    return OutMessageKind::COLOR_IMAGE;
+  else
+    static_assert(
+      std::is_same_v<T, void>,
+      "Unsupported OutMessage type");  // This line should never be reached.
+}
 /**
  * @brief Returns the kind of the given OutMessage.
  * @param msg The outgoing message.
  * @return The OutMessageKind enum value representing the actual type.
  */
-OutMessageKind getMessageKind(const OutMessage& msg);
+OutMessageKind getOutMessageKind(const OutMessage& msg);
 
-bool isAssignment(const InMessage& msg);
-
-bool isInquiry(const InMessage& msg);
-
-bool isCommand(const InMessage& msg);
-
+template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isStatus(const T&)
+{
+  return std::is_same_v<T, Status>;
+}
 bool isStatus(const OutMessage& msg);
 
+template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isBinaryDataBuffer(const T&)
+{
+  return std::is_same_v<T, BinaryDataBuffer>;
+}
+bool isBinaryDataBuffer(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isImageBinaryData(const T&)
+{
+  return std::is_same_v<T, ImageBinaryData>;
+}
+bool isImageBinaryData(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isColorImageBinaryData(const T&)
+{
+  return std::is_same_v<T, ColorImageBinaryData>;
+}
+bool isColorImageBinaryData(const OutMessage& msg);
+
+template<typename T, std::enable_if_t<internal::IsOutMessageVariant<T>::value, int> = 0>
+constexpr bool
+isError(const T&)
+{
+  return std::is_same_v<T, Error>;
+}
 bool isError(const OutMessage& msg);
 
 }  // namespace protocol

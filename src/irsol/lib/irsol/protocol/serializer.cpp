@@ -17,6 +17,12 @@ Serializer::serialize(const OutMessage& msg)
       using T = std::decay_t<decltype(msg)>;
       if constexpr(std::is_same_v<T, Status>) {
         return msg.identifier + ";";
+      } else if constexpr(std::is_same_v<T, BinaryDataBuffer>) {
+        return "todo";
+      } else if constexpr(std::is_same_v<T, ImageBinaryData>) {
+        return "todo";
+      } else if constexpr(std::is_same_v<T, ColorImageBinaryData>) {
+        return "todo";
       } else if constexpr(std::is_same_v<T, Error>) {
         return msg.identifier + ": ERROR: " + msg.description;
       } else {

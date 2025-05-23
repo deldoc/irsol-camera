@@ -33,7 +33,7 @@ tests: build
 		./src/dist/debug/bin/unit_tests --log-level trace; \
 	else \
 		echo "Release mode is enabled"; \
-		./src/dist/release/bin/unit_tests --log-level warn; \
+		./src/dist/release/bin/unit_tests; \
 	fi
 .PHONY: tests
 
