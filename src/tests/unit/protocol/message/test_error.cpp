@@ -4,7 +4,6 @@
 #include <memory>
 #include <string>
 
-
 TEST_CASE("Error::Error()", "[Protocol][Protocol::Message]")
 {
   auto description = GENERATE("hello world", "error description");
@@ -25,7 +24,7 @@ TEST_CASE("Error::Error()", "[Protocol][Protocol::Message]")
 
 TEST_CASE("Error::from<direct>()", "[Protocol][Protocol::Message]")
 {
-  auto identifier = GENERATE("x", "it", "long_identifier");
+  auto identifier  = GENERATE("x", "it", "long_identifier");
   auto description = GENERATE("hello world", "error description");
   {
     auto value = GENERATE(
@@ -52,7 +51,7 @@ TEST_CASE("Error::from<direct>()", "[Protocol][Protocol::Message]")
 }
 TEST_CASE("Error::from<variant>()", "[Protocol][Protocol::Message]")
 {
-  auto identifier = GENERATE("x", "it", "long_identifier");
+  auto identifier  = GENERATE("x", "it", "long_identifier");
   auto description = GENERATE("hello world", "error description");
   {
     auto value = GENERATE(

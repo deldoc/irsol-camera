@@ -6,7 +6,9 @@ lint:
 	@clang-format --style=file -i -- src/irsol/lib/**/**/*.cpp
 	@clang-format --style=file -i -- src/irsol/include/**/**/*.hpp
 	@clang-format --style=file -i -- src/irsol/include/**/**/*.tpp
-	@clang-format --style=file -i -- src/tests/**/*.cpp
+	@clang-format --style=file -i -- src/tests/unit/*.cpp
+	@clang-format --style=file -i -- src/tests/unit/**/*.cpp
+	@clang-format --style=file -i -- src/tests/unit/**/**/*.cpp
 	@echo "Done running clang-format."
 .PHONY: lint
 

@@ -22,7 +22,7 @@ struct Inquiry
   const std::string identifier;
 
   /**
-   * @brief Converts the inquiry to a protocol-formatted string.
+   * @brief Converts the inquiry to a human-readable string.
    * @return A string representation of the inquiry (e.g., "x?").
    */
   std::string toString() const;

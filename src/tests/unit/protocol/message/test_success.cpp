@@ -4,7 +4,6 @@
 #include <memory>
 #include <string>
 
-
 TEST_CASE("Success::Success()", "[Protocol][Protocol::Message]")
 {
   auto body = GENERATE(std::optional<irsol::protocol::internal::value_t>("hello world"));

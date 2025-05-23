@@ -49,7 +49,7 @@ Parser::parseAssignment(const std::string& line)
   // single_quote='single quote'
   // double_quote="double quote"
   // braces={sting value}
-  static const std::regex re(R"(^([a-zA-Z0-9_]+(?:\[\d+\])*)=(.+)$)");
+  static const std::regex re(R"(^([a-zA-Z]+[a-zA-Z0-9_]*(?:\[\d+\])*)=(.+)$)");
   std::smatch             m;
   std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
@@ -82,7 +82,7 @@ Parser::parseInquiry(const std::string& line)
   // array_like[1]?
   // nested_array_like[1][2]?
 
-  static const std::regex re(R"(^([a-zA-Z0-9_]+(?:\[\d+\])*)\?$)");
+  static const std::regex re(R"(^([a-zA-Z]+[a-zA-Z0-9_]*(?:\[\d+\])*)\?$)");
   std::smatch             m;
   std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
@@ -112,7 +112,7 @@ Parser::parseCommand(const std::string& line)
   // qux_123
   // _underscore
 
-  static const std::regex re(R"(^([a-zA-Z0-9_]+)$)");
+  static const std::regex re(R"(^([a-zA-Z]+[a-zA-Z0-9_]*)$)");
   std::smatch             m;
   std::string             errorMessage;
   if(std::regex_match(line, m, re)) {

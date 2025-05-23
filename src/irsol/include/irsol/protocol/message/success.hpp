@@ -26,7 +26,7 @@ struct Success
   const std::optional<internal::value_t> body{};
 
   /**
-   * @brief Converts the status to a protocol-formatted string.
+   * @brief Converts the status to a human-readable string.
    * @return A string representation of the status message.
    */
   std::string toString() const;

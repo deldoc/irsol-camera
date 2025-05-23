@@ -22,7 +22,7 @@ struct Command
   const std::string identifier;
 
   /**
-   * @brief Converts the command to a protocol-formatted string.
+   * @brief Converts the command to a human-readable string.
    * @return A string representation of the command (e.g., "reset").
    */
   std::string toString() const;

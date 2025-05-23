@@ -26,7 +26,7 @@ struct Assignment
   const internal::value_t value;
 
   /**
-   * @brief Converts the assignment to a protocol-formatted string.
+   * @brief Converts the assignment to a human-readable string.
    * @return A string representation of the assignment (e.g., "x=42").
    */
   std::string toString() const;

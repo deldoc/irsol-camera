@@ -26,7 +26,7 @@ struct Error
   const std::string description;
 
   /**
-   * @brief Converts the error to a protocol-formatted string.
+   * @brief Converts the error to a human-readable string.
    * @return A string representation of the error message.
    */
   std::string toString() const;
