@@ -8,7 +8,31 @@
 namespace irsol {
 namespace protocol {
 
-std::string
+const internal::byte_t*
+SerializedMessage::headerData() const
+{
+  return reinterpret_cast<const internal::byte_t*>(header.data());
+}
+
+size_t
+SerializedMessage::headerSize() const
+{
+  return header.size();
+}
+
+const internal::byte_t*
+SerializedMessage::payloadData() const
+{
+  return payload.data();
+}
+
+size_t
+SerializedMessage::payloadSize() const
+{
+  return payload.size();
+}
+
+SerializedMessage
 Serializer::serialize(const OutMessage& msg)
 {
 
@@ -31,7 +55,7 @@ Serializer::serializeValue(const internal::value_t& value)
     value);
 }
 
-std::string
+SerializedMessage
 Serializer::serializeSuccess(const Success& msg)
 {
   IRSOL_LOG_TRACE("Serializing Success message: {}", msg.toString());
@@ -53,7 +77,7 @@ Serializer::serializeSuccess(const Success& msg)
   return result;
 }
 
-std::string
+SerializedMessage
 Serializer::serializeBinaryDataBuffer(const BinaryDataBuffer& msg)
 {
   IRSOL_LOG_TRACE("Serializing binary buffer: {}", msg.toString());
@@ -62,7 +86,7 @@ Serializer::serializeBinaryDataBuffer(const BinaryDataBuffer& msg)
   return "test" + msg.toString();
 }
 
-std::string
+SerializedMessage
 Serializer::serializeImageBinaryData(const ImageBinaryData& msg)
 {
   IRSOL_LOG_TRACE("Serializing image binary data: {}", msg.toString());
@@ -70,7 +94,7 @@ Serializer::serializeImageBinaryData(const ImageBinaryData& msg)
   throw std::runtime_error("Binary data serialization not supported");
 }
 
-std::string
+SerializedMessage
 Serializer::serializeColorImageBinaryData(const ColorImageBinaryData& msg)
 {
   IRSOL_LOG_TRACE("Serializing color image binary data: {}", msg.toString());
@@ -78,7 +102,7 @@ Serializer::serializeColorImageBinaryData(const ColorImageBinaryData& msg)
   throw std::runtime_error("Binary data serialization not supported");
 }
 
-std::string
+SerializedMessage
 Serializer::serializeError(const Error& msg)
 {
   IRSOL_LOG_TRACE("Serializing error message: {}", msg.toString());

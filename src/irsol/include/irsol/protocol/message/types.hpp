@@ -21,7 +21,7 @@ struct _IsTypeInVariant<T, std::variant<Ts...>> : std::disjunction<std::is_same<
 }
 
 using value_t = std::variant<int, double, std::string>;
-using byte_t  = uint8_t;
+using byte_t  = std::byte;
 
 namespace traits {
 

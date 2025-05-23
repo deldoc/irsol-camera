@@ -4,9 +4,31 @@
 #include "irsol/protocol/message.hpp"
 
 #include <string>
+#include <vector>
 
 namespace irsol {
 namespace protocol {
+
+struct SerializedMessage
+{
+  std::string                   header;
+  std::vector<internal::byte_t> payload;
+
+  SerializedMessage(SerializedMessage&&) noexcept = default;
+  SerializedMessage& operator=(SerializedMessage&&) noexcept = default;
+
+  // Delete copy constructor and copy assignment
+  SerializedMessage(const SerializedMessage&) = delete;
+  SerializedMessage& operator=(const SerializedMessage&) = delete;
+
+  const internal::byte_t* headerData() const;
+
+  size_t headerSize() const;
+
+  const internal::byte_t* payloadData() const;
+
+  size_t payloadSize() const;
+};
 
 class Serializer
 {
@@ -15,18 +37,18 @@ public:
    * Serialize an OutMessage into a string.
    *
    * @param msg The message to serialize.
-   * @return A string containing the serialized message.
+   * @return A SerializedMessage containing the serialized message.
    */
-  static std::string serialize(const OutMessage& msg);
+  static SerializedMessage serialize(const OutMessage& msg);
 
   /**
    * Serialize a specific OutMessage type into a string.
    *
    * @param msg The message to serialize. Must be a class used in the OutMessage variant.
-   * @return A string containing the serialized message.
+   * @return A SerializedMessage containing the serialized message.
    */
   template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
-  static std::string serialize(const T& msg)
+  static SerializedMessage serialize(const T& msg)
   {
     if constexpr(std::is_same_v<T, Success>) {
       return serializeSuccess(msg);
@@ -59,11 +81,11 @@ public:
 private:
   Serializer() = delete;
 
-  static std::string serializeSuccess(const Success& msg);
-  static std::string serializeBinaryDataBuffer(const BinaryDataBuffer& msg);
-  static std::string serializeImageBinaryData(const ImageBinaryData& msg);
-  static std::string serializeColorImageBinaryData(const ColorImageBinaryData& msg);
-  static std::string serializeError(const Error& msg);
+  static SerializedMessage serializeSuccess(const Success& msg);
+  static SerializedMessage serializeBinaryDataBuffer(const BinaryDataBuffer& msg);
+  static SerializedMessage serializeImageBinaryData(const ImageBinaryData& msg);
+  static SerializedMessage serializeColorImageBinaryData(const ColorImageBinaryData& msg);
+  static SerializedMessage serializeError(const Error& msg);
 };
 
 }  // namespace protocol
