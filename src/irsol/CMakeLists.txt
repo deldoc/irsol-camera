@@ -30,8 +30,9 @@ add_library(${PROJECT_NAME}
     lib/irsol/server/app.cpp
     lib/irsol/server/client_session.cpp
     lib/irsol/server/collector.cpp
-    lib/irsol/server/command_processor.cpp
+    lib/irsol/server/message_handler.cpp
     lib/irsol/server/image_data.cpp
+    lib/irsol/server/handlers/inquiry_fr.cpp
 )
 add_library(irsol::core ALIAS ${PROJECT_NAME})
 

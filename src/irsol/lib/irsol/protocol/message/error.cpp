@@ -21,5 +21,16 @@ Error::toString() const
   return oss.str();
 }
 
+Error
+Error::from(InMessage&& message, const std::string& description)
+{
+  return std::visit(
+    [&description](auto&& value) -> Error {
+      using T = std::decay_t<decltype(value)>;
+      return Error::from<T>(std::move(value), description);
+    },
+    message);
+}
+
 }  // namespace protocol
 }  // namespace irsol

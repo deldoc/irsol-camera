@@ -43,14 +43,16 @@ Serializer::serializeSuccess(Success&& msg)
       "never happen, as a successful assignment should always provide a body for the "
       "associated Success message.");
     auto body = *msg.body;
-    result += "=" + serializeValue(std::move(body));
+    result += "=" + serializeValue(std::move(body)) + "\n";
   } else if(msg.source == InMessageKind::INQUIRY) {
     if(msg.hasBody()) {
       auto body = *msg.body;
-      result += "=" + serializeValue(std::move(body));
+      result += "=" + serializeValue(std::move(body)) + "\n";
+    } else {
+      result += "\n";
     }
   } else if(msg.source == InMessageKind::COMMAND) {
-    result += ";";
+    result += ";\n";
   }
   return {result, {}};
 }
@@ -67,8 +69,11 @@ SerializedMessage
 Serializer::serializeImageBinaryData(ImageBinaryData&& msg)
 {
   IRSOL_LOG_TRACE("Serializing image binary data: {}", msg.toString());
-  std::string header  = "";
-  auto        message = SerializedMessage(header, std::move(msg.extractData()));
+  std::string header = "image_data:3x";
+  header += std::to_string(msg.shape[1]) + "x";
+  header += std::to_string(msg.shape[0]) + "x";
+  header += "1:";
+  auto message = SerializedMessage(header, std::move(msg.extractData()));
   return std::move(message);
 }
 
@@ -84,7 +89,7 @@ SerializedMessage
 Serializer::serializeError(Error&& msg)
 {
   IRSOL_LOG_TRACE("Serializing error message: {}", msg.toString());
-  return {msg.identifier + ": Error: " + msg.description, {}};
+  return {msg.identifier + ": Error: " + msg.description + "\n", {}};
 }
 
 }  // namespace protocol
