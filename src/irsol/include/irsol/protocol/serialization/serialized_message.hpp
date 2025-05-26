@@ -28,6 +28,8 @@ struct SerializedMessage
   const internal::byte_t* payloadData() const;
 
   size_t payloadSize() const;
+
+  std::string toString() const;
 };
 }  // namespace protocol
 }  // namespace irsol

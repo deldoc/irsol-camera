@@ -1,5 +1,7 @@
 #include "irsol/protocol/serialization/serialized_message.hpp"
 
+#include <sstream>
+
 namespace irsol {
 namespace protocol {
 
@@ -31,6 +33,15 @@ size_t
 SerializedMessage::payloadSize() const
 {
   return payload.size();
+}
+
+std::string
+SerializedMessage::toString() const
+{
+  std::ostringstream oss;
+  oss << "SerializedMessage{"
+      << "header: '" << header << "', payload size: " << payload.size() << "bytes}";
+  return oss.str();
 }
 
 }  // namespace protocol
