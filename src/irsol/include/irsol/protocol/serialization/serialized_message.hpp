@@ -13,6 +13,7 @@ struct SerializedMessage
   std::string                   header;
   std::vector<internal::byte_t> payload{};
 
+  SerializedMessage(const std::string& header, std::vector<internal::byte_t>&& payload);
   SerializedMessage(SerializedMessage&&) noexcept = default;
   SerializedMessage& operator=(SerializedMessage&&) noexcept = default;
 

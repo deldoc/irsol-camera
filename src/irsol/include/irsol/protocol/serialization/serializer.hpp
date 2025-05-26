@@ -2,6 +2,7 @@
 
 #include "irsol/assert.hpp"
 #include "irsol/protocol/message.hpp"
+#include "irsol/protocol/serialization/serialized_message.hpp"
 
 #include <string>
 #include <vector>
@@ -9,27 +10,12 @@
 namespace irsol {
 namespace protocol {
 
-struct SerializedMessage
-{
-  std::string                   header;
-  std::vector<internal::byte_t> payload{};
-
-  SerializedMessage(SerializedMessage&&) noexcept = default;
-  SerializedMessage& operator=(SerializedMessage&&) noexcept = default;
-
-  // Delete copy constructor and copy assignment
-  SerializedMessage(const SerializedMessage&) = delete;
-  SerializedMessage& operator=(const SerializedMessage&) = delete;
-
-  const internal::byte_t* headerData() const;
-
-  size_t headerSize() const;
-
-  const internal::byte_t* payloadData() const;
-
-  size_t payloadSize() const;
-};
-
+/**
+ * A class for serializing OutMessage and primitive types into SerializedMessage instances.
+ *
+ * This class provides a generic serialization interface for OutMessage types and primitive types.
+ * The class **consumes** the provided message: after serialization the original message is invalid.
+ */
 class Serializer
 {
 public:
@@ -39,7 +25,7 @@ public:
    * @param msg The message to serialize.
    * @return A SerializedMessage containing the serialized message.
    */
-  static SerializedMessage serialize(const OutMessage& msg);
+  static SerializedMessage serialize(OutMessage&& msg);
 
   /**
    * Serialize a specific OutMessage type into a string.
@@ -48,25 +34,25 @@ public:
    * @return A SerializedMessage containing the serialized message.
    */
   template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
-  static SerializedMessage serialize(const T& msg)
+  static SerializedMessage serialize(T&& msg)
   {
     if constexpr(std::is_same_v<T, Success>) {
-      return serializeSuccess(msg);
+      return serializeSuccess(std::move(msg));
     } else if constexpr(std::is_same_v<T, BinaryDataBuffer>) {
-      return serializeBinaryDataBuffer(msg);
+      return serializeBinaryDataBuffer(std::move(msg));
     } else if constexpr(std::is_same_v<T, ImageBinaryData>) {
-      return serializeImageBinaryData(msg);
+      return serializeImageBinaryData(std::move(msg));
     } else if constexpr(std::is_same_v<T, ColorImageBinaryData>) {
-      return serializeColorImageBinaryData(msg);
+      return serializeColorImageBinaryData(std::move(msg));
     } else if constexpr(std::is_same_v<T, Error>) {
-      return serializeError(msg);
+      return serializeError(std::move(msg));
     } else
       IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Serializer::serialize()");
   }
 
-  static std::string serializeValue(const internal::value_t& value);
+  static std::string serializeValue(internal::value_t&& value);
   template<typename T, std::enable_if_t<internal::traits::IsInValueTVariant<T>::value, int> = 0>
-  static std::string serializeValue(const T& value)
+  static std::string serializeValue(T&& value)
   {
     if constexpr(std::is_same_v<T, int>) {
       return std::to_string(value);
@@ -81,11 +67,11 @@ public:
 private:
   Serializer() = delete;
 
-  static SerializedMessage serializeSuccess(const Success& msg);
-  static SerializedMessage serializeBinaryDataBuffer(const BinaryDataBuffer& msg);
-  static SerializedMessage serializeImageBinaryData(const ImageBinaryData& msg);
-  static SerializedMessage serializeColorImageBinaryData(const ColorImageBinaryData& msg);
-  static SerializedMessage serializeError(const Error& msg);
+  static SerializedMessage serializeSuccess(Success&& msg);
+  static SerializedMessage serializeBinaryDataBuffer(BinaryDataBuffer&& msg);
+  static SerializedMessage serializeImageBinaryData(ImageBinaryData&& msg);
+  static SerializedMessage serializeColorImageBinaryData(ColorImageBinaryData&& msg);
+  static SerializedMessage serializeError(Error&& msg);
 };
 
 }  // namespace protocol

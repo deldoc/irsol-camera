@@ -3,6 +3,12 @@
 namespace irsol {
 namespace protocol {
 
+SerializedMessage::SerializedMessage(
+  const std::string&              header,
+  std::vector<internal::byte_t>&& payload)
+  : header(header), payload(std::move(payload))
+{}
+
 const internal::byte_t*
 SerializedMessage::headerData() const
 {

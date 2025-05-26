@@ -9,30 +9,30 @@ namespace irsol {
 namespace protocol {
 
 SerializedMessage
-Serializer::serialize(const OutMessage& msg)
+Serializer::serialize(OutMessage&& msg)
 {
 
   return std::visit(
     [](auto&& msg) -> SerializedMessage {
       using T = std::decay_t<decltype(msg)>;
-      return serialize<T>(msg);
+      return serialize<T>(std::move(msg));
     },
     msg);
 }
 
 std::string
-Serializer::serializeValue(const internal::value_t& value)
+Serializer::serializeValue(internal::value_t&& value)
 {
   return std::visit(
     [](auto&& val) -> std::string {
       using T = std::decay_t<decltype(val)>;
-      return serializeValue<T>(val);
+      return serializeValue<T>(std::move(val));
     },
     value);
 }
 
 SerializedMessage
-Serializer::serializeSuccess(const Success& msg)
+Serializer::serializeSuccess(Success&& msg)
 {
   IRSOL_LOG_TRACE("Serializing Success message: {}", msg.toString());
   std::string result = msg.identifier;
@@ -42,19 +42,21 @@ Serializer::serializeSuccess(const Success& msg)
       "Body is not present in 'Success' message, created from 'Assignment'. This should "
       "never happen, as a successful assignment should always provide a body for the "
       "associated Success message.");
-    result += "=" + serializeValue(*msg.body);
+    auto body = *msg.body;
+    result += "=" + serializeValue(std::move(body));
   } else if(msg.source == InMessageKind::INQUIRY) {
     if(msg.hasBody()) {
-      result += "=" + serializeValue(*msg.body);
+      auto body = *msg.body;
+      result += "=" + serializeValue(std::move(body));
     }
   } else if(msg.source == InMessageKind::COMMAND) {
     result += ";";
   }
-  return {result};
+  return {result, {}};
 }
 
 SerializedMessage
-Serializer::serializeBinaryDataBuffer(const BinaryDataBuffer& msg)
+Serializer::serializeBinaryDataBuffer(BinaryDataBuffer&& msg)
 {
   IRSOL_LOG_TRACE("Serializing binary buffer: {}", msg.toString());
   // TODO: implement serialization
@@ -62,15 +64,16 @@ Serializer::serializeBinaryDataBuffer(const BinaryDataBuffer& msg)
 }
 
 SerializedMessage
-Serializer::serializeImageBinaryData(const ImageBinaryData& msg)
+Serializer::serializeImageBinaryData(ImageBinaryData&& msg)
 {
   IRSOL_LOG_TRACE("Serializing image binary data: {}", msg.toString());
-  // TODO: implement serialization
-  throw std::runtime_error("Binary data serialization not supported");
+  std::string header  = "";
+  auto        message = SerializedMessage(header, std::move(msg.extractData()));
+  return std::move(message);
 }
 
 SerializedMessage
-Serializer::serializeColorImageBinaryData(const ColorImageBinaryData& msg)
+Serializer::serializeColorImageBinaryData(ColorImageBinaryData&& msg)
 {
   IRSOL_LOG_TRACE("Serializing color image binary data: {}", msg.toString());
   // TODO: implement serialization
@@ -78,10 +81,10 @@ Serializer::serializeColorImageBinaryData(const ColorImageBinaryData& msg)
 }
 
 SerializedMessage
-Serializer::serializeError(const Error& msg)
+Serializer::serializeError(Error&& msg)
 {
   IRSOL_LOG_TRACE("Serializing error message: {}", msg.toString());
-  return {msg.identifier + ": Error: " + msg.description};
+  return {msg.identifier + ": Error: " + msg.description, {}};
 }
 
 }  // namespace protocol

@@ -113,6 +113,15 @@ struct BinaryData
   /// Additional attributes associated with the binary data.
   const std::vector<BinaryDataAttribute> attributes;
 
+  /// @brief Extracts the binary data as a vector of type T.
+  /// @return A vector of type T containing the binary data.
+  /// @note The ownership of the vector is transferred to the caller. After this invocation, this
+  /// object is left in an undefined state.
+  std::vector<T> extractData() const
+  {
+    return std::move(data);
+  }
+
   /**
    * @brief Converts the binary data to a string.
    * @return A string representation of the binary data attribute.

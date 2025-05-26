@@ -9,20 +9,23 @@ TEST_CASE("Serializer::serializeValue<direct>()", "[Protocol][Protocol::Serializ
   {
     // From an integer
     int         value      = GENERATE(1, 2, 3, 4, 5);
-    std::string serialized = irsol::protocol::Serializer::serializeValue(value);
-    CHECK(serialized == std::to_string(value));
+    std::string expected   = std::to_string(value);
+    std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(value));
+    CHECK(serialized == expected);
   }
   {
     // From a double
     double      value      = GENERATE(1.0, 2.5, 3.14, 4.2, 5.0, -31.4, 0.0);
-    std::string serialized = irsol::protocol::Serializer::serializeValue(value);
-    CHECK(serialized == std::to_string(value));
+    std::string expected   = std::to_string(value);
+    std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(value));
+    CHECK(serialized == expected);
   }
   {
     // From a string
     std::string value      = GENERATE("", "hello", "world", "test", "12345");
-    std::string serialized = irsol::protocol::Serializer::serializeValue(value);
-    CHECK(serialized == "{" + value + "}");
+    std::string expected   = "{" + value + "}";
+    std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(value));
+    CHECK(serialized == expected);
   }
 }
 
@@ -32,15 +35,17 @@ TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Seriali
     // From an integer
     int                                value = GENERATE(1, 2, 3, 4, 5);
     irsol::protocol::internal::value_t variantValue(value);
-    std::string serialized = irsol::protocol::Serializer::serializeValue(variantValue);
-    CHECK(serialized == std::to_string(value));
+    std::string                        expected = std::to_string(value);
+    std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(variantValue));
+    CHECK(serialized == expected);
   }
   {
     // From a double
     double                             value = GENERATE(1.0, 2.5, 3.14, 4.2, 5.0, -31.4, 0.0);
     irsol::protocol::internal::value_t variantValue(value);
-    std::string serialized = irsol::protocol::Serializer::serializeValue(variantValue);
-    CHECK(serialized == std::to_string(value));
+    std::string                        expected = std::to_string(value);
+    std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(variantValue));
+    CHECK(serialized == expected);
   }
   {
     // From a string
@@ -51,7 +56,7 @@ TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Seriali
       std::make_pair("test", "{test}"),
       std::make_pair("12345", "{12345}"));
     irsol::protocol::internal::value_t variantValue(value);
-    std::string serialized = irsol::protocol::Serializer::serializeValue(variantValue);
+    std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(variantValue));
     CHECK(serialized == expected);
   }
 }
@@ -70,9 +75,10 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
     irsol::protocol::Assignment assignment{identifier, value};
     irsol::protocol::Success    success = irsol::protocol::Success::from(assignment);
 
-    auto        serialized = irsol::protocol::Serializer::serialize(success);
     std::string expectedHeader =
-      std::string(identifier) + "=" + irsol::protocol::Serializer::serializeValue(value);
+      std::string(identifier) + "=" +
+      irsol::protocol::Serializer::serializeValue(irsol::protocol::internal::value_t(value));
+    auto serialized = irsol::protocol::Serializer::serialize(std::move(success));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -87,9 +93,10 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
     irsol::protocol::Inquiry inquiry{identifier};
     auto                     success = irsol::protocol::Success::from(inquiry, inquery_result);
 
-    auto        serialized = irsol::protocol::Serializer::serialize(success);
-    std::string expectedHeader =
-      std::string(identifier) + "=" + irsol::protocol::Serializer::serializeValue(inquery_result);
+    std::string expectedHeader = std::string(identifier) + "=" +
+                                 irsol::protocol::Serializer::serializeValue(
+                                   irsol::protocol::internal::value_t(inquery_result));
+    auto serialized = irsol::protocol::Serializer::serialize(std::move(success));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -99,8 +106,8 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
     irsol::protocol::Command command{identifier};
     auto                     success = irsol::protocol::Success::from(command);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(success);
     std::string expectedHeader = std::string(identifier) + ";";
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(success));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -120,9 +127,10 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
     auto                        success        = irsol::protocol::Success::from(assignment);
     auto                        successVariant = irsol::protocol::OutMessage(success);
 
-    auto        serialized = irsol::protocol::Serializer::serialize(successVariant);
     std::string expectedHeader =
-      std::string(identifier) + "=" + irsol::protocol::Serializer::serializeValue(value);
+      std::string(identifier) + "=" +
+      irsol::protocol::Serializer::serializeValue(irsol::protocol::internal::value_t(value));
+    auto serialized = irsol::protocol::Serializer::serialize(std::move(successVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -138,9 +146,10 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
     auto                     success = irsol::protocol::Success::from(inquiry, inquery_result);
     auto                     successVariant = irsol::protocol::OutMessage(success);
 
-    auto        serialized = irsol::protocol::Serializer::serialize(successVariant);
-    std::string expectedHeader =
-      std::string(identifier) + "=" + irsol::protocol::Serializer::serializeValue(inquery_result);
+    std::string expectedHeader = std::string(identifier) + "=" +
+                                 irsol::protocol::Serializer::serializeValue(
+                                   irsol::protocol::internal::value_t(inquery_result));
+    auto serialized = irsol::protocol::Serializer::serialize(std::move(successVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -151,8 +160,8 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
     auto                     success        = irsol::protocol::Success::from(command);
     auto                     successVariant = irsol::protocol::OutMessage(success);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(successVariant);
     std::string expectedHeader = std::string(identifier) + ";";
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(successVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -173,8 +182,8 @@ TEST_CASE("Serializer::serialize<direct>(Error)", "[Protocol][Protocol::Serializ
     irsol::protocol::Assignment assignment{identifier, value};
     auto                        error = irsol::protocol::Error::from(assignment, description);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(error);
     std::string expectedHeader = std::string(identifier) + ": Error: " + description;
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(error));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -185,8 +194,8 @@ TEST_CASE("Serializer::serialize<direct>(Error)", "[Protocol][Protocol::Serializ
     irsol::protocol::Inquiry inquiry{identifier};
     auto                     error = irsol::protocol::Error::from(inquiry, description);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(error);
     std::string expectedHeader = std::string(identifier) + ": Error: " + description;
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(error));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -196,8 +205,8 @@ TEST_CASE("Serializer::serialize<direct>(Error)", "[Protocol][Protocol::Serializ
     irsol::protocol::Command command{identifier};
     auto                     error = irsol::protocol::Error::from(command, description);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(error);
     std::string expectedHeader = std::string(identifier) + ": Error: " + description;
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(error));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -218,8 +227,8 @@ TEST_CASE("Serializer::serialize<variant>(Error)", "[Protocol][Protocol::Seriali
     auto                        error = irsol::protocol::Error::from(assignment, description);
     auto                        errorVariant = irsol::protocol::OutMessage(error);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(errorVariant);
     std::string expectedHeader = std::string(identifier) + ": Error: " + description;
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(errorVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -231,8 +240,8 @@ TEST_CASE("Serializer::serialize<variant>(Error)", "[Protocol][Protocol::Seriali
     auto                     error        = irsol::protocol::Error::from(inquiry, description);
     auto                     errorVariant = irsol::protocol::OutMessage(error);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(errorVariant);
     std::string expectedHeader = std::string(identifier) + ": Error: " + description;
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(errorVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
@@ -243,8 +252,8 @@ TEST_CASE("Serializer::serialize<variant>(Error)", "[Protocol][Protocol::Seriali
     auto                     error        = irsol::protocol::Error::from(command, description);
     auto                     errorVariant = irsol::protocol::OutMessage(error);
 
-    auto        serialized     = irsol::protocol::Serializer::serialize(errorVariant);
     std::string expectedHeader = std::string(identifier) + ": Error: " + description;
+    auto        serialized     = irsol::protocol::Serializer::serialize(std::move(errorVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
   }
