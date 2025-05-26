@@ -24,7 +24,7 @@ add_library(${PROJECT_NAME}
     lib/irsol/protocol/message/inquiry.cpp
     lib/irsol/protocol/message/success.cpp
     lib/irsol/protocol/message/variants.cpp
-    lib/irsol/protocol/parser.cpp
+    lib/irsol/protocol/parsing/parser.cpp
     lib/irsol/protocol/serialization/serializer.cpp
     lib/irsol/protocol/serialization/serialized_message.cpp
     lib/irsol/server/app.cpp

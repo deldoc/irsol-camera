@@ -21,8 +21,9 @@ add_executable(unit_tests
   protocol/message/test_inquiry.cpp
   protocol/message/test_success.cpp
   protocol/message/test_variants.cpp
+  protocol/parsing/test_parser.cpp
+  protocol/parsing/test_parser_result.cpp
   protocol/serialization/test_serializer.cpp
-  protocol/test_parser.cpp
   protocol/test_utils.cpp
 )
 

@@ -1,4 +1,4 @@
-#include "irsol/protocol/parser.hpp"
+#include "irsol/protocol/parsing/parser.hpp"
 
 #include "irsol/logging.hpp"
 #include "irsol/protocol/utils.hpp"
@@ -13,23 +13,38 @@ Parser::parse(const std::string& line)
   IRSOL_LOG_TRACE("Parsing string '{}' for message", line);
   std::string s = utils::trim(line);
   IRSOL_LOG_TRACE("Trimmed result: '{}'", s);
+  std::vector<std::string> errorMessages;
+  errorMessages.reserve(3);
   if(auto asg = parseAssignment(s)) {
-    IRSOL_LOG_TRACE("String '{}' parsed as assignment message: '{}'", line, asg->toString());
-    return *asg;
+    IRSOL_LOG_TRACE(
+      "String '{}' parsed as assignment message: '{}'", line, asg.getMessage().toString());
+    return asg.getMessage();
+  } else {
+    errorMessages.push_back(asg.getError());
   }
   if(auto inq = parseInquiry(s)) {
-    IRSOL_LOG_TRACE("String '{}' parsed as inquiry message: {}", line, inq->toString());
-    return *inq;
+    IRSOL_LOG_TRACE("String '{}' parsed as inquiry message: {}", line, inq.getMessage().toString());
+    return inq.getMessage();
+  } else {
+    errorMessages.push_back(inq.getError());
   }
   if(auto cmd = parseCommand(s)) {
-    IRSOL_LOG_TRACE("String '{}' parsed as command message: {}", line, cmd->toString());
-    return *cmd;
+    IRSOL_LOG_TRACE("String '{}' parsed as command message: {}", line, cmd.getMessage().toString());
+    return cmd.getMessage();
+  } else {
+    errorMessages.push_back(cmd.getError());
   }
-  IRSOL_LOG_WARN("String '{}' could not be parsed as any known message type", line);
+
+  std::string fullErrorMessage = "";
+  for(const auto& errorMessage : errorMessages) {
+    fullErrorMessage += errorMessage + "; ";
+  }
+  IRSOL_LOG_WARN(
+    "String '{}' could not be parsed as any known message type. {}", line, fullErrorMessage);
   return std::nullopt;
 }
 
-std::optional<Assignment>
+internal::ParserResult<Assignment>
 Parser::parseAssignment(const std::string& line)
 {
   // An assignment line looks like:
@@ -54,18 +69,17 @@ Parser::parseAssignment(const std::string& line)
   std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
     try {
-      return Assignment{utils::trim(m[1]), parseValue(utils::trim(m[2]))};
+      return {Assignment{utils::trim(m[1]), parseValue(utils::trim(m[2]))}};
     } catch(const std::invalid_argument& e) {
       errorMessage = e.what();
     }
   } else {
-    errorMessage = "Regex pattern did not match";
+    errorMessage = "Regex pattern for Assignment did not match";
   }
-  IRSOL_LOG_ERROR("Error parsing assignment string '{}': {}", line, errorMessage);
-  return std::nullopt;
+  return {std::move(errorMessage)};
 }
 
-std::optional<Inquiry>
+internal::ParserResult<Inquiry>
 Parser::parseInquiry(const std::string& line)
 {
   // An inquiry line looks like:
@@ -87,18 +101,17 @@ Parser::parseInquiry(const std::string& line)
   std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
     try {
-      return Inquiry{utils::trim(m[1])};
+      return {Inquiry{utils::trim(m[1])}};
     } catch(const std::invalid_argument& e) {
       errorMessage = e.what();
     }
   } else {
-    errorMessage = "Regex pattern did not match";
+    errorMessage = "Regex pattern for Inquiry did not match";
   }
-  IRSOL_LOG_ERROR("Error parsing inquiry string '{}': {}", line, errorMessage);
-  return std::nullopt;
+  return {std::move(errorMessage)};
 }
 
-std::optional<Command>
+internal::ParserResult<Command>
 Parser::parseCommand(const std::string& line)
 {
   // A command line looks like:
@@ -117,13 +130,14 @@ Parser::parseCommand(const std::string& line)
   std::string             errorMessage;
   if(std::regex_match(line, m, re)) {
     try {
-      return Command{utils::trim(m[1])};
+      return {Command{utils::trim(m[1])}};
     } catch(const std::invalid_argument& e) {
       errorMessage = e.what();
     }
+  } else {
+    errorMessage = "Regex pattern for Command did not match";
   }
-  IRSOL_LOG_ERROR("Error parsing inquiry string '{}': {}", line, errorMessage);
-  return std::nullopt;
+  return {std::move(errorMessage)};
 }
 
 internal::value_t

@@ -1,5 +1,6 @@
 #pragma once
 #include "irsol/protocol/message.hpp"
+#include "irsol/protocol/parsing/parser_result.hpp"
 
 #include <optional>
 #include <string>
@@ -19,9 +20,9 @@ public:
   static std::optional<InMessage> parse(const std::string& line);
 
 private:
-  static std::optional<Assignment> parseAssignment(const std::string& line);
-  static std::optional<Inquiry>    parseInquiry(const std::string& line);
-  static std::optional<Command>    parseCommand(const std::string& line);
+  static internal::ParserResult<Assignment> parseAssignment(const std::string& line);
+  static internal::ParserResult<Inquiry>    parseInquiry(const std::string& line);
+  static internal::ParserResult<Command>    parseCommand(const std::string& line);
 
   static internal::value_t parseValue(const std::string& valueString);
 };

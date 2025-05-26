@@ -1,5 +1,5 @@
 #include "irsol/protocol/message.hpp"
-#include "irsol/protocol/parser.hpp"
+#include "irsol/protocol/parsing/parser.hpp"
 
 #include <catch2/catch_all.hpp>
 
