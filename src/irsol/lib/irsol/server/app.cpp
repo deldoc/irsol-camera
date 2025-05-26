@@ -1,8 +1,10 @@
-// App.cpp
 #include "irsol/server/app.hpp"
 
 #include "irsol/logging.hpp"
+#include "irsol/server/handlers.hpp"
 #include "irsol/utils.hpp"
+
+#include <sstream>
 
 namespace irsol {
 namespace server {
@@ -13,7 +15,9 @@ App::App(port_t port)
   , m_acceptor({})
   , m_cameraInterface(std::make_unique<camera::Interface>())
   , m_frameCollector(std::make_unique<internal::FrameCollector>(*m_cameraInterface.get()))
+  , m_messageHandler(std::make_unique<handlers::MessageHandler>())
 {
+  registerMessageHandlers();
   IRSOL_LOG_DEBUG("App created on port {}", m_port);
 }
 
@@ -44,6 +48,20 @@ App::stop()
   }
   m_frameCollector->stop();
   IRSOL_LOG_INFO("Server stopped");
+}
+
+void
+App::broadcast(const std::string& msg)
+{
+  std::lock_guard<std::mutex> lock(m_clientsMutex);
+  IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
+  for(auto& [clientId, client] : m_clients) {
+    IRSOL_LOG_TRACE("Broadcasting message '{}' to client '{}'", msg, clientId);
+    // Lock the client's session to prevent race conditions
+    std::lock_guard<std::mutex> clientLock(client->sessionData().mutex);
+    client->send(msg);
+  }
+  IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
 }
 
 void
@@ -134,28 +152,58 @@ App::removeClient(const client_id_t& clientId)
 }
 
 void
-App::broadcast(const std::string& msg)
+App::registerMessageHandlers()
 {
-  std::lock_guard<std::mutex> lock(m_clientsMutex);
-  IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
-  for(auto& [clientId, client] : m_clients) {
-    IRSOL_LOG_TRACE("Broadcasting message '{}' to client '{}'", msg, clientId);
-    // Lock the client's session to prevent race conditions
-    std::lock_guard<std::mutex> clientLock(client->sessionData().mutex);
-    client->send(msg);
-  }
-  IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
-}
+  // Build a context to pass to all handlers
+  handlers::Context ctx{*this};
 
-camera::Interface&
-App::camera()
-{
-  return *m_cameraInterface;
-}
-internal::FrameCollector&
-App::frameCollector()
-{
-  return *m_frameCollector;
+  // Resister all handlers
+  if(!m_messageHandler->registerHandler<protocol::Inquiry>(
+       "fr", handlers::InquiryFrameRateHandler(ctx))) {
+    IRSOL_LOG_FATAL("Failed to register inquiry frame rate handler");
+    throw std::runtime_error("Failed to register inquiry frame rate handler");
+  };
+  // if(!m_messageHandler->registerHandler<protocol::Command>(
+  //      "gi",
+  //      handlers::CommandLambdaHandler(
+  //        ctx, [](handlers::Context&, protocol::Command&& cmd) ->
+  //        std::vector<protocol::OutMessage> {
+  //          IRSOL_LOG_DEBUG("Get image handler called with message '{}'", cmd.toString());
+  //          return {};
+  //        }))) {
+  //   IRSOL_ASSERT_DEBUG("Failed to register get image handler");
+  //   throw std::runtime_error("Failed to register get image handler");
+  // }
+  if(!m_messageHandler->registerHandler<protocol::Command>(
+       "image_data",
+       handlers::CommandLambdaHandler(
+         ctx,
+         [](handlers::Context& ctx, protocol::Command&& cmd) -> std::vector<protocol::OutMessage> {
+           std::vector<protocol::OutMessage> result;
+           auto&                             cam = ctx.app.camera();
+           auto img = cam.captureImage(std::chrono::milliseconds(10000));
+           if(img.IsEmpty()) {
+             IRSOL_LOG_ERROR("Failed to capture image.");
+             result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
+             return result;
+           }
+           uint32_t width    = static_cast<uint32_t>(img.GetWidth());
+           uint32_t height   = static_cast<uint32_t>(img.GetHeight());
+           size_t   dataSize = img.GetSize();
+
+           // Send raw data
+           const void*                             imageBuffer = img.GetImageData();
+           std::vector<protocol::internal::byte_t> rawData(dataSize);
+           memcpy(rawData.data(), imageBuffer, dataSize);
+
+           irsol::protocol::ImageBinaryData imageData(std::move(rawData), {height, width}, {});
+
+           result.push_back(std::move(imageData));
+           return result;
+         }))) {
+    IRSOL_ASSERT_DEBUG("Failed to register image handler");
+    throw std::runtime_error("Failed to register image handler");
+  }
 }
 
 }  // namespace server

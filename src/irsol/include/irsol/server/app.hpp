@@ -3,6 +3,7 @@
 #include "irsol/camera/interface.hpp"
 #include "irsol/server/client_session.hpp"
 #include "irsol/server/collector.hpp"
+#include "irsol/server/message_handler.hpp"
 #include "irsol/server/types.hpp"
 
 #include <atomic>
@@ -71,8 +72,18 @@ public:
    */
   void broadcast(const std::string& message);
 
-  camera::Interface&        camera();
-  internal::FrameCollector& frameCollector();
+  camera::Interface& camera()
+  {
+    return *m_cameraInterface;
+  };
+  internal::FrameCollector& frameCollector()
+  {
+    return *m_frameCollector;
+  };
+  const handlers::MessageHandler& messageHandler() const
+  {
+    return *m_messageHandler;
+  };
 
 private:
   /// TCP port on which the server listens for incoming connections.
@@ -98,6 +109,9 @@ private:
 
   /// Owned collector that captures frames and dispatches them to clients.
   std::unique_ptr<internal::FrameCollector> m_frameCollector;
+
+  /// Message handler for incoming messages.
+  std::unique_ptr<handlers::MessageHandler> m_messageHandler;
 
   /**
    * @brief Loop that accepts new TCP client connections.
@@ -126,6 +140,13 @@ private:
    * @param clientId ID of the client to remove.
    */
   void removeClient(const client_id_t& clientId);
+
+  /**
+   * @brief Registers message handlers for the server.
+   *
+   * Sets up handlers for assignment, inquiry, and command messages.
+   */
+  void registerMessageHandlers();
 };
 }  // namespace server
 }  // namespace irsol

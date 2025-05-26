@@ -15,17 +15,17 @@ struct BinaryData
   std::shared_ptr<void> data{};
   size_t                size{};
 };
-struct CommandResponse
+struct MessageHandlerResponse
 {
   std::string message;
   BinaryData  binaryData{};
   std::string broadcastMessage{};
 };
 
-class CommandProcessor
+class MessageHandler
 {
 public:
-  using responses_t = std::vector<CommandResponse>;
+  using responses_t = std::vector<MessageHandlerResponse>;
   static responses_t handleQuery(const std::string& query, std::shared_ptr<ClientSession> session);
   static responses_t handleCommand(
     const std::string&             command,

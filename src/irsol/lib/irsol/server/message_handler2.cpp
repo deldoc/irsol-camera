@@ -1,9 +1,8 @@
-#include "irsol/server/command_processor.hpp"
-
 #include "irsol/logging.hpp"
 #include "irsol/server/app.hpp"
 #include "irsol/server/client_session.hpp"
 #include "irsol/server/image_data.hpp"
+#include "irsol/server/message_handler.hpp"
 #include "irsol/utils.hpp"
 
 #include <memory>
@@ -12,23 +11,10 @@
 namespace irsol {
 namespace server {
 namespace internal {
-CommandProcessor::responses_t
-CommandProcessor::handleQuery(const std::string& query, std::shared_ptr<ClientSession> session)
+MessageHandler::responses_t
+MessageHandler::handleQuery(const std::string& query, std::shared_ptr<ClientSession> session)
 {
   auto& camera = session->app().camera();
-
-  if(query == "camera_status") {
-    IRSOL_LOG_DEBUG("Querying camera status");
-    auto fps = camera.getParam<float>("AcquisitionFrameRate");
-    return {
-      CommandResponse{"fr=" + std::to_string(fps) + "\n"},
-    };
-  }
-  if(query == "fps") {
-    IRSOL_LOG_DEBUG("Querying frame rate");
-    auto fps = camera.getParam<float>("AcquisitionFrameRate");
-    return {CommandResponse{"fr=" + std::to_string(fps) + "\n"}};
-  }
 
   if(query == "image") {
     IRSOL_LOG_DEBUG("Querying image");
@@ -60,15 +46,15 @@ CommandProcessor::handleQuery(const std::string& query, std::shared_ptr<ClientSe
     });
     internal::BinaryData  binaryData{buffer, dataSize};
     return {
-      CommandResponse{headerStr, binaryData},
+      MessageHandlerResponse{headerStr, binaryData},
     };
   }
 
   IRSOL_LOG_ERROR("Unknown query: '{}'", query);
   return {};
 }
-CommandProcessor::responses_t
-CommandProcessor::handleCommand(
+MessageHandler::responses_t
+MessageHandler::handleCommand(
   const std::string&             command,
   const std::string&             params,
   std::shared_ptr<ClientSession> session)
@@ -81,7 +67,7 @@ CommandProcessor::handleCommand(
   if(command == "it") {
     double exposureTime = std::stod(params);
     camera.setParam("ExposureTime", exposureTime);
-    return {CommandResponse{"", {}, "it=" + params + "\n"}};
+    return {MessageHandlerResponse{"", {}, "it=" + params + "\n"}};
   }
 
   if(command == "start_frame_listening") {

@@ -4,7 +4,7 @@
 #include "irsol/protocol/parsing/parser.hpp"
 #include "irsol/protocol/serialization.hpp"
 #include "irsol/server/app.hpp"
-#include "irsol/server/command_processor.hpp"
+#include "irsol/server/message_handler.hpp"
 #include "irsol/utils.hpp"
 
 #include <algorithm>
@@ -101,83 +101,21 @@ ClientSession::processRawMessage(const std::string& rawMessage)
     return;
   }
 
-  // Extract the InMessage from the optional wrapper
-  irsol::protocol::InMessage parsedMessage{std::move(*optionalParsedMessage)};
-  switch(auto kind = irsol::protocol::getInMessageKind(parsedMessage)) {
-    case irsol::protocol::InMessageKind::ASSIGNMENT: {
-      const irsol::protocol::Assignment& assignment =
-        std::get<irsol::protocol::Assignment>(parsedMessage);
-      IRSOL_LOG_INFO("Received assignment '{}'", assignment.toString());
-      break;
+  // Extract the InMessage from the optional wrapper and submit it the the message handler
+  auto result = app().messageHandler().handle(std::move(*optionalParsedMessage));
+  IRSOL_NAMED_LOG_DEBUG(m_id, "Received {} response(s)", result.size());
+  for(auto& message : result) {
+    IRSOL_NAMED_LOG_DEBUG(m_id, "Serializing message: '{}'", irsol::protocol::toString(message));
+    auto serializedMessage = irsol::protocol::Serializer::serialize(std::move(message));
+    IRSOL_NAMED_LOG_DEBUG(m_id, "Serialized message: '{}'", serializedMessage.toString());
+    if(serializedMessage.headerSize()) {
+      send(serializedMessage.header);
     }
-    case irsol::protocol::InMessageKind::INQUIRY: {
-      const irsol::protocol::Inquiry& inquiry = std::get<irsol::protocol::Inquiry>(parsedMessage);
-      IRSOL_LOG_INFO("Received inquiry '{}'", inquiry.toString());
-      break;
-    }
-    case irsol::protocol::InMessageKind::COMMAND: {
-      const irsol::protocol::Command& command = std::get<irsol::protocol::Command>(parsedMessage);
-      IRSOL_LOG_INFO("Received command '{}'", command.toString());
-      break;
-    }
-    default: {
-      IRSOL_LOG_ERROR("Invalid message kind: {}", static_cast<int>(kind));
-      break;
+    if(serializedMessage.payloadSize()) {
+      send(serializedMessage.payload.data(), serializedMessage.payloadSize());
     }
   }
-
-  // Process the message and get response
-  // CommandProcessor::responses_t responses;
-  // if(strippedMessage.back() == '?') {
-  //   strippedMessage = utils::strip(strippedMessage, "?");
-  //   responses       = CommandProcessor::handleQuery(strippedMessage, shared_from_this());
-  //   IRSOL_NAMED_LOG_DEBUG(m_id, "Query processed: '{}'", strippedMessage);
-  // } else {
-  //   auto commandParts = utils::split(strippedMessage, '=');
-  //   if(commandParts.size() > 2) {
-  //     IRSOL_NAMED_LOG_ERROR(
-  //       m_id, "Invalid command format: '{}', expected <command[=value]>", strippedMessage);
-  //     return;
-  //   }
-  //   if(commandParts.size() == 1) {
-  //     commandParts.push_back("");
-  //   }
-  //   auto commandName  = commandParts[0];
-  //   auto commandValue = commandParts[1];
-  //   responses = CommandProcessor::handleCommand(commandName, commandValue, shared_from_this());
-  //   IRSOL_NAMED_LOG_DEBUG(m_id, "Command processed: '{}'", strippedMessage);
-  // }
-
-  // if(responses.empty()) {
-  //   IRSOL_NAMED_LOG_DEBUG(m_id, "No responses for: '{}'", strippedMessage);
-  //   return;
-  // }
-  // for(const auto& response : responses) {
-  //   {
-
-  //     // Lock the current session's mutex for both ascii and binary data
-  //     std::lock_guard<std::mutex> lock(m_sessionData.mutex);
-  //     // Send response if available
-  //     if(!response.message.empty()) {
-  //       IRSOL_NAMED_LOG_DEBUG(m_id, "Sending response: '{}'", response.message);
-  //       send(response.message);
-  //     } else {
-  //       IRSOL_NAMED_LOG_DEBUG(m_id, "No response for: '{}'", strippedMessage);
-  //     }
-
-  //     // Send data if available
-  //     if(response.binaryData.size) {
-  //       IRSOL_NAMED_LOG_DEBUG(m_id, "Sending binary data ({} bytes).", response.binaryData.size);
-  //       send(response.binaryData.data.get(), response.binaryData.size);
-  //     }
-  //   }
-
-  //   // Send broadcast message if available
-  //   if(!response.broadcastMessage.empty()) {
-  //     IRSOL_NAMED_LOG_DEBUG(m_id, "Broadcasting message: '{}'", response.broadcastMessage);
-  //     m_app.broadcast(response.broadcastMessage);
-  //   }
-  // }
+  IRSOL_NAMED_LOG_DEBUG(m_id, "Sent {} response(s) to client", result.size());
 }
 
 void
