@@ -1,10 +1,10 @@
 #include "irsol/protocol/message.hpp"
-#include "irsol/protocol/serializer.hpp"
+#include "irsol/protocol/serialization/serializer.hpp"
 
 #include <catch2/catch_all.hpp>
 #include <utility>
 
-TEST_CASE("Serializer::serializeValue<direct>()", "[Protocol][Protocol::Serializer]")
+TEST_CASE("Serializer::serializeValue<direct>()", "[Protocol][Protocol::Serialization]")
 {
   {
     // From an integer
@@ -26,7 +26,7 @@ TEST_CASE("Serializer::serializeValue<direct>()", "[Protocol][Protocol::Serializ
   }
 }
 
-TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Serializer]")
+TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Serialization]")
 {
   {
     // From an integer
@@ -56,7 +56,7 @@ TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Seriali
   }
 }
 
-TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serializer]")
+TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serialization]")
 {
   {
     // From a successful Assignment
@@ -106,7 +106,7 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
   }
 }
 
-TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Serializer]")
+TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Serialization]")
 {
   {
     // From a successful Assignment
@@ -158,7 +158,7 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
   }
 }
 
-TEST_CASE("Serializer::serialize<direct>(Error)", "[Protocol][Protocol::Serializer]")
+TEST_CASE("Serializer::serialize<direct>(Error)", "[Protocol][Protocol::Serialization]")
 {
   auto description = GENERATE("", "hello world", "error description");
   {
@@ -202,7 +202,7 @@ TEST_CASE("Serializer::serialize<direct>(Error)", "[Protocol][Protocol::Serializ
     CHECK(serialized.payloadSize() == 0);
   }
 }
-TEST_CASE("Serializer::serialize<variant>(Error)", "[Protocol][Protocol::Serializer]")
+TEST_CASE("Serializer::serialize<variant>(Error)", "[Protocol][Protocol::Serialization]")
 {
   auto description = GENERATE("", "hello world", "error description");
   {
