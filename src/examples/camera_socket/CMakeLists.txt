@@ -24,6 +24,16 @@ target_link_libraries(${PROJECT_NAME}-viewer
     args::args
 )
 
+add_executable(
+    ${PROJECT_NAME}-viewer-poll
+    viewer_client_poll.cpp
+)
+
+target_link_libraries(${PROJECT_NAME}-viewer-poll
+    irsol::cv
+    args::args
+)
+
 else()
 message(STATUS, "OpenCV not found, viewer target skipped")
 endif()
