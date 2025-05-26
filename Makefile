@@ -12,7 +12,6 @@ lint:
 	@echo "Done running clang-format."
 .PHONY: lint
 
-
 build:
 	@echo "Setting up build environment..."
 	@if [ -n "$$DEBUG" ]; then \
@@ -28,20 +27,34 @@ build:
 	@echo "Done building."
 .PHONY: build
 
-tests: build
+tests/build:
+	@echo "Building tests..."
+	@if [ -n "$$DEBUG" ]; then \
+		BUILD_DIR=src/build/debug; \
+		CONFIG=Debug; \
+	else \
+		BUILD_DIR=src/build/release; \
+		CONFIG=Release; \
+	fi; \
+	mkdir -p $$BUILD_DIR && cd $$BUILD_DIR && \
+	cmake -DCMAKE_BUILD_TYPE=$$CONFIG -DIRSOL_BUILD_TESTS=ON ../.. && \
+	cmake --build . --target unit_tests -j8
+	@echo "Done building tests."
+.PHONY: tests/build
+
+tests: tests/build
 	@echo "Running unit-tests"
 	@if [ -n "$$DEBUG" ]; then \
-		echo "Debug mode is enabled"; \
 		./src/dist/debug/bin/unit_tests --log-level trace; \
 	else \
-		echo "Release mode is enabled"; \
 		./src/dist/release/bin/unit_tests; \
 	fi
 .PHONY: tests
 
 clean:
 	@echo "Cleaning build files..."
-	@cd src/build && make clean
+	@cd src/build/debug && make clean;
+	@cd src/build/release && make clean;
 	@echo "Done cleaning."
 .PHONY: clean
 

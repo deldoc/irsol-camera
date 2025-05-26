@@ -37,7 +37,7 @@ Serializer::serialize(const OutMessage& msg)
 {
 
   return std::visit(
-    [](auto&& msg) -> std::string {
+    [](auto&& msg) -> SerializedMessage {
       using T = std::decay_t<decltype(msg)>;
       return serialize<T>(msg);
     },
@@ -74,7 +74,7 @@ Serializer::serializeSuccess(const Success& msg)
   } else if(msg.source == InMessageKind::COMMAND) {
     result += ";";
   }
-  return result;
+  return {result};
 }
 
 SerializedMessage
@@ -83,7 +83,6 @@ Serializer::serializeBinaryDataBuffer(const BinaryDataBuffer& msg)
   IRSOL_LOG_TRACE("Serializing binary buffer: {}", msg.toString());
   // TODO: implement serialization
   throw std::runtime_error("Binary data serialization not supported");
-  return "test" + msg.toString();
 }
 
 SerializedMessage
@@ -106,7 +105,7 @@ SerializedMessage
 Serializer::serializeError(const Error& msg)
 {
   IRSOL_LOG_TRACE("Serializing error message: {}", msg.toString());
-  return msg.identifier + ": Error: " + msg.description;
+  return {msg.identifier + ": Error: " + msg.description};
 }
 
 }  // namespace protocol
