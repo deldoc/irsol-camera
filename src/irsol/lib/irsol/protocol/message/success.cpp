@@ -19,7 +19,7 @@ Success::toString() const
 {
   std::ostringstream oss;
   oss << "Success{"
-      << "identifier: " << identifier << ", source: " << InMessageKindToString(source);
+      << "identifier: '" << identifier << "', source: " << InMessageKindToString(source);
   if(hasBody()) {
     oss << ", body: ";
     if(hasInt()) {

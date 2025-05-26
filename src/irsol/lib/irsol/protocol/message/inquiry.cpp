@@ -1,4 +1,5 @@
 #include "irsol/protocol/message/inquiry.hpp"
+
 #include "irsol/protocol/utils.hpp"
 
 #include <sstream>
@@ -13,7 +14,7 @@ Inquiry::toString() const
 {
   std::ostringstream oss;
   oss << "Inquiry{"
-      << "identifier: " << identifier << "}";
+      << "identifier: '" << identifier << "'}";
   return oss.str();
 }
 }  // namespace protocol

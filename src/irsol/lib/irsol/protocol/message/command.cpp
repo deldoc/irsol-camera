@@ -1,4 +1,5 @@
 #include "irsol/protocol/message/command.hpp"
+
 #include "irsol/protocol/utils.hpp"
 
 #include <sstream>
@@ -13,7 +14,7 @@ Command::toString() const
 {
   std::ostringstream oss;
   oss << "Command{"
-      << "identifier: " << identifier << "}";
+      << "identifier: '" << identifier << "'}";
   return oss.str();
 }
 }  // namespace protocol

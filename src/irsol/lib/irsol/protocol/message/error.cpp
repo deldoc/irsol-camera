@@ -16,8 +16,8 @@ Error::toString() const
 {
   std::ostringstream oss;
   oss << "Error{"
-      << "identifier: " << identifier << ", source: " << InMessageKindToString(source)
-      << ", description: " << description << "}";
+      << "identifier: '" << identifier << "', source: " << InMessageKindToString(source)
+      << ", description: '" << description << "'}";
   return oss.str();
 }
 

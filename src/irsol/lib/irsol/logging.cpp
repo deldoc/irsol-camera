@@ -110,36 +110,26 @@ initLogging(const char* logFilePath, std::optional<spdlog::level::level_enum> mi
 {
 #ifdef DEBUG
   // Set the logging level to debug if in debug mode
-  const auto consoleSinkLevel = spdlog::level::debug;
-  const auto fileSinkLevel    = spdlog::level::trace;
+  const auto defaultConsoleLevel  = spdlog::level::debug;
+  const auto defaultFileSinkLevel = spdlog::level::trace;
 #else
   // Set the logging level to info if not in debug mode
-  const auto consoleSinkLevel = spdlog::level::info;
-  const auto fileSinkLevel    = spdlog::level::info;
+  const auto defaultConsoleLevel  = spdlog::level::info;
+  const auto defaultFileSinkLevel = spdlog::level::info;
 #endif
 
-  spdlog::level::level_enum globalLevel;
-  if(minLogLevel.has_value()) {
-    globalLevel = *minLogLevel;
-  } else {
-    globalLevel = std::min({consoleSinkLevel, fileSinkLevel});
-  }
-
   auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-  consoleSink->set_level(std::min({consoleSinkLevel, globalLevel}));
   setSinkLoggingFormat(LoggingFormat::DEFAULT_NO_TIME, consoleSink);
 
   const auto maxFileSize = 1024 * 1024 * 5;  // 5 MB
   const auto maxFiles    = 24;               // Keep 24 rotated files
   auto       fileSink    = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
     logFilePath, maxFileSize, maxFiles, false);
-  fileSink->set_level(std::min({fileSinkLevel, globalLevel}));
   setSinkLoggingFormat(LoggingFormat::DEFAULT, fileSink);
 
   // Set the loggers as default loggers
   auto logger =
     std::make_shared<spdlog::logger>("irsol", spdlog::sinks_init_list{consoleSink, fileSink});
-  logger->set_level(globalLevel);
   spdlog::set_default_logger(logger);
 
   // Force flush on error level and above
@@ -147,9 +137,24 @@ initLogging(const char* logFilePath, std::optional<spdlog::level::level_enum> mi
 
   // Force flush every N seconds
   spdlog::flush_every(std::chrono::seconds(2));
+
+  // Configure the levels for logging on the different sinks
+  auto consoleLevel  = defaultConsoleLevel;
+  auto fileSinkLevel = defaultFileSinkLevel;
+  if(minLogLevel.has_value()) {
+    // Override the console and file levels if needed
+    consoleLevel  = std::min({defaultConsoleLevel, *minLogLevel});
+    fileSinkLevel = std::min({defaultFileSinkLevel, *minLogLevel});
+  }
+  auto globalLevel = std::min({consoleLevel, fileSinkLevel});
+
+  consoleSink->set_level(consoleLevel);
+  fileSink->set_level(fileSinkLevel);
+  logger->set_level(globalLevel);
+
 #ifdef DEBUG
   spdlog::info("Logging initialized with sync levels");
-  spdlog::info("Console {}", spdlog::level::to_string_view(consoleSinkLevel));
+  spdlog::info("Console {}", spdlog::level::to_string_view(consoleLevel));
   spdlog::info("File: {}", spdlog::level::to_string_view(fileSinkLevel));
   if(minLogLevel.has_value()) {
     spdlog::info("Global: {} (overridden)", spdlog::level::to_string_view(minLogLevel.value()));

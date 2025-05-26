@@ -65,15 +65,13 @@ App::acceptLoop()
 
     if(!sockResult) {
       if(m_running) {
-        auto err = sockResult.error();
+        sockpp::error_code err{sockResult.error()};
         // These errors are expected in non-blocking mode when no connection is available
         bool isExpectedError =
           (err == std::errc::resource_unavailable_try_again ||
            err == std::errc::operation_would_block || err == std::errc::timed_out);
 
         if(isExpectedError) {
-          IRSOL_LOG_TRACE(
-            "No new connection available '{}'. Sleeping for a short time.", err.message());
           // Sleep for a short time to avoid busy waiting when no connections are available
           std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         } else {

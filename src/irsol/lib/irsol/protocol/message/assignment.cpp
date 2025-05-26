@@ -17,7 +17,7 @@ Assignment::toString() const
 {
   std::ostringstream oss;
   oss << "Assignment{"
-      << "identifier: " << identifier << ", value: ";
+      << "identifier: '" << identifier << "', value: ";
   if(hasInt()) {
     oss << "<int> " << std::get<int>(value);
   } else if(hasDouble()) {
@@ -49,5 +49,5 @@ Assignment::hasString() const
 {
   return std::holds_alternative<std::string>(value);
 }
-} // namespace protocol
-} // namespace irsol
+}  // namespace protocol
+}  // namespace irsol

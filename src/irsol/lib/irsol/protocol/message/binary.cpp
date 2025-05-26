@@ -1,7 +1,7 @@
 #include "irsol/protocol/message/binary.hpp"
-#include "irsol/protocol/utils.hpp"
 
 #include "irsol/assert.hpp"
+#include "irsol/protocol/utils.hpp"
 
 #include <sstream>
 
@@ -16,7 +16,7 @@ BinaryDataAttribute::toString() const
 {
   std::ostringstream oss;
   oss << "BinaryDataAttribute{"
-      << "identifier: " << identifier << ", value: ";
+      << "identifier: '" << identifier << "', value: ";
   if(hasInt()) {
     oss << "<int> " << std::get<int>(value);
   } else if(hasDouble()) {
