@@ -6,6 +6,8 @@ lint:
 	@clang-format --style=file -i -- src/irsol/lib/**/**/*.cpp
 	@clang-format --style=file -i -- src/irsol/include/**/**/*.hpp
 	@clang-format --style=file -i -- src/irsol/include/**/**/*.tpp
+	@clang-format --style=file -i -- src/irsol/lib/**/**/**/*.cpp
+	@clang-format --style=file -i -- src/irsol/include/**/**/**/*.hpp
 	@clang-format --style=file -i -- src/tests/unit/*.cpp
 	@clang-format --style=file -i -- src/tests/unit/**/*.cpp
 	@clang-format --style=file -i -- src/tests/unit/**/**/*.cpp
