@@ -1,10 +1,11 @@
 #include "irsol/protocol/message/variants.hpp"
+
 #include "irsol/protocol/message/assignment.hpp"
-#include "irsol/protocol/message/inquiry.hpp"
-#include "irsol/protocol/message/command.hpp"
-#include "irsol/protocol/message/success.hpp"
-#include "irsol/protocol/message/error.hpp"
 #include "irsol/protocol/message/binary.hpp"
+#include "irsol/protocol/message/command.hpp"
+#include "irsol/protocol/message/error.hpp"
+#include "irsol/protocol/message/inquiry.hpp"
+#include "irsol/protocol/message/success.hpp"
 #include "irsol/protocol/utils.hpp"
 
 #include <iomanip>
@@ -13,7 +14,6 @@
 
 namespace irsol {
 namespace protocol {
-
 
 InMessageKind
 getInMessageKind(const InMessage& msg)

@@ -1,15 +1,14 @@
 #pragma once
 
 #include "irsol/assert.hpp"
-#include "irsol/protocol/message/types.hpp"
 #include "irsol/protocol/message/binary.hpp"
+#include "irsol/protocol/message/types.hpp"
 
-#include <variant>
 #include <string>
+#include <variant>
 
 namespace irsol {
 namespace protocol {
-
 
 /**
  * @brief Represents the type of an incoming message.
@@ -21,17 +20,22 @@ enum class InMessageKind
   COMMAND
 };
 
-constexpr const char* InMessageKindToString(InMessageKind kind) {
+constexpr const char*
+InMessageKindToString(InMessageKind kind)
+{
   switch(kind) {
-    case InMessageKind::ASSIGNMENT: return "ASSIGNMENT";
-    case InMessageKind::INQUIRY: return "INQUIRY";
-    case InMessageKind::COMMAND: return "COMMAND";
+    case InMessageKind::ASSIGNMENT:
+      return "ASSIGNMENT";
+    case InMessageKind::INQUIRY:
+      return "INQUIRY";
+    case InMessageKind::COMMAND:
+      return "COMMAND";
   }
   IRSOL_UNREACHABLE("Invalid InMessageKind");
 }
 
 // Forward declarations
-struct Assignment;  
+struct Assignment;
 struct Inquiry;
 struct Command;
 
@@ -54,13 +58,20 @@ enum class OutMessageKind
   ERROR
 };
 
-constexpr const char* OutMessageKindToString(OutMessageKind kind) {
+constexpr const char*
+OutMessageKindToString(OutMessageKind kind)
+{
   switch(kind) {
-    case OutMessageKind::STATUS: return "STATUS";
-    case OutMessageKind::BINARY_BUFFER: return "BINARY_BUFFER";
-    case OutMessageKind::BW_IMAGE: return "BW_IMAGE";
-    case OutMessageKind::COLOR_IMAGE: return "COLOR_IMAGE";
-    case OutMessageKind::ERROR: return "ERROR";
+    case OutMessageKind::STATUS:
+      return "STATUS";
+    case OutMessageKind::BINARY_BUFFER:
+      return "BINARY_BUFFER";
+    case OutMessageKind::BW_IMAGE:
+      return "BW_IMAGE";
+    case OutMessageKind::COLOR_IMAGE:
+      return "COLOR_IMAGE";
+    case OutMessageKind::ERROR:
+      return "ERROR";
   }
   IRSOL_UNREACHABLE("Invalid OutMessageKind");
 }
@@ -76,7 +87,6 @@ struct Error;
  */
 using OutMessage =
   std::variant<Success, BinaryDataBuffer, ImageBinaryData, ColorImageBinaryData, Error>;
-
 
 namespace traits {
 // To be used as:
@@ -97,8 +107,6 @@ using IsInMessageVariant = internal::traits::_IsTypeInVariant<T, InMessage>;
 template<typename T>
 using IsOutMessageVariant = internal::traits::_IsTypeInVariant<T, OutMessage>;
 }  // namespace traits
-
-
 
 template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
 constexpr InMessageKind

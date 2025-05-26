@@ -1,7 +1,7 @@
 #pragma once
 
-#include "irsol/protocol/message/variants.hpp"
 #include "irsol/protocol/message/types.hpp"
+#include "irsol/protocol/message/variants.hpp"
 
 #include <string>
 
@@ -40,7 +40,6 @@ struct Assignment
   /// @return true if the value is of type string.
   bool hasString() const;
 };
-
 
 }  // namespace protocol
 }  // namespace irsol

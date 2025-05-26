@@ -1,7 +1,7 @@
 #pragma once
 
-#include "irsol/protocol/message/variants.hpp"
 #include "irsol/protocol/message/types.hpp"
+#include "irsol/protocol/message/variants.hpp"
 
 #include <string>
 
@@ -27,8 +27,6 @@ struct Inquiry
    */
   std::string toString() const;
 };
-
-
 
 }  // namespace protocol
 }  // namespace irsol
