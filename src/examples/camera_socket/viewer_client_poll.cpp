@@ -30,7 +30,7 @@ createMat(unsigned char* data, int rows, int cols, int chs = 1)
 }
 
 std::optional<std::pair<size_t, cv::Mat>>
-queryImage(irsol::server::connector_t& conn)
+queryImage(irsol::types::connector_t& conn)
 {
   conn.write("gi\n");
   // Step 1: Read ASCII header until ':' is found
@@ -105,15 +105,15 @@ queryImage(irsol::server::connector_t& conn)
   return std::make_pair(imageId, createMat(buffer.data(), height, width, channels));
 }
 
-std::optional<irsol::server::connector_t>
+std::optional<irsol::types::connector_t>
 createConnectionWithRetry(
-  const std::string&    host,
-  irsol::server::port_t port,
-  std::chrono::seconds  retryTimeout = std::chrono::seconds(1))
+  const std::string&   host,
+  irsol::types::port_t port,
+  std::chrono::seconds retryTimeout = std::chrono::seconds(1))
 {
   std::error_code ec;
   while(!g_terminate.load()) {
-    irsol::server::connector_t conn({host, port}, ec);
+    irsol::types::connector_t conn({host, port}, ec);
     if(ec) {
       IRSOL_LOG_WARN(
         "Failed to connect to server at {}:{}: {}, retrying in {} seconds",
@@ -136,12 +136,12 @@ run(double inFps)
 
   IRSOL_LOG_INFO("TCP client viewer (polling)");
 
-  std::string           server_host = "localhost";
-  irsol::server::port_t port        = 15099;  // port used by existing clients
+  std::string          server_host = "localhost";
+  irsol::types::port_t port        = 15099;  // port used by existing clients
 
   sockpp::initialize();
 
-  irsol::server::connector_t conn;
+  irsol::types::connector_t conn;
   if(auto connOpt = createConnectionWithRetry(server_host, port); !connOpt.has_value()) {
     return;
   } else {

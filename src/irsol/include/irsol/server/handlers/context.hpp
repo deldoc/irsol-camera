@@ -1,6 +1,6 @@
 #pragma once
 
-#include "irsol/server/types.hpp"
+#include "irsol/types.hpp"
 
 #include <memory>
 
@@ -16,7 +16,7 @@ struct Context
 {
   App&                                                      app;
   std::shared_ptr<::irsol::server::internal::ClientSession> getSession(
-    const ::irsol::server::client_id_t& clientId);
+    const ::irsol::types::client_id_t& clientId);
 };
 }
 }

@@ -14,7 +14,7 @@ namespace irsol {
 namespace server {
 namespace internal {
 
-ClientSession::ClientSession(const std::string& id, socket_t&& sock, App& app)
+ClientSession::ClientSession(const std::string& id, irsol::types::socket_t&& sock, App& app)
   : m_id(id), m_socket(std::move(sock)), m_app(app)
 {}
 

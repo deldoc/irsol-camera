@@ -5,7 +5,7 @@
 #include "irsol/server/collector.hpp"
 #include "irsol/server/handlers/factory.hpp"
 #include "irsol/server/message_handler.hpp"
-#include "irsol/server/types.hpp"
+#include "irsol/types.hpp"
 
 #include <atomic>
 #include <mutex>
@@ -36,7 +36,8 @@ class FrameCollector;
 class App
 {
 
-  using client_map_t = std::unordered_map<client_id_t, std::shared_ptr<internal::ClientSession>>;
+  using client_map_t =
+    std::unordered_map<irsol::types::client_id_t, std::shared_ptr<internal::ClientSession>>;
 
 public:
   /**
@@ -44,7 +45,7 @@ public:
    *
    * @param port TCP port to listen on for client connections.
    */
-  explicit App(port_t port);
+  explicit App(irsol::types::port_t port);
 
   /**
    * @brief Starts the server: begins listening and accepting clients.
@@ -69,7 +70,8 @@ public:
    * @param clientId Unique identifier of the client.
    * @return A shared pointer to the client session, or nullptr if not found.
    */
-  std::shared_ptr<internal::ClientSession> getClientSession(const client_id_t& clientId);
+  std::shared_ptr<internal::ClientSession> getClientSession(
+    const irsol::types::client_id_t& clientId);
 
   camera::Interface& camera()
   {
@@ -86,7 +88,7 @@ public:
 
 private:
   /// TCP port on which the server listens for incoming connections.
-  const port_t m_port;
+  const irsol::types::port_t m_port;
 
   /// Atomic flag controlling the server's running state.
   std::atomic<bool> m_running;
@@ -95,7 +97,7 @@ private:
   std::thread m_acceptThread;
 
   /// Acceptor socket bound to m_port.
-  acceptor_t m_acceptor;
+  irsol::types::acceptor_t m_acceptor;
 
   /// Protects concurrent access to the client sessions map.
   std::mutex m_clientsMutex;
@@ -128,7 +130,9 @@ private:
    * @param clientId Unique ID for the new client.
    * @param session  Shared pointer to the created ClientSession.
    */
-  void addClient(const client_id_t& clientId, std::shared_ptr<internal::ClientSession> session);
+  void addClient(
+    const irsol::types::client_id_t&         clientId,
+    std::shared_ptr<internal::ClientSession> session);
 
   /**
    * @brief Unregisters a disconnected client.
@@ -138,7 +142,7 @@ private:
    *
    * @param clientId ID of the client to remove.
    */
-  void removeClient(const client_id_t& clientId);
+  void removeClient(const irsol::types::client_id_t& clientId);
 
   /**
    * @brief Registers message handlers for the server.
@@ -187,7 +191,7 @@ private:
    *  ctx,
    *   [](
    *     handlers::Context&                  ctx,
-   *     const ::irsol::server::client_id_t& client_id,
+   *     const ::irsol::types::client_id_t& client_id,
    *     protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
    *        // Handle the command
    *        return {...};

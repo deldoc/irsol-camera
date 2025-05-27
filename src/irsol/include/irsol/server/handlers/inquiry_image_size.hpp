@@ -37,8 +37,8 @@ struct InquiryImgHandlerBase : InquiryHandler
 
   InquiryImgHandlerBase(Context ctx): InquiryHandler(ctx) {}
   std::vector<out_message_t> operator()(
-    IRSOL_MAYBE_UNUSED const ::irsol::server::client_id_t& client_id,
-    protocol::Inquiry&&                                    message) override
+    IRSOL_MAYBE_UNUSED const ::irsol::types::client_id_t& client_id,
+    protocol::Inquiry&&                                   message) override
   {
     auto&                      cam   = ctx.app.camera();
     int                        value = cam.getParam<int>(std::string(name));

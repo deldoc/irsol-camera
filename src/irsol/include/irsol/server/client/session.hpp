@@ -2,7 +2,7 @@
 
 #include "irsol/protocol.hpp"
 #include "irsol/server/client/state.hpp"
-#include "irsol/server/types.hpp"
+#include "irsol/types.hpp"
 
 #include <atomic>
 #include <chrono>
@@ -41,7 +41,7 @@ public:
    * @param sock   The TCP socket that is already connected to the client.
    * @param app    Reference to the App for which this session is associated.
    */
-  ClientSession(const client_id_t& id, socket_t&& sock, App& app);
+  ClientSession(const irsol::types::client_id_t& id, irsol::types::socket_t&& sock, App& app);
 
   /**
    * @brief Entry point to start processing this client's lifecycle.
@@ -70,18 +70,18 @@ public:
   }
 
   /// Get the unique client identifier.
-  const client_id_t& id() const
+  const irsol::types::client_id_t& id() const
   {
     return m_id;
   }
 
   /// Immutable access to the client's socket.
-  const socket_t& socket() const
+  const irsol::types::socket_t& socket() const
   {
     return m_socket;
   }
   /// Mutable access to the client's socket.
-  socket_t& socket()
+  irsol::types::socket_t& socket()
   {
     return m_socket;
   }
@@ -141,10 +141,10 @@ private:
   void send(void* data, size_t size);
 
   /// Unique identifier for this client session.
-  client_id_t m_id;
+  irsol::types::client_id_t m_id;
 
   /// Holds the socket and mutex for this session.
-  socket_t m_socket;
+  irsol::types::socket_t m_socket;
 
   /// Mutex for managing access to the session's data.
   std::mutex m_socketMutex{};

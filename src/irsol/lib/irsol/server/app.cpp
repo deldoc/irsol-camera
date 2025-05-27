@@ -9,7 +9,7 @@
 namespace irsol {
 namespace server {
 
-App::App(port_t port)
+App::App(irsol::types::port_t port)
   : m_port(port)
   , m_running(false)
   , m_acceptor({})
@@ -25,7 +25,7 @@ bool
 App::start()
 {
   IRSOL_LOG_INFO("Starting server on port {}", m_port);
-  if(auto openResult = m_acceptor.open(inet_address_t(m_port)); !openResult) {
+  if(auto openResult = m_acceptor.open(irsol::types::inet_address_t(m_port)); !openResult) {
     IRSOL_LOG_ERROR("Failed to open acceptor on port {}: {}", m_port, openResult.error().message());
     return false;
   }
@@ -51,7 +51,7 @@ App::stop()
 }
 
 std::shared_ptr<internal::ClientSession>
-App::getClientSession(const client_id_t& clientId)
+App::getClientSession(const irsol::types::client_id_t& clientId)
 {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   auto                        it = m_clients.find(clientId);
@@ -95,7 +95,7 @@ App::acceptLoop()
     }
 
     // Generate a unique ID for this client session
-    client_id_t clientId = utils::uuid();
+    irsol::types::client_id_t clientId = utils::uuid();
     IRSOL_LOG_DEBUG("Generated client ID: {}", clientId);
     auto session = std::make_shared<internal::ClientSession>(clientId, sockResult.release(), *this);
     addClient(clientId, session);
@@ -104,7 +104,9 @@ App::acceptLoop()
 }
 
 void
-App::addClient(const client_id_t& clientId, std::shared_ptr<internal::ClientSession> session)
+App::addClient(
+  const irsol::types::client_id_t&         clientId,
+  std::shared_ptr<internal::ClientSession> session)
 {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   IRSOL_LOG_INFO("New client connection from {}", session->socket().address().to_string());
@@ -130,7 +132,7 @@ App::addClient(const client_id_t& clientId, std::shared_ptr<internal::ClientSess
 }
 
 void
-App::removeClient(const client_id_t& clientId)
+App::removeClient(const irsol::types::client_id_t& clientId)
 {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
   auto                        client = m_clients.find(clientId);
@@ -166,9 +168,9 @@ App::registerMessageHandlers()
     "image_data",
     ctx,
     [](
-      handlers::Context&                  ctx,
-      const ::irsol::server::client_id_t& client_id,
-      protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
+      handlers::Context&                 ctx,
+      const ::irsol::types::client_id_t& client_id,
+      protocol::Command&&                cmd) -> std::vector<protocol::OutMessage> {
       std::vector<protocol::OutMessage> result;
       auto&                             cam = ctx.app.camera();
       auto                              img = cam.captureImage(std::chrono::milliseconds(10000));
@@ -209,7 +211,7 @@ App::registerMessageHandlers()
   //        ctx,
   //        [](
   //          handlers::Context&                  ctx,
-  //          const ::irsol::server::client_id_t& client_id,
+  //          const ::irsol::types::client_id_t& client_id,
   //          protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
   //          std::vector<protocol::OutMessage> result;
   //          auto&                             cam = ctx.app.camera();

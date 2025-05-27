@@ -13,8 +13,8 @@ InquiryFRHandler::InquiryFRHandler(Context ctx): InquiryHandler(ctx) {}
 
 std::vector<out_message_t>
 InquiryFRHandler::operator()(
-  IRSOL_MAYBE_UNUSED const ::irsol::server::client_id_t& client_id,
-  protocol::Inquiry&&                                    message)
+  IRSOL_MAYBE_UNUSED const ::irsol::types::client_id_t& client_id,
+  protocol::Inquiry&&                                   message)
 {
   // Implement logic to calculate and return the frame rate
   // ...

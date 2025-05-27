@@ -15,7 +15,7 @@ CommandGIHandler::CommandGIHandler(Context ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
 CommandGIHandler::operator()(
-  const ::irsol::server::client_id_t& client_id,
+  const ::irsol::types::client_id_t& client_id,
   IRSOL_MAYBE_UNUSED protocol::Command&& message)
 {
   // Retrieve the current session using the client ID

@@ -8,7 +8,7 @@ namespace server {
 namespace handlers {
 
 MessageHandler::handling_function_response_t
-MessageHandler::handle(const ::irsol::server::client_id_t& client_id, protocol::InMessage&& message)
+MessageHandler::handle(const ::irsol::types::client_id_t& client_id, protocol::InMessage&& message)
   const
 {
   IRSOL_LOG_TRACE("Handling message: '{}' for client '{}'", protocol::toString(message), client_id);
