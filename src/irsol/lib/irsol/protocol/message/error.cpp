@@ -22,12 +22,12 @@ Error::toString() const
 }
 
 Error
-Error::from(InMessage&& message, const std::string& description)
+Error::from(const InMessage& message, const std::string& description)
 {
   return std::visit(
     [&description](auto&& value) -> Error {
       using T = std::decay_t<decltype(value)>;
-      return Error::from<T>(std::move(value), description);
+      return Error::from<T>(value, description);
     },
     message);
 }

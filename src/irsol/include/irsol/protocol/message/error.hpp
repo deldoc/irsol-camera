@@ -46,6 +46,8 @@ struct Error
     }
   }
 
+  static Error from(const InMessage& message, const std::string& description);
+
 private:
   // Only allow construction from factory-methods
   Error(const std::string& identifier, InMessageKind source, const std::string& description);

@@ -196,9 +196,8 @@ App::registerMessageHandlers()
            std::vector<protocol::internal::byte_t> rawData(dataSize);
            memcpy(rawData.data(), imageBuffer, dataSize);
 
-           irsol::protocol::ImageBinaryData imageData(std::move(rawData), {height, width}, {});
-
-           result.push_back(std::move(imageData));
+           result.emplace_back(
+             irsol::protocol::ImageBinaryData(std::move(rawData), {height, width}, {}));
            return result;
          }))) {
     IRSOL_ASSERT_DEBUG("Failed to register image handler");

@@ -69,11 +69,6 @@ struct Success
   {
     return Success(msg.identifier, InMessageKind::INQUIRY, std::make_optional(result));
   }
-  static Success from(Inquiry&& msg, internal::value_t result)
-  {
-    return Success(
-      std::move(msg.identifier), InMessageKind::INQUIRY, std::make_optional(std::move(result)));
-  }
 
 private:
   // Only allow construction from factory-methods
