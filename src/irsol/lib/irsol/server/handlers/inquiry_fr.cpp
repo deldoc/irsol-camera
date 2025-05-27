@@ -11,7 +11,9 @@ namespace handlers {
 InquiryFrameRateHandler::InquiryFrameRateHandler(Context ctx): InquiryHandler(ctx) {}
 
 std::vector<out_message_t>
-InquiryFrameRateHandler::operator()(protocol::Inquiry&& message)
+InquiryFrameRateHandler::operator()(
+  const ::irsol::server::client_id_t& client_id,
+  protocol::Inquiry&&                 message)
 {
   // Implement logic to calculate and return the frame rate
   // ...

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "irsol/protocol.hpp"
+#include "irsol/server/types.hpp"
 
 #include <string>
 #include <unordered_map>
@@ -18,7 +19,8 @@ class MessageHandler
   using handler_identifier_t         = std::string;
 
   template<typename T>
-  using handler_function_t = std::function<handling_function_response_t(T&&)>;
+  using handler_function_t =
+    std::function<handling_function_response_t(const ::irsol::server::client_id_t&, T&&)>;
 
   using assignment_handler_function_t = handler_function_t<protocol::Assignment&&>;
   using inquiry_handler_function_t    = handler_function_t<protocol::Inquiry&&>;
@@ -35,7 +37,9 @@ class MessageHandler
     variant<assignment_handler_function_t, inquiry_handler_function_t, command_handler_function_t>;
 
 public:
-  handling_function_response_t handle(protocol::InMessage&& message) const;
+  handling_function_response_t handle(
+    const ::irsol::server::client_id_t& client_id,
+    protocol::InMessage&&               message) const;
 
   template<
     typename T,

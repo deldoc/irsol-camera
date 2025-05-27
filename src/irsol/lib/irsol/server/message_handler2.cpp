@@ -1,6 +1,6 @@
 #include "irsol/logging.hpp"
 #include "irsol/server/app.hpp"
-#include "irsol/server/client_session.hpp"
+#include "irsol/server/client.hpp"
 #include "irsol/server/image_data.hpp"
 #include "irsol/server/message_handler.hpp"
 #include "irsol/utils.hpp"

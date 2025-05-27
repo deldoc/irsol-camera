@@ -1,7 +1,7 @@
 #pragma once
 
 #include "irsol/camera/interface.hpp"
-#include "irsol/server/client_session.hpp"
+#include "irsol/server/client.hpp"
 #include "irsol/server/collector.hpp"
 #include "irsol/server/message_handler.hpp"
 #include "irsol/server/types.hpp"
@@ -71,6 +71,14 @@ public:
    * @param message The serialized message to send.
    */
   void broadcast(const std::string& message);
+
+  /**
+   * @brief Retrieves a client session by its unique identifier.
+   *
+   * @param clientId Unique identifier of the client.
+   * @return A shared pointer to the client session, or nullptr if not found.
+   */
+  std::shared_ptr<internal::ClientSession> getClientSession(const client_id_t& clientId);
 
   camera::Interface& camera()
   {

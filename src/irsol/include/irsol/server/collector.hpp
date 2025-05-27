@@ -1,7 +1,7 @@
 #pragma once
 
 #include "irsol/camera/interface.hpp"
-#include "irsol/server/client_session.hpp"
+#include "irsol/server/client.hpp"
 #include "irsol/server/image_data.hpp"
 
 #include <atomic>

@@ -8,9 +8,10 @@ namespace server {
 namespace handlers {
 
 MessageHandler::handling_function_response_t
-MessageHandler::handle(protocol::InMessage&& message) const
+MessageHandler::handle(const ::irsol::server::client_id_t& client_id, protocol::InMessage&& message)
+  const
 {
-  IRSOL_LOG_TRACE("Handling message: '{}'", protocol::toString(message));
+  IRSOL_LOG_TRACE("Handling message: '{}' for client '{}'", protocol::toString(message), client_id);
   auto handler = findHandlerForMessage(message);
   if(!handler) {
     IRSOL_LOG_ERROR("No handler found for message: '{}'", irsol::protocol::toString(message));
@@ -24,10 +25,10 @@ MessageHandler::handle(protocol::InMessage&& message) const
 
   try {
     return std::visit(
-      [&handler](auto&& msg) -> MessageHandler::handling_function_response_t {
+      [&handler, &client_id](auto&& msg) -> MessageHandler::handling_function_response_t {
         using T                  = std::decay_t<decltype(msg)>;
         using handler_function_t = MessageHandler::handler_function_t<T>;
-        return std::get<handler_function_t>(*handler)(std::move(msg));
+        return std::get<handler_function_t>(*handler)(client_id, std::move(msg));
       },
       std::move(message));
 

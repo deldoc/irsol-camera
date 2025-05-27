@@ -13,15 +13,17 @@ template<
   std::enable_if_t<::irsol::protocol::traits::IsInMessageVariant<T>::value, int> = 0>
 struct LambdaHandlerBase : public HandlerBase<T>
 {
-  using lambda_function_t = std::function<std::vector<out_message_t>(Context&, T&&)>;
+  using lambda_function_t =
+    std::function<std::vector<out_message_t>(Context&, const ::irsol::server::client_id_t&, T&&)>;
 
   LambdaHandlerBase(::irsol::server::handlers::Context ctx, lambda_function_t callback)
     : HandlerBase<T>(ctx), m_callback(callback)
   {}
 
-  std::vector<out_message_t> operator()(T&& message) override
+  std::vector<out_message_t> operator()(const ::irsol::server::client_id_t& client_id, T&& message)
+    override
   {
-    return m_callback(this->ctx, std::move(message));
+    return m_callback(this->ctx, client_id, std::move(message));
   }
 
 private:

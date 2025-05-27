@@ -1,4 +1,4 @@
-#include "irsol/server/client_session.hpp"
+#include "irsol/server/client/session.hpp"
 
 #include "irsol/logging.hpp"
 #include "irsol/protocol/parsing/parser.hpp"
@@ -14,10 +14,8 @@ namespace irsol {
 namespace server {
 namespace internal {
 
-UserSessionData::UserSessionData(socket_t&& sock): sock(std::move(sock)) {}
-
 ClientSession::ClientSession(const std::string& id, socket_t&& sock, App& app)
-  : m_id(id), m_sessionData(std::move(sock)), m_app(app)
+  : m_id(id), m_socket(std::move(sock)), m_app(app)
 {}
 
 void
@@ -31,7 +29,7 @@ ClientSession::run()
 
   while(true) {
     // Read data from socket
-    auto readResult = m_sessionData.sock.read(buffer.data(), buffer.size());
+    auto readResult = m_socket.read(buffer.data(), buffer.size());
 
     // Handle read errors or connection closure
     if(!readResult) {
@@ -63,7 +61,7 @@ ClientSession::run()
     }
   }
 
-  m_sessionData.sock.close();
+  m_socket.close();
   IRSOL_NAMED_LOG_INFO(m_id, "Client session terminated");
 }
 
@@ -102,12 +100,17 @@ ClientSession::processRawMessage(const std::string& rawMessage)
   }
 
   // Extract the InMessage from the optional wrapper and submit it the the message handler
-  auto result = app().messageHandler().handle(std::move(*optionalParsedMessage));
+  auto result = app().messageHandler().handle(m_id, std::move(*optionalParsedMessage));
   IRSOL_NAMED_LOG_DEBUG(m_id, "Received {} response(s)", result.size());
+
+  // lock the session's mutex to prevent race conditions
+  std::lock_guard<std::mutex> lock(m_socketMutex);
   for(auto& message : result) {
     IRSOL_NAMED_LOG_DEBUG(m_id, "Serializing message: '{}'", irsol::protocol::toString(message));
     auto serializedMessage = irsol::protocol::Serializer::serialize(std::move(message));
     IRSOL_NAMED_LOG_DEBUG(m_id, "Serialized message: '{}'", serializedMessage.toString());
+
+    // Send the serialized message to the client
     if(serializedMessage.headerSize()) {
       send(serializedMessage.header);
     }
@@ -125,7 +128,7 @@ ClientSession::send(const std::string& msg)
 
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending message of size {}", preparedMessage.size());
 
-  auto result = m_sessionData.sock.write(preparedMessage);
+  auto result = m_socket.write(preparedMessage);
   if(!result) {
     IRSOL_NAMED_LOG_ERROR(m_id, "Failed to send message: {}", result.error().message());
   } else if(result.value() != preparedMessage.size()) {
@@ -139,7 +142,7 @@ ClientSession::send(void* data, size_t size)
 {
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending binary data of size {}", size);
 
-  auto result = m_sessionData.sock.write(data, size);
+  auto result = m_socket.write(data, size);
   if(!result) {
     IRSOL_NAMED_LOG_ERROR(m_id, "Failed to send binary data: {}", result.error().message());
   } else if(result.value() != size) {

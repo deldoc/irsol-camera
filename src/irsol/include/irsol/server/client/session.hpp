@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/server/client/state.hpp"
 #include "irsol/server/types.hpp"
 
 #include <atomic>
@@ -14,46 +15,6 @@ namespace server {
 // Forward declaration
 class App;
 namespace internal {
-
-/**
- * @brief Parameters controlling how and when frames are delivered to a client.
- *
- * lastFrameSent: timestamp of the last frame successfully sent to the client.
- * frameRate: desired frame rate (in frames per second) for this client.
- */
-struct FrameListeningParams
-{
-  std::chrono::time_point<std::chrono::steady_clock> lastFrameSent{
-    std::chrono::steady_clock::now()};
-  double frameRate;
-};
-
-/**
- * @brief Encapsulates all per-client data for managing a user session.
- *
- * A UserSessionData object holds the networking socket for communication,
- * synchronization primitives protecting concurrent access to the socket,
- * and frame delivery parameters that control how images are streamed to the client.
- */
-struct UserSessionData
-{
-
-  /**
-   * @brief Constructs a new UserSessionData with a given TCP socket.
-   *
-   * @param sock The TCP socket representing the client's connection.
-   */
-  UserSessionData(socket_t&& sock);
-
-  /// Controls the parameters for streaming image frames to the client.
-  FrameListeningParams frameListeningParams{};
-
-  /// The TCP socket used to communicate with the client.
-  socket_t sock;
-
-  /// Mutex to protect access to the socket and associated buffers.
-  std::mutex mutex{};
-};
 
 /**
  * @brief Represents a single connected client session in the server.
@@ -127,6 +88,22 @@ public:
     return m_id;
   }
 
+  /// Immutable access to the client's socket.
+  const socket_t& socket() const
+  {
+    return m_socket;
+  }
+  /// Mutable access to the client's socket.
+  socket_t& socket()
+  {
+    return m_socket;
+  }
+  /// Get the socket mutex.
+  std::mutex& socketMutex()
+  {
+    return m_socketMutex;
+  }
+
   /// Immutable access to this session's UserSessionData.
   const UserSessionData& sessionData() const
   {
@@ -158,8 +135,14 @@ private:
   /// Unique identifier for this client session.
   client_id_t m_id;
 
+  /// Holds the socket and mutex for this session.
+  socket_t m_socket;
+
+  /// Mutex for managing access to the session's data.
+  std::mutex m_socketMutex{};
+
   /// Holds the socket, mutex, and frame streaming parameters.
-  UserSessionData m_sessionData;
+  UserSessionData m_sessionData{};
 
   /// Reference back to the owning server application for callbacks and state.
   App& m_app;

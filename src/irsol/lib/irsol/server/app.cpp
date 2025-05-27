@@ -58,10 +58,18 @@ App::broadcast(const std::string& msg)
   for(auto& [clientId, client] : m_clients) {
     IRSOL_LOG_TRACE("Broadcasting message '{}' to client '{}'", msg, clientId);
     // Lock the client's session to prevent race conditions
-    std::lock_guard<std::mutex> clientLock(client->sessionData().mutex);
+    std::lock_guard<std::mutex> clientLock(client->socketMutex());
     client->send(msg);
   }
   IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
+}
+
+std::shared_ptr<internal::ClientSession>
+App::getClientSession(const client_id_t& clientId)
+{
+  std::lock_guard<std::mutex> lock(m_clientsMutex);
+  auto                        it = m_clients.find(clientId);
+  return it != m_clients.end() ? it->second : nullptr;
 }
 
 void
@@ -113,8 +121,7 @@ void
 App::addClient(const client_id_t& clientId, std::shared_ptr<internal::ClientSession> session)
 {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
-  IRSOL_LOG_INFO(
-    "New client connection from {}", session->sessionData().sock.address().to_string());
+  IRSOL_LOG_INFO("New client connection from {}", session->socket().address().to_string());
   {
     m_clients.insert({clientId, session});
     IRSOL_LOG_DEBUG(
@@ -122,7 +129,7 @@ App::addClient(const client_id_t& clientId, std::shared_ptr<internal::ClientSess
   }
 
   std::thread([session, this]() {
-    std::string clientAddress = session->sessionData().sock.address().to_string();
+    std::string clientAddress = session->socket().address().to_string();
     IRSOL_LOG_DEBUG(
       "Starting client session thread for {} with ID {}", clientAddress, session->id());
 
@@ -163,22 +170,14 @@ App::registerMessageHandlers()
     IRSOL_LOG_FATAL("Failed to register inquiry frame rate handler");
     throw std::runtime_error("Failed to register inquiry frame rate handler");
   };
-  // if(!m_messageHandler->registerHandler<protocol::Command>(
-  //      "gi",
-  //      handlers::CommandLambdaHandler(
-  //        ctx, [](handlers::Context&, protocol::Command&& cmd) ->
-  //        std::vector<protocol::OutMessage> {
-  //          IRSOL_LOG_DEBUG("Get image handler called with message '{}'", cmd.toString());
-  //          return {};
-  //        }))) {
-  //   IRSOL_ASSERT_DEBUG("Failed to register get image handler");
-  //   throw std::runtime_error("Failed to register get image handler");
-  // }
   if(!m_messageHandler->registerHandler<protocol::Command>(
        "image_data",
        handlers::CommandLambdaHandler(
          ctx,
-         [](handlers::Context& ctx, protocol::Command&& cmd) -> std::vector<protocol::OutMessage> {
+         [](
+           handlers::Context&                  ctx,
+           const ::irsol::server::client_id_t& client_id,
+           protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
            std::vector<protocol::OutMessage> result;
            auto&                             cam = ctx.app.camera();
            auto img = cam.captureImage(std::chrono::milliseconds(10000));

@@ -9,7 +9,9 @@ struct InquiryFrameRateHandler : InquiryHandler
 {
   InquiryFrameRateHandler(Context ctx);
 
-  std::vector<out_message_t> operator()(protocol::Inquiry&& message) override;
+  std::vector<out_message_t> operator()(
+    const ::irsol::server::client_id_t& client_id,
+    protocol::Inquiry&&                 message) override;
 };
 }
 }
