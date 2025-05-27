@@ -14,7 +14,8 @@ struct FrameListeningParams
 {
   std::chrono::time_point<std::chrono::steady_clock> lastFrameSent{
     std::chrono::steady_clock::now()};
-  double frameRate;
+  double  frameRate;
+  int64_t numDesiredFrames{-1};  // -1 means unlimited
 };
 
 /**

@@ -66,6 +66,22 @@ ClientSession::run()
 }
 
 void
+ClientSession::handleOutMessage(protocol::OutMessage&& message)
+{
+  IRSOL_NAMED_LOG_DEBUG(m_id, "Serializing message: '{}'", irsol::protocol::toString(message));
+  auto serializedMessage = irsol::protocol::Serializer::serialize(std::move(message));
+  IRSOL_NAMED_LOG_DEBUG(m_id, "Serialized message: '{}'", serializedMessage.toString());
+
+  // Send the serialized message to the client
+  if(serializedMessage.headerSize()) {
+    send(serializedMessage.header);
+  }
+  if(serializedMessage.payloadSize()) {
+    send(serializedMessage.payload.data(), serializedMessage.payloadSize());
+  }
+}
+
+void
 ClientSession::processMessageBuffer(std::string& messageBuffer)
 {
   size_t newlinePos;
@@ -106,17 +122,7 @@ ClientSession::processRawMessage(const std::string& rawMessage)
   // lock the session's mutex to prevent race conditions
   std::lock_guard<std::mutex> lock(m_socketMutex);
   for(auto& message : result) {
-    IRSOL_NAMED_LOG_DEBUG(m_id, "Serializing message: '{}'", irsol::protocol::toString(message));
-    auto serializedMessage = irsol::protocol::Serializer::serialize(std::move(message));
-    IRSOL_NAMED_LOG_DEBUG(m_id, "Serialized message: '{}'", serializedMessage.toString());
-
-    // Send the serialized message to the client
-    if(serializedMessage.headerSize()) {
-      send(serializedMessage.header);
-    }
-    if(serializedMessage.payloadSize()) {
-      send(serializedMessage.payload.data(), serializedMessage.payloadSize());
-    }
+    handleOutMessage(std::move(message));
   }
   IRSOL_NAMED_LOG_DEBUG(m_id, "Sent {} response(s) to client", result.size());
 }

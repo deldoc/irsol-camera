@@ -17,7 +17,7 @@ namespace irsol {
 namespace server {
 namespace internal {
 
-using CollectedFrameCallback = std::function<void(ImageData)>;
+using CollectedFrameCallback = std::function<void(const ImageData&)>;
 
 /**
  * @class FrameCollector

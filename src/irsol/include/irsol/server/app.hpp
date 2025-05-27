@@ -63,16 +63,6 @@ public:
   void stop();
 
   /**
-   * @brief Broadcasts a textual message to all connected clients.
-   *
-   * Thread-safe: locks the client map before sending. Useful for server-wide
-   * notifications, errors, or control messages.
-   *
-   * @param message The serialized message to send.
-   */
-  void broadcast(const std::string& message);
-
-  /**
    * @brief Retrieves a client session by its unique identifier.
    *
    * @param clientId Unique identifier of the client.

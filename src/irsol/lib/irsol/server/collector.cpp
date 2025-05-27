@@ -210,22 +210,16 @@ FrameCollector::collectFrames()
     size_t dataSize = image.GetSize();
     size_t imageId  = image.GetImageID();
 
-    const void* imageBuffer = image.GetImageData();
-    void*       rawBuffer   = new char[dataSize];
-    memcpy(rawBuffer, imageBuffer, dataSize);
-
-    std::shared_ptr<void> buffer(rawBuffer, [](void* p) { delete[] static_cast<char*>(p); });
+    const void*                                      imageBuffer = image.GetImageData();
+    std::vector<::irsol::protocol::internal::byte_t> rawData(dataSize);
+    std::memcpy(
+      rawData.data(),
+      static_cast<const ::irsol::protocol::internal::byte_t*>(imageBuffer),
+      dataSize);
 
     {
       std::lock_guard<std::mutex> lock(m_frameQueueMutex);
-      ImageData                   imageData{buffer,
-                          dataSize,
-                          nextFrameTime,
-                          height,
-                          width,
-                          1,
-                          imageId};  // Assuming 1 channel for now (RGB)
-      m_frameQueue.push(std::move(imageData));
+      m_frameQueue.push({std::move(rawData), nextFrameTime, height, width, 1, imageId});
     }
 
     // Update the time of the last frame capture for the next iteration.
@@ -281,7 +275,7 @@ FrameCollector::broadcastFrames()
     ImageData imageData;
     {
       std::lock_guard<std::mutex> frameLock(m_frameQueueMutex);
-      imageData = m_frameQueue.front();
+      imageData = std::move(m_frameQueue.front());
       m_frameQueue.pop();
     }
 
@@ -300,9 +294,30 @@ FrameCollector::broadcastFrames()
           continue;
 
         callback(imageData);
+        --params.numDesiredFrames;
 
         // Re-anchor to the scheduled time, so we stay on a clean grid
         params.lastFrameSent = clientDesiredNextFrameTime;
+      }
+    }
+
+    {
+      // Remove the clients that have no more frames left
+      std::vector<std::shared_ptr<ClientSession>> clientsToRemove;
+      {
+        std::lock_guard<std::mutex> clientLock(m_clientsMutex);
+        for(auto& [client, callback] : m_clients) {
+          auto& params = client->sessionData().frameListeningParams;
+          if(params.numDesiredFrames == 0) {
+            clientsToRemove.push_back(client);
+          }
+        }
+      }
+      if(!clientsToRemove.empty()) {
+        IRSOL_LOG_DEBUG("Removing {} clients with no more frames left", clientsToRemove.size());
+        for(auto& client : clientsToRemove) {
+          removeClient(client);
+        }
       }
     }
 

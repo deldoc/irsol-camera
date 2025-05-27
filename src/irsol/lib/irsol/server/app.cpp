@@ -50,20 +50,6 @@ App::stop()
   IRSOL_LOG_INFO("Server stopped");
 }
 
-void
-App::broadcast(const std::string& msg)
-{
-  std::lock_guard<std::mutex> lock(m_clientsMutex);
-  IRSOL_LOG_DEBUG("Broadcasting message '{}' to {} clients", msg, m_clients.size());
-  for(auto& [clientId, client] : m_clients) {
-    IRSOL_LOG_TRACE("Broadcasting message '{}' to client '{}'", msg, clientId);
-    // Lock the client's session to prevent race conditions
-    std::lock_guard<std::mutex> clientLock(client->socketMutex());
-    client->send(msg);
-  }
-  IRSOL_LOG_DEBUG("Broadcasted message '{}' to {} clients", msg, m_clients.size());
-}
-
 std::shared_ptr<internal::ClientSession>
 App::getClientSession(const client_id_t& clientId)
 {
@@ -165,11 +151,14 @@ App::registerMessageHandlers()
   handlers::Context ctx{*this};
 
   // Resister all handlers
-  if(!m_messageHandler->registerHandler<protocol::Inquiry>(
-       "fr", handlers::InquiryFrameRateHandler(ctx))) {
+  if(!m_messageHandler->registerHandler<protocol::Inquiry>("fr", handlers::InquiryFRHandler(ctx))) {
     IRSOL_LOG_FATAL("Failed to register inquiry frame rate handler");
     throw std::runtime_error("Failed to register inquiry frame rate handler");
   };
+  if(!m_messageHandler->registerHandler<protocol::Command>("gi", handlers::CommandGIHandler(ctx))) {
+    IRSOL_LOG_FATAL("Failed to register get image handler");
+    throw std::runtime_error("Failed to register get image handler");
+  }
   if(!m_messageHandler->registerHandler<protocol::Command>(
        "image_data",
        handlers::CommandLambdaHandler(
@@ -182,7 +171,7 @@ App::registerMessageHandlers()
            auto&                             cam = ctx.app.camera();
            auto img = cam.captureImage(std::chrono::milliseconds(10000));
            if(img.IsEmpty()) {
-             IRSOL_LOG_ERROR("Failed to capture image.");
+             IRSOL_NAMED_LOG_ERROR(client_id, "Failed to capture image.");
              result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
              return result;
            }

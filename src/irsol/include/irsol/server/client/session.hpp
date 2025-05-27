@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/protocol.hpp"
 #include "irsol/server/client/state.hpp"
 #include "irsol/server/types.hpp"
 
@@ -51,25 +52,11 @@ public:
   void run();
 
   /**
-   * @brief Send a text message to the client.
+   * @brief Handle a message to send to the client.
    *
-   * @note This method is not thead safe. It's the user's responsibility to ensure the session mutex
-   * is held when calling this method.
-   *
-   * @param message String data to transmit.
+   * @note This method is not thead safe. It's the user's responsibility to ensure the session
    */
-  void send(const std::string& message);
-
-  /**
-   * @brief Send raw binary data to the client.
-   *
-   * @note This method is not thead safe. It's the user's responsibility to ensure the session mutex
-   * is held when calling this method.
-   *
-   * @param data Pointer to the buffer.
-   * @param size Number of bytes to send.
-   */
-  void send(void* data, size_t size);
+  void handleOutMessage(protocol::OutMessage&& message);
 
   /// Accessor for the immutable App reference.
   const App& app() const
@@ -131,6 +118,27 @@ private:
    * @param rawMessage The protocol message payload.
    */
   void processRawMessage(const std::string& rawMessage);
+
+  /**
+   * @brief Send a text message to the client.
+   *
+   * @note This method is not thead safe. It's the user's responsibility to ensure the session mutex
+   * is held when calling this method.
+   *
+   * @param message String data to transmit.
+   */
+  void send(const std::string& message);
+
+  /**
+   * @brief Send raw binary data to the client.
+   *
+   * @note This method is not thead safe. It's the user's responsibility to ensure the session mutex
+   * is held when calling this method.
+   *
+   * @param data Pointer to the buffer.
+   * @param size Number of bytes to send.
+   */
+  void send(void* data, size_t size);
 
   /// Unique identifier for this client session.
   client_id_t m_id;

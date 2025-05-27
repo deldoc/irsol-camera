@@ -33,6 +33,7 @@ add_library(${PROJECT_NAME}
     lib/irsol/server/message_handler.cpp
     lib/irsol/server/image_data.cpp
     lib/irsol/server/handlers/base.cpp
+    lib/irsol/server/handlers/command_gi.cpp
     lib/irsol/server/handlers/inquiry_fr.cpp
 )
 add_library(irsol::core ALIAS ${PROJECT_NAME})

@@ -32,7 +32,7 @@ createMat(unsigned char* data, int rows, int cols, int chs = 1)
 std::optional<std::pair<size_t, cv::Mat>>
 queryImage(irsol::server::connector_t& conn)
 {
-  conn.write("image_data\n");
+  conn.write("gi\n");
   // Step 1: Read ASCII header until ':' is found
   std::string headerTitle;
   char        ch;

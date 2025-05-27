@@ -8,10 +8,10 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-InquiryFrameRateHandler::InquiryFrameRateHandler(Context ctx): InquiryHandler(ctx) {}
+InquiryFRHandler::InquiryFRHandler(Context ctx): InquiryHandler(ctx) {}
 
 std::vector<out_message_t>
-InquiryFrameRateHandler::operator()(
+InquiryFRHandler::operator()(
   const ::irsol::server::client_id_t& client_id,
   protocol::Inquiry&&                 message)
 {

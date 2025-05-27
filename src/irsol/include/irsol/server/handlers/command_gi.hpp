@@ -1,18 +1,19 @@
 #pragma once
 
 #include "irsol/server/handlers/base.hpp"
+
 namespace irsol {
 namespace server {
 namespace handlers {
 
-struct InquiryFRHandler : InquiryHandler
+struct CommandGIHandler : CommandHandler
 {
-  InquiryFRHandler(Context ctx);
+  CommandGIHandler(Context ctx);
 
   std::vector<out_message_t> operator()(
     const ::irsol::server::client_id_t& client_id,
-    protocol::Inquiry&&                 message) override;
+    protocol::Command&&                 message) override;
 };
-}
-}
-}
+}  // namespace handlers
+}  // namespace server
+}  // namespace irsol
