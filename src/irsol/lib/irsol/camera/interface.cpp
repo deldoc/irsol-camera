@@ -7,12 +7,46 @@
 namespace irsol {
 namespace camera {
 
-Interface::Interface(): m_cam(utils::loadDefaultCamera())
+Interface::Interface(NeoAPI::Cam cam): m_cam(cam)
 {
 
   // Set the mode to manual
   IRSOL_LOG_INFO("Setting camera mode to 'TriggerMode::On'.");
   setParam("TriggerMode", "On");
+}
+
+Interface::Interface(Interface&& other): m_cam(other.m_cam) {}
+Interface&
+Interface::operator=(Interface&& other)
+{
+  m_cam = other.m_cam;
+  return *this;
+}
+
+Interface
+Interface::FullResolution()
+{
+  auto cam = ::irsol::utils::loadDefaultCamera();
+
+  Interface interface(cam);
+  interface.setParam("BinningVertical", 1);
+  interface.setParam("BinningVerticalMode", "Sum");
+  interface.setParam("BinningHorizontal", 1);
+  interface.setParam("BinningHorizontalMode", "Sum");
+  return interface;
+}
+
+Interface
+Interface::HalfResolution()
+{
+  auto cam = ::irsol::utils::loadDefaultCamera();
+
+  Interface interface(cam);
+  interface.setParam("BinningVertical", 2);
+  interface.setParam("BinningVerticalMode", "Average");
+  interface.setParam("BinningHorizontal", 2);
+  interface.setParam("BinningHorizontalMode", "Average");
+  return interface;
 }
 
 NeoAPI::Cam&

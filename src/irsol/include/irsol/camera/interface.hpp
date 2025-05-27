@@ -1,10 +1,13 @@
 #pragma once
 
+#include "irsol/assert.hpp"
+#include "irsol/utils.hpp"
 #include "neoapi/neoapi.hpp"
 
 #include <chrono>
 #include <mutex>
 #include <string>
+#include <type_traits>
 
 namespace irsol {
 
@@ -27,7 +30,22 @@ public:
    * devices and opens the one matching the default serial number.
    * Throws if the camera cannot be initialized.
    */
-  Interface();
+  Interface(NeoAPI::Cam cam = ::irsol::utils::loadDefaultCamera());
+
+  Interface(Interface&& other);
+  Interface& operator=(Interface&& other);
+
+  /**
+   * Factory method to create a camera interface with full resolution.
+   */
+  static Interface FullResolution();
+  /**
+   * Factory method to create a camera interface with half resolution.
+   *
+   * @note The resolution is halved in both dimension by performing camera-hardware binning
+   * (averaged).
+   */
+  static Interface HalfResolution();
 
   /**
    * @brief Provides direct access to the underlying NeoAPI camera handle.
@@ -65,7 +83,11 @@ public:
    * @param param Name of the camera feature.
    * @return The feature value as type T, or fallback on error.
    */
-  template<typename T>
+  template<
+    typename T,
+    std::enable_if_t<
+      std::is_integral_v<T> || std::is_floating_point_v<T> || std::is_same_v<std::string, T>,
+      int> = 0>
   T getParam(const std::string& param) const;
 
   /**
@@ -92,7 +114,13 @@ public:
    * @param param Name of the camera feature.
    * @param value Value to set for the feature.
    */
-  template<typename T>
+  template<
+    typename T,
+    std::enable_if_t<
+      std::is_integral_v<std::decay_t<T>> || std::is_floating_point_v<std::decay_t<T>> ||
+        std::is_same_v<std::decay_t<T>, std::string> ||
+        std::is_same_v<std::decay_t<T>, const char*>,
+      int> = 0>
   void setParam(const std::string& param, T value);
 
   /**

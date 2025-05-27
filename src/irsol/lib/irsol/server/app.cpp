@@ -13,7 +13,7 @@ App::App(port_t port)
   : m_port(port)
   , m_running(false)
   , m_acceptor({})
-  , m_cameraInterface(std::make_unique<camera::Interface>())
+  , m_cameraInterface(std::make_unique<camera::Interface>(camera::Interface::HalfResolution()))
   , m_frameCollector(std::make_unique<internal::FrameCollector>(*m_cameraInterface.get()))
   , m_messageHandler(std::make_unique<handlers::MessageHandler>())
 {
