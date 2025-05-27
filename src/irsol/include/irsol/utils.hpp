@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/types.hpp"
 #include "neoapi/neoapi.hpp"
 
 #include <chrono>
@@ -9,6 +10,24 @@
 
 namespace irsol {
 namespace utils {
+
+inline int
+toInt(const irsol::types::protocol_value_t& x)
+{
+  return std::get<int>(x);
+}
+
+inline double
+toDouble(const irsol::types::protocol_value_t& x)
+{
+  return std::get<double>(x);
+}
+
+inline std::string
+toString(const irsol::types::protocol_value_t& x)
+{
+  return std::get<std::string>(x);
+}
 
 /**
  * @brief Generate a new UUID string.

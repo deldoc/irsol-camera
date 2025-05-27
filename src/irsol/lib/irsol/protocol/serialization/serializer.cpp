@@ -21,7 +21,7 @@ Serializer::serialize(OutMessage&& msg)
 }
 
 std::string
-Serializer::serializeValue(internal::value_t&& value)
+Serializer::serializeValue(irsol::types::protocol_value_t&& value)
 {
   return std::visit(
     [](auto&& val) -> std::string {

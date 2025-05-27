@@ -185,8 +185,8 @@ App::registerMessageHandlers()
       uint32_t height   = static_cast<uint32_t>(img.GetHeight());
       size_t   dataSize = img.GetSize();
 
-      const void*                             imageBuffer = img.GetImageData();
-      std::vector<protocol::internal::byte_t> rawData(dataSize);
+      const void*                       imageBuffer = img.GetImageData();
+      std::vector<irsol::types::byte_t> rawData(dataSize);
       memcpy(rawData.data(), imageBuffer, dataSize);
 
       result.emplace_back(
@@ -227,7 +227,7 @@ App::registerMessageHandlers()
 
   //          // Send raw data
   //          const void*                             imageBuffer = img.GetImageData();
-  //          std::vector<protocol::internal::byte_t> rawData(dataSize);
+  //          std::vector<irsol::types::byte_t> rawData(dataSize);
   //          memcpy(rawData.data(), imageBuffer, dataSize);
 
   //          result.emplace_back(

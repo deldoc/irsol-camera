@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cstddef>
-#include <string>
+#include "irsol/types.hpp"
+
 #include <variant>
 
 namespace irsol {
@@ -19,31 +19,6 @@ struct _IsTypeInVariant;
 template<typename T, typename... Ts>
 struct _IsTypeInVariant<T, std::variant<Ts...>> : std::disjunction<std::is_same<T, Ts>...>
 {};
-}
-
-using value_t = std::variant<int, double, std::string>;
-
-inline int
-toInt(const value_t& x)
-{
-  return std::get<int>(x);
-}
-
-inline double
-toDouble(const value_t& x)
-{
-  return std::get<double>(x);
-}
-
-inline std::string
-toString(const value_t& x)
-{
-  return std::get<std::string>(x);
-}
-
-using byte_t = std::byte;
-
-namespace traits {
 
 // To be used as:
 // template <typename T, std::enable_if_t<traits::IsInValueTVariant<T>::value, int> = 0>
@@ -52,7 +27,7 @@ namespace traits {
 // variant. and if used with a type that is not part of the value_t variant, the compiler will
 // issue a compilation error.
 template<typename T>
-using IsInValueTVariant = _IsTypeInVariant<T, value_t>;
+using IsInValueTVariant = _IsTypeInVariant<T, ::irsol::types::protocol_value_t>;
 
 }
 

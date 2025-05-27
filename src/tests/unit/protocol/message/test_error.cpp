@@ -10,9 +10,9 @@ TEST_CASE("Error::from<T>()", "[Protocol][Protocol::Message]")
   auto description = GENERATE("hello world", "error description");
   {
     auto value = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
     irsol::protocol::Assignment assignment{identifier, value};
     auto                        result = irsol::protocol::Error::from(assignment, description);
     CHECK(result.identifier == identifier);
@@ -42,9 +42,9 @@ TEST_CASE("Error::from<InMessage>()", "[Protocol][Protocol::Message]")
 
   {
     auto value = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
     irsol::protocol::Assignment assignment{identifier, value};
     irsol::protocol::InMessage  assignmentInMessage(assignment);
     auto result = irsol::protocol::Error::from(assignmentInMessage, description);

@@ -44,7 +44,7 @@ struct InquiryImgHandlerBase : InquiryHandler
     int                        value = cam.getParam<int>(std::string(name));
     std::vector<out_message_t> result;
     result.emplace_back(
-      protocol::Success::from(std::move(message), irsol::protocol::internal::value_t{value}));
+      protocol::Success::from(std::move(message), irsol::types::protocol_value_t{value}));
     return result;
   }
 };

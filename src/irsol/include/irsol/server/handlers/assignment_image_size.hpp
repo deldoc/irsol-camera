@@ -1,9 +1,10 @@
 #pragma once
 
 #include "irsol/macros.hpp"
-#include "irsol/protocol/message/types.hpp"
 #include "irsol/server/app.hpp"
 #include "irsol/server/handlers/base.hpp"
+#include "irsol/types.hpp"
+#include "irsol/utils.hpp"
 
 #include <string_view>
 namespace irsol {
@@ -41,14 +42,13 @@ struct AssignmentImgHandlerBase : AssignmentHandler
     IRSOL_MAYBE_UNUSED const ::irsol::types::client_id_t& client_id,
     protocol::Assignment&&                                message) override
   {
-    auto& cam = ctx.app.camera();
-    auto  resValue =
-      cam.setParam(std::string(name), ::irsol::protocol::internal::toInt(message.value));
+    auto& cam      = ctx.app.camera();
+    auto  resValue = cam.setParam(std::string(name), irsol::utils::toInt(message.value));
     std::vector<out_message_t> result;
 
     // Update the message value with the resulting value after setting the camera parameter.
     // In this way, the resulting value is included in the response message.
-    message.value = ::irsol::protocol::internal::value_t{resValue};
+    message.value = irsol::types::protocol_value_t{resValue};
     result.emplace_back(protocol::Success::from(std::move(message)));
     return result;
   }

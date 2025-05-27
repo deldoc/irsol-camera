@@ -1,6 +1,6 @@
 #pragma once
 
-#include "irsol/protocol/message/types.hpp"
+#include "irsol/types.hpp"
 
 #include <string>
 #include <vector>
@@ -10,10 +10,10 @@ namespace protocol {
 
 struct SerializedMessage
 {
-  std::string                   header;
-  std::vector<internal::byte_t> payload{};
+  std::string                       header;
+  std::vector<irsol::types::byte_t> payload{};
 
-  SerializedMessage(const std::string& header, std::vector<internal::byte_t>&& payload);
+  SerializedMessage(const std::string& header, std::vector<irsol::types::byte_t>&& payload);
   SerializedMessage(SerializedMessage&&) noexcept = default;
   SerializedMessage& operator=(SerializedMessage&&) noexcept = default;
 
@@ -21,11 +21,11 @@ struct SerializedMessage
   SerializedMessage(const SerializedMessage&) = delete;
   SerializedMessage& operator=(const SerializedMessage&) = delete;
 
-  const internal::byte_t* headerData() const;
+  const irsol::types::byte_t* headerData() const;
 
   size_t headerSize() const;
 
-  const internal::byte_t* payloadData() const;
+  const irsol::types::byte_t* payloadData() const;
 
   size_t payloadSize() const;
 

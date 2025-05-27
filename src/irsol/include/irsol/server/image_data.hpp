@@ -1,6 +1,6 @@
 #pragma once
 
-#include "irsol/protocol/message/types.hpp"
+#include "irsol/types.hpp"
 
 #include <chrono>
 #include <memory>
@@ -12,7 +12,7 @@ namespace internal {
 struct ImageData
 {
   ImageData(
-    std::vector<::irsol::protocol::internal::byte_t>&& data,
+    std::vector<irsol::types::byte_t>&&                data,
     std::chrono::time_point<std::chrono::steady_clock> ts,
     size_t                                             h,
     size_t                                             w,
@@ -20,7 +20,7 @@ struct ImageData
     size_t                                             imageId);
   ImageData() = default;
 
-  std::vector<::irsol::protocol::internal::byte_t>   data;
+  std::vector<irsol::types::byte_t>                  data;
   std::chrono::time_point<std::chrono::steady_clock> timestamp;
 
   size_t height;

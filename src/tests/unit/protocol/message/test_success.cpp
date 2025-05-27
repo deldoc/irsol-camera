@@ -9,9 +9,9 @@ TEST_CASE("Success::from<T>()", "[Protocol][Protocol::Message]")
   auto identifier = GENERATE("x", "it", "long_identifier");
   {
     auto value = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
     irsol::protocol::Assignment assignment{identifier, value};
     auto                        result = irsol::protocol::Success::from(assignment);
     CHECK(result.identifier == identifier);
@@ -22,9 +22,9 @@ TEST_CASE("Success::from<T>()", "[Protocol][Protocol::Message]")
   {
     irsol::protocol::Inquiry inquiry{identifier};
     auto                     inquiry_result = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
     auto result = irsol::protocol::Success::from(inquiry, inquiry_result);
     CHECK(result.identifier == identifier);
     CHECK(result.hasBody());

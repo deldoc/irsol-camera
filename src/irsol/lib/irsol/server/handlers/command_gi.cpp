@@ -41,8 +41,8 @@ CommandGIHandler::operator()(
       IRSOL_NAMED_LOG_INFO(session->id(), "Frame received from collector");
 
       // Copy the image data to a byte vector
-      std::vector<irsol::protocol::internal::byte_t> frameBytes = imageData.data;
-      irsol::protocol::ImageBinaryData               frameData(
+      std::vector<irsol::types::byte_t> frameBytes = imageData.data;
+      irsol::protocol::ImageBinaryData  frameData(
         std::move(frameBytes),
         {imageData.height, imageData.width},
         {irsol::protocol::BinaryDataAttribute("imageId", static_cast<int>(imageData.imageId)),

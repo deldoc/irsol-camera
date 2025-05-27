@@ -4,7 +4,7 @@ namespace irsol {
 namespace server {
 namespace internal {
 ImageData::ImageData(
-  std::vector<::irsol::protocol::internal::byte_t>&& data,
+  std::vector<irsol::types::byte_t>&&                data,
   std::chrono::time_point<std::chrono::steady_clock> ts,
   size_t                                             h,
   size_t                                             w,

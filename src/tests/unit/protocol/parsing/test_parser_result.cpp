@@ -45,9 +45,9 @@ TEST_CASE("ParserResult::isError()", "[Protocol][Protocol::Parser]")
 TEST_CASE("ParserResult<Assignment>::getMessage()", "[Protocol][Protocol::Parser]")
 {
   auto value = GENERATE(
-    irsol::protocol::internal::value_t(1),
-    irsol::protocol::internal::value_t(3.14),
-    irsol::protocol::internal::value_t("hello world"));
+    irsol::types::protocol_value_t(1),
+    irsol::types::protocol_value_t(3.14),
+    irsol::types::protocol_value_t("hello world"));
 
   auto identifier = GENERATE(
     "x", "it", "long_identifier", "sequence_identifier[4]", "nested_sequence_identifier[4][423]");

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "irsol/protocol/message/types.hpp"
 #include "irsol/protocol/message/variants.hpp"
+#include "irsol/types.hpp"
 
 #include <string>
 
@@ -16,14 +16,14 @@ namespace protocol {
  */
 struct Assignment
 {
-  Assignment(const std::string& identifier, internal::value_t value);
+  Assignment(const std::string& identifier, irsol::types::protocol_value_t value);
 
   /// The variable or parameter name being assigned. Must start with a character, followed by
   /// alphanumeric characters and underscores.
   std::string identifier;
 
   /// The value assigned to the identifier (int, double, or string).
-  internal::value_t value;
+  irsol::types::protocol_value_t value;
 
   /**
    * @brief Converts the assignment to a human-readable string.

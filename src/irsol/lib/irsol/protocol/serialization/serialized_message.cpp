@@ -6,15 +6,15 @@ namespace irsol {
 namespace protocol {
 
 SerializedMessage::SerializedMessage(
-  const std::string&              header,
-  std::vector<internal::byte_t>&& payload)
+  const std::string&                  header,
+  std::vector<irsol::types::byte_t>&& payload)
   : header(header), payload(std::move(payload))
 {}
 
-const internal::byte_t*
+const irsol::types::byte_t*
 SerializedMessage::headerData() const
 {
-  return reinterpret_cast<const internal::byte_t*>(header.data());
+  return reinterpret_cast<const irsol::types::byte_t*>(header.data());
 }
 
 size_t
@@ -23,7 +23,7 @@ SerializedMessage::headerSize() const
   return header.size();
 }
 
-const internal::byte_t*
+const irsol::types::byte_t*
 SerializedMessage::payloadData() const
 {
   return payload.data();

@@ -7,9 +7,9 @@
 TEST_CASE("Assignment::Assignment()", "[Protocol][Protocol::Message]")
 {
   auto value = GENERATE(
-    irsol::protocol::internal::value_t(1),
-    irsol::protocol::internal::value_t(3.14),
-    irsol::protocol::internal::value_t("hello world"));
+    irsol::types::protocol_value_t(1),
+    irsol::types::protocol_value_t(3.14),
+    irsol::types::protocol_value_t("hello world"));
   {
     auto identifier = GENERATE(
       "x", "it", "long_identifier", "sequence_identifier[4]", "nested_sequence_identifier[4][423]");

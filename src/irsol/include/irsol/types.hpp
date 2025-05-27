@@ -3,8 +3,10 @@
 #include "sockpp/tcp_acceptor.h"
 #include "sockpp/tcp_connector.h"
 
+#include <cstddef>
 #include <cstdint>
 #include <string>
+#include <variant>
 
 namespace irsol {
 namespace types {
@@ -18,5 +20,10 @@ using connector_t    = sockpp::tcp_connector;
 using inet_address_t = sockpp::inet_address;
 using socket_t       = sockpp::tcp_socket;
 
+// Protocol-related types
+using protocol_value_t = std::variant<int, double, std::string>;
+
+// Serialization-related types
+using byte_t = std::byte;
 }
 }

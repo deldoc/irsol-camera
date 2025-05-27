@@ -140,7 +140,7 @@ Parser::parseCommand(const std::string& line)
   return {std::move(errorMessage)};
 }
 
-internal::value_t
+irsol::types::protocol_value_t
 Parser::parseValue(const std::string& valStr)
 {
   // Try double first (more general)

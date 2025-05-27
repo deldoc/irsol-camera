@@ -8,9 +8,9 @@
 namespace irsol {
 namespace protocol {
 Success::Success(
-  const std::string&               identifier,
-  InMessageKind                    source,
-  std::optional<internal::value_t> body)
+  const std::string&                            identifier,
+  InMessageKind                                 source,
+  std::optional<irsol::types::protocol_value_t> body)
   : identifier(utils::validateIdentifier(identifier)), source(source), body(body)
 {}
 

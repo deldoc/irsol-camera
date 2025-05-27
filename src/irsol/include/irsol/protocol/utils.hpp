@@ -1,7 +1,7 @@
 #pragma once
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
-#include "irsol/protocol/message/types.hpp"
+#include "irsol/types.hpp"
 
 #include <regex>
 #include <sstream>

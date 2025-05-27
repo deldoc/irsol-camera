@@ -50,7 +50,7 @@ public:
       IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Serializer::serialize()");
   }
 
-  static std::string serializeValue(internal::value_t&& value);
+  static std::string serializeValue(irsol::types::protocol_value_t&& value);
   template<typename T, std::enable_if_t<internal::traits::IsInValueTVariant<T>::value, int> = 0>
   static std::string serializeValue(T&& value)
   {

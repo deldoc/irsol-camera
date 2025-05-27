@@ -7,7 +7,9 @@
 
 namespace irsol {
 namespace protocol {
-BinaryDataAttribute::BinaryDataAttribute(const std::string& identifier, internal::value_t value)
+BinaryDataAttribute::BinaryDataAttribute(
+  const std::string&             identifier,
+  irsol::types::protocol_value_t value)
   : identifier(utils::validateIdentifier(identifier)), value(value)
 {}
 

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "irsol/protocol/message/in_messages.hpp"
-#include "irsol/protocol/message/types.hpp"
 #include "irsol/protocol/message/variants.hpp"
+#include "irsol/types.hpp"
 
 #include <string>
 #include <type_traits>
@@ -27,7 +27,7 @@ struct Success
 
   /// Optional body providing further detail about the status. Only used when the source is INQUIRY
   /// or ASSIGNMENT.
-  std::optional<internal::value_t> body{};
+  std::optional<irsol::types::protocol_value_t> body{};
 
   /**
    * @brief Converts the status to a human-readable string.
@@ -65,7 +65,7 @@ struct Success
     }
   }
 
-  static Success from(const Inquiry& msg, internal::value_t result)
+  static Success from(const Inquiry& msg, irsol::types::protocol_value_t result)
   {
     return Success(msg.identifier, InMessageKind::INQUIRY, std::make_optional(result));
   }
@@ -73,9 +73,9 @@ struct Success
 private:
   // Only allow construction from factory-methods
   Success(
-    const std::string&               identifier,
-    InMessageKind                    source,
-    std::optional<internal::value_t> body = std::nullopt);
+    const std::string&                            identifier,
+    InMessageKind                                 source,
+    std::optional<irsol::types::protocol_value_t> body = std::nullopt);
 };
 
 }  // namespace protocol

@@ -213,12 +213,9 @@ FrameCollector::collectFrames()
     size_t dataSize = image.GetSize();
     size_t imageId  = image.GetImageID();
 
-    const void*                                      imageBuffer = image.GetImageData();
-    std::vector<::irsol::protocol::internal::byte_t> rawData(dataSize);
-    std::memcpy(
-      rawData.data(),
-      static_cast<const ::irsol::protocol::internal::byte_t*>(imageBuffer),
-      dataSize);
+    const void*                       imageBuffer = image.GetImageData();
+    std::vector<irsol::types::byte_t> rawData(dataSize);
+    std::memcpy(rawData.data(), static_cast<const irsol::types::byte_t*>(imageBuffer), dataSize);
 
     {
       std::lock_guard<std::mutex> lock(m_frameQueueMutex);

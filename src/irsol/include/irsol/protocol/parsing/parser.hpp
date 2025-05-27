@@ -24,7 +24,7 @@ private:
   static internal::ParserResult<Inquiry>    parseInquiry(const std::string& line);
   static internal::ParserResult<Command>    parseCommand(const std::string& line);
 
-  static internal::value_t parseValue(const std::string& valueString);
+  static irsol::types::protocol_value_t parseValue(const std::string& valueString);
 };
 }  // namespace protocol
 }  // namespace irsol

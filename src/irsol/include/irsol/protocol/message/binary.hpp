@@ -2,7 +2,7 @@
 
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
-#include "irsol/protocol/message/types.hpp"
+#include "irsol/types.hpp"
 
 #include <array>
 #include <numeric>
@@ -17,14 +17,14 @@ namespace protocol {
  */
 struct BinaryDataAttribute
 {
-  BinaryDataAttribute(const std::string& identifier, internal::value_t value);
+  BinaryDataAttribute(const std::string& identifier, irsol::types::protocol_value_t value);
 
   /// The identifier associated with the binary data attribute. Must start with a character,
   /// followed by alphanumeric characters and underscores.
   std::string identifier;
 
   /// The value associated with the binary data attribute.
-  internal::value_t value;
+  irsol::types::protocol_value_t value;
 
   /**
    * @brief Converts the binary data attribute to a string.
@@ -119,8 +119,8 @@ struct BinaryData
 };
 }
 
-using BinaryDataBuffer     = internal::BinaryData<internal::byte_t, 1>;
-using ImageBinaryData      = internal::BinaryData<internal::byte_t, 2>;
-using ColorImageBinaryData = internal::BinaryData<internal::byte_t, 3>;
+using BinaryDataBuffer     = internal::BinaryData<irsol::types::byte_t, 1>;
+using ImageBinaryData      = internal::BinaryData<irsol::types::byte_t, 2>;
+using ColorImageBinaryData = internal::BinaryData<irsol::types::byte_t, 3>;
 }
 }

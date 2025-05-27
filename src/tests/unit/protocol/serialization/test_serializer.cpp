@@ -33,17 +33,17 @@ TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Seriali
 {
   {
     // From an integer
-    int                                value = GENERATE(1, 2, 3, 4, 5);
-    irsol::protocol::internal::value_t variantValue(value);
-    std::string                        expected = std::to_string(value);
+    int                            value = GENERATE(1, 2, 3, 4, 5);
+    irsol::types::protocol_value_t variantValue(value);
+    std::string                    expected = std::to_string(value);
     std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(variantValue));
     CHECK(serialized == expected);
   }
   {
     // From a double
-    double                             value = GENERATE(1.0, 2.5, 3.14, 4.2, 5.0, -31.4, 0.0);
-    irsol::protocol::internal::value_t variantValue(value);
-    std::string                        expected = std::to_string(value);
+    double                         value = GENERATE(1.0, 2.5, 3.14, 4.2, 5.0, -31.4, 0.0);
+    irsol::types::protocol_value_t variantValue(value);
+    std::string                    expected = std::to_string(value);
     std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(variantValue));
     CHECK(serialized == expected);
   }
@@ -55,7 +55,7 @@ TEST_CASE("Serializer::serializeValue<variant>()", "[Protocol][Protocol::Seriali
       std::make_pair("world", "{world}"),
       std::make_pair("test", "{test}"),
       std::make_pair("12345", "{12345}"));
-    irsol::protocol::internal::value_t variantValue(value);
+    irsol::types::protocol_value_t variantValue(value);
     std::string serialized = irsol::protocol::Serializer::serializeValue(std::move(variantValue));
     CHECK(serialized == expected);
   }
@@ -68,16 +68,16 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
     auto value = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
 
     irsol::protocol::Assignment assignment{identifier, value};
     irsol::protocol::Success    success = irsol::protocol::Success::from(assignment);
 
     std::string expectedHeader =
       std::string(identifier) + "=" +
-      irsol::protocol::Serializer::serializeValue(irsol::protocol::internal::value_t(value)) + "\n";
+      irsol::protocol::Serializer::serializeValue(irsol::types::protocol_value_t(value)) + "\n";
     auto serialized = irsol::protocol::Serializer::serialize(std::move(success));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
@@ -87,16 +87,16 @@ TEST_CASE("Serializer::serialize<direct>(Success)", "[Protocol][Protocol::Serial
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
     auto inquery_result = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
     irsol::protocol::Inquiry inquiry{identifier};
     auto                     success = irsol::protocol::Success::from(inquiry, inquery_result);
 
-    std::string expectedHeader = std::string(identifier) + "=" +
-                                 irsol::protocol::Serializer::serializeValue(
-                                   irsol::protocol::internal::value_t(inquery_result)) +
-                                 "\n";
+    std::string expectedHeader =
+      std::string(identifier) + "=" +
+      irsol::protocol::Serializer::serializeValue(irsol::types::protocol_value_t(inquery_result)) +
+      "\n";
     auto serialized = irsol::protocol::Serializer::serialize(std::move(success));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
@@ -121,16 +121,16 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
     auto value = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
     irsol::protocol::Assignment assignment{identifier, value};
     auto                        success        = irsol::protocol::Success::from(assignment);
     auto                        successVariant = irsol::protocol::OutMessage(success);
 
     std::string expectedHeader =
       std::string(identifier) + "=" +
-      irsol::protocol::Serializer::serializeValue(irsol::protocol::internal::value_t(value)) + "\n";
+      irsol::protocol::Serializer::serializeValue(irsol::types::protocol_value_t(value)) + "\n";
     auto serialized = irsol::protocol::Serializer::serialize(std::move(successVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
@@ -140,17 +140,17 @@ TEST_CASE("Serializer::serialize<variant>(Success)", "[Protocol][Protocol::Seria
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
     auto inquery_result = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
     irsol::protocol::Inquiry inquiry{identifier};
     auto                     success = irsol::protocol::Success::from(inquiry, inquery_result);
     auto                     successVariant = irsol::protocol::OutMessage(success);
 
-    std::string expectedHeader = std::string(identifier) + "=" +
-                                 irsol::protocol::Serializer::serializeValue(
-                                   irsol::protocol::internal::value_t(inquery_result)) +
-                                 "\n";
+    std::string expectedHeader =
+      std::string(identifier) + "=" +
+      irsol::protocol::Serializer::serializeValue(irsol::types::protocol_value_t(inquery_result)) +
+      "\n";
     auto serialized = irsol::protocol::Serializer::serialize(std::move(successVariant));
     CHECK(serialized.header == expectedHeader);
     CHECK(serialized.payloadSize() == 0);
@@ -177,9 +177,9 @@ TEST_CASE("Serializer::serialize<direct>(Error)", "[Protocol][Protocol::Serializ
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
     auto value = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
 
     irsol::protocol::Assignment assignment{identifier, value};
     auto                        error = irsol::protocol::Error::from(assignment, description);
@@ -221,9 +221,9 @@ TEST_CASE("Serializer::serialize<variant>(Error)", "[Protocol][Protocol::Seriali
     auto identifier =
       GENERATE("x", "it", "long_identifier", "sequence_identifier[5]", "nested_identifier[3][2]");
     auto value = GENERATE(
-      irsol::protocol::internal::value_t{42},
-      irsol::protocol::internal::value_t{3.15},
-      irsol::protocol::internal::value_t{"my string"});
+      irsol::types::protocol_value_t{42},
+      irsol::types::protocol_value_t{3.15},
+      irsol::types::protocol_value_t{"my string"});
 
     irsol::protocol::Assignment assignment{identifier, value};
     auto                        error = irsol::protocol::Error::from(assignment, description);

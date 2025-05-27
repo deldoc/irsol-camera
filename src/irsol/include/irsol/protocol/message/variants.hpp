@@ -2,7 +2,8 @@
 
 #include "irsol/assert.hpp"
 #include "irsol/protocol/message/binary.hpp"
-#include "irsol/protocol/message/types.hpp"
+#include "irsol/protocol/message/traits.hpp"
+#include "irsol/types.hpp"
 
 #include <string>
 #include <variant>
