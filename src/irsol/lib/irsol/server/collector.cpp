@@ -1,6 +1,7 @@
 #include "irsol/server/collector.hpp"
 
 #include "irsol/logging.hpp"
+#include "irsol/macros.hpp"
 #include "irsol/server/app.hpp"
 #include "irsol/utils.hpp"
 
@@ -36,7 +37,9 @@ FrameCollector::refreshFrameRate()
 
   std::vector<double> frameRates;
   frameRates.reserve(m_clients.size());
-  for(auto& [client, callback] : m_clients) {
+  IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START
+  for(auto& [client, _] : m_clients) {
+    IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
     frameRates.push_back(client->sessionData().frameListeningParams.frameRate);
   }
 
@@ -306,7 +309,9 @@ FrameCollector::broadcastFrames()
       std::vector<std::shared_ptr<ClientSession>> clientsToRemove;
       {
         std::lock_guard<std::mutex> clientLock(m_clientsMutex);
-        for(auto& [client, callback] : m_clients) {
+        IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START
+        for(auto& [client, _] : m_clients) {
+          IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
           auto& params = client->sessionData().frameListeningParams;
           if(params.numDesiredFrames == 0) {
             clientsToRemove.push_back(client);

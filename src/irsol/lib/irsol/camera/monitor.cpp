@@ -34,6 +34,8 @@ StatusMonitor::runMonitor() const
                                               "FrameCounter",
                                               "Height",
                                               "Width",
+                                              "OffsetX",
+                                              "OffsetY",
                                               "TriggerMode",
                                               "PayloadSize",
                                               "PixelFormat",

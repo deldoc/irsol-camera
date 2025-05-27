@@ -21,10 +21,10 @@ struct BinaryDataAttribute
 
   /// The identifier associated with the binary data attribute. Must start with a character,
   /// followed by alphanumeric characters and underscores.
-  const std::string identifier;
+  std::string identifier;
 
   /// The value associated with the binary data attribute.
-  const internal::value_t value;
+  internal::value_t value;
 
   /**
    * @brief Converts the binary data attribute to a string.
@@ -64,7 +64,7 @@ struct BinaryData
    */
   BinaryData(
     std::vector<T>&&                   data,
-    const std::array<uint32_t, N>&     shape,
+    const std::array<uint64_t, N>&     shape,
     std::vector<BinaryDataAttribute>&& attributes = {})
     : data(std::move(data))
     , shape(shape)
@@ -80,20 +80,8 @@ struct BinaryData
       this->numElements);
   }
 
-  /**
-   * @brief Move constructor for binary data object
-   * @param other The binary data object to move from.
-   * @note data and attributes are moved from the input to the constructed object.
-   */
-  BinaryData(BinaryData&& other) noexcept
-    : data(std::move(other.data))
-    , shape(std::move(other.shape))
-    , numElements(other.numElements)
-    , numBytes(other.numBytes)
-    , attributes(std::move(other.attributes))
-  {
-    IRSOL_LOG_TRACE("BinaryData moved: {}", toString());
-  }
+  // Move constructor.
+  BinaryData(BinaryData&& other) = default;
 
   // Delete the copy-constructor to prevent accidental copying of binary data attributes.
   BinaryData(const BinaryData&) = delete;
@@ -103,24 +91,15 @@ struct BinaryData
   BinaryData& operator=(BinaryData&& other) noexcept = delete;
 
   /// Owning pointer to the binary data.
-  const std::vector<T> data;
+  std::vector<T> data;
   /// Shape of the binary data.
-  const std::array<uint32_t, dim> shape;
+  std::array<uint64_t, dim> shape;
   /// Number of elements in the binary data.
-  const uint64_t numElements;
+  uint64_t numElements;
   /// Number of bytes required to store the binary data.
-  const uint64_t numBytes;
+  uint64_t numBytes;
   /// Additional attributes associated with the binary data.
-  const std::vector<BinaryDataAttribute> attributes;
-
-  /// @brief Extracts the binary data as a vector of type T.
-  /// @return A vector of type T containing the binary data.
-  /// @note The ownership of the vector is transferred to the caller. After this invocation, this
-  /// object is left in an undefined state.
-  std::vector<T> extractData() const
-  {
-    return std::move(data);
-  }
+  std::vector<BinaryDataAttribute> attributes;
 
   /**
    * @brief Converts the binary data to a string.

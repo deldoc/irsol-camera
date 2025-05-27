@@ -11,31 +11,51 @@ main()
 
   IRSOL_LOG_DEBUG("Starting simple example with OpenCV");
 
-  irsol::camera::Interface cam;
+  irsol::camera::Interface cam = irsol::camera::Interface::HalfResolution();
 
   IRSOL_LOG_DEBUG("Camera connection successful");
   irsol::utils::logCameraInfo(cam.getNeoCam().GetInfo());
 
-  irsol::camera::StatusMonitor monitor{cam, std::chrono::milliseconds(200)};
+  irsol::camera::StatusMonitor monitor{cam, std::chrono::milliseconds(1000)};
   monitor.start();
 
-  for(int i = 0; i < 50; ++i) {
+  for(int i = 0; i < 500; ++i) {
+
     IRSOL_LOG_INFO("Iteration {0:d}", i);
-    auto image      = cam.captureImage();
+
+    if(i % 10 == 0) {
+      auto t0 = std::chrono::steady_clock::now();
+      cam.setParam("Width", 100 + i);
+      auto t1 = std::chrono::steady_clock::now();
+      cam.setParam("OffsetX", 100 + i);
+      auto t2 = std::chrono::steady_clock::now();
+
+      IRSOL_LOG_INFO(
+        "Set Width in {} ms, Set OffsetX in {} ms",
+        std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0).count(),
+        std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count());
+    }
+
+    auto image = cam.captureImage();
+    if(image.IsEmpty() || image.GetSize() == 0) {
+      IRSOL_LOG_ERROR("Failed to capture image at iteration {0:d}", i);
+      std::this_thread::sleep_for(std::chrono::milliseconds(500));
+      continue;
+    }
     auto image_size = image.GetSize();
     IRSOL_LOG_INFO("Image size: {0:d}", image_size);
     auto image_ts = image.GetTimestamp();
 
-    double current_exposure = cam.getParam<float>("ExposureTime");
+    int currentWidth = cam.getParam<int>("Width");
 
     cv::Mat cv_image =
       irsol::opencv::convertImageToMat(image, irsol::opencv::ColorConversionMode::GRAY_TO_COLOR);
     cv::putText(
       cv_image,
-      "Exposure: " + std::to_string(current_exposure),
+      "Width: " + std::to_string(currentWidth),
       {20, 50},
       cv::FONT_HERSHEY_COMPLEX,
-      1.5,
+      .5,
       {0, 0, 255},
       1,
       cv::LINE_AA);
@@ -44,7 +64,7 @@ main()
       "Timestamp: " + std::to_string(image_ts),
       {20, 80},
       cv::FONT_HERSHEY_COMPLEX,
-      1,
+      .5,
       {0, 255, 0},
       1,
       cv::LINE_AA);
@@ -68,11 +88,6 @@ main()
     if(closeWindow) {
       break;
     }
-
-    uint64_t newExposureTime = i * 100;
-    IRSOL_LOG_DEBUG("Setting exposure time to {0:d}ms", newExposureTime);
-    cam.setParam("ExposureTime", newExposureTime);
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
 
   cv::destroyAllWindows();

@@ -19,7 +19,7 @@ struct Inquiry
 
   /// The identifier whose value is being requested. Must start with a character, followed by
   /// alphanumeric characters and underscores.
-  const std::string identifier;
+  std::string identifier;
 
   /**
    * @brief Converts the inquiry to a human-readable string.

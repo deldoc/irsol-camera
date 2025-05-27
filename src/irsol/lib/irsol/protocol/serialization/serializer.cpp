@@ -73,7 +73,7 @@ Serializer::serializeImageBinaryData(ImageBinaryData&& msg)
   header += std::to_string(msg.shape[1]) + "x";
   header += std::to_string(msg.shape[0]) + "x";
   header += "1:";
-  auto message = SerializedMessage(header, std::move(msg.extractData()));
+  auto message = SerializedMessage(header, std::move(msg.data));
   return std::move(message);
 }
 

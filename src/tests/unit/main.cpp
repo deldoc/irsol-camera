@@ -1,10 +1,10 @@
 #define CATCH_CONFIG_RUNNER
 #include "args/args.hpp"
 #include "irsol/logging.hpp"
+#include "irsol/macros.hpp"
 
 #include <catch2/catch_all.hpp>
 #include <iostream>
-#include <optional>
 #include <string>
 #include <vector>
 
@@ -13,13 +13,13 @@ class LoggingListener : public Catch::EventListenerBase
 public:
   using Catch::EventListenerBase::EventListenerBase;
 
-  void testRunStarting(Catch::TestRunInfo const& testRunInfo) override
+  void testRunStarting(IRSOL_MAYBE_UNUSED Catch::TestRunInfo const& testRunInfo) override
   {
     irsol::setLoggerName("unit-tests");
     irsol::setLoggingFormat(irsol::LoggingFormat::SIMPLE);
     IRSOL_LOG_INFO("Starting unittests.");
   }
-  void testRunEnded(Catch::TestRunStats const& testRunStats) override
+  void testRunEnded(IRSOL_MAYBE_UNUSED Catch::TestRunStats const& testRunStats) override
   {
     irsol::setLoggerName("unit-tests");
     IRSOL_LOG_INFO("Test run ended.");
@@ -41,7 +41,7 @@ public:
     irsol::setLoggerName(testCaseDescription.c_str());
     IRSOL_LOG_INFO("Starting testcase: {}-{}.", testInfo.tagsAsString(), testInfo.name);
   }
-  void testCaseEnded(Catch::TestCaseStats const& stats) override
+  void testCaseEnded(IRSOL_MAYBE_UNUSED Catch::TestCaseStats const& testCaseStats) override
   {
     IRSOL_LOG_INFO("Testcase ended.");
   }

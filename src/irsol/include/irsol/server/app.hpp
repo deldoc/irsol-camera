@@ -3,6 +3,7 @@
 #include "irsol/camera/interface.hpp"
 #include "irsol/server/client.hpp"
 #include "irsol/server/collector.hpp"
+#include "irsol/server/handlers/factory.hpp"
 #include "irsol/server/message_handler.hpp"
 #include "irsol/server/types.hpp"
 
@@ -145,6 +146,67 @@ private:
    * Sets up handlers for assignment, inquiry, and command messages.
    */
   void registerMessageHandlers();
+
+  /**
+   * @brief Template function to register a message handler.
+   *
+   * @param identifier Identifier for the message type
+   * @param args Arguments for the handler constructor.
+   *
+   * @note This function is templated to handle different message types and handlers.
+   * @example
+   * ```cpp
+   * registerMessageHandler<protocol::Inquiry, handlers::InquiryFRHandler>("fr", ctx);
+   * registerMessageHandler<protocol::Command, handlers::CommandFRHandler>("fr", ctx,
+   * anotherParamForCommandFRHandler);
+   */
+  template<typename InMessageT, typename HandlerT, typename... Args>
+  void registerMessageHandler(const std::string& identifier, Args&&... args)
+  {
+    auto  handler        = handlers::makeHandler<HandlerT>(std::forward<Args>(args)...);
+    auto& messageHandler = *m_messageHandler;
+
+    if(!messageHandler.template registerHandler<InMessageT>(identifier, handler)) {
+      IRSOL_LOG_FATAL("Failed to register handler for identifier {}", identifier);
+      throw std::runtime_error("Failed to register handler for identifier '" + identifier + "'");
+    }
+  }
+
+  /**
+   * @brief Template function to register a lambda message handler.
+   *
+   * @param identifier Identifier for the message type
+   * @param ctx Context for the lambda handler.
+   * @param lambda Lambda function for the handler.
+   *
+   * @note This function is templated to handle different message types and lambda handlers.
+   * @example
+   * ```cpp
+   * registerLambdaHandler<protocol::Command>(
+   *  "lambda_command",
+   *  ctx,
+   *   [](
+   *     handlers::Context&                  ctx,
+   *     const ::irsol::server::client_id_t& client_id,
+   *     protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
+   *        // Handle the command
+   *        return {...};
+   *  }
+   * );
+   */
+  template<typename InMessageT, typename LambdaT>
+  void
+  registerLambdaHandler(const std::string& identifier, handlers::Context& ctx, LambdaT&& lambda)
+  {
+    auto  handler = handlers::makeLambdaHandler<InMessageT>(ctx, std::forward<LambdaT>(lambda));
+    auto& messageHandler = *m_messageHandler;
+
+    if(!messageHandler.template registerHandler<InMessageT>(identifier, handler)) {
+      IRSOL_LOG_FATAL("Failed to register lambda handler for identifier {}", identifier);
+      throw std::runtime_error(
+        "Failed to register lambda handler for identifier '" + identifier + "'");
+    }
+  }
 };
 }  // namespace server
 }  // namespace irsol

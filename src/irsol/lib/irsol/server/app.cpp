@@ -150,47 +150,91 @@ App::registerMessageHandlers()
   // Build a context to pass to all handlers
   handlers::Context ctx{*this};
 
+  // Register message handlers for specific message types
+  registerMessageHandler<protocol::Inquiry, handlers::InquiryFRHandler>("fr", ctx);
+  registerMessageHandler<protocol::Command, handlers::CommandGIHandler>("gi", ctx);
+  registerMessageHandler<protocol::Inquiry, handlers::InquiryImgLeftHandler>("img_l", ctx);
+  registerMessageHandler<protocol::Inquiry, handlers::InquiryImgTopHandler>("img_t", ctx);
+  registerMessageHandler<protocol::Inquiry, handlers::InquiryImgWidthHandler>("img_w", ctx);
+  registerMessageHandler<protocol::Inquiry, handlers::InquiryImgHeightHandler>("img_h", ctx);
+  registerMessageHandler<protocol::Assignment, handlers::AssignmentImgLeftHandler>("img_l", ctx);
+  registerMessageHandler<protocol::Assignment, handlers::AssignmentImgTopHandler>("img_t", ctx);
+  registerMessageHandler<protocol::Assignment, handlers::AssignmentImgWidthHandler>("img_w", ctx);
+  registerMessageHandler<protocol::Assignment, handlers::AssignmentImgHeightHandler>("img_h", ctx);
+
+  registerLambdaHandler<protocol::Command>(
+    "image_data",
+    ctx,
+    [](
+      handlers::Context&                  ctx,
+      const ::irsol::server::client_id_t& client_id,
+      protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
+      std::vector<protocol::OutMessage> result;
+      auto&                             cam = ctx.app.camera();
+      auto                              img = cam.captureImage(std::chrono::milliseconds(10000));
+
+      if(img.IsEmpty()) {
+        IRSOL_NAMED_LOG_ERROR(client_id, "Failed to capture image.");
+        result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
+        return result;
+      }
+
+      uint32_t width    = static_cast<uint32_t>(img.GetWidth());
+      uint32_t height   = static_cast<uint32_t>(img.GetHeight());
+      size_t   dataSize = img.GetSize();
+
+      const void*                             imageBuffer = img.GetImageData();
+      std::vector<protocol::internal::byte_t> rawData(dataSize);
+      memcpy(rawData.data(), imageBuffer, dataSize);
+
+      result.emplace_back(
+        irsol::protocol::ImageBinaryData(std::move(rawData), {height, width}, {}));
+      return result;
+    });
+
   // Resister all handlers
-  if(!m_messageHandler->registerHandler<protocol::Inquiry>("fr", handlers::InquiryFRHandler(ctx))) {
-    IRSOL_LOG_FATAL("Failed to register inquiry frame rate handler");
-    throw std::runtime_error("Failed to register inquiry frame rate handler");
-  };
-  if(!m_messageHandler->registerHandler<protocol::Command>("gi", handlers::CommandGIHandler(ctx))) {
-    IRSOL_LOG_FATAL("Failed to register get image handler");
-    throw std::runtime_error("Failed to register get image handler");
-  }
-  if(!m_messageHandler->registerHandler<protocol::Command>(
-       "image_data",
-       handlers::CommandLambdaHandler(
-         ctx,
-         [](
-           handlers::Context&                  ctx,
-           const ::irsol::server::client_id_t& client_id,
-           protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
-           std::vector<protocol::OutMessage> result;
-           auto&                             cam = ctx.app.camera();
-           auto img = cam.captureImage(std::chrono::milliseconds(10000));
-           if(img.IsEmpty()) {
-             IRSOL_NAMED_LOG_ERROR(client_id, "Failed to capture image.");
-             result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
-             return result;
-           }
-           uint32_t width    = static_cast<uint32_t>(img.GetWidth());
-           uint32_t height   = static_cast<uint32_t>(img.GetHeight());
-           size_t   dataSize = img.GetSize();
+  // if(!m_messageHandler->registerHandler<protocol::Inquiry>("fr",
+  // handlers::InquiryFRHandler(ctx))) {
+  //   IRSOL_LOG_FATAL("Failed to register inquiry frame rate handler");
+  //   throw std::runtime_error("Failed to register inquiry frame rate handler");
+  // };
+  // if(!m_messageHandler->registerHandler<protocol::Command>("gi",
+  // handlers::CommandGIHandler(ctx))) {
+  //   IRSOL_LOG_FATAL("Failed to register get image handler");
+  //   throw std::runtime_error("Failed to register get image handler");
+  // }
+  // if(!m_messageHandler->registerHandler<protocol::Command>(
+  //      "image_data",
+  //      handlers::CommandLambdaHandler(
+  //        ctx,
+  //        [](
+  //          handlers::Context&                  ctx,
+  //          const ::irsol::server::client_id_t& client_id,
+  //          protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
+  //          std::vector<protocol::OutMessage> result;
+  //          auto&                             cam = ctx.app.camera();
+  //          auto img = cam.captureImage(std::chrono::milliseconds(10000));
+  //          if(img.IsEmpty()) {
+  //            IRSOL_NAMED_LOG_ERROR(client_id, "Failed to capture image.");
+  //            result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
+  //            return result;
+  //          }
+  //          uint32_t width    = static_cast<uint32_t>(img.GetWidth());
+  //          uint32_t height   = static_cast<uint32_t>(img.GetHeight());
+  //          size_t   dataSize = img.GetSize();
 
-           // Send raw data
-           const void*                             imageBuffer = img.GetImageData();
-           std::vector<protocol::internal::byte_t> rawData(dataSize);
-           memcpy(rawData.data(), imageBuffer, dataSize);
+  //          // Send raw data
+  //          const void*                             imageBuffer = img.GetImageData();
+  //          std::vector<protocol::internal::byte_t> rawData(dataSize);
+  //          memcpy(rawData.data(), imageBuffer, dataSize);
 
-           result.emplace_back(
-             irsol::protocol::ImageBinaryData(std::move(rawData), {height, width}, {}));
-           return result;
-         }))) {
-    IRSOL_ASSERT_DEBUG("Failed to register image handler");
-    throw std::runtime_error("Failed to register image handler");
-  }
+  //          result.emplace_back(
+  //            irsol::protocol::ImageBinaryData(std::move(rawData), {height, width}, {}));
+  //          return result;
+  //        }))) {
+  //   IRSOL_ASSERT_DEBUG("Failed to register image handler");
+  //   throw std::runtime_error("Failed to register image handler");
+  // }
 }
 
 }  // namespace server

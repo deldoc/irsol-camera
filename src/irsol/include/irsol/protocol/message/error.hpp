@@ -18,13 +18,13 @@ struct Error
 {
   /// Identifier related to the error (e.g., the failed command). Must start with a character,
   /// followed by alphanumeric characters and underscores.
-  const std::string identifier;
+  std::string identifier;
 
   /// The kind of the incoming message that generated this error.
-  const InMessageKind source;
+  InMessageKind source;
 
   /// Human-readable error description.
-  const std::string description;
+  std::string description;
 
   /**
    * @brief Converts the error to a human-readable string.

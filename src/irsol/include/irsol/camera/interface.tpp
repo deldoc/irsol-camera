@@ -3,7 +3,9 @@
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 
+#include <mutex>
 #include <type_traits>
+
 namespace irsol {
 namespace camera {
 
@@ -18,8 +20,9 @@ Interface::getParam(const std::string& param) const
   using U = std::decay_t<T>;
   IRSOL_LOG_DEBUG("Getting parameter '{}'", param);
   try {
-    NeoAPI::NeoString neoParam(param.c_str());
-    auto              feature = m_cam.GetFeature(neoParam);
+    std::lock_guard<std::mutex> lock(m_camMutex);
+    NeoAPI::NeoString           neoParam(param.c_str());
+    auto                        feature = m_cam.GetFeature(neoParam);
 
     if constexpr(std::is_same_v<U, std::string>) {
       return std::string(feature.GetString());
@@ -48,25 +51,51 @@ template<
     std::is_integral_v<std::decay_t<T>> || std::is_floating_point_v<std::decay_t<T>> ||
       std::is_same_v<std::decay_t<T>, std::string> || std::is_same_v<std::decay_t<T>, const char*>,
     int> = 0>
-void
+T
 Interface::setParam(const std::string& param, T value)
 {
-  std::lock_guard<std::mutex> lock(m_paramMutex);
   IRSOL_LOG_DEBUG("Setting parameter '{}' to value '{}'", param, value);
+  {
+    std::lock_guard<std::mutex> lock(m_camMutex);
+    setParamNonThreadSafe(param, value);
+  }
+  return getParam<T>(param);
+}
+
+template<
+  typename T,
+  std::enable_if_t<
+    std::is_integral_v<std::decay_t<T>> || std::is_floating_point_v<std::decay_t<T>> ||
+      std::is_same_v<std::decay_t<T>, std::string> || std::is_same_v<std::decay_t<T>, const char*>,
+    int> = 0>
+void
+Interface::setParamNonThreadSafe(const std::string& param, T value)
+{
+  using U = std::decay_t<T>;
   try {
-    if constexpr(std::is_same_v<std::decay_t<T>, std::string>) {
-      m_cam.SetFeature(NeoAPI::NeoString(param.c_str()), NeoAPI::NeoString(value.c_str()));
-    } else if constexpr(std::is_same_v<std::decay_t<T>, const char*>) {
-      m_cam.SetFeature(NeoAPI::NeoString(param.c_str()), NeoAPI::NeoString(value));
-    } else if constexpr(std::is_same_v<std::decay_t<T>, bool>) {
-      m_cam.SetFeature(NeoAPI::NeoString(param.c_str()), value);
-    } else if constexpr(std::is_integral_v<std::decay_t<T>>) {
-      m_cam.SetFeature(NeoAPI::NeoString(param.c_str()), static_cast<int64_t>(value));
-    } else if constexpr(std::is_floating_point_v<std::decay_t<T>>) {
-      m_cam.SetFeature(NeoAPI::NeoString(param.c_str()), static_cast<double>(value));
-    } else {
-      IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Interface::setParam()");
+    NeoAPI::NeoString neoParam(param.c_str());
+    auto              feature = m_cam.GetFeature(neoParam);
+
+    // Make sure the feature is writable
+    if(!feature.IsWritable()) {
+      IRSOL_LOG_ERROR("Feature '{}' is not writable", param);
+      throw std::runtime_error(std::string("Feature '") + param + "' is not writable");
     }
+
+    if constexpr(std::is_same_v<U, std::string>) {
+      feature = value.c_str();
+    } else if constexpr(std::is_same_v<U, const char*>) {
+      feature = value;
+    } else if constexpr(std::is_same_v<U, bool>) {
+      feature = value;
+    } else if constexpr(std::is_integral_v<U>) {
+      feature = static_cast<int>(value);
+    } else if constexpr(std::is_floating_point_v<U>) {
+      feature = static_cast<double>(value);
+    } else {
+      IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Interface::setParamNonThreadSafe()");
+    }
+
   } catch(const std::exception& e) {
     IRSOL_LOG_ERROR("Failed to set parameter '{}': {}", param, e.what());
   }

@@ -2,6 +2,7 @@
 #include "irsol/assert.hpp"
 #include "irsol/camera.hpp"
 #include "irsol/logging.hpp"
+#include "irsol/macros.hpp"
 #ifdef IRSOL_USE_OPENCV
 #include "irsol/opencv.hpp"
 #endif

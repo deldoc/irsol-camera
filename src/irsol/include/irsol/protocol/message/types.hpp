@@ -22,7 +22,26 @@ struct _IsTypeInVariant<T, std::variant<Ts...>> : std::disjunction<std::is_same<
 }
 
 using value_t = std::variant<int, double, std::string>;
-using byte_t  = std::byte;
+
+inline int
+toInt(const value_t& x)
+{
+  return std::get<int>(x);
+}
+
+inline double
+toDouble(const value_t& x)
+{
+  return std::get<double>(x);
+}
+
+inline std::string
+toString(const value_t& x)
+{
+  return std::get<std::string>(x);
+}
+
+using byte_t = std::byte;
 
 namespace traits {
 

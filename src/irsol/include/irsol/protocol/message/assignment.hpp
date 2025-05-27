@@ -20,10 +20,10 @@ struct Assignment
 
   /// The variable or parameter name being assigned. Must start with a character, followed by
   /// alphanumeric characters and underscores.
-  const std::string identifier;
+  std::string identifier;
 
   /// The value assigned to the identifier (int, double, or string).
-  const internal::value_t value;
+  internal::value_t value;
 
   /**
    * @brief Converts the assignment to a human-readable string.

@@ -1,30 +1,16 @@
 #pragma once
 
 #include "irsol/protocol.hpp"
-#include "irsol/server/types.hpp"
+#include "irsol/server/handlers/context.hpp"
 
-#include <memory>
 #include <vector>
 
 namespace irsol {
 namespace server {
 
-// Forward declaration
-class App;
-namespace internal {
-class ClientSession;
-}
-
 namespace handlers {
 using in_message_t  = protocol::InMessage;
 using out_message_t = protocol::OutMessage;
-
-struct Context
-{
-  App&                                                      app;
-  std::shared_ptr<::irsol::server::internal::ClientSession> getSession(
-    const ::irsol::server::client_id_t& clientId);
-};
 
 namespace internal {
 

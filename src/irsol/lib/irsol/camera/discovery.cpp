@@ -2,6 +2,7 @@
 #include "irsol/camera/discovery.hpp"
 
 #include "irsol/logging.hpp"
+#include "irsol/macros.hpp"
 
 using namespace std;
 
@@ -67,13 +68,13 @@ extractCameraFeatures(NeoAPI::Cam& cam)
     featureCount++;
   }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-variable"  // Disable unused variable warning
-  for(auto& [_, features] : featurePermissionsMap) {
-#pragma GCC diagnostic pop  // restores the warning
-    std::sort(features.begin(), features.end(), [](NeoAPI::Feature* a, NeoAPI::Feature* b) {
-      return std::string(a->GetName()) < std::string(b->GetName());
-    });
+  IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START  // Disable unused variable warning
+    for(auto& [_, features] : featurePermissionsMap)
+  {
+    IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END  // restores the warning
+      std::sort(features.begin(), features.end(), [](NeoAPI::Feature* a, NeoAPI::Feature* b) {
+        return std::string(a->GetName()) < std::string(b->GetName());
+      });
   }
 
   IRSOL_LOG_INFO("Loaded {0:d} camera features", featureCount);

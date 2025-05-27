@@ -20,14 +20,14 @@ struct Success
 
   /// The identifier associated with the status. Must start with a character, followed by
   /// alphanumeric characters and underscores.
-  const std::string identifier;
+  std::string identifier;
 
   /// The kind of the incoming message that generated this status.
-  const InMessageKind source;
+  InMessageKind source;
 
   /// Optional body providing further detail about the status. Only used when the source is INQUIRY
   /// or ASSIGNMENT.
-  const std::optional<internal::value_t> body{};
+  std::optional<internal::value_t> body{};
 
   /**
    * @brief Converts the status to a human-readable string.

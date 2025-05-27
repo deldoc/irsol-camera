@@ -1,6 +1,7 @@
 #include "irsol/server/handlers/inquiry_fr.hpp"
 
 #include "irsol/logging.hpp"
+#include "irsol/macros.hpp"
 #include "irsol/protocol.hpp"
 #include "irsol/server/app.hpp"
 
@@ -12,8 +13,8 @@ InquiryFRHandler::InquiryFRHandler(Context ctx): InquiryHandler(ctx) {}
 
 std::vector<out_message_t>
 InquiryFRHandler::operator()(
-  const ::irsol::server::client_id_t& client_id,
-  protocol::Inquiry&&                 message)
+  IRSOL_MAYBE_UNUSED const ::irsol::server::client_id_t& client_id,
+  protocol::Inquiry&&                                    message)
 {
   // Implement logic to calculate and return the frame rate
   // ...

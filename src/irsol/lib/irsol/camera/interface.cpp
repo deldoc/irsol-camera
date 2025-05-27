@@ -10,9 +10,13 @@ namespace camera {
 Interface::Interface(NeoAPI::Cam cam): m_cam(cam)
 {
 
-  // Set the mode to manual
-  IRSOL_LOG_INFO("Setting camera mode to 'TriggerMode::On'.");
-  setParam("TriggerMode", "On");
+  // Here we configure the camera settings so that we can trigger it on-demand via software
+  // triggers.
+  IRSOL_LOG_INFO("Configuring camera for manual trigger via software events");
+  setMultiParam({{"TriggerMode", {"On"}},               // Enable software trigger
+                 {"AcquisitionMode", {"SingleFrame"}},  // Take a single frame, only when triggered
+                 {"TriggerSource", {"Software"}}}       // Software trigger source
+  );
 }
 
 Interface::Interface(Interface&& other): m_cam(other.m_cam) {}
@@ -29,10 +33,11 @@ Interface::FullResolution()
   auto cam = ::irsol::utils::loadDefaultCamera();
 
   Interface interface(cam);
-  interface.setParam("BinningVertical", 1);
-  interface.setParam("BinningVerticalMode", "Sum");
-  interface.setParam("BinningHorizontal", 1);
-  interface.setParam("BinningHorizontalMode", "Sum");
+  interface.setMultiParam({{"BinningVertical", {1}},
+                           {"BinningVerticalMode", {"Sum"}},
+                           {"BinningHorizontal", {1}},
+                           {"BinningHorizontalMode", {"Sum"}}});
+  interface.resetSensorArea();
   return interface;
 }
 
@@ -42,10 +47,12 @@ Interface::HalfResolution()
   auto cam = ::irsol::utils::loadDefaultCamera();
 
   Interface interface(cam);
-  interface.setParam("BinningVertical", 2);
-  interface.setParam("BinningVerticalMode", "Average");
-  interface.setParam("BinningHorizontal", 2);
-  interface.setParam("BinningHorizontalMode", "Average");
+  interface.setMultiParam({{"BinningVertical", {2}},
+                           {"BinningVerticalMode", {"Average"}},
+                           {"BinningHorizontal", {2}},
+                           {"BinningHorizontalMode", {"Average"}}});
+  interface.resetSensorArea();
+
   return interface;
 }
 
@@ -53,6 +60,17 @@ NeoAPI::Cam&
 Interface::getNeoCam()
 {
   return m_cam;
+}
+
+void
+Interface::resetSensorArea()
+{
+  IRSOL_LOG_INFO("Resetting sensor area");
+  int maxWidth  = getParam<int>("WidthMax");
+  int maxHeight = getParam<int>("HeightMax");
+
+  setMultiParam(
+    {{"Width", {maxWidth}}, {"Height", {maxHeight}}, {"OffsetX", {0}}, {"OffsetY", {0}}});
 }
 
 std::string
@@ -69,13 +87,50 @@ Interface::getParam(const std::string& param) const
   }
 }
 
+void
+Interface::setMultiParam(const std::unordered_map<std::string, camera_param_t>& params)
+{
+  IRSOL_LOG_DEBUG("Setting multiple parameters");
+  std::lock_guard<std::mutex> lock(m_camMutex);
+  for(const auto& [param, value] : params) {
+    std::visit(
+      [&param, this](auto&& arg) {
+        using U = std::decay_t<decltype(arg)>;
+        IRSOL_LOG_TRACE("Setting parameter '{}' to value '{}'", param, arg);
+        setParamNonThreadSafe<U>(param, arg);
+      },
+      value);
+  }
+}
+
+void
+Interface::trigger(const std::string& param)
+{
+  IRSOL_LOG_TRACE("Triggering camera with parameter '{}'", param);
+  try {
+    NeoAPI::NeoString neoParam(param.c_str());
+    auto              feature = m_cam.GetFeature(neoParam);
+    feature.Execute();
+  } catch(const std::exception& e) {
+    IRSOL_LOG_ERROR("Failed to trigger camera with parameter '{}': {}", param, e.what());
+  }
+}
+
 NeoAPI::Image
 Interface::captureImage(std::chrono::milliseconds timeout)
 {
-  std::lock_guard<std::mutex> lock(m_imageMutex);
-  m_cam.f().TriggerSoftware.Execute();  // execute a software trigger to get an image
-  return m_cam.GetImage(
-    static_cast<uint32_t>(timeout.count()));  // retrieve the image to work with it
+  std::lock_guard<std::mutex> lock(m_camMutex);
+
+  // Send software trigger to get an image
+  trigger("AcquisitionStart");
+  trigger("TriggerSoftware");
+  // Wait for image
+  auto image = m_cam.GetImage(static_cast<uint32_t>(timeout.count()));
+  if(image.IsEmpty() || image.GetSize() == 0) {
+    IRSOL_LOG_WARN("Timeout or empty image received.");
+  }
+  trigger("AcquisitionStop");
+  return image;
 }
 }  // namespace camera
 }  // namespace irsol

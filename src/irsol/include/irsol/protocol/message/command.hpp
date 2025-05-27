@@ -19,7 +19,7 @@ struct Command
 
   /// The name of the command to execute. Must start with a character, followed by alphanumeric
   /// characters and underscores.
-  const std::string identifier;
+  std::string identifier;
 
   /**
    * @brief Converts the command to a human-readable string.
