@@ -21,6 +21,11 @@ enum class InMessageKind
   COMMAND
 };
 
+/**
+ * @brief Converts an InMessageKind to a human-readable string.
+ * @param kind The InMessageKind to convert.
+ * @return A string representation of the InMessageKind.
+ */
 constexpr const char*
 InMessageKindToString(InMessageKind kind)
 {
@@ -59,6 +64,11 @@ enum class OutMessageKind
   ERROR
 };
 
+/**
+ * @brief Converts an OutMessageKind to a human-readable string.
+ * @param kind The OutMessageKind to convert.
+ * @return A string representation of the OutMessageKind.
+ */
 constexpr const char*
 OutMessageKindToString(OutMessageKind kind)
 {
@@ -84,11 +94,30 @@ struct Error;
 /**
  * @brief Represents any outgoing message type sent in response.
  *
- * This includes status messages and errors.
+ * This includes success messages, binary data responses and error messages.
  */
 using OutMessage =
   std::variant<Success, BinaryDataBuffer, ImageBinaryData, ColorImageBinaryData, Error>;
 
+/**
+ * @brief Transform the InMessage variant into a string.
+ * @param msg The incoming message.
+ * @return A string representation of the incoming message.
+ */
+std::string toString(const InMessage& msg);
+
+/**
+ * @brief Transform the OutMessage variant into a string.
+ * @param msg The outgoing message.
+ * @return A string representation of the outgoing message.
+ */
+std::string toString(const OutMessage& msg);
+
+/**
+ * @brief Returns the kind of the given InMessage concrete type.
+ * @param msg The incoming message concrete type.
+ * @return The InMessageKind enum value representing the actual type.
+ */
 template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
 constexpr InMessageKind
 getInMessageKind(const T&)
@@ -105,7 +134,7 @@ getInMessageKind(const T&)
 
 /**
  * @brief Returns the kind of the given InMessage.
- * @param msg The incoming message.
+ * @param msg The incoming message variant.
  * @return The InMessageKind enum value representing the actual type.
  */
 InMessageKind getInMessageKind(const InMessage& msg);
@@ -134,6 +163,11 @@ isCommand(const T&)
 }
 bool isCommand(const InMessage& msg);
 
+/**
+ * @brief Returns the kind of the given OutMessage concrete type.
+ * @param msg The outgoing message concrete type.
+ * @return The OutMessageKind enum value representing the actual type.
+ */
 template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr OutMessageKind
 getOutMessageKind(const T&)
@@ -153,7 +187,7 @@ getOutMessageKind(const T&)
 }
 /**
  * @brief Returns the kind of the given OutMessage.
- * @param msg The outgoing message.
+ * @param msg The outgoing message variant.
  * @return The OutMessageKind enum value representing the actual type.
  */
 OutMessageKind getOutMessageKind(const OutMessage& msg);
