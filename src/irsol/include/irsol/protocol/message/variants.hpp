@@ -1,6 +1,6 @@
 #pragma once
 
-#include "irsol/assert.hpp"
+#include "irsol/macros.hpp"
 #include "irsol/protocol/message/binary.hpp"
 #include "irsol/traits.hpp"
 #include "irsol/types.hpp"

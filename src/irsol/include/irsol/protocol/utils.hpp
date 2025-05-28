@@ -1,6 +1,6 @@
 #pragma once
-#include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
+#include "irsol/macros.hpp"
 #include "irsol/types.hpp"
 
 #include <regex>

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/macros.hpp"
 #include "irsol/protocol/message/in_messages.hpp"
 #include "irsol/protocol/message/variants.hpp"
 #include "irsol/traits.hpp"

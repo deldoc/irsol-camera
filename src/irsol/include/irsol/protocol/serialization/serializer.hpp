@@ -1,6 +1,6 @@
 #pragma once
 
-#include "irsol/assert.hpp"
+#include "irsol/macros.hpp"
 #include "irsol/protocol/message.hpp"
 #include "irsol/protocol/serialization/serialized_message.hpp"
 #include "irsol/traits.hpp"

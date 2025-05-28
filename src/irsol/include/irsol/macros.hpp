@@ -1,5 +1,7 @@
 #pragma once
 
+#include "irsol/assert.hpp"
+
 /// This macro is used to mark variables or function parameters as unused. This mutes the compiler's
 /// warning about unused variables.
 /// Example usage:
@@ -27,15 +29,49 @@
 /// ```cpp
 /// IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START
 /// for(auto& [key, value] : myMap) {
-///  IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
-/// <code using only one of key or value>
+///    IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
+///    // code using only one of key or value
 /// }
 #if defined(__GNUC__) || defined(__clang__)
+#ifndef IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START
 #define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START \
   _Pragma("GCC diagnostic push") _Pragma("GCC diagnostic ignored \"-Wunused-variable\"")
-
+#endif
+#ifndef IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
 #define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END _Pragma("GCC diagnostic pop")
+#endif
 #else
 #define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START
 #define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
+#endif
+
+/// Indicates unreachable code due to constexpr logic or specialization failure.
+/// Example:
+/// ```cpp
+/// if constexpr (std::is_same_v<T, void>) {
+///   IRSOL_UNREACHABLE("Unexpected code path for T = void");
+/// }
+/// ```
+#ifndef IRSOL_UNREACHABLE
+#define IRSOL_UNREACHABLE(messageLiteral)                                         \
+  IRSOL_STATIC_ASSERT(                                                            \
+    (std::is_same_v<void, void>), "Unreachable code triggered: " messageLiteral); \
+  __builtin_unreachable()
+#endif
+
+/// Used in template code when no valid specialization exists.
+/// To be used as a final `else` branch in `if constexpr` chains.
+#ifndef _IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION
+#define _IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION(T, messageLiteral) \
+  IRSOL_STATIC_ASSERT((std::is_same_v<T, void>), messageLiteral)
+#endif
+
+/// User-facing macro to emit a compile-time error when a template specialization is missing.
+/// Can be safely used as a single statement inside functions.
+#ifndef IRSOL_MISSING_TEMPLATE_SPECIALIZATION
+#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)                    \
+  _IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION(                              \
+    T,                                                                               \
+    "Function '" funcNameLiteral "' lacks a template specialization for this type. " \
+    "Please ensure you handle all required template types explicitly.")
 #endif

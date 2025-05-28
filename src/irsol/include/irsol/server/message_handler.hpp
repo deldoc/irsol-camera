@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/macros.hpp"
 #include "irsol/protocol.hpp"
 #include "irsol/traits.hpp"
 #include "irsol/types.hpp"

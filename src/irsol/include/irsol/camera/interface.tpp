@@ -1,7 +1,7 @@
 #pragma once
 
-#include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
+#include "irsol/macros.hpp"
 
 #include <mutex>
 #include <type_traits>
