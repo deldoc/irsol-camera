@@ -9,6 +9,16 @@ endif()
 
 find_library(NEOAPI_LIBRARY neoapi_cpp HINTS ${neoapi_PRECOMPILED_LIBS_ROOT_DIR})
 
+# Fetches spdlog logging library
+Include(FetchContent)
+
+FetchContent_Declare(
+    spdlog
+    GIT_REPOSITORY https://github.com/gabime/spdlog.git
+    GIT_TAG v1.15.3
+)
+FetchContent_MakeAvailable(spdlog)
+
 # Core irsol library
 add_library(${PROJECT_NAME}
     lib/irsol/assert.cpp

@@ -4,6 +4,8 @@
 #include "irsol/logging.hpp"
 #include "irsol/macros.hpp"
 
+#include <map>
+
 using namespace std;
 
 namespace irsol {

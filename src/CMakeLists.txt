@@ -54,7 +54,6 @@ add_subdirectory(external/args)
 add_subdirectory(external/sockpp)
 add_subdirectory(external/neoapi)
 add_subdirectory(external/ppk_assert)
-add_subdirectory(external/spdlog)
 add_subdirectory(external/tabulate)
 
 # Add subdirectories for the main project

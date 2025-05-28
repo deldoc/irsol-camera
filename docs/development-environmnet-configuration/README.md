@@ -1,4 +1,4 @@
-# Development Environment Configuration
+#Development Environment Configuration
 
 This guide will lead you through the setup of a development environment that will allow you to edit, compile, and test new code.
 
@@ -8,8 +8,7 @@ This section presents the structure of the repository:
 - [`src`](../../src/): Contains the source code for the project:
   - [`irsol`](../../src/irsol/): Core library for interacting with the cameras.
   - [`examples`](../../src/examples/): Example applications demonstrating how to use the `neoAPI` with the `irsol` library.
-  - [`external`](../../src/external/): External dependencies, such as `spdlog` and `neoAPI`.
-    - [spdlog](../../src/external/spdlog/): Contains the *header-only* logging library.
+  - [`external`](../../src/external/): External dependencies, such as `neoAPI`.
     - [neoapi](../../src/external/neoapi/): Contains the library provided by the camera vendor for interacting with the cameras programmatically.
       - [headers](../../src/external/neoapi/include/): Contains the public headers for the `neoAPI` library.
       - [lib](../../src/external/neoapi/lib/): Contains the *pre-compiled* library for the `neoAPI` library.

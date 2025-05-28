@@ -1,4 +1,4 @@
-message(STATUS "Building irsol unit tests")
+message(STATUS "Also building irsol unit tests")
 
 # --- Get Catch2 ---
 set(UNIT_TEST_DIR ${PROJECT_SOURCE_DIR})

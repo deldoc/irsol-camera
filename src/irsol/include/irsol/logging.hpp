@@ -1,9 +1,8 @@
 #pragma once
 
-#include "spdlog/spdlog.h"
-
 #include <chrono>
 #include <optional>
+#include <spdlog/spdlog.h>
 #include <unordered_map>
 
 #define IRSOL_LOG_TRACE(...) spdlog::trace(__VA_ARGS__)
