@@ -38,6 +38,7 @@ add_library(${PROJECT_NAME}
     lib/irsol/protocol/serialization/serializer.cpp
     lib/irsol/protocol/serialization/serialized_message.cpp
     lib/irsol/server/app.cpp
+    lib/irsol/server/acceptor.cpp
     lib/irsol/server/client/session.cpp
     lib/irsol/server/collector.cpp
     lib/irsol/server/message_handler.cpp

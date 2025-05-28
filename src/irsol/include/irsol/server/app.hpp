@@ -1,6 +1,7 @@
 #pragma once
 
 #include "irsol/camera/interface.hpp"
+#include "irsol/server/acceptor.hpp"
 #include "irsol/server/client.hpp"
 #include "irsol/server/collector.hpp"
 #include "irsol/server/handlers/factory.hpp"
@@ -90,14 +91,11 @@ private:
   /// TCP port on which the server listens for incoming connections.
   const irsol::types::port_t m_port;
 
-  /// Atomic flag controlling the server's running state.
-  std::atomic<bool> m_running;
+  /// Acceptor for new client connections.
+  irsol::server::internal::ClientSessionAcceptor m_acceptor;
 
-  /// Thread that runs the accept loop for new clients.
+  /// Thread that runs the acceptor for new clients.
   std::thread m_acceptThread;
-
-  /// Acceptor socket bound to m_port.
-  irsol::types::acceptor_t m_acceptor;
 
   /// Protects concurrent access to the client sessions map.
   std::mutex m_clientsMutex;
@@ -115,24 +113,15 @@ private:
   std::unique_ptr<handlers::MessageHandler> m_messageHandler;
 
   /**
-   * @brief Loop that accepts new TCP client connections.
-   *
-   * Runs in m_acceptThread. On each new connection, generates a unique client
-   * ID, creates a ClientSession, and invokes addClient().
-   */
-  void acceptLoop();
-
-  /**
    * @brief Registers a new client session.
    *
    * Inserts the session into m_clients and starts its run() method in a new thread..
    *
    * @param clientId Unique ID for the new client.
-   * @param session  Shared pointer to the created ClientSession.
+   * @param sock  TCP socket for the new client.
+   * @note This function is called from the accept loop thread.
    */
-  void addClient(
-    const irsol::types::client_id_t&         clientId,
-    std::shared_ptr<internal::ClientSession> session);
+  void addClient(const irsol::types::client_id_t& clientId, irsol::types::socket_t&& sock);
 
   /**
    * @brief Unregisters a disconnected client.
@@ -141,6 +130,8 @@ private:
    * streaming to that client, and cleans up resources.
    *
    * @param clientId ID of the client to remove.
+   * @note: This function is called as soon as the client connection is closed (e.g. when client
+   * disconnects).
    */
   void removeClient(const irsol::types::client_id_t& clientId);
 

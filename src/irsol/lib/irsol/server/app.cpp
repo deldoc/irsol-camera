@@ -11,27 +11,26 @@ namespace server {
 
 App::App(irsol::types::port_t port)
   : m_port(port)
-  , m_running(false)
-  , m_acceptor({})
+  , m_acceptor(
+      m_port,
+      std::bind(&App::addClient, this, std::placeholders::_1, std::placeholders::_2))
   , m_cameraInterface(std::make_unique<camera::Interface>(camera::Interface::HalfResolution()))
   , m_frameCollector(std::make_unique<internal::FrameCollector>(*m_cameraInterface.get()))
   , m_messageHandler(std::make_unique<handlers::MessageHandler>())
 {
   registerMessageHandlers();
-  IRSOL_LOG_DEBUG("App created on port {}", m_port);
+  IRSOL_LOG_DEBUG("App ready to run on port {}", m_port);
 }
 
 bool
 App::start()
 {
-  IRSOL_LOG_INFO("Starting server on port {}", m_port);
-  if(auto openResult = m_acceptor.open(irsol::types::inet_address_t(m_port)); !openResult) {
-    IRSOL_LOG_ERROR("Failed to open acceptor on port {}: {}", m_port, openResult.error().message());
+  if(!m_acceptor.isOpen()) {
+    IRSOL_LOG_ERROR("Failed to open acceptor on port {}: {}", m_port, m_acceptor.error());
     return false;
   }
-  m_running = true;
   IRSOL_LOG_DEBUG("Starting accept thread");
-  m_acceptThread = std::thread(&App::acceptLoop, this);
+  m_acceptThread = std::thread(&internal::ClientSessionAcceptor::run, &m_acceptor);
   IRSOL_LOG_INFO("Server started successfully");
   return true;
 }
@@ -40,8 +39,8 @@ void
 App::stop()
 {
   IRSOL_LOG_INFO("Stopping server");
-  m_running = false;
-  m_acceptor.close();
+  m_acceptor.stop();
+
   if(m_acceptThread.joinable()) {
     IRSOL_LOG_DEBUG("Joining accept thread");
     m_acceptThread.join();
@@ -59,73 +58,31 @@ App::getClientSession(const irsol::types::client_id_t& clientId)
 }
 
 void
-App::acceptLoop()
+App::addClient(const irsol::types::client_id_t& clientId, irsol::types::socket_t&& sock)
 {
-  IRSOL_LOG_INFO("Accept loop started");
-  while(m_running) {
-
-    // Set non-blocking mode to avoid blocking indefinitely on accept
-    m_acceptor.set_non_blocking(true);
-
-    auto sockResult = m_acceptor.accept();
-
-    // Check if we should exit the loop
-    if(!m_running) {
-      IRSOL_LOG_DEBUG("Accept loop stopped");
-      break;
-    }
-
-    if(!sockResult) {
-      if(m_running) {
-        sockpp::error_code err{sockResult.error()};
-        // These errors are expected in non-blocking mode when no connection is available
-        bool isExpectedError =
-          (err == std::errc::resource_unavailable_try_again ||
-           err == std::errc::operation_would_block || err == std::errc::timed_out);
-
-        if(isExpectedError) {
-          // Sleep for a short time to avoid busy waiting when no connections are available
-          std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-        } else {
-          // Log unexpected errors
-          IRSOL_LOG_WARN("Failed to accept connection: {}", sockResult.error_message());
-        }
-      }
-      continue;
-    }
-
-    // Generate a unique ID for this client session
-    irsol::types::client_id_t clientId = utils::uuid();
-    IRSOL_LOG_DEBUG("Generated client ID: {}", clientId);
-    auto session = std::make_shared<internal::ClientSession>(clientId, sockResult.release(), *this);
-    addClient(clientId, session);
-  }
-  IRSOL_LOG_INFO("Accept loop ended");
-}
-
-void
-App::addClient(
-  const irsol::types::client_id_t&         clientId,
-  std::shared_ptr<internal::ClientSession> session)
-{
+  auto session = std::make_shared<internal::ClientSession>(clientId, std::move(sock), *this);
   std::lock_guard<std::mutex> lock(m_clientsMutex);
-  IRSOL_LOG_INFO("New client connection from {}", session->socket().address().to_string());
+  IRSOL_LOG_INFO(
+    "Registering new client connection from {} with id {}",
+    session->socket().address().to_string(),
+    clientId);
   {
     m_clients.insert({clientId, session});
     IRSOL_LOG_DEBUG(
       "Client {} added to session list, total clients: {}", clientId, m_clients.size());
   }
 
+  IRSOL_LOG_INFO("Starting client session thread for client with id {}", clientId);
   std::thread([session, this]() {
-    std::string clientAddress = session->socket().address().to_string();
-    IRSOL_LOG_DEBUG(
-      "Starting client session thread for {} with ID {}", clientAddress, session->id());
+    IRSOL_LOG_DEBUG("Thread for client with ID {} started", session->id());
 
     try {
       session->run();
     } catch(std::exception& e) {
-      IRSOL_LOG_ERROR("Error in client session thread for {}: {}", clientAddress, e.what());
+      IRSOL_LOG_ERROR(
+        "Error in client session thread for client with id {}: {}", session->id(), e.what());
     }
+    IRSOL_LOG_DEBUG("Thread for client with ID {} finished", session->id());
     removeClient(session->id());
   })
     .detach();
