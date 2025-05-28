@@ -6,6 +6,11 @@
 namespace irsol {
 namespace traits {
 
+// Always false for any type T
+template<typename T>
+struct always_false : std::false_type
+{};
+
 // Create trait helpers to limit the compilation possibility of some template functions
 // to only types that are part of the value_t variant.
 template<typename T, typename VariantT>

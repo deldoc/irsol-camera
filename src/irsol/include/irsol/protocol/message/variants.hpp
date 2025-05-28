@@ -25,6 +25,8 @@ enum class InMessageKind
  * @brief Converts an InMessageKind to a human-readable string.
  * @param kind The InMessageKind to convert.
  * @return A string representation of the InMessageKind.
+ * @note This function might be used as a compile-time expression, but can also act as a runtime
+ * function.
  */
 constexpr const char*
 InMessageKindToString(InMessageKind kind)
@@ -37,7 +39,7 @@ InMessageKindToString(InMessageKind kind)
     case InMessageKind::COMMAND:
       return "COMMAND";
   }
-  IRSOL_UNREACHABLE("Invalid InMessageKind");
+  IRSOL_UNREACHABLE();
 }
 
 // Forward declarations
@@ -57,7 +59,7 @@ using InMessage = std::variant<Assignment, Inquiry, Command>;
  */
 enum class OutMessageKind
 {
-  STATUS,
+  SUCCESS,
   BINARY_BUFFER,
   BW_IMAGE,
   COLOR_IMAGE,
@@ -68,13 +70,15 @@ enum class OutMessageKind
  * @brief Converts an OutMessageKind to a human-readable string.
  * @param kind The OutMessageKind to convert.
  * @return A string representation of the OutMessageKind.
+ * @note This function might be used as a compile-time expression, but can also act as a runtime
+ * function.
  */
 constexpr const char*
 OutMessageKindToString(OutMessageKind kind)
 {
   switch(kind) {
-    case OutMessageKind::STATUS:
-      return "STATUS";
+    case OutMessageKind::SUCCESS:
+      return "SUCCESS";
     case OutMessageKind::BINARY_BUFFER:
       return "BINARY_BUFFER";
     case OutMessageKind::BW_IMAGE:
@@ -84,7 +88,7 @@ OutMessageKindToString(OutMessageKind kind)
     case OutMessageKind::ERROR:
       return "ERROR";
   }
-  IRSOL_UNREACHABLE("Invalid OutMessageKind");
+  IRSOL_UNREACHABLE();
 }
 
 // Forward declarations
@@ -173,7 +177,7 @@ constexpr OutMessageKind
 getOutMessageKind(const T&)
 {
   if constexpr(std::is_same_v<T, Success>)
-    return OutMessageKind::STATUS;
+    return OutMessageKind::SUCCESS;
   else if constexpr(std::is_same_v<T, Error>)
     return OutMessageKind::ERROR;
   else if constexpr(std::is_same_v<T, BinaryDataBuffer>)

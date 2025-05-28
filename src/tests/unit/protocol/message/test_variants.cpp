@@ -9,26 +9,76 @@
 #include <catch2/catch_all.hpp>
 #include <memory>
 #include <string>
+#include <string_view>
 #include <utility>
+
+constexpr bool
+strings_equal(char const* a, char const* b)
+{
+  return std::string_view(a) == b;
+}
 
 TEST_CASE("InMessageKindToString()", "[Protocol][Protocol::Message]")
 {
-  auto [messageKind, expected] = GENERATE(
-    std::make_pair(irsol::protocol::InMessageKind::ASSIGNMENT, "ASSIGNMENT"),
-    std::make_pair(irsol::protocol::InMessageKind::INQUIRY, "INQUIRY"),
-    std::make_pair(irsol::protocol::InMessageKind::COMMAND, "COMMAND"));
-  CHECK(irsol::protocol::InMessageKindToString(messageKind) == expected);
+  {
+    auto [messageKind, expected] = GENERATE(
+      std::make_pair(irsol::protocol::InMessageKind::ASSIGNMENT, "ASSIGNMENT"),
+      std::make_pair(irsol::protocol::InMessageKind::INQUIRY, "INQUIRY"),
+      std::make_pair(irsol::protocol::InMessageKind::COMMAND, "COMMAND"));
+    CHECK(strings_equal(irsol::protocol::InMessageKindToString(messageKind), expected));
+  }
+  {
+    {
+      constexpr auto messageKind = irsol::protocol::InMessageKind::COMMAND;
+      STATIC_CHECK(strings_equal(irsol::protocol::InMessageKindToString(messageKind), "COMMAND"));
+    }
+    {
+      constexpr auto messageKind = irsol::protocol::InMessageKind::INQUIRY;
+      STATIC_CHECK(strings_equal(irsol::protocol::InMessageKindToString(messageKind), "INQUIRY"));
+    }
+    {
+      constexpr auto messageKind = irsol::protocol::InMessageKind::ASSIGNMENT;
+      STATIC_CHECK(
+        strings_equal(irsol::protocol::InMessageKindToString(messageKind), "ASSIGNMENT"));
+    }
+  }
 }
 
 TEST_CASE("OutMessageKindToString()", "[Protocol][Protocol::Message]")
 {
-  auto [messageKind, expected] = GENERATE(
-    std::make_pair(irsol::protocol::OutMessageKind::STATUS, "STATUS"),
-    std::make_pair(irsol::protocol::OutMessageKind::BINARY_BUFFER, "BINARY_BUFFER"),
-    std::make_pair(irsol::protocol::OutMessageKind::BW_IMAGE, "BW_IMAGE"),
-    std::make_pair(irsol::protocol::OutMessageKind::COLOR_IMAGE, "COLOR_IMAGE"),
-    std::make_pair(irsol::protocol::OutMessageKind::ERROR, "ERROR"));
-  CHECK(irsol::protocol::OutMessageKindToString(messageKind) == expected);
+  {
+    auto [messageKind, expected] = GENERATE(
+      std::make_pair(irsol::protocol::OutMessageKind::SUCCESS, "SUCCESS"),
+      std::make_pair(irsol::protocol::OutMessageKind::BINARY_BUFFER, "BINARY_BUFFER"),
+      std::make_pair(irsol::protocol::OutMessageKind::BW_IMAGE, "BW_IMAGE"),
+      std::make_pair(irsol::protocol::OutMessageKind::COLOR_IMAGE, "COLOR_IMAGE"),
+      std::make_pair(irsol::protocol::OutMessageKind::ERROR, "ERROR"));
+    CHECK(strings_equal(irsol::protocol::OutMessageKindToString(messageKind), expected));
+  }
+  {
+    {
+      constexpr auto messageKind = irsol::protocol::OutMessageKind::SUCCESS;
+      STATIC_CHECK(strings_equal(irsol::protocol::OutMessageKindToString(messageKind), "SUCCESS"));
+    }
+    {
+      constexpr auto messageKind = irsol::protocol::OutMessageKind::BINARY_BUFFER;
+      STATIC_CHECK(
+        strings_equal(irsol::protocol::OutMessageKindToString(messageKind), "BINARY_BUFFER"));
+    }
+    {
+      constexpr auto messageKind = irsol::protocol::OutMessageKind::BW_IMAGE;
+      STATIC_CHECK(strings_equal(irsol::protocol::OutMessageKindToString(messageKind), "BW_IMAGE"));
+    }
+    {
+      constexpr auto messageKind = irsol::protocol::OutMessageKind::COLOR_IMAGE;
+      STATIC_CHECK(
+        strings_equal(irsol::protocol::OutMessageKindToString(messageKind), "COLOR_IMAGE"));
+    }
+    {
+      constexpr auto messageKind = irsol::protocol::OutMessageKind::ERROR;
+      STATIC_CHECK(strings_equal(irsol::protocol::OutMessageKindToString(messageKind), "ERROR"));
+    }
+  }
 }
 
 TEST_CASE("getInMessageKind<direct>()", "[Protocol][Protocol::Message]")
@@ -163,7 +213,7 @@ TEST_CASE("getOutMessageKind<direct>()", "[Protocol][Protocol::Message]")
 {
   {
     auto m = irsol::protocol::Success::from(irsol::protocol::Command{"x"});
-    STATIC_CHECK(irsol::protocol::getOutMessageKind(m) == irsol::protocol::OutMessageKind::STATUS);
+    STATIC_CHECK(irsol::protocol::getOutMessageKind(m) == irsol::protocol::OutMessageKind::SUCCESS);
   }
   {
     std::vector<irsol::types::byte_t> data(10);
@@ -193,7 +243,7 @@ TEST_CASE("getOutMessageKind<variant>()", "[Protocol][Protocol::Message]")
   {
     auto m        = irsol::protocol::Success::from(irsol::protocol::Command{"x"});
     auto mVariant = irsol::protocol::OutMessage(std::move(m));
-    CHECK(irsol::protocol::getOutMessageKind(mVariant) == irsol::protocol::OutMessageKind::STATUS);
+    CHECK(irsol::protocol::getOutMessageKind(mVariant) == irsol::protocol::OutMessageKind::SUCCESS);
   }
   {
     std::vector<irsol::types::byte_t> data(10);

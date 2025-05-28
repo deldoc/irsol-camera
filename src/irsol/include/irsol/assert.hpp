@@ -21,7 +21,7 @@
 #define IRSOL_ASSERT_FATAL \
   PPK_ASSERT_FATAL  // Prints assertion to console and terminates the program
 #define IRSOL_ASSERT_FALSE(message) \
-  IRSOL_ASSERT_ERROR(false, message)  // Prints assertion to console and throws an exception
+  IRSOL_ASSERT_FATAL(false, message)  // Prints assertion to console and terminates the program
 
 #define IRSOL_STATIC_ASSERT \
   PPK_STATIC_ASSERT  // Prints assertion to console at compile time and terminates the compilation

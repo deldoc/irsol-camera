@@ -14,6 +14,7 @@
 
 namespace irsol {
 namespace protocol {
+
 std::string
 toString(const InMessage& msg)
 {
@@ -91,7 +92,7 @@ getOutMessageKind(const OutMessage& msg)
 bool
 isSuccess(const OutMessage& msg)
 {
-  return getOutMessageKind(msg) == OutMessageKind::STATUS;
+  return getOutMessageKind(msg) == OutMessageKind::SUCCESS;
 }
 
 bool

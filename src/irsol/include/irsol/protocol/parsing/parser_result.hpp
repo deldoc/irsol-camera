@@ -60,7 +60,7 @@ public:
       message_string = getError();
       message_type   = "Error";
     } else {
-      IRSOL_UNREACHABLE("Invalid ParserResult state");
+      IRSOL_ASSERT_FATAL("Both 'isMessage()' and 'isError()' returned false");
     }
 
     std::stringstream ss;
