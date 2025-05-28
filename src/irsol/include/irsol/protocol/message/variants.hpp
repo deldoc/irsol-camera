@@ -2,7 +2,7 @@
 
 #include "irsol/assert.hpp"
 #include "irsol/protocol/message/binary.hpp"
-#include "irsol/protocol/message/traits.hpp"
+#include "irsol/traits.hpp"
 #include "irsol/types.hpp"
 
 #include <string>
@@ -89,27 +89,7 @@ struct Error;
 using OutMessage =
   std::variant<Success, BinaryDataBuffer, ImageBinaryData, ColorImageBinaryData, Error>;
 
-namespace traits {
-// To be used as:
-// template <typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
-// void myFunctionTemplate(const T& msg) { ... }
-// in this way, the 'myFunctionTemplate' will only accept types that are part of the InMessage
-// variant. and if used with a type that is not part of the InMessage variant, the compiler will
-// issue a compilation error.
-template<typename T>
-using IsInMessageVariant = internal::traits::_IsTypeInVariant<T, InMessage>;
-
-// To be used as:
-// template <typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
-// void myFunctionTemplate(const T& msg) { ... }
-// in this way, the 'myFunctionTemplate' will only accept types that are part of the OutMessage
-// variant. and if used with a type that is not part of the OutMessage variant, the compiler will
-// issue a compilation error.
-template<typename T>
-using IsOutMessageVariant = internal::traits::_IsTypeInVariant<T, OutMessage>;
-}  // namespace traits
-
-template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
 constexpr InMessageKind
 getInMessageKind(const T&)
 {
@@ -130,7 +110,7 @@ getInMessageKind(const T&)
  */
 InMessageKind getInMessageKind(const InMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
 constexpr bool
 isAssignment(const T&)
 {
@@ -138,7 +118,7 @@ isAssignment(const T&)
 }
 bool isAssignment(const InMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
 constexpr bool
 isInquiry(const T&)
 {
@@ -146,7 +126,7 @@ isInquiry(const T&)
 }
 bool isInquiry(const InMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
 constexpr bool
 isCommand(const T&)
 {
@@ -154,7 +134,7 @@ isCommand(const T&)
 }
 bool isCommand(const InMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr OutMessageKind
 getOutMessageKind(const T&)
 {
@@ -178,7 +158,7 @@ getOutMessageKind(const T&)
  */
 OutMessageKind getOutMessageKind(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr bool
 isSuccess(const T&)
 {
@@ -186,7 +166,7 @@ isSuccess(const T&)
 }
 bool isSuccess(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr bool
 isBinaryDataBuffer(const T&)
 {
@@ -194,7 +174,7 @@ isBinaryDataBuffer(const T&)
 }
 bool isBinaryDataBuffer(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr bool
 isImageBinaryData(const T&)
 {
@@ -202,7 +182,7 @@ isImageBinaryData(const T&)
 }
 bool isImageBinaryData(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr bool
 isColorImageBinaryData(const T&)
 {
@@ -210,7 +190,7 @@ isColorImageBinaryData(const T&)
 }
 bool isColorImageBinaryData(const OutMessage& msg);
 
-template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr bool
 isError(const T&)
 {

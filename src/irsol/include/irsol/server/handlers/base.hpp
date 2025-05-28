@@ -2,6 +2,7 @@
 
 #include "irsol/protocol.hpp"
 #include "irsol/server/handlers/context.hpp"
+#include "irsol/traits.hpp"
 
 #include <vector>
 
@@ -16,7 +17,8 @@ namespace internal {
 
 template<
   typename T,
-  std::enable_if_t<::irsol::protocol::traits::IsInMessageVariant<T>::value, int> = 0>
+  std::enable_if_t<irsol::traits::is_type_in_variant<T, irsol::protocol::InMessage>::value, int> =
+    0>
 struct HandlerBase
 {
 

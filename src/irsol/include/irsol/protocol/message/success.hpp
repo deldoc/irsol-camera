@@ -2,6 +2,7 @@
 
 #include "irsol/protocol/message/in_messages.hpp"
 #include "irsol/protocol/message/variants.hpp"
+#include "irsol/traits.hpp"
 #include "irsol/types.hpp"
 
 #include <string>
@@ -50,7 +51,7 @@ struct Success
   template<
     typename T,
     std::enable_if_t<
-      traits::IsInMessageVariant<std::decay_t<T>>::value &&
+      irsol::traits::is_type_in_variant_v<T, InMessage> &&
         !std::is_same_v<std::decay_t<T>, Inquiry>,
       int> = 0>
   static Success from(T&& msg)

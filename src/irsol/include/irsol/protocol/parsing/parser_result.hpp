@@ -1,6 +1,7 @@
 #pragma once
 
 #include "irsol/protocol/message/variants.hpp"
+#include "irsol/traits.hpp"
 
 #include <string>
 #include <variant>
@@ -9,9 +10,7 @@ namespace irsol {
 namespace protocol {
 namespace internal {
 
-template<
-  typename T,
-  std::enable_if_t<::irsol::protocol::traits::IsInMessageVariant<T>::value, int> = 0>
+template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
 class ParserResult
 {
 public:

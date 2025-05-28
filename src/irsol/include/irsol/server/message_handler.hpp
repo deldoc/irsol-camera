@@ -1,6 +1,7 @@
 #pragma once
 
 #include "irsol/protocol.hpp"
+#include "irsol/traits.hpp"
 #include "irsol/types.hpp"
 
 #include <string>
@@ -43,7 +44,8 @@ public:
 
   template<
     typename T,
-    std::enable_if_t<::irsol::protocol::traits::IsInMessageVariant<T>::value, int> = 0>
+    std::enable_if_t<irsol::traits::is_type_in_variant<T, irsol::protocol::InMessage>::value, int> =
+      0>
   bool registerHandler(const std::string& identifier, handler_function_t<T> handler)
   {
     // Make sure there's no duplicate handlers for the same message kind and identifier
@@ -87,7 +89,8 @@ private:
 
   template<
     typename T,
-    std::enable_if_t<::irsol::protocol::traits::IsInMessageVariant<T>::value, int> = 0>
+    std::enable_if_t<irsol::traits::is_type_in_variant<T, irsol::protocol::InMessage>::value, int> =
+      0>
   std::optional<handler_function_t<T>> findHandler(const handler_identifier_t& identifier) const
   {
     if constexpr(std::is_same_v<T, protocol::Assignment>) {

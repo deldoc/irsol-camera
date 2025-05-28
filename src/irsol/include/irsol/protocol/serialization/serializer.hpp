@@ -3,6 +3,7 @@
 #include "irsol/assert.hpp"
 #include "irsol/protocol/message.hpp"
 #include "irsol/protocol/serialization/serialized_message.hpp"
+#include "irsol/traits.hpp"
 
 #include <string>
 #include <vector>
@@ -33,7 +34,9 @@ public:
    * @param msg The message to serialize. Must be a class used in the OutMessage variant.
    * @return A SerializedMessage containing the serialized message.
    */
-  template<typename T, std::enable_if_t<traits::IsOutMessageVariant<T>::value, int> = 0>
+  template<
+    typename T,
+    std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
   static SerializedMessage serialize(T&& msg)
   {
     if constexpr(std::is_same_v<T, Success>) {
@@ -51,7 +54,11 @@ public:
   }
 
   static std::string serializeValue(irsol::types::protocol_value_t&& value);
-  template<typename T, std::enable_if_t<internal::traits::IsInValueTVariant<T>::value, int> = 0>
+  template<
+    typename T,
+    std::enable_if_t<
+      irsol::traits::is_type_in_variant<T, irsol::types::protocol_value_t>::value,
+      int> = 0>
   static std::string serializeValue(T&& value)
   {
     if constexpr(std::is_same_v<T, int>) {

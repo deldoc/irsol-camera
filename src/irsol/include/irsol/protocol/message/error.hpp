@@ -2,6 +2,7 @@
 
 #include "irsol/protocol/message/in_messages.hpp"
 #include "irsol/protocol/message/variants.hpp"
+#include "irsol/traits.hpp"
 #include "irsol/types.hpp"
 
 #include <string>
@@ -32,7 +33,7 @@ struct Error
    */
   std::string toString() const;
 
-  template<typename T, std::enable_if_t<traits::IsInMessageVariant<T>::value, int> = 0>
+  template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
   static Error from(const T& msg, const std::string& description)
   {
     if constexpr(std::is_same_v<T, Assignment>) {
