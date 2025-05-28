@@ -4,6 +4,7 @@
 
 namespace irsol {
 namespace protocol {
+namespace internal {
 
 SerializedMessage::SerializedMessage(
   const std::string&                  header,
@@ -11,22 +12,16 @@ SerializedMessage::SerializedMessage(
   : header(header), payload(std::move(payload))
 {}
 
-const irsol::types::byte_t*
-SerializedMessage::headerData() const
+bool
+SerializedMessage::hasHeader() const
 {
-  return reinterpret_cast<const irsol::types::byte_t*>(header.data());
+  return header.size() > 0;
 }
 
-size_t
-SerializedMessage::headerSize() const
+bool
+SerializedMessage::hasPayload() const
 {
-  return header.size();
-}
-
-const irsol::types::byte_t*
-SerializedMessage::payloadData() const
-{
-  return payload.data();
+  return payloadSize() > 0;
 }
 
 size_t
@@ -34,15 +29,20 @@ SerializedMessage::payloadSize() const
 {
   return payload.size();
 }
-
 std::string
 SerializedMessage::toString() const
 {
   std::ostringstream oss;
   oss << "SerializedMessage{"
-      << "header: '" << header << "', payload size: " << payload.size() << "bytes}";
+      << "header: '" << header << "'";
+  if(hasPayload()) {
+    oss << ", payload size: " << payload.size() << "bytes";
+  } else {
+    oss << ", no payload";
+  }
+  oss << "}";
   return oss.str();
 }
-
+}  // namespace internal
 }  // namespace protocol
 }  // namespace irsol

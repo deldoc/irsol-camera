@@ -2,7 +2,6 @@
 #include "irsol/protocol/parsing/parser_result.hpp"
 
 #include <catch2/catch_all.hpp>
-
 TEST_CASE("bool(ParserResult)", "[Protocol][Protocol::Parser]")
 {
   {

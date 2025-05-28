@@ -73,10 +73,10 @@ ClientSession::handleOutMessage(protocol::OutMessage&& message)
   IRSOL_NAMED_LOG_DEBUG(m_id, "Serialized message: '{}'", serializedMessage.toString());
 
   // Send the serialized message to the client
-  if(serializedMessage.headerSize()) {
+  if(serializedMessage.hasHeader()) {
     send(serializedMessage.header);
   }
-  if(serializedMessage.payloadSize()) {
+  if(serializedMessage.hasPayload()) {
     send(serializedMessage.payload.data(), serializedMessage.payloadSize());
   }
 }

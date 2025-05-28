@@ -20,13 +20,14 @@ namespace protocol {
 class Serializer
 {
 public:
+  static constexpr const char* message_termination = "\n";
   /*
    * Serialize an OutMessage into a string.
    *
    * @param msg The message to serialize.
    * @return A SerializedMessage containing the serialized message.
    */
-  static SerializedMessage serialize(OutMessage&& msg);
+  static internal::SerializedMessage serialize(OutMessage&& msg);
 
   /**
    * Serialize a specific OutMessage type into a string.
@@ -37,7 +38,7 @@ public:
   template<
     typename T,
     std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
-  static SerializedMessage serialize(T&& msg)
+  static internal::SerializedMessage serialize(T&& msg)
   {
     if constexpr(std::is_same_v<T, Success>) {
       return serializeSuccess(std::move(msg));
@@ -74,11 +75,11 @@ public:
 private:
   Serializer() = delete;
 
-  static SerializedMessage serializeSuccess(Success&& msg);
-  static SerializedMessage serializeBinaryDataBuffer(BinaryDataBuffer&& msg);
-  static SerializedMessage serializeImageBinaryData(ImageBinaryData&& msg);
-  static SerializedMessage serializeColorImageBinaryData(ColorImageBinaryData&& msg);
-  static SerializedMessage serializeError(Error&& msg);
+  static internal::SerializedMessage serializeSuccess(Success&& msg);
+  static internal::SerializedMessage serializeBinaryDataBuffer(BinaryDataBuffer&& msg);
+  static internal::SerializedMessage serializeImageBinaryData(ImageBinaryData&& msg);
+  static internal::SerializedMessage serializeColorImageBinaryData(ColorImageBinaryData&& msg);
+  static internal::SerializedMessage serializeError(Error&& msg);
 };
 
 }  // namespace protocol

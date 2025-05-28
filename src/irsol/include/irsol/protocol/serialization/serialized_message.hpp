@@ -7,7 +7,7 @@
 
 namespace irsol {
 namespace protocol {
-
+namespace internal {
 struct SerializedMessage
 {
   std::string                       header;
@@ -21,15 +21,14 @@ struct SerializedMessage
   SerializedMessage(const SerializedMessage&) = delete;
   SerializedMessage& operator=(const SerializedMessage&) = delete;
 
-  const irsol::types::byte_t* headerData() const;
+  bool hasHeader() const;
 
-  size_t headerSize() const;
-
-  const irsol::types::byte_t* payloadData() const;
+  bool hasPayload() const;
 
   size_t payloadSize() const;
 
   std::string toString() const;
 };
+}  // namespace internal
 }  // namespace protocol
 }  // namespace irsol
