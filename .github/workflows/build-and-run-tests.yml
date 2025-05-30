@@ -1,0 +1,24 @@
+name: Build and runt tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  # Customize the CMake build type here (Release, Debug)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: opensuse/leap:15.1
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build
+      run: make build
+
+    - name: Run tests
+      run: ./src/dist/release/bin/unit_tests
