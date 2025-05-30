@@ -149,7 +149,7 @@ TEST_CASE("durationToString()", "[Utils]")
   }
   {
     irsol::types::duration_t duration = std::chrono::nanoseconds(4030);
-    CHECK(irsol::utils::durationToString(duration) == "4us 30ns");
+    CHECK(irsol::utils::durationToString(duration) == "4us 030ns");
   }
   {
     irsol::types::duration_t duration = std::chrono::microseconds(234);

@@ -11,6 +11,8 @@ struct FrameMetadata
 {
   irsol::types::timepoint_t timestamp;
   uint64_t                  frameId;
+  uint64_t                  height;
+  uint64_t                  width;
 };
 
 /**

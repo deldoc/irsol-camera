@@ -157,12 +157,12 @@ Interface::captureImage(std::optional<irsol::types::duration_t> timeout)
   // or using the user-provided timeout
   irsol::types::duration_t actualTimeout = m_CachedExposureTime + std::chrono::milliseconds(50);
   if(timeout.has_value()) {
-    IRSOL_LOG_INFO(
+    IRSOL_LOG_DEBUG(
       "User provided a custom timeout of capturing camera of {}",
       irsol::utils::durationToString(*timeout));
     actualTimeout = *timeout;
   } else {
-    IRSOL_LOG_INFO(
+    IRSOL_LOG_DEBUG(
       "Using exposure from camera {} with buffer", irsol::utils::durationToString(actualTimeout));
   }
 

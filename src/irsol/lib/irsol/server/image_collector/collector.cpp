@@ -1,5 +1,7 @@
 #include "irsol/server/image_collector/collector.hpp"
 
+#include "irsol/macros.hpp"
+
 #include <algorithm>
 #include <chrono>
 #include <iostream>
@@ -19,14 +21,14 @@ FrameCollector::~FrameCollector()
 void
 FrameCollector::start()
 {
-  m_stopFlag.store(false);
-  m_distributorThread = std::thread(&FrameCollector::distributorLoop, this);
+  m_stop.store(false);
+  m_distributorThread = std::thread(&FrameCollector::run, this);
 }
 
 void
 FrameCollector::stop()
 {
-  m_stopFlag.store(true);
+  m_stop.store(true);
   m_scheduleCondition.notify_all();
   if(m_distributorThread.joinable())
     m_distributorThread.join();
@@ -60,173 +62,280 @@ FrameCollector::registerClient(
     interval = std::chrono::microseconds(static_cast<uint64_t>(1000000.0 / fps));
   }
 
-  irsol::types::timepoint_t now     = irsol::types::clock_t::now();
-  irsol::types::timepoint_t nextDue = now + interval;
+  // Compute the scheduled time for the new client trying to use an existing schedule.
+  // Allow at max to "be away" from the desired schedule by the smallest of 500ms and
+  // half of the new client's interval.
+  auto maxDiffBetweenDesiredAndActualDueTime = std::min(
+    interval / 2, std::chrono::duration_cast<decltype(interval)>(std::chrono::milliseconds(500)));
+  const auto nextDue =
+    computeNextDueTimeForNewClient(interval, maxDiffBetweenDesiredAndActualDueTime);
 
   IRSOL_LOG_INFO(
-    "Registering client {} ar {} with frame rate {} fps, interval {} us, nextDue {} frame count "
-    "{}, "
-    "immediate {}",
+    "Registering client {} with frame rate {} fps (interval {}), "
+    "next frame due at {} #frames {}, immediate {}",
     clientId,
-    irsol::utils::timestampToString(now),
     fps,
-    interval.count(),
+    irsol::utils::durationToString(interval),
     irsol::utils::timestampToString(nextDue),
     frameCount,
     immediate);
 
   m_clients.emplace(
     clientId, ClientCollectionParams(fps, interval, nextDue, queue, frameCount, immediate));
-  m_scheduleMap[nextDue].push_back(clientId);
-
-  m_scheduleCondition.notify_one();
+  schedule(clientId, nextDue);
 }
 
 void
 FrameCollector::deregisterClient(irsol::types::client_id_t clientId)
 {
   std::lock_guard<std::mutex> lock(m_clientsMutex);
-  auto                        it = m_clients.find(clientId);
-  if(it != m_clients.end()) {
-    irsol::types::timepoint_t due = it->second.nextFrameDue;
-    m_clients.erase(it);
+  // Mark the client's queue as finished, so the client is notified that
+  // no more data will be pushed to him
+  auto& clientParams = m_clients.at(clientId);
+  clientParams.queue->producerFinished();
 
-    auto schedIt = m_scheduleMap.find(due);
-    if(schedIt != m_scheduleMap.end()) {
-      auto& vec = schedIt->second;
-      vec.erase(std::remove(vec.begin(), vec.end(), clientId), vec.end());
-      if(vec.empty()) {
-        m_scheduleMap.erase(schedIt);
-      }
-    }
+  // Removes the client from the storage
+  m_clients.erase(clientId);
 
-    m_scheduleCondition.notify_one();
+  auto  dueNext      = clientParams.nextFrameDue;
+  auto& clientsAtDue = m_scheduleMap.at(dueNext);
+
+  clientsAtDue.erase(
+    std::remove(clientsAtDue.begin(), clientsAtDue.end(), clientId), clientsAtDue.end());
+  if(clientsAtDue.empty()) {
+    m_scheduleMap.erase(dueNext);
   }
+
+  m_scheduleCondition.notify_one();
 }
 
 void
-FrameCollector::distributorLoop()
+FrameCollector::run()
 {
   std::unique_lock<std::mutex> lock(m_clientsMutex);
 
-  while(!m_stopFlag) {
+  while(!m_stop) {
     if(m_scheduleMap.empty()) {
-      m_scheduleCondition.wait(lock, [this]() { return m_stopFlag || !m_scheduleMap.empty(); });
+      m_scheduleCondition.wait(lock, [this]() { return m_stop || !m_scheduleMap.empty(); });
     }
 
-    if(m_stopFlag)
+    if(m_stop)
       return;
 
+    // Retrieve the nextDue time from the schedule map.
+    // This map is always sorted from small to high, as it's an ordered container.
     irsol::types::timepoint_t nextDue = m_scheduleMap.begin()->first;
     IRSOL_LOG_INFO("Min next due is {}", irsol::utils::timestampToString(nextDue));
 
+    // Wait until the 'm_scheduleCondition is triggered externally, or until one of the conditions
+    // defined in the wait_until body is met.
     m_scheduleCondition.wait_until(lock, nextDue, [this, nextDue]() {
-      return m_stopFlag || m_scheduleMap.begin()->first < nextDue;
+      // Wait until one of the following conditions happen:
+      // - either m_stop becomes 'true'
+      // - or a new client is registered to the collector, which has a
+      //   due time which is smaller than the current nextDue timestamp.
+      return m_stop || m_scheduleMap.begin()->first < nextDue;
     });
 
-    if(m_stopFlag)
+    if(m_stop)
       return;
+
+    // Refresh the nextDue, as the above condition might have finished due to a new client being
+    // registered earlier than the 'nextDue' time that was initially selected.
+    nextDue = m_scheduleMap.begin()->first;
 
     // Clients due now or earlier
     irsol::types::timepoint_t now = irsol::types::clock_t::now();
     IRSOL_LOG_INFO("Woken up at timestamp {}", irsol::utils::timestampToString(now));
-    std::vector<irsol::types::client_id_t> readyClients;
-
-    while(!m_scheduleMap.empty() && m_scheduleMap.begin()->first <= now) {
-      auto& dueClients = m_scheduleMap.begin()->second;
-      readyClients.insert(readyClients.end(), dueClients.begin(), dueClients.end());
-      m_scheduleMap.erase(m_scheduleMap.begin());
-    }
+    auto readyClients = collectReadyClients(now);
 
     lock.unlock();  // Allow other threads to register clients
 
-    // Capture the frame just-in-time
-    auto t0 = irsol::types::clock_t::now();
-    IRSOL_LOG_INFO(
-      "Capturing image for {} clients, started at {}",
-      readyClients.size(),
-      irsol::utils::timestampToString(t0));
-    auto image = m_cam.captureImage();
-    auto t1    = irsol::types::clock_t::now();
-    IRSOL_LOG_INFO(
-      "Finished capturing of frame data at {}, duration: {}",
-      irsol::utils::timestampToString(t1),
-      irsol::utils::durationToString(t1 - t0));
-
-    auto* imageData = image.GetImageData();
-    auto  numBytes  = image.GetSize();
-    auto  width     = image.GetWidth();
-    auto  height    = image.GetHeight();
-
-    std::vector<irsol::types::byte_t> rawData(numBytes);
-    std::memcpy(rawData.data(), imageData, numBytes);
-
-    FrameMetadata metadata{irsol::types::clock_t::now(), image.GetImageID()};
+    auto [frameMetadata, imageRawBuffer] = grabImageData();
 
     // Deliver the frame to clients
     lock.lock();
     std::vector<irsol::types::client_id_t> finishedClient;
     for(auto clientId : readyClients) {
-      auto it = m_clients.find(clientId);
-      if(it == m_clients.end()) {
-        IRSOL_LOG_WARN(
-          "Client {} not found in frame collector, even if it was supposed to be due for frame "
-          "distribution. Skipping",
-          clientId);
-        continue;
-      }
-
-      auto& clientParams = it->second;
+      auto& clientParams = m_clients.at(clientId);
       // Push a new frame created on the fly to the current client's queue.
       // This creates a copy of the image data into the queue, and this is wanted, so that if a
       // consumer modifies the image, it doesn't affect other clients.
       clientParams.queue->push(std::make_unique<Frame>(
-        metadata,
-        irsol::protocol::ImageBinaryData({rawData.begin(), rawData.end()}, {height, width}, {})));
+        frameMetadata,
+        irsol::protocol::ImageBinaryData(
+          {imageRawBuffer.begin(), imageRawBuffer.end()},
+          {frameMetadata.height, frameMetadata.width},
+          {})));
 
-      if(clientParams.remainingFrames > 0) {
-        clientParams.remainingFrames--;
-      }
-
-      if(clientParams.remainingFrames == 0) {
-        // Mark the client as finished
+      // Try to schedule the client, if no longer needed, register it in the finishedClients
+      auto maxDiffBetweenDesiredAndActualDueTime = clientParams.interval / 5;
+      if(!schedule(clientId, clientParams.nextFrameDue + clientParams.interval)) {
         finishedClient.push_back(clientId);
-      } else {
-        // Reschedule the client for the next frame
-        auto nextDue = std::max(now, clientParams.nextFrameDue + clientParams.interval);
-        IRSOL_LOG_INFO(
-          "Rescheduling client {} for next frame, previous due: {}, next due {}, frame count {}",
-          clientId,
-          irsol::utils::timestampToString(clientParams.nextFrameDue),
-          irsol::utils::timestampToString(nextDue),
-          clientParams.remainingFrames);
-        clientParams.nextFrameDue = nextDue;
-        m_scheduleMap[nextDue].push_back(clientId);
       }
     }
 
     // Unlock the clients so we can remove finished clients
     lock.unlock();
-    for(auto clientId : finishedClient) {
+    for(const auto& clientId : finishedClient) {
       IRSOL_LOG_INFO(
         "Deregistering client {}, as it has consumed all the frames it needed.", clientId);
-      auto it = m_clients.find(clientId);
-      if(it == m_clients.end()) {
-        IRSOL_LOG_WARN(
-          "Client {} not found in frame collector, even if it was supposed to be due for frame "
-          "distribution. Skipping",
-          clientId);
-        continue;
-      } else {
-        auto& clientParams = it->second;
-        clientParams.queue->producerFinished();
-      }
       deregisterClient(clientId);
     }
 
     lock.lock();
   }
 }
+
+std::vector<irsol::types::client_id_t>
+FrameCollector::collectReadyClients(irsol::types::timepoint_t now)
+{
+  std::vector<irsol::types::client_id_t> readyClients;
+
+  while(!m_scheduleMap.empty() && m_scheduleMap.begin()->first <= now) {
+    auto& dueClients = m_scheduleMap.begin()->second;
+    readyClients.insert(readyClients.end(), dueClients.begin(), dueClients.end());
+
+    // Also remove the current list of clients from the schedule map
+    m_scheduleMap.erase(m_scheduleMap.begin());
+  }
+
+  return readyClients;
+}
+
+std::pair<FrameMetadata, std::vector<irsol::types::byte_t>>
+FrameCollector::grabImageData() const
+{
+  // Capture the frame just-in-time
+  IRSOL_MAYBE_UNUSED auto t0    = irsol::types::clock_t::now();
+  auto                    image = m_cam.captureImage();
+  IRSOL_MAYBE_UNUSED auto t1    = irsol::types::clock_t::now();
+  IRSOL_LOG_DEBUG(
+    "Capture image: start: {}, stop: {}, duration: {}",
+    irsol::utils::timestampToString(t0),
+    irsol::utils::timestampToString(t1),
+    irsol::utils::durationToString(t1 - t0));
+
+  // Extract the image data from the image buffer, and copy it into an
+  // owning structure. In this way, when `image` is destroyed at the end of the
+  // execution of this function, it can return into the pool of NeoAPI::Images
+  // for next frames to be written to the buffer.
+  auto* imageData = image.GetImageData();
+  auto  numBytes  = image.GetSize();
+
+  std::vector<irsol::types::byte_t> rawData(numBytes);
+  std::memcpy(rawData.data(), imageData, numBytes);
+
+  return std::make_pair<FrameMetadata, std::vector<irsol::types::byte_t>>(
+    {irsol::types::clock_t::now(), image.GetImageID(), image.GetHeight(), image.GetWidth()},
+    std::move(rawData));
+}
+
+irsol::types::timepoint_t
+FrameCollector::computeNextDueTimeForNewClient(
+  irsol::types::duration_t interval,
+  irsol::types::duration_t maxDiff) const
+{
+  const auto now = irsol::types::clock_t::now();
+
+  // Find a client in the existing pool (if any) that has a similar nextDue time
+  if(m_clients.size() == 0) {
+    // No client exists, yet, so we're free to choose a time for this client.
+    IRSOL_LOG_INFO(
+      "No client is yet registered, setting the next time due according to the client desire.");
+    return now + interval;
+  }
+
+  const auto               desiredNextDue = now + interval;
+  irsol::types::duration_t minTimeOffset  = std::chrono::hours::max();
+
+  std::vector<irsol::types::timepoint_t> existingScheduledTimes;
+  existingScheduledTimes.reserve(m_scheduleMap.size());
+  IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START
+  for(const auto& [timepoint, _] : m_scheduleMap) {
+    IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
+    existingScheduledTimes.push_back(timepoint);
+  }
+
+  const auto bestExistingNextDue = *std::min_element(
+    existingScheduledTimes.cbegin(),
+    existingScheduledTimes.cend(),
+    [&desiredNextDue](const auto& left, const auto& right) -> bool {
+      IRSOL_LOG_INFO(
+        "Comparing timestamps '{}' and '{}'",
+        irsol::utils::timestampToString(left),
+        irsol::utils::timestampToString(right));
+      auto leftDiff  = std::max(left, desiredNextDue) - std::min(left, desiredNextDue);
+      auto rightDiff = std::max(right, desiredNextDue) - std::min(right, desiredNextDue);
+      IRSOL_LOG_INFO("Results in left < right ? {}", (leftDiff < rightDiff ? "true" : "false"));
+      return leftDiff < rightDiff;
+    });
+
+  if(
+    (std::max(bestExistingNextDue, desiredNextDue) -
+     std::min(bestExistingNextDue, desiredNextDue)) > maxDiff) {
+    IRSOL_LOG_WARN("No good existing schedule found forcing the desired schedule");
+    return desiredNextDue;
+  }
+
+  IRSOL_LOG_INFO(
+    "At least one client already exists in the collector, aligning nextDue time for new client "
+    "to best match of existing client(s): {}->{}",
+    irsol::utils::timestampToString(desiredNextDue),
+    irsol::utils::timestampToString(bestExistingNextDue));
+
+  // We now found a time due that is appropriate for this new client
+  return bestExistingNextDue;
+}
+
+bool
+FrameCollector::schedule(
+  const irsol::types::client_id_t clientId,
+  irsol::types::timepoint_t       nextFrameDue)
+{
+
+  // Update the parameters of the client.
+  auto& clientParams = m_clients.at(clientId);
+  if(clientParams.remainingFrames-- > 0 && clientParams.remainingFrames == 0) {
+    // Client no longer expects frames.
+    // This handles also clients that are listening forever, as their 'remainingFrames' is negative
+    // so this¨ condition is never fully met.
+    return false;
+  }
+
+  if(clientParams.nextFrameDue == nextFrameDue) {
+    // This has been called the first time for client-registration
+    IRSOL_LOG_INFO(
+      "Client {} has been scheduled for timestamp {}.",
+      clientId,
+      irsol::utils::timestampToString(clientParams.nextFrameDue));
+  } else {
+
+    IRSOL_LOG_DEBUG(
+      "(Rescheduling client {} for next frame, previous due: {}, next due {}, # count {}",
+      clientId,
+      irsol::utils::timestampToString(clientParams.nextFrameDue),
+      irsol::utils::timestampToString(nextFrameDue),
+      clientParams.remainingFrames);
+  }
+
+  // Updates the parameters of the client
+  clientParams.nextFrameDue = nextFrameDue;
+
+  // Registers the client for the scheduled timestamp.
+  m_scheduleMap[nextFrameDue].push_back(clientId);
+
+  std::stringstream ss;
+  for(const auto& [dueSchedule, scheduledClients] : m_scheduleMap) {
+    ss << "\t* " << irsol::utils::timestampToString(dueSchedule) << " -> "
+       << scheduledClients.size() << " clients\n";
+  }
+  IRSOL_LOG_DEBUG("Number of different schedules: {}\n{}", m_scheduleMap.size(), ss.str());
+
+  m_scheduleCondition.notify_one();
+  return true;
+}
+
 }  // namespace frame_collector
 }  // namespace server
 }  // namespace irsol
