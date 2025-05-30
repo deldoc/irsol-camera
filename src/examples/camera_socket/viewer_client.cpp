@@ -156,7 +156,7 @@ run(double inFps)
     IRSOL_LOG_DEBUG("Read timeout set to 10 seconds");
   }
 
-  auto start      = std::chrono::steady_clock::now();
+  auto start      = irsol::types::clock_t::now();
   bool firstFrame = true;
 
   // Start listening for incoming images
@@ -191,7 +191,7 @@ run(double inFps)
       firstFrame = false;
     }
 
-    auto now = std::chrono::steady_clock::now();
+    auto now = irsol::types::clock_t::now();
     auto ms  = std::max<int64_t>(
       1, std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count());
     double measuredFps = 1000.0 / ms;

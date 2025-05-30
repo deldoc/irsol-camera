@@ -108,20 +108,20 @@ stripString(const std::string& s, const std::string& strippedString)
 }
 
 std::string
-timestamp_to_str(std::chrono::steady_clock::time_point tp)
+timestamp_to_str(irsol::types::timepoint_t tp)
 {
   // Convert to system_clock time_point for compatibility with time_t
-  auto now_sys = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
-    tp - std::chrono::steady_clock::now() + std::chrono::system_clock::now());
+  using system_clock_t = std::chrono::system_clock;
+  auto now_sys         = std::chrono::time_point_cast<system_clock_t::duration>(
+    tp - irsol::types::clock_t::now() + system_clock_t::now());
 
   // Extract milliseconds
   auto ms =
     std::chrono::duration_cast<std::chrono::milliseconds>(now_sys.time_since_epoch()) % 1000;
 
   // Convert to time_t for formatting date/time
-  std::time_t t_c = std::chrono::system_clock::to_time_t(now_sys);
-  std::tm tm = *std::localtime(&t_c);  // thread-safe alternative: std::localtime_s on Windows, or
-                                       // use std::chrono::zoned_time in C++20
+  std::time_t t_c = system_clock_t::to_time_t(now_sys);
+  std::tm     tm  = *std::localtime(&t_c);
 
   // Format time with milliseconds
   std::stringstream ss;

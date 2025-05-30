@@ -3,7 +3,6 @@
 #include "irsol/types.hpp"
 #include "neoapi/neoapi.hpp"
 
-#include <chrono>
 #include <string>
 #include <utility>
 #include <vector>
@@ -77,7 +76,7 @@ std::string stripString(const std::string& s, const std::string& strippedString)
  * @param tp The time point to convert.
  * @return A string representation of the time point.
  */
-std::string timestamp_to_str(std::chrono::steady_clock::time_point tp);
+std::string timestamp_to_str(irsol::types::timepoint_t tp);
 
 /**
  * @brief Load the default camera device.

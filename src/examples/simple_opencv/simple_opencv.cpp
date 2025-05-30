@@ -24,11 +24,11 @@ main()
     IRSOL_LOG_INFO("Iteration {0:d}", i);
 
     if(i % 10 == 0) {
-      auto t0 = std::chrono::steady_clock::now();
+      auto t0 = irsol::types::clock_t::now();
       cam.setParam("Width", 100 + i);
-      auto t1 = std::chrono::steady_clock::now();
+      auto t1 = irsol::types::clock_t::now();
       cam.setParam("OffsetX", 100 + i);
-      auto t2 = std::chrono::steady_clock::now();
+      auto t2 = irsol::types::clock_t::now();
 
       IRSOL_LOG_INFO(
         "Set Width in {} ms, Set OffsetX in {} ms",

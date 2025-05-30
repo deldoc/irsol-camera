@@ -5,6 +5,7 @@
 #include "irsol/protocol.hpp"
 #include "irsol/server/app.hpp"
 #include "irsol/server/image_data.hpp"
+#include "irsol/types.hpp"
 
 #include <mutex>
 #include <vector>
@@ -31,7 +32,7 @@ CommandGIHandler::operator()(
   const double frameRate                                = 10;         // Mock frame rate
   session->sessionData().frameListeningParams.frameRate = frameRate;  // Mock frame rate
   session->sessionData().frameListeningParams.lastFrameSent =
-    std::chrono::steady_clock::now() -
+    irsol::types::clock_t::now() -
     std::chrono::microseconds(
       static_cast<uint64_t>(1000000 / frameRate));  // Mock last frame sent so that it looks l
   session->sessionData().frameListeningParams.numDesiredFrames = 1;

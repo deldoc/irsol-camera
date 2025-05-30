@@ -2,6 +2,7 @@
 
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
+#include "irsol/types.hpp"
 #include "tabulate/tabulate.hpp"
 
 namespace irsol {
@@ -41,7 +42,7 @@ StatusMonitor::runMonitor() const
                                               "PixelFormat",
                                               "ReadOutTime"};
   while(m_hasStartedMonitor) {
-    auto nextIterationTime = std::chrono::steady_clock::now() + m_monitorInterval;
+    auto nextIterationTime = irsol::types::clock_t::now() + m_monitorInterval;
 
     tabulate::Table featureResults;
     featureResults.add_row({"Feature", "Value"});

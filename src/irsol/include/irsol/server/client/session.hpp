@@ -5,7 +5,6 @@
 #include "irsol/types.hpp"
 
 #include <atomic>
-#include <chrono>
 #include <memory>
 #include <mutex>
 #include <string>

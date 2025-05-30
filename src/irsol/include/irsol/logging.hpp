@@ -1,6 +1,7 @@
 #pragma once
 
-#include <chrono>
+#include "irsol/types.hpp"
+
 #include <optional>
 #include <spdlog/spdlog.h>
 #include <unordered_map>
@@ -16,8 +17,8 @@ namespace irsol {
 namespace internal {
 struct LoggerInfo
 {
-  std::shared_ptr<spdlog::logger>                    logger;
-  std::chrono::time_point<std::chrono::system_clock> lastRetrieved;
+  std::shared_ptr<spdlog::logger> logger;
+  irsol::types::timepoint_t       lastRetrieved;
 };
 class NamedLoggerRegistry
 {

@@ -25,6 +25,7 @@ namespace camera {
 class Interface
 {
 public:
+  using image_t        = NeoAPI::Image;
   using camera_param_t = std::variant<bool, int, double, std::string, const char*>;
   /**
    * @brief Constructs the Interface by loading the default camera.
@@ -149,12 +150,12 @@ public:
    * @brief Capture a single image from the camera, blocking up to timeout.
    *
    * Thread-safe: locks m_caMutex to serialize image grabs. Returns a
-   * NeoAPI::Image containing the raw frame data. Throws on timeout or error.
+   * image_t containing the raw frame data. Throws on timeout or error.
    *
    * @param timeout Maximum duration to wait for a new image (default 400 ms).
-   * @return NeoAPI::Image The captured image buffer and metadata.
+   * @return image_t The captured image buffer and metadata.
    */
-  NeoAPI::Image captureImage(std::chrono::milliseconds timeout = std::chrono::milliseconds(400));
+  image_t captureImage(std::chrono::milliseconds timeout = std::chrono::milliseconds(400));
 
 private:
   /// Protects concurrent access to image capture operations and parameter operations.

@@ -2,7 +2,6 @@
 #include "irsol/irsol.hpp"
 
 #include <atomic>
-#include <chrono>
 #include <csignal>
 #include <opencv2/opencv.hpp>
 #include <optional>
@@ -157,7 +156,7 @@ run(double inFps)
     IRSOL_LOG_DEBUG("Read timeout set to 10 seconds");
   }
 
-  auto lastTimeShown = std::chrono::steady_clock::now() - std::chrono::seconds(1000);
+  auto lastTimeShown = irsol::types::clock_t::now() - std::chrono::seconds(1000);
 
   bool firstFrame = true;
 
@@ -166,7 +165,7 @@ run(double inFps)
   IRSOL_LOG_INFO("Starting frame polling with FPS: {}", inFps);
 
   while(!g_terminate.load()) {
-    auto frameStart = std::chrono::steady_clock::now();
+    auto frameStart = irsol::types::clock_t::now();
 
     // --- Query image ---
     auto imageOpt = queryImage(conn);
@@ -206,7 +205,7 @@ run(double inFps)
       cv::LINE_AA);
 
     // Show current measured FPS
-    auto   frameNow  = std::chrono::steady_clock::now();
+    auto   frameNow  = irsol::types::clock_t::now();
     double actualFps = 1.0 / std::chrono::duration<double>(frameNow - lastTimeShown).count();
     lastTimeShown    = frameNow;
 
@@ -231,7 +230,7 @@ run(double inFps)
     }
 
     // --- Frame duration regulation ---
-    auto frameEnd      = std::chrono::steady_clock::now();
+    auto frameEnd      = irsol::types::clock_t::now();
     auto frameDuration = frameEnd - frameStart;
 
     auto desiredFrameTime = std::chrono::microseconds(static_cast<int64_t>(1'000'000.0 / inFps));

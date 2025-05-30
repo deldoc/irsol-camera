@@ -3,6 +3,7 @@
 #include "irsol/logging.hpp"
 #include "irsol/macros.hpp"
 #include "irsol/server/app.hpp"
+#include "irsol/types.hpp"
 #include "irsol/utils.hpp"
 
 #include <vector>
@@ -153,7 +154,7 @@ void
 FrameCollector::collectFrames()
 {
 
-  auto                         lastFrameTime = std::chrono::steady_clock::now();
+  auto                         lastFrameTime = irsol::types::clock_t::now();
   std::unique_lock<std::mutex> frameRateCondLock(m_frameRateCondMutex);
 
   while(true) {

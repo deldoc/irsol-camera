@@ -1,6 +1,7 @@
 #pragma once
 
-#include <chrono>
+#include "irsol/types.hpp"
+
 namespace irsol {
 namespace server {
 namespace internal {
@@ -12,10 +13,9 @@ namespace internal {
  */
 struct FrameListeningParams
 {
-  std::chrono::time_point<std::chrono::steady_clock> lastFrameSent{
-    std::chrono::steady_clock::now()};
-  double  frameRate;
-  int64_t numDesiredFrames{-1};  // -1 means unlimited
+  irsol::types::timepoint_t lastFrameSent{irsol::types::clock_t::now()};
+  double                    frameRate;
+  int64_t                   numDesiredFrames{-1};  // -1 means unlimited
 };
 
 /**

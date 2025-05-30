@@ -15,7 +15,7 @@ NamedLoggerRegistry::getLogger(const std::string& name)
   auto            it = m_loggers.find(name);
   if(it != m_loggers.end()) {
     result                   = it->second.logger.get();
-    it->second.lastRetrieved = std::chrono::system_clock::now();
+    it->second.lastRetrieved = irsol::types::clock_t::now();
   } else {
     auto newLogger = spdlog::default_logger()->clone(name);
 
@@ -54,7 +54,7 @@ NamedLoggerRegistry::getLogger(const std::string& name)
     // Add the dedicated file sink to the named logger
     newLogger->sinks().push_back(fileSink);
 #endif
-    LoggerInfo info = {newLogger, std::chrono::system_clock::now()};
+    LoggerInfo info = {newLogger, irsol::types::clock_t::now()};
     m_loggers[name] = info;
     result          = newLogger.get();
   }
@@ -142,8 +142,8 @@ initLogging(const char* logFilePath, std::optional<spdlog::level::level_enum> mi
   auto fileSinkLevel = defaultFileSinkLevel;
   if(minLogLevel.has_value()) {
     // Override the console and file levels if needed
-    consoleLevel  = std::min({defaultConsoleLevel, *minLogLevel});
-    fileSinkLevel = std::min({defaultFileSinkLevel, *minLogLevel});
+    consoleLevel  = std::max({defaultConsoleLevel, *minLogLevel});
+    fileSinkLevel = std::max({defaultFileSinkLevel, *minLogLevel});
   }
   auto globalLevel = std::min({consoleLevel, fileSinkLevel});
 

@@ -116,7 +116,7 @@ Interface::trigger(const std::string& param)
   }
 }
 
-NeoAPI::Image
+Interface::image_t
 Interface::captureImage(std::chrono::milliseconds timeout)
 {
   std::lock_guard<std::mutex> lock(m_camMutex);
