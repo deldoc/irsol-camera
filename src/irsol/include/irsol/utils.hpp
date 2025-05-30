@@ -1,5 +1,6 @@
 #pragma once
 
+#include "irsol/queue.hpp"
 #include "irsol/types.hpp"
 #include "neoapi/neoapi.hpp"
 

@@ -206,7 +206,7 @@ FrameCollector::collectFrames()
     IRSOL_LOG_TRACE("Waking up from sleep");
 
     auto image = m_cam.captureImage();
-    IRSOL_LOG_DEBUG("Captured frame at time {}", utils::timestamp_to_str(nextFrameTime));
+    IRSOL_LOG_DEBUG("Captured frame at time {}", utils::timestampToString(nextFrameTime));
 
     // Extract the image data into a structure suitable for transmission
     size_t width    = image.GetWidth();
