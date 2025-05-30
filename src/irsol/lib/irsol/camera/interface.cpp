@@ -1,5 +1,6 @@
 #include "irsol/camera/interface.hpp"
 
+#include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/utils.hpp"
 #include "neoapi/neoapi.hpp"
@@ -15,8 +16,17 @@ Interface::Interface(NeoAPI::Cam cam): m_cam(cam)
   IRSOL_LOG_INFO("Configuring camera for manual trigger via software events");
   setMultiParam({{"TriggerMode", {"On"}},               // Enable software trigger
                  {"AcquisitionMode", {"SingleFrame"}},  // Take a single frame, only when triggered
-                 {"TriggerSource", {"Software"}}}       // Software trigger source
-  );
+                 {"TriggerSource", {"Software"}}});
+
+  // Here we set the exposure parameters, so that they can be controlled via software
+  IRSOL_LOG_INFO("Configuring camera for manual exposure");
+  setMultiParam({
+    {"ExposureAuto", {"Off"}},   // Disable automatic exposure
+    {"ExposureMode", {"Timed"}}  // Exposure mode: timed
+  });
+
+  // Store the current exposure of the camera
+  m_CachedExposureTime = getExposure();
 }
 
 Interface::Interface(Interface&& other): m_cam(other.m_cam) {}
@@ -73,6 +83,25 @@ Interface::resetSensorArea()
     {{"Width", {maxWidth}}, {"Height", {maxHeight}}, {"OffsetX", {0}}, {"OffsetY", {0}}});
 }
 
+irsol::types::duration_t
+Interface::getExposure() const
+{
+  auto exposureInMicroSeconds = getParam<int64_t>("ExposureTime");
+  return std::chrono::microseconds(exposureInMicroSeconds);
+}
+
+irsol::types::duration_t
+Interface::setExposure(irsol::types::duration_t exposure)
+{
+  IRSOL_ASSERT_ERROR(exposure.count() > 0, "Cannot set non-positive exposure");
+  auto exposureInMicroseconds =
+    std::chrono::duration_cast<std::chrono::microseconds>(exposure).count();
+  auto setExposureInMicroseconds =
+    setParam("ExposureTime", static_cast<int64_t>(exposureInMicroseconds));
+  m_CachedExposureTime = std::chrono::microseconds(setExposureInMicroseconds);
+  return m_CachedExposureTime;
+}
+
 std::string
 Interface::getParam(const std::string& param) const
 {
@@ -117,15 +146,29 @@ Interface::trigger(const std::string& param)
 }
 
 Interface::image_t
-Interface::captureImage(std::chrono::milliseconds timeout)
+Interface::captureImage(std::optional<irsol::types::duration_t> timeout)
 {
   std::lock_guard<std::mutex> lock(m_camMutex);
 
   // Send software trigger to get an image
   trigger("AcquisitionStart");
   trigger("TriggerSoftware");
-  // Wait for image
-  auto image = m_cam.GetImage(static_cast<uint32_t>(timeout.count()));
+  // Wait for image, either using the current cached exposure time with a small buffer
+  // or using the user-provided timeout
+  irsol::types::duration_t actualTimeout = m_CachedExposureTime + std::chrono::milliseconds(50);
+  if(timeout.has_value()) {
+    IRSOL_LOG_INFO(
+      "User provided a custom timeout of capturing camera of {}",
+      irsol::utils::durationToString(*timeout));
+    actualTimeout = *timeout;
+  } else {
+    IRSOL_LOG_INFO(
+      "Using exposure from camera {} with buffer", irsol::utils::durationToString(actualTimeout));
+  }
+
+  uint32_t timeoutMs = static_cast<uint32_t>(
+    std::chrono::duration_cast<std::chrono::milliseconds>(actualTimeout).count());
+  auto image = m_cam.GetImage(timeoutMs);
   if(image.IsEmpty() || image.GetSize() == 0) {
     IRSOL_LOG_WARN("Timeout or empty image received.");
   }

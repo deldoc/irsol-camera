@@ -25,6 +25,7 @@ add_executable(unit_tests
   protocol/parsing/test_parser_result.cpp
   protocol/serialization/test_serializer.cpp
   protocol/test_utils.cpp
+  test_utils.cpp
 )
 
 target_link_libraries(unit_tests PRIVATE

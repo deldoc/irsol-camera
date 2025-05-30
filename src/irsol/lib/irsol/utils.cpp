@@ -108,7 +108,7 @@ stripString(const std::string& s, const std::string& strippedString)
 }
 
 std::string
-timestamp_to_str(irsol::types::timepoint_t tp)
+timestampToString(irsol::types::timepoint_t tp)
 {
   // Convert to system_clock time_point for compatibility with time_t
   using system_clock_t = std::chrono::system_clock;
@@ -129,6 +129,55 @@ timestamp_to_str(irsol::types::timepoint_t tp)
   ss << '.' << std::setfill('0') << std::setw(3) << ms.count();  // milliseconds
 
   return ss.str();
+}
+
+std::string
+durationToString(irsol::types::duration_t dr)
+{
+  std::stringstream ss;
+  if(dr.count() == 0) {
+    return "0s";
+  }
+
+  if(dr >= std::chrono::hours(1)) {
+    auto hours = std::chrono::duration_cast<std::chrono::hours>(dr);
+    ss << std::to_string(hours.count());
+    ss << "hours ";
+    dr -= hours;
+  }
+  if(dr >= std::chrono::minutes(1)) {
+    auto minutes = std::chrono::duration_cast<std::chrono::minutes>(dr);
+    ss << std::to_string(minutes.count());
+    ss << "minutes ";
+    dr -= minutes;
+  }
+  if(dr >= std::chrono::seconds(1)) {
+    auto seconds = std::chrono::duration_cast<std::chrono::seconds>(dr);
+    ss << std::to_string(seconds.count());
+    ss << "s ";
+    dr -= seconds;
+  }
+  if(dr >= std::chrono::milliseconds(1)) {
+    auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(dr);
+    ss << std::to_string(milliseconds.count());
+    ss << "ms ";
+    dr -= milliseconds;
+  }
+  if(dr >= std::chrono::microseconds(1)) {
+    auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(dr);
+    ss << std::to_string(microseconds.count());
+    ss << "us ";
+    dr -= microseconds;
+  }
+  if(dr >= std::chrono::nanoseconds(1)) {
+    auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(dr);
+    ss << std::to_string(nanoseconds.count());
+    ss << "ns ";
+    dr -= nanoseconds;
+  }
+
+  auto result = ss.str();
+  return strip(result, " ");
 }
 
 NeoAPI::Cam

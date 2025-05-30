@@ -1,11 +1,13 @@
 #pragma once
 
 #include "irsol/assert.hpp"
+#include "irsol/types.hpp"
 #include "irsol/utils.hpp"
 #include "neoapi/neoapi.hpp"
 
 #include <chrono>
 #include <mutex>
+#include <optional>
 #include <string>
 #include <type_traits>
 #include <unordered_map>
@@ -26,7 +28,7 @@ class Interface
 {
 public:
   using image_t        = NeoAPI::Image;
-  using camera_param_t = std::variant<bool, int, double, std::string, const char*>;
+  using camera_param_t = std::variant<bool, int, int64_t, double, std::string, const char*>;
   /**
    * @brief Constructs the Interface by loading the default camera.
    *
@@ -78,6 +80,16 @@ public:
   void resetSensorArea();
 
   /**
+   * @brief Retrieves the current exposure time from the camera.
+   */
+  irsol::types::duration_t getExposure() const;
+
+  /**
+   * @brief Sets the exposure of the camera.
+   */
+  irsol::types::duration_t setExposure(irsol::types::duration_t exposure);
+
+  /**
    * @brief Retrieve a camera parameter of arbitrary type T.
    *
    * This templated getter fetches the camera feature via NeoAPI,
@@ -103,7 +115,7 @@ public:
   T getParam(const std::string& param) const;
 
   /**
-   * @brief Convenience overload to always return a std::string parameter.
+   * @brief Convenience overload to always return a string representation of the full parameter.
    *
    * Logs, retrieves the feature, and converts to std::string. On failure,
    * returns "Unknown".
@@ -134,10 +146,13 @@ public:
     typename T,
     std::enable_if_t<
       std::is_integral_v<std::decay_t<T>> || std::is_floating_point_v<std::decay_t<T>> ||
-        std::is_same_v<std::decay_t<T>, std::string> ||
-        std::is_same_v<std::decay_t<T>, const char*>,
+        std::is_same_v<std::decay_t<T>, std::string>,
       int> = 0>
   T setParam(const std::string& param, T value);
+
+  /// Template specialization for const char*, which returns a std::string rather than returning T
+  template<typename T, std::enable_if_t<std::is_same_v<std::decay_t<T>, const char*>, int> = 0>
+  std::string setParam(const std::string& param, T value);
 
   void setMultiParam(const std::unordered_map<std::string, camera_param_t>& params);
 
@@ -152,10 +167,11 @@ public:
    * Thread-safe: locks m_caMutex to serialize image grabs. Returns a
    * image_t containing the raw frame data. Throws on timeout or error.
    *
-   * @param timeout Maximum duration to wait for a new image (default 400 ms).
+   * @param timeout Maximum duration to wait for a new image, if not provided, wait until the
+   * exposure time.
    * @return image_t The captured image buffer and metadata.
    */
-  image_t captureImage(std::chrono::milliseconds timeout = std::chrono::milliseconds(400));
+  image_t captureImage(std::optional<irsol::types::duration_t> timeout = std::nullopt);
 
 private:
   /// Protects concurrent access to image capture operations and parameter operations.
@@ -163,6 +179,11 @@ private:
 
   /// Underlying NeoAPI camera handle.
   NeoAPI::Cam m_cam;
+
+  /// Keep track of the exposure of the camera, this is used for
+  /// automatically waiting for images to be retrieved from the camera when
+  /// users runs `captureImage`  without specifying an explicit timeout.
+  irsol::types::duration_t m_CachedExposureTime;
 
   template<
     typename T,

@@ -76,7 +76,15 @@ std::string stripString(const std::string& s, const std::string& strippedString)
  * @param tp The time point to convert.
  * @return A string representation of the time point.
  */
-std::string timestamp_to_str(irsol::types::timepoint_t tp);
+std::string timestampToString(irsol::types::timepoint_t tp);
+
+/**
+ * @brief Convert a duration time to a human-readable string.
+ *
+ * @param tp The duration time to convert.
+ * @return A string representation of the duration time.
+ */
+std::string durationToString(irsol::types::duration_t dr);
 
 /**
  * @brief Load the default camera device.

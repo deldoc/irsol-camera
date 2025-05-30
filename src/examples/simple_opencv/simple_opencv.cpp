@@ -23,18 +23,7 @@ main()
 
     IRSOL_LOG_INFO("Iteration {0:d}", i);
 
-    if(i % 10 == 0) {
-      auto t0 = irsol::types::clock_t::now();
-      cam.setParam("Width", 100 + i);
-      auto t1 = irsol::types::clock_t::now();
-      cam.setParam("OffsetX", 100 + i);
-      auto t2 = irsol::types::clock_t::now();
-
-      IRSOL_LOG_INFO(
-        "Set Width in {} ms, Set OffsetX in {} ms",
-        std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0).count(),
-        std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count());
-    }
+    auto camExposure = cam.setExposure(std::chrono::microseconds((1 + i) * 10));
 
     auto image = cam.captureImage();
     if(image.IsEmpty() || image.GetSize() == 0) {
@@ -42,17 +31,14 @@ main()
       std::this_thread::sleep_for(std::chrono::milliseconds(500));
       continue;
     }
-    auto image_size = image.GetSize();
-    IRSOL_LOG_INFO("Image size: {0:d}", image_size);
     auto image_ts = image.GetTimestamp();
-
-    int currentWidth = cam.getParam<int>("Width");
+    auto image_id = image.GetImageID();
 
     cv::Mat cv_image =
       irsol::opencv::convertImageToMat(image, irsol::opencv::ColorConversionMode::GRAY_TO_COLOR);
     cv::putText(
       cv_image,
-      "Width: " + std::to_string(currentWidth),
+      "ExposureTime: " + irsol::utils::durationToString(camExposure),
       {20, 50},
       cv::FONT_HERSHEY_COMPLEX,
       .5,
@@ -63,6 +49,15 @@ main()
       cv_image,
       "Timestamp: " + std::to_string(image_ts),
       {20, 80},
+      cv::FONT_HERSHEY_COMPLEX,
+      .5,
+      {0, 255, 0},
+      1,
+      cv::LINE_AA);
+    cv::putText(
+      cv_image,
+      "Id: " + std::to_string(image_id),
+      {20, 110},
       cv::FONT_HERSHEY_COMPLEX,
       .5,
       {0, 255, 0},

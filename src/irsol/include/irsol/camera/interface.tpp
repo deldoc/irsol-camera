@@ -49,7 +49,7 @@ template<
   typename T,
   std::enable_if_t<
     std::is_integral_v<std::decay_t<T>> || std::is_floating_point_v<std::decay_t<T>> ||
-      std::is_same_v<std::decay_t<T>, std::string> || std::is_same_v<std::decay_t<T>, const char*>,
+      std::is_same_v<std::decay_t<T>, std::string>,
     int> = 0>
 T
 Interface::setParam(const std::string& param, T value)
@@ -59,7 +59,14 @@ Interface::setParam(const std::string& param, T value)
     std::lock_guard<std::mutex> lock(m_camMutex);
     setParamNonThreadSafe(param, value);
   }
-  return getParam<T>(param);
+  return getParam<std::decay_t<T>>(param);
+}
+
+template<typename T, std::enable_if_t<std::is_same_v<std::decay_t<T>, const char*>, int> = 0>
+std::string
+Interface::setParam(const std::string& param, T value)
+{
+  return setParam<std::string>(param, std::string(value));
 }
 
 template<
@@ -82,16 +89,16 @@ Interface::setParamNonThreadSafe(const std::string& param, T value)
       throw std::runtime_error(std::string("Feature '") + param + "' is not writable");
     }
 
-    if constexpr(std::is_same_v<U, std::string>) {
-      feature = value.c_str();
-    } else if constexpr(std::is_same_v<U, const char*>) {
-      feature = value;
+    if constexpr(std::is_same_v<U, std::string>)
+      feature.SetString(NeoAPI::NeoString(value.c_str()));
+    else if constexpr(std::is_same_v<U, const char*>) {
+      feature.SetString(NeoAPI::NeoString(value));
     } else if constexpr(std::is_same_v<U, bool>) {
-      feature = value;
+      feature.SetBool(value);
     } else if constexpr(std::is_integral_v<U>) {
-      feature = static_cast<int>(value);
+      feature.SetInt(value);
     } else if constexpr(std::is_floating_point_v<U>) {
-      feature = static_cast<double>(value);
+      feature.SetDouble(value);
     } else {
       IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Interface::setParamNonThreadSafe()");
     }

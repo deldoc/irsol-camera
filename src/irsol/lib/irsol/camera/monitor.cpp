@@ -38,6 +38,7 @@ StatusMonitor::runMonitor() const
                                               "OffsetX",
                                               "OffsetY",
                                               "TriggerMode",
+                                              "TriggerOverlap",
                                               "PayloadSize",
                                               "PixelFormat",
                                               "ReadOutTime"};

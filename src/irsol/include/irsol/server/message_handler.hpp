@@ -68,16 +68,13 @@ public:
     }
 
     if constexpr(std::is_same_v<T, protocol::Assignment>) {
-      IRSOL_LOG_DEBUG(
-        "Registering handler for message kind 'ASSIGNMENT' and identifier '{}'", identifier);
+      IRSOL_LOG_INFO("Registering handler for 'Assignment(\"{}\")'", identifier);
       m_assignmentMessageHandlers[identifier] = handler;
     } else if constexpr(std::is_same_v<T, protocol::Inquiry>) {
-      IRSOL_LOG_DEBUG(
-        "Registering handler for message kind 'INQUIRY' and identifier '{}'", identifier);
+      IRSOL_LOG_INFO("Registering handler for 'Inquiry(\"{}\")'", identifier);
       m_inquiryMessageHandlers[identifier] = handler;
     } else if constexpr(std::is_same_v<T, protocol::Command>) {
-      IRSOL_LOG_DEBUG(
-        "Registering handler for message kind 'COMMAND' and identifier '{}'", identifier);
+      IRSOL_LOG_INFO("Registering handler for 'Command(\"{}\")'", identifier);
       m_commandMessageHandlers[identifier] = handler;
     } else {
       IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "registerHandler()");
