@@ -6,12 +6,12 @@
 #include <spdlog/spdlog.h>
 #include <unordered_map>
 
-#define IRSOL_LOG_TRACE(...) spdlog::trace(__VA_ARGS__)
-#define IRSOL_LOG_DEBUG(...) spdlog::debug(__VA_ARGS__)
-#define IRSOL_LOG_INFO(...) spdlog::info(__VA_ARGS__)
-#define IRSOL_LOG_WARN(...) spdlog::warn(__VA_ARGS__)
-#define IRSOL_LOG_ERROR(...) spdlog::error(__VA_ARGS__)
-#define IRSOL_LOG_FATAL(...) spdlog::critical(__VA_ARGS__)
+#define IRSOL_LOG_TRACE(...) SPDLOG_TRACE(__VA_ARGS__)
+#define IRSOL_LOG_DEBUG(...) SPDLOG_DEBUG(__VA_ARGS__)
+#define IRSOL_LOG_INFO(...) SPDLOG_INFO(__VA_ARGS__)
+#define IRSOL_LOG_WARN(...) SPDLOG_WARN(__VA_ARGS__)
+#define IRSOL_LOG_ERROR(...) SPDLOG_ERROR(__VA_ARGS__)
+#define IRSOL_LOG_FATAL(...) SPDLOG_CRITICAL(__VA_ARGS__)
 
 namespace irsol {
 namespace internal {
@@ -47,12 +47,12 @@ private:
 namespace irsol {
 enum class LoggingFormat
 {
-  DEFAULT,
-  DEFAULT_NO_TIME,
-  SIMPLE
+  CONSOLE,
+  FILE,
+  UNIT_TESTS
 };
 void setLoggingFormat(
-  LoggingFormat                                  format = LoggingFormat::DEFAULT,
+  LoggingFormat                                  format = LoggingFormat::FILE,
   std::optional<std::shared_ptr<spdlog::logger>> logger = std::nullopt);
 void setSinkLoggingFormat(LoggingFormat format, std::shared_ptr<spdlog::sinks::sink> sink);
 void setLoggerName(const char* name);

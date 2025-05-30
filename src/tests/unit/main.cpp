@@ -16,7 +16,7 @@ public:
   void testRunStarting(IRSOL_MAYBE_UNUSED Catch::TestRunInfo const& testRunInfo) override
   {
     irsol::setLoggerName("unit-tests");
-    irsol::setLoggingFormat(irsol::LoggingFormat::SIMPLE);
+    irsol::setLoggingFormat(irsol::LoggingFormat::UNIT_TESTS);
     IRSOL_LOG_INFO("Starting unittests.");
   }
   void testRunEnded(IRSOL_MAYBE_UNUSED Catch::TestRunStats const& testRunStats) override

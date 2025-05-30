@@ -92,14 +92,14 @@ void
 setSinkLoggingFormat(LoggingFormat format, std::shared_ptr<spdlog::sinks::sink> sink)
 {
   switch(format) {
-    case LoggingFormat::DEFAULT:
-      sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%n][%^%l%$][pid %P][tid %t] %v");
+    case LoggingFormat::FILE:
+      sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e][%^%l%$][%n][pid %P][tid %t][%s:%!():%#] %v");
       break;
-    case LoggingFormat::DEFAULT_NO_TIME:
-      sink->set_pattern("[%^%l%$][%n][pid %P][tid %t] %v");
+    case LoggingFormat::CONSOLE:
+      sink->set_pattern("[%H:%M:%S.%e][%^%l%$][%n][%s:%!():%#] %v");
       break;
-    case LoggingFormat::SIMPLE:
-      sink->set_pattern("[%^%l%$][%n] %v");
+    case LoggingFormat::UNIT_TESTS:
+      sink->set_pattern("[%^%l%$][%s:%!():%#] %v");
       break;
   }
 }
@@ -118,13 +118,13 @@ initLogging(const char* logFilePath, std::optional<spdlog::level::level_enum> mi
 #endif
 
   auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-  setSinkLoggingFormat(LoggingFormat::DEFAULT_NO_TIME, consoleSink);
+  setSinkLoggingFormat(LoggingFormat::CONSOLE, consoleSink);
 
   const auto maxFileSize = 1024 * 1024 * 5;  // 5 MB
   const auto maxFiles    = 24;               // Keep 24 rotated files
   auto       fileSink    = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
     logFilePath, maxFileSize, maxFiles, false);
-  setSinkLoggingFormat(LoggingFormat::DEFAULT, fileSink);
+  setSinkLoggingFormat(LoggingFormat::FILE, fileSink);
 
   // Set the loggers as default loggers
   auto logger =
