@@ -6,10 +6,12 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-InquiryInputSequenceLength::InquiryInputSequenceLength(Context ctx): InquiryHandler(ctx) {}
+InquiryInputSequenceLengthHandler::InquiryInputSequenceLengthHandler(Context ctx)
+  : InquiryHandler(ctx)
+{}
 
 std::vector<out_message_t>
-InquiryInputSequenceLength::operator()(
+InquiryInputSequenceLengthHandler::operator()(
   const irsol::types::client_id_t& clientId,
   IRSOL_MAYBE_UNUSED protocol::Inquiry&& message)
 {

@@ -6,13 +6,13 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct InquiryInputSequenceLengthHandler : InquiryHandler
+struct AssignmentIntegrationTimeHandler : AssignmentHandler
 {
-  InquiryInputSequenceLengthHandler(Context ctx);
+  AssignmentIntegrationTimeHandler(Context ctx);
 
   std::vector<out_message_t> operator()(
     const irsol::types::client_id_t& clientId,
-    protocol::Inquiry&&              message) override;
+    protocol::Assignment&&           message) override;
 };
 }  // namespace handlers
 }  // namespace server

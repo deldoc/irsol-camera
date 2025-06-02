@@ -6,9 +6,9 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct AssignmentInputSequenceLength : AssignmentHandler
+struct AssignmentInputSequenceLengthHandler : AssignmentHandler
 {
-  AssignmentInputSequenceLength(Context ctx);
+  AssignmentInputSequenceLengthHandler(Context ctx);
 
   std::vector<out_message_t> operator()(
     const irsol::types::client_id_t& clientId,

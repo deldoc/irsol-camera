@@ -43,8 +43,7 @@ struct InquiryImgHandlerBase : InquiryHandler
     auto&                      cam   = ctx.app.camera();
     int                        value = cam.getParam<int>(std::string(name));
     std::vector<out_message_t> result;
-    result.emplace_back(
-      protocol::Success::from(std::move(message), irsol::types::protocol_value_t{value}));
+    result.emplace_back(protocol::Success::from(message, irsol::types::protocol_value_t{value}));
     return result;
   }
 };

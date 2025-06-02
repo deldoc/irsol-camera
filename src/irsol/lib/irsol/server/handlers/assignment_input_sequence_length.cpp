@@ -6,10 +6,12 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-AssignmentInputSequenceLength::AssignmentInputSequenceLength(Context ctx): AssignmentHandler(ctx) {}
+AssignmentInputSequenceLengthHandler::AssignmentInputSequenceLengthHandler(Context ctx)
+  : AssignmentHandler(ctx)
+{}
 
 std::vector<out_message_t>
-AssignmentInputSequenceLength::operator()(
+AssignmentInputSequenceLengthHandler::operator()(
   const irsol::types::client_id_t& clientId,
   protocol::Assignment&&           message)
 {
@@ -41,7 +43,7 @@ AssignmentInputSequenceLength::operator()(
 
   frameListeningState.gisParams.inputSequenceLength = static_cast<uint64_t>(inputSequenceLength);
   std::vector<out_message_t> result;
-  result.emplace_back(irsol::protocol::Success::from(std::move(message)));
+  result.emplace_back(irsol::protocol::Success::from(message));
   return result;
 }
 }  // namespace handlers

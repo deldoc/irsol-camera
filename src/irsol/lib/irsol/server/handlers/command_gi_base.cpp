@@ -118,7 +118,7 @@ CommandGIBaseHandler::startListeningThread(
 
       {
         auto lock = std::scoped_lock(session->socketMutex());
-        session->handleOutMessage(protocol::Success::from(std::move(message)));
+        session->handleOutMessage(protocol::Success::from(message));
       }
       IRSOL_NAMED_LOG_INFO(session->id(), "{} frame sending complete", message.toString());
     },

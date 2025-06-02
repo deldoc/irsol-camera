@@ -46,12 +46,14 @@ add_library(${PROJECT_NAME}
     lib/irsol/server/image_data.cpp
     lib/irsol/server/handlers/assignment_frame_rate.cpp
     lib/irsol/server/handlers/assignment_input_sequence_length.cpp
+    lib/irsol/server/handlers/assignment_integration_time.cpp
     lib/irsol/server/handlers/base.cpp
     lib/irsol/server/handlers/command_abort.cpp
     lib/irsol/server/handlers/command_gi_base.cpp
     lib/irsol/server/handlers/command_gi.cpp
     lib/irsol/server/handlers/command_gis.cpp
     lib/irsol/server/handlers/inquiry_frame_rate.cpp
+    lib/irsol/server/handlers/inquiry_integration_time.cpp
     lib/irsol/server/handlers/inquiry_input_sequence_length.cpp
 )
 add_library(irsol::core ALIAS ${PROJECT_NAME})

@@ -26,7 +26,7 @@ InquiryFrameRateHandler::operator()(
 
   std::vector<out_message_t> result;
   result.emplace_back(
-    irsol::protocol::Success::from(std::move(message), irsol::types::protocol_value_t{frameRate}));
+    irsol::protocol::Success::from(message, irsol::types::protocol_value_t{frameRate}));
   return result;
 }
 

@@ -39,7 +39,7 @@ AssignmentFrameRateHandler::operator()(
 
   frameListeningState.gisParams.frameRate = frameRate;
   std::vector<out_message_t> result;
-  result.emplace_back(irsol::protocol::Success::from(std::move(message)));
+  result.emplace_back(irsol::protocol::Success::from(message));
   return result;
 }
 }  // namespace handlers

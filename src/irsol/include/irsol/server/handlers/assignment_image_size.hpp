@@ -49,7 +49,7 @@ struct AssignmentImgHandlerBase : AssignmentHandler
     // Update the message value with the resulting value after setting the camera parameter.
     // In this way, the resulting value is included in the response message.
     message.value = irsol::types::protocol_value_t{resValue};
-    result.emplace_back(protocol::Success::from(std::move(message)));
+    result.emplace_back(protocol::Success::from(message));
     return result;
   }
 };

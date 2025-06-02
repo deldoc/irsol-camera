@@ -30,7 +30,7 @@ CommandAbortHandler::operator()(
   IRSOL_NAMED_LOG_INFO(session->id(), "Stopping request set to detached background thread..");
   state.stop();
   std::vector<out_message_t> result;
-  result.emplace_back(irsol::protocol::Success::from(std::move(message)));
+  result.emplace_back(irsol::protocol::Success::from(message));
   return result;
 }
 
