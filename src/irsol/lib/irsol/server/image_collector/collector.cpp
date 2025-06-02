@@ -12,6 +12,12 @@ namespace server {
 
 namespace frame_collector {
 
+std::shared_ptr<FrameCollector::frame_queue_t>
+FrameCollector::makeQueue()
+{
+  return std::make_shared<FrameCollector::frame_queue_t>();
+}
+
 FrameCollector::FrameCollector(irsol::camera::Interface& camera): m_cam(camera)
 {
   start();

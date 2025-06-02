@@ -29,6 +29,12 @@ public:
   using frame_queue_t = ClientCollectionParams::frame_queue_t;
 
   /**
+   * Utility static function to create a shared pointer to a queue that a client might want to use
+   * prior to registering to the collector.
+   */
+  static std::shared_ptr<frame_queue_t> makeQueue();
+
+  /**
    * A slack representing the timewindow around the captured image timestamp for
    * selecting the clients (based on their schedule) to which send the image.
    *

@@ -19,7 +19,6 @@ AssignmentFrameRateHandler::operator()(
     IRSOL_LOG_ERROR("No session found for client {}", clientId);
     return {};
   }
-  // TODO: clean-up session-data to use a queue stored in the session
   auto& frameListeningState = session->sessionData().frameListeningState;
   if(frameListeningState.running) {
     IRSOL_NAMED_LOG_WARN(

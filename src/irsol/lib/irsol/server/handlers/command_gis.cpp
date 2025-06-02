@@ -31,7 +31,6 @@ CommandGISHandler::operator()(
   // Register the current client in the frame collector
   auto& collector = this->ctx.app.frameCollector();
 
-  // TODO: clean-up session-data to use a queue stored in the session
   auto& frameListeningState = session->sessionData().frameListeningState;
 
   if(frameListeningState.running) {
@@ -58,15 +57,14 @@ CommandGISHandler::operator()(
     return result;
   }
 
-  auto queue = std::make_shared<irsol::server::frame_collector::FrameCollector::frame_queue_t>();
-
   frameListeningState.running = true;
+  auto queue                  = collector.makeQueue();
   frameListeningState.listeningThread =
-    std::thread([queue, session, &message, &frameListeningState]() {
+    std::thread([session, queue, &message, &frameListeningState]() {
       IRSOL_NAMED_LOG_INFO(session->id(), "Inside detached listening thread");
       std::unique_ptr<irsol::server::frame_collector::Frame> framePtr;
       while(!queue->done() && queue->pop(framePtr)) {
-        IRSOL_NAMED_LOG_INFO(
+        IRSOL_NAMED_LOG_DEBUG(
           session->id(), "Sending frame data to client {}", framePtr->image.toString());
         // Send the frame data to the client
         session->handleOutMessage(irsol::protocol::OutMessage(std::move(framePtr->image)));

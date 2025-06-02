@@ -31,12 +31,9 @@ CommandGIHandler::operator()(
   // Register the current client in the frame collector
   auto& collector = this->ctx.app.frameCollector();
 
-  // TODO: clean-up session-data to use a queue stored in the session
+  auto& frameListeningState = session->sessionData().frameListeningState;
 
-  // We only take a snapshot, so we request a single frame.
-  const auto frameCount = 1;
-
-  if(session->sessionData().frameListeningState.running) {
+  if(frameListeningState.running) {
     IRSOL_NAMED_LOG_WARN(
       session->id(), "Session is already listening to frames. Ignoring request.");
     std::vector<out_message_t> result;
@@ -45,16 +42,14 @@ CommandGIHandler::operator()(
     return result;
   }
 
-  auto queue = std::make_shared<irsol::server::frame_collector::FrameCollector::frame_queue_t>();
-
-  auto& frameListeningState   = session->sessionData().frameListeningState;
   frameListeningState.running = true;
+  auto queue                  = collector.makeQueue();
   frameListeningState.listeningThread =
-    std::thread([queue, session, &message, &frameListeningState]() {
+    std::thread([session, queue, &message, &frameListeningState]() {
       IRSOL_NAMED_LOG_INFO(session->id(), "Inside detached listening thread");
       std::unique_ptr<irsol::server::frame_collector::Frame> framePtr;
       while(!queue->done() && queue->pop(framePtr)) {
-        IRSOL_NAMED_LOG_INFO(
+        IRSOL_NAMED_LOG_DEBUG(
           session->id(), "Sending frame data to client {}", framePtr->image.toString());
         // Send the frame data to the client
         session->handleOutMessage(irsol::protocol::OutMessage(std::move(framePtr->image)));
@@ -64,7 +59,10 @@ CommandGIHandler::operator()(
       session->handleOutMessage(irsol::protocol::Success::from(std::move(message)));
     });
 
-  collector.registerClient(clientId, -1, queue, frameCount);
+  // We only take a snapshot, so we request a single frame.
+  const uint64_t frameCount = 1;
+  const double   dummyFps   = -1.0;
+  collector.registerClient(clientId, dummyFps, queue, frameCount);
   frameListeningState.listeningThread.detach();
   IRSOL_NAMED_LOG_INFO(clientId, "Client registered, thread detached, returning from command");
   return {};

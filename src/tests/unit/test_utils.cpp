@@ -140,6 +140,10 @@ TEST_CASE("stripString()", "[Utils]")
 TEST_CASE("durationToString()", "[Utils]")
 {
   {
+    irsol::types::duration_t duration{};
+    CHECK(irsol::utils::durationToString(duration) == "0ns");
+  }
+  {
     irsol::types::duration_t duration = std::chrono::nanoseconds(4);
     CHECK(irsol::utils::durationToString(duration) == "4ns");
   }
