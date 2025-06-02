@@ -24,8 +24,8 @@ struct HandlerBase
 
   HandlerBase(Context ctx): ctx(ctx){};
   virtual std::vector<out_message_t> operator()(
-    const ::irsol::types::client_id_t& clientId,
-    T&&                                message) = 0;
+    const irsol::types::client_id_t& clientId,
+    T&&                              message) = 0;
 
   Context ctx;
 };

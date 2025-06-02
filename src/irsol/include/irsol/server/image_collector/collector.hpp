@@ -32,7 +32,7 @@ public:
    * Utility static function to create a shared pointer to a queue that a client might want to use
    * prior to registering to the collector.
    */
-  static std::shared_ptr<frame_queue_t> makeQueue();
+  static std::shared_ptr<frame_queue_t> makeQueuePtr();
 
   /**
    * A slack representing the timewindow around the captured image timestamp for

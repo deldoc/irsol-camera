@@ -91,12 +91,12 @@ public:
   }
 
   /// Immutable access to this session's UserSessionData.
-  const UserSessionData& sessionData() const
+  const UserSessionData& userData() const
   {
     return m_sessionData;
   }
   /// Mutable access to this session's UserSessionData.
-  UserSessionData& sessionData()
+  UserSessionData& userData()
   {
     return m_sessionData;
   }

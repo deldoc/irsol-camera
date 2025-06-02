@@ -36,7 +36,7 @@ public:
    * devices and opens the one matching the default serial number.
    * Throws if the camera cannot be initialized.
    */
-  Interface(NeoAPI::Cam cam = ::irsol::utils::loadDefaultCamera());
+  Interface(NeoAPI::Cam cam = irsol::utils::loadDefaultCamera());
 
   Interface(Interface&& other);
   Interface& operator=(Interface&& other);

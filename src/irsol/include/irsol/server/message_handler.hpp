@@ -22,7 +22,7 @@ class MessageHandler
 
   template<typename T>
   using handler_function_t =
-    std::function<handling_function_response_t(const ::irsol::types::client_id_t&, T&&)>;
+    std::function<handling_function_response_t(const irsol::types::client_id_t&, T&&)>;
 
   using assignment_handler_function_t = handler_function_t<protocol::Assignment&&>;
   using inquiry_handler_function_t    = handler_function_t<protocol::Inquiry&&>;
@@ -40,8 +40,8 @@ class MessageHandler
 
 public:
   handling_function_response_t handle(
-    const ::irsol::types::client_id_t& clientId,
-    protocol::InMessage&&              message) const;
+    const irsol::types::client_id_t& clientId,
+    protocol::InMessage&&            message) const;
 
   template<
     typename T,

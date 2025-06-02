@@ -1,18 +1,27 @@
 #pragma once
 
-#include "irsol/server/handlers/base.hpp"
+#include "irsol/server/handlers/command_gi_base.hpp"
 
 namespace irsol {
 namespace server {
 namespace handlers {
 
-struct CommandGIHandler : CommandHandler
+struct CommandGIHandler : internal::CommandGIBaseHandler
 {
   CommandGIHandler(Context ctx);
 
-  std::vector<out_message_t> operator()(
-    const ::irsol::types::client_id_t& clientId,
-    protocol::Command&&                message) override;
+private:
+  std::vector<irsol::protocol::OutMessage> validate(
+
+    const protocol::Command&                                message,
+    std::shared_ptr<irsol::server::internal::ClientSession> session) const override;
+
+  uint64_t getInputSequenceLength(
+    const protocol::Command&                                message,
+    std::shared_ptr<irsol::server::internal::ClientSession> session) const override;
+  double getFrameRate(
+    const protocol::Command&                                message,
+    std::shared_ptr<irsol::server::internal::ClientSession> session) const override;
 };
 }  // namespace handlers
 }  // namespace server

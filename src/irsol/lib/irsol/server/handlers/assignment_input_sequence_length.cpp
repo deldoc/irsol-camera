@@ -10,8 +10,8 @@ AssignmentInputSequenceLength::AssignmentInputSequenceLength(Context ctx): Assig
 
 std::vector<out_message_t>
 AssignmentInputSequenceLength::operator()(
-  const ::irsol::types::client_id_t& clientId,
-  protocol::Assignment&&             message)
+  const irsol::types::client_id_t& clientId,
+  protocol::Assignment&&           message)
 {
   // Retrieve the current session using the client ID
   auto session = this->ctx.getSession(clientId);
@@ -19,8 +19,8 @@ AssignmentInputSequenceLength::operator()(
     IRSOL_LOG_ERROR("No session found for client {}", clientId);
     return {};
   }
-  auto& frameListeningState = session->sessionData().frameListeningState;
-  if(frameListeningState.running) {
+  auto& frameListeningState = session->userData().frameListeningState;
+  if(frameListeningState.running()) {
     IRSOL_NAMED_LOG_WARN(
       session->id(), "Session is already listening to frames. Cannot set a inputSequenceLength.");
     std::vector<out_message_t> result;

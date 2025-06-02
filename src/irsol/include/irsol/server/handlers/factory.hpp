@@ -21,7 +21,7 @@ makeLambdaHandler(Context& ctx, LambdaT&& lambda)
   return LambdaHandler<InMessageT>{
     ctx,
     std::function<std::vector<protocol::OutMessage>(
-      Context&, const ::irsol::types::client_id_t&, InMessageT&&)>(std::forward<LambdaT>(lambda))};
+      Context&, const irsol::types::client_id_t&, InMessageT&&)>(std::forward<LambdaT>(lambda))};
 }
 }
 }

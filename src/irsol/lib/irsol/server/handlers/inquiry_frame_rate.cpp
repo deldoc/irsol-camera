@@ -12,8 +12,8 @@ InquiryFrameRateHandler::InquiryFrameRateHandler(Context ctx): InquiryHandler(ct
 
 std::vector<out_message_t>
 InquiryFrameRateHandler::operator()(
-  IRSOL_MAYBE_UNUSED const ::irsol::types::client_id_t& clientId,
-  protocol::Inquiry&&                                   message)
+  IRSOL_MAYBE_UNUSED const irsol::types::client_id_t& clientId,
+  protocol::Inquiry&&                                 message)
 {
   // Retrieve the current session using the client ID
   auto session = this->ctx.getSession(clientId);
@@ -21,7 +21,7 @@ InquiryFrameRateHandler::operator()(
     IRSOL_LOG_ERROR("No session found for client {}", clientId);
     return {};
   }
-  auto& frameListeningState = session->sessionData().frameListeningState;
+  auto& frameListeningState = session->userData().frameListeningState;
   auto  frameRate           = frameListeningState.gisParams.frameRate;
 
   std::vector<out_message_t> result;

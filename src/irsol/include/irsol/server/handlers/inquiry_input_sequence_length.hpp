@@ -11,8 +11,8 @@ struct InquiryInputSequenceLength : InquiryHandler
   InquiryInputSequenceLength(Context ctx);
 
   std::vector<out_message_t> operator()(
-    const ::irsol::types::client_id_t& clientId,
-    protocol::Inquiry&&                message) override;
+    const irsol::types::client_id_t& clientId,
+    protocol::Inquiry&&              message) override;
 };
 }  // namespace handlers
 }  // namespace server

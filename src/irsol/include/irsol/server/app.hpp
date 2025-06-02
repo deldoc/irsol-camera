@@ -182,7 +182,7 @@ private:
    *  ctx,
    *   [](
    *     handlers::Context&                  ctx,
-   *     const ::irsol::types::client_id_t& clientId,
+   *     const irsol::types::client_id_t& clientId,
    *     protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
    *        // Handle the command
    *        return {...};

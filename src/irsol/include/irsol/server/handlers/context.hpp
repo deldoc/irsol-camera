@@ -14,9 +14,9 @@ class ClientSession;
 namespace handlers {
 struct Context
 {
-  App&                                                      app;
-  std::shared_ptr<::irsol::server::internal::ClientSession> getSession(
-    const ::irsol::types::client_id_t& clientId);
+  App&                                                    app;
+  std::shared_ptr<irsol::server::internal::ClientSession> getSession(
+    const irsol::types::client_id_t& clientId);
 };
 }
 }

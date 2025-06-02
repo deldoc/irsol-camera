@@ -14,13 +14,13 @@ template<
 struct LambdaHandler : public internal::HandlerBase<T>
 {
   using lambda_function_t =
-    std::function<std::vector<out_message_t>(Context&, const ::irsol::types::client_id_t&, T&&)>;
+    std::function<std::vector<out_message_t>(Context&, const irsol::types::client_id_t&, T&&)>;
 
-  LambdaHandler(::irsol::server::handlers::Context ctx, lambda_function_t callback)
+  LambdaHandler(irsol::server::handlers::Context ctx, lambda_function_t callback)
     : internal::HandlerBase<T>(ctx), m_callback(callback)
   {}
 
-  std::vector<out_message_t> operator()(const ::irsol::types::client_id_t& clientId, T&& message)
+  std::vector<out_message_t> operator()(const irsol::types::client_id_t& clientId, T&& message)
     override
   {
     return m_callback(this->ctx, clientId, std::move(message));

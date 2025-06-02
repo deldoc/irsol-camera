@@ -40,7 +40,7 @@ Interface::operator=(Interface&& other)
 Interface
 Interface::FullResolution()
 {
-  auto cam = ::irsol::utils::loadDefaultCamera();
+  auto cam = irsol::utils::loadDefaultCamera();
 
   Interface interface(cam);
   interface.setMultiParam({{"BinningVertical", {1}},
@@ -54,7 +54,7 @@ Interface::FullResolution()
 Interface
 Interface::HalfResolution()
 {
-  auto cam = ::irsol::utils::loadDefaultCamera();
+  auto cam = irsol::utils::loadDefaultCamera();
 
   Interface interface(cam);
   interface.setMultiParam({{"BinningVertical", {2}},

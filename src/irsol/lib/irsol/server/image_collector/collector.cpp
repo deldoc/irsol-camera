@@ -13,7 +13,7 @@ namespace server {
 namespace frame_collector {
 
 std::shared_ptr<FrameCollector::frame_queue_t>
-FrameCollector::makeQueue()
+FrameCollector::makeQueuePtr()
 {
   return std::make_shared<FrameCollector::frame_queue_t>();
 }

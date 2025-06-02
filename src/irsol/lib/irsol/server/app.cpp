@@ -115,6 +115,7 @@ App::registerMessageHandlers()
   registerMessageHandler<protocol::Assignment, handlers::AssignmentFrameRateHandler>("fr", ctx);
   registerMessageHandler<protocol::Assignment, handlers::AssignmentInputSequenceLength>("isl", ctx);
   registerMessageHandler<protocol::Inquiry, handlers::InquiryInputSequenceLength>("isl", ctx);
+  registerMessageHandler<protocol::Command, handlers::CommandAbortHandler>("abort", ctx);
   registerMessageHandler<protocol::Command, handlers::CommandGIHandler>("gi", ctx);
   registerMessageHandler<protocol::Command, handlers::CommandGISHandler>("gis", ctx);
   registerMessageHandler<protocol::Inquiry, handlers::InquiryImgLeftHandler>("img_l", ctx);
@@ -129,7 +130,7 @@ App::registerMessageHandlers()
   registerLambdaHandler<protocol::Command>(
     "image_data",
     ctx,
-    [](handlers::Context& ctx, const ::irsol::types::client_id_t& clientId, protocol::Command&& cmd)
+    [](handlers::Context& ctx, const irsol::types::client_id_t& clientId, protocol::Command&& cmd)
       -> std::vector<protocol::OutMessage> {
       std::vector<protocol::OutMessage> result;
       auto&                             cam = ctx.app.camera();
@@ -171,7 +172,7 @@ App::registerMessageHandlers()
   //        ctx,
   //        [](
   //          handlers::Context&                  ctx,
-  //          const ::irsol::types::client_id_t& clientId,
+  //          const irsol::types::client_id_t& clientId,
   //          protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
   //          std::vector<protocol::OutMessage> result;
   //          auto&                             cam = ctx.app.camera();
