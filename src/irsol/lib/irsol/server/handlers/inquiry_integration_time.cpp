@@ -11,16 +11,10 @@ namespace handlers {
 InquiryIntegrationTimeHandler::InquiryIntegrationTimeHandler(Context ctx): InquiryHandler(ctx) {}
 
 std::vector<out_message_t>
-InquiryIntegrationTimeHandler::operator()(
-  const irsol::types::client_id_t& clientId,
+InquiryIntegrationTimeHandler::process(
+  std::shared_ptr<irsol::server::internal::ClientSession> session,
   IRSOL_MAYBE_UNUSED irsol::protocol::Inquiry&& message)
 {
-  auto session = ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
-
   auto& cam      = session->app().camera();
   auto  exposure = cam.getExposure();
 

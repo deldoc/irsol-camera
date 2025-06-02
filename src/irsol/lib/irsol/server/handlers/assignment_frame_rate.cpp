@@ -9,16 +9,10 @@ namespace handlers {
 AssignmentFrameRateHandler::AssignmentFrameRateHandler(Context ctx): AssignmentHandler(ctx) {}
 
 std::vector<out_message_t>
-AssignmentFrameRateHandler::operator()(
-  const irsol::types::client_id_t& clientId,
-  protocol::Assignment&&           message)
+AssignmentFrameRateHandler::process(
+  std::shared_ptr<irsol::server::internal::ClientSession> session,
+  protocol::Assignment&&                                  message)
 {
-  // Retrieve the current session using the client ID
-  auto session = this->ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
   auto& frameListeningState = session->userData().frameListeningState;
   if(frameListeningState.running()) {
     IRSOL_NAMED_LOG_WARN(

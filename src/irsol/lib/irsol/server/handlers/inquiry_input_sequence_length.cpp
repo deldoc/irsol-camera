@@ -11,16 +11,11 @@ InquiryInputSequenceLengthHandler::InquiryInputSequenceLengthHandler(Context ctx
 {}
 
 std::vector<out_message_t>
-InquiryInputSequenceLengthHandler::operator()(
-  const irsol::types::client_id_t& clientId,
+InquiryInputSequenceLengthHandler::process(
+  std::shared_ptr<irsol::server::internal::ClientSession> session,
   IRSOL_MAYBE_UNUSED protocol::Inquiry&& message)
 {
-  // Retrieve the current session using the client ID
-  auto session = this->ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
+
   auto& frameListeningState = session->userData().frameListeningState;
   auto  inputSequenceLength = frameListeningState.gisParams.inputSequenceLength;
 

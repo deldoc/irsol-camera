@@ -11,16 +11,10 @@ namespace handlers {
 InquiryFrameRateHandler::InquiryFrameRateHandler(Context ctx): InquiryHandler(ctx) {}
 
 std::vector<out_message_t>
-InquiryFrameRateHandler::operator()(
-  IRSOL_MAYBE_UNUSED const irsol::types::client_id_t& clientId,
-  protocol::Inquiry&&                                 message)
+InquiryFrameRateHandler::process(
+  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session,
+  protocol::Inquiry&&                                                        message)
 {
-  // Retrieve the current session using the client ID
-  auto session = this->ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
   auto& frameListeningState = session->userData().frameListeningState;
   auto  frameRate           = frameListeningState.gisParams.frameRate;
 

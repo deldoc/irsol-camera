@@ -12,15 +12,10 @@ AssignmentIntegrationTimeHandler::AssignmentIntegrationTimeHandler(Context ctx)
 {}
 
 std::vector<out_message_t>
-AssignmentIntegrationTimeHandler::operator()(
-  const irsol::types::client_id_t& clientId,
-  protocol::Assignment&&           message)
+AssignmentIntegrationTimeHandler::process(
+  std::shared_ptr<irsol::server::internal::ClientSession> session,
+  protocol::Assignment&&                                  message)
 {
-  auto session = ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
   // Try to set the integration time (exposure) according to the message
   if(!message.hasInt() && !message.hasDouble()) {
     IRSOL_NAMED_LOG_ERROR(

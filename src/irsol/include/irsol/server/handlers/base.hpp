@@ -23,9 +23,20 @@ struct HandlerBase
 {
 
   HandlerBase(Context ctx): ctx(ctx){};
-  virtual std::vector<out_message_t> operator()(
-    const irsol::types::client_id_t& clientId,
-    T&&                              message) = 0;
+  virtual std::vector<out_message_t> process(
+    std::shared_ptr<irsol::server::internal::ClientSession> session,
+    T&&                                                     message) = 0;
+
+  std::vector<out_message_t> operator()(const irsol::types::client_id_t& clientId, T&& message)
+  {
+    // Retrieve the current session using the client ID
+    auto session = ctx.getSession(clientId);
+    if(!session) {
+      IRSOL_LOG_ERROR("No session found for client {}", clientId);
+      return {};
+    }
+    return process(session, std::move(message));
+  }
 
   Context ctx;
 };

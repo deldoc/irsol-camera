@@ -11,9 +11,9 @@ struct CommandGIBaseHandler : CommandHandler
 {
   CommandGIBaseHandler(Context ctx);
 
-  std::vector<out_message_t> operator()(
-    const irsol::types::client_id_t& clientId,
-    protocol::Command&&              message) override;
+  std::vector<out_message_t> process(
+    std::shared_ptr<irsol::server::internal::ClientSession> session,
+    protocol::Command&&                                     message) override;
 
 private:
   std::string getDescription(

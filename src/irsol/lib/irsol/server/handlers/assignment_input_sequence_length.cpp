@@ -11,16 +11,10 @@ AssignmentInputSequenceLengthHandler::AssignmentInputSequenceLengthHandler(Conte
 {}
 
 std::vector<out_message_t>
-AssignmentInputSequenceLengthHandler::operator()(
-  const irsol::types::client_id_t& clientId,
-  protocol::Assignment&&           message)
+AssignmentInputSequenceLengthHandler::process(
+  std::shared_ptr<irsol::server::internal::ClientSession> session,
+  protocol::Assignment&&                                  message)
 {
-  // Retrieve the current session using the client ID
-  auto session = this->ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
   auto& frameListeningState = session->userData().frameListeningState;
   if(frameListeningState.running()) {
     IRSOL_NAMED_LOG_WARN(

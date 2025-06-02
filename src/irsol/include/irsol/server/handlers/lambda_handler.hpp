@@ -20,10 +20,11 @@ struct LambdaHandler : public internal::HandlerBase<T>
     : internal::HandlerBase<T>(ctx), m_callback(callback)
   {}
 
-  std::vector<out_message_t> operator()(const irsol::types::client_id_t& clientId, T&& message)
-    override
+  std::vector<out_message_t> process(
+    std::shared_ptr<irsol::server::internal::ClientSession> session,
+    T&&                                                     message) override
   {
-    return m_callback(this->ctx, clientId, std::move(message));
+    return m_callback(this->ctx, session->id(), std::move(message));
   }
 
 private:

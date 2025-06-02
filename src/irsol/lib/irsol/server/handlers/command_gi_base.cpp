@@ -22,16 +22,10 @@ namespace internal {
 CommandGIBaseHandler::CommandGIBaseHandler(Context ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
-CommandGIBaseHandler::operator()(
-  const irsol::types::client_id_t& clientId,
+CommandGIBaseHandler::process(
+  std::shared_ptr<irsol::server::internal::ClientSession> session,
   IRSOL_MAYBE_UNUSED protocol::Command&& message)
 {
-  // Retrieve the current session using the client ID
-  auto session = this->ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
 
   auto& collector = this->ctx.app.frameCollector();
   auto& state     = session->userData().frameListeningState;
@@ -52,9 +46,9 @@ CommandGIBaseHandler::operator()(
 
   const uint64_t numFrames = getInputSequenceLength(message, session);
   const double   fps       = getFrameRate(message, session);
-  collector.registerClient(clientId, fps, queue, numFrames);
+  collector.registerClient(session->id(), fps, queue, numFrames);
 
-  IRSOL_NAMED_LOG_INFO(clientId, "Client registered for {} frames at FPS {}", numFrames, fps);
+  IRSOL_NAMED_LOG_INFO(session->id(), "Client registered for {} frames at FPS {}", numFrames, fps);
   return {};
 }
 

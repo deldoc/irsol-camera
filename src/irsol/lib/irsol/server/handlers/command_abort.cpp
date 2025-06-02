@@ -9,17 +9,10 @@ namespace handlers {
 CommandAbortHandler::CommandAbortHandler(Context ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
-CommandAbortHandler::operator()(
-  const irsol::types::client_id_t& clientId,
+CommandAbortHandler::process(
+  std::shared_ptr<irsol::server::internal::ClientSession> session,
   IRSOL_MAYBE_UNUSED irsol::protocol::Command&& message)
 {
-  // Retrieve the current session using the client ID
-  auto session = ctx.getSession(clientId);
-  if(!session) {
-    IRSOL_LOG_ERROR("No session found for client {}", clientId);
-    return {};
-  }
-
   auto& state = session->userData().frameListeningState;
   if(!state.running()) {
     IRSOL_NAMED_LOG_INFO(

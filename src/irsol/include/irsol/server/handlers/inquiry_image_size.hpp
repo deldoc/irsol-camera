@@ -36,9 +36,9 @@ struct InquiryImgHandlerBase : InquiryHandler
   static constexpr std::string_view name = InquiryCameraImageAttribute::name;
 
   InquiryImgHandlerBase(Context ctx): InquiryHandler(ctx) {}
-  std::vector<out_message_t> operator()(
-    IRSOL_MAYBE_UNUSED const irsol::types::client_id_t& clientId,
-    protocol::Inquiry&&                                 message) override
+  std::vector<out_message_t> process(
+    IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session,
+    protocol::Inquiry&&                                                        message) override
   {
     auto&                      cam   = ctx.app.camera();
     int                        value = cam.getParam<int>(std::string(name));
