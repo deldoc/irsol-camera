@@ -6,9 +6,9 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct CommandGIHandler : CommandHandler
+struct CommandGISHandler : CommandHandler
 {
-  CommandGIHandler(Context ctx);
+  CommandGISHandler(Context ctx);
 
   std::vector<out_message_t> operator()(
     const ::irsol::types::client_id_t& clientId,

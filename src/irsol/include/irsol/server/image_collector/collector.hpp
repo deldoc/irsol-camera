@@ -29,6 +29,15 @@ public:
   using frame_queue_t = ClientCollectionParams::frame_queue_t;
 
   /**
+   * A slack representing the timewindow around the captured image timestamp for
+   * selecting the clients (based on their schedule) to which send the image.
+   *
+   * This allows the FrameCollector to capture a single image, and distribute it to many clients
+   * as long as their desired due time is within the slack from the capture time.
+   */
+  constexpr static irsol::types::duration_t SLACK = std::chrono::milliseconds(50);
+
+  /**
    * @brief Constructs a FrameCollector for the given camera interface.
    *
    * @param camera Reference to a camera interface for capturing frames.
@@ -67,6 +76,7 @@ public:
    * @param frameCount  Number of frames to deliver; -1 means unlimited. After the last frame has
    * been pushed to the client, the client is automatically de-registered and its queue marked as
    * complete.
+   * @note This method is threadsafe.
    */
   void registerClient(
     irsol::types::client_id_t      clientId,
@@ -80,6 +90,7 @@ public:
    * @param clientId The client's unique identifier.
    *
    * @note Removes all state registered associated with the client in the collector.
+   * @note This method is threadsafe.
    */
   void deregisterClient(irsol::types::client_id_t clientId);
 
@@ -92,15 +103,34 @@ private:
   void run();
 
   /**
+   * @brief Deregisters a client and stops frame delivery.
+   *
+   * @param clientId The client's unique identifier.
+   *
+   * @note Removes all state registered associated with the client in the collector.
+   * @note This method is NOT threadsafe.
+   */
+  void deregisterClientNonThreadSafe(irsol::types::client_id_t clientId);
+
+  /**
    * @brief Collects clients who are scheduled to receive a frame at the given time.
    *
    * @param now Current timestamp.
-   * @return List of client IDs ready to receive a frame.
-   *
-   * @note Updates the m_scheduleMap by removing the schedule for the clients that are collected as
-   * ready.
+   * @param slack Allowed slack between now and client's schedule for considering a client to be
+   * ready for receiving data.
+   * @return A pair of vectors, the first being a list of ready clientIds, the second containing the
+   * actual scheduleTimes of the returned clients.
    */
-  std::vector<irsol::types::client_id_t> collectReadyClients(irsol::types::timepoint_t now);
+
+  std::pair<std::vector<irsol::types::client_id_t>, std::vector<irsol::types::timepoint_t>>
+  collectReadyClients(irsol::types::timepoint_t now, irsol::types::duration_t slack) const;
+
+  /**
+   * @brief Removes schedules older than now
+   *
+   * @param schedules Vector of schedules to clean up
+   */
+  void cleanUpSchedule(const std::vector<irsol::types::timepoint_t> schedules);
 
   /**
    * @brief Captures an image and returns it along with associated metadata.
@@ -110,19 +140,6 @@ private:
   std::pair<FrameMetadata, std::vector<irsol::types::byte_t>> grabImageData() const;
 
   /**
-   * @brief Computes the first frame due time for a newly registered client.
-   *
-   * @param interval The client's desired frame interval.
-   * @param maxDiff  Maximum allowable skew from aligned frame times. This is to avoid situations
-   * where one client is registered in a "slow" pool of clients, and for it not to be scheduled with
-   * all other slow clients.
-   * @return The computed time point of the next due frame for the new client.
-   */
-  irsol::types::timepoint_t computeNextDueTimeForNewClient(
-    irsol::types::duration_t interval,
-    irsol::types::duration_t maxDiff) const;
-
-  /**
    * @brief Schedules the next frame delivery for a client.
    *
    * @param clientId     The client to schedule.
@@ -130,7 +147,7 @@ private:
    * @return true if successfully scheduled, false if the client is no longer active and can later
    * be removed from the frame collector.
    */
-  bool schedule(const irsol::types::client_id_t clientId, irsol::types::timepoint_t nextFrameDue);
+  bool schedule(const irsol::types::client_id_t& clientId, irsol::types::timepoint_t nextFrameDue);
 
   irsol::camera::Interface& m_cam;  ///< Reference to the camera interface used for capturing.
 

@@ -134,7 +134,7 @@ durationToString(irsol::types::duration_t dr)
 {
   std::stringstream ss;
   if(dr.count() == 0) {
-    return "0s";
+    return "0ns";
   }
 
   if(dr >= std::chrono::hours(1)) {

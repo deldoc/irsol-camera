@@ -3,8 +3,8 @@
 #include "irsol/camera/interface.hpp"
 #include "irsol/server/acceptor.hpp"
 #include "irsol/server/client.hpp"
-#include "irsol/server/collector.hpp"
 #include "irsol/server/handlers/factory.hpp"
+#include "irsol/server/image_collector.hpp"
 #include "irsol/server/message_handler.hpp"
 #include "irsol/types.hpp"
 
@@ -78,7 +78,7 @@ public:
   {
     return *m_cameraInterface;
   };
-  internal::FrameCollector& frameCollector()
+  frame_collector::FrameCollector& frameCollector()
   {
     return *m_frameCollector;
   };
@@ -107,7 +107,7 @@ private:
   std::unique_ptr<camera::Interface> m_cameraInterface;
 
   /// Owned collector that captures frames and dispatches them to clients.
-  std::unique_ptr<internal::FrameCollector> m_frameCollector;
+  std::unique_ptr<frame_collector::FrameCollector> m_frameCollector;
 
   /// Message handler for incoming messages.
   std::unique_ptr<handlers::MessageHandler> m_messageHandler;
@@ -182,7 +182,7 @@ private:
    *  ctx,
    *   [](
    *     handlers::Context&                  ctx,
-   *     const ::irsol::types::client_id_t& client_id,
+   *     const ::irsol::types::client_id_t& clientId,
    *     protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
    *        // Handle the command
    *        return {...};

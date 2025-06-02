@@ -6,13 +6,13 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct CommandGIHandler : CommandHandler
+struct AssignmentFrameRateHandler : AssignmentHandler
 {
-  CommandGIHandler(Context ctx);
+  AssignmentFrameRateHandler(Context ctx);
 
   std::vector<out_message_t> operator()(
     const ::irsol::types::client_id_t& clientId,
-    protocol::Command&&                message) override;
+    protocol::Assignment&&             message) override;
 };
 }  // namespace handlers
 }  // namespace server

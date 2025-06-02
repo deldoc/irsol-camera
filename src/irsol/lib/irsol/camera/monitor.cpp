@@ -73,7 +73,7 @@ StatusMonitor::runMonitor() const
 void
 StatusMonitor::start()
 {
-  std::lock_guard<std::mutex> guard(m_startStopMutex);
+  std::scoped_lock<std::mutex> guard(m_startStopMutex);
   IRSOL_ASSERT_ERROR(!m_hasStartedMonitor, "Monitor is already running!");
   m_hasStartedMonitor = true;
 
@@ -84,7 +84,7 @@ StatusMonitor::start()
 void
 StatusMonitor::stop()
 {
-  std::lock_guard<std::mutex> guard(m_startStopMutex);
+  std::scoped_lock<std::mutex> guard(m_startStopMutex);
   IRSOL_ASSERT_ERROR(
     m_hasStartedMonitor, "Cannot 'stop' monitor without having started it before!");
   m_hasStartedMonitor = false;

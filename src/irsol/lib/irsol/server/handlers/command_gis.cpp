@@ -1,4 +1,4 @@
-#include "irsol/server/handlers/command_gi.hpp"
+#include "irsol/server/handlers/command_gis.hpp"
 
 #include "irsol/logging.hpp"
 #include "irsol/macros.hpp"
@@ -14,10 +14,10 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-CommandGIHandler::CommandGIHandler(Context ctx): CommandHandler(ctx) {}
+CommandGISHandler::CommandGISHandler(Context ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
-CommandGIHandler::operator()(
+CommandGISHandler::operator()(
   const ::irsol::types::client_id_t& clientId,
   IRSOL_MAYBE_UNUSED protocol::Command&& message)
 {
@@ -32,11 +32,9 @@ CommandGIHandler::operator()(
   auto& collector = this->ctx.app.frameCollector();
 
   // TODO: clean-up session-data to use a queue stored in the session
+  auto& frameListeningState = session->sessionData().frameListeningState;
 
-  // We only take a snapshot, so we request a single frame.
-  const auto frameCount = 1;
-
-  if(session->sessionData().frameListeningState.running) {
+  if(frameListeningState.running) {
     IRSOL_NAMED_LOG_WARN(
       session->id(), "Session is already listening to frames. Ignoring request.");
     std::vector<out_message_t> result;
@@ -44,10 +42,24 @@ CommandGIHandler::operator()(
       irsol::protocol::Error::from(message, "Session is already listening to frames"));
     return result;
   }
+  if(frameListeningState.gisParams.inputSequenceLength == 0) {
+    IRSOL_NAMED_LOG_WARN(session->id(), "Gis inputSequenceLength param is 0, this is not allowed.");
+    std::vector<out_message_t> result;
+    result.emplace_back(irsol::protocol::Error::from(
+      message, "Gis inputSequenceLength param is 0, this is not allowed"));
+    return result;
+  }
+  if(frameListeningState.gisParams.frameRate <= 0) {
+    IRSOL_NAMED_LOG_WARN(
+      session->id(), "Gis frameRate param is non-positive, this is not allowed.");
+    std::vector<out_message_t> result;
+    result.emplace_back(irsol::protocol::Error::from(
+      message, "Gis frameRate param is non-positive, this is not allowed."));
+    return result;
+  }
 
   auto queue = std::make_shared<irsol::server::frame_collector::FrameCollector::frame_queue_t>();
 
-  auto& frameListeningState   = session->sessionData().frameListeningState;
   frameListeningState.running = true;
   frameListeningState.listeningThread =
     std::thread([queue, session, &message, &frameListeningState]() {
@@ -64,7 +76,11 @@ CommandGIHandler::operator()(
       session->handleOutMessage(irsol::protocol::Success::from(std::move(message)));
     });
 
-  collector.registerClient(clientId, -1, queue, frameCount);
+  collector.registerClient(
+    clientId,
+    frameListeningState.gisParams.frameRate,
+    queue,
+    frameListeningState.gisParams.inputSequenceLength);
   frameListeningState.listeningThread.detach();
   IRSOL_NAMED_LOG_INFO(clientId, "Client registered, thread detached, returning from command");
   return {};

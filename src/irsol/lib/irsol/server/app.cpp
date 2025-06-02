@@ -15,7 +15,7 @@ App::App(irsol::types::port_t port)
       m_port,
       std::bind(&App::addClient, this, std::placeholders::_1, std::placeholders::_2))
   , m_cameraInterface(std::make_unique<camera::Interface>(camera::Interface::HalfResolution()))
-  , m_frameCollector(std::make_unique<internal::FrameCollector>(*m_cameraInterface.get()))
+  , m_frameCollector(std::make_unique<frame_collector::FrameCollector>(*m_cameraInterface.get()))
   , m_messageHandler(std::make_unique<handlers::MessageHandler>())
 {
   registerMessageHandlers();
@@ -52,8 +52,8 @@ App::stop()
 std::shared_ptr<internal::ClientSession>
 App::getClientSession(const irsol::types::client_id_t& clientId)
 {
-  std::lock_guard<std::mutex> lock(m_clientsMutex);
-  auto                        it = m_clients.find(clientId);
+  std::scoped_lock<std::mutex> lock(m_clientsMutex);
+  auto                         it = m_clients.find(clientId);
   return it != m_clients.end() ? it->second : nullptr;
 }
 
@@ -61,7 +61,7 @@ void
 App::addClient(const irsol::types::client_id_t& clientId, irsol::types::socket_t&& sock)
 {
   auto session = std::make_shared<internal::ClientSession>(clientId, std::move(sock), *this);
-  std::lock_guard<std::mutex> lock(m_clientsMutex);
+  std::scoped_lock<std::mutex> lock(m_clientsMutex);
   IRSOL_LOG_INFO(
     "Registering new client connection from {} with id {}",
     session->socket().address().to_string(),
@@ -91,13 +91,14 @@ App::addClient(const irsol::types::client_id_t& clientId, irsol::types::socket_t
 void
 App::removeClient(const irsol::types::client_id_t& clientId)
 {
-  std::lock_guard<std::mutex> lock(m_clientsMutex);
-  auto                        client = m_clients.find(clientId);
-  if(client == m_clients.end()) {
+  std::scoped_lock<std::mutex> lock(m_clientsMutex);
+  auto                         clientIt = m_clients.find(clientId);
+  if(clientIt == m_clients.end()) {
     IRSOL_LOG_ERROR("Client '{}' not found in session list", clientId);
   } else {
-    m_clients.erase(client);
-    m_frameCollector->removeClient(client->second);
+    auto client = clientIt->second;
+    m_frameCollector->deregisterClient(client->id());
+    m_clients.erase(clientIt);
     IRSOL_LOG_DEBUG(
       "Client {} removed from session list, remaining clients: {}", clientId, m_clients.size());
   }
@@ -110,8 +111,12 @@ App::registerMessageHandlers()
   handlers::Context ctx{*this};
 
   // Register message handlers for specific message types
-  registerMessageHandler<protocol::Inquiry, handlers::InquiryFRHandler>("fr", ctx);
+  registerMessageHandler<protocol::Inquiry, handlers::InquiryFrameRateHandler>("fr", ctx);
+  registerMessageHandler<protocol::Assignment, handlers::AssignmentFrameRateHandler>("fr", ctx);
+  registerMessageHandler<protocol::Assignment, handlers::AssignmentInputSequenceLength>("isl", ctx);
+  registerMessageHandler<protocol::Inquiry, handlers::InquiryInputSequenceLength>("isl", ctx);
   registerMessageHandler<protocol::Command, handlers::CommandGIHandler>("gi", ctx);
+  registerMessageHandler<protocol::Command, handlers::CommandGISHandler>("gis", ctx);
   registerMessageHandler<protocol::Inquiry, handlers::InquiryImgLeftHandler>("img_l", ctx);
   registerMessageHandler<protocol::Inquiry, handlers::InquiryImgTopHandler>("img_t", ctx);
   registerMessageHandler<protocol::Inquiry, handlers::InquiryImgWidthHandler>("img_w", ctx);
@@ -124,16 +129,14 @@ App::registerMessageHandlers()
   registerLambdaHandler<protocol::Command>(
     "image_data",
     ctx,
-    [](
-      handlers::Context&                 ctx,
-      const ::irsol::types::client_id_t& client_id,
-      protocol::Command&&                cmd) -> std::vector<protocol::OutMessage> {
+    [](handlers::Context& ctx, const ::irsol::types::client_id_t& clientId, protocol::Command&& cmd)
+      -> std::vector<protocol::OutMessage> {
       std::vector<protocol::OutMessage> result;
       auto&                             cam = ctx.app.camera();
       auto                              img = cam.captureImage(std::chrono::milliseconds(10000));
 
       if(img.IsEmpty()) {
-        IRSOL_NAMED_LOG_ERROR(client_id, "Failed to capture image.");
+        IRSOL_NAMED_LOG_ERROR(clientId, "Failed to capture image.");
         result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
         return result;
       }
@@ -168,13 +171,13 @@ App::registerMessageHandlers()
   //        ctx,
   //        [](
   //          handlers::Context&                  ctx,
-  //          const ::irsol::types::client_id_t& client_id,
+  //          const ::irsol::types::client_id_t& clientId,
   //          protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
   //          std::vector<protocol::OutMessage> result;
   //          auto&                             cam = ctx.app.camera();
   //          auto img = cam.captureImage(std::chrono::milliseconds(10000));
   //          if(img.IsEmpty()) {
-  //            IRSOL_NAMED_LOG_ERROR(client_id, "Failed to capture image.");
+  //            IRSOL_NAMED_LOG_ERROR(clientId, "Failed to capture image.");
   //            result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
   //            return result;
   //          }

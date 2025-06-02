@@ -2,20 +2,31 @@
 
 #include "irsol/types.hpp"
 
+#include <thread>
+
 namespace irsol {
 namespace server {
 namespace internal {
+
 /**
- * @brief Parameters controlling how and when frames are delivered to a client.
- *
- * lastFrameSent: timestamp of the last frame successfully sent to the client.
- * frameRate: desired frame rate (in frames per second) for this client.
+ * @brief Per client parameters for Gis command
  */
-struct FrameListeningParams
+struct GisParams
 {
-  irsol::types::timepoint_t lastFrameSent{irsol::types::clock_t::now()};
-  double                    frameRate;
-  int64_t                   numDesiredFrames{-1};  // -1 means unlimited
+
+  uint64_t inputSequenceLength{16};
+  double   frameRate{4.0};
+};
+
+/**
+ * @brief State associated with the Session client and how it's listening to frames.
+ *
+ */
+struct FrameListeningState
+{
+  bool        running{false};
+  GisParams   gisParams{};
+  std::thread listeningThread;
 };
 
 /**
@@ -28,8 +39,8 @@ struct FrameListeningParams
 struct UserSessionData
 {
 
-  /// Controls the parameters for streaming image frames to the client.
-  FrameListeningParams frameListeningParams{};
+  /// Controls the client's state w.r.t listening to frames.
+  FrameListeningState frameListeningState{};
 };
 
 }  // namespace internal

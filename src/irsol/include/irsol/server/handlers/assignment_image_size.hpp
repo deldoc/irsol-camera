@@ -39,7 +39,7 @@ struct AssignmentImgHandlerBase : AssignmentHandler
 
   AssignmentImgHandlerBase(Context ctx): AssignmentHandler(ctx) {}
   std::vector<out_message_t> operator()(
-    IRSOL_MAYBE_UNUSED const ::irsol::types::client_id_t& client_id,
+    IRSOL_MAYBE_UNUSED const ::irsol::types::client_id_t& clientId,
     protocol::Assignment&&                                message) override
   {
     auto& cam      = ctx.app.camera();

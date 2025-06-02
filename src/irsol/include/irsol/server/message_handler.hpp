@@ -40,7 +40,7 @@ class MessageHandler
 
 public:
   handling_function_response_t handle(
-    const ::irsol::types::client_id_t& client_id,
+    const ::irsol::types::client_id_t& clientId,
     protocol::InMessage&&              message) const;
 
   template<

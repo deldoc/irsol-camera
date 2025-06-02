@@ -60,7 +60,7 @@ public:
   // Signal that the producer is done (wakes up consumer)
   void producerFinished()
   {
-    std::lock_guard<std::mutex> lock(m_mutex);
+    std::scoped_lock<std::mutex> lock(m_mutex);
 
     IRSOL_ASSERT_ERROR(!m_done, "SafeQueue::producerFinished() called on an already done queue");
 
@@ -71,7 +71,7 @@ public:
 
   size_t size() const
   {
-    std::lock_guard<std::mutex> lock(m_mutex);
+    std::scoped_lock<std::mutex> lock(m_mutex);
     return m_queue.size();
   }
 
@@ -85,7 +85,7 @@ public:
 
   bool empty() const
   {
-    std::lock_guard<std::mutex> lock(m_mutex);
+    std::scoped_lock<std::mutex> lock(m_mutex);
     return m_queue.empty();
   }
 

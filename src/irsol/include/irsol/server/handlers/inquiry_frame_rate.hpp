@@ -5,12 +5,12 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct InquiryFRHandler : InquiryHandler
+struct InquiryFrameRateHandler : InquiryHandler
 {
-  InquiryFRHandler(Context ctx);
+  InquiryFrameRateHandler(Context ctx);
 
   std::vector<out_message_t> operator()(
-    const ::irsol::types::client_id_t& client_id,
+    const ::irsol::types::client_id_t& clientId,
     protocol::Inquiry&&                message) override;
 };
 }

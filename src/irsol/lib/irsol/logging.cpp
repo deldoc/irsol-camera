@@ -131,8 +131,13 @@ initLogging(const char* logFilePath, std::optional<spdlog::level::level_enum> mi
     std::make_shared<spdlog::logger>("irsol", spdlog::sinks_init_list{consoleSink, fileSink});
   spdlog::set_default_logger(logger);
 
+#ifdef DEBUG
+  // Force flush on trace level and above
+  spdlog::flush_on(spdlog::level::trace);
+#else
   // Force flush on error level and above
   spdlog::flush_on(spdlog::level::err);
+#endif
 
   // Force flush every N seconds
   spdlog::flush_every(std::chrono::seconds(2));

@@ -120,7 +120,7 @@ void
 Interface::setMultiParam(const std::unordered_map<std::string, camera_param_t>& params)
 {
   IRSOL_LOG_DEBUG("Setting multiple parameters");
-  std::lock_guard<std::mutex> lock(m_camMutex);
+  std::scoped_lock<std::mutex> lock(m_camMutex);
   for(const auto& [param, value] : params) {
     std::visit(
       [&param, this](auto&& arg) {
@@ -148,7 +148,7 @@ Interface::trigger(const std::string& param)
 Interface::image_t
 Interface::captureImage(std::optional<irsol::types::duration_t> timeout)
 {
-  std::lock_guard<std::mutex> lock(m_camMutex);
+  std::scoped_lock<std::mutex> lock(m_camMutex);
 
   // Send software trigger to get an image
   trigger("AcquisitionStart");

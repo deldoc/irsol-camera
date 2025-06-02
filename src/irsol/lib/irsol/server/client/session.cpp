@@ -120,7 +120,7 @@ ClientSession::processRawMessage(const std::string& rawMessage)
   IRSOL_NAMED_LOG_DEBUG(m_id, "Received {} response(s)", result.size());
 
   // lock the session's mutex to prevent race conditions
-  std::lock_guard<std::mutex> lock(m_socketMutex);
+  std::scoped_lock<std::mutex> lock(m_socketMutex);
   for(auto& message : result) {
     handleOutMessage(std::move(message));
   }

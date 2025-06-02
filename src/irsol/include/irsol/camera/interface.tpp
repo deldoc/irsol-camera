@@ -20,9 +20,9 @@ Interface::getParam(const std::string& param) const
   using U = std::decay_t<T>;
   IRSOL_LOG_DEBUG("Getting parameter '{}'", param);
   try {
-    std::lock_guard<std::mutex> lock(m_camMutex);
-    NeoAPI::NeoString           neoParam(param.c_str());
-    auto                        feature = m_cam.GetFeature(neoParam);
+    std::scoped_lock<std::mutex> lock(m_camMutex);
+    NeoAPI::NeoString            neoParam(param.c_str());
+    auto                         feature = m_cam.GetFeature(neoParam);
 
     if constexpr(std::is_same_v<U, std::string>) {
       return std::string(feature.GetString());
@@ -56,7 +56,7 @@ Interface::setParam(const std::string& param, T value)
 {
   IRSOL_LOG_DEBUG("Setting parameter '{}' to value '{}'", param, value);
   {
-    std::lock_guard<std::mutex> lock(m_camMutex);
+    std::scoped_lock<std::mutex> lock(m_camMutex);
     setParamNonThreadSafe(param, value);
   }
   return getParam<std::decay_t<T>>(param);

@@ -15,25 +15,24 @@ target_link_libraries(${PROJECT_NAME}-server
 if(IRSOL_USE_OPENCV)
 
 add_executable(
-    ${PROJECT_NAME}-viewer
-    viewer_client.cpp
+    ${PROJECT_NAME}-viewer-gi
+    viewer_client_gi.cpp
 )
 
-target_link_libraries(${PROJECT_NAME}-viewer
+target_link_libraries(${PROJECT_NAME}-viewer-gi
     irsol::cv
     args::args
 )
 
 add_executable(
-    ${PROJECT_NAME}-viewer-poll
-    viewer_client_poll.cpp
+    ${PROJECT_NAME}-viewer-gis
+    viewer_client_gis.cpp
 )
 
-target_link_libraries(${PROJECT_NAME}-viewer-poll
+target_link_libraries(${PROJECT_NAME}-viewer-gis
     irsol::cv
     args::args
 )
-
 else()
 message(STATUS, "OpenCV not found, viewer target skipped")
 endif()

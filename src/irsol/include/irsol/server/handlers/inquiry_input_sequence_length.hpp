@@ -6,13 +6,13 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct CommandGIHandler : CommandHandler
+struct InquiryInputSequenceLength : InquiryHandler
 {
-  CommandGIHandler(Context ctx);
+  InquiryInputSequenceLength(Context ctx);
 
   std::vector<out_message_t> operator()(
     const ::irsol::types::client_id_t& clientId,
-    protocol::Command&&                message) override;
+    protocol::Inquiry&&                message) override;
 };
 }  // namespace handlers
 }  // namespace server

@@ -48,6 +48,11 @@ queryImage(irsol::types::connector_t& conn)
       headerTitle += ch;
     }
 
+    if(headerTitle == "gi;") {
+      IRSOL_LOG_INFO("Received success confirmation from server");
+      return std::nullopt;
+    }
+
     if(headerTitle == "image_data") {
       break;  // valid header found
     } else {
@@ -100,7 +105,22 @@ queryImage(irsol::types::connector_t& conn)
     totalRead += res.value();
   }
 
-  // Step 4: Convert image data to OpenCV Mat
+  // Step 4: read the confirmation if any
+  headerTitle.clear();
+  while(true) {
+    auto res = conn.read(&ch, 1);
+    if(res.value() <= 0)
+      return std::nullopt;
+    if(ch == '\n')
+      break;
+    headerTitle += ch;
+  }
+
+  if(headerTitle != "gi;") {
+    IRSOL_LOG_ERROR("Server did not send gi; confirmation");
+  }
+
+  // Step 5: Convert image data to OpenCV Mat
   return std::make_pair(imageId, createMat(buffer.data(), height, width, channels));
 }
 
@@ -133,7 +153,7 @@ void
 run(double inFps)
 {
 
-  IRSOL_LOG_INFO("TCP client viewer (polling)");
+  IRSOL_LOG_INFO("TCP client viewer (gi)");
 
   std::string          server_host = "localhost";
   irsol::types::port_t port        = 15099;  // port used by existing clients
@@ -226,7 +246,7 @@ run(double inFps)
     int key = cv::waitKey(1) & 0xFF;
     if(key == 27 || key == 'q') {
       IRSOL_LOG_INFO("Exit requested via keyboard");
-      break;
+      g_terminate.store(true);
     }
 
     // --- Frame duration regulation ---
@@ -267,7 +287,7 @@ main(int argc, char** argv)
     IRSOL_LOG_ERROR("Error parsing command-line arguments: {}\n", e.what(), parser.Help());
     return 1;
   }
-  double listen_fps = 5.0;
+  double listen_fps = 0.5;
   if(listen_fps_flag) {
     listen_fps = args::get(listen_fps_flag);
   }
