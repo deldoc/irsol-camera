@@ -80,6 +80,10 @@ CommandGIBaseHandler::startListeningThread(
   state.start(
     [session, queue, message = std::move(command)](
       std::shared_ptr<std::atomic<bool>> stopRequest) mutable {
+      // Reset the state of the user-data related to frame-listening
+      auto& state                         = session->userData().frameListeningState;
+      state.gisParams.inputSequenceNumber = 0;
+
       IRSOL_NAMED_LOG_INFO(
         session->id(), "Started frame listening thread for {}", message.toString());
 
@@ -87,8 +91,19 @@ CommandGIBaseHandler::startListeningThread(
       bool                                    interrupted = false;
       while(!interrupted && (!queue->done() && queue->pop(framePtr))) {
         IRSOL_NAMED_LOG_DEBUG(
-          session->id(), "Sending frame to client: {}", framePtr->image.toString());
-        session->handleOutMessage(protocol::OutMessage(std::move(framePtr->image)));
+          session->id(),
+          "Sending frame {} to client: {}",
+          state.gisParams.inputSequenceNumber,
+          framePtr->image.toString());
+        {
+          auto                                     lock = std::scoped_lock(session->socketMutex());
+          std::vector<irsol::protocol::OutMessage> result;
+          result.emplace_back(irsol::protocol::OutMessage(std::move(framePtr->image)));
+          result.emplace_back(irsol::protocol::Success::asStatus(
+            "isn", {static_cast<int>(state.gisParams.inputSequenceNumber)}));
+          session->handleOutMessages(std::move(result));
+        }
+        ++state.gisParams.inputSequenceNumber;
         if(stopRequest->load()) {
           interrupted = true;
         }
@@ -101,7 +116,10 @@ CommandGIBaseHandler::startListeningThread(
         return;
       }
 
-      session->handleOutMessage(protocol::Success::from(std::move(message)));
+      {
+        auto lock = std::scoped_lock(session->socketMutex());
+        session->handleOutMessage(protocol::Success::from(std::move(message)));
+      }
       IRSOL_NAMED_LOG_INFO(session->id(), "{} frame sending complete", message.toString());
     },
     description);

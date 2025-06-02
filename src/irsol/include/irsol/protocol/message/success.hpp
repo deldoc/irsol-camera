@@ -72,6 +72,18 @@ struct Success
     return Success(msg.identifier, InMessageKind::INQUIRY, std::make_optional(result));
   }
 
+  /**
+   * Helper factory method to create a success message from an arbitrary identifier/value pairs.
+   *
+   * This is useful in asynchronous callback functions, when the server is sending some data to che
+   * client but no-longer has (or never had) access to an InMessage associated to the value the
+   * server is communicating.
+   */
+  static Success asStatus(const std::string& identifier, irsol::types::protocol_value_t value)
+  {
+    return Success(identifier, InMessageKind::INQUIRY, std::make_optional(value));
+  }
+
 private:
   // Only allow construction from factory-methods
   Success(

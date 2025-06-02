@@ -18,8 +18,8 @@ namespace internal {
  */
 struct GisParams
 {
-
   uint64_t inputSequenceLength{16};
+  uint64_t inputSequenceNumber{0};
   double   frameRate{4.0};
 };
 

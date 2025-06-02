@@ -66,6 +66,15 @@ ClientSession::run()
 }
 
 void
+ClientSession::handleOutMessages(std::vector<protocol::OutMessage>&& messages)
+{
+  IRSOL_NAMED_LOG_DEBUG(m_id, "Serializing {} messages", messages.size());
+  for(auto& message : messages) {
+    handleOutMessage(std::move(message));
+  }
+}
+
+void
 ClientSession::handleOutMessage(protocol::OutMessage&& message)
 {
   IRSOL_NAMED_LOG_DEBUG(m_id, "Serializing message: '{}'", irsol::protocol::toString(message));

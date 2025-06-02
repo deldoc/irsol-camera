@@ -51,6 +51,13 @@ public:
   void run();
 
   /**
+   * @brief Handle multiple message to send to the client.
+   *
+   * @note This method is not thead safe. It's the user's responsibility to ensure the session
+   */
+  void handleOutMessages(std::vector<protocol::OutMessage>&& messages);
+
+  /**
    * @brief Handle a message to send to the client.
    *
    * @note This method is not thead safe. It's the user's responsibility to ensure the session
