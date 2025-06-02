@@ -5,6 +5,7 @@
 #include <csignal>
 #include <opencv2/opencv.hpp>
 #include <optional>
+#include <regex>
 
 // Global flag to indicate shutdown request
 std::atomic<bool> g_terminate{false};
@@ -110,7 +111,68 @@ queryImages(irsol::types::connector_t& conn)
       break;  // Done
     }
 
-    if(headerTitle != "image_data") {
+    static const std::regex reForIsn(R"(^isn=(\d+)$)");
+    std::smatch             m;
+    std::string             errorMessage;
+    if(std::regex_match(headerTitle, m, reForIsn)) {
+      try {
+        uint64_t isn = std::stoull(m[1]);
+        IRSOL_LOG_INFO("Received frame at input sequence number {}", isn);
+      } catch(const std::exception& e) {
+        IRSOL_LOG_ERROR("Failed to parse isn: {}", e.what());
+      }
+    } else if(headerTitle == "image_data") {
+
+      IRSOL_LOG_INFO("Received 'image_data' header");
+
+      // Read image metadata after "image_data:"
+      std::string header;
+      while(true) {
+        auto res = conn.read(&ch, 1);
+        if(res.value() <= 0) {
+          IRSOL_LOG_ERROR("Failed to read image metadata");
+          return std::nullopt;
+        }
+        if(ch == ':')
+          break;
+        header += ch;
+      }
+
+      IRSOL_LOG_DEBUG("Image header: {}", header);
+
+      // Parse metadata
+      int    width = 0, height = 0, channels = 0;
+      size_t imageId = 0;
+      if(sscanf(header.c_str(), "%lux%dx%dx%d", &imageId, &width, &height, &channels) != 4) {
+        IRSOL_LOG_ERROR("Invalid image header: {}", header);
+        return std::nullopt;
+      }
+
+      int type =
+        (channels == 1) ? CV_8UC1 : (channels == 3) ? CV_8UC3 : (channels == 4) ? CV_8UC4 : -1;
+      if(type == -1) {
+        IRSOL_LOG_ERROR("Unsupported channel count: {}", channels);
+        return std::nullopt;
+      }
+
+      size_t               expectedSize = width * height * channels;
+      std::vector<uint8_t> buffer(expectedSize);
+
+      // Read image bytes
+      size_t totalRead = 0;
+      while(totalRead < expectedSize) {
+        auto res = conn.read(buffer.data() + totalRead, expectedSize - totalRead);
+        if(res.value() <= 0) {
+          IRSOL_LOG_ERROR("Failed to read image data (read {} of {})", totalRead, expectedSize);
+          return std::nullopt;
+        }
+        totalRead += res.value();
+      }
+
+      retrieveTimes.push_back(irsol::types::clock_t::now());
+      cv::Mat img = createMat(buffer.data(), height, width, channels);
+      result.emplace_back(imageId, std::move(img));
+    } else {
       IRSOL_LOG_WARN("Skipping unknown header: {}", headerTitle);
       // Skip the rest of the line
       while(ch != '\n') {
@@ -118,56 +180,7 @@ queryImages(irsol::types::connector_t& conn)
         if(res.value() <= 0)
           return std::nullopt;
       }
-      continue;
     }
-
-    // Read image metadata after "image_data:"
-    std::string header;
-    while(true) {
-      auto res = conn.read(&ch, 1);
-      if(res.value() <= 0) {
-        IRSOL_LOG_ERROR("Failed to read image metadata");
-        return std::nullopt;
-      }
-      if(ch == ':')
-        break;
-      header += ch;
-    }
-
-    IRSOL_LOG_DEBUG("Image header: {}", header);
-
-    // Parse metadata
-    int    width = 0, height = 0, channels = 0;
-    size_t imageId = 0;
-    if(sscanf(header.c_str(), "%lux%dx%dx%d", &imageId, &width, &height, &channels) != 4) {
-      IRSOL_LOG_ERROR("Invalid image header: {}", header);
-      return std::nullopt;
-    }
-
-    int type =
-      (channels == 1) ? CV_8UC1 : (channels == 3) ? CV_8UC3 : (channels == 4) ? CV_8UC4 : -1;
-    if(type == -1) {
-      IRSOL_LOG_ERROR("Unsupported channel count: {}", channels);
-      return std::nullopt;
-    }
-
-    size_t               expectedSize = width * height * channels;
-    std::vector<uint8_t> buffer(expectedSize);
-
-    // Read image bytes
-    size_t totalRead = 0;
-    while(totalRead < expectedSize) {
-      auto res = conn.read(buffer.data() + totalRead, expectedSize - totalRead);
-      if(res.value() <= 0) {
-        IRSOL_LOG_ERROR("Failed to read image data (read {} of {})", totalRead, expectedSize);
-        return std::nullopt;
-      }
-      totalRead += res.value();
-    }
-
-    retrieveTimes.push_back(irsol::types::clock_t::now());
-    cv::Mat img = createMat(buffer.data(), height, width, channels);
-    result.emplace_back(imageId, std::move(img));
   }
 
   auto t1            = irsol::types::clock_t::now();
