@@ -49,24 +49,41 @@ struct Success
   /// @return true if the value is of type string.
   bool hasString() const;
 
-  template<
-    typename T,
-    std::enable_if_t<
-      irsol::traits::is_type_in_variant_v<T, InMessage> &&
-        !std::is_same_v<std::decay_t<T>, Inquiry>,
-      int> = 0>
-  static Success from(T&& msg)
+  /** Helper factory method to create a success message from an existing Assignment InMessage type
+   *
+   * This is useful when creating success messages directly for consumed Assignment.
+   *
+   * @param msg The message that leads to the creation of this success message.
+   * @param overrideValue Optional override value to return alongside the created Success message.
+   */
+  static Success from(
+    const Assignment&                             msg,
+    std::optional<irsol::types::protocol_value_t> overrideValue = std::nullopt)
   {
-    using U = std::decay_t<T>;
-    if constexpr(std::is_same_v<U, Assignment>) {
-      return Success(msg.identifier, InMessageKind::ASSIGNMENT, msg.value);
-    } else if constexpr(std::is_same_v<U, Command>) {
-      return Success(msg.identifier, InMessageKind::COMMAND);
-    } else {
-      IRSOL_MISSING_TEMPLATE_SPECIALIZATION(U, "Success::from<T>()");
-    }
+    return Success(
+      msg.identifier,
+      InMessageKind::ASSIGNMENT,
+      overrideValue.has_value() ? overrideValue : std::make_optional(msg.value));
   }
 
+  /** Helper factory method to create a success message from an existing Command InMessage type
+   *
+   * This is useful when creating success messages directly for consumed Command.
+   *
+   * @param msg The message that leads to the creation of this success message.
+   */
+  static Success from(const Command& msg)
+  {
+    return Success(msg.identifier, InMessageKind::COMMAND);
+  }
+
+  /** Helper factory method to create a success message from an existing Inquiry InMessage type
+   *
+   * This is useful when creating success messages directly for consumed Inquiry.
+   *
+   * @param msg The message that leads to the creation of this success message.
+   * @param result The result of the inquiry.
+   */
   static Success from(const Inquiry& msg, irsol::types::protocol_value_t result)
   {
     return Success(msg.identifier, InMessageKind::INQUIRY, std::make_optional(result));
