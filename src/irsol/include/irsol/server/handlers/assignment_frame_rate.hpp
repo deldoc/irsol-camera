@@ -6,13 +6,15 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct AssignmentFrameRateHandler : AssignmentHandler
+class AssignmentFrameRateHandler : public AssignmentHandler
 {
+public:
   AssignmentFrameRateHandler(Context ctx);
 
+protected:
   std::vector<out_message_t> process(
     std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Assignment&&                                  message) override;
+    protocol::Assignment&&                                  message) final override;
 };
 }  // namespace handlers
 }  // namespace server

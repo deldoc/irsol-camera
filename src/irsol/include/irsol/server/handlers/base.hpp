@@ -19,14 +19,9 @@ template<
   typename T,
   std::enable_if_t<irsol::traits::is_type_in_variant<T, irsol::protocol::InMessage>::value, int> =
     0>
-struct HandlerBase
+class HandlerBase
 {
-
-  HandlerBase(Context ctx): ctx(ctx){};
-  virtual std::vector<out_message_t> process(
-    std::shared_ptr<irsol::server::internal::ClientSession> session,
-    T&&                                                     message) = 0;
-
+public:
   std::vector<out_message_t> operator()(const irsol::types::client_id_t& clientId, T&& message)
   {
     // Retrieve the current session using the client ID
@@ -37,6 +32,13 @@ struct HandlerBase
     }
     return process(session, std::move(message));
   }
+
+protected:
+  HandlerBase(Context ctx): ctx(ctx){};
+
+  virtual std::vector<out_message_t> process(
+    std::shared_ptr<irsol::server::internal::ClientSession> session,
+    T&&                                                     message) = 0;
 
   Context ctx;
 };

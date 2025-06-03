@@ -11,18 +11,20 @@ template<
   typename T,
   std::enable_if_t<irsol::traits::is_type_in_variant<T, irsol::protocol::InMessage>::value, int> =
     0>
-struct LambdaHandler : public internal::HandlerBase<T>
+class LambdaHandler : public internal::HandlerBase<T>
 {
   using lambda_function_t =
     std::function<std::vector<out_message_t>(Context&, const irsol::types::client_id_t&, T&&)>;
 
+public:
   LambdaHandler(irsol::server::handlers::Context ctx, lambda_function_t callback)
     : internal::HandlerBase<T>(ctx), m_callback(callback)
   {}
 
+protected:
   std::vector<out_message_t> process(
     std::shared_ptr<irsol::server::internal::ClientSession> session,
-    T&&                                                     message) override
+    T&&                                                     message) final override
   {
     return m_callback(this->ctx, session->id(), std::move(message));
   }

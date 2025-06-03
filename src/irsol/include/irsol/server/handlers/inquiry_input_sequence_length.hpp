@@ -6,13 +6,15 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct InquiryInputSequenceLengthHandler : InquiryHandler
+class InquiryInputSequenceLengthHandler : public InquiryHandler
 {
+public:
   InquiryInputSequenceLengthHandler(Context ctx);
 
+protected:
   std::vector<out_message_t> process(
     std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Inquiry&&                                     message) override;
+    protocol::Inquiry&&                                     message) final override;
 };
 }  // namespace handlers
 }  // namespace server

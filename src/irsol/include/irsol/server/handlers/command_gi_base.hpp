@@ -7,13 +7,15 @@ namespace irsol {
 namespace server {
 namespace handlers {
 namespace internal {
-struct CommandGIBaseHandler : CommandHandler
+class CommandGIBaseHandler : public CommandHandler
 {
+public:
   CommandGIBaseHandler(Context ctx);
 
+protected:
   std::vector<out_message_t> process(
     std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Command&&                                     message) override;
+    protocol::Command&&                                     message) final override;
 
 private:
   std::string getDescription(

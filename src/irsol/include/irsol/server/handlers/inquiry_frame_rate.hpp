@@ -5,13 +5,15 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct InquiryFrameRateHandler : InquiryHandler
+class InquiryFrameRateHandler : public InquiryHandler
 {
+public:
   InquiryFrameRateHandler(Context ctx);
 
+protected:
   std::vector<out_message_t> process(
     std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Inquiry&&                                     message) override;
+    protocol::Inquiry&&                                     message) final override;
 };
 }
 }

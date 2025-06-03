@@ -33,14 +33,17 @@ struct AssignmentCameraImageAttributeHeight
 };
 
 template<typename AssignmentCameraImageAttribute>
-struct AssignmentImgHandlerBase : AssignmentHandler
+class AssignmentImgHandlerBase : public AssignmentHandler
 {
   static constexpr std::string_view name = AssignmentCameraImageAttribute::name;
 
+public:
   AssignmentImgHandlerBase(Context ctx): AssignmentHandler(ctx) {}
+
+protected:
   std::vector<out_message_t> process(
     IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Assignment&&                                                     message) override
+    protocol::Assignment&& message) final override
   {
     auto& cam      = ctx.app.camera();
     auto  resValue = cam.setParam(std::string(name), irsol::utils::toInt(message.value));

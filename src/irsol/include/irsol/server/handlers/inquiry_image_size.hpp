@@ -31,14 +31,17 @@ struct InquiryCameraImageAttributeHeight
 };
 
 template<typename InquiryCameraImageAttribute>
-struct InquiryImgHandlerBase : InquiryHandler
+class InquiryImgHandlerBase : public InquiryHandler
 {
   static constexpr std::string_view name = InquiryCameraImageAttribute::name;
 
+public:
   InquiryImgHandlerBase(Context ctx): InquiryHandler(ctx) {}
+
+protected:
   std::vector<out_message_t> process(
     IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Inquiry&&                                                        message) override
+    protocol::Inquiry&& message) final override
   {
     auto&                      cam   = ctx.app.camera();
     int                        value = cam.getParam<int>(std::string(name));

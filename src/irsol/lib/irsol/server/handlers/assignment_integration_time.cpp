@@ -40,15 +40,15 @@ AssignmentIntegrationTimeHandler::process(
   auto& cam               = session->app().camera();
   auto  resultingExposure = cam.setExposure(integrationTime);
 
-  std::vector<out_message_t> result;
-  result.emplace_back(irsol::protocol::Success::from(
-    message,
-    static_cast<int>(
-      1.0 * std::chrono::duration_cast<std::chrono::microseconds>(resultingExposure).count() /
-      1000)));
-  return result;
+  int resultingExposureMs = static_cast<int>(
+    1.0 * std::chrono::duration_cast<std::chrono::microseconds>(resultingExposure).count() / 1000);
 
-  // TODO -> handle broadcasting of data
+  // Broadcast the new integration time to all clients
+  ctx.broadcastMessage(irsol::protocol::Success::from(message, {resultingExposureMs}));
+
+  // Don't return anything to the current client, as the client is automatically notified via the
+  // above broadcast
+  return {};
 }
 }  // namespace handlers
 }  // namespace server

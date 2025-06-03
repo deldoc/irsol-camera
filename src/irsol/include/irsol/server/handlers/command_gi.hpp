@@ -6,8 +6,9 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-struct CommandGIHandler : internal::CommandGIBaseHandler
+class CommandGIHandler : public internal::CommandGIBaseHandler
 {
+public:
   CommandGIHandler(Context ctx);
 
 private:

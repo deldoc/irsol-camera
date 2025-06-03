@@ -3,13 +3,15 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-struct CommandAbortHandler : CommandHandler
+class CommandAbortHandler : public CommandHandler
 {
+public:
   CommandAbortHandler(Context ctx);
 
+protected:
   std::vector<out_message_t> process(
     std::shared_ptr<irsol::server::internal::ClientSession> session,
-    irsol::protocol::Command&&                              message);
+    irsol::protocol::Command&&                              message) final override;
 };
 }  // namespace handlers
 }  // namespace server
