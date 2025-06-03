@@ -29,11 +29,17 @@ message(STATUS "CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 
-# Add subdirectories for the main project
+# Add the main project sub-directory
 add_subdirectory(irsol)
 
-# Add subdirectories for examples
-add_subdirectory(examples)
+
+# Check if IRSOL_BUILD_EXAMPLES is defined and set to ON
+option(IRSOL_BUILD_EXAMPLES "Build irsol examples" ON)
+if(IRSOL_BUILD_TESTS)
+    add_subdirectory(examples)
+else()
+    message(STATUS "IRSOL_BUILD_EXAMPLES is OFF. Skipping building irsol examples.")
+endif()
 
 # Check if IRSOL_BUILD_TESTS is defined and set to ON
 option(IRSOL_BUILD_TESTS "Build irsol tests" OFF)
@@ -41,6 +47,6 @@ if(IRSOL_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
 else()
-    message(STATUS "IRSOL_BUILD_TEST is OFF. Skipping building irsol-camera tests.")
+    message(STATUS "IRSOL_BUILD_TEST is OFF. Skipping building irsol tests.")
 endif()
 

@@ -1,3 +1,24 @@
+# Variables for build configuration
+BUILD_TYPE_RELEASE = Release
+BUILD_TYPE_DEBUG   = Debug
+
+BUILD_DIR_RELEASE  = src/build/release
+BUILD_DIR_DEBUG    = src/build/debug
+
+DIST_DIR_RELEASE   = src/dist/release
+DIST_DIR_DEBUG     = src/dist/debug
+
+ifeq ($(DEBUG),1)
+	BUILD_TYPE = $(BUILD_TYPE_DEBUG)
+	BUILD_DIR  = $(BUILD_DIR_DEBUG)
+	DIST_DIR   = $(DIST_DIR_DEBUG)
+else
+	BUILD_TYPE = $(BUILD_TYPE_RELEASE)
+	BUILD_DIR  = $(BUILD_DIR_RELEASE)
+	DIST_DIR   = $(DIST_DIR_RELEASE)
+endif
+
+# Formatting rule
 lint:
 	@echo "Running clang-format..."
 	@clang-format --style=file -i -- src/examples/**/*.cpp
@@ -14,58 +35,63 @@ lint:
 	@echo "Done running clang-format."
 .PHONY: lint
 
+# Build: core + examples + tests
 build:
-	@echo "Setting up build environment..."
-	@if [ -n "$$DEBUG" ]; then \
-		BUILD_DIR=src/build/debug; \
-		CONFIG=Debug; \
-	else \
-		BUILD_DIR=src/build/release; \
-		CONFIG=Release; \
-	fi; \
-	mkdir -p $$BUILD_DIR && cd $$BUILD_DIR && \
-	cmake -DCMAKE_BUILD_TYPE=$$CONFIG -DIRSOL_BUILD_TESTS=ON ../.. && \
-	make -j8
-	@echo "Done building."
+	@echo "Building full irsol project (core, examples, and tests)..."
+	@mkdir -p $(BUILD_DIR) && cd $(BUILD_DIR) && \
+	cmake -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) -DIRSOL_BUILD_TESTS=ON -DIRSOL_BUILD_EXAMPLES=ON ../.. && \
+	cmake --build . --parallel
+	@echo "Done building all."
+.PHONY: build/all
+
+# Build: core + examples (no tests)
+build/examples:
+	@echo "Building irsol project and examples (core, examples)..."
+	@mkdir -p $(BUILD_DIR) && cd $(BUILD_DIR) && \
+	cmake -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) -DIRSOL_BUILD_TESTS=OFF -DIRSOL_BUILD_EXAMPLES=ON ../.. && \
+	cmake --build . --parallel
+	@echo "Done building core and examples."
+.PHONY: build/all
+
+# Build only core project (no tests, no examples)
+build/core:
+	@echo "Building core irsol project..."
+	@mkdir -p $(BUILD_DIR) && cd $(BUILD_DIR) && \
+	cmake -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) -DIRSOL_BUILD_TESTS=OFF -DIRSOL_BUILD_EXAMPLES=OFF ../.. && \
+	cmake --build . --parallel
+	@echo "Done building core."
 .PHONY: build
 
-tests/build:
-	@echo "Building tests..."
-	@if [ -n "$$DEBUG" ]; then \
-		BUILD_DIR=src/build/debug; \
-		CONFIG=Debug; \
-	else \
-		BUILD_DIR=src/build/release; \
-		CONFIG=Release; \
-	fi; \
-	mkdir -p $$BUILD_DIR && cd $$BUILD_DIR && \
-	cmake -DCMAKE_BUILD_TYPE=$$CONFIG -DIRSOL_BUILD_TESTS=ON ../.. && \
-	cmake --build . --target unit_tests -j8
+# Build and run tests
+build/tests:
+	@echo "Building test suite..."
+	@mkdir -p $(BUILD_DIR) && cd $(BUILD_DIR) && \
+	cmake -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) -DIRSOL_BUILD_TESTS=ON ../.. && \
+	cmake --build . --target unit_tests --parallel
 	@echo "Done building tests."
-.PHONY: tests/build
+.PHONY: build/tests
 
-tests: tests/build
-	@echo "Running unit-tests"
-	@if [ -n "$$DEBUG" ]; then \
-		./src/dist/debug/bin/unit_tests --log-level trace; \
-	else \
-		./src/dist/release/bin/unit_tests; \
-	fi
+tests: tests
+	@echo "Running unit tests..."
+	@$(DIST_DIR)/bin/unit_tests
+	@echo "Done running tests."
 .PHONY: tests
 
+# Clean build artifacts
 clean:
-	@echo "Cleaning build files..."
-	@cd src/build/debug && make clean;
-	@cd src/build/release && make clean;
+	@echo "Cleaning build files for $(BUILD_TYPE)..."
+	@if [ -d "$(BUILD_DIR)" ]; then cd $(BUILD_DIR) && make clean; fi
 	@echo "Done cleaning."
 .PHONY: clean
 
+# Remove all build and dist folders
 deepclean: clean
-	@echo "Removing build and dist directories..."
-	@cd src && rm -rf build/ && rm -rf dist/
+	@echo "Removing all build and dist directories for $(BUILD_TYPE)..."
+	@rm -rf $(BUILD_DIR) $(DIST_DIR)
 	@echo "Done deep-cleaning."
 .PHONY: deepclean
 
-all: lint build
+# Convenience rule: lint + full build
+all: lint build/all
 	@echo "All tasks completed."
 .PHONY: all

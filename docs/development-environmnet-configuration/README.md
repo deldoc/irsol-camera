@@ -1,4 +1,4 @@
-#Development Environment Configuration
+# Development Environment Configuration
 
 This guide will lead you through the setup of a development environment that will allow you to edit, compile, and test new code.
 
@@ -6,60 +6,102 @@ This guide will lead you through the setup of a development environment that wil
 This section presents the structure of the repository:
 - [`docs`](../../docs/): Contains all documentation associated with this repository.
 - [`src`](../../src/): Contains the source code for the project:
-  - [`irsol`](../../src/irsol/): Core library for interacting with the cameras.
   - [`examples`](../../src/examples/): Example applications demonstrating how to use the `neoAPI` with the `irsol` library.
-  - [`external`](../../src/external/): External dependencies, such as `neoAPI`.
-    - [neoapi](../../src/external/neoapi/): Contains the library provided by the camera vendor for interacting with the cameras programmatically.
-      - [headers](../../src/external/neoapi/include/): Contains the public headers for the `neoAPI` library.
-      - [lib](../../src/external/neoapi/lib/): Contains the *pre-compiled* library for the `neoAPI` library.
+  - [`external`](../../src/external/): External dependencies, such as `neoAPI`, `ppk_assert` and `tabulate`.
+  - [`irsol`](../../src/irsol/): Core library for interacting with the cameras.
+  - [`tests`](../../src/tests/): Tests implementation for the irsol library.
 
 
 ### Building the source code
-The source code is structured to be compiled via [`cmake`](https://cmake.org/). Ensure `cmake` is installed in your environment. For openSUSE, this can be done via:
+
+The `irsol` project uses [`CMake`](https://cmake.org/) as its primary build system. CMake is a powerful, cross-platform build automation tool that generates native build scripts (e.g., Makefiles, Ninja, Visual Studio projects) from a declarative configuration file (CMakeLists.txt).
+
+We use CMake because it enables:
+
+ * _Platform independence_ – The same configuration can target Linux, macOS, or Windows.
+ * _Modular dependency management_ – External libraries like spdlog, sockpp, or NeoAPI are cleanly integrated via FetchContent or find_package().
+ * _Flexible configuration_ – Build types like Debug or Release can be selected easily.
+ * _Reusable targets_ – Internal libraries like irsol::core and irsol::cv are defined once and reused across multiple tools or test suites.
+ * _Toolchain integration_ – Compiler warnings, assertions, logging levels, and other build settings are driven by configuration flags.
+ * _Out-of-source builds_ – Keeps build artifacts separate from the source directory.
+
+Ensure `cmake` is installed in your environment. For openSUSE, this can be done via:
 ```sh
 $> sudo zypper refresh
 $> sudo zypper install cmake
 ```
 
-#### `cmake` Configuration
-The [`CMakeLists.txt`](../../src/CMakeLists.txt) file at the root of the [`src`](../../src/) directory is the main configuration file for all the source code contained in this repository: it builds the `irsol` library, links against dependencies and also builds the examples.
-
-Each specific example (e.g., [`getting_started`](../../src/examples/getting_started/)) folder contains its own `CMakeLists.txt` file, invoked by the root `CMakeLists.txt`. These files contain configuration and instructions for building the specific examples.
-
 #### Building Steps
-1. Navigate to the `src` folder:
-   ```sh
-   $> cd src/
-   ```
-2. Create a `build` directory and enter it:
-   ```sh
-   $> mkdir -p build/
-   $> cd build/
-   ```
-3. Run `cmake`, pointing to the directory containing the root `CMakeLists.txt` file:
-   ```sh
-   $> cmake [-D CMAKE_BUILD_TYPE={Debug|Release} ] ..
-   ```
-4. Build the `irsol` library and the example executables:
-   ```sh
-   $> make [-j<N>]
-   ```
+A convenience [`Makefile`](../../Makefile) at the root of the repository implements rules for invoking `CMake` for you.
 
-Executables will be generated in the `src/build/<debug|release>/bin` directory.
+**Note**: for each of the following commands, you can build the same target in `Debug` mode by adding the `DEBUG=1` flag after the make command. By default, targets are build in `Release` mode.
 
-#### Fast Build
-A utility [`Makefile`](../../Makefile) is available to build all examples from the repository root:
-```sh
-$> make examples
-```
-or, for debug mode:
-```sh
-$> DEBUG=1 make examples
-```
+* Building the `irsol` project, the examples and associated unit-tests
+  ```sh
+  $> make build
+  ```
+  or, for `Debug` build type
+  ```sh
+  $> make build DEBUG=1
+  ```
+  This will compile the `irsol` project, associated examples and unit-tests.
+
+* Building only the `irsol` examples without the unit-tests
+  ```sh
+  $> make build/examples
+  ```
+  This will compile the core `irsol` project and associated examples.
+
+* Building only the `irsol` project without the examples and without the unit-tests
+  ```sh
+  $> make build/core
+  ```
+  This will compile only the `irsol` core project, no examples and no tests.
+  
+* Building  unit-tests
+  ```sh
+  $> make build/tests
+  ```
+  This will compile all targets needed for building unit-tests.
+
+* Building and running unit-tests
+  ```sh
+  $> make tests
+  ```
+  This will first build, then run unit-tests. Test results are shown on the console once tests are finished.
+
+* Linting the code (autoformatting)
+  ```sh
+  $> make lint
+  ```
+  This will run [`clang-format`](https://clang.llvm.org/docs/ClangFormat.html) on the repository's codebase and format the files according to the [clang-format style guide](../../.clang-format).
+
+  **Note**: you might need to have to install `clang` in your development environment. For openSuse, this can be done via:
+  ```sh
+  $> sudo zypper refresh
+  $> sudo zypper install llvm-clang
+  ```
+
+* Cleaning the build artifacts
+  ```sh
+  $> make clean
+  ```
+  This will remove all build artifacts for the current build configuration following CMake's best attempt at cleaning the build state.
+
+* Deep-cleaning the build artifacts
+  ```sh
+  $> make deepclean
+  ```
+  This will remove all build artifacts for the current build configuration by deleting all artifacts in the build and distribution directories.
+
+
+Some of the above commands will generate artifacts (executables, or libraries) that are generated within the `src/dist/<debug|release>/bin` and `src/dist/<debug|release>/lib` folders respectively.
+
 
 ### Optional development dependencies
-OpenCV is an optional dependency you can install into your development environment in order to compile and run some extra examples that allow interactive visualization of images.
-In order to do so, make sure to:
+[OpenCV](https://opencv.org/) is an optional dependency you can install into your development environment in order to compile and run some extra examples that allow interactive visualization of images. Without `OpenCV` available in your system, these examples won't be compiled.
+
+Make sure to:
 1. Install OpenCV via `zypper`:
    ```sh
    $> sudo zypper install opencv-devel
@@ -69,16 +111,6 @@ In order to do so, make sure to:
    $> sudo find / -name "OpenCVConfig.cmake"
    ```
    such as `/usr/share/OpenCV/OpenCVConfig.cmake`
+   
+   If this is found, when building the examples of the `irsol` project, the ones requiring `OpenCV` will automatically be built as well.
 
-
-## Linting
-The [root Makefile](../../Makefile) contains a rule for linting the `C++` code in this repository using [clang-format](https://clang.llvm.org/docs/ClangFormat.html). To lint the source files:
-```sh
-$> make lint
-```
-
-**Note**: you might need to have to install `clang` in your development environment. For openSuse, this can be done via:
-```sh
-$> sudo zypper refresh
-$> sudo zypper install llvm-clang
-```

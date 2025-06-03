@@ -12,6 +12,9 @@ The documentation and SDK access for the _Baumer_ camera is available through th
  * [Baumer GAPI SDK](https://www.baumer.com/ch/en/product-overview/industrial-cameras-image-processing/software/baumer-gapi-sdk/c/14174): a **low level SDK** (available for both `C` and `C++` clients) for interacting with the _Baumer_ camera programmatically.
  * [Baumer neoAPI](https://www.baumer.com/ch/en/product-overview/industrial-cameras-image-processing/software/baumer-neoapi/c/42528): a **high level SDK** (available for both `C`  and `C++` clients) for interactive with the _Baumer_ camera programmatically.
 
+The `irsol` project developed within this repository is making use of the [Baumer neoAPI](https://www.baumer.com/ch/en/product-overview/industrial-cameras-image-processing/software/baumer-neoapi/c/42528) as an SDK to interact with the physical camera.
+Documentation for that SDK is available [here](../../src/external/neoapi/docs/index.html).
+
 ## Physical configuration
 
 The following diagram is a schematic representation of how one needs to connect the _Baumer_ camera to the host PC. This setup includes:
@@ -25,13 +28,13 @@ The following diagram is a schematic representation of how one needs to connect 
 Once the different parts are connected together, you should see that the _Baumer_ camera has a single green light (non-blinking) turned on. If you see a blinking led, the connection is incorrect.
 
 ### IP configuration
-A critical part for allowing the Shuttle PC to connect to the _Baumer_ camera, relies in making sure the different components have "compatible" IP addresses. In particular, the following network configuration is necessary:
+A critical part for allowing the Shuttle PC to connect to the _Baumer_ camera, relies in making sure the two components have "compatible" IP addresses. In particular, the following network configuration is necessary (to be configure only once):
 * Shuttle PC network port IP and Subnet configuration
 * Camera IP and Subnet configuration
 
 #### Shuttle network configuration
 
-As an example: if the network interface of the Shuttle PC against which the ethernet cable is connected is `eth1` , you can check the IP configuration of that port via:
+Assuming the network interface of the Shuttle PC against which the ethernet cable is connected is `eth1` , you can check the IP configuration of that port via:
 ```sh
 $> ip a show eth1
 
@@ -47,10 +50,10 @@ In the above example, we understand that the `eth1`  network port of the Shuttle
 
 #### Camera network configuration
 
-A utility tool named `gevipconfig` (distributed with both `Baumer GAPI SDK` and `Baumer neoAPI`) facilitates the configuration of the IP and Subnet for the _Baumer_ camera. A valid IP address has to be in the subnet of the network interface card, the device is connected to and has to be unique.
+A utility tool named [`gevipconfig`](../../src/external/neoapi/tools/gevipconfig) (distributed with both `Baumer GAPI SDK` and `Baumer neoAPI`, but also available for convenience in this repository inside [this](../../src/external/neoapi/tools) folder) facilitates the configuration of the IP and Subnet for the _Baumer_ camera. A valid IP address has to be in the subnet of the network interface card, the device is connected to and has to be unique.
 
 It is possible to manually set and persist a _static_ IP address to the _Baumer_ camera following these steps:
-1. Verify the current camera IP configuration by running the `gevipconfig` tool (this is located in `tools/gevipconfig` in the `neoAPI` SDK):
+1. Verify the current camera IP configuration by running the `gevipconfig` tool:
    ```sh
    $> sudo ./gevipconfig
 
@@ -102,17 +105,7 @@ It is possible to manually set and persist a _static_ IP address to the _Baumer_
     $> sudo ./gevipconfig -c 700011810487 -i 192.168.1.2 -s 255.255.255.0 -p
     ```
 
+    More details are available in the `gevipconfig` [documentation](../../src/external/neoapi/tools/gevipconfig.md).
+
 ### Verification
-Once the camera and its network configuration has been completed, you can verify the correctness of the setup by running any of the pre-compiled example binaries that are distributed with the `neoAPI`  package, such as `examples/bin/getting_started_cpp`. If by running:
-```sh
-$> ./examples/bin/getting_started_cpp
-```
-you get no output, then the camera has been connected correctly.
-
-On the other side, if by running the same command, you get the following output:
-```sh
-$> ./examples/bin/getting_started_cpp
-
-error: NotConnectedException: No device with '' found.
-```
-it's an indicator that the setup/configuration of the Shuttle-Camera connection is incorrect.
+Once the camera and its network configuration has been completed, you can verify the correctness of the setup by running any of the available examples that you can build following the [these](../development-environmnet-configuration/) instructions.

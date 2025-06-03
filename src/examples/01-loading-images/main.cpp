@@ -124,9 +124,9 @@ main(int argc, char** argv)
 
   // Choose camera resolution based on build type
 #ifdef DEBUG
-  auto cameraInterface = irsol::camera::Interface::HalfResolution();
-#else
   auto cameraInterface = irsol::camera::Interface::FullResolution();
+#else
+  auto cameraInterface = irsol::camera::Interface::HalfResolution();
 #endif
 
   // Ensure the camera is connected before continuing

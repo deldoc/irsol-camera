@@ -1,4 +1,4 @@
-# irsol-camera
+# IRSOL _Baumer_ camera
 
 ## Quickstart
 1. [Physical Setup](./docs/physical-setup)
