@@ -3,7 +3,8 @@
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/types.hpp"
-#include "tabulate/tabulate.hpp"
+
+#include <tabulate/table.hpp>
 
 namespace irsol {
 namespace camera {

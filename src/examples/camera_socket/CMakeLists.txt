@@ -21,7 +21,6 @@ add_executable(
 
 target_link_libraries(${PROJECT_NAME}-viewer-gi
     irsol::cv
-    args::args
 )
 
 add_executable(
@@ -31,7 +30,6 @@ add_executable(
 
 target_link_libraries(${PROJECT_NAME}-viewer-gis
     irsol::cv
-    args::args
 )
 else()
 message(STATUS, "OpenCV not found, viewer target skipped")

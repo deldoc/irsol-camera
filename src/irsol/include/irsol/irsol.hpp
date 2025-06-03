@@ -1,4 +1,5 @@
 #pragma once
+#include "irsol/args.hpp"
 #include "irsol/assert.hpp"
 #include "irsol/camera.hpp"
 #include "irsol/logging.hpp"

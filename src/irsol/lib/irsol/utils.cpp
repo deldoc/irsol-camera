@@ -3,11 +3,11 @@
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "neoapi/neoapi.hpp"
-#include "tabulate/tabulate.hpp"
 
 #include <iomanip>
 #include <random>
 #include <sstream>
+#include <tabulate/table.hpp>
 #include <thread>
 
 namespace irsol {
