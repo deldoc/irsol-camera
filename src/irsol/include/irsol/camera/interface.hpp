@@ -29,6 +29,10 @@ class Interface
 public:
   using image_t        = NeoAPI::Image;
   using camera_param_t = std::variant<bool, int, int64_t, double, std::string, const char*>;
+
+  /// Default exposure time set to the camera every time we start it newly.
+  static constexpr irsol::types::duration_t DEFAULT_EXPOSURE_TIME = std::chrono::milliseconds(2);
+
   /**
    * @brief Constructs the Interface by loading the default camera.
    *

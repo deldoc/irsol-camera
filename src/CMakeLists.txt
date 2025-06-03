@@ -35,7 +35,7 @@ add_subdirectory(irsol)
 
 # Check if IRSOL_BUILD_EXAMPLES is defined and set to ON
 option(IRSOL_BUILD_EXAMPLES "Build irsol examples" ON)
-if(IRSOL_BUILD_TESTS)
+if(IRSOL_BUILD_EXAMPLES)
     add_subdirectory(examples)
 else()
     message(STATUS "IRSOL_BUILD_EXAMPLES is OFF. Skipping building irsol examples.")

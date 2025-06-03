@@ -13,6 +13,7 @@ endif()
 
 
 add_subdirectory(01-loading-images)
+add_subdirectory(02-interacting-with-camera-features)
 add_subdirectory(simple)
 add_subdirectory(user_buffer)
 add_subdirectory(camera_socket)

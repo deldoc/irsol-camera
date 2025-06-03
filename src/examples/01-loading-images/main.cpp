@@ -17,12 +17,12 @@
 #include <unordered_map>
 
 /// @brief Returns the program name, typically used for logging.
-/// If `PROGRAM_NAME` is not defined at compile time, returns `"unknown-program"`.
+/// If `PROGRAM_NAME` is not defined at compile time, returns `"loading-images-demo"`.
 const std::string
 getProgramName()
 {
 #ifndef PROGRAM_NAME
-#define PROGRAM_NAME "unknown-program"
+#define PROGRAM_NAME "loading-images-demo"
 #endif
   return PROGRAM_NAME;
 }

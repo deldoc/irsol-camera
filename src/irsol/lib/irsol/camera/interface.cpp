@@ -23,9 +23,10 @@ Interface::Interface(NeoAPI::Cam cam): m_cam(cam)
   // Here we set the exposure parameters, so that they can be controlled via software
   IRSOL_LOG_INFO("Configuring camera for manual exposure");
   setMultiParam({
-    {"ExposureAuto", {"Off"}},   // Disable automatic exposure
-    {"ExposureMode", {"Timed"}}  // Exposure mode: timed
+    {"ExposureAuto", {"Off"}},    // Disable automatic exposure
+    {"ExposureMode", {"Timed"}},  // Exposure mode: timed
   });
+  setExposure(Interface::DEFAULT_EXPOSURE_TIME);  // Default exposure
 
   // Store the current exposure of the camera
   m_CachedExposureTime = getExposure();
@@ -59,6 +60,7 @@ Interface::HalfResolution()
   auto cam = irsol::utils::loadDefaultCamera();
 
   Interface interface(cam);
+  // For 'HalfResolution' we bin in both vertical and horizontal direction.
   interface.setMultiParam({{"BinningVertical", {2}},
                            {"BinningVerticalMode", {"Average"}},
                            {"BinningHorizontal", {2}},
