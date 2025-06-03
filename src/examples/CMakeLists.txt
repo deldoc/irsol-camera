@@ -12,6 +12,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
 endif()
 
 
+add_subdirectory(00-logging-and-asserting)
 add_subdirectory(01-loading-images)
 add_subdirectory(02-interacting-with-camera-features)
 add_subdirectory(simple)
