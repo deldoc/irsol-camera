@@ -1,6 +1,7 @@
 #include "irsol/server/app.hpp"
 
 #include "irsol/logging.hpp"
+#include "irsol/protocol/serialization.hpp"
 #include "irsol/server/handlers.hpp"
 #include "irsol/utils.hpp"
 
@@ -55,6 +56,30 @@ App::getClientSession(const irsol::types::client_id_t& clientId)
   std::scoped_lock<std::mutex> lock(m_clientsMutex);
   auto                         it = m_clients.find(clientId);
   return it != m_clients.end() ? it->second : nullptr;
+}
+
+void
+App::broadcastMessage(
+  protocol::OutMessage&&                          message,
+  const std::optional<irsol::types::client_id_t>& excludeClient)
+{
+  // Serialize the message only once, and distribute to all clients
+  auto serializedMessage = irsol::protocol::Serializer::serialize(std::move(message));
+  IRSOL_LOG_DEBUG("Broadcasting serialized message {}", serializedMessage.toString());
+  std::scoped_lock<std::mutex> lock(m_clientsMutex);
+
+  for(const auto& [clientId, session] : m_clients) {
+    if(excludeClient && clientId == *excludeClient) {
+      continue;  // Skip the sender if specified
+    }
+    try {
+      std::scoped_lock<std::mutex> sessionLock(session->socketMutex());
+      session->handleSerializedMessage(serializedMessage);
+    } catch(const std::exception& ex) {
+      IRSOL_LOG_WARN("Failed to send broadcast to client {}: {}", clientId, ex.what());
+    }
+  }
+  IRSOL_LOG_DEBUG("Broadcasting complete.");
 }
 
 void

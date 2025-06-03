@@ -81,6 +81,13 @@ ClientSession::handleOutMessage(protocol::OutMessage&& message)
   auto serializedMessage = irsol::protocol::Serializer::serialize(std::move(message));
   IRSOL_NAMED_LOG_DEBUG(m_id, "Serialized message: '{}'", serializedMessage.toString());
 
+  handleSerializedMessage(serializedMessage);
+}
+
+void
+ClientSession::handleSerializedMessage(
+  const protocol::internal::SerializedMessage& serializedMessage)
+{
   // Send the serialized message to the client
   if(serializedMessage.hasHeader()) {
     send(serializedMessage.header);
@@ -153,11 +160,11 @@ ClientSession::send(const std::string& msg)
 }
 
 void
-ClientSession::send(void* data, size_t size)
+ClientSession::send(const irsol::types::byte_t* const data, size_t size)
 {
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending binary data of size {}", size);
 
-  auto result = m_socket.write(data, size);
+  auto result = m_socket.write_n(data, size);
   if(!result) {
     IRSOL_NAMED_LOG_ERROR(m_id, "Failed to send binary data: {}", result.error().message());
   } else if(result.value() != size) {

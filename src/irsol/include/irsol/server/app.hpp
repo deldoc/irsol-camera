@@ -74,6 +74,19 @@ public:
   std::shared_ptr<internal::ClientSession> getClientSession(
     const irsol::types::client_id_t& clientId);
 
+  /**
+   * @brief Broadcasts a message to all connected client sessions.
+   *
+   * This method acquires a lock on the client map to iterate over all active client sessions
+   * and sends the provided message directly to each of them.
+   *
+   * @param message The message to broadcast.
+   * @param excludeClient Optional client ID to exclude from the broadcast (e.g., the sender).
+   */
+  void broadcastMessage(
+    protocol::OutMessage&&                          message,
+    const std::optional<irsol::types::client_id_t>& excludeClient = std::nullopt);
+
   camera::Interface& camera()
   {
     return *m_cameraInterface;

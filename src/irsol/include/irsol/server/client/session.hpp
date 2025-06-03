@@ -53,16 +53,23 @@ public:
   /**
    * @brief Handle multiple message to send to the client.
    *
-   * @note This method is not thead safe. It's the user's responsibility to ensure the session
+   * @note This method is not thread safe. It's the user's responsibility to ensure the session
    */
   void handleOutMessages(std::vector<protocol::OutMessage>&& messages);
 
   /**
    * @brief Handle a message to send to the client.
    *
-   * @note This method is not thead safe. It's the user's responsibility to ensure the session
+   * @note This method is not thread safe. It's the user's responsibility to ensure the session
    */
   void handleOutMessage(protocol::OutMessage&& message);
+
+  /**
+   * @brief Handle an already serialized message and send it to the client.
+   *
+   * @note This method is not thread safe. It's the user's responsibility to ensure the session
+   */
+  void handleSerializedMessage(const protocol::internal::SerializedMessage& serializedMessage);
 
   /// Accessor for the immutable App reference.
   const App& app() const
@@ -144,7 +151,7 @@ private:
    * @param data Pointer to the buffer.
    * @param size Number of bytes to send.
    */
-  void send(void* data, size_t size);
+  void send(const irsol::types::byte_t* const data, size_t size);
 
   /// Unique identifier for this client session.
   irsol::types::client_id_t m_id;
