@@ -1,7 +1,7 @@
 
 get_filename_component(NEOAPI_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../external/neoapi" ABSOLUTE)
 get_filename_component(NEOAPI_INCLUDE_DIR "${NEOAPI_ROOT_DIR}/include" ABSOLUTE)
-get_filename_component(NEOAPI_PRECOMPILED_LIB_PATH "${NEOAPI_ROOT_DIR}/lib/neoapi/libneoapi_cpp.so" ABSOLUTE)
+get_filename_component(NEOAPI_PRECOMPILED_LIB_PATH "${NEOAPI_ROOT_DIR}/lib/libneoapi_cpp.so" ABSOLUTE)
 if (NOT EXISTS ${NEOAPI_ROOT_DIR})
 message(FATAL_ERROR, "NEO_API_ROOT_DIR '${NEOAPI_ROOT_DIR}' does not exist")
 endif()
