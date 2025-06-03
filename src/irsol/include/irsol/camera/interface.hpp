@@ -54,6 +54,22 @@ public:
   static Interface HalfResolution();
 
   /**
+   * @brief Retrieves information about the currently held camera.
+   *
+   * Extracts relevant fields from the NeoAPI::CamInfo struct and constructs a string containing a
+   * human-readable version of this information.
+   */
+  std::string cameraInfoAsString() const;
+
+  /**
+   * @brief Retrieves state information about the currently held camera.
+   *
+   * Extracts relevant properties from the camera and constructs a string containing a
+   * human-readable version of this information.
+   */
+  std::string cameraStatusAsString() const;
+
+  /**
    * @brief Provides direct access to the underlying NeoAPI camera handle.
    *
    * @return A reference to the NeoAPI::Cam object.

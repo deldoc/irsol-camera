@@ -1,5 +1,4 @@
 #define CATCH_CONFIG_RUNNER
-#include "irsol/args.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/macros.hpp"
 

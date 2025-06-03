@@ -3,6 +3,19 @@
 #include "irsol/types.hpp"
 
 #include <optional>
+
+// Compile-time log-level (de-)activation
+#ifndef SPDLOG_ACTIVE_LEVEL
+#ifdef DEBUG
+// If not provided externally, if running in debug mode, we allow logging all levels
+#define SPDLOG_ACTIVE_LEVEL 0  // trace
+#else
+// If not provided externally, if running in release mode, we only allow logging to info level and
+// never lower (debug and trace)
+#define SPDLOG_ACTIVE_LEVEL 2  // info
+#endif
+#endif
+
 #include <spdlog/spdlog.h>
 #include <unordered_map>
 
@@ -59,4 +72,13 @@ void setLoggerName(const char* name);
 void initLogging(
   const char*                              fileSinkFilename = "log/irsol.log",
   std::optional<spdlog::level::level_enum> minLogLevel      = std::nullopt);
+
+inline const std::unordered_map<std::string, spdlog::level::level_enum> levelNameToLevelMap = {
+#ifdef DEBUG
+  {"trace", spdlog::level::trace},
+  {"debug", spdlog::level::debug},
+#endif
+  {"info", spdlog::level::info},
+  {"warn", spdlog::level::warn},
+  {"error", spdlog::level::err}};
 }  // namespace irsol

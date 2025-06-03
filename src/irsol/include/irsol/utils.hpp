@@ -99,17 +99,6 @@ std::string durationToString(irsol::types::duration_t dr);
 NeoAPI::Cam loadDefaultCamera();
 
 /**
- * @brief Log information about a camera to the application logger.
- *
- * Extracts relevant fields from the NeoAPI::CamInfo struct and logs
- * them at INFO level, including serial number, model name, resolution,
- * and supported features.
- *
- * @param info The camera info structure to log.
- */
-void logCameraInfo(const NeoAPI::CamInfo& info);
-
-/**
  * @brief Discover all cameras connected to the system.
  *
  * Queries NeoAPI for a list of connected camera devices and returns

@@ -5,6 +5,7 @@
 #include "irsol/utils.hpp"
 
 #include <neoapi/neoapi.hpp>
+#include <tabulate/table.hpp>
 
 namespace irsol {
 namespace camera {
@@ -65,6 +66,80 @@ Interface::HalfResolution()
   interface.resetSensorArea();
 
   return interface;
+}
+
+std::string
+Interface::cameraInfoAsString() const
+{
+  auto       info           = m_cam.GetInfo();
+  const auto model          = info.GetModelName();
+  const auto camId          = info.GetId();
+  const auto serial         = info.GetSerialNumber();
+  const auto tlType         = info.GetTLType();
+  const auto vendor         = info.GetVendorName();
+  const auto usb3VisionGuid = info.GetUSB3VisionGUID();
+  const auto usbPortId      = info.GetUSBPortID();
+  const auto gevIpAddress   = info.GetGevIpAddress();
+  const auto gevSubnetMask  = info.GetGevSubnetMask();
+  const auto gevGateway     = info.GetGevGateway();
+  const auto gevMacAddress  = info.GetGevMACAddress();
+
+  tabulate::Table camInfo;
+  camInfo.add_row({"Name", "Value"});
+  camInfo.add_row({"Camera Model Name", model.c_str()});
+  camInfo.add_row({"Camera ID", camId.c_str()});
+  camInfo.add_row({"Camera Serial Number", serial.c_str()});
+  camInfo.add_row({"Camera Transport Layer Type", tlType.c_str()});
+  camInfo.add_row({"Camera Vendor Name", vendor.c_str()});
+  camInfo.add_row({"Camera USB3 Vision GUID", usb3VisionGuid.c_str()});
+  camInfo.add_row({"Camera USB Port ID", usbPortId.c_str()});
+  camInfo.add_row({"Camera GEV IP Address", gevIpAddress.c_str()});
+  camInfo.add_row({"Camera GEV Subnet Mask", gevSubnetMask.c_str()});
+  camInfo.add_row({"Camera GEV Gateway", gevGateway.c_str()});
+  camInfo.add_row({"Camera GEV MAC Address", gevMacAddress.c_str()});
+  camInfo.add_row({"Is connectable", info.IsConnectable() ? "true" : "false"});
+
+  camInfo.column(0).format().font_align(tabulate::FontAlign::right);
+  return camInfo.str();
+}
+
+std::string
+Interface::cameraStatusAsString() const
+{
+  static const char* const FEATURE_NAMES[] = {"AcquisitionMode",
+                                              "BinningHorizontalMode",
+                                              "BinningHorizontal",
+                                              "BinningVerticalMode",
+                                              "BinningVertical",
+                                              "DeviceTemperatureStatus",
+                                              "DeviceTemperature",
+                                              "ExposureAuto",
+                                              "ExposureMode",
+                                              "ExposureTime",
+                                              "FrameCounter",
+                                              "Height",
+                                              "HeightMax",
+                                              "OffsetX",
+                                              "OffsetY",
+                                              "PayloadSize",
+                                              "PixelFormat",
+                                              "ReadOutTime",
+                                              "ReverseX",
+                                              "ReverseY",
+                                              "TriggerMode",
+                                              "TriggerOverlap",
+                                              "Width",
+                                              "WidthMax"};
+
+  tabulate::Table featureInfo;
+  featureInfo.add_row({"Feature", "Value"});
+
+  for(const auto featureName : FEATURE_NAMES) {
+    std::string featureValue = getParam(featureName);
+    featureInfo.add_row({featureName, featureValue});
+  }
+  featureInfo.column(0).format().font_align(tabulate::FontAlign::right);
+  return featureInfo.str();
 }
 
 NeoAPI::Cam&
@@ -156,7 +231,7 @@ Interface::captureImage(std::optional<irsol::types::duration_t> timeout)
   trigger("TriggerSoftware");
   // Wait for image, either using the current cached exposure time with a small buffer
   // or using the user-provided timeout
-  irsol::types::duration_t actualTimeout = m_CachedExposureTime + std::chrono::milliseconds(50);
+  irsol::types::duration_t actualTimeout = m_CachedExposureTime + std::chrono::milliseconds(60);
   if(timeout.has_value()) {
     IRSOL_LOG_DEBUG(
       "User provided a custom timeout of capturing camera of {}",

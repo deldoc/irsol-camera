@@ -14,7 +14,7 @@ main()
   irsol::camera::Interface cam = irsol::camera::Interface::HalfResolution();
 
   IRSOL_LOG_DEBUG("Camera connection successful");
-  irsol::utils::logCameraInfo(cam.getNeoCam().GetInfo());
+  IRSOL_LOG_INFO("\n{}", cam.cameraInfoAsString());
 
   irsol::camera::StatusMonitor monitor{cam, std::chrono::milliseconds(1000)};
   monitor.start();
