@@ -2,8 +2,8 @@
 
 #include "irsol/queue.hpp"
 #include "irsol/types.hpp"
-#include "neoapi/neoapi.hpp"
 
+#include <neoapi/neoapi.hpp>
 #include <string>
 #include <utility>
 #include <vector>

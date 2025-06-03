@@ -3,10 +3,10 @@
 #include "irsol/assert.hpp"
 #include "irsol/types.hpp"
 #include "irsol/utils.hpp"
-#include "neoapi/neoapi.hpp"
 
 #include <chrono>
 #include <mutex>
+#include <neoapi/neoapi.hpp>
 #include <optional>
 #include <string>
 #include <type_traits>

@@ -2,9 +2,9 @@
 
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
-#include "neoapi/neoapi.hpp"
 
 #include <iomanip>
+#include <neoapi/neoapi.hpp>
 #include <random>
 #include <sstream>
 #include <tabulate/table.hpp>

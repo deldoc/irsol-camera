@@ -1,8 +1,8 @@
 #include "irsol/opencv.hpp"
 
 #include "irsol/assert.hpp"
-#include "neoapi/neoapi.hpp"
 
+#include <neoapi/neoapi.hpp>
 #include <opencv2/opencv.hpp>
 
 namespace irsol {

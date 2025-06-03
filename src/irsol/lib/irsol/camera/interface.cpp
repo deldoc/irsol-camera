@@ -3,7 +3,8 @@
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/utils.hpp"
-#include "neoapi/neoapi.hpp"
+
+#include <neoapi/neoapi.hpp>
 
 namespace irsol {
 namespace camera {

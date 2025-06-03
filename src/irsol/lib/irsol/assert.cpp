@@ -1,7 +1,8 @@
 #include "irsol/assert.hpp"
 
 #include "irsol/logging.hpp"
-#include "ppk_assert/ppk_assert.hpp"
+
+#include <ppk_assert/ppk_assert.hpp>
 
 namespace irsol {
 void

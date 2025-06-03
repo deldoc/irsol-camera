@@ -12,7 +12,7 @@
 #define PPK_ASSERT_ENABLED 1
 #endif
 
-#include "ppk_assert/ppk_assert.hpp"
+#include <ppk_assert/ppk_assert.hpp>
 
 #define IRSOL_ASSERT_DEBUG \
   PPK_ASSERT_DEBUG  // Prints assertion to console and allows taking interactive action via user
