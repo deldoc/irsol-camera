@@ -23,8 +23,8 @@ public:
 
 protected:
   std::vector<out_message_t> process(
-    std::shared_ptr<irsol::server::internal::ClientSession> session,
-    T&&                                                     message) final override
+    std::shared_ptr<irsol::server::ClientSession> session,
+    T&&                                           message) final override
   {
     return m_callback(this->ctx, session->id(), std::move(message));
   }

@@ -17,13 +17,8 @@ namespace irsol {
 
 namespace server {
 
-namespace internal {
-
-// Forward declarations
+// Forward declaration
 class ClientSession;
-class FrameCollector;
-
-}  // namespace internal
 
 /**
  * @brief Main server application that manages client connections and camera streaming.
@@ -38,7 +33,7 @@ class App
 {
 
   using client_map_t =
-    std::unordered_map<irsol::types::client_id_t, std::shared_ptr<internal::ClientSession>>;
+    std::unordered_map<irsol::types::client_id_t, std::shared_ptr<ClientSession>>;
 
 public:
   /**
@@ -71,8 +66,7 @@ public:
    * @param clientId Unique identifier of the client.
    * @return A shared pointer to the client session, or nullptr if not found.
    */
-  std::shared_ptr<internal::ClientSession> getClientSession(
-    const irsol::types::client_id_t& clientId);
+  std::shared_ptr<ClientSession> getClientSession(const irsol::types::client_id_t& clientId);
 
   /**
    * @brief Broadcasts a message to all connected client sessions.

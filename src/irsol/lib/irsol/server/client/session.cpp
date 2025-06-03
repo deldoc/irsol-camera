@@ -12,7 +12,6 @@
 
 namespace irsol {
 namespace server {
-namespace internal {
 
 ClientSession::ClientSession(const std::string& id, irsol::types::socket_t&& sock, App& app)
   : m_id(id), m_socket(std::move(sock)), m_app(app)
@@ -149,6 +148,11 @@ ClientSession::send(const std::string& msg)
   std::string preparedMessage = msg;
 
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending message of size {}", preparedMessage.size());
+  if(!m_socket) {
+    IRSOL_NAMED_LOG_ERROR(
+      m_id, "Socket seems to be closed, this is unexpected. Ignoring send request.");
+    return;
+  }
 
   auto result = m_socket.write(preparedMessage);
   if(!result) {
@@ -163,6 +167,11 @@ void
 ClientSession::send(const irsol::types::byte_t* const data, size_t size)
 {
   IRSOL_NAMED_LOG_TRACE(m_id, "Sending binary data of size {}", size);
+  if(!m_socket) {
+    IRSOL_NAMED_LOG_ERROR(
+      m_id, "Socket seems to be closed, this is unexpected. Ignoring send request.");
+    return;
+  }
 
   auto result = m_socket.write_n(data, size);
   if(!result) {
@@ -171,6 +180,5 @@ ClientSession::send(const irsol::types::byte_t* const data, size_t size)
     IRSOL_NAMED_LOG_WARN(m_id, "Incomplete binary data sent: {} of {} bytes", result.value(), size);
   }
 }
-}  // namespace internal
 }  // namespace server
 }  // namespace irsol

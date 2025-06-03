@@ -12,8 +12,8 @@ public:
 
 protected:
   std::vector<out_message_t> process(
-    std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Inquiry&&                                     message) final override;
+    std::shared_ptr<irsol::server::ClientSession> session,
+    protocol::Inquiry&&                           message) final override;
 };
 }
 }

@@ -12,7 +12,7 @@ InquiryIntegrationTimeHandler::InquiryIntegrationTimeHandler(Context ctx): Inqui
 
 std::vector<out_message_t>
 InquiryIntegrationTimeHandler::process(
-  std::shared_ptr<irsol::server::internal::ClientSession> session,
+  std::shared_ptr<irsol::server::ClientSession> session,
   IRSOL_MAYBE_UNUSED irsol::protocol::Inquiry&& message)
 {
   auto& cam      = session->app().camera();

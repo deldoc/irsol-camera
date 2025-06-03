@@ -14,7 +14,6 @@ namespace irsol {
 namespace server {
 // Forward declaration
 class App;
-namespace internal {
 
 /**
  * @brief Represents a single connected client session in the server.
@@ -105,12 +104,12 @@ public:
   }
 
   /// Immutable access to this session's UserSessionData.
-  const UserSessionData& userData() const
+  const irsol::server::internal::UserSessionData& userData() const
   {
     return m_sessionData;
   }
   /// Mutable access to this session's UserSessionData.
-  UserSessionData& userData()
+  irsol::server::internal::UserSessionData& userData()
   {
     return m_sessionData;
   }
@@ -163,11 +162,10 @@ private:
   std::mutex m_socketMutex{};
 
   /// Holds the socket, mutex, and frame streaming parameters.
-  UserSessionData m_sessionData{};
+  irsol::server::internal::UserSessionData m_sessionData{};
 
   /// Reference back to the owning server application for callbacks and state.
   App& m_app;
 };
-}  // namespace internal
 }  // namespace server
 }  // namespace irsol

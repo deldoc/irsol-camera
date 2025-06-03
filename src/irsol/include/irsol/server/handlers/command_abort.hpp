@@ -10,8 +10,8 @@ public:
 
 protected:
   std::vector<out_message_t> process(
-    std::shared_ptr<irsol::server::internal::ClientSession> session,
-    irsol::protocol::Command&&                              message) final override;
+    std::shared_ptr<irsol::server::ClientSession> session,
+    irsol::protocol::Command&&                    message) final override;
 };
 }  // namespace handlers
 }  // namespace server

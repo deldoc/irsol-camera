@@ -50,7 +50,7 @@ App::stop()
   IRSOL_LOG_INFO("Server stopped");
 }
 
-std::shared_ptr<internal::ClientSession>
+std::shared_ptr<ClientSession>
 App::getClientSession(const irsol::types::client_id_t& clientId)
 {
   std::scoped_lock<std::mutex> lock(m_clientsMutex);
@@ -85,7 +85,7 @@ App::broadcastMessage(
 void
 App::addClient(const irsol::types::client_id_t& clientId, irsol::types::socket_t&& sock)
 {
-  auto session = std::make_shared<internal::ClientSession>(clientId, std::move(sock), *this);
+  auto session = std::make_shared<ClientSession>(clientId, std::move(sock), *this);
   std::scoped_lock<std::mutex> lock(m_clientsMutex);
   IRSOL_LOG_INFO(
     "Registering new client connection from {} with id {}",

@@ -15,7 +15,7 @@ CommandGIHandler::CommandGIHandler(Context ctx): internal::CommandGIBaseHandler(
 std::vector<irsol::protocol::OutMessage>
 CommandGIHandler::validate(
   IRSOL_MAYBE_UNUSED const protocol::Command& message,
-  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session) const
+  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::ClientSession> session) const
 {
   // For 'gi' command, no further validation to do.
   return {};
@@ -24,7 +24,7 @@ CommandGIHandler::validate(
 uint64_t
 CommandGIHandler::getInputSequenceLength(
   IRSOL_MAYBE_UNUSED const protocol::Command& message,
-  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session) const
+  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::ClientSession> session) const
 {
   // For 'gi' command, we always capture only 1 frame at the time
   return 1;
@@ -32,7 +32,7 @@ CommandGIHandler::getInputSequenceLength(
 double
 CommandGIHandler::getFrameRate(
   IRSOL_MAYBE_UNUSED const protocol::Command& message,
-  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session) const
+  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::ClientSession> session) const
 {
   // for 'gi' command we mock the FPS to -1, so that the FrameCollector knows we're only
   // interested in 1 frame

@@ -14,15 +14,15 @@ public:
 private:
   std::vector<irsol::protocol::OutMessage> validate(
 
-    const protocol::Command&                                message,
-    std::shared_ptr<irsol::server::internal::ClientSession> session) const override;
+    const protocol::Command&                      message,
+    std::shared_ptr<irsol::server::ClientSession> session) const override;
 
   uint64_t getInputSequenceLength(
-    const protocol::Command&                                message,
-    std::shared_ptr<irsol::server::internal::ClientSession> session) const override;
+    const protocol::Command&                      message,
+    std::shared_ptr<irsol::server::ClientSession> session) const override;
   double getFrameRate(
-    const protocol::Command&                                message,
-    std::shared_ptr<irsol::server::internal::ClientSession> session) const override;
+    const protocol::Command&                      message,
+    std::shared_ptr<irsol::server::ClientSession> session) const override;
 };
 }  // namespace handlers
 }  // namespace server

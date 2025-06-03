@@ -10,8 +10,8 @@ CommandGISHandler::CommandGISHandler(Context ctx): internal::CommandGIBaseHandle
 
 std::vector<irsol::protocol::OutMessage>
 CommandGISHandler::validate(
-  const protocol::Command&                                message,
-  std::shared_ptr<irsol::server::internal::ClientSession> session) const
+  const protocol::Command&                      message,
+  std::shared_ptr<irsol::server::ClientSession> session) const
 {
   auto&                      state = session->userData().frameListeningState;
   std::vector<out_message_t> result;
@@ -34,16 +34,16 @@ CommandGISHandler::validate(
 
 uint64_t
 CommandGISHandler::getInputSequenceLength(
-  IRSOL_MAYBE_UNUSED const protocol::Command&             message,
-  std::shared_ptr<irsol::server::internal::ClientSession> session) const
+  IRSOL_MAYBE_UNUSED const protocol::Command&   message,
+  std::shared_ptr<irsol::server::ClientSession> session) const
 {
   const auto& state = session->userData().frameListeningState;
   return state.gisParams.inputSequenceLength;
 }
 double
 CommandGISHandler::getFrameRate(
-  IRSOL_MAYBE_UNUSED const protocol::Command&             message,
-  std::shared_ptr<irsol::server::internal::ClientSession> session) const
+  IRSOL_MAYBE_UNUSED const protocol::Command&   message,
+  std::shared_ptr<irsol::server::ClientSession> session) const
 {
   const auto& state = session->userData().frameListeningState;
   return state.gisParams.frameRate;

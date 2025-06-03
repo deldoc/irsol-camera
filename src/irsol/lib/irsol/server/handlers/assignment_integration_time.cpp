@@ -13,8 +13,8 @@ AssignmentIntegrationTimeHandler::AssignmentIntegrationTimeHandler(Context ctx)
 
 std::vector<out_message_t>
 AssignmentIntegrationTimeHandler::process(
-  std::shared_ptr<irsol::server::internal::ClientSession> session,
-  protocol::Assignment&&                                  message)
+  std::shared_ptr<irsol::server::ClientSession> session,
+  protocol::Assignment&&                        message)
 {
   // Try to set the integration time (exposure) according to the message
   if(!message.hasInt() && !message.hasDouble()) {

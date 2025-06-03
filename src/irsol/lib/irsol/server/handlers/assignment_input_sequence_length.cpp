@@ -12,8 +12,8 @@ AssignmentInputSequenceLengthHandler::AssignmentInputSequenceLengthHandler(Conte
 
 std::vector<out_message_t>
 AssignmentInputSequenceLengthHandler::process(
-  std::shared_ptr<irsol::server::internal::ClientSession> session,
-  protocol::Assignment&&                                  message)
+  std::shared_ptr<irsol::server::ClientSession> session,
+  protocol::Assignment&&                        message)
 {
   auto& frameListeningState = session->userData().frameListeningState;
   if(frameListeningState.running()) {

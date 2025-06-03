@@ -37,8 +37,8 @@ protected:
   HandlerBase(Context ctx): ctx(ctx){};
 
   virtual std::vector<out_message_t> process(
-    std::shared_ptr<irsol::server::internal::ClientSession> session,
-    T&&                                                     message) = 0;
+    std::shared_ptr<irsol::server::ClientSession> session,
+    T&&                                           message) = 0;
 
   Context ctx;
 };

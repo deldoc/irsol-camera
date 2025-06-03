@@ -10,7 +10,7 @@ CommandAbortHandler::CommandAbortHandler(Context ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
 CommandAbortHandler::process(
-  std::shared_ptr<irsol::server::internal::ClientSession> session,
+  std::shared_ptr<irsol::server::ClientSession> session,
   IRSOL_MAYBE_UNUSED irsol::protocol::Command&& message)
 {
   auto& state = session->userData().frameListeningState;

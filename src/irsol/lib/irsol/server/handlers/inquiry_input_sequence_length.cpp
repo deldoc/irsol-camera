@@ -12,7 +12,7 @@ InquiryInputSequenceLengthHandler::InquiryInputSequenceLengthHandler(Context ctx
 
 std::vector<out_message_t>
 InquiryInputSequenceLengthHandler::process(
-  std::shared_ptr<irsol::server::internal::ClientSession> session,
+  std::shared_ptr<irsol::server::ClientSession> session,
   IRSOL_MAYBE_UNUSED protocol::Inquiry&& message)
 {
 

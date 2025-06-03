@@ -23,7 +23,7 @@ CommandGIBaseHandler::CommandGIBaseHandler(Context ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
 CommandGIBaseHandler::process(
-  std::shared_ptr<irsol::server::internal::ClientSession> session,
+  std::shared_ptr<irsol::server::ClientSession> session,
   IRSOL_MAYBE_UNUSED protocol::Command&& message)
 {
 
@@ -54,8 +54,8 @@ CommandGIBaseHandler::process(
 
 std::string
 CommandGIBaseHandler::getDescription(
-  const protocol::Command&                                message,
-  std::shared_ptr<irsol::server::internal::ClientSession> session) const
+  const protocol::Command&                      message,
+  std::shared_ptr<irsol::server::ClientSession> session) const
 {
   std::stringstream ss;
   ss << session->id() << " - " << message.toString();
@@ -64,7 +64,7 @@ CommandGIBaseHandler::getDescription(
 
 void
 CommandGIBaseHandler::startListeningThread(
-  std::shared_ptr<irsol::server::internal::ClientSession>                        session,
+  std::shared_ptr<irsol::server::ClientSession>                                  session,
   std::shared_ptr<irsol::server::frame_collector::FrameCollector::frame_queue_t> queue,
   protocol::Command&&                                                            command,
   const std::string&                                                             description)

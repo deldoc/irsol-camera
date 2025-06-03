@@ -40,8 +40,8 @@ public:
 
 protected:
   std::vector<out_message_t> process(
-    IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session,
-    protocol::Inquiry&& message) final override
+    IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::ClientSession> session,
+    protocol::Inquiry&&                                              message) final override
   {
     auto&                      cam   = ctx.app.camera();
     int                        value = cam.getParam<int>(std::string(name));

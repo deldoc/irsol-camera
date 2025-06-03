@@ -12,8 +12,8 @@ InquiryFrameRateHandler::InquiryFrameRateHandler(Context ctx): InquiryHandler(ct
 
 std::vector<out_message_t>
 InquiryFrameRateHandler::process(
-  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::internal::ClientSession> session,
-  protocol::Inquiry&&                                                        message)
+  IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::ClientSession> session,
+  protocol::Inquiry&&                                              message)
 {
   auto& frameListeningState = session->userData().frameListeningState;
   auto  frameRate           = frameListeningState.gisParams.frameRate;
