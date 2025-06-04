@@ -1,6 +1,7 @@
 // clang-format off
 /**
  * @file irsol/assert.hpp
+ * @ingroup Assertion
  * @brief Assertion macros and utilities based on the
  * [PPK_ASSERT](HTTPS://GITHUB.COM/GPAKOSZ/PPK_ASSERT) library.
  *
@@ -26,7 +27,15 @@
 #pragma once
 
 /**
+ * @defgroup Assertion Assertion
+ * @brief Assertion macros, types, and functions for the irsol library.
+ *
+ * Provides compile-time and runtime assertion mechanisms using the PPK_ASSERT library.
+ */
+
+/**
  * @def IRSOL_DISABLE_ASSERT
+ * @ingroup Assertion
  * @brief When defined at compile time, disables all irsol assertions.
  *
  * This disables all assertion macros by disabling the underlying
@@ -36,6 +45,7 @@
 
 /**
  * @def IRSOL_ASSERT_DEBUG
+ * @ingroup Assertion
  * @brief Debug-level assertion macro.
  *
  * Prints assertion failure details to the console and allows interactive
@@ -50,6 +60,7 @@
 
 /**
  * @def IRSOL_ASSERT_ERROR
+ * @ingroup Assertion
  * @brief Error-level assertion macro.
  *
  * Prints assertion failure details to the console and throws an
@@ -64,6 +75,7 @@
 
 /**
  * @def IRSOL_ASSERT_FATAL
+ * @ingroup Assertion
  * @brief Fatal-level assertion macro.
  *
  * Prints assertion failure details to the console and immediately
@@ -77,7 +89,8 @@
  */
 
 /**
- * @def IRSOL_ASSERT_FALSE(message)
+ * @def IRSOL_ASSERT_FALSE
+ * @ingroup Assertion
  * @brief Assertion macro that always fails fatally.
  *
  * Prints the provided message and terminates the program immediately.
@@ -91,6 +104,7 @@
 
 /**
  * @def IRSOL_STATIC_ASSERT
+ * @ingroup Assertion
  * @brief Compile-time static assertion macro.
  *
  * Evaluates the condition at compile time and terminates compilation
@@ -127,6 +141,7 @@ namespace irsol {
 
 /**
  * @typedef AssertionException
+ * @ingroup Assertion
  * @brief Exception type thrown by @ref IRSOL_ASSERT_ERROR macro on assertion failure.
  *
  * This is an alias for `ppk::assert::AssertionException`.
@@ -134,6 +149,8 @@ namespace irsol {
 using AssertionException = ppk::assert::AssertionException;
 
 /**
+ * @typedef AssertHandler
+ * @ingroup Assertion
  * @brief Type for a custom assertion handler function.
  *
  * The handler is called on assertion failures with details such as file,
@@ -159,6 +176,7 @@ typedef ppk::assert::implementation::AssertAction::AssertAction (*AssertHandler)
   const char* message);
 
 /**
+ * @ingroup Assertion
  * @brief Sets a custom assertion handler function.
  *
  * This function installs a user-defined callback that is invoked whenever
@@ -169,6 +187,7 @@ typedef ppk::assert::implementation::AssertAction::AssertAction (*AssertHandler)
 void setAssertHandler(AssertHandler handler);
 
 /**
+ * @ingroup Assertion
  * @brief Initializes the assertion handler system.
  *
  * Call this to configure any required internal state before assertions
@@ -185,6 +204,7 @@ void initAssertHandler();
 namespace internal {
 
 /**
+ * @ingroup Assertion
  * @brief Internal default assertion handler implementation.
  *
  * Handles assertion failures by processing and dispatching
