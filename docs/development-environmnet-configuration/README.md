@@ -1,4 +1,4 @@
-# Development Environment Configuration
+# Development Environment Configuration {#development_environment_configuration}
 
 This guide will lead you through the setup of a development environment that will allow you to edit, compile, and test new code.
 
@@ -113,4 +113,4 @@ Make sure to:
    such as `/usr/share/OpenCV/OpenCVConfig.cmake`
    
    If this is found, when building the examples of the `irsol` project, the ones requiring `OpenCV` will automatically be built as well.
-
+*/

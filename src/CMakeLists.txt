@@ -1,7 +1,3 @@
-cmake_minimum_required(VERSION 3.13)
-
-project("irsol-camera" VERSION 1.0 LANGUAGES CXX)
-
 # Set default build type to Release if not specified
 if(NOT CMAKE_BUILD_TYPE)
     message(STATUS "No build type selected, defaulting to Release.")
@@ -29,8 +25,14 @@ message(STATUS "CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS "CMAKE_CXX_COMPILER_VERSION: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 
-# Add the main project sub-directory
-add_subdirectory(irsol)
+option(IRSOL_BUILD_CORE "Builds irsol core library" ON)
+if(IRSOL_BUILD_CORE)
+    # Add the main project sub-directory
+    add_subdirectory(irsol)
+else()
+    message(STATUS "IRSOL_BUILD_CORE is OFF. Skipping building irsol.")
+endif()
+
 
 
 # Check if IRSOL_BUILD_EXAMPLES is defined and set to ON
@@ -49,4 +51,3 @@ if(IRSOL_BUILD_TESTS)
 else()
     message(STATUS "IRSOL_BUILD_TEST is OFF. Skipping building irsol tests.")
 endif()
-

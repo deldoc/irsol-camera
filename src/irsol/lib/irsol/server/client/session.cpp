@@ -127,6 +127,8 @@ ClientSession::processRawMessage(const std::string& rawMessage)
     irsol::protocol::Parser::parse(processedMessage);
   if(!optionalParsedMessage) {
     IRSOL_NAMED_LOG_ERROR(m_id, "Failed to parse message: '{}'", rawMessage);
+    // TODO: ability to create error message without identifier for failed parsing
+    // handleOutMessage(irsol::protocol::Error());
     return;
   }
 

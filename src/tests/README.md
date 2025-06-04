@@ -1,4 +1,4 @@
-# Tests
+# Tests {#tests}
 
 This directory contains the test suite for the `irsol` library.
 
@@ -16,7 +16,3 @@ Catch2 provides expressive test cases, rich assertions, and powerful test organi
 ### Running Tests
 
 Build and run the tests according to [these](../../docs/development-environmnet-configuration/README.md#building-steps) instructions. The tests will automatically execute and report results using Catch2's reporting style.
-
----
-
-Feel free to explore the test files to see example test cases and coverage of the various parts of the `irsol` library.
