@@ -28,6 +28,8 @@ int main()
 
 
 ## Logging Levels and Configuration
+@see irsol/logging.hpp
+
 ### Runtime Logging Level Setup
 
 You can control the logging verbosity at runtime by passing the desired level to `initLogging()`:
@@ -79,12 +81,7 @@ Different sinks are configured to have a different _runtime_ log level by defaul
 
 ## Assertion Levels: Usage and Behavior
 
-Assertions help catch programming errors and invalid states. This system supports multiple assertion levels with distinct semantics:
-| Level   | When to Use                                | Behavior in `Debug` Mode                              | Behavior in `Release` Mode                            |
-| ------- | ------------------------------------------ | ----------------------------------------------------- | ----------------------------------------------------- |
-| `Debug` | Check internal invariants, sanity checks   | Logs warning, continues execution (ignored)           | Logs warning, continues execution (ignored)           |
-| `Error` | Recoverable errors, invalid input detected | Logs error and throws an exception that can be caught | Logs error and throws an exception that can be caught |
-| `Fatal` | Critical failure, unrecoverable state      | Logs error and aborts program immediately             | Logs fatal and aborts program immediately             |
+@see irsol/assert.hpp
 
 ### Disabling Assertions Globally
 
