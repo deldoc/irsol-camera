@@ -5,7 +5,7 @@ var utils_8hpp =
     [ "durationToString", "df/d93/utils_8hpp.html#af2468710608c92085f4771001ea3a105", null ],
     [ "loadDefaultCamera", "df/d93/utils_8hpp.html#a1d88fe2852393ebd66302cf6f512c2ae", null ],
     [ "split", "df/d93/utils_8hpp.html#aa54145189c7fc1ff30d6d773284425df", null ],
-    [ "strip", "df/d93/utils_8hpp.html#ad316fadb2b831d46db43224c6d7125e5", null ],
+    [ "strip", "df/d93/utils_8hpp.html#a7d0ea93f7a3d94dd4548626baaf7842b", null ],
     [ "stripString", "df/d93/utils_8hpp.html#a82a0213b2171991c9abc66878526c2de", null ],
     [ "timestampToString", "df/d93/utils_8hpp.html#aef8913b229de1370e4ba6c311adf9026", null ],
     [ "toDouble", "df/d93/utils_8hpp.html#a34081ba67670361ed0924863466628d7", null ],

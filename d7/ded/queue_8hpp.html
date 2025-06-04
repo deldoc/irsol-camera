@@ -59,6 +59,9 @@ $(document).ready(function(){initNavTree('d7/ded/queue_8hpp.html','../../'); ini
   <div class="headertitle"><div class="title">queue.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Thread-safe queue implementation with optional bounded capacity.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d2/d54/assert_8hpp_source.html">irsol/assert.hpp</a>&quot;</code><br />
 <code>#include &lt;condition_variable&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
@@ -70,6 +73,7 @@ $(document).ready(function(){initNavTree('d7/ded/queue_8hpp.html','../../'); ini
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d49/classirsol_1_1utils_1_1SafeQueue.html">irsol::utils::SafeQueue&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A thread-safe, optionally bounded queue with blocking push and pop operations.  <a href="../../dc/d49/classirsol_1_1utils_1_1SafeQueue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -77,9 +81,15 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d8/d93/namespaceirsol_1_1utils" id="r_d8/d93/namespaceirsol_1_1utils"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html">irsol::utils</a></td></tr>
+<tr class="memdesc:d8/d93/namespaceirsol_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains general utility functions used throughout the <code>irsol</code> library. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Thread-safe queue implementation with optional bounded capacity. </p>
+<p>This header defines the <code>SafeQueue</code> template class, which provides a thread-safe queue with blocking push/pop operations and optional maximum size bounding. It is designed for safe communication between one producer and one consumer thread. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d7/ded/queue_8hpp_source.html">queue.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

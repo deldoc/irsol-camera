@@ -59,6 +59,9 @@ $(document).ready(function(){initNavTree('df/d93/utils_8hpp.html','../../'); ini
   <div class="headertitle"><div class="title">utils.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>General utility functions used throughout the <code>irsol</code> library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d7/ded/queue_8hpp_source.html">irsol/queue.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">irsol/types.hpp</a>&quot;</code><br />
 <code>#include &lt;neoapi/neoapi.hpp&gt;</code><br />
@@ -73,47 +76,57 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d8/d93/namespaceirsol_1_1utils" id="r_d8/d93/namespaceirsol_1_1utils"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html">irsol::utils</a></td></tr>
+<tr class="memdesc:d8/d93/namespaceirsol_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains general utility functions used throughout the <code>irsol</code> library. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d8/d12/namespaceirsol_1_1utils_1_1internal" id="r_d8/d12/namespaceirsol_1_1utils_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d12/namespaceirsol_1_1utils_1_1internal.html">irsol::utils::internal</a></td></tr>
+<tr class="memdesc:d8/d12/namespaceirsol_1_1utils_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains internal helper constants and functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a81a64fcbc5e7b8edc86ad8850e8209b6" id="r_a81a64fcbc5e7b8edc86ad8850e8209b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a81a64fcbc5e7b8edc86ad8850e8209b6">irsol::utils::toInt</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a9929f0657fe3809e2caf8591fd2780f2">irsol::types::protocol_value_t</a> &amp;x)</td></tr>
+<tr class="memdesc:a81a64fcbc5e7b8edc86ad8850e8209b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a protocol value to an integer.  <br /></td></tr>
 <tr class="separator:a81a64fcbc5e7b8edc86ad8850e8209b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34081ba67670361ed0924863466628d7" id="r_a34081ba67670361ed0924863466628d7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a34081ba67670361ed0924863466628d7">irsol::utils::toDouble</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a9929f0657fe3809e2caf8591fd2780f2">irsol::types::protocol_value_t</a> &amp;x)</td></tr>
+<tr class="memdesc:a34081ba67670361ed0924863466628d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a protocol value to a double.  <br /></td></tr>
 <tr class="separator:a34081ba67670361ed0924863466628d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addaf3bf96ccec31c218c9fbae4fb8972" id="r_addaf3bf96ccec31c218c9fbae4fb8972"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#addaf3bf96ccec31c218c9fbae4fb8972">irsol::utils::toString</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a9929f0657fe3809e2caf8591fd2780f2">irsol::types::protocol_value_t</a> &amp;x)</td></tr>
+<tr class="memdesc:addaf3bf96ccec31c218c9fbae4fb8972"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a protocol value to a string.  <br /></td></tr>
 <tr class="separator:addaf3bf96ccec31c218c9fbae4fb8972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8901a2d47f39e1ef4cc4505b5027d962" id="r_a8901a2d47f39e1ef4cc4505b5027d962"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a8901a2d47f39e1ef4cc4505b5027d962">irsol::utils::uuid</a> ()</td></tr>
-<tr class="memdesc:a8901a2d47f39e1ef4cc4505b5027d962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a new UUID string.  <br /></td></tr>
+<tr class="memdesc:a8901a2d47f39e1ef4cc4505b5027d962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a new UUID string.  <br /></td></tr>
 <tr class="separator:a8901a2d47f39e1ef4cc4505b5027d962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa54145189c7fc1ff30d6d773284425df" id="r_aa54145189c7fc1ff30d6d773284425df"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#aa54145189c7fc1ff30d6d773284425df">irsol::utils::split</a> (const std::string &amp;s, char delimiter)</td></tr>
-<tr class="memdesc:aa54145189c7fc1ff30d6d773284425df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a string into tokens based on a delimiter.  <br /></td></tr>
+<tr class="memdesc:aa54145189c7fc1ff30d6d773284425df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits a string into tokens based on a delimiter.  <br /></td></tr>
 <tr class="separator:aa54145189c7fc1ff30d6d773284425df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad316fadb2b831d46db43224c6d7125e5" id="r_ad316fadb2b831d46db43224c6d7125e5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#ad316fadb2b831d46db43224c6d7125e5">irsol::utils::strip</a> (const std::string &amp;s, const std::string &amp;delimiters=&quot; \t\r\n &quot;)</td></tr>
-<tr class="memdesc:ad316fadb2b831d46db43224c6d7125e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strip leading and trailing characters from a string.  <br /></td></tr>
-<tr class="separator:ad316fadb2b831d46db43224c6d7125e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d0ea93f7a3d94dd4548626baaf7842b" id="r_a7d0ea93f7a3d94dd4548626baaf7842b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a7d0ea93f7a3d94dd4548626baaf7842b">irsol::utils::strip</a> (const std::string &amp;s, const std::string &amp;delimiters=&quot; \t\r\n&quot;)</td></tr>
+<tr class="memdesc:a7d0ea93f7a3d94dd4548626baaf7842b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes leading and trailing characters from a string.  <br /></td></tr>
+<tr class="separator:a7d0ea93f7a3d94dd4548626baaf7842b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82a0213b2171991c9abc66878526c2de" id="r_a82a0213b2171991c9abc66878526c2de"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a82a0213b2171991c9abc66878526c2de">irsol::utils::stripString</a> (const std::string &amp;s, const std::string &amp;strippedString)</td></tr>
-<tr class="memdesc:a82a0213b2171991c9abc66878526c2de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all occurrences of a substring from a string start and end.  <br /></td></tr>
+<tr class="memdesc:a82a0213b2171991c9abc66878526c2de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all occurrences of a specific substring from the start and end of a string.  <br /></td></tr>
 <tr class="separator:a82a0213b2171991c9abc66878526c2de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef8913b229de1370e4ba6c311adf9026" id="r_aef8913b229de1370e4ba6c311adf9026"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a> (<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a91a9c0f25c01c7da1c9f7d8760babffa">irsol::types::timepoint_t</a> tp)</td></tr>
-<tr class="memdesc:aef8913b229de1370e4ba6c311adf9026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a steady_clock time point to a human-readable string.  <br /></td></tr>
+<tr class="memdesc:aef8913b229de1370e4ba6c311adf9026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a steady_clock time point to a human-readable string.  <br /></td></tr>
 <tr class="separator:aef8913b229de1370e4ba6c311adf9026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2468710608c92085f4771001ea3a105" id="r_af2468710608c92085f4771001ea3a105"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#af2468710608c92085f4771001ea3a105">irsol::utils::durationToString</a> (<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a0775ad5dc200d54581662730e0241ec4">irsol::types::duration_t</a> dr)</td></tr>
-<tr class="memdesc:af2468710608c92085f4771001ea3a105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a duration time to a human-readable string.  <br /></td></tr>
+<tr class="memdesc:af2468710608c92085f4771001ea3a105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a duration to a human-readable string.  <br /></td></tr>
 <tr class="separator:af2468710608c92085f4771001ea3a105"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d88fe2852393ebd66302cf6f512c2ae" id="r_a1d88fe2852393ebd66302cf6f512c2ae"><td class="memItemLeft" align="right" valign="top">NeoAPI::Cam&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a1d88fe2852393ebd66302cf6f512c2ae">irsol::utils::loadDefaultCamera</a> ()</td></tr>
-<tr class="memdesc:a1d88fe2852393ebd66302cf6f512c2ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the default camera device.  <br /></td></tr>
+<tr class="memdesc:a1d88fe2852393ebd66302cf6f512c2ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the default camera device.  <br /></td></tr>
 <tr class="separator:a1d88fe2852393ebd66302cf6f512c2ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a814b3f9106fa152137b4b7d2537ceaf0" id="r_a814b3f9106fa152137b4b7d2537ceaf0"><td class="memItemLeft" align="right" valign="top">NeoAPI::CamInfoList &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a814b3f9106fa152137b4b7d2537ceaf0">irsol::utils::discoverCameras</a> ()</td></tr>
-<tr class="memdesc:a814b3f9106fa152137b4b7d2537ceaf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discover all cameras connected to the system.  <br /></td></tr>
+<tr class="memdesc:a814b3f9106fa152137b4b7d2537ceaf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discovers all cameras connected to the system.  <br /></td></tr>
 <tr class="separator:a814b3f9106fa152137b4b7d2537ceaf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91c1d3ea6f34a2f19f099c08318fc393" id="r_a91c1d3ea6f34a2f19f099c08318fc393"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d12/namespaceirsol_1_1utils_1_1internal.html#a91c1d3ea6f34a2f19f099c08318fc393">irsol::utils::internal::defaultCameraSerialNumber</a> ()</td></tr>
 <tr class="memdesc:a91c1d3ea6f34a2f19f099c08318fc393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default serial number for selecting the system camera.  <br /></td></tr>
 <tr class="separator:a91c1d3ea6f34a2f19f099c08318fc393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>General utility functions used throughout the <code>irsol</code> library. </p>
+<p>This header provides helper functions for type conversions, string manipulation, timestamp formatting, and camera device management via the NeoAPI. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../df/d93/utils_8hpp_source.html">utils.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
