@@ -21,7 +21,7 @@
 namespace irsol {
 
 /**
- * @namespace types
+ * @namespace irsol::types
  * @brief Contains fundamental type aliases used throughout the irsol library.
  *
  * The `types` namespace centralizes definitions for:
