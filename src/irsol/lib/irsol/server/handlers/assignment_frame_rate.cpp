@@ -29,7 +29,7 @@ AssignmentFrameRateHandler::process(
     result.emplace_back(irsol::protocol::Error::from(message, "frameRate must be positive."));
     return result;
   }
-  IRSOL_NAMED_LOG_INFO("Setting 'frameRate' to {}", frameRate);
+  IRSOL_NAMED_LOG_INFO(session->id(), "Setting 'frameRate' to {}", frameRate);
 
   frameListeningState.gisParams.frameRate = frameRate;
   std::vector<out_message_t> result;

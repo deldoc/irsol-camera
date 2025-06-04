@@ -50,10 +50,11 @@ protected:
     std::vector<out_message_t> result;
 
     // Update the message value with the resulting value after setting the camera parameter.
-    // In this way, the resulting value is included in the response message.
+    // In this way, the resulting value is included in the response message that we broadcast to all
+    // clients.
     message.value = irsol::types::protocol_value_t{resValue};
-    result.emplace_back(protocol::Success::from(message));
-    return result;
+    ctx.broadcastMessage(protocol::Success::from(message));
+    return {};
   }
 };
 }  // namespace internal

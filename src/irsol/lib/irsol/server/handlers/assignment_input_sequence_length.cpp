@@ -33,7 +33,7 @@ AssignmentInputSequenceLengthHandler::process(
       irsol::protocol::Error::from(message, "InputSequenceLength must be positive."));
     return result;
   }
-  IRSOL_NAMED_LOG_INFO("Setting 'inputSequenceLength' to {}", inputSequenceLength);
+  IRSOL_NAMED_LOG_INFO(session->id(), "Setting 'inputSequenceLength' to {}", inputSequenceLength);
 
   frameListeningState.gisParams.inputSequenceLength = static_cast<uint64_t>(inputSequenceLength);
   std::vector<out_message_t> result;
