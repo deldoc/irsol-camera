@@ -1,4 +1,4 @@
-# 00-logging-and-asserting
+# 00-logging-and-asserting {#logging_and_asserting}
 
 
 The `irsol` library comes packed with a flexible **logging** and **assertion** framework designed to help you build robust applications with clear diagnostics and fail-safe conditions.

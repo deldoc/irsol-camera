@@ -1,4 +1,4 @@
-# 02-interacting-with-camera-features
+# 02-interacting-with-camera-features {#interacting_with_camera_features}
 
 This example serves as as a playground for understanding how to control the parameters of the _Baumer_ camera via the `irsol::camera::Interface` class.
 

@@ -1,4 +1,5 @@
-# Physical Setup
+# Physical setup {#physical_setup}
+
 This guide lists the steps one should take to configure a _Baumer VCXG.2-51M_ camera.
 
 In particular, it will show how to:

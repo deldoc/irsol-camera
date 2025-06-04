@@ -1,4 +1,5 @@
-# Camera parameters
+# Factory Camera features {#factory_camera_features}
+
 The initial (factory) parameters for the _Baumer_ camera are the following:
 
   * `AcquisitionFrameCount`: 1
