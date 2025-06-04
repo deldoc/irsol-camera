@@ -1,0 +1,58 @@
+var namespaceirsol_1_1protocol =
+[
+    [ "internal", "d1/d2d/namespaceirsol_1_1protocol_1_1internal.html", "d1/d2d/namespaceirsol_1_1protocol_1_1internal" ],
+    [ "utils", "d3/d80/namespaceirsol_1_1protocol_1_1utils.html", [
+      [ "fromString", "d3/d80/namespaceirsol_1_1protocol_1_1utils.html#ae99c5b6009b1e0ebba0fde3a11852f6a", null ],
+      [ "trim", "d3/d80/namespaceirsol_1_1protocol_1_1utils.html#ac689e3cc52a5b80c6bac87ed6dafb09d", null ],
+      [ "validateIdentifier", "d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b", null ]
+    ] ],
+    [ "Assignment", "d9/db8/structirsol_1_1protocol_1_1Assignment.html", "d9/db8/structirsol_1_1protocol_1_1Assignment" ],
+    [ "BinaryDataAttribute", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute" ],
+    [ "Command", "d2/d10/structirsol_1_1protocol_1_1Command.html", "d2/d10/structirsol_1_1protocol_1_1Command" ],
+    [ "Error", "d4/d3a/structirsol_1_1protocol_1_1Error.html", "d4/d3a/structirsol_1_1protocol_1_1Error" ],
+    [ "Inquiry", "d2/dc8/structirsol_1_1protocol_1_1Inquiry.html", "d2/dc8/structirsol_1_1protocol_1_1Inquiry" ],
+    [ "Parser", "d5/d35/classirsol_1_1protocol_1_1Parser.html", "d5/d35/classirsol_1_1protocol_1_1Parser" ],
+    [ "Serializer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html", "d1/d6f/classirsol_1_1protocol_1_1Serializer" ],
+    [ "Success", "d3/d7a/structirsol_1_1protocol_1_1Success.html", "d3/d7a/structirsol_1_1protocol_1_1Success" ],
+    [ "BinaryDataBuffer", "db/dff/namespaceirsol_1_1protocol.html#a9007fde1025a1c0cba261ac1deac5053", null ],
+    [ "ColorImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#a77550f1e67eaab92ac84d0397ebe7c1c", null ],
+    [ "ImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#a5803a93478c243e2c79dccb5f00f2817", null ],
+    [ "InMessage", "db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20", null ],
+    [ "OutMessage", "db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66", null ],
+    [ "InMessageKind", "db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e", [
+      [ "ASSIGNMENT", "db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83", null ],
+      [ "INQUIRY", "db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632", null ],
+      [ "COMMAND", "db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1", null ]
+    ] ],
+    [ "OutMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76", [
+      [ "SUCCESS", "db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c", null ],
+      [ "BINARY_BUFFER", "db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac", null ],
+      [ "BW_IMAGE", "db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b", null ],
+      [ "COLOR_IMAGE", "db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368", null ],
+      [ "ERROR", "db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5", null ]
+    ] ],
+    [ "getInMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a285d565d14d7e2b1f819dea6df5071bf", null ],
+    [ "getInMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a11eb292df9f57c0e8897151fa3ffb62a", null ],
+    [ "getOutMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a8f79326346fdf0b375edc7392952d7c4", null ],
+    [ "getOutMessageKind", "db/dff/namespaceirsol_1_1protocol.html#af424196d7e0365c23f82b30d174b8c19", null ],
+    [ "InMessageKindToString", "db/dff/namespaceirsol_1_1protocol.html#a97f85648f00c021779fb639f05dfa117", null ],
+    [ "isAssignment", "db/dff/namespaceirsol_1_1protocol.html#ad8301adc17dd20284a1b7fac2eaa1775", null ],
+    [ "isAssignment", "db/dff/namespaceirsol_1_1protocol.html#aa6c0a592e943d401acda96d2b9bc606a", null ],
+    [ "isBinaryDataBuffer", "db/dff/namespaceirsol_1_1protocol.html#ae6528be164ac7227b68ec468f9f6ee64", null ],
+    [ "isBinaryDataBuffer", "db/dff/namespaceirsol_1_1protocol.html#a7af85cf752e4ae006eae4dca54fc6473", null ],
+    [ "isColorImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#af4c73213641eba018e40945f682b953d", null ],
+    [ "isColorImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#ad704e7dcaeca25501f27f5d4b9f24681", null ],
+    [ "isCommand", "db/dff/namespaceirsol_1_1protocol.html#ac01a1187b377182759ebcd762d39815b", null ],
+    [ "isCommand", "db/dff/namespaceirsol_1_1protocol.html#a9e14cc03ea3bf92a9b790f3afa2c8473", null ],
+    [ "isError", "db/dff/namespaceirsol_1_1protocol.html#ae34c36e2fffbed838e1297d7568ac213", null ],
+    [ "isError", "db/dff/namespaceirsol_1_1protocol.html#a6dec070ec3aca99d63912ea3ed43184d", null ],
+    [ "isImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#a8e8a8a08aa0204c14caad7c2addbc509", null ],
+    [ "isImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#a26f91a55cba3166b17b32b8edc8ce16b", null ],
+    [ "isInquiry", "db/dff/namespaceirsol_1_1protocol.html#a4ea1091ec0a2ca9de4a394e2322f82c8", null ],
+    [ "isInquiry", "db/dff/namespaceirsol_1_1protocol.html#a5e53835e2017f1f8dfde9f33977d6f4f", null ],
+    [ "isSuccess", "db/dff/namespaceirsol_1_1protocol.html#a6b53384450859d5018d1bcea980f730f", null ],
+    [ "isSuccess", "db/dff/namespaceirsol_1_1protocol.html#aad78014b3305995029d99473cc98e6f8", null ],
+    [ "OutMessageKindToString", "db/dff/namespaceirsol_1_1protocol.html#a2604466640c53333fe2bb2a2d249da51", null ],
+    [ "toString", "db/dff/namespaceirsol_1_1protocol.html#ab7845b7ab1de991c2ee080dc19607f18", null ],
+    [ "toString", "db/dff/namespaceirsol_1_1protocol.html#a8912bc5f8301fdb1c0804634f5eaadfb", null ]
+];

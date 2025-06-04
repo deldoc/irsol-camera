@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['irsol_0',['irsol',['../d7/ddb/namespaceirsol.html',1,'']]],
+  ['irsol_3a_3acamera_1',['camera',['../db/d23/namespaceirsol_1_1camera.html',1,'irsol']]],
+  ['irsol_3a_3acamera_3a_3ainternal_2',['internal',['../df/d41/namespaceirsol_1_1camera_1_1internal.html',1,'irsol::camera']]],
+  ['irsol_3a_3ainternal_3',['internal',['../d4/d53/namespaceirsol_1_1internal.html',1,'irsol']]],
+  ['irsol_3a_3aopencv_4',['opencv',['../d3/d22/namespaceirsol_1_1opencv.html',1,'irsol']]],
+  ['irsol_3a_3aprotocol_5',['protocol',['../db/dff/namespaceirsol_1_1protocol.html',1,'irsol']]],
+  ['irsol_3a_3aprotocol_3a_3ainternal_6',['internal',['../d1/d2d/namespaceirsol_1_1protocol_1_1internal.html',1,'irsol::protocol']]],
+  ['irsol_3a_3aprotocol_3a_3autils_7',['utils',['../d3/d80/namespaceirsol_1_1protocol_1_1utils.html',1,'irsol::protocol']]],
+  ['irsol_3a_3aserver_8',['server',['../d1/d03/namespaceirsol_1_1server.html',1,'irsol']]],
+  ['irsol_3a_3aserver_3a_3aframe_5fcollector_9',['frame_collector',['../d4/dd5/namespaceirsol_1_1server_1_1frame__collector.html',1,'irsol::server']]],
+  ['irsol_3a_3aserver_3a_3ahandlers_10',['handlers',['../d9/da2/namespaceirsol_1_1server_1_1handlers.html',1,'irsol::server']]],
+  ['irsol_3a_3aserver_3a_3ahandlers_3a_3ainternal_11',['internal',['../d7/de5/namespaceirsol_1_1server_1_1handlers_1_1internal.html',1,'irsol::server::handlers']]],
+  ['irsol_3a_3aserver_3a_3ainternal_12',['internal',['../dd/d08/namespaceirsol_1_1server_1_1internal.html',1,'irsol::server']]],
+  ['irsol_3a_3atraits_13',['traits',['../d8/daa/namespaceirsol_1_1traits.html',1,'irsol']]],
+  ['irsol_3a_3atypes_14',['types',['../d9/d2e/namespaceirsol_1_1types.html',1,'irsol']]],
+  ['irsol_3a_3autils_15',['utils',['../d8/d93/namespaceirsol_1_1utils.html',1,'irsol']]],
+  ['irsol_3a_3autils_3a_3ainternal_16',['internal',['../d8/d12/namespaceirsol_1_1utils_1_1internal.html',1,'irsol::utils']]]
+];
