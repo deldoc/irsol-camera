@@ -58,6 +58,9 @@ $(document).ready(function(){initNavTree('db/dbe/macros_8hpp.html','../../'); in
   <div class="headertitle"><div class="title">macros.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Common portability and diagnostic macros for the irsol library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d2/d54/assert_8hpp_source.html">irsol/assert.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d73/traits_8hpp_source.html">irsol/traits.hpp</a>&quot;</code><br />
 </div>
@@ -66,24 +69,37 @@ $(document).ready(function(){initNavTree('db/dbe/macros_8hpp.html','../../'); in
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ae833d90a9ab85f62810d95e34478a8ac" id="r_ae833d90a9ab85f62810d95e34478a8ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a></td></tr>
+<tr class="memdesc:ae833d90a9ab85f62810d95e34478a8ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppresses compiler warnings about unused variables or parameters.  <br /></td></tr>
 <tr class="separator:ae833d90a9ab85f62810d95e34478a8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17be5e973bbf81e957afa439773a9978" id="r_a17be5e973bbf81e957afa439773a9978"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#a17be5e973bbf81e957afa439773a9978">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</a></td></tr>
+<tr class="memdesc:a17be5e973bbf81e957afa439773a9978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins a diagnostic suppression block for unused structured binding variables.  <br /></td></tr>
 <tr class="separator:a17be5e973bbf81e957afa439773a9978"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe265b6780be5589038b99cbd2dbf464" id="r_afe265b6780be5589038b99cbd2dbf464"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#afe265b6780be5589038b99cbd2dbf464">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END</a></td></tr>
+<tr class="memdesc:afe265b6780be5589038b99cbd2dbf464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends a diagnostic suppression block started with <a class="el" href="../../db/dbe/macros_8hpp.html#a17be5e973bbf81e957afa439773a9978">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</a>.  <br /></td></tr>
 <tr class="separator:afe265b6780be5589038b99cbd2dbf464"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87a17a1b87df34860919cc21aec3e696" id="r_a87a17a1b87df34860919cc21aec3e696"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#a87a17a1b87df34860919cc21aec3e696">_IRSOL_UNREACHABLE_IMPL</a>()</td></tr>
-<tr class="memdesc:a87a17a1b87df34860919cc21aec3e696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for IRSOL_UNREACHABLE.  <br /></td></tr>
+<tr class="memdesc:a87a17a1b87df34860919cc21aec3e696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal macro for compiler-specific unreachable code markers.  <br /></td></tr>
 <tr class="separator:a87a17a1b87df34860919cc21aec3e696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f990b958465d0ddf7357b5fa09fb58c" id="r_a5f990b958465d0ddf7357b5fa09fb58c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a>()&#160;&#160;&#160;<a class="el" href="../../db/dbe/macros_8hpp.html#a87a17a1b87df34860919cc21aec3e696">_IRSOL_UNREACHABLE_IMPL</a>()</td></tr>
+<tr class="memdesc:a5f990b958465d0ddf7357b5fa09fb58c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates unreachable code to the compiler.  <br /></td></tr>
 <tr class="separator:a5f990b958465d0ddf7357b5fa09fb58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa3d845c7734d0295f800bff5755884c" id="r_afa3d845c7734d0295f800bff5755884c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#afa3d845c7734d0295f800bff5755884c">IRSOL_STATIC_UNREACHABLE</a>(messageLiteral)</td></tr>
+<tr class="memdesc:afa3d845c7734d0295f800bff5755884c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks unreachable branches in <code>constexpr</code> functions.  <br /></td></tr>
 <tr class="separator:afa3d845c7734d0295f800bff5755884c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bbf59c9de2e5d291bd342b6ab7cb5c1" id="r_a9bbf59c9de2e5d291bd342b6ab7cb5c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#a9bbf59c9de2e5d291bd342b6ab7cb5c1">_IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION</a>(T,  messageLiteral)&#160;&#160;&#160;  <a class="el" href="../../d0/df0/group__Assertion.html#ga20e5778df87c73be33b703b82b17ed48">IRSOL_STATIC_ASSERT</a>((<a class="el" href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">irsol::traits::always_false</a>&lt;T&gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>), messageLiteral)</td></tr>
+<tr class="memdesc:a9bbf59c9de2e5d291bd342b6ab7cb5c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal helper to trigger a static assertion when a required template specialization is missing.  <br /></td></tr>
 <tr class="separator:a9bbf59c9de2e5d291bd342b6ab7cb5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa21d39bf4cd94d42dc192cf34803a5d9" id="r_aa21d39bf4cd94d42dc192cf34803a5d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T,  funcNameLiteral)</td></tr>
+<tr class="memdesc:aa21d39bf4cd94d42dc192cf34803a5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a compile-time error when no template specialization is available.  <br /></td></tr>
 <tr class="separator:aa21d39bf4cd94d42dc192cf34803a5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Common portability and diagnostic macros for the irsol library. </p>
+<p>Provides cross-platform macros to suppress unused variable warnings, indicate unreachable code paths, and enforce template specialization requirements.</p>
+<p>These utilities help ensure code clarity and maintainability across compilers and standard versions, and are typically used in template metaprogramming, constexpr logic, or when interfacing with platform-specific APIs. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a9bbf59c9de2e5d291bd342b6ab7cb5c1" name="a9bbf59c9de2e5d291bd342b6ab7cb5c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9bbf59c9de2e5d291bd342b6ab7cb5c1">&#9670;&#160;</a></span>_IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION</h2>
 
@@ -109,9 +125,18 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Used in template code when no valid specialization exists. To be used as a final <code>else</code> branch in <code>if constexpr</code> chains. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<p>Internal helper to trigger a static assertion when a required template specialization is missing. </p>
+<p>This macro should not be used directly. Use <a class="el" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a> instead.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">T</td><td>The template type parameter for which specialization is missing. </td></tr>
+    <tr><td class="paramname">messageLiteral</td><td>A description of the missing specialization. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00148">148</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
 
 </div>
 </div>
@@ -132,11 +157,12 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">  <span class="keywordflow">do</span> {                            \</div>
 <div class="line">  } <span class="keywordflow">while</span>(0)</div>
 </div><!-- fragment -->
-<p>Helper for IRSOL_UNREACHABLE. </p>
+<p>Internal macro for compiler-specific unreachable code markers. </p>
+<p>Expands to a compiler intrinsic that informs the optimizer the code is unreachable. Do not use directly—use <a class="el" href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a> instead. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00056">56</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>     {                            \</div>
-<div class="line"><span class="lineno">   58</span>  } <span class="keywordflow">while</span>(0)</div>
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00084">84</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>     {                            \</div>
+<div class="line"><span class="lineno">   86</span>  } <span class="keywordflow">while</span>(0)</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -151,13 +177,16 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This macro is used to mark variables or function parameters as unused. This mutes the compiler's warning about unused variables. Example usage: </p><div class="fragment"><div class="line"><a class="code hl_define" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> <span class="keywordtype">int</span> unusedVariable;</div>
-<div class="ttc" id="amacros_8hpp_html_ae833d90a9ab85f62810d95e34478a8ac"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a></div><div class="ttdeci">#define IRSOL_MAYBE_UNUSED</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00025">macros.hpp:25</a></div></div>
-</div><!-- fragment --><p> or for function parameters: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> MyFunction(<a class="code hl_define" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> <span class="keywordtype">int</span> unusedParameter) {</div>
-<div class="line">...</div>
+
+<p>Suppresses compiler warnings about unused variables or parameters. </p>
+<p>Use this macro to annotate variables or function parameters that are intentionally unused. It adapts to the best syntax supported by the current compiler and language standard. </p><div class="fragment"><div class="line"><a class="code hl_define" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> <span class="keywordtype">int</span> unusedVar;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> f(<a class="code hl_define" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> <span class="keywordtype">int</span> unusedParam) {</div>
+<div class="line">  <span class="comment">// do nothing</span></div>
 <div class="line">}</div>
+<div class="ttc" id="amacros_8hpp_html_ae833d90a9ab85f62810d95e34478a8ac"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a></div><div class="ttdeci">#define IRSOL_MAYBE_UNUSED</div><div class="ttdoc">Suppresses compiler warnings about unused variables or parameters.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00039">macros.hpp:39</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00025">25</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00039">39</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
 
 </div>
 </div>
@@ -190,18 +219,27 @@ Macros</h2></td></tr>
 <div class="line">    T,                                                                               \</div>
 <div class="line">    <span class="stringliteral">&quot;Function &#39;&quot;</span> funcNameLiteral <span class="stringliteral">&quot;&#39; lacks a template specialization for this type. &quot;</span> \</div>
 <div class="line">    <span class="stringliteral">&quot;Please ensure you handle all required template types explicitly.&quot;</span>)</div>
-<div class="ttc" id="amacros_8hpp_html_a9bbf59c9de2e5d291bd342b6ab7cb5c1"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#a9bbf59c9de2e5d291bd342b6ab7cb5c1">_IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define _IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION(T, messageLiteral)</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00102">macros.hpp:102</a></div></div>
-</div><!-- fragment --><p>User-facing macro to emit a compile-time error when a template specialization is missing. Can be safely used as a single statement inside functions. Example: </p><div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="keywordtype">void</span> MyFunction() {</div>
-<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_integral&lt;T&gt;::value) {</div>
-<div class="line">     <span class="comment">// Implementation for integral types</span></div>
+<div class="ttc" id="amacros_8hpp_html_a9bbf59c9de2e5d291bd342b6ab7cb5c1"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#a9bbf59c9de2e5d291bd342b6ab7cb5c1">_IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define _IRSOL_STATIC_ASSERT_MISSING_TEMPLATE_SPECIALIZATION(T, messageLiteral)</div><div class="ttdoc">Internal helper to trigger a static assertion when a required template specialization is missing.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00148">macros.hpp:148</a></div></div>
+</div><!-- fragment -->
+<p>Emits a compile-time error when no template specialization is available. </p>
+<p>This macro is useful in <code>if constexpr</code> chains to clearly indicate that a required template specialization has not been provided. </p><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keywordtype">void</span> process() {</div>
+<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_integral_v&lt;T&gt;) {</div>
+<div class="line">    <span class="comment">// Implementation for integral types</span></div>
 <div class="line">  } <span class="keywordflow">else</span> {</div>
-<div class="line">     <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;MyFunction&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;process&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-<div class="ttc" id="amacros_8hpp_html_aa21d39bf4cd94d42dc192cf34803a5d9"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00120">macros.hpp:120</a></div></div>
-</div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00120">120</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<div class="ttc" id="amacros_8hpp_html_aa21d39bf4cd94d42dc192cf34803a5d9"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)</div><div class="ttdoc">Emits a compile-time error when no template specialization is available.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00173">macros.hpp:173</a></div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">T</td><td>The template type parameter. </td></tr>
+    <tr><td class="paramname">funcNameLiteral</td><td>A string literal representing the function or context. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00173">173</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
 
 </div>
 </div>
@@ -225,20 +263,27 @@ Macros</h2></td></tr>
 <div class="line">    <span class="stringliteral">&quot;Unreachable constexpr code triggered: &quot;</span> messageLiteral);             \</div>
 <div class="line">  _IRSOL_UNREACHABLE_IMPL()</div>
 <div class="ttc" id="agroup__Assertion_html_ga20e5778df87c73be33b703b82b17ed48"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#ga20e5778df87c73be33b703b82b17ed48">IRSOL_STATIC_ASSERT</a></div><div class="ttdeci">#define IRSOL_STATIC_ASSERT</div><div class="ttdoc">Compile-time static assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00138">assert.hpp:138</a></div></div>
-<div class="ttc" id="astructirsol_1_1traits_1_1always__false_html"><div class="ttname"><a href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">irsol::traits::always_false</a></div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00011">traits.hpp:12</a></div></div>
-</div><!-- fragment --><p>Indicates unreachable code in constexpr functions. Example: </p><div class="fragment"><div class="line"><span class="keyword">constexpr</span> <span class="keywordtype">int</span> foo(<span class="keywordtype">int</span> <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>) {</div>
-<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a> == 0) {</div>
-<div class="line">    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#afa3d845c7734d0295f800bff5755884c">IRSOL_STATIC_UNREACHABLE</a>(<span class="stringliteral">&quot;Unexpected code path&quot;</span>);</div>
+<div class="ttc" id="astructirsol_1_1traits_1_1always__false_html"><div class="ttname"><a href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">irsol::traits::always_false</a></div><div class="ttdoc">Always evaluates to false, regardless of the type.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00053">traits.hpp:54</a></div></div>
+</div><!-- fragment -->
+<p>Marks unreachable branches in <code>constexpr</code> functions. </p>
+<p>This macro emits a compile-time error when reached. It is designed for use in <code>if constexpr</code> branches that should never be selected at compile-time. </p><div class="fragment"><div class="line"><span class="keyword">constexpr</span> <span class="keywordtype">int</span> safeDivide(<span class="keywordtype">int</span> x) {</div>
+<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (x == 0) {</div>
+<div class="line">    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#afa3d845c7734d0295f800bff5755884c">IRSOL_STATIC_UNREACHABLE</a>(<span class="stringliteral">&quot;Division by zero&quot;</span>);</div>
 <div class="line">  }</div>
-<div class="line">  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>;</div>
-<div class="line">};</div>
-<div class="ttc" id="amacros_8hpp_html_afa3d845c7734d0295f800bff5755884c"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#afa3d845c7734d0295f800bff5755884c">IRSOL_STATIC_UNREACHABLE</a></div><div class="ttdeci">#define IRSOL_STATIC_UNREACHABLE(messageLiteral)</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00092">macros.hpp:92</a></div></div>
-<div class="ttc" id="atest__assignment_8cpp_html_a442505a4bcabcf16de33fdf0b96c02ce"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a></div><div class="ttdeci">auto value</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d3f/test__assignment_8cpp_source.html#l00031">test_assignment.cpp:31</a></div></div>
-</div><!-- fragment --><p> Note: this macro should only be used in constexpr functions. If code is complied and the compilation logic hits this macro, it will trigger a compile-time error. So, following the example, if <code>foo</code> is called with a literal value <code>foo(0)</code>, a compile-time error will be triggered. </p>
+<div class="line">  <span class="keywordflow">return</span> 10 / x;</div>
+<div class="line">}</div>
+<div class="ttc" id="amacros_8hpp_html_afa3d845c7734d0295f800bff5755884c"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#afa3d845c7734d0295f800bff5755884c">IRSOL_STATIC_UNREACHABLE</a></div><div class="ttdeci">#define IRSOL_STATIC_UNREACHABLE(messageLiteral)</div><div class="ttdoc">Marks unreachable branches in constexpr functions.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00130">macros.hpp:130</a></div></div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>If this macro is reached in runtime code (i.e., not <code>constexpr</code>), it still falls back to <a class="el" href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a> to mark the code as unreachable at runtime.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messageLiteral</td><td>A literal C-string message describing the unreachable condition. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>                                         : <span class="stringliteral">&quot; messageLiteral);             \</span></div>
-<div class="line"><span class="lineno">   96</span><span class="stringliteral">  _IRSOL_UNREACHABLE_IMPL()</span></div>
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00130">130</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>                                         : <span class="stringliteral">&quot; messageLiteral);             \</span></div>
+<div class="line"><span class="lineno">  134</span><span class="stringliteral">  _IRSOL_UNREACHABLE_IMPL()</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -254,7 +299,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<p>Ends a diagnostic suppression block started with <a class="el" href="../../db/dbe/macros_8hpp.html#a17be5e973bbf81e957afa439773a9978">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00069">69</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
 
 </div>
 </div>
@@ -269,15 +316,18 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Wrap unused structured binding members Example usage: </p><div class="fragment"><div class="line"><a class="code hl_define" href="../../db/dbe/macros_8hpp.html#a17be5e973bbf81e957afa439773a9978">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</a></div>
-<div class="line"><span class="keywordflow">for</span>(<span class="keyword">auto</span>&amp; [key, <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>] : myMap) {</div>
-<div class="line">   <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#afe265b6780be5589038b99cbd2dbf464">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END</a></div>
-<div class="line">   <span class="comment">// code using only one of key or value</span></div>
+
+<p>Begins a diagnostic suppression block for unused structured binding variables. </p>
+<p>Useful when only part of a structured binding is used inside a loop or block. </p><div class="fragment"><div class="line"><a class="code hl_define" href="../../db/dbe/macros_8hpp.html#a17be5e973bbf81e957afa439773a9978">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</a></div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [key, <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>] : map) {</div>
+<div class="line"><a class="code hl_define" href="../../db/dbe/macros_8hpp.html#afe265b6780be5589038b99cbd2dbf464">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END</a></div>
+<div class="line">  doSomethingWith(key);</div>
 <div class="line">}</div>
-<div class="ttc" id="amacros_8hpp_html_a17be5e973bbf81e957afa439773a9978"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#a17be5e973bbf81e957afa439773a9978">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</a></div><div class="ttdeci">#define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00046">macros.hpp:46</a></div></div>
-<div class="ttc" id="amacros_8hpp_html_afe265b6780be5589038b99cbd2dbf464"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#afe265b6780be5589038b99cbd2dbf464">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END</a></div><div class="ttdeci">#define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00047">macros.hpp:47</a></div></div>
+<div class="ttc" id="amacros_8hpp_html_a17be5e973bbf81e957afa439773a9978"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#a17be5e973bbf81e957afa439773a9978">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</a></div><div class="ttdeci">#define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START</div><div class="ttdoc">Begins a diagnostic suppression block for unused structured binding variables.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00068">macros.hpp:68</a></div></div>
+<div class="ttc" id="amacros_8hpp_html_afe265b6780be5589038b99cbd2dbf464"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#afe265b6780be5589038b99cbd2dbf464">IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END</a></div><div class="ttdeci">#define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END</div><div class="ttdoc">Ends a diagnostic suppression block started with IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00069">macros.hpp:69</a></div></div>
+<div class="ttc" id="atest__assignment_8cpp_html_a442505a4bcabcf16de33fdf0b96c02ce"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a></div><div class="ttdeci">auto value</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d3f/test__assignment_8cpp_source.html#l00031">test_assignment.cpp:31</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00046">46</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
 
 </div>
 </div>
@@ -295,16 +345,19 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Indicates unreachable code. Example: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> MyFunction() {</div>
-<div class="line"> <span class="keywordflow">if</span> (&lt;always <span class="keyword">true</span>&gt;) {</div>
-<div class="line">   ...</div>
-<div class="line">   <span class="keywordflow">return</span> 1;</div>
-<div class="line"> }</div>
-<div class="line"> <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a>();</div>
-<div class="ttc" id="amacros_8hpp_html_a5f990b958465d0ddf7357b5fa09fb58c"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a></div><div class="ttdeci">#define IRSOL_UNREACHABLE()</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00075">macros.hpp:75</a></div></div>
-</div><!-- fragment --><p> This is useful for functions containing switch statements covering all possible cases, and for which you don't want to have a default dummy case or a compiler warning. Note: this macro is a simple compiler hint, and if the execution flow reaches this point, undefined behaviour may occur. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00075">75</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
+<p>Indicates unreachable code to the compiler. </p>
+<p>Use this macro in logically unreachable branches (e.g., fully covered switch cases) to suppress warnings and help with optimization. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> getCode(Type t) {</div>
+<div class="line">  <span class="keywordflow">switch</span> (t) {</div>
+<div class="line">    <span class="keywordflow">case</span> Type::A: <span class="keywordflow">return</span> 1;</div>
+<div class="line">    <span class="keywordflow">case</span> Type::B: <span class="keywordflow">return</span> 2;</div>
+<div class="line">  }</div>
+<div class="line">  <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a>();</div>
+<div class="line">}</div>
+<div class="ttc" id="amacros_8hpp_html_a5f990b958465d0ddf7357b5fa09fb58c"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a></div><div class="ttdeci">#define IRSOL_UNREACHABLE()</div><div class="ttdoc">Indicates unreachable code to the compiler.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00107">macros.hpp:107</a></div></div>
+</div><!-- fragment --><dl class="section warning"><dt>Warning</dt><dd>If the control flow does reach this macro, undefined behavior may occur. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/dbe/macros_8hpp_source.html#l00107">107</a> of file <a class="el" href="../../db/dbe/macros_8hpp_source.html">macros.hpp</a>.</p>
 
 </div>
 </div>

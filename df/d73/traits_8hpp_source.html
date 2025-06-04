@@ -56,48 +56,43 @@ $(document).ready(function(){initNavTree('df/d73/traits_8hpp_source.html','../..
   <div class="headertitle"><div class="title">traits.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../df/d73/traits_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/de3/types_8hpp.html">irsol/types.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d7/ddb/namespaceirsol.html">irsol</a> {</div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="../../d8/daa/namespaceirsol_1_1traits.html">    7</a></span><span class="keyword">namespace </span>traits {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Always false for any type T</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">   11</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">always_false</a> : std::false_type</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{};</div>
+<a href="../../df/d73/traits_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/de3/types_8hpp.html">irsol/types.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d7/ddb/namespaceirsol.html">irsol</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">namespace </span>traits {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="};">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">   53</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">always_false</a> : std::false_type</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{};</div>
 </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// Create trait helpers to limit the compilation possibility of some template functions</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// to only types that are part of the value_t variant.</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> VariantT&gt;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">is_type_in_variant</a>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... VariantClassesT&gt;</div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../dd/dc5/structirsol_1_1traits_1_1is__type__in__variant_3_01T_00_01std_1_1variant_3_01VariantClassesT_8_8_8_01_4_01_4.html">   20</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">is_type_in_variant</a>&lt;T, std::variant&lt;VariantClassesT...&gt;&gt;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  : std::disjunction&lt;std::is_same&lt;std::decay_t&lt;T&gt;, VariantClassesT&gt;...&gt;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> VariantT&gt;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">   76</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">is_type_in_variant</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... VariantClassesT&gt;</div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="../../dd/dc5/structirsol_1_1traits_1_1is__type__in__variant_3_01T_00_01std_1_1variant_3_01VariantClassesT_8_8_8_01_4_01_4.html">   79</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">is_type_in_variant</a>&lt;T, std::variant&lt;VariantClassesT...&gt;&gt;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  : std::disjunction&lt;std::is_same&lt;std::decay_t&lt;T&gt;, VariantClassesT&gt;...&gt;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{};</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// To be used as:</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// template &lt;typename T, std::enable_if_t&lt;irsol::traits::is_type_in_variant_v&lt;T, MyVariant&gt;, int&gt; =</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// 0&gt; void myFunctionTemplate(const T&amp; msg) { ... } in this way, the &#39;myFunctionTemplate&#39; will only</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// accept types that are part of the MyVariant variant.</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> VariantT&gt;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d8/daa/namespaceirsol_1_1traits.html#a580de058c72dc53e2335f2319037408a">   29</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d8/daa/namespaceirsol_1_1traits.html#a580de058c72dc53e2335f2319037408a">is_type_in_variant_v</a> = <a class="code hl_struct" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">is_type_in_variant&lt;T, VariantT&gt;::value</a>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}  <span class="comment">// namespace traits</span></div>
-</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}  <span class="comment">// namespace irsol</span></div>
-<div class="ttc" id="anamespaceirsol_1_1traits_html_a580de058c72dc53e2335f2319037408a"><div class="ttname"><a href="../../d8/daa/namespaceirsol_1_1traits.html#a580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a></div><div class="ttdeci">constexpr bool is_type_in_variant_v</div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00029">traits.hpp:29</a></div></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> VariantT&gt;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">  106</a></span><span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">is_type_in_variant_v</a> = <a class="code hl_struct" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">is_type_in_variant&lt;T, VariantT&gt;::value</a>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}  <span class="comment">// namespace traits</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}  <span class="comment">// namespace irsol</span></div>
+<div class="ttc" id="agroup__Metaprogramming_html_ga580de058c72dc53e2335f2319037408a"><div class="ttname"><a href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a></div><div class="ttdeci">constexpr bool is_type_in_variant_v</div><div class="ttdoc">Variable template shorthand for is_type_in_variant.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00106">traits.hpp:106</a></div></div>
 <div class="ttc" id="anamespaceirsol_html"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html">irsol</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00140">assert.hpp:140</a></div></div>
-<div class="ttc" id="astructirsol_1_1traits_1_1always__false_html"><div class="ttname"><a href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">irsol::traits::always_false</a></div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00011">traits.hpp:12</a></div></div>
-<div class="ttc" id="astructirsol_1_1traits_1_1is__type__in__variant_html"><div class="ttname"><a href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a></div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00017">traits.hpp:17</a></div></div>
+<div class="ttc" id="astructirsol_1_1traits_1_1always__false_html"><div class="ttname"><a href="../../d7/dc3/structirsol_1_1traits_1_1always__false.html">irsol::traits::always_false</a></div><div class="ttdoc">Always evaluates to false, regardless of the type.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00053">traits.hpp:54</a></div></div>
+<div class="ttc" id="astructirsol_1_1traits_1_1is__type__in__variant_html"><div class="ttname"><a href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a></div><div class="ttdoc">Checks whether a type T is one of the types in a std::variant.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d73/traits_8hpp_source.html#l00076">traits.hpp:76</a></div></div>
 <div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="../../dd/de3/types_8hpp.html">types.hpp</a></div><div class="ttdoc">Core type definitions for networking, time handling, and protocol values used throughout the irsol li...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
