@@ -93,13 +93,13 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">   37</span>  std::size_t pos = 0;</div>
 <div class="line"><span class="lineno">   38</span> </div>
 <div class="line"><span class="lineno">   39</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_integral_v&lt;T&gt;) {</div>
-<div class="line"><span class="lineno">   40</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#ab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to integer&quot;</span>, str);</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to integer&quot;</span>, str);</div>
 <div class="line"><span class="lineno">   41</span>    <span class="keywordtype">int</span> res = std::stoi(str, &amp;pos);</div>
 <div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span>(pos != str.length())</div>
 <div class="line"><span class="lineno">   43</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Extra characters after integer&quot;</span>);</div>
 <div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><span class="lineno">   45</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_floating_point_v&lt;T&gt;) {</div>
-<div class="line"><span class="lineno">   46</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#ab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to double&quot;</span>, str);</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to double&quot;</span>, str);</div>
 <div class="line"><span class="lineno">   47</span>    <span class="keywordtype">double</span> res = std::stod(str, &amp;pos);</div>
 <div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span>(pos != str.length())</div>
 <div class="line"><span class="lineno">   49</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Extra characters after double&quot;</span>);</div>
@@ -110,7 +110,7 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">   54</span>    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;utils::fromString()&quot;</span>);</div>
 <div class="line"><span class="lineno">   55</span>  }</div>
 <div class="line"><span class="lineno">   56</span>}</div>
-<div class="ttc" id="alogging_8hpp_html_ab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#ab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00022">logging.hpp:22</a></div></div>
+<div class="ttc" id="agroup__Logging_html_gab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdoc">Logs a trace-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00090">logging.hpp:90</a></div></div>
 <div class="ttc" id="amacros_8hpp_html_aa21d39bf4cd94d42dc192cf34803a5d9"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00120">macros.hpp:120</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -181,12 +181,12 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">   24</span>  <span class="keyword">static</span> <span class="keyword">const</span> std::regex re(R<span class="stringliteral">&quot;(^[a-zA-Z_][a-zA-Z0-9_]*(?:\[\d+\])*$)&quot;);</span></div>
 <div class="line"><span class="lineno">   25</span><span class="stringliteral">  std::smatch             <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a>;</span></div>
 <div class="line"><span class="lineno">   26</span><span class="stringliteral">  </span><span class="keywordflow">if</span>(!std::regex_match(identifier, <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a>, re)) {</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Invalid identifier &#39;{}&#39;&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Invalid identifier &#39;{}&#39;&quot;</span>, identifier);</div>
 <div class="line"><span class="lineno">   28</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Invalid identifier&quot;</span>);</div>
 <div class="line"><span class="lineno">   29</span>  }</div>
 <div class="line"><span class="lineno">   30</span>  <span class="keywordflow">return</span> identifier;</div>
 <div class="line"><span class="lineno">   31</span>}</div>
-<div class="ttc" id="alogging_8hpp_html_a5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00026">logging.hpp:26</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
 <div class="ttc" id="atest__assignment_8cpp_html_aa1c45ce7a42f7c3aa5c1a10328c2473a"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a></div><div class="ttdeci">irsol::protocol::Assignment m(identifier, value)</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d3f/test__assignment_8cpp_source.html#l00033">test_assignment.cpp:33</a></div></div>
 </div><!-- fragment -->
 </div>

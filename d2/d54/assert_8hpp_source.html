@@ -56,68 +56,70 @@ $(document).ready(function(){initNavTree('d2/d54/assert_8hpp_source.html','../..
   <div class="headertitle"><div class="title">assert.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d2/d54/assert_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifdef IRSOL_DISABLE_ASSERT</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifdef PPK_ASSERT_ENABLED</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#if PPK_ASSERT_ENABLED</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#error &quot;PPK_ASSERT_ENABLED is set to 1, but IRSOL_DISABLE_ASSERT is defined.&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define PPK_ASSERT_ENABLED 0</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d2/d54/assert_8hpp.html#afacad6aad2302f80d648630116f204a3">   12</a></span><span class="preprocessor">#define PPK_ASSERT_ENABLED 1</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;ppk_assert/ppk_assert.hpp&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d2/d54/assert_8hpp.html#ad267f328959b546ea7707d9f71b3b6d3">   17</a></span><span class="preprocessor">#define IRSOL_ASSERT_DEBUG \</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">  PPK_ASSERT_DEBUG  </span><span class="comment">// Prints assertion to console and allows taking interactive action via user</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                    <span class="comment">// input</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d2/d54/assert_8hpp.html#ae503472051c488fb16db93a66e9bbb23">   20</a></span><span class="preprocessor">#define IRSOL_ASSERT_ERROR PPK_ASSERT_ERROR  </span><span class="comment">// Prints assertion to console and throws an exception</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d2/d54/assert_8hpp.html#af958644a54004617f89dda6854f5a14e">   21</a></span><span class="preprocessor">#define IRSOL_ASSERT_FATAL \</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">  PPK_ASSERT_FATAL  </span><span class="comment">// Prints assertion to console and terminates the program</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d2/d54/assert_8hpp.html#a950707f2fdcd0dcfb828202a22634444">   23</a></span><span class="preprocessor">#define IRSOL_ASSERT_FALSE(message) \</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">  IRSOL_ASSERT_FATAL(false, message)  </span><span class="comment">// Prints assertion to console and terminates the program</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../d2/d54/assert_8hpp.html#a20e5778df87c73be33b703b82b17ed48">   26</a></span><span class="preprocessor">#define IRSOL_STATIC_ASSERT \</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">  PPK_STATIC_ASSERT  </span><span class="comment">// Prints assertion to console at compile time and terminates the compilation</span></div>
+<a href="../../d2/d54/assert_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// clang-format off</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// clang-format on</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d7/ddb/namespaceirsol.html">   29</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d7/ddb/namespaceirsol.html">irsol</a> {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">   30</a></span><span class="keyword">using </span><a class="code hl_typedef" href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">AssertionException</a> = ppk::assert::AssertionException;  <span class="comment">// Exception thrown by PPK_ASSERT_ERROR</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">   32</a></span><span class="keyword">typedef</span> ppk::assert::implementation::AssertAction::AssertAction (*<a class="code hl_typedef" href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">AssertHandler</a>)(</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* file,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keywordtype">int</span>         line,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* function,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* expression,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keywordtype">int</span>         level,</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d7/ddb/namespaceirsol.html#a52706d854fd90190ff7d1d878f0cc9a6">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/ddb/namespaceirsol.html#a52706d854fd90190ff7d1d878f0cc9a6">setAssertHandler</a>(<a class="code hl_typedef" href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">AssertHandler</a> handler);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/ddb/namespaceirsol.html#af1acf306d50866d76243d3db3686e0a7">initAssertHandler</a>();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d4/d53/namespaceirsol_1_1internal.html">   43</a></span><span class="keyword">namespace </span>internal {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>ppk::assert::implementation::AssertAction::AssertAction <a class="code hl_function" href="../../d4/d53/namespaceirsol_1_1internal.html#a80ffc7e92f12b4df6cea608fbc0865a9">assertHandler</a>(</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* file,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordtype">int</span>         line,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* function,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* expression,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keywordtype">int</span>         level,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}  <span class="comment">// namespace internal</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#ifdef IRSOL_DISABLE_ASSERT</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">#ifdef PPK_ASSERT_ENABLED</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#if PPK_ASSERT_ENABLED</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#error &quot;PPK_ASSERT_ENABLED is set to 1, but IRSOL_DISABLE_ASSERT is defined.&quot;</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#define PPK_ASSERT_ENABLED 0</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="../../d2/d54/assert_8hpp.html#afacad6aad2302f80d648630116f204a3">  128</a></span><span class="preprocessor">#define PPK_ASSERT_ENABLED 1</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">#include &lt;ppk_assert/ppk_assert.hpp&gt;</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="../../d0/df0/group__Assertion.html#gad267f328959b546ea7707d9f71b3b6d3">  133</a></span><span class="preprocessor">#define IRSOL_ASSERT_DEBUG PPK_ASSERT_DEBUG</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">  134</a></span><span class="preprocessor">#define IRSOL_ASSERT_ERROR PPK_ASSERT_ERROR</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="../../d0/df0/group__Assertion.html#gaf958644a54004617f89dda6854f5a14e">  135</a></span><span class="preprocessor">#define IRSOL_ASSERT_FATAL PPK_ASSERT_FATAL</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="../../d0/df0/group__Assertion.html#ga950707f2fdcd0dcfb828202a22634444">  136</a></span><span class="preprocessor">#define IRSOL_ASSERT_FALSE(message) IRSOL_ASSERT_FATAL(false, message)</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="../../d0/df0/group__Assertion.html#ga20e5778df87c73be33b703b82b17ed48">  138</a></span><span class="preprocessor">#define IRSOL_STATIC_ASSERT PPK_STATIC_ASSERT</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="foldopen" id="foldopen00140" data-start="{" data-end="}">
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="../../d7/ddb/namespaceirsol.html">  140</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d7/ddb/namespaceirsol.html">irsol</a> {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">  149</a></span><span class="keyword">using </span><a class="code hl_typedef" href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">AssertionException</a> = ppk::assert::AssertionException;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">  170</a></span><span class="keyword">typedef</span> ppk::assert::implementation::AssertAction::AssertAction (*<a class="code hl_typedef" href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">AssertHandler</a>)(</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* file,</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keywordtype">int</span>         line,</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* function,</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* expression,</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keywordtype">int</span>         level,</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="../../d0/df0/group__Assertion.html#ga52706d854fd90190ff7d1d878f0cc9a6">  187</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/df0/group__Assertion.html#ga52706d854fd90190ff7d1d878f0cc9a6">setAssertHandler</a>(<a class="code hl_typedef" href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">AssertHandler</a> handler);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/df0/group__Assertion.html#gaf1acf306d50866d76243d3db3686e0a7">initAssertHandler</a>();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="foldopen" id="foldopen00204" data-start="{" data-end="}">
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="../../d4/d53/namespaceirsol_1_1internal.html">  204</a></span><span class="keyword">namespace </span>internal {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>ppk::assert::implementation::AssertAction::AssertAction <a class="code hl_function" href="../../d0/df0/group__Assertion.html#ga80ffc7e92f12b4df6cea608fbc0865a9">assertHandler</a>(</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* file,</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  <span class="keywordtype">int</span>         line,</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* function,</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* expression,</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  <span class="keywordtype">int</span>         level,</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>}  <span class="comment">// namespace internal</span></div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}  <span class="comment">// namespace irsol</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>}  <span class="comment">// namespace irsol</span></div>
 </div>
-<div class="ttc" id="anamespaceirsol_1_1internal_html_a80ffc7e92f12b4df6cea608fbc0865a9"><div class="ttname"><a href="../../d4/d53/namespaceirsol_1_1internal.html#a80ffc7e92f12b4df6cea608fbc0865a9">irsol::internal::assertHandler</a></div><div class="ttdeci">ppk::assert::implementation::AssertAction::AssertAction assertHandler(const char *file, int line, const char *function, const char *expression, int level, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dfd/assert_8cpp_source.html#l00022">assert.cpp:22</a></div></div>
-<div class="ttc" id="anamespaceirsol_html"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html">irsol</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00029">assert.hpp:29</a></div></div>
-<div class="ttc" id="anamespaceirsol_html_a0e8f6460f87ddc7ef8474f56ac7b82dd"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">irsol::AssertHandler</a></div><div class="ttdeci">ppk::assert::implementation::AssertAction::AssertAction(* AssertHandler)(const char *file, int line, const char *function, const char *expression, int level, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00032">assert.hpp:32</a></div></div>
-<div class="ttc" id="anamespaceirsol_html_a1fd93a626ce3f0888f763f800ae35cb7"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">irsol::AssertionException</a></div><div class="ttdeci">ppk::assert::AssertionException AssertionException</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00030">assert.hpp:30</a></div></div>
-<div class="ttc" id="anamespaceirsol_html_a52706d854fd90190ff7d1d878f0cc9a6"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#a52706d854fd90190ff7d1d878f0cc9a6">irsol::setAssertHandler</a></div><div class="ttdeci">void setAssertHandler(AssertHandler handler)</div></div>
-<div class="ttc" id="anamespaceirsol_html_af1acf306d50866d76243d3db3686e0a7"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#af1acf306d50866d76243d3db3686e0a7">irsol::initAssertHandler</a></div><div class="ttdeci">void initAssertHandler()</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dfd/assert_8cpp_source.html#l00014">assert.cpp:14</a></div></div>
+<div class="ttc" id="agroup__Assertion_html_ga52706d854fd90190ff7d1d878f0cc9a6"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#ga52706d854fd90190ff7d1d878f0cc9a6">irsol::setAssertHandler</a></div><div class="ttdeci">void setAssertHandler(AssertHandler handler)</div><div class="ttdoc">Sets a custom assertion handler function.</div></div>
+<div class="ttc" id="agroup__Assertion_html_ga80ffc7e92f12b4df6cea608fbc0865a9"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#ga80ffc7e92f12b4df6cea608fbc0865a9">irsol::internal::assertHandler</a></div><div class="ttdeci">ppk::assert::implementation::AssertAction::AssertAction assertHandler(const char *file, int line, const char *function, const char *expression, int level, const char *message)</div><div class="ttdoc">Internal default assertion handler implementation.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dfd/assert_8cpp_source.html#l00022">assert.cpp:22</a></div></div>
+<div class="ttc" id="agroup__Assertion_html_gaf1acf306d50866d76243d3db3686e0a7"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gaf1acf306d50866d76243d3db3686e0a7">irsol::initAssertHandler</a></div><div class="ttdeci">void initAssertHandler()</div><div class="ttdoc">Initializes the assertion handler system.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dfd/assert_8cpp_source.html#l00014">assert.cpp:14</a></div></div>
+<div class="ttc" id="anamespaceirsol_html"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html">irsol</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00140">assert.hpp:140</a></div></div>
+<div class="ttc" id="anamespaceirsol_html_a0e8f6460f87ddc7ef8474f56ac7b82dd"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#a0e8f6460f87ddc7ef8474f56ac7b82dd">irsol::AssertHandler</a></div><div class="ttdeci">ppk::assert::implementation::AssertAction::AssertAction(* AssertHandler)(const char *file, int line, const char *function, const char *expression, int level, const char *message)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00170">assert.hpp:170</a></div></div>
+<div class="ttc" id="anamespaceirsol_html_a1fd93a626ce3f0888f763f800ae35cb7"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">irsol::AssertionException</a></div><div class="ttdeci">ppk::assert::AssertionException AssertionException</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00149">assert.hpp:149</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -65,25 +65,26 @@ $(document).ready(function(){initNavTree('d8/d93/logging_and_asserting.html','..
 <div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="../../d0/da9/examples_200-logging-and-asserting_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// Initialize logging system</span></div>
-<div class="line">    <a class="code hl_function" href="../../d7/ddb/namespaceirsol.html#a9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a>(<span class="stringliteral">&quot;logs/app.log&quot;</span>);</div>
+<div class="line">    <a class="code hl_function" href="../../d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a>(<span class="stringliteral">&quot;logs/app.log&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Initialize assertion handler</span></div>
-<div class="line">    <a class="code hl_function" href="../../d7/ddb/namespaceirsol.html#af1acf306d50866d76243d3db3686e0a7">irsol::initAssertHandler</a>();</div>
+<div class="line">    <a class="code hl_function" href="../../d0/df0/group__Assertion.html#gaf1acf306d50866d76243d3db3686e0a7">irsol::initAssertHandler</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Your application code here...</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aassert_8hpp_html"><div class="ttname"><a href="../../d2/d54/assert_8hpp.html">assert.hpp</a></div></div>
+<div class="ttc" id="aassert_8hpp_html"><div class="ttname"><a href="../../d2/d54/assert_8hpp.html">assert.hpp</a></div><div class="ttdoc">Assertion macros and utilities based on the PPK_ASSERT library.</div></div>
 <div class="ttc" id="aexamples_200-logging-and-asserting_2main_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="../../d0/da9/examples_200-logging-and-asserting_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/examples_200-logging-and-asserting_2main_8cpp_source.html#l00087">main.cpp:87</a></div></div>
-<div class="ttc" id="alogging_8hpp_html"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html">logging.hpp</a></div></div>
-<div class="ttc" id="anamespaceirsol_html_a9edc662d7e9504e7fec2018bb7542e6c"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#a9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a></div><div class="ttdeci">void initLogging(const char *fileSinkFilename=&quot;log/irsol.log&quot;, std::optional&lt; spdlog::level::level_enum &gt; minLogLevel=std::nullopt)</div><div class="ttdef"><b>Definition</b> <a href="../../dd/daf/logging_8cpp_source.html#l00108">logging.cpp:108</a></div></div>
-<div class="ttc" id="anamespaceirsol_html_af1acf306d50866d76243d3db3686e0a7"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#af1acf306d50866d76243d3db3686e0a7">irsol::initAssertHandler</a></div><div class="ttdeci">void initAssertHandler()</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dfd/assert_8cpp_source.html#l00014">assert.cpp:14</a></div></div>
+<div class="ttc" id="agroup__Assertion_html_gaf1acf306d50866d76243d3db3686e0a7"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gaf1acf306d50866d76243d3db3686e0a7">irsol::initAssertHandler</a></div><div class="ttdeci">void initAssertHandler()</div><div class="ttdoc">Initializes the assertion handler system.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dfd/assert_8cpp_source.html#l00014">assert.cpp:14</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga9edc662d7e9504e7fec2018bb7542e6c"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a></div><div class="ttdeci">void initLogging(const char *fileSinkFilename=&quot;log/irsol.log&quot;, std::optional&lt; spdlog::level::level_enum &gt; minLogLevel=std::nullopt)</div><div class="ttdoc">Initializes the irsol logging system.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/daf/logging_8cpp_source.html#l00108">logging.cpp:108</a></div></div>
+<div class="ttc" id="alogging_8hpp_html"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html">logging.hpp</a></div><div class="ttdoc">Logging utilities and configuration for the irsol library.</div></div>
 </div><!-- fragment --><ul>
 <li><code>initLogging()</code> configures logging sinks, file outputs, and runtime logging level.</li>
 <li><code>initAssertHandler()</code> sets up the assertion failure callback behavior.</li>
 </ul>
 <h1>Logging Levels and Configuration</h1>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d0/da9/logging_8hpp.html" title="Logging utilities and configuration for the irsol library.">irsol/logging.hpp</a></dd></dl>
 <h2>Runtime Logging Level Setup</h2>
-<p>You can control the logging verbosity at runtime by passing the desired level to <code>initLogging()</code>: </p><div class="fragment"><div class="line"><a class="code hl_function" href="../../d7/ddb/namespaceirsol.html#a9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a>(<span class="stringliteral">&quot;logs/app.log&quot;</span>, spdlog::level::debug);</div>
+<p>You can control the logging verbosity at runtime by passing the desired level to <code>initLogging()</code>: </p><div class="fragment"><div class="line"><a class="code hl_function" href="../../d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a>(<span class="stringliteral">&quot;logs/app.log&quot;</span>, spdlog::level::debug);</div>
 </div><!-- fragment --><p>This determines which log messages are emitted during execution. In the above example, ony log levels <b>higher</b> than <code>debug</code> are emitted (<code>trace</code> logs are ignored).</p>
 <h2>Compile-Time Logging Level (<code>SPDLOG_ACTIVE_LEVEL</code>)</h2>
 <p>To optimize your binary and exclude logs below a certain level at compile time, define the macro (which needs to be set prior to importing <code>&lt;spdlog/spdlog&gt;</code>): </p><div class="fragment"><div class="line"><span class="preprocessor">#define SPDLOG_ACTIVE_LEVEL 2  </span><span class="comment">// or any other level you want</span></div>
@@ -96,8 +97,8 @@ $(document).ready(function(){initNavTree('d8/d93/logging_and_asserting.html','..
 <li>Release: <code>info</code>. Logs with a lower level are ignored at compilation time</li>
 </ul>
 <h2>Named Loggers Usage</h2>
-<p>The system supports named loggers for modular logging scopes: </p><div class="fragment"><div class="line"><a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<span class="stringliteral">&quot;this-logger-name&quot;</span>, <span class="stringliteral">&quot;Log message&quot;</span>);</div>
-<div class="ttc" id="alogging_8hpp_html_a30c2f8536dcd7ea3bb3a5bbc9f38a312"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_INFO(name,...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00051">logging.hpp:51</a></div></div>
+<p>The system supports named loggers for modular logging scopes: </p><div class="fragment"><div class="line"><a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<span class="stringliteral">&quot;this-logger-name&quot;</span>, <span class="stringliteral">&quot;Log message&quot;</span>);</div>
+<div class="ttc" id="agroup__Logging_html_ga30c2f8536dcd7ea3bb3a5bbc9f38a312"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_INFO(name,...)</div><div class="ttdoc">Logs an info-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00176">logging.hpp:176</a></div></div>
 </div><!-- fragment --><ul>
 <li>Use named loggers to separate logs from different components or libraries.</li>
 <li>Named loggers inherit the global sinks and levels configured during initialization.</li>
@@ -118,16 +119,7 @@ $(document).ready(function(){initNavTree('d8/d93/logging_and_asserting.html','..
 <td class="markdownTableBodyNone">File logger   </td><td class="markdownTableBodyNone"><code>trace</code>   </td><td class="markdownTableBodyNone"><code>info</code>   </td></tr>
 </table>
 <h1>Assertion Levels: Usage and Behavior</h1>
-<p>Assertions help catch programming errors and invalid states. This system supports multiple assertion levels with distinct semantics: </p><table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Level   </th><th class="markdownTableHeadNone">When to Use   </th><th class="markdownTableHeadNone">Behavior in <code>Debug</code> Mode   </th><th class="markdownTableHeadNone">Behavior in <code>Release</code> Mode    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Debug</code>   </td><td class="markdownTableBodyNone">Check internal invariants, sanity checks   </td><td class="markdownTableBodyNone">Logs warning, continues execution (ignored)   </td><td class="markdownTableBodyNone">Logs warning, continues execution (ignored)    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>Error</code>   </td><td class="markdownTableBodyNone">Recoverable errors, invalid input detected   </td><td class="markdownTableBodyNone">Logs error and throws an exception that can be caught   </td><td class="markdownTableBodyNone">Logs error and throws an exception that can be caught    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Fatal</code>   </td><td class="markdownTableBodyNone">Critical failure, unrecoverable state   </td><td class="markdownTableBodyNone">Logs error and aborts program immediately   </td><td class="markdownTableBodyNone">Logs fatal and aborts program immediately   </td></tr>
-</table>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d2/d54/assert_8hpp.html" title="Assertion macros and utilities based on the PPK_ASSERT library.">irsol/assert.hpp</a></dd></dl>
 <h2>Disabling Assertions Globally</h2>
 <p>You can <b>disable all assertions globally</b> at compile time by defining the macro:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#define IRSOL_DISABLE_ASSERT</span></div>

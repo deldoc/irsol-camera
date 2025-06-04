@@ -57,25 +57,32 @@ $(document).ready(function(){initNavTree('de/dc4/classirsol_1_1internal_1_1Named
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../da/d0f/classirsol_1_1internal_1_1NamedLoggerRegistry-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::internal::NamedLoggerRegistry Class Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::internal::NamedLoggerRegistry Class Reference<div class="ingroups"><a class="el" href="../../d0/d58/group__Logging.html">Logging</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages a registry of named loggers.  
+ <a href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d0/da9/logging_8hpp_source.html">logging.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae496f64b1dc30108cc433fdf69e7b3b6" id="r_ae496f64b1dc30108cc433fdf69e7b3b6"><td class="memItemLeft" align="right" valign="top">static spdlog::logger *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#ae496f64b1dc30108cc433fdf69e7b3b6">getLogger</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ae496f64b1dc30108cc433fdf69e7b3b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a logger by name from the registry.  <br /></td></tr>
 <tr class="separator:ae496f64b1dc30108cc433fdf69e7b3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a47c5c2ebd0849df0b628744442c74250" id="r_a47c5c2ebd0849df0b628744442c74250"><td class="memItemLeft" align="right" valign="top">static std::unordered_map&lt; std::string, <a class="el" href="../../d2/d9b/structirsol_1_1internal_1_1LoggerInfo.html">LoggerInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#a47c5c2ebd0849df0b628744442c74250">m_loggers</a></td></tr>
+<tr class="memdesc:a47c5c2ebd0849df0b628744442c74250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal logger registry.  <br /></td></tr>
 <tr class="separator:a47c5c2ebd0849df0b628744442c74250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d0/da9/logging_8hpp_source.html#l00036">36</a> of file <a class="el" href="../../d0/da9/logging_8hpp_source.html">logging.hpp</a>.</p>
+<div class="textblock"><p>Manages a registry of named loggers. </p>
+<p>Provides access to named logger instances and stores metadata for reuse and caching. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/da9/logging_8hpp_source.html#l00116">116</a> of file <a class="el" href="../../d0/da9/logging_8hpp_source.html">logging.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae496f64b1dc30108cc433fdf69e7b3b6" name="ae496f64b1dc30108cc433fdf69e7b3b6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae496f64b1dc30108cc433fdf69e7b3b6">&#9670;&#160;</a></span>getLogger()</h2>
@@ -100,6 +107,16 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves a logger by name from the registry. </p>
+<p>If the logger does not exist yet, it is created and registered.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the logger. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the associated spdlog logger. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/daf/logging_8cpp_source.html#l00012">12</a> of file <a class="el" href="../../dd/daf/logging_8cpp_source.html">logging.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   13</span>{</div>
@@ -153,7 +170,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   61</span> </div>
 <div class="line"><span class="lineno">   62</span>  <span class="comment">// If there&#39;s more than 256 loggers, delete the oldest one</span></div>
 <div class="line"><span class="lineno">   63</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#a47c5c2ebd0849df0b628744442c74250">m_loggers</a>.size() &gt; 256) {</div>
-<div class="line"><span class="lineno">   64</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Automatic deletion of old named loggers.&quot;</span>);</div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Automatic deletion of old named loggers.&quot;</span>);</div>
 <div class="line"><span class="lineno">   65</span>    <span class="keyword">auto</span> oldestLogger =</div>
 <div class="line"><span class="lineno">   66</span>      std::min_element(<a class="code hl_variable" href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#a47c5c2ebd0849df0b628744442c74250">m_loggers</a>.begin(), <a class="code hl_variable" href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#a47c5c2ebd0849df0b628744442c74250">m_loggers</a>.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; a, <span class="keyword">const</span> <span class="keyword">auto</span>&amp; b) {</div>
 <div class="line"><span class="lineno">   67</span>        return a.second.lastRetrieved &lt; b.second.lastRetrieved;</div>
@@ -162,8 +179,8 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   70</span>  }</div>
 <div class="line"><span class="lineno">   71</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
 <div class="line"><span class="lineno">   72</span>}</div>
-<div class="ttc" id="aclassirsol_1_1internal_1_1NamedLoggerRegistry_html_a47c5c2ebd0849df0b628744442c74250"><div class="ttname"><a href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#a47c5c2ebd0849df0b628744442c74250">irsol::internal::NamedLoggerRegistry::m_loggers</a></div><div class="ttdeci">static std::unordered_map&lt; std::string, LoggerInfo &gt; m_loggers</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00042">logging.hpp:42</a></div></div>
-<div class="ttc" id="alogging_8hpp_html_a2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00024">logging.hpp:24</a></div></div>
+<div class="ttc" id="aclassirsol_1_1internal_1_1NamedLoggerRegistry_html_a47c5c2ebd0849df0b628744442c74250"><div class="ttname"><a href="../../de/dc4/classirsol_1_1internal_1_1NamedLoggerRegistry.html#a47c5c2ebd0849df0b628744442c74250">irsol::internal::NamedLoggerRegistry::m_loggers</a></div><div class="ttdeci">static std::unordered_map&lt; std::string, LoggerInfo &gt; m_loggers</div><div class="ttdoc">Internal logger registry.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00130">logging.hpp:130</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
 <div class="ttc" id="atest__error_8cpp_html_aede94e5895960e8807719a1a1abf9f43"><div class="ttname"><a href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dbc/test__error_8cpp_source.html#l00017">test_error.cpp:17</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -189,7 +206,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/da9/logging_8hpp_source.html#l00042">42</a> of file <a class="el" href="../../d0/da9/logging_8hpp_source.html">logging.hpp</a>.</p>
+<p>Internal logger registry. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/da9/logging_8hpp_source.html#l00130">130</a> of file <a class="el" href="../../d0/da9/logging_8hpp_source.html">logging.hpp</a>.</p>
 
 </div>
 </div>

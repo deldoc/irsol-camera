@@ -326,7 +326,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d61/collector_8cpp_source.html#l00315">315</a> of file <a class="el" href="../../db/d61/collector_8cpp_source.html">collector.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  317</span>{</div>
-<div class="line"><span class="lineno">  318</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  318</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  319</span>    <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  320</span>    <span class="stringliteral">&quot;Collecting clients for time {}, with slack of {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  321</span>    <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(now),</div>
@@ -349,7 +349,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  338</span> </div>
 <div class="line"><span class="lineno">  339</span>  <span class="keywordflow">return</span> {readyClients, clientsSchedule};</div>
 <div class="line"><span class="lineno">  340</span>}</div>
-<div class="ttc" id="alogging_8hpp_html_a57d5ed6ca38213a5cbb46950119a5f68"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_DEBUG(name,...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00049">logging.hpp:49</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga57d5ed6ca38213a5cbb46950119a5f68"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_DEBUG(name,...)</div><div class="ttdoc">Logs a debug-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00174">logging.hpp:174</a></div></div>
 <div class="ttc" id="anamespaceirsol_1_1utils_html_aef8913b229de1370e4ba6c311adf9026"><div class="ttname"><a href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a></div><div class="ttdeci">std::string timestampToString(irsol::types::timepoint_t tp)</div><div class="ttdoc">Converts a steady_clock time point to a human-readable string.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d06/utils_8cpp_source.html#l00111">utils.cpp:111</a></div></div>
 <div class="ttc" id="anamespaceirsol_1_1utils_html_af2468710608c92085f4771001ea3a105"><div class="ttname"><a href="../../d8/d93/namespaceirsol_1_1utils.html#af2468710608c92085f4771001ea3a105">irsol::utils::durationToString</a></div><div class="ttdeci">std::string durationToString(irsol::types::duration_t dr)</div><div class="ttdoc">Converts a duration to a human-readable string.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d06/utils_8cpp_source.html#l00133">utils.cpp:133</a></div></div>
 </div><!-- fragment -->
@@ -431,10 +431,10 @@ This method is NOT threadsafe. </dd></dl>
 <div class="fragment"><div class="line"><span class="lineno">  266</span>{</div>
 <div class="line"><span class="lineno">  267</span>  <span class="comment">// Mark the client&#39;s queue as finished, so the client is notified that</span></div>
 <div class="line"><span class="lineno">  268</span>  <span class="comment">// no more data will be pushed to him</span></div>
-<div class="line"><span class="lineno">  269</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Deregistering client {}&quot;</span>, clientId);</div>
+<div class="line"><span class="lineno">  269</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Deregistering client {}&quot;</span>, clientId);</div>
 <div class="line"><span class="lineno">  270</span> </div>
 <div class="line"><span class="lineno">  271</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.find(clientId) == <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.end()) {</div>
-<div class="line"><span class="lineno">  272</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#acab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a>(</div>
+<div class="line"><span class="lineno">  272</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gacab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a>(</div>
 <div class="line"><span class="lineno">  273</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Client {} was already deregistered, ignoring request.&quot;</span>, clientId);</div>
 <div class="line"><span class="lineno">  274</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  275</span>  }</div>
@@ -445,11 +445,11 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  280</span>  <span class="keyword">auto</span> dueNext = clientParams.nextFrameDue;</div>
 <div class="line"><span class="lineno">  281</span> </div>
 <div class="line"><span class="lineno">  282</span>  <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.erase(clientId);</div>
-<div class="line"><span class="lineno">  283</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  283</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  284</span>    <span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Removed client {}, now remaining  {} clients&quot;</span>, clientId, <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.size());</div>
 <div class="line"><span class="lineno">  285</span> </div>
 <div class="line"><span class="lineno">  286</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a65026725325000ef733111870bef4ea4">m_scheduleMap</a>.find(dueNext) == <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a65026725325000ef733111870bef4ea4">m_scheduleMap</a>.end()) {</div>
-<div class="line"><span class="lineno">  287</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#acab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a>(</div>
+<div class="line"><span class="lineno">  287</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gacab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a>(</div>
 <div class="line"><span class="lineno">  288</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  289</span>      <span class="stringliteral">&quot;Scheduled time {} was already deregistered. Ignoring request.&quot;</span>,</div>
 <div class="line"><span class="lineno">  290</span>      <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(dueNext));</div>
@@ -457,7 +457,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  292</span>  }</div>
 <div class="line"><span class="lineno">  293</span>  <span class="keyword">auto</span>&amp; clientsAtDue = <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a65026725325000ef733111870bef4ea4">m_scheduleMap</a>.at(dueNext);</div>
 <div class="line"><span class="lineno">  294</span> </div>
-<div class="line"><span class="lineno">  295</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  295</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  296</span>    <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  297</span>    <span class="stringliteral">&quot;Deregistering client {} from next schedule at {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  298</span>    clientId,</div>
@@ -466,7 +466,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  301</span>    std::remove(clientsAtDue.begin(), clientsAtDue.end(), clientId), clientsAtDue.end());</div>
 <div class="line"><span class="lineno">  302</span> </div>
 <div class="line"><span class="lineno">  303</span>  <span class="keywordflow">if</span>(clientsAtDue.empty()) {</div>
-<div class="line"><span class="lineno">  304</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  304</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  305</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  306</span>      <span class="stringliteral">&quot;No more clients for schedule {}. Removing schedule.&quot;</span>,</div>
 <div class="line"><span class="lineno">  307</span>      <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(dueNext));</div>
@@ -477,8 +477,8 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  312</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1frame__collector_1_1FrameCollector_html_a705254fa30d424a01adb204078c00b2d"><div class="ttname"><a href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a705254fa30d424a01adb204078c00b2d">irsol::server::frame_collector::FrameCollector::m_scheduleCondition</a></div><div class="ttdeci">std::condition_variable m_scheduleCondition</div><div class="ttdoc">Signals when a new client is scheduled.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d4b/collector_8hpp_source.html#l00166">collector.hpp:166</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1frame__collector_1_1FrameCollector_html_aa625ad14ab3b7d73d535adc4339aead0"><div class="ttname"><a href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">irsol::server::frame_collector::FrameCollector::m_clients</a></div><div class="ttdeci">std::unordered_map&lt; irsol::types::client_id_t, ClientCollectionParams &gt; m_clients</div><div class="ttdoc">Stores parameters for each registered client.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d4b/collector_8hpp_source.html#l00162">collector.hpp:162</a></div></div>
-<div class="ttc" id="alogging_8hpp_html_a30c2f8536dcd7ea3bb3a5bbc9f38a312"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_INFO(name,...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00051">logging.hpp:51</a></div></div>
-<div class="ttc" id="alogging_8hpp_html_acab2ed396a15b61c949f1054a6a5aae4"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#acab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_WARN(name,...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00053">logging.hpp:53</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga30c2f8536dcd7ea3bb3a5bbc9f38a312"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_INFO(name,...)</div><div class="ttdoc">Logs an info-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00176">logging.hpp:176</a></div></div>
+<div class="ttc" id="agroup__Logging_html_gacab2ed396a15b61c949f1054a6a5aae4"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gacab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_WARN(name,...)</div><div class="ttdoc">Logs a warning-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00178">logging.hpp:178</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -514,7 +514,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  355</span>  <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> <span class="keyword">auto</span> t0    = irsol::types::clock_t::now();</div>
 <div class="line"><span class="lineno">  356</span>  <span class="keyword">auto</span>                    image = <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a89aff071a1e8bb9c5775575c6ec963b8">m_cam</a>.<a class="code hl_function" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a16f956ffd05322d402446ee425818fd4">captureImage</a>();</div>
 <div class="line"><span class="lineno">  357</span>  <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> <span class="keyword">auto</span> t1    = irsol::types::clock_t::now();</div>
-<div class="line"><span class="lineno">  358</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  358</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  359</span>    <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  360</span>    <span class="stringliteral">&quot;Capture image: start: {}, stop: {}, duration: {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  361</span>    <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(t0),</div>
@@ -661,7 +661,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">   80</span>    fps        = 0.0;</div>
 <div class="line"><span class="lineno">   81</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">   82</span>    interval = std::chrono::microseconds(<span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(1000000.0 / fps));</div>
-<div class="line"><span class="lineno">   83</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(</div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(</div>
 <div class="line"><span class="lineno">   84</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">   85</span>      <span class="stringliteral">&quot;registering client with interval of {}&quot;</span>,</div>
 <div class="line"><span class="lineno">   86</span>      <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#af2468710608c92085f4771001ea3a105">irsol::utils::durationToString</a>(interval));</div>
@@ -673,7 +673,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">   92</span>  <span class="comment">// image.</span></div>
 <div class="line"><span class="lineno">   93</span>  <span class="keyword">auto</span> nextDue = irsol::types::clock_t::now() + <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#ad7ab4acc72d3fad2bf71f6aa79b47a97">FrameCollector::SLACK</a>;</div>
 <div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(</div>
+<div class="line"><span class="lineno">   95</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(</div>
 <div class="line"><span class="lineno">   96</span>    <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">   97</span>    <span class="stringliteral">&quot;Registering client {} with frame rate {} fps (interval {}), &quot;</span></div>
 <div class="line"><span class="lineno">   98</span>    <span class="stringliteral">&quot;next frame due at {} #frames {}, immediate {}&quot;</span>,</div>
@@ -727,7 +727,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  125</span>      <span class="comment">// Wait until at least one new client is registered in the map, or if a stop request has</span></div>
 <div class="line"><span class="lineno">  126</span>      <span class="comment">// arrived.</span></div>
 <div class="line"><span class="lineno">  127</span>      <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a705254fa30d424a01adb204078c00b2d">m_scheduleCondition</a>.wait(lock, [<span class="keyword">this</span>]() {</div>
-<div class="line"><span class="lineno">  128</span>        <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  128</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  129</span>          <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  130</span>          <span class="stringliteral">&quot;Waiting until a client is scheduled (clients size: {}, schedule size: {})&quot;</span>,</div>
 <div class="line"><span class="lineno">  131</span>          <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.size(),</div>
@@ -737,14 +737,14 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  135</span>    }</div>
 <div class="line"><span class="lineno">  136</span> </div>
 <div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a01788beed29fbd39b3c7c6fd799dea1c">m_stop</a>.load()) {</div>
-<div class="line"><span class="lineno">  138</span>      <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Requested frame-collection stop&quot;</span>);</div>
+<div class="line"><span class="lineno">  138</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Requested frame-collection stop&quot;</span>);</div>
 <div class="line"><span class="lineno">  139</span>      <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  140</span>    }</div>
 <div class="line"><span class="lineno">  141</span> </div>
 <div class="line"><span class="lineno">  142</span>    <span class="comment">// Retrieve the nextDue time from the schedule map.</span></div>
 <div class="line"><span class="lineno">  143</span>    <span class="comment">// This map is always sorted from small to high, as it&#39;s an ordered container.</span></div>
 <div class="line"><span class="lineno">  144</span>    <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#afa4fbacf381780b62e4164ce9cdab22c">irsol::types::timepoint_t</a> nextDue = <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a65026725325000ef733111870bef4ea4">m_scheduleMap</a>.begin()-&gt;first;</div>
-<div class="line"><span class="lineno">  145</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  145</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  146</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  147</span>      <span class="stringliteral">&quot;Running for frame collection due at {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  148</span>      <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(nextDue));</div>
@@ -768,7 +768,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  166</span>      <span class="comment">// earlier than the due time we captured prior to sleeping.</span></div>
 <div class="line"><span class="lineno">  167</span>      <span class="keyword">auto</span> newNextDue = <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a65026725325000ef733111870bef4ea4">m_scheduleMap</a>.begin()-&gt;first;</div>
 <div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>      <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  169</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  170</span>        <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  171</span>        <span class="stringliteral">&quot;Current first timestamp in the map: {}, current nextDue: {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  172</span>        <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(newNextDue),</div>
@@ -777,7 +777,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  175</span>    });</div>
 <div class="line"><span class="lineno">  176</span> </div>
 <div class="line"><span class="lineno">  177</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a01788beed29fbd39b3c7c6fd799dea1c">m_stop</a>.load()) {</div>
-<div class="line"><span class="lineno">  178</span>      <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(</div>
+<div class="line"><span class="lineno">  178</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(</div>
 <div class="line"><span class="lineno">  179</span>        <span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Frame collection stop request received, breaking loop&quot;</span>);</div>
 <div class="line"><span class="lineno">  180</span>      <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  181</span>    }</div>
@@ -788,7 +788,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  186</span> </div>
 <div class="line"><span class="lineno">  187</span>    <span class="comment">// Clients due now or earlier</span></div>
 <div class="line"><span class="lineno">  188</span>    <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#afa4fbacf381780b62e4164ce9cdab22c">irsol::types::timepoint_t</a> now = irsol::types::clock_t::now();</div>
-<div class="line"><span class="lineno">  189</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  189</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  190</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  191</span>      <span class="stringliteral">&quot;Woken up at timestamp {}, with next due at {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  192</span>      <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(now),</div>
@@ -796,7 +796,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  194</span> </div>
 <div class="line"><span class="lineno">  195</span>    <span class="keyword">const</span> <span class="keyword">auto</span> slack = <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.size() == 1 ? std::chrono::milliseconds(0) : <a class="code hl_function" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a8be6ebec2ed0d3f0a78b001c810c4108">FrameCollector</a>::<a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#ad7ab4acc72d3fad2bf71f6aa79b47a97">SLACK</a>;</div>
 <div class="line"><span class="lineno">  196</span>    <span class="keyword">auto</span> [readyClients, clientsSchedules] = <a class="code hl_function" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a6230358201977df4fc63be18ed0719ac">collectReadyClients</a>(now, slack);</div>
-<div class="line"><span class="lineno">  197</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  197</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  198</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Found {} clients that need an image now!&quot;</span>, readyClients.size());</div>
 <div class="line"><span class="lineno">  199</span>    {</div>
 <div class="line"><span class="lineno">  200</span>      <span class="keyword">auto</span> uniqueSchedules =</div>
@@ -808,7 +808,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  206</span>          [&amp;uniqueSchedule](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a9e2cbc309a05bf63f708e0df24134500">schedule</a>) { return schedule == uniqueSchedule; });</div>
 <div class="line"><span class="lineno">  207</span> </div>
 <div class="line"><span class="lineno">  208</span>        <span class="keywordflow">if</span>(uniqueSchedule != nextDue) {</div>
-<div class="line"><span class="lineno">  209</span>          <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#acab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a>(</div>
+<div class="line"><span class="lineno">  209</span>          <a class="code hl_define" href="../../d0/d58/group__Logging.html#gacab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a>(</div>
 <div class="line"><span class="lineno">  210</span>            <span class="stringliteral">&quot;frame_collector_slack&quot;</span>,</div>
 <div class="line"><span class="lineno">  211</span>            <span class="stringliteral">&quot;Actual schedule: {}, also considering {} clients with schedule {} due to allowed &quot;</span></div>
 <div class="line"><span class="lineno">  212</span>            <span class="stringliteral">&quot;slack of {}&quot;</span>,</div>
@@ -820,7 +820,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  218</span>      }</div>
 <div class="line"><span class="lineno">  219</span>    }</div>
 <div class="line"><span class="lineno">  220</span>    <a class="code hl_function" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#afa8ed51e3c3dbcbb7395f8a78ecd0c4a">cleanUpSchedule</a>(clientsSchedules);</div>
-<div class="line"><span class="lineno">  221</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  221</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  222</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  223</span>      <span class="stringliteral">&quot;After schedule cleanup, there are still {} schedules&quot;</span>,</div>
 <div class="line"><span class="lineno">  224</span>      <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a65026725325000ef733111870bef4ea4">m_scheduleMap</a>.size());</div>
@@ -830,7 +830,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  228</span>    <span class="comment">// Deliver the frame to clients</span></div>
 <div class="line"><span class="lineno">  229</span>    std::vector&lt;irsol::types::client_id_t&gt; finishedClient;</div>
 <div class="line"><span class="lineno">  230</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> clientId : readyClients) {</div>
-<div class="line"><span class="lineno">  231</span>      <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Notifying client {} for new image data&quot;</span>, clientId);</div>
+<div class="line"><span class="lineno">  231</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Notifying client {} for new image data&quot;</span>, clientId);</div>
 <div class="line"><span class="lineno">  232</span>      <span class="keyword">auto</span>&amp; clientParams = <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.at(clientId);</div>
 <div class="line"><span class="lineno">  233</span>      <span class="comment">// Push a new frame created on the fly to the current client&#39;s queue.</span></div>
 <div class="line"><span class="lineno">  234</span>      <span class="comment">// This creates a copy of the image data into the queue, and this is wanted, so that if a</span></div>
@@ -852,14 +852,14 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  250</span> </div>
 <div class="line"><span class="lineno">  251</span>    <span class="comment">// Unlock the clients so we can remove finished clients</span></div>
 <div class="line"><span class="lineno">  252</span>    <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; clientId : finishedClient) {</div>
-<div class="line"><span class="lineno">  253</span>      <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  253</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  254</span>        <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  255</span>        <span class="stringliteral">&quot;Deregistering client {}, as it has consumed all the frames it needed.&quot;</span>,</div>
 <div class="line"><span class="lineno">  256</span>        clientId);</div>
 <div class="line"><span class="lineno">  257</span>      <a class="code hl_function" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a3a8dab8e90db2c693d5ddd528a3c851c">deregisterClientNonThreadSafe</a>(clientId);</div>
 <div class="line"><span class="lineno">  258</span>    }</div>
 <div class="line"><span class="lineno">  259</span> </div>
-<div class="line"><span class="lineno">  260</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Loop finished, restarting loop&quot;</span>);</div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Loop finished, restarting loop&quot;</span>);</div>
 <div class="line"><span class="lineno">  261</span>  }</div>
 <div class="line"><span class="lineno">  262</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1frame__collector_1_1FrameCollector_html_a01788beed29fbd39b3c7c6fd799dea1c"><div class="ttname"><a href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a01788beed29fbd39b3c7c6fd799dea1c">irsol::server::frame_collector::FrameCollector::m_stop</a></div><div class="ttdeci">std::atomic&lt; bool &gt; m_stop</div><div class="ttdoc">Indicates whether the collector is stopping.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d4b/collector_8hpp_source.html#l00169">collector.hpp:169</a></div></div>
@@ -919,7 +919,7 @@ This method is NOT threadsafe. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d61/collector_8cpp_source.html#l00381">381</a> of file <a class="el" href="../../db/d61/collector_8cpp_source.html">collector.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  384</span>{</div>
-<div class="line"><span class="lineno">  385</span>  <a class="code hl_define" href="../../d2/d54/assert_8hpp.html#ae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
+<div class="line"><span class="lineno">  385</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
 <div class="line"><span class="lineno">  386</span>    <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.find(clientId) != <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.end(), <span class="stringliteral">&quot;Impossible to schedule an unregistered client.&quot;</span>);</div>
 <div class="line"><span class="lineno">  387</span>  <span class="comment">// Update the parameters of the client.</span></div>
 <div class="line"><span class="lineno">  388</span>  <span class="keyword">auto</span>&amp; clientParams = <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0">m_clients</a>.at(clientId);</div>
@@ -927,21 +927,21 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  390</span>    <span class="comment">// Client no longer expects frames.</span></div>
 <div class="line"><span class="lineno">  391</span>    <span class="comment">// This handles also clients that are listening forever, as their &#39;remainingFrames&#39; is negative</span></div>
 <div class="line"><span class="lineno">  392</span>    <span class="comment">// so this¨ condition is never fully met.</span></div>
-<div class="line"><span class="lineno">  393</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  393</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  394</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Client {} had no longer frames to produce.&quot;</span>, clientId);</div>
 <div class="line"><span class="lineno">  395</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  396</span>  }</div>
 <div class="line"><span class="lineno">  397</span> </div>
 <div class="line"><span class="lineno">  398</span>  <span class="keywordflow">if</span>(clientParams.nextFrameDue == nextFrameDue) {</div>
 <div class="line"><span class="lineno">  399</span>    <span class="comment">// This has been called the first time for client-registration</span></div>
-<div class="line"><span class="lineno">  400</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  400</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  401</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  402</span>      <span class="stringliteral">&quot;Client {} has been scheduled for timestamp {}.&quot;</span>,</div>
 <div class="line"><span class="lineno">  403</span>      clientId,</div>
 <div class="line"><span class="lineno">  404</span>      <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#aef8913b229de1370e4ba6c311adf9026">irsol::utils::timestampToString</a>(clientParams.nextFrameDue));</div>
 <div class="line"><span class="lineno">  405</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">  406</span> </div>
-<div class="line"><span class="lineno">  407</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  407</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  408</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>,</div>
 <div class="line"><span class="lineno">  409</span>      <span class="stringliteral">&quot;(Rescheduling client {} for next frame, previous due: {}, next due {}, # count {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  410</span>      clientId,</div>
@@ -960,7 +960,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">  423</span>  <a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a705254fa30d424a01adb204078c00b2d">m_scheduleCondition</a>.notify_one();</div>
 <div class="line"><span class="lineno">  424</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  425</span>}</div>
-<div class="ttc" id="aassert_8hpp_html_ae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d2/d54/assert_8hpp.html#ae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00020">assert.hpp:20</a></div></div>
+<div class="ttc" id="agroup__Assertion_html_gae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdoc">Error-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00134">assert.hpp:134</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -984,7 +984,7 @@ This method is NOT threadsafe. </dd></dl>
 <p class="definition">Definition at line <a class="el" href="../../db/d61/collector_8cpp_source.html#l00032">32</a> of file <a class="el" href="../../db/d61/collector_8cpp_source.html">collector.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
 <div class="line"><span class="lineno">   34</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a01788beed29fbd39b3c7c6fd799dea1c">m_stop</a>.load()) {</div>
-<div class="line"><span class="lineno">   35</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a9dcbe0777245e1775bd11f38bb38bf32">IRSOL_NAMED_LOG_ERROR</a>(</div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga9dcbe0777245e1775bd11f38bb38bf32">IRSOL_NAMED_LOG_ERROR</a>(</div>
 <div class="line"><span class="lineno">   36</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Collector is already running, ignoring duplicate start request&quot;</span>);</div>
 <div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   38</span>  }</div>
@@ -993,7 +993,7 @@ This method is NOT threadsafe. </dd></dl>
 <div class="line"><span class="lineno">   41</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1frame__collector_1_1FrameCollector_html_a128380895ffbc5b1d34db2dcdd5cecb0"><div class="ttname"><a href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a128380895ffbc5b1d34db2dcdd5cecb0">irsol::server::frame_collector::FrameCollector::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Runs the frameDistributor. Usually called as a separated thread.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d61/collector_8cpp_source.html#l00119">collector.cpp:119</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1frame__collector_1_1FrameCollector_html_a4b75eeab69b857b5a55261117b733205"><div class="ttname"><a href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a4b75eeab69b857b5a55261117b733205">irsol::server::frame_collector::FrameCollector::m_distributorThread</a></div><div class="ttdeci">std::thread m_distributorThread</div><div class="ttdoc">Thread responsible for frame distribution.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d4b/collector_8hpp_source.html#l00167">collector.hpp:167</a></div></div>
-<div class="ttc" id="alogging_8hpp_html_a9dcbe0777245e1775bd11f38bb38bf32"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a9dcbe0777245e1775bd11f38bb38bf32">IRSOL_NAMED_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_ERROR(name,...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00055">logging.hpp:55</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga9dcbe0777245e1775bd11f38bb38bf32"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga9dcbe0777245e1775bd11f38bb38bf32">IRSOL_NAMED_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_ERROR(name,...)</div><div class="ttdoc">Logs an error-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00180">logging.hpp:180</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1017,7 +1017,7 @@ This method is NOT threadsafe. </dd></dl>
 <p class="definition">Definition at line <a class="el" href="../../db/d61/collector_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../db/d61/collector_8cpp_source.html">collector.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
 <div class="line"><span class="lineno">   46</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a01788beed29fbd39b3c7c6fd799dea1c">m_stop</a>.load()) {</div>
-<div class="line"><span class="lineno">   47</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a9dcbe0777245e1775bd11f38bb38bf32">IRSOL_NAMED_LOG_ERROR</a>(</div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga9dcbe0777245e1775bd11f38bb38bf32">IRSOL_NAMED_LOG_ERROR</a>(</div>
 <div class="line"><span class="lineno">   48</span>      <span class="stringliteral">&quot;frame_collector&quot;</span>, <span class="stringliteral">&quot;Collector was not running, ignoring duplicate stop request&quot;</span>);</div>
 <div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   50</span>  }</div>

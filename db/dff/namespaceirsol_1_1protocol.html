@@ -1149,11 +1149,11 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d8/daa/n
 <div class="line"><span class="lineno">   25</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(isCommand(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
 <div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> std::get&lt;Command&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
 <div class="line"><span class="lineno">   27</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_define" href="../../d2/d54/assert_8hpp.html#a950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a>(<span class="stringliteral">&quot;Unknown in message type&quot;</span>);</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#ga950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a>(<span class="stringliteral">&quot;Unknown in message type&quot;</span>);</div>
 <div class="line"><span class="lineno">   29</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Unknown in message type&quot;</span>);</div>
 <div class="line"><span class="lineno">   30</span>  }</div>
 <div class="line"><span class="lineno">   31</span>}</div>
-<div class="ttc" id="aassert_8hpp_html_a950707f2fdcd0dcfb828202a22634444"><div class="ttname"><a href="../../d2/d54/assert_8hpp.html#a950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a></div><div class="ttdeci">#define IRSOL_ASSERT_FALSE(message)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00023">assert.hpp:23</a></div></div>
+<div class="ttc" id="agroup__Assertion_html_ga950707f2fdcd0dcfb828202a22634444"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#ga950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a></div><div class="ttdeci">#define IRSOL_ASSERT_FALSE(message)</div><div class="ttdoc">Assertion macro that always fails fatally.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00136">assert.hpp:136</a></div></div>
 <div class="ttc" id="anamespaceirsol_1_1protocol_html_aa6c0a592e943d401acda96d2b9bc606a"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa6c0a592e943d401acda96d2b9bc606a">irsol::protocol::isAssignment</a></div><div class="ttdeci">constexpr bool isAssignment(const T &amp;)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00148">variants.hpp:148</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -1196,7 +1196,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d8/daa/n
 <div class="line"><span class="lineno">   44</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#ad704e7dcaeca25501f27f5d4b9f24681">isColorImageBinaryData</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
 <div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> std::get&lt;ColorImageBinaryData&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
 <div class="line"><span class="lineno">   46</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   47</span>    <a class="code hl_define" href="../../d2/d54/assert_8hpp.html#a950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a>(<span class="stringliteral">&quot;Unknown out message type&quot;</span>);</div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#ga950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a>(<span class="stringliteral">&quot;Unknown out message type&quot;</span>);</div>
 <div class="line"><span class="lineno">   48</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Unknown out message type&quot;</span>);</div>
 <div class="line"><span class="lineno">   49</span>  }</div>
 <div class="line"><span class="lineno">   50</span>}</div>

@@ -225,13 +225,13 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   15</span> </div>
 <div class="line"><span class="lineno">   16</span>  <span class="comment">// Here we configure the camera settings so that we can trigger it on-demand via software</span></div>
 <div class="line"><span class="lineno">   17</span>  <span class="comment">// triggers.</span></div>
-<div class="line"><span class="lineno">   18</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Configuring camera for manual trigger via software events&quot;</span>);</div>
+<div class="line"><span class="lineno">   18</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Configuring camera for manual trigger via software events&quot;</span>);</div>
 <div class="line"><span class="lineno">   19</span>  <a class="code hl_function" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ab9fb1af75bc9c74baa05924019433afc">setMultiParam</a>({{<span class="stringliteral">&quot;TriggerMode&quot;</span>, {<span class="stringliteral">&quot;On&quot;</span>}},               <span class="comment">// Enable software trigger</span></div>
 <div class="line"><span class="lineno">   20</span>                 {<span class="stringliteral">&quot;AcquisitionMode&quot;</span>, {<span class="stringliteral">&quot;SingleFrame&quot;</span>}},  <span class="comment">// Take a single frame, only when triggered</span></div>
 <div class="line"><span class="lineno">   21</span>                 {<span class="stringliteral">&quot;TriggerSource&quot;</span>, {<span class="stringliteral">&quot;Software&quot;</span>}}});</div>
 <div class="line"><span class="lineno">   22</span> </div>
 <div class="line"><span class="lineno">   23</span>  <span class="comment">// Here we set the exposure parameters, so that they can be controlled via software</span></div>
-<div class="line"><span class="lineno">   24</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Configuring camera for manual exposure&quot;</span>);</div>
+<div class="line"><span class="lineno">   24</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Configuring camera for manual exposure&quot;</span>);</div>
 <div class="line"><span class="lineno">   25</span>  <a class="code hl_function" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ab9fb1af75bc9c74baa05924019433afc">setMultiParam</a>({</div>
 <div class="line"><span class="lineno">   26</span>    {<span class="stringliteral">&quot;ExposureAuto&quot;</span>, {<span class="stringliteral">&quot;Off&quot;</span>}},    <span class="comment">// Disable automatic exposure</span></div>
 <div class="line"><span class="lineno">   27</span>    {<span class="stringliteral">&quot;ExposureMode&quot;</span>, {<span class="stringliteral">&quot;Timed&quot;</span>}},  <span class="comment">// Exposure mode: timed</span></div>
@@ -247,7 +247,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_ad314b18d6f9d763e1053091377269e8a"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ad314b18d6f9d763e1053091377269e8a">irsol::camera::Interface::m_cam</a></div><div class="ttdeci">NeoAPI::Cam m_cam</div><div class="ttdoc">Underlying NeoAPI camera handle.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d61/interface_8hpp_source.html#l00201">interface.hpp:201</a></div></div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_ae5feeecdab68d6a0319b8b09facd6912"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ae5feeecdab68d6a0319b8b09facd6912">irsol::camera::Interface::getExposure</a></div><div class="ttdeci">irsol::types::duration_t getExposure() const</div><div class="ttdoc">Retrieves the current exposure time from the camera.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00165">interface.cpp:165</a></div></div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_afdcbcb37b924bf02cef56305dca9711d"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#afdcbcb37b924bf02cef56305dca9711d">irsol::camera::Interface::m_CachedExposureTime</a></div><div class="ttdeci">irsol::types::duration_t m_CachedExposureTime</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d61/interface_8hpp_source.html#l00206">interface.hpp:206</a></div></div>
-<div class="ttc" id="alogging_8hpp_html_a2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00024">logging.hpp:24</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -423,12 +423,12 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  235</span>  <span class="comment">// or using the user-provided timeout</span></div>
 <div class="line"><span class="lineno">  236</span>  <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a0ed53497239b16c18f07550a1473a445">irsol::types::duration_t</a> actualTimeout = <a class="code hl_variable" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#afdcbcb37b924bf02cef56305dca9711d">m_CachedExposureTime</a> + std::chrono::milliseconds(60);</div>
 <div class="line"><span class="lineno">  237</span>  <span class="keywordflow">if</span>(timeout.has_value()) {</div>
-<div class="line"><span class="lineno">  238</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  238</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  239</span>      <span class="stringliteral">&quot;User provided a custom timeout of capturing camera of {}&quot;</span>,</div>
 <div class="line"><span class="lineno">  240</span>      <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#af2468710608c92085f4771001ea3a105">irsol::utils::durationToString</a>(*timeout));</div>
 <div class="line"><span class="lineno">  241</span>    actualTimeout = *timeout;</div>
 <div class="line"><span class="lineno">  242</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  243</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  243</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
 <div class="line"><span class="lineno">  244</span>      <span class="stringliteral">&quot;Using exposure from camera {} with buffer&quot;</span>, <a class="code hl_function" href="../../d8/d93/namespaceirsol_1_1utils.html#af2468710608c92085f4771001ea3a105">irsol::utils::durationToString</a>(actualTimeout));</div>
 <div class="line"><span class="lineno">  245</span>  }</div>
 <div class="line"><span class="lineno">  246</span> </div>
@@ -436,15 +436,15 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  248</span>    std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(actualTimeout).count());</div>
 <div class="line"><span class="lineno">  249</span>  <span class="keyword">auto</span> image = <a class="code hl_variable" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ad314b18d6f9d763e1053091377269e8a">m_cam</a>.GetImage(timeoutMs);</div>
 <div class="line"><span class="lineno">  250</span>  <span class="keywordflow">if</span>(image.IsEmpty() || image.GetSize() == 0) {</div>
-<div class="line"><span class="lineno">  251</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a>(<span class="stringliteral">&quot;Timeout or empty image received.&quot;</span>);</div>
+<div class="line"><span class="lineno">  251</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a>(<span class="stringliteral">&quot;Timeout or empty image received.&quot;</span>);</div>
 <div class="line"><span class="lineno">  252</span>  }</div>
 <div class="line"><span class="lineno">  253</span>  <a class="code hl_function" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a1e249ea86e0669a32419903732922100">trigger</a>(<span class="stringliteral">&quot;AcquisitionStop&quot;</span>);</div>
 <div class="line"><span class="lineno">  254</span>  <span class="keywordflow">return</span> image;</div>
 <div class="line"><span class="lineno">  255</span>}</div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a1df906cd17c873da05c6903094cc0044"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a1df906cd17c873da05c6903094cc0044">irsol::camera::Interface::m_camMutex</a></div><div class="ttdeci">std::mutex m_camMutex</div><div class="ttdoc">Protects concurrent access to image capture operations and parameter operations.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d61/interface_8hpp_source.html#l00198">interface.hpp:198</a></div></div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a1e249ea86e0669a32419903732922100"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a1e249ea86e0669a32419903732922100">irsol::camera::Interface::trigger</a></div><div class="ttdeci">void trigger(const std::string &amp;param)</div><div class="ttdoc">Trigger a camera feature to initiate an action.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00214">interface.cpp:214</a></div></div>
-<div class="ttc" id="alogging_8hpp_html_a5ffc6d687ddca344c775b62c9d6e822f"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_LOG_WARN(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00025">logging.hpp:25</a></div></div>
-<div class="ttc" id="alogging_8hpp_html_a85d5803f1f7fb99923cdac16d1dc2ee8"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_LOG_DEBUG(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00023">logging.hpp:23</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga5ffc6d687ddca344c775b62c9d6e822f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_LOG_WARN(...)</div><div class="ttdoc">Logs a warning-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00093">logging.hpp:93</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga85d5803f1f7fb99923cdac16d1dc2ee8"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_LOG_DEBUG(...)</div><div class="ttdoc">Logs a debug-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00091">logging.hpp:91</a></div></div>
 <div class="ttc" id="anamespaceirsol_1_1types_html_a0ed53497239b16c18f07550a1473a445"><div class="ttname"><a href="../../d9/d2e/namespaceirsol_1_1types.html#a0ed53497239b16c18f07550a1473a445">irsol::types::duration_t</a></div><div class="ttdeci">clock_t::duration duration_t</div><div class="ttdoc">Alias for a duration of time as defined by clock_t.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/de3/types_8hpp_source.html#l00128">types.hpp:128</a></div></div>
 <div class="ttc" id="anamespaceirsol_1_1utils_html_af2468710608c92085f4771001ea3a105"><div class="ttname"><a href="../../d8/d93/namespaceirsol_1_1utils.html#af2468710608c92085f4771001ea3a105">irsol::utils::durationToString</a></div><div class="ttdeci">std::string durationToString(irsol::types::duration_t dr)</div><div class="ttdoc">Converts a duration to a human-readable string.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d06/utils_8cpp_source.html#l00133">utils.cpp:133</a></div></div>
 </div><!-- fragment -->
@@ -613,17 +613,17 @@ template&lt;typename T , std::enable_if_t&lt; std::is_integral_v&lt; T &gt;||std
 
 <p class="definition">Definition at line <a class="el" href="../../db/db7/interface_8cpp_source.html#l00184">184</a> of file <a class="el" href="../../db/db7/interface_8cpp_source.html">interface.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  185</span>{</div>
-<div class="line"><span class="lineno">  186</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Getting parameter &#39;{}&#39;&quot;</span>, param);</div>
+<div class="line"><span class="lineno">  186</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Getting parameter &#39;{}&#39;&quot;</span>, param);</div>
 <div class="line"><span class="lineno">  187</span>  <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">  188</span>    NeoAPI::NeoString neoParam(param.c_str());</div>
 <div class="line"><span class="lineno">  189</span>    <span class="keyword">auto</span>              feature = <a class="code hl_variable" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ad314b18d6f9d763e1053091377269e8a">m_cam</a>.GetFeature(neoParam);</div>
 <div class="line"><span class="lineno">  190</span>    <span class="keywordflow">return</span> NeoAPI::NeoString(feature).c_str();</div>
 <div class="line"><span class="lineno">  191</span>  } <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">  192</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to get parameter &#39;{}&#39;: {}&quot;</span>, param, e.what());</div>
+<div class="line"><span class="lineno">  192</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to get parameter &#39;{}&#39;: {}&quot;</span>, param, e.what());</div>
 <div class="line"><span class="lineno">  193</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Unknown&quot;</span>;</div>
 <div class="line"><span class="lineno">  194</span>  }</div>
 <div class="line"><span class="lineno">  195</span>}</div>
-<div class="ttc" id="alogging_8hpp_html_a5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#a5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00026">logging.hpp:26</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -747,7 +747,7 @@ template&lt;typename T , std::enable_if_t&lt; std::is_integral_v&lt; T &gt;||std
 
 <p class="definition">Definition at line <a class="el" href="../../db/db7/interface_8cpp_source.html#l00154">154</a> of file <a class="el" href="../../db/db7/interface_8cpp_source.html">interface.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  155</span>{</div>
-<div class="line"><span class="lineno">  156</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Resetting sensor area&quot;</span>);</div>
+<div class="line"><span class="lineno">  156</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Resetting sensor area&quot;</span>);</div>
 <div class="line"><span class="lineno">  157</span>  <span class="keywordtype">int</span> maxWidth  = getParam&lt;int&gt;(<span class="stringliteral">&quot;WidthMax&quot;</span>);</div>
 <div class="line"><span class="lineno">  158</span>  <span class="keywordtype">int</span> maxHeight = getParam&lt;int&gt;(<span class="stringliteral">&quot;HeightMax&quot;</span>);</div>
 <div class="line"><span class="lineno">  159</span> </div>
@@ -777,7 +777,7 @@ template&lt;typename T , std::enable_if_t&lt; std::is_integral_v&lt; T &gt;||std
 
 <p class="definition">Definition at line <a class="el" href="../../db/db7/interface_8cpp_source.html#l00172">172</a> of file <a class="el" href="../../db/db7/interface_8cpp_source.html">interface.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  173</span>{</div>
-<div class="line"><span class="lineno">  174</span>  <a class="code hl_define" href="../../d2/d54/assert_8hpp.html#ae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(exposure.count() &gt; 0, <span class="stringliteral">&quot;Cannot set non-positive exposure&quot;</span>);</div>
+<div class="line"><span class="lineno">  174</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(exposure.count() &gt; 0, <span class="stringliteral">&quot;Cannot set non-positive exposure&quot;</span>);</div>
 <div class="line"><span class="lineno">  175</span>  <span class="keyword">auto</span> exposureInMicroseconds =</div>
 <div class="line"><span class="lineno">  176</span>    std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(exposure).count();</div>
 <div class="line"><span class="lineno">  177</span>  <span class="keyword">auto</span> setExposureInMicroseconds =</div>
@@ -785,8 +785,8 @@ template&lt;typename T , std::enable_if_t&lt; std::is_integral_v&lt; T &gt;||std
 <div class="line"><span class="lineno">  179</span>  <a class="code hl_variable" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#afdcbcb37b924bf02cef56305dca9711d">m_CachedExposureTime</a> = std::chrono::microseconds(setExposureInMicroseconds);</div>
 <div class="line"><span class="lineno">  180</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#afdcbcb37b924bf02cef56305dca9711d">m_CachedExposureTime</a>;</div>
 <div class="line"><span class="lineno">  181</span>}</div>
-<div class="ttc" id="aassert_8hpp_html_ae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d2/d54/assert_8hpp.html#ae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00020">assert.hpp:20</a></div></div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a2baf10dd78c7b2344b3cf6ee7452478a"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a2baf10dd78c7b2344b3cf6ee7452478a">irsol::camera::Interface::setParam</a></div><div class="ttdeci">T setParam(const std::string &amp;param, T value)</div><div class="ttdoc">Set a camera parameter of arbitrary type T.</div></div>
+<div class="ttc" id="agroup__Assertion_html_gae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdoc">Error-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00134">assert.hpp:134</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -808,19 +808,19 @@ template&lt;typename T , std::enable_if_t&lt; std::is_integral_v&lt; T &gt;||std
 
 <p class="definition">Definition at line <a class="el" href="../../db/db7/interface_8cpp_source.html#l00198">198</a> of file <a class="el" href="../../db/db7/interface_8cpp_source.html">interface.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  199</span>{</div>
-<div class="line"><span class="lineno">  200</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Setting multiple parameters&quot;</span>);</div>
+<div class="line"><span class="lineno">  200</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Setting multiple parameters&quot;</span>);</div>
 <div class="line"><span class="lineno">  201</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a1df906cd17c873da05c6903094cc0044">m_camMutex</a>);</div>
 <div class="line"><span class="lineno">  202</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [param, <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>] : params) {</div>
 <div class="line"><span class="lineno">  203</span>    std::visit(</div>
 <div class="line"><span class="lineno">  204</span>      [&amp;param, <span class="keyword">this</span>](<span class="keyword">auto</span>&amp;&amp; arg) {</div>
 <div class="line"><span class="lineno">  205</span>        <span class="keyword">using </span>U = std::decay_t&lt;<span class="keyword">decltype</span>(arg)&gt;;</div>
-<div class="line"><span class="lineno">  206</span>        <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#ab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Setting parameter &#39;{}&#39; to value &#39;{}&#39;&quot;</span>, param, arg);</div>
+<div class="line"><span class="lineno">  206</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Setting parameter &#39;{}&#39; to value &#39;{}&#39;&quot;</span>, param, arg);</div>
 <div class="line"><span class="lineno">  207</span>        setParamNonThreadSafe&lt;U&gt;(param, arg);</div>
 <div class="line"><span class="lineno">  208</span>      },</div>
 <div class="line"><span class="lineno">  209</span>      <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>);</div>
 <div class="line"><span class="lineno">  210</span>  }</div>
 <div class="line"><span class="lineno">  211</span>}</div>
-<div class="ttc" id="alogging_8hpp_html_ab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/da9/logging_8hpp.html#ab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00022">logging.hpp:22</a></div></div>
+<div class="ttc" id="agroup__Logging_html_gab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdoc">Logs a trace-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00090">logging.hpp:90</a></div></div>
 <div class="ttc" id="atest__assignment_8cpp_html_a442505a4bcabcf16de33fdf0b96c02ce"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a></div><div class="ttdeci">auto value</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d3f/test__assignment_8cpp_source.html#l00031">test_assignment.cpp:31</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -968,13 +968,13 @@ template&lt;typename T , std::enable_if_t&lt; std::is_integral_v&lt; std::decay_
 
 <p class="definition">Definition at line <a class="el" href="../../db/db7/interface_8cpp_source.html#l00214">214</a> of file <a class="el" href="../../db/db7/interface_8cpp_source.html">interface.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  215</span>{</div>
-<div class="line"><span class="lineno">  216</span>  <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#ab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Triggering camera with parameter &#39;{}&#39;&quot;</span>, param);</div>
+<div class="line"><span class="lineno">  216</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Triggering camera with parameter &#39;{}&#39;&quot;</span>, param);</div>
 <div class="line"><span class="lineno">  217</span>  <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">  218</span>    NeoAPI::NeoString neoParam(param.c_str());</div>
 <div class="line"><span class="lineno">  219</span>    <span class="keyword">auto</span>              feature = <a class="code hl_variable" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ad314b18d6f9d763e1053091377269e8a">m_cam</a>.GetFeature(neoParam);</div>
 <div class="line"><span class="lineno">  220</span>    feature.Execute();</div>
 <div class="line"><span class="lineno">  221</span>  } <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">  222</span>    <a class="code hl_define" href="../../d0/da9/logging_8hpp.html#a5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to trigger camera with parameter &#39;{}&#39;: {}&quot;</span>, param, e.what());</div>
+<div class="line"><span class="lineno">  222</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to trigger camera with parameter &#39;{}&#39;: {}&quot;</span>, param, e.what());</div>
 <div class="line"><span class="lineno">  223</span>  }</div>
 <div class="line"><span class="lineno">  224</span>}</div>
 </div><!-- fragment -->
