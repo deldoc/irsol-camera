@@ -1,4 +1,5 @@
 # 01-loading-images {#loading_images}
+@see irsol/camera/interface.hpp
 
 This example serves as a minimal, practical introduction to the `irsol` codebase. It demonstrates how to initialize the system, configure logging, connect to a camera, and capture a series of images.
 

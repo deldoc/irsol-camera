@@ -1,3 +1,14 @@
+/**
+ * @file irsol/camera/interface.hpp
+ * @brief High-level wrapper around `NeoAPI` camera control for the irsol library.
+ *
+ * This header defines the `irsol::camera::Interface` class, a thread-safe abstraction
+ * around NeoAPI camera control. It handles camera discovery, configuration, image acquisition,
+ * and feature parameter access in a synchronized manner.
+ *
+ * See @ref loading_images for an example.
+ */
+
 #pragma once
 
 #include "irsol/assert.hpp"
@@ -15,77 +26,110 @@
 
 namespace irsol {
 
+/**
+ * @namespace irsol::camera
+ * @brief Provides a high-level interface to interact with camera devices using `NeoAPI`.
+ *
+ * The `irsol::camera` namespace contains components for accessing and configuring industrial
+ * cameras in a thread-safe and convenient manner. It abstracts away the low-level `NeoAPI`
+ * interface and offers simple, strongly-typed methods to control camera parameters and
+ * acquire images.
+ *
+ * Key functionality includes:
+ * - Connecting to and configuring the default camera device.
+ * - Getting and setting camera parameters (exposure, resolution, etc.).
+ * - Capturing image frames with timeout support.
+ * - Ensuring thread-safe access to camera operations.
+ *
+ * This namespace is designed to be extendable and integrates closely with the rest of the
+ * `irsol` framework.
+ */
 namespace camera {
 
 /**
  * @class Interface
  * @brief High-level wrapper around the NeoAPI camera for synchronized access.
  *
- * Interface initializes the default camera device and provides thread-safe
- * methods to capture images and get/set camera features via templated helpers.
+ * The `Interface` class provides thread-safe control over camera acquisition and configuration
+ * via NeoAPI. It abstracts common camera operations such as setting exposure, retrieving and
+ * setting camera parameters, capturing images, and managing sensor state.
  */
 class Interface
 {
 public:
-  using image_t        = NeoAPI::Image;
+  /// Alias for the image type returned by the NeoAPI.
+  using image_t = NeoAPI::Image;
+
+  /// Union of all supported types for camera parameters.
   using camera_param_t = std::variant<bool, int, int64_t, double, std::string, const char*>;
 
-  /// Default exposure time set to the camera every time we start it newly.
+  /// Default exposure time (2 milliseconds) used to initialize the camera.
   static constexpr irsol::types::duration_t DEFAULT_EXPOSURE_TIME = std::chrono::milliseconds(2);
 
   /**
    * @brief Constructs the Interface by loading the default camera.
    *
-   * Internally calls utils::loadDefaultCamera(), which discovers available
-   * devices and opens the one matching the default serial number.
-   * Throws if the camera cannot be initialized.
+   * Initializes the camera by calling @ref irsol::utils::loadDefaultCamera(), which automatically
+   * finds and opens the default device based on serial number.
+   *
+   * @param cam Optional camera handle. Defaults to the result of @ref
+   * irsol::utils::loadDefaultCamera().
+   * @throws std::runtime_error if camera initialization fails.
    */
   Interface(NeoAPI::Cam cam = irsol::utils::loadDefaultCamera());
 
+  /// Move constructor.
   Interface(Interface&& other);
+
+  /// Move assignment operator.
   Interface& operator=(Interface&& other);
 
   /**
-   * Factory method to create a camera interface with full resolution.
+   * @brief Factory method to create a camera interface using full sensor resolution.
+   * @return Interface instance initialized at full resolution.
    */
   static Interface FullResolution();
+
   /**
-   * Factory method to create a camera interface with half resolution.
+   * @brief Factory method to create a camera interface using half sensor resolution.
    *
-   * @note The resolution is halved in both dimension by performing camera-hardware binning
-   * (averaged).
+   * Uses hardware binning to reduce resolution by averaging pixels.
+   *
+   * @return Interface instance initialized at half resolution.
    */
   static Interface HalfResolution();
 
   /**
-   * @brief Retrieves information about the currently held camera.
+   * @brief Get human-readable camera information.
    *
-   * Extracts relevant fields from the NeoAPI::CamInfo struct and constructs a string containing a
-   * human-readable version of this information.
+   * Collects fields from `NeoAPI::CamInfo` and formats them into a readable tabular string.
+   *
+   * @return Formatted string with camera model, serial, etc.
    */
   std::string cameraInfoAsString() const;
 
   /**
-   * @brief Retrieves state information about the currently held camera.
+   * @brief Get current camera status.
    *
-   * Extracts relevant properties from the camera and constructs a string containing a
-   * human-readable version of this information.
+   * Reads camera state such as resolution, exposure, and other operational flags
+   * and returns a descriptive tabular string.
+   *
+   * @return Formatted string describing current state of the camera.
    */
   std::string cameraStatusAsString() const;
 
   /**
-   * @brief Provides direct access to the underlying NeoAPI camera handle.
-   *
-   * @return A reference to the NeoAPI::Cam object.
+   * @brief Access the underlying NeoAPI camera instance.
+   * @return Reference to the underlying `NeoAPI::Cam` object.
    */
   NeoAPI::Cam& getNeoCam();
 
   /**
-   * @brief Check if the camera is currently connected and valid.
+   * @brief Check if the camera is currently connected.
    *
-   * Uses NeoAPI::Cam::IsConnected(), allowing quick status polling.
+   * Uses `NeoAPI::Cam::IsConnected()` internally.
    *
-   * @return true if the camera is connected; false otherwise.
+   * @return true if camera is connected; false otherwise.
    */
   bool isConnected() const
   {
@@ -93,39 +137,41 @@ public:
   }
 
   /**
-   * @brief Set a camera parameters so that the entire sensor width/height is used.
-   * @note This is useful for when the previous sensor area was set, and upon start of a new
-   * application, the sensor area is reset.
+   * @brief Reset the sensor area to the full sensor dimensions.
+   *
+   * Useful if a previous program limited the sensor region and full dimensions need to be restored.
    */
   void resetSensorArea();
 
   /**
-   * @brief Retrieves the current exposure time from the camera.
+   * @brief Get the current exposure time from the camera.
+   *
+   * @return Current exposure duration.
    */
   irsol::types::duration_t getExposure() const;
 
   /**
-   * @brief Sets the exposure of the camera.
+   * @brief Set the exposure time of the camera.
+   *
+   * @param exposure New exposure duration.
+   * @return The actual exposure set on the camera (may differ slightly).
    */
   irsol::types::duration_t setExposure(irsol::types::duration_t exposure);
 
   /**
    * @brief Retrieve a camera parameter of arbitrary type T.
    *
-   * This templated getter fetches the camera feature via NeoAPI,
-   * and returns it as type T. Supported types are:
-   * - std::string or char *: returns a string value
-   * - bool: boolean feature
-   * - integral types: integer feature
-   * - floating-point types: double feature
+   * Uses the NeoAPI API to retrieve the value and cast to T. Supported types:
+   * - std::string
+   * - bool
+   * - integral types (e.g., int, int64_t)
+   * - floating-point types (e.g., double)
    *
-   * In case of errors, returns a default-constructed T
-   * or "Unknown" for string types.
+   * Thread-safe: locks internal mutex.
    *
-   * @tparam T Type of the parameter to retrieve.
-   * @param param Name of the camera feature.
-   * @return The feature value as type T, or fallback on error.
-   * @note thread-safe: locks m_caMutex to serialize get operations.
+   * @tparam T Desired return type.
+   * @param param Name of the camera parameter.
+   * @return Value of type T or a default on read error.
    */
   template<
     typename T,
@@ -135,32 +181,30 @@ public:
   T getParam(const std::string& param) const;
 
   /**
-   * @brief Convenience overload to always return a string representation of the full parameter.
+   * @brief Retrieve a camera parameter and convert it to string.
    *
-   * Logs, retrieves the feature, and converts to std::string. On failure,
-   * returns "Unknown".
+   * Thread-safe: locks internal mutex.
    *
-   * @param param Name of the camera feature.
-   * @return Feature value as std::string or "Unknown" on error.
-   * @note thread-safe: locks m_caMutex to serialize get operations.
+   * @param param Name of the camera parameter.
+   * @return Value as string or "Unknown" on error.
    */
   std::string getParam(const std::string& param) const;
 
   /**
    * @brief Set a camera parameter of arbitrary type T.
    *
-   * Thread-safe: takes a lock across set operations. Supported types:
-   * - std::string or const char *
+   * Thread-safe. Supported types:
+   * - std::string
+   * - const char*
    * - bool
-   * - integral types (cast to int64_t)
-   * - floating-point types (cast to double)
+   * - integral types (converted to int64_t)
+   * - floating-point types (converted to double)
    *
-   * @tparam T Type of the value to set.
-   * @param param Name of the camera feature.
-   * @param value Value to set for the feature.
-   * @return The set value, which might be different than the one set (according to camera
-   * constraints).
-   * @note thread-safe: locks m_caMutex to serialize set operations.
+   * @tparam T Value type.
+   * @param param Parameter name.
+   * @param value Value to set.
+   * @return The set value (after conversion/rounding, if any).
+   * @see Interface::setMultiParam()
    */
   template<
     typename T,
@@ -170,41 +214,65 @@ public:
       int> = 0>
   T setParam(const std::string& param, T value);
 
-  /// Template specialization for const char*, which returns a std::string rather than returning T
+  /**
+   * @brief Specialization for setting const char* values as strings.
+   *
+   * @param param Parameter name.
+   * @param value C-string value.
+   * @return Set value as std::string.
+   * @see Interface::setMultiParam()
+   */
   template<typename T, std::enable_if_t<std::is_same_v<std::decay_t<T>, const char*>, int> = 0>
   std::string setParam(const std::string& param, T value);
 
+  /**
+   * @brief Set multiple parameters in one call.
+   *
+   * Iterates through a map of key-value pairs and sets each camera parameter
+   * accordingly. Internally dispatches based on type.
+   *
+   * @param params Map of parameter names and values.
+   * @see Interface::setParam()
+   */
   void setMultiParam(const std::unordered_map<std::string, camera_param_t>& params);
 
   /**
-   * @brief Trigger a camera feature to initiate an action.
+   * @brief Trigger a camera feature (e.g., software trigger).
+   *
+   * @param param Name of the triggerable feature.
    */
   void trigger(const std::string& param);
 
   /**
-   * @brief Capture a single image from the camera, blocking up to timeout.
+   * @brief Capture a single image from the camera.
    *
-   * Thread-safe: locks m_caMutex to serialize image grabs. Returns a
-   * image_t containing the raw frame data. Throws on timeout or error.
+   * Waits up to a specified timeout (or the cached exposure time if not provided as argument).
+   * Thread-safe.
    *
-   * @param timeout Maximum duration to wait for a new image, if not provided, wait until the
-   * exposure time.
-   * @return image_t The captured image buffer and metadata.
+   * @param timeout Optional duration to wait for a frame.
+   * @return Captured image.
+   * @throws std::runtime_error on timeout or camera error.
    */
   image_t captureImage(std::optional<irsol::types::duration_t> timeout = std::nullopt);
 
 private:
-  /// Protects concurrent access to image capture operations and parameter operations.
+  /// Mutex to protect access to camera parameters and image acquisition.
   mutable std::mutex m_camMutex;
 
-  /// Underlying NeoAPI camera handle.
+  /// Internal camera instance from NeoAPI.
   NeoAPI::Cam m_cam;
 
-  /// Keep track of the exposure of the camera, this is used for
-  /// automatically waiting for images to be retrieved from the camera when
-  /// users runs `captureImage`  without specifying an explicit timeout.
+  /// Cached exposure value used for implicit timeout behavior in @ref
+  /// irsol::camera::Interface::captureImage().
   irsol::types::duration_t m_CachedExposureTime;
 
+  /**
+   * @brief Internal, non-thread-safe parameter setter used by `setParam`.
+   *
+   * @tparam T Parameter value type.
+   * @param param Name of the parameter.
+   * @param value Value to assign.
+   */
   template<
     typename T,
     std::enable_if_t<
@@ -214,6 +282,7 @@ private:
       int> = 0>
   void setParamNonThreadSafe(const std::string& param, T value);
 };
+
 }  // namespace camera
 }  // namespace irsol
 
