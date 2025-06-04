@@ -83,9 +83,6 @@ var annotated_dup =
         [ "SafeQueue", "dc/d49/classirsol_1_1utils_1_1SafeQueue.html", "dc/d49/classirsol_1_1utils_1_1SafeQueue" ]
       ] ]
     ] ],
-    [ "Coordinates", "dc/d27/structCoordinates.html", "dc/d27/structCoordinates" ],
     [ "LoggingListener", "dc/d24/classLoggingListener.html", "dc/d24/classLoggingListener" ],
-    [ "Params", "de/db8/structParams.html", "de/db8/structParams" ],
-    [ "Resolution", "d0/dbd/structResolution.html", "d0/dbd/structResolution" ],
-    [ "TestBuffer", "df/d77/classTestBuffer.html", "df/d77/classTestBuffer" ]
+    [ "Params", "de/db8/structParams.html", "de/db8/structParams" ]
 ];

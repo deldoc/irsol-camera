@@ -9,14 +9,10 @@ var hierarchy =
     [ "irsol::protocol::internal::BinaryData< T, N >", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html", null ],
     [ "irsol::protocol::BinaryDataAttribute", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html", null ],
     [ "irsol::protocol::internal::BinaryDataBufferName< N >", "d6/df0/structirsol_1_1protocol_1_1internal_1_1BinaryDataBufferName.html", null ],
-    [ "NeoAPI::BufferBase", null, [
-      [ "TestBuffer", "df/d77/classTestBuffer.html", null ]
-    ] ],
     [ "irsol::server::frame_collector::ClientCollectionParams", "d5/d11/structirsol_1_1server_1_1frame__collector_1_1ClientCollectionParams.html", null ],
     [ "irsol::server::internal::ClientSessionAcceptor", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html", null ],
     [ "irsol::protocol::Command", "d2/d10/structirsol_1_1protocol_1_1Command.html", null ],
     [ "irsol::server::handlers::Context", "d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html", null ],
-    [ "Coordinates", "dc/d27/structCoordinates.html", null ],
     [ "std::disjunction", null, [
       [ "irsol::traits::is_type_in_variant< T, std::variant< VariantClassesT... > >", "dd/dc5/structirsol_1_1traits_1_1is__type__in__variant_3_01T_00_01std_1_1variant_3_01VariantClassesT_8_8_8_01_4_01_4.html", null ]
     ] ],
@@ -67,7 +63,6 @@ var hierarchy =
     [ "Params", "de/db8/structParams.html", null ],
     [ "irsol::protocol::Parser", "d5/d35/classirsol_1_1protocol_1_1Parser.html", null ],
     [ "irsol::protocol::internal::ParserResult< T, >", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html", null ],
-    [ "Resolution", "d0/dbd/structResolution.html", null ],
     [ "irsol::utils::SafeQueue< T >", "dc/d49/classirsol_1_1utils_1_1SafeQueue.html", null ],
     [ "irsol::protocol::internal::SerializedMessage", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html", null ],
     [ "irsol::protocol::Serializer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html", null ],

@@ -26,7 +26,9 @@ var NAVTREE =
 [
   [ "IRSOL", "index.html", [
     [ "Quickstart", "da/d0d/quick_start.html", [
-      [ "Physical setup", "db/da0/physical_setup.html", null ],
+      [ "Physical setup", "db/da0/physical_setup.html", [
+        [ "The gevipconfig-tool", "de/d17/gevipconfig.html", null ]
+      ] ],
       [ "Development Environment Configuration", "d9/d88/development_environment_configuration.html", null ],
       [ "Examples", "d4/de9/examples.html", [
         [ "00-logging-and-asserting", "d8/d93/logging_and_asserting.html", null ],
@@ -68,20 +70,19 @@ var NAVTREE =
         [ "Variables", "globals_vars.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ],
-    [ "Examples", "examples.html", "examples" ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693",
-"d5/d2f/opencv_8hpp.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693",
-"d8/d93/namespaceirsol_1_1utils.html#aa54145189c7fc1ff30d6d773284425df",
-"db/dc5/classirsol_1_1server_1_1App.html#a82a57dc3845931c5545de504eac102e0",
-"dd/de3/types_8hpp.html#a693f485b749c3ec5fa143736da75f2b5",
-"dir_c865de71bd0df89779547fed0f944bfc.html"
+"d3/d30/classirsol_1_1server_1_1handlers_1_1AssignmentIntegrationTimeHandler.html#a900b443111338de623959033fe8d1628",
+"d5/d35/classirsol_1_1protocol_1_1Parser.html#a2d72a1240714a3d0ba16e39a1dcce8c8",
+"d8/dbc/test__error_8cpp.html",
+"db/dc5/classirsol_1_1server_1_1App.html#a8fb6f6293e0934c50607bd4d3484ead6",
+"de/d06/utils_8cpp.html#a82a0213b2171991c9abc66878526c2de",
+"functions.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

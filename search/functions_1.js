@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['binarydata_0',['binarydata',['../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0451e6edbfe289e09a7ac9eb1089283c',1,'irsol::protocol::internal::BinaryData::BinaryData(std::vector&lt; T &gt; &amp;&amp;data, const std::array&lt; uint64_t, N &gt; &amp;shape, std::vector&lt; BinaryDataAttribute &gt; &amp;&amp;attributes={})'],['../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a39bac72031cc556eee132e8a94cfa14f',1,'irsol::protocol::internal::BinaryData::BinaryData(BinaryData &amp;&amp;other)=default'],['../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a55699fbb3c3d47af537e3047138868c3',1,'irsol::protocol::internal::BinaryData::BinaryData(const BinaryData &amp;)=delete']]],
-  ['binarydataattribute_1',['BinaryDataAttribute',['../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#a4f4e7a20e0a68ab493258b15393b50f7',1,'irsol::protocol::BinaryDataAttribute']]],
-  ['broadcastmessage_2',['broadcastmessage',['../db/dc5/classirsol_1_1server_1_1App.html#a82a57dc3845931c5545de504eac102e0',1,'irsol::server::App::broadcastMessage()'],['../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#a3265dc79f8c68854119c6a2303be373d',1,'irsol::server::handlers::Context::broadcastMessage()']]]
-];

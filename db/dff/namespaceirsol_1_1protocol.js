@@ -32,9 +32,9 @@ var namespaceirsol_1_1protocol =
       [ "ERROR", "db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5", null ]
     ] ],
     [ "getInMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a285d565d14d7e2b1f819dea6df5071bf", null ],
-    [ "getInMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a11eb292df9f57c0e8897151fa3ffb62a", null ],
+    [ "getInMessageKind", "db/dff/namespaceirsol_1_1protocol.html#ac3d8f329dffa946327c1995e003ffea1", null ],
     [ "getOutMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a8f79326346fdf0b375edc7392952d7c4", null ],
-    [ "getOutMessageKind", "db/dff/namespaceirsol_1_1protocol.html#af424196d7e0365c23f82b30d174b8c19", null ],
+    [ "getOutMessageKind", "db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b", null ],
     [ "InMessageKindToString", "db/dff/namespaceirsol_1_1protocol.html#a97f85648f00c021779fb639f05dfa117", null ],
     [ "isAssignment", "db/dff/namespaceirsol_1_1protocol.html#ad8301adc17dd20284a1b7fac2eaa1775", null ],
     [ "isAssignment", "db/dff/namespaceirsol_1_1protocol.html#aa6c0a592e943d401acda96d2b9bc606a", null ],
