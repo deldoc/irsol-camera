@@ -87,6 +87,8 @@ docs:
 	cmake --build .
 	@echo "Running doxygen..."
 	doxygen $(DOCS_DIR)/Doxyfile
+	mkdir -p $(DOCS_DIR)/html/neoapi/
+	cp -r src/external/neoapi/docs/* $(DOCS_DIR)/html/neoapi/
 	@echo "Done building documentation."
 .PHONY: docs
 

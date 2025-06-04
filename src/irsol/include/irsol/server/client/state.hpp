@@ -37,6 +37,7 @@ struct FrameListeningState
   /**
    * @brief Starts the passed lambda function in a background thread.
    * @param task Lambda function to execute within the thread.
+   * @param description Description string used for logging in case of error executing the thread.
    * @note The 'm_running' state is automatically updated by this method. In order to cancel the
    * background task, use the 'stop' method.
    * */

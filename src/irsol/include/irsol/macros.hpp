@@ -33,6 +33,7 @@
 ///    IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_END
 ///    // code using only one of key or value
 /// }
+/// ```
 #if defined(__GNUC__) || defined(__clang__)
 #ifndef IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START
 #define IRSOL_SUPPRESS_UNUSED_STRUCTURED_BINDING_START \

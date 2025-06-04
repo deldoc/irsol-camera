@@ -70,11 +70,20 @@ A convenience [`Makefile`](../../Makefile) at the root of the repository impleme
   ```
   This will first build, then run unit-tests. Test results are shown on the console once tests are finished.
 
+* Building documentation
+  ```sh
+  $> make docs
+  ```
+  This will build [Doxygen](https://www.doxygen.nl/index.html) documentation and generate HTML content in the `docs/generated/html` folder.
+  Documentation is always generated automatically when code is pushed to the `main` branch of the repository, following the _Github action_ implemented as a workflow.
+
+  A live version of the documentation is published here: https://deldoc.github.io/irsol-camera/
+
 * Linting the code (autoformatting)
   ```sh
   $> make lint
   ```
-  This will run [`clang-format`](https://clang.llvm.org/docs/ClangFormat.html) on the repository's codebase and format the files according to the [clang-format style guide](../../.clang-format).
+  This will run [`clang-format`](https://clang.llvm.org/docs/ClangFormat.html) on the repository's codebase and format the files according to the <a href=".clang-format" target="_blank"><b>clang-format style guide</b></a>.
 
   **Note**: you might need to have to install `clang` in your development environment. For openSuse, this can be done via:
   ```sh
@@ -113,4 +122,3 @@ Make sure to:
    such as `/usr/share/OpenCV/OpenCVConfig.cmake`
    
    If this is found, when building the examples of the `irsol` project, the ones requiring `OpenCV` will automatically be built as well.
-*/

@@ -1,0 +1,29 @@
+{
+  "env"
+    : {
+      "myIncludePath" : [
+        "${workspaceFolder}/src/external/neoapi/include",
+        "${workspaceFolder}/src/external/ppk_assert/include",
+        "${workspaceFolder}/src/irsol/include",
+        "${workspaceFolder}/src/build/debug/_deps/catch2-src/src",
+        "${workspaceFolder}/src/build/debug/_deps/spdlog-src/include",
+        "${workspaceFolder}/src/build/debug/_deps/sockpp-src/include",
+        "${workspaceFolder}/src/build/debug/_deps/args-src",
+        "${workspaceFolder}/src/build/debug/_deps/tabulate-src/include"
+      ],
+      "myDefines" : [ "DEBUG", "IRSOL_USE_OPENCV" ]
+    }
+    , "configurations"
+    : [ {
+      "name" : "OpenSuse Linux",
+      "compilerPath" : "/usr/bin/g++",
+      "intelliSenseMode" : "linux-gcc-x64",
+      "includePath" : ["${myIncludePath}"],
+      "defines" : ["${myDefines}"],
+      "cStandard" : "c11",
+      "cppStandard" : "c++17",
+      "browse" : {"path" : [ "${myIncludePath}", "${workspaceFolder}" ]}
+    } ]
+    , "version" : 4
+    , "enableConfigurationSquiggles" : true
+}

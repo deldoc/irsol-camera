@@ -124,7 +124,7 @@ std::string toString(const OutMessage& msg);
  */
 template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, InMessage>, int> = 0>
 constexpr InMessageKind
-getInMessageKind(const T&)
+getInMessageKind(IRSOL_MAYBE_UNUSED const T& msg)
 {
   if constexpr(std::is_same_v<T, Assignment>)
     return InMessageKind::ASSIGNMENT;
@@ -174,7 +174,7 @@ bool isCommand(const InMessage& msg);
  */
 template<typename T, std::enable_if_t<irsol::traits::is_type_in_variant_v<T, OutMessage>, int> = 0>
 constexpr OutMessageKind
-getOutMessageKind(const T&)
+getOutMessageKind(IRSOL_MAYBE_UNUSED const T& msg)
 {
   if constexpr(std::is_same_v<T, Success>)
     return OutMessageKind::SUCCESS;

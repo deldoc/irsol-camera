@@ -1,5 +1,4 @@
-\page gevipconfig The gevipconfig-tool
-# The gevipconfig-tool
+# The gevipconfig-tool {#gevipconfig}
 
 the gevipconfig-tool can be used to configure the networking of your camera it can also be used as part of your setup or in a script to automate the process
 ## Introduction

@@ -82,7 +82,7 @@ std::string timestampToString(irsol::types::timepoint_t tp);
 /**
  * @brief Convert a duration time to a human-readable string.
  *
- * @param tp The duration time to convert.
+ * @param dr The duration time to convert.
  * @return A string representation of the duration time.
  */
 std::string durationToString(irsol::types::duration_t dr);

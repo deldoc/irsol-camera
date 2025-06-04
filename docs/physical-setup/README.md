@@ -6,7 +6,8 @@ In particular, it will show how to:
  * retrieve API documentation, SDK and code examples from the [Baumer](https://www.baumer.com) website
  * physically connect the camera to a Shuttle computer
  * run some sample programs to make sure the camera is connected correctly
-  
+
+
 ## API documentation and SDK access
 The documentation and SDK access for the _Baumer_ camera is available through the [Baumer](https://www.baumer.com) website. In particular, the following resources are useful:
  * [Baumer Camera Explorer](https://www.baumer.com/ch/en/product-overview/industrial-cameras-image-processing/software/baumer-camera-explorer/c/42504): a toolkit that allows to manage and interact with cameras connected to your system through a GUI
@@ -14,7 +15,7 @@ The documentation and SDK access for the _Baumer_ camera is available through th
  * [Baumer neoAPI](https://www.baumer.com/ch/en/product-overview/industrial-cameras-image-processing/software/baumer-neoapi/c/42528): a **high level SDK** (available for both `C`  and `C++` clients) for interactive with the _Baumer_ camera programmatically.
 
 The `irsol` project developed within this repository is making use of the [Baumer neoAPI](https://www.baumer.com/ch/en/product-overview/industrial-cameras-image-processing/software/baumer-neoapi/c/42528) as an SDK to interact with the physical camera.
-Documentation for that SDK is available [here](../../src/external/neoapi/docs/index.html).
+Documentation for that SDK is available <a href="neoapi/index.html" target="_blank"><b>here</b></a>.
 
 ## Physical configuration
 
@@ -24,7 +25,7 @@ The following diagram is a schematic representation of how one needs to connect 
  * a Shuttle PC
  * ethernet cables connecting the components together
   
-![Physical-setup](./resources/Physical-setup.png)
+![Physical-setup](Physical-setup.png)
 
 Once the different parts are connected together, you should see that the _Baumer_ camera has a single green light (non-blinking) turned on. If you see a blinking led, the connection is incorrect.
 
@@ -51,7 +52,7 @@ In the above example, we understand that the `eth1`  network port of the Shuttle
 
 #### Camera network configuration
 
-A utility tool named [`gevipconfig`](../../src/external/neoapi/tools/gevipconfig) (distributed with both `Baumer GAPI SDK` and `Baumer neoAPI`, but also available for convenience in this repository inside [this](../../src/external/neoapi/tools) folder) facilitates the configuration of the IP and Subnet for the _Baumer_ camera. A valid IP address has to be in the subnet of the network interface card, the device is connected to and has to be unique.
+A utility tool named `gevipconfig` (distributed with both `Baumer GAPI SDK` and `Baumer neoAPI`, but also available for convenience in this repository inside the `src/external/neoapi/tools` folder) facilitates the configuration of the IP and Subnet for the _Baumer_ camera. A valid IP address has to be in the subnet of the network interface card, the device is connected to and has to be unique.
 
 It is possible to manually set and persist a _static_ IP address to the _Baumer_ camera following these steps:
 1. Verify the current camera IP configuration by running the `gevipconfig` tool:
@@ -83,30 +84,32 @@ It is possible to manually set and persist a _static_ IP address to the _Baumer_
    $> sudo ./gevipconfig -c <camera-serial-number> -i <desired-ip-address> -s <desired-subnet> -p
    ```
    **Note**: the combination of IP and subnet configurations must be a valid combination. The following are examples of correct/incorrect combinations:
-   * invalid: different subnet
-     ```
-     NIC: IP 192.168.1.1 Subnet 255.255.255.0
-     Camera: IP 192.168.2.1 Subnet 255.255.255.0
-     ```
+      * invalid: different subnet 
+        
+        ```
+        NIC: IP 192.168.1.1 Subnet 255.255.255.0
+        Camera: IP 192.168.2.1 Subnet 255.255.255.0
+        ```
     
-    * invalid: same subnet but also same IP address:
-      ```
-      NIC: IP 192.168.1.1 Subnet 255.255.255.0
-      Camera: IP 192.168.1.1 Subnet 255.255.255.0
-      ```
+      * invalid: same subnet but also same IP address:
+        ```
+        NIC: IP 192.168.1.1 Subnet 255.255.255.0
+        Camera: IP 192.168.1.1 Subnet 255.255.255.0
+        ```
 
-    * valid: same subnet and different IP address:
-      ```
-      NIC: IP 192.168.1.1 Subnet 255.255.255.0
-      Camera: IP 192.168.1.2 Subnet 255.255.255.0
-      ```
-    
-    To follow the valid example above, one could run the following command:
-    ```sh
-    $> sudo ./gevipconfig -c 700011810487 -i 192.168.1.2 -s 255.255.255.0 -p
-    ```
+      * valid: same subnet and different IP address:
+        
+        ```
+        NIC: IP 192.168.1.1 Subnet 255.255.255.0
+        Camera: IP 192.168.1.2 Subnet 255.255.255.0
+        ```
+       
+   To follow the valid example above, one could run the following command:
+   ```sh
+   $> sudo ./gevipconfig -c 700011810487 -i 192.168.1.2 -s 255.255.255.0 -p
+   ```
 
-    More details are available in the `gevipconfig` [documentation](../../src/external/neoapi/tools/gevipconfig.md).
+   More details are available in the `gevipconfig` documentation @subpage gevipconfig.
 
 ### Verification
-Once the camera and its network configuration has been completed, you can verify the correctness of the setup by running any of the available examples that you can build following the [these](../development-environmnet-configuration/) instructions.
+Once the camera and its network configuration has been completed, you can verify the correctness of the setup by running any of the available examples that you can build following the @ref development_environment_configuration instructions.

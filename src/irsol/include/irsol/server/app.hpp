@@ -137,7 +137,7 @@ private:
    * streaming to that client, and cleans up resources.
    *
    * @param clientId ID of the client to remove.
-   * @note: This function is called as soon as the client connection is closed (e.g. when client
+   * @note This function is called as soon as the client connection is closed (e.g. when client
    * disconnects).
    */
   void removeClient(const irsol::types::client_id_t& clientId);
@@ -156,11 +156,10 @@ private:
    * @param args Arguments for the handler constructor.
    *
    * @note This function is templated to handle different message types and handlers.
-   * @example
    * ```cpp
    * registerMessageHandler<protocol::Inquiry, handlers::InquiryFRHandler>("fr", ctx);
-   * registerMessageHandler<protocol::Command, handlers::CommandFRHandler>("fr", ctx,
-   * anotherParamForCommandFRHandler);
+   * registerMessageHandler<protocol::Command, handlers::CommandFRHandler>("fr", ctx);
+   * ```
    */
   template<typename InMessageT, typename HandlerT, typename... Args>
   void registerMessageHandler(const std::string& identifier, Args&&... args)
@@ -182,7 +181,6 @@ private:
    * @param lambda Lambda function for the handler.
    *
    * @note This function is templated to handle different message types and lambda handlers.
-   * @example
    * ```cpp
    * registerLambdaHandler<protocol::Command>(
    *  "lambda_command",
@@ -195,6 +193,7 @@ private:
    *        return {...};
    *  }
    * );
+   * ```
    */
   template<typename InMessageT, typename LambdaT>
   void
