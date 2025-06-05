@@ -115,6 +115,8 @@ std::map<FeaturePermissions, std::vector<NeoAPI::Feature*>> extractCameraFeature
  * Uses internal utilities to query the camera interface and
  * report on the available, readable, and writable features.
  *
+ * See @ref interacting_with_camera_features for an example.
+ *
  * @param cam Reference to the camera interface to query.
  * @returns A string representing the discovered features formatted as a table.
  */

@@ -1,5 +1,7 @@
 # 01-loading-images {#loading_images}
-@see irsol/camera/interface.hpp
+
+@see examples/01-loading-images/main.cpp
+@see examples/01-loading-images/main-opencv.cpp
 
 This example serves as a minimal, practical introduction to the `irsol` codebase. It demonstrates how to initialize the system, configure logging, connect to a camera, and capture a series of images.
 
@@ -8,7 +10,7 @@ This example serves as a minimal, practical introduction to the `irsol` codebase
 
 ## Overview
 
-[`main.cpp`](./main.cpp) showcases the following core features of the `irsol` library:
+@see examples/01-loading-images/main.cpp showcases the following core features of the `irsol` library:
 
 - **Command-line argument parsing**  
   Configure the program at runtime (log level, number of frames).
@@ -23,4 +25,4 @@ This example serves as a minimal, practical introduction to the `irsol` codebase
   Outputs estimated FPS and image size info to give insight into runtime performance.
 
 
-[`main-opencv.cpp`](./main-opencv.cpp) implements the same example as [`main.cpp`](./main.cpp), but additionally displays the image to the screen. This example is only available on systems having an installed version of opencv.
+@see examples/01-loading-images/main-opencv.cpp implements the same example as @see examples/01-loading-images/main.cpp, but additionally displays the image to the screen. This example is only available on systems having an installed version of OpenCV.

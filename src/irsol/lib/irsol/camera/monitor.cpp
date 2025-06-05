@@ -6,7 +6,7 @@
 
 namespace irsol {
 namespace camera {
-StatusMonitor::StatusMonitor(const Interface& cam, std::chrono::milliseconds monitorInterval)
+StatusMonitor::StatusMonitor(const Interface& cam, irsol::types::duration_t monitorInterval)
   : m_cam(cam), m_monitorInterval(monitorInterval), m_hasStartedMonitor(false)
 {
   IRSOL_ASSERT_ERROR(cam.isConnected(), "Camera is not connected.");
@@ -15,7 +15,7 @@ StatusMonitor::StatusMonitor(const Interface& cam, std::chrono::milliseconds mon
 StatusMonitor::~StatusMonitor()
 {
   if(m_hasStartedMonitor) {
-    IRSOL_LOG_DEBUG("Automatic stopping monitoring of camera.");
+    IRSOL_NAMED_LOG_DEBUG("status_monitor", "Automatic stopping monitoring of camera.");
     stop();
   }
 }
@@ -23,13 +23,13 @@ StatusMonitor::~StatusMonitor()
 void
 StatusMonitor::runMonitor() const
 {
-  IRSOL_LOG_DEBUG("Monitoring camera status...");
+  IRSOL_NAMED_LOG_DEBUG("status_monitor", "Monitoring camera status...");
 
   while(m_hasStartedMonitor) {
     auto nextIterationTime = irsol::types::clock_t::now() + m_monitorInterval;
 
     bool stopRequested = false;
-    IRSOL_LOG_INFO("\n{}", m_cam.cameraStatusAsString());
+    IRSOL_NAMED_LOG_INFO("status_monitor", "\n{}", m_cam.cameraStatusAsString());
     if(stopRequested) {
       break;
     }
@@ -41,26 +41,24 @@ StatusMonitor::runMonitor() const
 void
 StatusMonitor::start()
 {
-  std::scoped_lock<std::mutex> guard(m_startStopMutex);
-  IRSOL_ASSERT_ERROR(!m_hasStartedMonitor, "Monitor is already running!");
-  m_hasStartedMonitor = true;
+  IRSOL_ASSERT_ERROR(!m_hasStartedMonitor.load(), "Monitor is already running!");
+  m_hasStartedMonitor.store(true);
 
   m_monitorThread = std::thread([this]() { runMonitor(); });
-  IRSOL_LOG_DEBUG("Camera monitor has started.");
+  IRSOL_NAMED_LOG_DEBUG("status_monitor", "Camera monitor has started.");
 }
 
 void
 StatusMonitor::stop()
 {
-  std::scoped_lock<std::mutex> guard(m_startStopMutex);
   IRSOL_ASSERT_ERROR(
-    m_hasStartedMonitor, "Cannot 'stop' monitor without having started it before!");
-  m_hasStartedMonitor = false;
+    m_hasStartedMonitor.load(), "Cannot 'stop' monitor without having started it before!");
+  m_hasStartedMonitor.store(false);
 
   if(m_monitorThread.joinable()) {
     m_monitorThread.join();
   }
-  IRSOL_LOG_DEBUG("Camera monitor has stopped.");
+  IRSOL_NAMED_LOG_DEBUG("status_monitor", "Camera monitor has stopped.");
 }
 }  // namespace camera
 }  // namespace irsol

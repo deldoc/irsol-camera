@@ -1,4 +1,4 @@
-/// @file
+/// @file examples/02-interacting-with-camera-features/main.cpp
 /// @brief Demonstrates how to get and set camera features using `irsol::camera::Interface`.
 
 #include "irsol/irsol.hpp"

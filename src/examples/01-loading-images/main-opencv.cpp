@@ -143,6 +143,10 @@ main(int argc, char** argv)
   IRSOL_LOG_INFO("\n{}", cameraInterface.cameraInfoAsString());
   IRSOL_LOG_INFO("\n{}", cameraInterface.cameraStatusAsString());
 
+  // Start a monitoring thread to log camera status
+  irsol::camera::StatusMonitor monitor(cameraInterface, std::chrono::milliseconds(500));
+  monitor.start();
+
   // Capture and log a sequence of frames
   auto       lastTick = irsol::types::clock_t::now();
   const auto desiredDt =

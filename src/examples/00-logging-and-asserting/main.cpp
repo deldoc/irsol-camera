@@ -1,3 +1,6 @@
+/// @file examples/00-logging-and-asserting/main.cpp
+/// @brief Demonstrates how to get log and assert within the `irsol` project.
+
 #include "irsol/assert.hpp"
 #include "irsol/logging.hpp"
 
