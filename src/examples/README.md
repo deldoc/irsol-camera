@@ -15,3 +15,6 @@ These examples serve as practical references to help you get started and underst
 * @subpage interacting_with_camera_features
   Covers how to access and control camera features through `irsol`, including querying and setting camera parameters.
 
+* @subpage message_protocols
+  Covers the topic of how messages are parsed, processed and serialized back to the client in the client-server architecture implemented in the `irsol` project.
+
