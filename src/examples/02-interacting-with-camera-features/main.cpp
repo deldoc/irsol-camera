@@ -17,6 +17,9 @@ getProgramName()
 void
 demoCameraFeatures(irsol::camera::Interface& cam)
 {
+  IRSOL_LOG_INFO("=== Discovering all camera features ===");
+  IRSOL_LOG_INFO("\n{}", irsol::camera::discoverCameraFeatures(cam));
+
   IRSOL_LOG_INFO("=== Original Camera Information ===");
   IRSOL_LOG_INFO("\n{}", cam.cameraStatusAsString());
 

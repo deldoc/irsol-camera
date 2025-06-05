@@ -4,53 +4,13 @@
 #include "irsol/logging.hpp"
 #include "irsol/macros.hpp"
 
-#include <map>
+#include <tabulate/table.hpp>
 
 using namespace std;
 
 namespace irsol {
 namespace camera {
 namespace internal {
-
-enum FeaturePermissionValue
-{
-  UNSET         = 0,
-  NOT_AVAILABLE = (1u << 0),
-  AVAILABLE     = (1u << 1),
-  READABLE      = (1u << 2),
-  WRITABLE      = (1u << 3)
-};
-
-struct FeaturePermissions
-{
-  FeaturePermissionValue value;
-
-  FeaturePermissions(bool isAvailable, bool isReadable, bool isWritable)
-    : value(FeaturePermissionValue(
-        (isAvailable ? FeaturePermissionValue::AVAILABLE : FeaturePermissionValue::NOT_AVAILABLE) |
-        (isReadable ? FeaturePermissionValue::READABLE : FeaturePermissionValue::UNSET) |
-        (isWritable ? FeaturePermissionValue::WRITABLE : FeaturePermissionValue::UNSET)))
-  {}
-
-  bool isAvailable() const
-  {
-    return value & FeaturePermissionValue::AVAILABLE;
-  }
-  bool isReadable() const
-  {
-    return value & FeaturePermissionValue::READABLE;
-  }
-  bool isWritable() const
-  {
-    return value & FeaturePermissionValue::WRITABLE;
-  }
-
-  bool operator<(const FeaturePermissions& other) const
-  {
-    return value < other.value;
-  }
-};
-
 std::map<FeaturePermissions, std::vector<NeoAPI::Feature*>>
 extractCameraFeatures(NeoAPI::Cam& cam)
 {
@@ -82,39 +42,31 @@ extractCameraFeatures(NeoAPI::Cam& cam)
   IRSOL_LOG_INFO("Loaded {0:d} camera features", featureCount);
   return featurePermissionsMap;
 }
-
-}  // namespace internal
-
-FeatureDiscovery::FeatureDiscovery(Interface& cam): m_cam(cam) {}
-
-void
-FeatureDiscovery::run()
+}
+std::string
+discoverCameraFeatures(irsol::camera::Interface& cam)
 {
-  const auto& featurePermissionsMap = internal::extractCameraFeatures(m_cam.getNeoCam());
-  for(const auto& [permissions, features] : featurePermissionsMap) {
-    IRSOL_LOG_INFO(
-      "Permissions: isAvailable: {0}, isReadable: {1}, isWritable: {2}",
-      permissions.isAvailable(),
-      permissions.isReadable(),
-      permissions.isWritable());
-    for(const auto feature : features) {
-      std::string featureDescription{feature->GetName().c_str()};
-      if(permissions.value & internal::FeaturePermissionValue::AVAILABLE) {
-        if(permissions.value & internal::FeaturePermissionValue::READABLE) {
-          featureDescription += ", readable (";
-          featureDescription += NeoAPI::NeoString(*feature).c_str();
-          featureDescription += ")";
-        }
-        if(permissions.value & internal::FeaturePermissionValue::WRITABLE) {
-          featureDescription += ", writable";
-        }
-      } else {
-        featureDescription += ", not available";
-      }
+  const auto& featurePermissionsMap =
+    irsol::camera::internal::extractCameraFeatures(cam.getNeoCam());
+  tabulate::Table table;
+  table.add_row({"Feature Name", "Available", "Readable", "Writable"});
 
-      IRSOL_LOG_INFO(" - {0:s}", featureDescription);
+  for(const auto& [permissions, features] : featurePermissionsMap) {
+    for(const auto* feature : features) {
+      table.add_row({feature->GetName().c_str(),
+                     permissions.isAvailable() ? "yes" : "no",
+                     permissions.isReadable() ? "yes" : "no",
+                     permissions.isWritable() ? "yes" : "no"});
     }
   }
+
+  // Optional formatting:
+  table.column(0).format().font_align(tabulate::FontAlign::right);
+  table.column(1).format().font_align(tabulate::FontAlign::center);
+  table.column(2).format().font_align(tabulate::FontAlign::center);
+  table.column(3).format().font_align(tabulate::FontAlign::center);
+
+  return table.str();
 }
 }  // namespace camera
 }  // namespace irsol
