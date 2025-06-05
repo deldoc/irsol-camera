@@ -1,3 +1,15 @@
+/**
+ * @file irsol/protocol/message/success.hpp
+ * @brief Protocol success message representation.
+ *
+ * This header defines the `Success` struct used to represent responses returned by the server
+ * upon successful handling of protocol input messages such as assignments, commands, or inquiries.
+ * A success message may optionally include a value, typically in response to an inquiry or
+ * assignment.
+ *
+ * @ingroup Protocol
+ */
+
 #pragma once
 
 #include "irsol/macros.hpp"
@@ -13,48 +25,52 @@ namespace irsol {
 namespace protocol {
 
 /**
- * @brief Represents a response status message from the protocol.
+ * @ingroup Protocol
+ * @brief Represents a success response message from the server.
  *
- * A status may include an optional body with additional information.
+ * A `Success` message acknowledges the successful processing of an incoming message (such as
+ * an @ref irsol::protocol::Assignment, @ref irsol::protocol::Command, or @ref
+ * irsol::protocol::Inquiry). It contains the originating identifier, the kind of message that
+ * triggered the response, and optionally a result value (e.g., for assignments and inquiries).
+ *
+ * Can be stored in a @ref irsol::protocol::OutMessage variant.
  */
 struct Success
 {
-
-  /// The identifier associated with the status. Must start with a character, followed by
-  /// alphanumeric characters and underscores.
+  /// The identifier associated with the success response.
   std::string identifier;
 
-  /// The kind of the incoming message that generated this status.
+  /// The kind of the incoming message that triggered this response.
   InMessageKind source;
 
-  /// Optional body providing further detail about the status. Only used when the source is INQUIRY
-  /// or ASSIGNMENT.
+  /// Optional result or data associated with the response.
   std::optional<irsol::types::protocol_value_t> body{};
 
   /**
-   * @brief Converts the status to a human-readable string.
-   * @return A string representation of the status message.
+   * @brief Converts the success message to a human-readable string.
+   * @return A string representation of the success.
    */
   std::string toString() const;
 
-  /// @return true if a body is present in the status.
+  /// @return true if the success message contains a result body.
   bool hasBody() const;
 
-  /// @return true if the value is of type int.
+  /// @return true if the result body is of type int.
   bool hasInt() const;
 
-  /// @return true if the value is of type double.
+  /// @return true if the result body is of type double.
   bool hasDouble() const;
 
-  /// @return true if the value is of type string.
+  /// @return true if the result body is of type string.
   bool hasString() const;
 
-  /** Helper factory method to create a success message from an existing Assignment InMessage type
-   *
-   * This is useful when creating success messages directly for consumed Assignment.
-   *
-   * @param msg The message that leads to the creation of this success message.
-   * @param overrideValue Optional override value to return alongside the created Success message.
+  /**
+   * @brief Creates a success message from an Assignment.
+   * @param msg The original assignment message.
+   * @param overrideValue Optional value to return instead of the original. This is sometimes set by
+   * the server, when the original value of the @ref Assignment message was not suitable for storage
+   * (e.g. due to precision limitations or min/max constraints).
+   * @return A success response based on the assignment.
    */
   static Success from(
     const Assignment&                             msg,
@@ -66,23 +82,21 @@ struct Success
       overrideValue.has_value() ? overrideValue : std::make_optional(msg.value));
   }
 
-  /** Helper factory method to create a success message from an existing Command InMessage type
-   *
-   * This is useful when creating success messages directly for consumed Command.
-   *
-   * @param msg The message that leads to the creation of this success message.
+  /**
+   * @brief Creates a success message from a Command.
+   * @param msg The original command message.
+   * @return A success response based on the command.
    */
   static Success from(const Command& msg)
   {
     return Success(msg.identifier, InMessageKind::COMMAND);
   }
 
-  /** Helper factory method to create a success message from an existing Inquiry InMessage type
-   *
-   * This is useful when creating success messages directly for consumed Inquiry.
-   *
-   * @param msg The message that leads to the creation of this success message.
+  /**
+   * @brief Creates a success message from an Inquiry.
+   * @param msg The original inquiry message.
    * @param result The result of the inquiry.
+   * @return A success response with the requested value.
    */
   static Success from(const Inquiry& msg, irsol::types::protocol_value_t result)
   {
@@ -90,11 +104,14 @@ struct Success
   }
 
   /**
-   * Helper factory method to create a success message from an arbitrary identifier/value pairs.
+   * @brief Creates a standalone status message with a value.
    *
-   * This is useful in asynchronous callback functions, when the server is sending some data to che
-   * client but no-longer has (or never had) access to an InMessage associated to the value the
-   * server is communicating.
+   * Useful in cases where the server responds without having access
+   * to the original incoming message (e.g., asynchronous events).
+   *
+   * @param identifier The identifier associated with the result.
+   * @param value The value to return.
+   * @return A success response with the given identifier and value.
    */
   static Success asStatus(const std::string& identifier, irsol::types::protocol_value_t value)
   {
@@ -102,7 +119,7 @@ struct Success
   }
 
 private:
-  // Only allow construction from factory-methods
+  // Only allow construction through factory methods
   Success(
     const std::string&                            identifier,
     InMessageKind                                 source,

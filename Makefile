@@ -106,7 +106,7 @@ deepclean: clean
 	@echo "Done deep-cleaning."
 .PHONY: deepclean
 
-# Convenience rule: lint + full build
-all: lint build/all
+# Convenience rule: lint + full build + docs
+all: lint build/all docs
 	@echo "All tasks completed."
 .PHONY: all
