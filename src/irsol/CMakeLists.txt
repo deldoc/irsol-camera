@@ -33,7 +33,6 @@ add_library(${PROJECT_NAME}
     lib/irsol/server/client/session.cpp
     lib/irsol/server/client/state.cpp
     lib/irsol/server/message_handler.cpp
-    lib/irsol/server/image_data.cpp
     lib/irsol/server/handlers/assignment_frame_rate.cpp
     lib/irsol/server/handlers/assignment_input_sequence_length.cpp
     lib/irsol/server/handlers/assignment_integration_time.cpp

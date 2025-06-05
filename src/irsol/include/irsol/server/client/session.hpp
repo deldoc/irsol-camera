@@ -1,3 +1,12 @@
+/**
+ * @file irsol/server/client/session.hpp
+ * @brief Declaration of the `ClientSession` class.
+ * @ingroup Server
+ *
+ * This file defines the @ref irsol::server::ClientSession class, which encapsulates all logic
+ * related to managing communication and state for a single connected client in the system.
+ */
+
 #pragma once
 
 #include "irsol/protocol.hpp"
@@ -10,105 +19,134 @@
 #include <string>
 
 namespace irsol {
-
 namespace server {
+
 // Forward declaration
 class App;
 
 /**
- * @brief Represents a single connected client session in the server.
+ * @brief Represents a single connected client session.
+ * @ingroup Server
  *
- * A ClientSession instance encapsulates all state and operations related to one
- * client's connection: reading incoming messages, sending data, and participating
- * in frame streaming. It holds the client's unique identifier, the socket and
- * session-specific data in UserSessionData, and a reference to the central
- * App for routing messages and integrating with server-wide logic.
+ * Each instance of `ClientSession` corresponds to **exactly one connected client**.
+ * It owns the socket connection, manages message transmission and reception,
+ * and encapsulates session-specific state (e.g., frame stream preferences).
  *
- * std::enable_shared_from_this is used to allow safe creation of std::shared_ptr
- * instances referring to *this. This enables passing shared ownership of the
- * ClientSession into asynchronous callbacks and threads without risking the
- * object being destroyed while in use.
+ * The class is responsible for all communication with the client: reading
+ * inbound messages from the socket, parsing and dispatching them, and sending
+ * outbound messages. All session-specific state is stored here, including a
+ * @ref irsol::server::internal::UserSessionData structure.
+ *
+ * In addition, the session holds a reference to the central @ref irsol::server::App instance,
+ * which enables it to interact with the global server context (e.g., for broadcasting).
+ *
+ * The class derives from `std::enable_shared_from_this` to allow safe
+ * creation of `std::shared_ptr` instances to itself. This is required for
+ * asynchronous operations and thread-safe lifetime management.
  */
 class ClientSession : public std::enable_shared_from_this<ClientSession>
 {
 public:
   /**
-   * @brief Construct a new ClientSession.
+   * @brief Constructs a new ClientSession.
    *
-   * @param id     A unique identifier for this client (e.g., UUID or socket-based ID).
-   * @param sock   The TCP socket that is already connected to the client.
-   * @param app    Reference to the App for which this session is associated.
+   * @param id    Unique client identifier (e.g., UUID or socket-derived).
+   * @param sock  Already-established TCP socket to the client.
+   * @param app   Reference to the server application instance.
    */
   ClientSession(const irsol::types::client_id_t& id, irsol::types::socket_t&& sock, App& app);
 
   /**
-   * @brief Entry point to start processing this client's lifecycle.
+   * @brief Starts the client's session logic.
    *
-   * Typically this will read from the socket, handle messages, and respond
-   * until the client disconnects.
+   * Initiates the processing loop for the session, including reading
+   * incoming messages from the socket and handling disconnections.
    */
   void run();
 
   /**
-   * @brief Handle multiple message to send to the client.
+   * @brief Handles multiple outbound messages to the client.
    *
-   * @note This method is not thread safe. It's the user's responsibility to ensure the session
+   * Serializes and sends a vector of outbound messages through the socket.
+   *
+   * @note This method is not thread-safe; users must ensure mutual exclusion externally.
+   *
+   * @see irsol::protocol::Serializer
+   * @see ClientSession::send
+   *
+   * @param messages The list of messages to transmit.
    */
   void handleOutMessages(std::vector<protocol::OutMessage>&& messages);
 
   /**
-   * @brief Handle a message to send to the client.
+   * @brief Handles a single outbound message to the client.
    *
-   * @note This method is not thread safe. It's the user's responsibility to ensure the session
+   * Serializes and sends one message through the socket.
+   *
+   * @note This method is not thread-safe; users must ensure mutual exclusion externally.
+   *
+   * @see irsol::protocol::Serializer
+   * @see ClientSession::send
+   *
+   * @param message The message to transmit.
    */
   void handleOutMessage(protocol::OutMessage&& message);
 
   /**
-   * @brief Handle an already serialized message and send it to the client.
+   * @brief Sends an already-serialized message to the client.
    *
-   * @note This method is not thread safe. It's the user's responsibility to ensure the session
+   * @note This method is not thread-safe; users must ensure mutual exclusion externally.
+   *
+   * @see irsol::protocol::Serializer
+   * @see ClientSession::send
+   *
+   * @param serializedMessage Message that is already serialized to text or binary form.
    */
   void handleSerializedMessage(const protocol::internal::SerializedMessage& serializedMessage);
 
-  /// Accessor for the immutable App reference.
+  /// Returns a const reference to the owning App instance.
   const App& app() const
   {
     return m_app;
   }
-  /// Accessor for the mutable App reference.
+
+  /// Returns a mutable reference to the owning App instance.
   App& app()
   {
     return m_app;
   }
 
-  /// Get the unique client identifier.
+  /// Returns the unique client identifier.
   const irsol::types::client_id_t& id() const
   {
     return m_id;
   }
 
-  /// Immutable access to the client's socket.
+  /// Returns a const reference to the client socket.
   const irsol::types::socket_t& socket() const
   {
     return m_socket;
   }
-  /// Mutable access to the client's socket.
+
+  /// Returns a mutable reference to the client socket.
   irsol::types::socket_t& socket()
   {
     return m_socket;
   }
-  /// Get the socket mutex.
+
+  /// Returns a reference to the socket mutex used for synchronization.
   std::mutex& socketMutex()
   {
     return m_socketMutex;
   }
 
-  /// Immutable access to this session's UserSessionData.
+  /// Returns a const reference to client-specific session state.
   const irsol::server::internal::UserSessionData& userData() const
   {
     return m_sessionData;
   }
-  /// Mutable access to this session's UserSessionData.
+
+  /// Returns a mutable reference to client-specific session state.
   irsol::server::internal::UserSessionData& userData()
   {
     return m_sessionData;
@@ -116,56 +154,62 @@ public:
 
 private:
   /**
-   * @brief Process accumulated text commands in the message buffer.
+   * @brief Processes accumulated raw data into complete protocol messages.
    *
-   * Splits the buffer into discrete messages and passes them to processRawMessage().
+   * Splits the incoming input buffer into individual protocol messages and dispatches each
+   * one for parsing and handling.
+   *
+   * Invokes @ref ClientSession::processInRawMessage.
+   *
+   * @param messageBuffer Text buffer containing raw data received from the client's socket.
    */
-  void processMessageBuffer(std::string& messageBuffer);
+  void processInMessageBuffer(std::string& messageBuffer);
 
   /**
-   * @brief Handle a single complete raw message from the client.
+   * @brief Parses and processes a complete incoming raw message.
    *
-   * Parses the message and triggers appropriate server actions.
+   * Invokes the registered message handler for the message type.
    *
-   * @param rawMessage The protocol message payload.
+   * @param rawMessage Complete raw protocol message string.
    */
-  void processRawMessage(const std::string& rawMessage);
+  void processInRawMessage(const std::string& rawMessage);
 
   /**
-   * @brief Send a text message to the client.
+   * @brief Sends a text message over the socket to the client.
    *
-   * @note This method is not thead safe. It's the user's responsibility to ensure the session mutex
-   * is held when calling this method.
+   * This is the way the server communicates to the client.
    *
-   * @param message String data to transmit.
+   * @warning This function is not thread-safe. Caller must lock `m_socketMutex`.
+   *
+   * @param message The message string to send.
    */
   void send(const std::string& message);
 
   /**
-   * @brief Send raw binary data to the client.
+   * @brief Sends binary data over the socket.
    *
-   * @note This method is not thead safe. It's the user's responsibility to ensure the session mutex
-   * is held when calling this method.
+   * @warning This function is not thread-safe. Caller must lock `m_socketMutex`.
    *
-   * @param data Pointer to the buffer.
-   * @param size Number of bytes to send.
+   * @param data Pointer to binary data buffer.
+   * @param size Size of the data in bytes.
    */
   void send(const irsol::types::byte_t* const data, size_t size);
 
-  /// Unique identifier for this client session.
+  /// Unique ID identifying this session (maps to client_id_t).
   irsol::types::client_id_t m_id;
 
-  /// Holds the socket and mutex for this session.
+  /// Socket used for communication with the client.
   irsol::types::socket_t m_socket;
 
-  /// Mutex for managing access to the session's data.
+  /// Mutex to synchronize socket access from multiple threads.
   std::mutex m_socketMutex{};
 
-  /// Holds the socket, mutex, and frame streaming parameters.
+  /// Session-specific data (e.g., stream rate, frame subscriptions).
   irsol::server::internal::UserSessionData m_sessionData{};
 
-  /// Reference back to the owning server application for callbacks and state.
+  /// Reference to the central App instance for server-wide coordination.
   App& m_app;
 };
+
 }  // namespace server
 }  // namespace irsol

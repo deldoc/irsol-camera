@@ -1,3 +1,21 @@
+/**
+ * @file irsol/server/message_handler.hpp
+ * @brief Message routing layer between protocol and application logic.
+ * @ingroup Handlers
+ *
+ * @details
+ * This file defines the `MessageHandler` class, which acts as the glue between parsed
+ * @ref irsol::protocol::InMessage protocol messages and application-defined logic callbacks.
+ *
+ * It allows registering handler functions for three categories of messages:
+ * - Assignments: Used for state updates (e.g., setting parameters).
+ * - Inquiries: Used to query state or configuration.
+ * - Commands: Used to trigger actions or behaviors.
+ *
+ * This class is used by the @ref irsol::server::App to delegate protocol message handling
+ * to specific client logic based on the message type and identifier.
+ */
+
 #pragma once
 
 #include "irsol/macros.hpp"
@@ -10,11 +28,55 @@
 #include <utility>
 
 namespace irsol {
-
 namespace server {
+/**
+ * @defgroup Handlers Handlers
+ * @brief Maps incoming protocol messages to application logic. Implements message handling objects
+ * that are associated to specific @ref irsol::protocol::InMessage.
+ * The `Handlers` group contains components responsible for interpreting incoming protocol
+ * messages and routing them to the appropriate logic. These handlers form the glue layer
+ * between low-level message parsing and the per-client application functionality.
+ * Classes in this group are typically used by the @ref irsol::server::App to centralize
+ * registration of command, assignment, and inquiry message handlers.
+ */
 
+/**
+ * @namespace irsol::server::handlers
+ * @brief Contains message dispatching logic and per-identifier handler implementations.
+ * @ingroup Handlers
+ *
+ * @details
+ * The `handlers` namespace groups all logic related to handling structured protocol messages.
+ *
+ * This includes:
+ * - The @ref irsol::server::handlers::MessageHandler class, responsible for routing parsed
+ * @ref irsol::protocol::InMessage instances to registered per-client logic.
+ * - All handler functions that can be registered via `MessageHandler::registerHandler()`.
+ *
+ *
+ * This namespace acts as the glue between the protocol-level message parsing layer and the
+ * higher-level application logic.
+ * @see irsol::protocol
+ */
 namespace handlers {
 
+/**
+ * @brief Binds incoming protocol messages to the appropriate per-client logic.
+ *
+ * This class acts as a central dispatcher used by the application layer @ref irsol::server::App
+ * to process structured incoming messages @ref irsol::protocol::InMessage. Each message is handled
+ * by a user-registered callback function based on its type and identifier.
+ *
+ * Messages are categorized into three types:
+ * - @ref irsol::protocol::Assignment (e.g., parameter changes)
+ * - @ref irsol::protocol::Inquiry (e.g., state queries)
+ * - @ref irsol::protocol::Command (e.g., actions or triggers)
+ *
+ * For each type, client-specific logic is registered using `registerHandler()`.
+ * When a message arrives, `handle()` invokes the matching callback and returns
+ * the generated response messages to be sent back to the client.
+ *
+ */
 class MessageHandler
 {
   using handling_function_response_t = std::vector<protocol::OutMessage>;
@@ -39,10 +101,32 @@ class MessageHandler
     variant<assignment_handler_function_t, inquiry_handler_function_t, command_handler_function_t>;
 
 public:
+  /**
+   * @brief Dispatches an incoming message to the correct user-defined handler.
+   *
+   * This method extracts the message type and identifier from the parsed `InMessage`,
+   * then finds the corresponding callback registered via `registerHandler()`.
+   * The appropriate handler is invoked with the `clientId` and the message payload.
+   *
+   * @param clientId Unique identifier of the client sending the message.
+   * @param message The parsed incoming message to handle.
+   * @return A list of `OutMessage` responses to be sent back to the client.
+   */
   handling_function_response_t handle(
     const irsol::types::client_id_t& clientId,
     protocol::InMessage&&            message) const;
 
+  /**
+   * @brief Registers a user-defined handler for a specific message type and identifier.
+   *
+   * Handlers must be registered per message identifier (e.g., `"start_stream"`, `"set_param"`),
+   * and per message kind (Assignment, Inquiry, Command). Duplicate registrations are rejected.
+   *
+   * @tparam T One of `protocol::Assignment`, `protocol::Inquiry`, or `protocol::Command`.
+   * @param identifier The string identifier of the message (e.g., the `name` field).
+   * @param handler A callable accepting `(client_id_t, T&&)` and returning response messages.
+   * @return `true` if the handler was successfully registered, `false` if a duplicate exists.
+   */
   template<
     typename T,
     std::enable_if_t<irsol::traits::is_type_in_variant<T, irsol::protocol::InMessage>::value, int> =
@@ -83,8 +167,20 @@ public:
   }
 
 private:
+  /**
+   * @brief Locates a registered handler (of any message type) for a given message.
+   * @param msg The message whose identifier and type are used for lookup.
+   * @return A matching handler wrapped in a `std::variant`, or `std::nullopt` if not found.
+   */
   std::optional<any_handler_function_t> findHandlerForMessage(const protocol::InMessage& msg) const;
 
+  /**
+   * @brief Locates a handler of a specific message type and identifier.
+   *
+   * @tparam T Message type (`Assignment`, `Inquiry`, or `Command`).
+   * @param identifier Identifier of the message to match.
+   * @return A callable if found, or `std::nullopt` if no handler is registered.
+   */
   template<
     typename T,
     std::enable_if_t<irsol::traits::is_type_in_variant<T, irsol::protocol::InMessage>::value, int> =
@@ -106,10 +202,16 @@ private:
     }
   }
 
+  /// Registered handlers for `Assignment` messages, keyed by identifier.
   assignment_message_handler_map_t m_assignmentMessageHandlers{};
-  inquiry_message_handler_map_t    m_inquiryMessageHandlers{};
-  command_message_handler_map_t    m_commandMessageHandlers{};
+
+  /// Registered handlers for `Inquiry` messages, keyed by identifier.
+  inquiry_message_handler_map_t m_inquiryMessageHandlers{};
+
+  /// Registered handlers for `Command` messages, keyed by identifier.
+  command_message_handler_map_t m_commandMessageHandlers{};
 };
+
 }  // namespace handlers
 }  // namespace server
 }  // namespace irsol

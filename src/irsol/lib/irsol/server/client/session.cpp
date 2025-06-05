@@ -51,7 +51,7 @@ ClientSession::run()
       messageBuffer.substr(messageBuffer.size() - bytesRead));
 
     // Process all complete messages in the buffer
-    processMessageBuffer(messageBuffer);
+    processInMessageBuffer(messageBuffer);
 
     // Dynamically resize buffer if it was filled completely
     if(bytesRead == buffer.size()) {
@@ -97,7 +97,7 @@ ClientSession::handleSerializedMessage(
 }
 
 void
-ClientSession::processMessageBuffer(std::string& messageBuffer)
+ClientSession::processInMessageBuffer(std::string& messageBuffer)
 {
   size_t newlinePos;
 
@@ -110,12 +110,12 @@ ClientSession::processMessageBuffer(std::string& messageBuffer)
     messageBuffer.erase(0, newlinePos + 1);
 
     // Process the extracted message
-    processRawMessage(rawMessage);
+    processInRawMessage(rawMessage);
   }
 }
 
 void
-ClientSession::processRawMessage(const std::string& rawMessage)
+ClientSession::processInRawMessage(const std::string& rawMessage)
 {
   IRSOL_NAMED_LOG_DEBUG(m_id, "Processing raw message: '{}'", rawMessage);
 

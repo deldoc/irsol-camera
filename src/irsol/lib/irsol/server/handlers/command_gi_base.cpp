@@ -5,7 +5,6 @@
 #include "irsol/protocol.hpp"
 #include "irsol/server/app.hpp"
 #include "irsol/server/image_collector.hpp"
-#include "irsol/server/image_data.hpp"
 #include "irsol/types.hpp"
 #include "irsol/utils.hpp"
 

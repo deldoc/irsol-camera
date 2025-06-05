@@ -1,3 +1,18 @@
+/**
+ * @file irsol/server/app.hpp
+ * @brief Main server application managing client connections and camera streaming.
+ * @ingroup Server
+ *
+ * Defines the @ref irsol::server::App class, which orchestrates the server-side infrastructure
+ * including:
+ * - Accepting client connections
+ * - Managing client sessions
+ * - Distributing captured frames from the camera
+ * - Handling incoming protocol messages
+ *
+ * This class owns all components necessary to run a live server application.
+ */
+
 #pragma once
 
 #include "irsol/camera/interface.hpp"
@@ -14,7 +29,6 @@
 #include <unordered_map>
 
 namespace irsol {
-
 namespace server {
 
 // Forward declaration
@@ -22,142 +36,145 @@ class ClientSession;
 
 /**
  * @brief Main server application that manages client connections and camera streaming.
+ * @ingroup Server
  *
- * App listens for incoming TCP connections on a specified port, creates
- * ClientSession instances for each connected client, and orchestrates
- * broadcasting of messages. It owns the camera interface
- * and the FrameCollector, ensuring that captured frames are distributed to
- * all active clients according to their needs.
+ * The App class starts the TCP server, listens for new connections,
+ * instantiates a new @ref irsol::server::ClientSession per client, and coordinates the camera
+ * interface, frame collection, and message dispatching.
  */
 class App
 {
-
   using client_map_t =
     std::unordered_map<irsol::types::client_id_t, std::shared_ptr<ClientSession>>;
 
 public:
   /**
-   * @brief Constructs the server application bound to a given port.
-   *
-   * @param port TCP port to listen on for client connections.
+   * @brief Constructs the App.
+   * @param port The TCP port on which the server will listen for client connections.
    */
   explicit App(irsol::types::port_t port);
 
   /**
-   * @brief Starts the server: begins listening and accepting clients.
+   * @brief Starts the server.
+   * @return True if the server starts successfully, false otherwise.
    *
-   * Spawns the accept loop thread. Returns true on successful startup.
-   *
-   * @return true if the server started correctly, false otherwise.
+   * This starts the acceptor thread, initializes camera and message handlers,
+   * and prepares the system for client interaction.
    */
   bool start();
 
   /**
-   * @brief Stops the server: shuts down accepting new clients and all active sessions.
+   * @brief Stops the server.
    *
-   * Signals the accept loop to exit, stops the FrameCollector, closes all
-   * client sessions, and joins threads.
+   * Gracefully shuts down client sessions, stops the frame collector,
+   * and joins the acceptor thread.
    */
   void stop();
 
   /**
-   * @brief Retrieves a client session by its unique identifier.
-   *
-   * @param clientId Unique identifier of the client.
-   * @return A shared pointer to the client session, or nullptr if not found.
+   * @brief Retrieves an active client session.
+   * @param clientId The unique ID of the client.
+   * @return Shared pointer to the client session, or nullptr if not found.
    */
   std::shared_ptr<ClientSession> getClientSession(const irsol::types::client_id_t& clientId);
 
   /**
-   * @brief Broadcasts a message to all connected client sessions.
+   * @brief Broadcasts a message to all connected clients.
+   * @param message The message to send.
+   * @param excludeClient Optional client to exclude (e.g., the sender).
    *
-   * This method acquires a lock on the client map to iterate over all active client sessions
-   * and sends the provided message directly to each of them.
-   *
-   * @param message The message to broadcast.
-   * @param excludeClient Optional client ID to exclude from the broadcast (e.g., the sender).
+   * This method is thread-safe and will skip the excluded client if specified.
    */
   void broadcastMessage(
     protocol::OutMessage&&                          message,
     const std::optional<irsol::types::client_id_t>& excludeClient = std::nullopt);
 
+  /**
+   * @brief Accessor for the camera interface.
+   * @return Reference to the owned camera interface.
+   */
   camera::Interface& camera()
   {
     return *m_cameraInterface;
   };
+
+  /**
+   * @brief Accessor for the frame collector.
+   * @return Reference to the owned frame collector.
+   */
   frame_collector::FrameCollector& frameCollector()
   {
     return *m_frameCollector;
-  };
+  }
+
+  /**
+   * @brief Accessor for the message handler.
+   * @return Const reference to the owned message handler.
+   */
   const handlers::MessageHandler& messageHandler() const
   {
     return *m_messageHandler;
-  };
+  }
 
 private:
-  /// TCP port on which the server listens for incoming connections.
+  /// TCP port on which the server listens.
   const irsol::types::port_t m_port;
 
-  /// Acceptor for new client connections.
+  /// Acceptor that handles incoming client connections.
   irsol::server::internal::ClientSessionAcceptor m_acceptor;
 
-  /// Thread that runs the acceptor for new clients.
+  /// Thread running the connection acceptor loop.
   std::thread m_acceptThread;
 
-  /// Protects concurrent access to the client sessions map.
+  /// Mutex for protecting access to m_clients.
   std::mutex m_clientsMutex;
 
-  /// Maps client IDs to their active ClientSession instances.
+  /// Map of connected clients.
   client_map_t m_clients;
 
-  /// Owned interface to the camera hardware.
+  /// Interface to the camera.
   std::unique_ptr<camera::Interface> m_cameraInterface;
 
-  /// Owned collector that captures frames and dispatches them to clients.
+  /// Frame collector for capturing and broadcasting camera frames.
   std::unique_ptr<frame_collector::FrameCollector> m_frameCollector;
 
-  /// Message handler for incoming messages.
+  /// Central handler for processing protocol messages.
   std::unique_ptr<handlers::MessageHandler> m_messageHandler;
 
   /**
-   * @brief Registers a new client session.
+   * @brief Adds a new client session.
+   * @param clientId Unique ID for the client.
+   * @param sock TCP socket for communication with the client.
    *
-   * Inserts the session into m_clients and starts its run() method in a new thread..
-   *
-   * @param clientId Unique ID for the new client.
-   * @param sock  TCP socket for the new client.
-   * @note This function is called from the accept loop thread.
+   * @note The new session is started on a separate thread.
    */
   void addClient(const irsol::types::client_id_t& clientId, irsol::types::socket_t&& sock);
 
   /**
-   * @brief Unregisters a disconnected client.
+   * @brief Removes a client session.
+   * @param clientId ID of the client to disconnect and clean up.
    *
-   * Removes the session from m_clients, notifies FrameCollector to stop
-   * streaming to that client, and cleans up resources.
-   *
-   * @param clientId ID of the client to remove.
-   * @note This function is called as soon as the client connection is closed (e.g. when client
-   * disconnects).
+   * This is typically called automatically when the client disconnects or times out.
    */
   void removeClient(const irsol::types::client_id_t& clientId);
 
   /**
-   * @brief Registers message handlers for the server.
+   * @brief Registers standard message handlers.
    *
-   * Sets up handlers for assignment, inquiry, and command messages.
+   * Sets up the message handler registry with known message-handler mappings.
    */
   void registerMessageHandlers();
 
   /**
-   * @brief Template function to register a message handler.
+   * @brief Registers a message handler by type.
+   * @tparam InMessageT Incoming message type.
+   * @tparam HandlerT Handler class for the message.
+   * @tparam Args Constructor arguments for the handler.
+   * @param identifier Message handler identifier string.
+   * @param args Arguments to construct the handler.
    *
-   * @param identifier Identifier for the message type
-   * @param args Arguments for the handler constructor.
-   *
-   * @note This function is templated to handle different message types and handlers.
+   * Example:
    * ```cpp
-   * registerMessageHandler<protocol::Inquiry, handlers::InquiryFRHandler>("fr", ctx);
    * registerMessageHandler<protocol::Command, handlers::CommandFRHandler>("fr", ctx);
    * ```
    */
@@ -174,24 +191,21 @@ private:
   }
 
   /**
-   * @brief Template function to register a lambda message handler.
+   * @brief Registers a lambda-based message handler.
+   * @tparam InMessageT Incoming message type.
+   * @tparam LambdaT Type of the lambda handler.
+   * @param identifier Handler identifier.
+   * @param ctx Handler context.
+   * @param lambda Lambda function to invoke for the message.
    *
-   * @param identifier Identifier for the message type
-   * @param ctx Context for the lambda handler.
-   * @param lambda Lambda function for the handler.
-   *
-   * @note This function is templated to handle different message types and lambda handlers.
+   * Example:
    * ```cpp
    * registerLambdaHandler<protocol::Command>(
-   *  "lambda_command",
-   *  ctx,
-   *   [](
-   *     handlers::Context&                  ctx,
-   *     const irsol::types::client_id_t& clientId,
-   *     protocol::Command&&                 cmd) -> std::vector<protocol::OutMessage> {
-   *        // Handle the command
-   *        return {...};
-   *  }
+   *   "custom_cmd",
+   *   ctx,
+   *   [](handlers::Context& ctx, const irsol::types::client_id_t& clientId, protocol::Command&&
+   * cmd) { return std::vector<protocol::OutMessage>{...};
+   *   }
    * );
    * ```
    */
@@ -209,5 +223,6 @@ private:
     }
   }
 };
+
 }  // namespace server
 }  // namespace irsol
