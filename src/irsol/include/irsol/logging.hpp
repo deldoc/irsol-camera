@@ -242,7 +242,7 @@ void setLoggerName(const char* name);
  * @param minLogLevel Optional minimum log level to use at runtime.
  */
 void initLogging(
-  const char*                              fileSinkFilename = "log/irsol.log",
+  const char*                              fileSinkFilename = "logs/irsol.log",
   std::optional<spdlog::level::level_enum> minLogLevel      = std::nullopt);
 
 /**

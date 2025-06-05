@@ -41,7 +41,7 @@ int
 main()
 {
 
-  irsol::initLogging("log/simple.log");
+  irsol::initLogging("logs/simple.log");
   irsol::initAssertHandler();
 
   IRSOL_LOG_DEBUG("Starting simple example");

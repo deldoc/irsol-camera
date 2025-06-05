@@ -80,11 +80,11 @@ configureLogging(int argc, char** argv)
       std::cerr << "Error: Invalid log level provided: '" << logLevelStr << "'\n";
       std::exit(1);
     }
-    irsol::initLogging("log/unit-tests.log", parsedLoglevel);
+    irsol::initLogging("logs/unit-tests.log", parsedLoglevel);
   } else {
     // Logging disabled
     std::cout << "Logging disabled.\n";
-    irsol::initLogging("log/unit-tests.log", spdlog::level::off);
+    irsol::initLogging("logs/unit-tests.log", spdlog::level::off);
   }
 
   return filteredArgs;

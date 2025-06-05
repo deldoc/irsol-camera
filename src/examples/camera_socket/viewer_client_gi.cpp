@@ -265,7 +265,7 @@ run(double inFps)
 int
 main(int argc, char** argv)
 {
-  irsol::initLogging("log/viewer-client-poll.log");
+  irsol::initLogging("logs/viewer-client-poll.log");
   irsol::initAssertHandler();
 
   // Register signal handler

@@ -6,7 +6,7 @@ int
 main()
 {
 
-  irsol::initLogging("log/simple_opencv.log");
+  irsol::initLogging("logs/simple_opencv.log");
   irsol::initAssertHandler();
 
   IRSOL_LOG_DEBUG("Starting simple example with OpenCV");

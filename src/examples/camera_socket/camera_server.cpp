@@ -7,7 +7,7 @@ int
 main()
 {
 
-  irsol::initLogging("log/camera-server.log");
+  irsol::initLogging("logs/camera-server.log");
   irsol::initAssertHandler();
 
   IRSOL_LOG_INFO("Sample TCP camera server");
