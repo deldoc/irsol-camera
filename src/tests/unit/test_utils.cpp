@@ -184,3 +184,54 @@ TEST_CASE("durationToString()", "[Utils]")
     CHECK(irsol::utils::durationToString(duration) == "270hours");
   }
 }
+
+TEST_CASE("stringToBytes()", "[Utils]")
+{
+  {
+    std::string empty;
+    auto        result = irsol::utils::stringToBytes(empty);
+    CHECK(result.size() == 0);
+  }
+  {
+    std::string singleChar = "a";
+    auto        result     = irsol::utils::stringToBytes(singleChar);
+    CHECK(result.size() == 1);
+    CHECK(result[0] == irsol::types::byte_t{'a'});
+  }
+  {
+    std::string longerString = GENERATE("hello", "world", "How are you?");
+    auto        result       = irsol::utils::stringToBytes(longerString);
+    CHECK(result.size() == longerString.size());
+    for(size_t i = 0; i < longerString.size(); ++i) {
+      CHECK(
+        result[i] ==
+        static_cast<irsol::types::byte_t>(static_cast<unsigned char>(longerString[i])));
+    }
+  }
+}
+
+TEST_CASE("bytesToString()", "[Utils]")
+{
+  {
+    std::vector<irsol::types::byte_t> bytes;
+    auto                              result = irsol::utils::bytesToString(bytes);
+    CHECK(result.size() == 0);
+  }
+  {
+    std::vector<irsol::types::byte_t> bytes{irsol::types::byte_t{'a'}};
+    auto                              result = irsol::utils::bytesToString(bytes);
+    CHECK(result.size() == 1);
+    CHECK(result == "a");
+  }
+  {
+    std::vector<irsol::types::byte_t> bytes{irsol::types::byte_t{'H'},
+                                            irsol::types::byte_t{'e'},
+                                            irsol::types::byte_t{'l'},
+                                            irsol::types::byte_t{'l'},
+                                            irsol::types::byte_t{'o'},
+                                            irsol::types::byte_t{' '},
+                                            irsol::types::byte_t{'!'}};
+    auto                              result = irsol::utils::bytesToString(bytes);
+    CHECK(result == "Hello !");
+  }
+}

@@ -141,6 +141,26 @@ std::string timestampToString(irsol::types::timepoint_t tp);
 std::string durationToString(irsol::types::duration_t dr);
 
 /**
+ * @brief Converts a std::string to a std::vector of @ref irsol::types::byte_t.
+ *
+ * Each character in the input string is reinterpreted as a @ref irsol::types::byte_t.
+ *
+ * @param s The input string to convert.
+ * @return A vector containing the byte-wise representation of the string.
+ */
+std::vector<irsol::types::byte_t> stringToBytes(const std::string& s);
+
+/**
+ * @brief Converts a std::vector of @ref irsol::types::byte_t to a std::string.
+ *
+ * Each byte is reinterpreted as a character. This assumes that the bytes represent
+ * valid character data (e.g., UTF-8 or ASCII).
+ *
+ * @param input The input @ref irsol::types::byte_t vector to convert.
+ * @return std::string A string constructed from the byte-wise content.
+ */
+std::string bytesToString(const std::vector<irsol::types::byte_t>& input);
+/**
  * @brief Loads the default camera device.
  *
  * Queries the NeoAPI for connected cameras and attempts to open the camera

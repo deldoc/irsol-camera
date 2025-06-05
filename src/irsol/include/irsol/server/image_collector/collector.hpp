@@ -141,9 +141,10 @@ private:
   /**
    * @brief Captures an image and returns it along with associated metadata.
    *
-   * @return A pair containing frame metadata and the image data buffer.
+   * @return A pair containing frame metadata and the image data buffer if image acquisition was
+   * successful, `std::nullopt` otherwise.
    */
-  std::pair<FrameMetadata, std::vector<irsol::types::byte_t>> grabImageData() const;
+  std::optional<std::pair<FrameMetadata, std::vector<irsol::types::byte_t>>> grabImageData() const;
 
   /**
    * @brief Schedules the next frame delivery for a client.

@@ -223,7 +223,12 @@ FrameCollector::run()
       "After schedule cleanup, there are still {} schedules",
       m_scheduleMap.size());
 
-    auto [frameMetadata, imageRawBuffer] = grabImageData();
+    auto grabResult = grabImageData();
+    if(!grabResult) {
+      IRSOL_NAMED_LOG_WARN("frame_collector", "Image acquisition failed.");
+      continue;
+    }
+    auto& [frameMetadata, imageRawBuffer] = *grabResult;
 
     // Deliver the frame to clients
     std::vector<irsol::types::client_id_t> finishedClient;
@@ -348,7 +353,7 @@ FrameCollector::cleanUpSchedule(const std::vector<irsol::types::timepoint_t> sch
   }
 }
 
-std::pair<FrameMetadata, std::vector<irsol::types::byte_t>>
+std::optional<std::pair<FrameMetadata, std::vector<irsol::types::byte_t>>>
 FrameCollector::grabImageData() const
 {
   // Capture the frame just-in-time
@@ -368,6 +373,10 @@ FrameCollector::grabImageData() const
   // for next frames to be written to the buffer.
   auto* imageData = image.GetImageData();
   auto  numBytes  = image.GetSize();
+
+  if(numBytes == 0) {
+    return std::nullopt;
+  }
 
   std::vector<irsol::types::byte_t> rawData(numBytes);
   std::memcpy(rawData.data(), imageData, numBytes);

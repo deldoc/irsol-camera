@@ -178,6 +178,20 @@ durationToString(irsol::types::duration_t dr)
   return strip(result, " 0");
 }
 
+std::vector<irsol::types::byte_t>
+stringToBytes(const std::string& s)
+{
+  const auto* data = reinterpret_cast<const irsol::types::byte_t*>(s.data());
+  return {data, data + s.size()};
+}
+
+std::string
+bytesToString(const std::vector<irsol::types::byte_t>& input)
+{
+  const auto* data = reinterpret_cast<const char*>(input.data());
+  return std::string(data, data + input.size());
+}
+
 NeoAPI::Cam
 loadDefaultCamera()
 {

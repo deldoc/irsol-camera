@@ -19,7 +19,18 @@ namespace protocol {
  */
 class Serializer
 {
+
 public:
+  /**
+   * @brief Utility enumerators defining special bytes used by the Simple Communication Protocol.
+   */
+  struct SpecialBytes
+  {
+    static constexpr irsol::types::byte_t SOH{0x01};
+    static constexpr irsol::types::byte_t STX{0x02};
+    static constexpr irsol::types::byte_t ETX{0x03};
+  };
+
   static constexpr const char* message_termination = "\n";
   /*
    * Serialize an OutMessage into a string.
@@ -71,6 +82,8 @@ public:
     } else
       IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, "Serializer::serializeValue()");
   }
+
+  static std::string serializeBinaryDataAttribute(irsol::protocol::BinaryDataAttribute&& att);
 
 private:
   Serializer() = delete;

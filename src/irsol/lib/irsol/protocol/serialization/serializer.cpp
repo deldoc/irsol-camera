@@ -2,6 +2,7 @@
 
 #include "irsol/logging.hpp"
 #include "irsol/protocol/utils.hpp"
+#include "irsol/utils.hpp"
 
 #include <variant>
 
@@ -69,11 +70,33 @@ internal::SerializedMessage
 Serializer::serializeImageBinaryData(ImageBinaryData&& msg)
 {
   IRSOL_LOG_TRACE("Serializing image binary data: {}", msg.toString());
-  std::string header = "image_data:3x";
-  header += std::to_string(msg.shape[1]) + "x";
-  header += std::to_string(msg.shape[0]) + "x";
-  header += "1:";
-  auto message = internal::SerializedMessage(header, std::move(msg.data));
+
+  std::vector<irsol::types::byte_t> payload;
+  payload.reserve(msg.data.size());
+  {
+    std::string imagePrefix        = "img=";
+    auto        imagePrefixAsBytes = irsol::utils::stringToBytes(imagePrefix);
+    std::move(imagePrefixAsBytes.begin(), imagePrefixAsBytes.end(), std::back_inserter(payload));
+  }
+  payload.emplace_back(Serializer::SpecialBytes::SOH);
+  {
+    std::stringstream ss;
+    ss << "u" << msg.BYTES_PER_ELEMENT * 8 << "[" << msg.shape[0] << "," << msg.shape[1] << "]";
+    for(auto& att : msg.attributes) {
+      ss << " " << serializeBinaryDataAttribute(std::move(att));
+    }
+    auto attributesString = ss.str();
+    IRSOL_LOG_DEBUG(
+      "Attributes for message '{}' serialized to {}", msg.toString(), attributesString);
+    auto attributesStringAsBytes = irsol::utils::stringToBytes(attributesString);
+
+    payload.insert(payload.end(), attributesStringAsBytes.begin(), attributesStringAsBytes.end());
+  }
+  payload.emplace_back(Serializer::SpecialBytes::STX);
+  std::move(msg.data.begin(), msg.data.end(), std::back_inserter(payload));
+  payload.emplace_back(Serializer::SpecialBytes::ETX);
+
+  auto message = internal::SerializedMessage("", std::move(payload));
   return std::move(message);
 }
 
@@ -90,6 +113,14 @@ Serializer::serializeError(Error&& msg)
 {
   IRSOL_LOG_TRACE("Serializing error message: {}", msg.toString());
   return {msg.identifier + ": Error: " + msg.description + Serializer::message_termination, {}};
+}
+
+std::string
+Serializer::serializeBinaryDataAttribute(irsol::protocol::BinaryDataAttribute&& att)
+{
+  std::stringstream ss;
+  ss << att.identifier << "=" << serializeValue(std::move(att.value));
+  return ss.str();
 }
 
 }  // namespace protocol
