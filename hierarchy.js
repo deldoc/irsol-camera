@@ -26,7 +26,6 @@ var hierarchy =
     [ "std::false_type", null, [
       [ "irsol::traits::always_false< T >", "d7/dc3/structirsol_1_1traits_1_1always__false.html", null ]
     ] ],
-    [ "irsol::camera::FeatureDiscovery", "d4/d38/classirsol_1_1camera_1_1FeatureDiscovery.html", null ],
     [ "irsol::camera::internal::FeaturePermissions", "d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions.html", null ],
     [ "irsol::server::frame_collector::Frame", "dc/d0a/structirsol_1_1server_1_1frame__collector_1_1Frame.html", null ],
     [ "irsol::server::frame_collector::FrameCollector", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html", null ],

@@ -5,7 +5,6 @@ var annotated_dup =
         [ "internal", "df/d41/namespaceirsol_1_1camera_1_1internal.html", [
           [ "FeaturePermissions", "d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions.html", "d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions" ]
         ] ],
-        [ "FeatureDiscovery", "d4/d38/classirsol_1_1camera_1_1FeatureDiscovery.html", "d4/d38/classirsol_1_1camera_1_1FeatureDiscovery" ],
         [ "Interface", "d7/d37/classirsol_1_1camera_1_1Interface.html", "d7/d37/classirsol_1_1camera_1_1Interface" ],
         [ "Pixel", "d4/d0c/structirsol_1_1camera_1_1Pixel.html", "d4/d0c/structirsol_1_1camera_1_1Pixel" ],
         [ "PixelConversion", "d2/d9a/structirsol_1_1camera_1_1PixelConversion.html", "d2/d9a/structirsol_1_1camera_1_1PixelConversion" ],

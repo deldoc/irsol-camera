@@ -59,9 +59,13 @@ $(document).ready(function(){initNavTree('d9/d96/monitor_8hpp.html','../../'); i
   <div class="headertitle"><div class="title">monitor.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines the StatusMonitor class to periodically monitor camera status in a background thread.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dd/d61/interface_8hpp_source.html">irsol/camera/interface.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">irsol/types.hpp</a>&quot;</code><br />
+<code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
 </div>
 <p><a href="../../d9/d96/monitor_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -69,6 +73,7 @@ $(document).ready(function(){initNavTree('d9/d96/monitor_8hpp.html','../../'); i
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html">irsol::camera::StatusMonitor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that offers an easy way to run a background monitorin thread that periodically inspects and reports information about the camera interface passed as argument.  <a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -79,7 +84,19 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:db/d23/namespaceirsol_1_1camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a high-level interface to interact with camera devices using <code>NeoAPI</code>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines the StatusMonitor class to periodically monitor camera status in a background thread. </p>
+<p>This header declares the StatusMonitor class, which enables monitoring of camera status or other relevant metrics by running a periodic background task on a separate thread. The monitoring interval can be customized via a std::chrono::milliseconds parameter.</p>
+<p>The class manages starting and stopping the monitoring thread safely, allowing derived classes to override the monitoring behavior by implementing runMonitor().</p>
+<p>Usage: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">irsol::camera::Interface</a> cam = ...;</div>
+<div class="line">StatusMonitor monitor(cam, std::chrono::milliseconds(200));</div>
+<div class="line">monitor.start();</div>
+<div class="line"><span class="comment">// do other work...</span></div>
+<div class="line">monitor.stop();</div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">irsol::camera::Interface</a></div><div class="ttdoc">High-level wrapper around the NeoAPI camera for synchronized access.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d61/interface_8hpp_source.html#l00060">interface.hpp:61</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition in file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -62,43 +62,56 @@ $(document).ready(function(){initNavTree('d7/d00/classirsol_1_1camera_1_1StatusM
 </div><!--header-->
 <div class="contents">
 
+<p>Class that offers an easy way to run a background monitorin thread that periodically inspects and reports information about the camera interface passed as argument.  
+ <a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a94517f7e891f6a081bb9e3fc22ee4989" id="r_a94517f7e891f6a081bb9e3fc22ee4989"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a94517f7e891f6a081bb9e3fc22ee4989">StatusMonitor</a> (const <a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a> &amp;cam, std::chrono::milliseconds monitorInterval=std::chrono::milliseconds(100))</td></tr>
-<tr class="separator:a94517f7e891f6a081bb9e3fc22ee4989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a20cfba817693a52bbbf2bba4089b9" id="r_af9a20cfba817693a52bbbf2bba4089b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#af9a20cfba817693a52bbbf2bba4089b9">StatusMonitor</a> (const <a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a> &amp;cam, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a0ed53497239b16c18f07550a1473a445">irsol::types::duration_t</a> monitorInterval=std::chrono::milliseconds(100))</td></tr>
+<tr class="memdesc:af9a20cfba817693a52bbbf2bba4089b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html" title="Class that offers an easy way to run a background monitorin thread that periodically inspects and rep...">StatusMonitor</a> for the given camera interface.  <br /></td></tr>
+<tr class="separator:af9a20cfba817693a52bbbf2bba4089b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bbd56931184567a45921d5d71b3c179" id="r_a5bbd56931184567a45921d5d71b3c179"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a5bbd56931184567a45921d5d71b3c179">~StatusMonitor</a> ()</td></tr>
+<tr class="memdesc:a5bbd56931184567a45921d5d71b3c179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor stops the monitoring thread if running.  <br /></td></tr>
 <tr class="separator:a5bbd56931184567a45921d5d71b3c179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a547ecebc87441a3c05d97ea76c5ce247" id="r_a547ecebc87441a3c05d97ea76c5ce247"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a547ecebc87441a3c05d97ea76c5ce247">start</a> ()</td></tr>
+<tr class="memdesc:a547ecebc87441a3c05d97ea76c5ce247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the monitoring thread. If the monitor is already running, this call has no effect.  <br /></td></tr>
 <tr class="separator:a547ecebc87441a3c05d97ea76c5ce247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89d097646e98728c25ac97038e5c7532" id="r_a89d097646e98728c25ac97038e5c7532"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a89d097646e98728c25ac97038e5c7532">stop</a> ()</td></tr>
+<tr class="memdesc:a89d097646e98728c25ac97038e5c7532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the monitoring thread and waits for it to finish. If the monitor is not running, this call has no effect.  <br /></td></tr>
 <tr class="separator:a89d097646e98728c25ac97038e5c7532"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a659d329e6b6bc9c4eff0e006f12590a9" id="r_a659d329e6b6bc9c4eff0e006f12590a9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9">runMonitor</a> () const</td></tr>
+<tr class="memdesc:a659d329e6b6bc9c4eff0e006f12590a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main monitoring loop executed on the background thread.  <br /></td></tr>
 <tr class="separator:a659d329e6b6bc9c4eff0e006f12590a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ab1aa58dd47ff574a1f7a5f828f8f315c" id="r_ab1aa58dd47ff574a1f7a5f828f8f315c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ab1aa58dd47ff574a1f7a5f828f8f315c">m_cam</a></td></tr>
-<tr class="separator:ab1aa58dd47ff574a1f7a5f828f8f315c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a4ad974101847ff13e777aea3a34c0e" id="r_a3a4ad974101847ff13e777aea3a34c0e"><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a3a4ad974101847ff13e777aea3a34c0e">m_monitorInterval</a></td></tr>
-<tr class="separator:a3a4ad974101847ff13e777aea3a34c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0999071bed20470cc97250fbf14ee53" id="r_ad0999071bed20470cc97250fbf14ee53"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ad0999071bed20470cc97250fbf14ee53">m_startStopMutex</a></td></tr>
-<tr class="separator:ad0999071bed20470cc97250fbf14ee53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec018289cca870cb418e2c212637e672" id="r_aec018289cca870cb418e2c212637e672"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a></td></tr>
-<tr class="separator:aec018289cca870cb418e2c212637e672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3eab2c91a585599b7c5d006bd5900b9" id="r_ac3eab2c91a585599b7c5d006bd5900b9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">irsol::camera::Interface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ac3eab2c91a585599b7c5d006bd5900b9">m_cam</a></td></tr>
+<tr class="memdesc:ac3eab2c91a585599b7c5d006bd5900b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the camera interface being monitored.  <br /></td></tr>
+<tr class="separator:ac3eab2c91a585599b7c5d006bd5900b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4758983d5d1fb6bab8bae3accde31ca" id="r_af4758983d5d1fb6bab8bae3accde31ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a0ed53497239b16c18f07550a1473a445">irsol::types::duration_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#af4758983d5d1fb6bab8bae3accde31ca">m_monitorInterval</a></td></tr>
+<tr class="memdesc:af4758983d5d1fb6bab8bae3accde31ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interval at which the monitor thread executes <a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9" title="The main monitoring loop executed on the background thread.">runMonitor()</a>  <br /></td></tr>
+<tr class="separator:af4758983d5d1fb6bab8bae3accde31ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abede48588bb0e183a1528fcc51c27711" id="r_abede48588bb0e183a1528fcc51c27711"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a></td></tr>
+<tr class="memdesc:abede48588bb0e183a1528fcc51c27711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating if the monitor thread has been started.  <br /></td></tr>
+<tr class="separator:abede48588bb0e183a1528fcc51c27711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8caf4fac18c3a42a6ae99ebb1272bb40" id="r_a8caf4fac18c3a42a6ae99ebb1272bb40"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">m_monitorThread</a></td></tr>
+<tr class="memdesc:a8caf4fac18c3a42a6ae99ebb1272bb40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread running the periodic monitoring loop.  <br /></td></tr>
 <tr class="separator:a8caf4fac18c3a42a6ae99ebb1272bb40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00012">12</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
+<div class="textblock"><p>Class that offers an easy way to run a background monitorin thread that periodically inspects and reports information about the camera interface passed as argument. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html" title="High-level wrapper around the NeoAPI camera for synchronized access.">irsol::camera::Interface</a></dd></dl>
+<p>Check out <a class="el" href="../../d9/d45/loading_images.html">01-loading-images</a> for an example usage. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00043">43</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a94517f7e891f6a081bb9e3fc22ee4989" name="a94517f7e891f6a081bb9e3fc22ee4989"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94517f7e891f6a081bb9e3fc22ee4989">&#9670;&#160;</a></span>StatusMonitor()</h2>
+<a id="af9a20cfba817693a52bbbf2bba4089b9" name="af9a20cfba817693a52bbbf2bba4089b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a20cfba817693a52bbbf2bba4089b9">&#9670;&#160;</a></span>StatusMonitor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,7 +125,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::chrono::milliseconds&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a0ed53497239b16c18f07550a1473a445">irsol::types::duration_t</a>&#160;</td>
           <td class="paramname"><em>monitorInterval</em> = <code>std::chrono::milliseconds(100)</code>&#160;</td>
         </tr>
         <tr>
@@ -123,14 +136,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructs a <a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html" title="Class that offers an easy way to run a background monitorin thread that periodically inspects and rep...">StatusMonitor</a> for the given camera interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cam</td><td>Reference to the camera interface to monitor. </td></tr>
+    <tr><td class="paramname">monitorInterval</td><td>Interval at which the monitoring task should run. Defaults to 100ms. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00009">9</a> of file <a class="el" href="../../d4/de7/monitor_8cpp_source.html">monitor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>  : <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ab1aa58dd47ff574a1f7a5f828f8f315c">m_cam</a>(cam), <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a3a4ad974101847ff13e777aea3a34c0e">m_monitorInterval</a>(monitorInterval), <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a>(<span class="keyword">false</span>)</div>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>  : <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ac3eab2c91a585599b7c5d006bd5900b9">m_cam</a>(cam), <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#af4758983d5d1fb6bab8bae3accde31ca">m_monitorInterval</a>(monitorInterval), <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a>(<span class="keyword">false</span>)</div>
 <div class="line"><span class="lineno">   11</span>{</div>
 <div class="line"><span class="lineno">   12</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(cam.isConnected(), <span class="stringliteral">&quot;Camera is not connected.&quot;</span>);</div>
 <div class="line"><span class="lineno">   13</span>}</div>
-<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_a3a4ad974101847ff13e777aea3a34c0e"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a3a4ad974101847ff13e777aea3a34c0e">irsol::camera::StatusMonitor::m_monitorInterval</a></div><div class="ttdeci">std::chrono::milliseconds m_monitorInterval</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00027">monitor.hpp:27</a></div></div>
-<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_ab1aa58dd47ff574a1f7a5f828f8f315c"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ab1aa58dd47ff574a1f7a5f828f8f315c">irsol::camera::StatusMonitor::m_cam</a></div><div class="ttdeci">const Interface &amp; m_cam</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00026">monitor.hpp:26</a></div></div>
-<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_aec018289cca870cb418e2c212637e672"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">irsol::camera::StatusMonitor::m_hasStartedMonitor</a></div><div class="ttdeci">bool m_hasStartedMonitor</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00030">monitor.hpp:30</a></div></div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_abede48588bb0e183a1528fcc51c27711"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">irsol::camera::StatusMonitor::m_hasStartedMonitor</a></div><div class="ttdeci">std::atomic&lt; bool &gt; m_hasStartedMonitor</div><div class="ttdoc">Flag indicating if the monitor thread has been started.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00089">monitor.hpp:89</a></div></div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_ac3eab2c91a585599b7c5d006bd5900b9"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ac3eab2c91a585599b7c5d006bd5900b9">irsol::camera::StatusMonitor::m_cam</a></div><div class="ttdeci">const irsol::camera::Interface &amp; m_cam</div><div class="ttdoc">Reference to the camera interface being monitored.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00083">monitor.hpp:83</a></div></div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_af4758983d5d1fb6bab8bae3accde31ca"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#af4758983d5d1fb6bab8bae3accde31ca">irsol::camera::StatusMonitor::m_monitorInterval</a></div><div class="ttdeci">irsol::types::duration_t m_monitorInterval</div><div class="ttdoc">Interval at which the monitor thread executes runMonitor()</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00086">monitor.hpp:86</a></div></div>
 <div class="ttc" id="agroup__Assertion_html_gae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdoc">Error-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00134">assert.hpp:134</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -150,15 +172,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Destructor stops the monitoring thread if running. </p>
+
 <p class="definition">Definition at line <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00015">15</a> of file <a class="el" href="../../d4/de7/monitor_8cpp_source.html">monitor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
-<div class="line"><span class="lineno">   17</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a>) {</div>
-<div class="line"><span class="lineno">   18</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Automatic stopping monitoring of camera.&quot;</span>);</div>
+<div class="line"><span class="lineno">   17</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a>) {</div>
+<div class="line"><span class="lineno">   18</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;status_monitor&quot;</span>, <span class="stringliteral">&quot;Automatic stopping monitoring of camera.&quot;</span>);</div>
 <div class="line"><span class="lineno">   19</span>    <a class="code hl_function" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a89d097646e98728c25ac97038e5c7532">stop</a>();</div>
 <div class="line"><span class="lineno">   20</span>  }</div>
 <div class="line"><span class="lineno">   21</span>}</div>
-<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_a89d097646e98728c25ac97038e5c7532"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a89d097646e98728c25ac97038e5c7532">irsol::camera::StatusMonitor::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdef"><b>Definition</b> <a href="../../d4/de7/monitor_8cpp_source.html#l00053">monitor.cpp:53</a></div></div>
-<div class="ttc" id="agroup__Logging_html_ga85d5803f1f7fb99923cdac16d1dc2ee8"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_LOG_DEBUG(...)</div><div class="ttdoc">Logs a debug-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00091">logging.hpp:91</a></div></div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_a89d097646e98728c25ac97038e5c7532"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a89d097646e98728c25ac97038e5c7532">irsol::camera::StatusMonitor::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops the monitoring thread and waits for it to finish. If the monitor is not running,...</div><div class="ttdef"><b>Definition</b> <a href="../../d4/de7/monitor_8cpp_source.html#l00052">monitor.cpp:52</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga57d5ed6ca38213a5cbb46950119a5f68"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_DEBUG(name,...)</div><div class="ttdoc">Logs a debug-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00174">logging.hpp:174</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -186,15 +210,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The main monitoring loop executed on the background thread. </p>
+<p>Override this method in derived classes to implement specific monitoring logic. It is called repeatedly with the frequency specified by monitorInterval. </p>
+
 <p class="definition">Definition at line <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../d4/de7/monitor_8cpp_source.html">monitor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
-<div class="line"><span class="lineno">   26</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Monitoring camera status...&quot;</span>);</div>
+<div class="line"><span class="lineno">   26</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;status_monitor&quot;</span>, <span class="stringliteral">&quot;Monitoring camera status...&quot;</span>);</div>
 <div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>  <span class="keywordflow">while</span>(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a>) {</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keyword">auto</span> nextIterationTime = irsol::types::clock_t::now() + <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a3a4ad974101847ff13e777aea3a34c0e">m_monitorInterval</a>;</div>
+<div class="line"><span class="lineno">   28</span>  <span class="keywordflow">while</span>(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a>) {</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keyword">auto</span> nextIterationTime = irsol::types::clock_t::now() + <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#af4758983d5d1fb6bab8bae3accde31ca">m_monitorInterval</a>;</div>
 <div class="line"><span class="lineno">   30</span> </div>
 <div class="line"><span class="lineno">   31</span>    <span class="keywordtype">bool</span> stopRequested = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;\n{}&quot;</span>, <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ab1aa58dd47ff574a1f7a5f828f8f315c">m_cam</a>.<a class="code hl_function" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a075b36cbb41885ed3fee82d6213e4409">cameraStatusAsString</a>());</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<span class="stringliteral">&quot;status_monitor&quot;</span>, <span class="stringliteral">&quot;\n{}&quot;</span>, <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ac3eab2c91a585599b7c5d006bd5900b9">m_cam</a>.<a class="code hl_function" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a075b36cbb41885ed3fee82d6213e4409">cameraStatusAsString</a>());</div>
 <div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span>(stopRequested) {</div>
 <div class="line"><span class="lineno">   34</span>      <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   35</span>    }</div>
@@ -203,7 +230,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   38</span>  }</div>
 <div class="line"><span class="lineno">   39</span>}</div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a075b36cbb41885ed3fee82d6213e4409"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a075b36cbb41885ed3fee82d6213e4409">irsol::camera::Interface::cameraStatusAsString</a></div><div class="ttdeci">std::string cameraStatusAsString() const</div><div class="ttdoc">Get current camera status.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00114">interface.cpp:114</a></div></div>
-<div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga30c2f8536dcd7ea3bb3a5bbc9f38a312"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_INFO(name,...)</div><div class="ttdoc">Logs an info-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00176">logging.hpp:176</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -222,18 +249,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Starts the monitoring thread. If the monitor is already running, this call has no effect. </p>
+
 <p class="definition">Definition at line <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00042">42</a> of file <a class="el" href="../../d4/de7/monitor_8cpp_source.html">monitor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
-<div class="line"><span class="lineno">   44</span>  std::scoped_lock&lt;std::mutex&gt; guard(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ad0999071bed20470cc97250fbf14ee53">m_startStopMutex</a>);</div>
-<div class="line"><span class="lineno">   45</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(!<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a>, <span class="stringliteral">&quot;Monitor is already running!&quot;</span>);</div>
-<div class="line"><span class="lineno">   46</span>  <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">m_monitorThread</a> = std::thread([<span class="keyword">this</span>]() { <a class="code hl_function" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9">runMonitor</a>(); });</div>
-<div class="line"><span class="lineno">   49</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Camera monitor has started.&quot;</span>);</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_a659d329e6b6bc9c4eff0e006f12590a9"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9">irsol::camera::StatusMonitor::runMonitor</a></div><div class="ttdeci">virtual void runMonitor() const</div><div class="ttdef"><b>Definition</b> <a href="../../d4/de7/monitor_8cpp_source.html#l00024">monitor.cpp:24</a></div></div>
-<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_a8caf4fac18c3a42a6ae99ebb1272bb40"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">irsol::camera::StatusMonitor::m_monitorThread</a></div><div class="ttdeci">std::thread m_monitorThread</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00032">monitor.hpp:32</a></div></div>
-<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_ad0999071bed20470cc97250fbf14ee53"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ad0999071bed20470cc97250fbf14ee53">irsol::camera::StatusMonitor::m_startStopMutex</a></div><div class="ttdeci">std::mutex m_startStopMutex</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00029">monitor.hpp:29</a></div></div>
+<div class="line"><span class="lineno">   44</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(!<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a>.load(), <span class="stringliteral">&quot;Monitor is already running!&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span>  <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a>.store(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>  <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">m_monitorThread</a> = std::thread([<span class="keyword">this</span>]() { <a class="code hl_function" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9">runMonitor</a>(); });</div>
+<div class="line"><span class="lineno">   48</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;status_monitor&quot;</span>, <span class="stringliteral">&quot;Camera monitor has started.&quot;</span>);</div>
+<div class="line"><span class="lineno">   49</span>}</div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_a659d329e6b6bc9c4eff0e006f12590a9"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9">irsol::camera::StatusMonitor::runMonitor</a></div><div class="ttdeci">virtual void runMonitor() const</div><div class="ttdoc">The main monitoring loop executed on the background thread.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/de7/monitor_8cpp_source.html#l00024">monitor.cpp:24</a></div></div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html_a8caf4fac18c3a42a6ae99ebb1272bb40"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">irsol::camera::StatusMonitor::m_monitorThread</a></div><div class="ttdeci">std::thread m_monitorThread</div><div class="ttdoc">Thread running the periodic monitoring loop.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00092">monitor.hpp:92</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -252,24 +279,25 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../d4/de7/monitor_8cpp_source.html">monitor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
-<div class="line"><span class="lineno">   55</span>  std::scoped_lock&lt;std::mutex&gt; guard(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ad0999071bed20470cc97250fbf14ee53">m_startStopMutex</a>);</div>
-<div class="line"><span class="lineno">   56</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
-<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a>, <span class="stringliteral">&quot;Cannot &#39;stop&#39; monitor without having started it before!&quot;</span>);</div>
-<div class="line"><span class="lineno">   58</span>  <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#aec018289cca870cb418e2c212637e672">m_hasStartedMonitor</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">m_monitorThread</a>.joinable()) {</div>
-<div class="line"><span class="lineno">   61</span>    <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">m_monitorThread</a>.join();</div>
-<div class="line"><span class="lineno">   62</span>  }</div>
-<div class="line"><span class="lineno">   63</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Camera monitor has stopped.&quot;</span>);</div>
-<div class="line"><span class="lineno">   64</span>}</div>
+<p>Stops the monitoring thread and waits for it to finish. If the monitor is not running, this call has no effect. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/de7/monitor_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d4/de7/monitor_8cpp_source.html">monitor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a>.load(), <span class="stringliteral">&quot;Cannot &#39;stop&#39; monitor without having started it before!&quot;</span>);</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#abede48588bb0e183a1528fcc51c27711">m_hasStartedMonitor</a>.store(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">m_monitorThread</a>.joinable()) {</div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a8caf4fac18c3a42a6ae99ebb1272bb40">m_monitorThread</a>.join();</div>
+<div class="line"><span class="lineno">   60</span>  }</div>
+<div class="line"><span class="lineno">   61</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<span class="stringliteral">&quot;status_monitor&quot;</span>, <span class="stringliteral">&quot;Camera monitor has stopped.&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab1aa58dd47ff574a1f7a5f828f8f315c" name="ab1aa58dd47ff574a1f7a5f828f8f315c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1aa58dd47ff574a1f7a5f828f8f315c">&#9670;&#160;</a></span>m_cam</h2>
+<a id="ac3eab2c91a585599b7c5d006bd5900b9" name="ac3eab2c91a585599b7c5d006bd5900b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3eab2c91a585599b7c5d006bd5900b9">&#9670;&#160;</a></span>m_cam</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,7 +306,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a>&amp; irsol::camera::StatusMonitor::m_cam</td>
+          <td class="memname">const <a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">irsol::camera::Interface</a>&amp; irsol::camera::StatusMonitor::m_cam</td>
         </tr>
       </table>
   </td>
@@ -288,12 +316,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00026">26</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
+<p>Reference to the camera interface being monitored. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00083">83</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aec018289cca870cb418e2c212637e672" name="aec018289cca870cb418e2c212637e672"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec018289cca870cb418e2c212637e672">&#9670;&#160;</a></span>m_hasStartedMonitor</h2>
+<a id="abede48588bb0e183a1528fcc51c27711" name="abede48588bb0e183a1528fcc51c27711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abede48588bb0e183a1528fcc51c27711">&#9670;&#160;</a></span>m_hasStartedMonitor</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,7 +332,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool irsol::camera::StatusMonitor::m_hasStartedMonitor</td>
+          <td class="memname">std::atomic&lt;bool&gt; irsol::camera::StatusMonitor::m_hasStartedMonitor</td>
         </tr>
       </table>
   </td>
@@ -312,12 +342,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00030">30</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
+<p>Flag indicating if the monitor thread has been started. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00089">89</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a3a4ad974101847ff13e777aea3a34c0e" name="a3a4ad974101847ff13e777aea3a34c0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a4ad974101847ff13e777aea3a34c0e">&#9670;&#160;</a></span>m_monitorInterval</h2>
+<a id="af4758983d5d1fb6bab8bae3accde31ca" name="af4758983d5d1fb6bab8bae3accde31ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4758983d5d1fb6bab8bae3accde31ca">&#9670;&#160;</a></span>m_monitorInterval</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -326,7 +358,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::chrono::milliseconds irsol::camera::StatusMonitor::m_monitorInterval</td>
+          <td class="memname"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a0ed53497239b16c18f07550a1473a445">irsol::types::duration_t</a> irsol::camera::StatusMonitor::m_monitorInterval</td>
         </tr>
       </table>
   </td>
@@ -336,7 +368,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00027">27</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
+<p>Interval at which the monitor thread executes <a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9" title="The main monitoring loop executed on the background thread.">runMonitor()</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
 
 </div>
 </div>
@@ -360,31 +394,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
+<p>Thread running the periodic monitoring loop. </p>
 
-</div>
-</div>
-<a id="ad0999071bed20470cc97250fbf14ee53" name="ad0999071bed20470cc97250fbf14ee53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0999071bed20470cc97250fbf14ee53">&#9670;&#160;</a></span>m_startStopMutex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::mutex irsol::camera::StatusMonitor::m_startStopMutex</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00029">29</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d96/monitor_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../d9/d96/monitor_8hpp_source.html">monitor.hpp</a>.</p>
 
 </div>
 </div>

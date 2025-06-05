@@ -55,7 +55,8 @@ $(document).ready(function(){initNavTree('db/d23/namespaceirsol_1_1camera.html',
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">irsol::camera Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -70,8 +71,6 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d38/classirsol_1_1camera_1_1FeatureDiscovery.html">FeatureDiscovery</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level wrapper around the NeoAPI camera for synchronized access.  <a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,7 +93,14 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for 8-bit pixel depth.  <a href="../../d5/d39/structirsol_1_1camera_1_1PixelRepresentation_3_018_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html">StatusMonitor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that offers an easy way to run a background monitorin thread that periodically inspects and reports information about the camera interface passed as argument.  <a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ade6e14f7ab63736174039d9f181ec3d0" id="r_ade6e14f7ab63736174039d9f181ec3d0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d23/namespaceirsol_1_1camera.html#ade6e14f7ab63736174039d9f181ec3d0">discoverCameraFeatures</a> (<a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a> &amp;cam)</td></tr>
+<tr class="memdesc:ade6e14f7ab63736174039d9f181ec3d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discovers all camera features and their permissions.  <br /></td></tr>
+<tr class="separator:ade6e14f7ab63736174039d9f181ec3d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides a high-level interface to interact with camera devices using <code>NeoAPI</code>. </p>
@@ -106,7 +112,64 @@ Classes</h2></td></tr>
 <li>Ensuring thread-safe access to camera operations.</li>
 </ul>
 <p>This namespace is designed to be extendable and integrates closely with the rest of the <code>irsol</code> framework. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ade6e14f7ab63736174039d9f181ec3d0" name="ade6e14f7ab63736174039d9f181ec3d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6e14f7ab63736174039d9f181ec3d0">&#9670;&#160;</a></span>discoverCameraFeatures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string irsol::camera::discoverCameraFeatures </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a> &amp;&#160;</td>
+          <td class="paramname"><em>cam</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Discovers all camera features and their permissions. </p>
+<p>Uses internal utilities to query the camera interface and report on the available, readable, and writable features.</p>
+<p>See <a class="el" href="../../d6/dca/interacting_with_camera_features.html">02-interacting-with-camera-features</a> for an example.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cam</td><td>Reference to the camera interface to query. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representing the discovered features formatted as a table. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d66/discovery_8cpp_source.html#l00047">47</a> of file <a class="el" href="../../da/d66/discovery_8cpp_source.html">discovery.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> <span class="keyword">auto</span>&amp; featurePermissionsMap =</div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_function" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a60fe885947480d387e29b3746122398a">irsol::camera::internal::extractCameraFeatures</a>(cam.<a class="code hl_function" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a5935982429241393ec11c33c21891618">getNeoCam</a>());</div>
+<div class="line"><span class="lineno">   51</span>  tabulate::Table table;</div>
+<div class="line"><span class="lineno">   52</span>  table.add_row({<span class="stringliteral">&quot;Feature Name&quot;</span>, <span class="stringliteral">&quot;Available&quot;</span>, <span class="stringliteral">&quot;Readable&quot;</span>, <span class="stringliteral">&quot;Writable&quot;</span>});</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [permissions, features] : featurePermissionsMap) {</div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>* feature : features) {</div>
+<div class="line"><span class="lineno">   56</span>      table.add_row({feature-&gt;GetName().c_str(),</div>
+<div class="line"><span class="lineno">   57</span>                     permissions.isAvailable() ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>,</div>
+<div class="line"><span class="lineno">   58</span>                     permissions.isReadable() ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>,</div>
+<div class="line"><span class="lineno">   59</span>                     permissions.isWritable() ? <span class="stringliteral">&quot;yes&quot;</span> : <span class="stringliteral">&quot;no&quot;</span>});</div>
+<div class="line"><span class="lineno">   60</span>    }</div>
+<div class="line"><span class="lineno">   61</span>  }</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  <span class="comment">// Optional formatting:</span></div>
+<div class="line"><span class="lineno">   64</span>  table.column(0).format().font_align(tabulate::FontAlign::right);</div>
+<div class="line"><span class="lineno">   65</span>  table.column(1).format().font_align(tabulate::FontAlign::center);</div>
+<div class="line"><span class="lineno">   66</span>  table.column(2).format().font_align(tabulate::FontAlign::center);</div>
+<div class="line"><span class="lineno">   67</span>  table.column(3).format().font_align(tabulate::FontAlign::center);</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>  <span class="keywordflow">return</span> table.str();</div>
+<div class="line"><span class="lineno">   70</span>}</div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a5935982429241393ec11c33c21891618"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a5935982429241393ec11c33c21891618">irsol::camera::Interface::getNeoCam</a></div><div class="ttdeci">NeoAPI::Cam &amp; getNeoCam()</div><div class="ttdoc">Access the underlying NeoAPI camera instance.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00153">interface.cpp:153</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1camera_1_1internal_html_a60fe885947480d387e29b3746122398a"><div class="ttname"><a href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a60fe885947480d387e29b3746122398a">irsol::camera::internal::extractCameraFeatures</a></div><div class="ttdeci">std::map&lt; FeaturePermissions, std::vector&lt; NeoAPI::Feature * &gt; &gt; extractCameraFeatures(NeoAPI::Cam &amp;cam)</div><div class="ttdoc">Extracts and groups camera features by their permissions.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d66/discovery_8cpp_source.html#l00015">discovery.cpp:15</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

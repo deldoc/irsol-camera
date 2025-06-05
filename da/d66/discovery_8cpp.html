@@ -54,9 +54,7 @@ $(document).ready(function(){initNavTree('da/d66/discovery_8cpp.html','../../');
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">discovery.cpp File Reference</div></div>
 </div><!--header-->
@@ -64,15 +62,10 @@ $(document).ready(function(){initNavTree('da/d66/discovery_8cpp.html','../../');
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d6/d86/discovery_8hpp_source.html">irsol/camera/discovery.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d0/da9/logging_8hpp_source.html">irsol/logging.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/dbe/macros_8hpp_source.html">irsol/macros.hpp</a>&quot;</code><br />
-<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;tabulate/table.hpp&gt;</code><br />
 </div>
 <p><a href="../../da/d66/discovery_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions.html">irsol::camera::internal::FeaturePermissions</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
@@ -83,23 +76,14 @@ Namespaces</h2></td></tr>
 <tr class="memitem:df/d41/namespaceirsol_1_1camera_1_1internal" id="r_df/d41/namespaceirsol_1_1camera_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html">irsol::camera::internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a19918f081c1c3d87e8827afee1f42ebb" id="r_a19918f081c1c3d87e8827afee1f42ebb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a19918f081c1c3d87e8827afee1f42ebb">irsol::camera::internal::FeaturePermissionValue</a> { <br />
-&#160;&#160;<a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a19918f081c1c3d87e8827afee1f42ebba8938793dc0756ca4a8c769011848e64b">irsol::camera::internal::UNSET</a> = 0
-, <a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a19918f081c1c3d87e8827afee1f42ebba27d5efce4fc73b674c09376541cd82dd">irsol::camera::internal::NOT_AVAILABLE</a> = (1u &lt;&lt; 0)
-, <a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a19918f081c1c3d87e8827afee1f42ebba4f29d574603d31b0daf4efa025e4aa97">irsol::camera::internal::AVAILABLE</a> = (1u &lt;&lt; 1)
-, <a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a19918f081c1c3d87e8827afee1f42ebba8bce1754ef249815a9378e5f1bc7e477">irsol::camera::internal::READABLE</a> = (1u &lt;&lt; 2)
-, <br />
-&#160;&#160;<a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a19918f081c1c3d87e8827afee1f42ebbacaf38b8057cddc4b3216285d88af6585">irsol::camera::internal::WRITABLE</a> = (1u &lt;&lt; 3)
-<br />
- }</td></tr>
-<tr class="separator:a19918f081c1c3d87e8827afee1f42ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a60fe885947480d387e29b3746122398a" id="r_a60fe885947480d387e29b3746122398a"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="../../d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions.html">FeaturePermissions</a>, std::vector&lt; NeoAPI::Feature * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d41/namespaceirsol_1_1camera_1_1internal.html#a60fe885947480d387e29b3746122398a">irsol::camera::internal::extractCameraFeatures</a> (NeoAPI::Cam &amp;cam)</td></tr>
+<tr class="memdesc:a60fe885947480d387e29b3746122398a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts and groups camera features by their permissions.  <br /></td></tr>
 <tr class="separator:a60fe885947480d387e29b3746122398a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade6e14f7ab63736174039d9f181ec3d0" id="r_ade6e14f7ab63736174039d9f181ec3d0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d23/namespaceirsol_1_1camera.html#ade6e14f7ab63736174039d9f181ec3d0">irsol::camera::discoverCameraFeatures</a> (<a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">Interface</a> &amp;cam)</td></tr>
+<tr class="memdesc:ade6e14f7ab63736174039d9f181ec3d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discovers all camera features and their permissions.  <br /></td></tr>
+<tr class="separator:ade6e14f7ab63736174039d9f181ec3d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
