@@ -64,22 +64,23 @@ struct BinaryDataBufferName
 
 /**
  * @brief Represents a binary data object in the protocol.
- * @tparam T The type of the elements in the binary data.
+ * @tparam NBytes The number of bytes per element of the binary data (e.g for 8-bit images, this is
+ * 1, for 16-bit images, this is 2)
  * @tparam N The dimensionality of the binary data. (e.g. 2D binary data would have N=2)
  * @note This class only provides move-semantics, and does not provide copy-semantics. This is to
  * make sure that no unnecessary copies are made while working with this data object. For this
  * reason, members of this class are non-const, in order to allow move-semantics to be used.
  */
-template<typename T, std::uint8_t N>
+template<std::uint8_t NBytes, std::uint8_t N>
 struct BinaryData
 {
+  IRSOL_STATIC_ASSERT((NBytes == 1 || NBytes == 2), "Binary data element byte size must be 1 or 2");
   IRSOL_STATIC_ASSERT(N >= 1, "Binary data dimensionality must be at least 1");
 
+  /// @brief  The number of bytes per stored element.
+  static constexpr uint8_t BYTES_PER_ELEMENT = NBytes;
   /// @brief  The dimensionality of the binary data.
-  static constexpr uint8_t dim = N;
-
-  /// @brief  The number of bytes required to store a value of type T.
-  static constexpr uint16_t value_t_bytes = sizeof(T);
+  static constexpr uint8_t DIM = N;
 
   /**
    * @brief Constructs a binary data object.
@@ -89,21 +90,23 @@ struct BinaryData
    * @note data and attributes are moved from the input to the constructed object.
    */
   BinaryData(
-    std::vector<T>&&                   data,
-    const std::array<uint64_t, N>&     shape,
-    std::vector<BinaryDataAttribute>&& attributes = {})
+    std::vector<irsol::types::byte_t>&& data,
+    const std::array<uint64_t, N>&      shape,
+    std::vector<BinaryDataAttribute>&&  attributes = {})
     : data(std::move(data))
     , shape(shape)
     , numElements(std::accumulate(shape.begin(), shape.end(), 1ull, std::multiplies<>{}))
-    , numBytes(numElements * value_t_bytes)
+    , numBytes(numElements)
     , attributes(std::move(attributes))
   {
     IRSOL_LOG_TRACE("BinaryData constructed: {}", toString());
     IRSOL_ASSERT_ERROR(
-      this->data.size() == this->numElements,
-      "Data size (%lu) does not match the number of elements (%lu), possibly a shape mismatch.",
+      this->data.size() == this->numElements * NBytes,
+      "Data size (%lu) does not match the number of elements (%lu) multiplied by the number of "
+      "bytes taken by each element (%d), possibly a shape mismatch.",
       this->data.size(),
-      this->numElements);
+      this->numElements,
+      this->BYTES_PER_ELEMENT);
   }
 
   /**
@@ -121,9 +124,9 @@ struct BinaryData
   BinaryData& operator=(BinaryData&& other) noexcept = delete;
 
   /// Binary data storage.
-  std::vector<T> data;
+  std::vector<irsol::types::byte_t> data;
   /// Shape of the binary data.
-  std::array<uint64_t, dim> shape;
+  std::array<uint64_t, DIM> shape;
   /// Number of elements in the binary data.
   uint64_t numElements;
   /// Number of bytes required to store the binary data.
@@ -138,8 +141,9 @@ struct BinaryData
   std::string toString() const
   {
     std::stringstream ss;
-    ss << BinaryDataBufferName<N>::name() << "[shape=(" << std::to_string(shape[0]);
-    for(uint8_t i = 1; i < dim; ++i) {
+    ss << BinaryDataBufferName<N>::name() << "u" << (BYTES_PER_ELEMENT == 1 ? "8" : "16")
+       << "[shape=(" << std::to_string(shape[0]);
+    for(uint8_t i = 1; i < DIM; ++i) {
       ss << "x" << std::to_string(shape[i]);
     }
     ss << ")](" << std::to_string(numBytes) << " bytes"
@@ -150,16 +154,19 @@ struct BinaryData
 }
 
 /**
- * @brief Represents a binary data buffer in the protocol owning bytes, with 1 dimensions.
+ * @brief Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with
+ * 1 dimensions.
  */
-using BinaryDataBuffer = internal::BinaryData<irsol::types::byte_t, 1>;
+using BinaryDataBuffer = internal::BinaryData<2, 1>;
 /**
- * @brief Represents a binary data buffer in the protocol owning bytes, with 2 dimensions.
+ * @brief Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with
+ * 2 dimensions.
  */
-using ImageBinaryData = internal::BinaryData<irsol::types::byte_t, 2>;
+using ImageBinaryData = internal::BinaryData<2, 2>;
 /**
- * @brief Represents a binary data buffer in the protocol owning bytes, with 3 dimensions.
+ * @brief Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with
+ * 3 dimensions.
  */
-using ColorImageBinaryData = internal::BinaryData<irsol::types::byte_t, 3>;
+using ColorImageBinaryData = internal::BinaryData<2, 3>;
 }
 }

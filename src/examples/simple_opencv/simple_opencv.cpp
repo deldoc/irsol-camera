@@ -34,15 +34,14 @@ main()
     auto image_ts = image.GetTimestamp();
     auto image_id = image.GetImageID();
 
-    cv::Mat cv_image =
-      irsol::opencv::convertImageToMat(image, irsol::opencv::ColorConversionMode::GRAY_TO_COLOR);
+    cv::Mat cv_image = irsol::opencv::convertNeoImageToCvMat(image);
     cv::putText(
       cv_image,
       "ExposureTime: " + irsol::utils::durationToString(camExposure),
       {20, 50},
       cv::FONT_HERSHEY_COMPLEX,
       .5,
-      {0, 0, 255},
+      {65535, 65535, 65535},
       1,
       cv::LINE_AA);
     cv::putText(
@@ -51,7 +50,7 @@ main()
       {20, 80},
       cv::FONT_HERSHEY_COMPLEX,
       .5,
-      {0, 255, 0},
+      {65535, 65535, 65535},
       1,
       cv::LINE_AA);
     cv::putText(
@@ -60,7 +59,7 @@ main()
       {20, 110},
       cv::FONT_HERSHEY_COMPLEX,
       .5,
-      {0, 255, 0},
+      {65535, 65535, 65535},
       1,
       cv::LINE_AA);
     cv::imshow("image", cv_image);

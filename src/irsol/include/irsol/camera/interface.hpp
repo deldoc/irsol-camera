@@ -53,6 +53,9 @@ namespace camera {
  * The `Interface` class provides thread-safe control over camera acquisition and configuration
  * via NeoAPI. It abstracts common camera operations such as setting exposure, retrieving and
  * setting camera parameters, capturing images, and managing sensor state.
+ *
+ * @note The underlying NeoAPI camera must be usable with a pixel format Mono12. Failure to run in
+ * this modality will lead to the Interface constructor to raise a fatal assertion.
  */
 class Interface
 {

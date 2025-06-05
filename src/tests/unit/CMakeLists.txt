@@ -5,6 +5,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/cmake/FetchDependencies.cmake)
 
 add_executable(unit_tests
   main.cpp
+  camera/test_pixel_format.cpp
   protocol/message/test_assignment.cpp
   protocol/message/test_binary.cpp
   protocol/message/test_command.cpp

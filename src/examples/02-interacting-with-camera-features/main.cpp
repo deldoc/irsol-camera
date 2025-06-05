@@ -88,7 +88,7 @@ demoCameraFeatures(irsol::camera::Interface& cam)
 
 /// @brief Main entry point for the feature demo application.
 int
-main(int argc, char** argv)
+main()
 {
   // Initialize logging
   std::string logPath = "logs/" + getProgramName() + ".log";

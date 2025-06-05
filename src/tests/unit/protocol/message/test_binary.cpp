@@ -11,10 +11,11 @@ TEST_CASE("BinaryDataBuffer::BinaryDataBuffer()", "[Protocol][Protocol::Message]
   auto size = GENERATE(static_cast<uint64_t>(10), static_cast<uint64_t>(1000));
   {
 
-    std::vector<irsol::types::byte_t> data(size);
+    std::vector<irsol::types::byte_t> data(
+      size * irsol::protocol::BinaryDataBuffer::BYTES_PER_ELEMENT);
     irsol::protocol::BinaryDataBuffer m{std::move(data), {size}};
-    STATIC_CHECK(m.dim == 1);
-    STATIC_CHECK(m.value_t_bytes == 1);  // one element of type irsol::types::byte_t is 1 byte.
+    STATIC_CHECK(m.DIM == 1);
+    STATIC_CHECK(m.BYTES_PER_ELEMENT == 2);  // We work with image data with 16bits depth always.
     CHECK(m.numElements == size);
     CHECK(m.numBytes == size);
   }
@@ -30,10 +31,11 @@ TEST_CASE("ImageBinaryData::ImageBinaryData()", "[Protocol][Protocol::Message]")
       static_cast<uint64_t>(921600),
       std::array<uint64_t, 2>{static_cast<uint64_t>(1280), static_cast<uint64_t>(720)}));
   {
-    std::vector<irsol::types::byte_t> data(sizeData.first);
-    irsol::protocol::ImageBinaryData  m{std::move(data), sizeData.second};
-    STATIC_CHECK(m.dim == 2);
-    STATIC_CHECK(m.value_t_bytes == 1);  // one element of type irsol::types::byte_t is 1 byte.
+    std::vector<irsol::types::byte_t> data(
+      sizeData.first * irsol::protocol::ImageBinaryData::BYTES_PER_ELEMENT);
+    irsol::protocol::ImageBinaryData m{std::move(data), sizeData.second};
+    STATIC_CHECK(m.DIM == 2);
+    STATIC_CHECK(m.BYTES_PER_ELEMENT == 2);  // We work with image data with 16bits depth always.
     CHECK(m.numElements == sizeData.first);
     CHECK(m.numBytes == sizeData.first);
   }
@@ -51,10 +53,11 @@ TEST_CASE("ColorImageBinaryData::ColorImageBinaryData()", "[Protocol][Protocol::
       std::array<uint64_t, 3>{
         static_cast<uint64_t>(1280), static_cast<uint64_t>(720), static_cast<uint64_t>(3)}));
   {
-    std::vector<irsol::types::byte_t>     data(sizeData.first);
+    std::vector<irsol::types::byte_t> data(
+      sizeData.first * irsol::protocol::ColorImageBinaryData::BYTES_PER_ELEMENT);
     irsol::protocol::ColorImageBinaryData m{std::move(data), sizeData.second};
-    STATIC_CHECK(m.dim == 3);
-    STATIC_CHECK(m.value_t_bytes == 1);  // one element of type irsol::types::byte_t is 1 byte.
+    STATIC_CHECK(m.DIM == 3);
+    STATIC_CHECK(m.BYTES_PER_ELEMENT == 2);  // We work with image data with 16bits depth always.
     CHECK(m.numElements == sizeData.first);
     CHECK(m.numBytes == sizeData.first);
   }

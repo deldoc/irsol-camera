@@ -1,6 +1,8 @@
-/// @file examples/01-loading-images/main.cpp
+/// @file examples/01-loading-images/main-opencv.cpp
 /// @brief Example application using the `irsol` library to initialize logging,
-/// connect to a camera, and capture a sequence of images.
+/// connect to a camera, capturing a sequence of images and displaying them.
+///
+/// This example is only build when `opencv` is found by the build toolchain.
 ///
 /// This program serves as a minimal working example for new developers to understand
 /// how to interact with the core components of the `irsol` library. It demonstrates:
@@ -14,15 +16,16 @@
 #include "irsol/irsol.hpp"
 
 #include <chrono>
+#include <opencv2/opencv.hpp>
 #include <unordered_map>
 
 /// @brief Returns the program name, typically used for logging.
-/// If `PROGRAM_NAME` is not defined at compile time, returns `"loading-images-demo"`.
+/// If `PROGRAM_NAME` is not defined at compile time, returns `"loading-images-opencv-demo"`.
 const std::string
 getProgramName()
 {
 #ifndef PROGRAM_NAME
-#define PROGRAM_NAME "loading-images-demo"
+#define PROGRAM_NAME "loading-images-opencv-demo"
 #endif
   return PROGRAM_NAME;
 }
@@ -100,7 +103,11 @@ runCapture(irsol::camera::Interface& cam)
     IRSOL_LOG_WARN("Image is empty.");
   }
 
+  auto cvMat = irsol::opencv::convertNeoImageToCvMat(image);
+
   IRSOL_LOG_INFO("{}x{}, {} bytes", image.GetHeight(), image.GetWidth(), image.GetSize());
+  cv::imshow(getProgramName(), cvMat);
+  cv::waitKey(1);
 }
 
 /// @brief Program entrypoint.

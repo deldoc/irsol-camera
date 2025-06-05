@@ -216,19 +216,22 @@ TEST_CASE("getOutMessageKind<direct>()", "[Protocol][Protocol::Message]")
     STATIC_CHECK(irsol::protocol::getOutMessageKind(m) == irsol::protocol::OutMessageKind::SUCCESS);
   }
   {
-    std::vector<irsol::types::byte_t> data(10);
-    auto                              m = irsol::protocol::BinaryDataBuffer{std::move(data), {10}};
+    std::vector<irsol::types::byte_t> data(
+      10 * irsol::protocol::BinaryDataBuffer::BYTES_PER_ELEMENT);
+    auto m = irsol::protocol::BinaryDataBuffer{std::move(data), {10}};
     STATIC_CHECK(
       irsol::protocol::getOutMessageKind(m) == irsol::protocol::OutMessageKind::BINARY_BUFFER);
   }
   {
-    std::vector<irsol::types::byte_t> data(160);
+    std::vector<irsol::types::byte_t> data(
+      160 * irsol::protocol::ImageBinaryData::BYTES_PER_ELEMENT);
     auto m = irsol::protocol::ImageBinaryData{std::move(data), {10, 16}};
     STATIC_CHECK(
       irsol::protocol::getOutMessageKind(m) == irsol::protocol::OutMessageKind::BW_IMAGE);
   }
   {
-    std::vector<irsol::types::byte_t> data(480);
+    std::vector<irsol::types::byte_t> data(
+      480 * irsol::protocol::ColorImageBinaryData::BYTES_PER_ELEMENT);
     auto m = irsol::protocol::ColorImageBinaryData{std::move(data), {10, 16, 3}};
     STATIC_CHECK(
       irsol::protocol::getOutMessageKind(m) == irsol::protocol::OutMessageKind::COLOR_IMAGE);
@@ -246,22 +249,25 @@ TEST_CASE("getOutMessageKind<variant>()", "[Protocol][Protocol::Message]")
     CHECK(irsol::protocol::getOutMessageKind(mVariant) == irsol::protocol::OutMessageKind::SUCCESS);
   }
   {
-    std::vector<irsol::types::byte_t> data(10);
-    auto                              m = irsol::protocol::BinaryDataBuffer{std::move(data), {10}};
-    auto                              mVariant = irsol::protocol::OutMessage{std::move(m)};
+    std::vector<irsol::types::byte_t> data(
+      10 * irsol::protocol::BinaryDataBuffer::BYTES_PER_ELEMENT);
+    auto m        = irsol::protocol::BinaryDataBuffer{std::move(data), {10}};
+    auto mVariant = irsol::protocol::OutMessage{std::move(m)};
     CHECK(
       irsol::protocol::getOutMessageKind(mVariant) ==
       irsol::protocol::OutMessageKind::BINARY_BUFFER);
   }
   {
-    std::vector<irsol::types::byte_t> data(160);
+    std::vector<irsol::types::byte_t> data(
+      160 * irsol::protocol::ImageBinaryData::BYTES_PER_ELEMENT);
     auto m        = irsol::protocol::ImageBinaryData{std::move(data), {10, 16}};
     auto mVariant = irsol::protocol::OutMessage{std::move(m)};
     CHECK(
       irsol::protocol::getOutMessageKind(mVariant) == irsol::protocol::OutMessageKind::BW_IMAGE);
   }
   {
-    std::vector<irsol::types::byte_t> data(480);
+    std::vector<irsol::types::byte_t> data(
+      480 * irsol::protocol::ColorImageBinaryData::BYTES_PER_ELEMENT);
     auto m        = irsol::protocol::ColorImageBinaryData{std::move(data), {10, 16, 3}};
     auto mVariant = irsol::protocol::OutMessage{std::move(m)};
     CHECK(

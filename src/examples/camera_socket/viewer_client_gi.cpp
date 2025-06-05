@@ -20,11 +20,13 @@ signalHandler(int signal)
 }
 
 cv::Mat
-createMat(unsigned char* data, int rows, int cols, int chs = 1)
+createMat(unsigned char* data, int rows, int cols)
 {
   // Create Mat from buffer
-  cv::Mat mat(rows, cols, CV_MAKETYPE(cv::DataType<unsigned char>::type, chs));
-  memcpy(mat.data, data, rows * cols * chs * sizeof(unsigned char));
+  cv::Mat mat(rows, cols, CV_16UC1);
+  memcpy(mat.data, data, rows * cols * 2);
+  // Scale the values from the 12-bit depth to 16-bit depth
+  mat *= irsol::camera::PixelConversion<12, 16>::factor;
   return mat;
 }
 
@@ -32,7 +34,6 @@ std::optional<std::pair<size_t, cv::Mat>>
 queryImage(irsol::types::connector_t& conn)
 {
   conn.write("gi\n");
-  // Step 1: Read ASCII header until ':' is found
 
   // Loop until we get the correct header start
   while(true) {
@@ -42,60 +43,60 @@ queryImage(irsol::types::connector_t& conn)
       auto res = conn.read(&ch, 1);
       if(res.value() <= 0)
         return std::nullopt;
-      if(ch == ':' || ch == '\n')
+      if(ch == '\n' || ch == '=')
         break;
       headerTitle += ch;
     }
 
     if(headerTitle == "gi;") {
       IRSOL_LOG_INFO("Received success confirmation from server");
-      continue;
-    }
-
-    static const std::regex reForIsn(R"(^isn=(\d+)$)");
-    std::smatch             m;
-    std::string             errorMessage;
-    if(std::regex_match(headerTitle, m, reForIsn)) {
-      try {
-        uint64_t isn = std::stoull(m[1]);
-        IRSOL_LOG_INFO("Received frame at input sequence number {}", isn);
-      } catch(const std::exception& e) {
-        IRSOL_LOG_ERROR("Failed to parse isn: {}", e.what());
+    } else if(headerTitle == "isn") {
+      std::string isnStr;
+      while(ch != '\n') {
+        conn.read(&ch, 1);
+        isnStr.insert(isnStr.end(), ch);
       }
-    } else if(headerTitle == "image_data") {
-      IRSOL_LOG_INFO("Received 'image_data' header");
+      uint64_t isn = std::stoull(isnStr);
+      IRSOL_LOG_INFO("Received input sequence number {}", isn);
+    } else if(headerTitle == "img") {
+      IRSOL_LOG_INFO("Received 'img' header");
 
-      // Read image metadata after "image_data:"
-      std::string header;
+      uint32_t imageHeight{0};
+      uint32_t imageWidth{0};
       while(true) {
         auto res = conn.read(&ch, 1);
         if(res.value() <= 0) {
           IRSOL_LOG_ERROR("Failed to read image metadata");
           return std::nullopt;
         }
-        if(ch == ':')
+        if(ch == irsol::utils::bytesToString({irsol::protocol::Serializer::SpecialBytes::SOH})[0]) {
+          // Parse the image shape
+          while(ch != '[') {
+            conn.read(&ch, 1);
+          }
+          std::string heightStr;
+          while(ch != ',') {
+            conn.read(&ch, 1);
+            heightStr.insert(heightStr.end(), ch);
+          }
+          imageHeight = std::stol(heightStr);
+          std::string widthStr;
+          while(ch != ']') {
+            conn.read(&ch, 1);
+            widthStr.insert(widthStr.end(), ch);
+          }
+          imageWidth = std::stol(widthStr);
+          // Here we start the image attributes, skip them
+          while(ch !=
+                irsol::utils::bytesToString({irsol::protocol::Serializer::SpecialBytes::STX})[0]) {
+            conn.read(&ch, 1);
+          }
           break;
-        header += ch;
+        }
       }
 
-      IRSOL_LOG_DEBUG("Received header: {}", header);
-
-      // Step 2: Parse header like "imageIDx1920x1080x3"
-      int    width = 0, height = 0, channels = 0;
-      size_t imageId = 0;
-      if(sscanf(header.c_str(), "%lux%dx%dx%d", &imageId, &width, &height, &channels) != 4) {
-        IRSOL_LOG_ERROR("Invalid header format: {}", header);
-        return std::nullopt;
-      }
-
-      int type =
-        (channels == 1) ? CV_8UC1 : (channels == 3) ? CV_8UC3 : (channels == 4) ? CV_8UC4 : -1;
-      if(type == -1) {
-        IRSOL_LOG_ERROR("Unsupported number of channels: {}", channels);
-        return std::nullopt;
-      }
-
-      size_t               expectedSize = width * height * channels;
+      // Now we can read the image bytes
+      uint64_t             expectedSize = imageHeight * imageWidth * 2;  // 2 bytes per pixel
       std::vector<uint8_t> buffer(expectedSize);
 
       // Step 3: Read image data
@@ -109,9 +110,10 @@ queryImage(irsol::types::connector_t& conn)
         totalRead += res.value();
       }
       // Step 5: Convert image data to OpenCV Mat
-      return std::make_pair(imageId, createMat(buffer.data(), height, width, channels));
+      return std::make_pair(1, createMat(buffer.data(), imageHeight, imageWidth));
     } else {
-      IRSOL_LOG_WARN("Skipping unknown header: {}", headerTitle);
+
+      IRSOL_LOG_WARN("Skipping unknown header: '{}'", headerTitle);
       // Skip the rest of the line
       while(ch != '\n') {
         auto res = conn.read(&ch, 1);
@@ -218,7 +220,7 @@ run(double inFps)
       {20, 80},
       cv::FONT_HERSHEY_COMPLEX,
       1.0,
-      {0, 255, 0},
+      {65535, 65535, 65535},
       1,
       cv::LINE_AA);
 
@@ -235,7 +237,7 @@ run(double inFps)
       {20, 160},
       cv::FONT_HERSHEY_COMPLEX,
       1.0,
-      {0, 255, 0},
+      {65535, 65535, 65535},
       1,
       cv::LINE_AA);
 

@@ -23,3 +23,4 @@ This example serves as a minimal, practical introduction to the `irsol` codebase
   Outputs estimated FPS and image size info to give insight into runtime performance.
 
 
+[`main-opencv.cpp`](./main-opencv.cpp) implements the same example as [`main.cpp`](./main.cpp), but additionally displays the image to the screen. This example is only available on systems having an installed version of opencv.

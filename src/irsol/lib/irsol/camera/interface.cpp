@@ -27,9 +27,14 @@ Interface::Interface(NeoAPI::Cam cam): m_cam(cam)
     {"ExposureMode", {"Timed"}},  // Exposure mode: timed
   });
   setExposure(Interface::DEFAULT_EXPOSURE_TIME);  // Default exposure
-
   // Store the current exposure of the camera
   m_CachedExposureTime = getExposure();
+
+  // Here we configure the default bit-depth
+  IRSOL_LOG_INFO("Setting bit-depth to 12bits/pixel");
+  auto setPixelFormat = setParam("PixelFormat", "Mono12");
+  IRSOL_ASSERT_FATAL(
+    setPixelFormat == "Mono12", "Pixel format is not 'Mono12', but is %s", setPixelFormat.c_str());
 }
 
 Interface::Interface(Interface&& other): m_cam(other.m_cam) {}
@@ -233,7 +238,7 @@ Interface::captureImage(std::optional<irsol::types::duration_t> timeout)
   trigger("TriggerSoftware");
   // Wait for image, either using the current cached exposure time with a small buffer
   // or using the user-provided timeout
-  irsol::types::duration_t actualTimeout = m_CachedExposureTime + std::chrono::milliseconds(60);
+  irsol::types::duration_t actualTimeout = m_CachedExposureTime + std::chrono::milliseconds(200);
   if(timeout.has_value()) {
     IRSOL_LOG_DEBUG(
       "User provided a custom timeout of capturing camera of {}",
