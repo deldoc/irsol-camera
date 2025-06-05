@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IRSOL: irsol::protocol::internal::BinaryData&lt; T, N &gt; Struct Template Reference</title>
+<title>IRSOL: irsol::protocol::internal::BinaryData&lt; NBytes, N &gt; Struct Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -58,7 +58,7 @@ $(document).ready(function(){initNavTree('dd/d6d/structirsol_1_1protocol_1_1inte
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="../../df/db0/structirsol_1_1protocol_1_1internal_1_1BinaryData-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::protocol::internal::BinaryData&lt; T, N &gt; Struct Template Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::protocol::internal::BinaryData&lt; NBytes, N &gt; Struct Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -69,80 +69,82 @@ $(document).ready(function(){initNavTree('dd/d6d/structirsol_1_1protocol_1_1inte
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af195fd6445f4ae0324486186037a85d0" id="r_af195fd6445f4ae0324486186037a85d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#af195fd6445f4ae0324486186037a85d0">IRSOL_STATIC_ASSERT</a> (N &gt;=1, &quot;Binary <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">data</a> dimensionality must be at least 1&quot;)</td></tr>
-<tr class="separator:af195fd6445f4ae0324486186037a85d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0451e6edbfe289e09a7ac9eb1089283c" id="r_a0451e6edbfe289e09a7ac9eb1089283c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0451e6edbfe289e09a7ac9eb1089283c">BinaryData</a> (std::vector&lt; T &gt; &amp;&amp;<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">data</a>, const std::array&lt; uint64_t, N &gt; &amp;<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a>, std::vector&lt; <a class="el" href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html">BinaryDataAttribute</a> &gt; &amp;&amp;<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a27e70a9bb695168deb2106a46e14fe82">attributes</a>={})</td></tr>
-<tr class="memdesc:a0451e6edbfe289e09a7ac9eb1089283c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a binary data object.  <br /></td></tr>
-<tr class="separator:a0451e6edbfe289e09a7ac9eb1089283c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39bac72031cc556eee132e8a94cfa14f" id="r_a39bac72031cc556eee132e8a94cfa14f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a39bac72031cc556eee132e8a94cfa14f">BinaryData</a> (<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&amp;other)=default</td></tr>
-<tr class="memdesc:a39bac72031cc556eee132e8a94cfa14f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move-constructs a binary data object.  <br /></td></tr>
-<tr class="separator:a39bac72031cc556eee132e8a94cfa14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55699fbb3c3d47af537e3047138868c3" id="r_a55699fbb3c3d47af537e3047138868c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a55699fbb3c3d47af537e3047138868c3">BinaryData</a> (const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;)=delete</td></tr>
-<tr class="separator:a55699fbb3c3d47af537e3047138868c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5823707f9ae2184baa45c5c9901c363" id="r_ad5823707f9ae2184baa45c5c9901c363"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad5823707f9ae2184baa45c5c9901c363">operator=</a> (const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;)=delete</td></tr>
-<tr class="separator:ad5823707f9ae2184baa45c5c9901c363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ce7eac3556d3256d7b5aecb0de9dd8d" id="r_a0ce7eac3556d3256d7b5aecb0de9dd8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0ce7eac3556d3256d7b5aecb0de9dd8d">operator=</a> (<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&amp;other) noexcept=delete</td></tr>
-<tr class="separator:a0ce7eac3556d3256d7b5aecb0de9dd8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30390b71061b0c8e2c51a8df8dd942ab" id="r_a30390b71061b0c8e2c51a8df8dd942ab"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a30390b71061b0c8e2c51a8df8dd942ab">toString</a> () const</td></tr>
-<tr class="memdesc:a30390b71061b0c8e2c51a8df8dd942ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the binary data to a string.  <br /></td></tr>
-<tr class="separator:a30390b71061b0c8e2c51a8df8dd942ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad981bd3b5c05c441e12a08a28285c670" id="r_ad981bd3b5c05c441e12a08a28285c670"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad981bd3b5c05c441e12a08a28285c670">IRSOL_STATIC_ASSERT</a> ((NBytes==1||NBytes==2), &quot;Binary <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a> element byte size must be 1 or 2&quot;)</td></tr>
+<tr class="separator:ad981bd3b5c05c441e12a08a28285c670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf7d6e742d60b2785202bce12dd65b23" id="r_aaf7d6e742d60b2785202bce12dd65b23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#aaf7d6e742d60b2785202bce12dd65b23">IRSOL_STATIC_ASSERT</a> (N &gt;=1, &quot;Binary <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a> dimensionality must be at least 1&quot;)</td></tr>
+<tr class="separator:aaf7d6e742d60b2785202bce12dd65b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76471f04f725fb83e2e2b4ff66935889" id="r_a76471f04f725fb83e2e2b4ff66935889"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a76471f04f725fb83e2e2b4ff66935889">BinaryData</a> (std::vector&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> &gt; &amp;&amp;<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a>, const std::array&lt; uint64_t, N &gt; &amp;<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a>, std::vector&lt; <a class="el" href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html">BinaryDataAttribute</a> &gt; &amp;&amp;<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a015f627e0747efa51f60263cd79bebea">attributes</a>={})</td></tr>
+<tr class="memdesc:a76471f04f725fb83e2e2b4ff66935889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a binary data object.  <br /></td></tr>
+<tr class="separator:a76471f04f725fb83e2e2b4ff66935889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad34eaad5f29c2752b5e6c8a0bd78c71" id="r_aad34eaad5f29c2752b5e6c8a0bd78c71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#aad34eaad5f29c2752b5e6c8a0bd78c71">BinaryData</a> (<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&amp;other)=default</td></tr>
+<tr class="memdesc:aad34eaad5f29c2752b5e6c8a0bd78c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move-constructs a binary data object.  <br /></td></tr>
+<tr class="separator:aad34eaad5f29c2752b5e6c8a0bd78c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0a6a91903bb9bf98ddf80e456e88177" id="r_ac0a6a91903bb9bf98ddf80e456e88177"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac0a6a91903bb9bf98ddf80e456e88177">BinaryData</a> (const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;)=delete</td></tr>
+<tr class="separator:ac0a6a91903bb9bf98ddf80e456e88177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f3d09c5118568ffc24b52d87b40670f" id="r_a2f3d09c5118568ffc24b52d87b40670f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a2f3d09c5118568ffc24b52d87b40670f">operator=</a> (const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;)=delete</td></tr>
+<tr class="separator:a2f3d09c5118568ffc24b52d87b40670f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88571b37f3ab5dcbd18bf837c18b48db" id="r_a88571b37f3ab5dcbd18bf837c18b48db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a88571b37f3ab5dcbd18bf837c18b48db">operator=</a> (<a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp;&amp;other) noexcept=delete</td></tr>
+<tr class="separator:a88571b37f3ab5dcbd18bf837c18b48db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65935a95e5fc19d0de34f1e3cceb36d6" id="r_a65935a95e5fc19d0de34f1e3cceb36d6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a65935a95e5fc19d0de34f1e3cceb36d6">toString</a> () const</td></tr>
+<tr class="memdesc:a65935a95e5fc19d0de34f1e3cceb36d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the binary data to a string.  <br /></td></tr>
+<tr class="separator:a65935a95e5fc19d0de34f1e3cceb36d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad189e0317f8937ca93181c9a6c528bf9" id="r_ad189e0317f8937ca93181c9a6c528bf9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">data</a></td></tr>
-<tr class="memdesc:ad189e0317f8937ca93181c9a6c528bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary data storage.  <br /></td></tr>
-<tr class="separator:ad189e0317f8937ca93181c9a6c528bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0010c667b7f7b0e30f07bc52480c83e0" id="r_a0010c667b7f7b0e30f07bc52480c83e0"><td class="memItemLeft" align="right" valign="top">std::array&lt; uint64_t, <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac29e34e342564a49a89b3d55966715bc">dim</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a></td></tr>
-<tr class="memdesc:a0010c667b7f7b0e30f07bc52480c83e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shape of the binary data.  <br /></td></tr>
-<tr class="separator:a0010c667b7f7b0e30f07bc52480c83e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af155702ae1849ba35726097cd5d3bfb0" id="r_af155702ae1849ba35726097cd5d3bfb0"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#af155702ae1849ba35726097cd5d3bfb0">numElements</a></td></tr>
-<tr class="memdesc:af155702ae1849ba35726097cd5d3bfb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of elements in the binary data.  <br /></td></tr>
-<tr class="separator:af155702ae1849ba35726097cd5d3bfb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ffb4cebd9bf40918454abd6233d33c1" id="r_a9ffb4cebd9bf40918454abd6233d33c1"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a9ffb4cebd9bf40918454abd6233d33c1">numBytes</a></td></tr>
-<tr class="memdesc:a9ffb4cebd9bf40918454abd6233d33c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes required to store the binary data.  <br /></td></tr>
-<tr class="separator:a9ffb4cebd9bf40918454abd6233d33c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27e70a9bb695168deb2106a46e14fe82" id="r_a27e70a9bb695168deb2106a46e14fe82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html">BinaryDataAttribute</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a27e70a9bb695168deb2106a46e14fe82">attributes</a></td></tr>
-<tr class="memdesc:a27e70a9bb695168deb2106a46e14fe82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional attributes associated with the binary data.  <br /></td></tr>
-<tr class="separator:a27e70a9bb695168deb2106a46e14fe82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae5691746a264c8b428cf65745dd3c0" id="r_a1ae5691746a264c8b428cf65745dd3c0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a></td></tr>
+<tr class="memdesc:a1ae5691746a264c8b428cf65745dd3c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary data storage.  <br /></td></tr>
+<tr class="separator:a1ae5691746a264c8b428cf65745dd3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f3345a723d2550fe79c03291540b67" id="r_a36f3345a723d2550fe79c03291540b67"><td class="memItemLeft" align="right" valign="top">std::array&lt; uint64_t, <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ab0411f41f659ac20f5b7ccd8f975e4b6">DIM</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a></td></tr>
+<tr class="memdesc:a36f3345a723d2550fe79c03291540b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shape of the binary data.  <br /></td></tr>
+<tr class="separator:a36f3345a723d2550fe79c03291540b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83763113b9f2129088d458020fad6f41" id="r_a83763113b9f2129088d458020fad6f41"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a83763113b9f2129088d458020fad6f41">numElements</a></td></tr>
+<tr class="memdesc:a83763113b9f2129088d458020fad6f41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of elements in the binary data.  <br /></td></tr>
+<tr class="separator:a83763113b9f2129088d458020fad6f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae303d8a90292cdb9e09ee0e0fa05c79b" id="r_ae303d8a90292cdb9e09ee0e0fa05c79b"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ae303d8a90292cdb9e09ee0e0fa05c79b">numBytes</a></td></tr>
+<tr class="memdesc:ae303d8a90292cdb9e09ee0e0fa05c79b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes required to store the binary data.  <br /></td></tr>
+<tr class="separator:ae303d8a90292cdb9e09ee0e0fa05c79b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a015f627e0747efa51f60263cd79bebea" id="r_a015f627e0747efa51f60263cd79bebea"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html">BinaryDataAttribute</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a015f627e0747efa51f60263cd79bebea">attributes</a></td></tr>
+<tr class="memdesc:a015f627e0747efa51f60263cd79bebea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional attributes associated with the binary data.  <br /></td></tr>
+<tr class="separator:a015f627e0747efa51f60263cd79bebea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:ac29e34e342564a49a89b3d55966715bc" id="r_ac29e34e342564a49a89b3d55966715bc"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac29e34e342564a49a89b3d55966715bc">dim</a> = N</td></tr>
-<tr class="memdesc:ac29e34e342564a49a89b3d55966715bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dimensionality of the binary data.  <br /></td></tr>
-<tr class="separator:ac29e34e342564a49a89b3d55966715bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2303ed783abe569323d95bd3c4b9b020" id="r_a2303ed783abe569323d95bd3c4b9b020"><td class="memItemLeft" align="right" valign="top">static constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a2303ed783abe569323d95bd3c4b9b020">value_t_bytes</a> = sizeof(T)</td></tr>
-<tr class="memdesc:a2303ed783abe569323d95bd3c4b9b020"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes required to store a value of type T.  <br /></td></tr>
-<tr class="separator:a2303ed783abe569323d95bd3c4b9b020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5311eb0a6e75ee184a0077784f719954" id="r_a5311eb0a6e75ee184a0077784f719954"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a5311eb0a6e75ee184a0077784f719954">BYTES_PER_ELEMENT</a> = NBytes</td></tr>
+<tr class="memdesc:a5311eb0a6e75ee184a0077784f719954"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes per stored element.  <br /></td></tr>
+<tr class="separator:a5311eb0a6e75ee184a0077784f719954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0411f41f659ac20f5b7ccd8f975e4b6" id="r_ab0411f41f659ac20f5b7ccd8f975e4b6"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ab0411f41f659ac20f5b7ccd8f975e4b6">DIM</a> = N</td></tr>
+<tr class="memdesc:ab0411f41f659ac20f5b7ccd8f975e4b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dimensionality of the binary data.  <br /></td></tr>
+<tr class="separator:ab0411f41f659ac20f5b7ccd8f975e4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::uint8_t N&gt;<br />
-struct irsol::protocol::internal::BinaryData&lt; T, N &gt;</div><p>Represents a binary data object in the protocol. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;std::uint8_t NBytes, std::uint8_t N&gt;<br />
+struct irsol::protocol::internal::BinaryData&lt; NBytes, N &gt;</div><p>Represents a binary data object in the protocol. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>The type of the elements in the binary data. </td></tr>
+    <tr><td class="paramname">NBytes</td><td>The number of bytes per element of the binary data (e.g for 8-bit images, this is 1, for 16-bit images, this is 2) </td></tr>
     <tr><td class="paramname">N</td><td>The dimensionality of the binary data. (e.g. 2D binary data would have N=2) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class only provides move-semantics, and does not provide copy-semantics. This is to make sure that no unnecessary copies are made while working with this data object. For this reason, members of this class are non-const, in order to allow move-semantics to be used. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00074">74</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00075">75</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0451e6edbfe289e09a7ac9eb1089283c" name="a0451e6edbfe289e09a7ac9eb1089283c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0451e6edbfe289e09a7ac9eb1089283c">&#9670;&#160;</a></span>BinaryData() <span class="overload">[1/3]</span></h2>
+<a id="a76471f04f725fb83e2e2b4ff66935889" name="a76471f04f725fb83e2e2b4ff66935889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76471f04f725fb83e2e2b4ff66935889">&#9670;&#160;</a></span>BinaryData() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::BinaryData </td>
+          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::BinaryData </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; T &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
@@ -181,48 +183,49 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>data and attributes are moved from the input to the constructed object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                                  {})</div>
-<div class="line"><span class="lineno">   95</span>    : <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">data</a>(std::move(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">data</a>))</div>
-<div class="line"><span class="lineno">   96</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a>(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a>)</div>
-<div class="line"><span class="lineno">   97</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#af155702ae1849ba35726097cd5d3bfb0">numElements</a>(std::accumulate(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a>.begin(), <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a>.end(), 1ull, std::multiplies&lt;&gt;{}))</div>
-<div class="line"><span class="lineno">   98</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a9ffb4cebd9bf40918454abd6233d33c1">numBytes</a>(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#af155702ae1849ba35726097cd5d3bfb0">numElements</a> * <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a2303ed783abe569323d95bd3c4b9b020">value_t_bytes</a>)</div>
-<div class="line"><span class="lineno">   99</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a27e70a9bb695168deb2106a46e14fe82">attributes</a>(std::move(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a27e70a9bb695168deb2106a46e14fe82">attributes</a>))</div>
-<div class="line"><span class="lineno">  100</span>  {</div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;BinaryData constructed: {}&quot;</span>, <a class="code hl_function" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a30390b71061b0c8e2c51a8df8dd942ab">toString</a>());</div>
-<div class="line"><span class="lineno">  102</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
-<div class="line"><span class="lineno">  103</span>      this-&gt;<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">data</a>.size() == this-&gt;numElements,</div>
-<div class="line"><span class="lineno">  104</span>      <span class="stringliteral">&quot;Data size (%lu) does not match the number of elements (%lu), possibly a shape mismatch.&quot;</span>,</div>
-<div class="line"><span class="lineno">  105</span>      this-&gt;data.size(),</div>
-<div class="line"><span class="lineno">  106</span>      this-&gt;numElements);</div>
-<div class="line"><span class="lineno">  107</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>                                                   {})</div>
+<div class="line"><span class="lineno">   96</span>    : <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a>(std::move(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a>))</div>
+<div class="line"><span class="lineno">   97</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a>(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a>)</div>
+<div class="line"><span class="lineno">   98</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a83763113b9f2129088d458020fad6f41">numElements</a>(std::accumulate(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a>.begin(), <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a>.end(), 1ull, std::multiplies&lt;&gt;{}))</div>
+<div class="line"><span class="lineno">   99</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ae303d8a90292cdb9e09ee0e0fa05c79b">numBytes</a>(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a83763113b9f2129088d458020fad6f41">numElements</a>)</div>
+<div class="line"><span class="lineno">  100</span>    , <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a015f627e0747efa51f60263cd79bebea">attributes</a>(std::move(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a015f627e0747efa51f60263cd79bebea">attributes</a>))</div>
+<div class="line"><span class="lineno">  101</span>  {</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;BinaryData constructed: {}&quot;</span>, <a class="code hl_function" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a65935a95e5fc19d0de34f1e3cceb36d6">toString</a>());</div>
+<div class="line"><span class="lineno">  103</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
+<div class="line"><span class="lineno">  104</span>      this-&gt;<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a>.size() == this-&gt;numElements * NBytes,</div>
+<div class="line"><span class="lineno">  105</span>      <span class="stringliteral">&quot;Data size (%lu) does not match the number of elements (%lu) multiplied by the number of &quot;</span></div>
+<div class="line"><span class="lineno">  106</span>      <span class="stringliteral">&quot;bytes taken by each element (%d), possibly a shape mismatch.&quot;</span>,</div>
+<div class="line"><span class="lineno">  107</span>      this-&gt;data.size(),</div>
+<div class="line"><span class="lineno">  108</span>      this-&gt;numElements,</div>
+<div class="line"><span class="lineno">  109</span>      this-&gt;BYTES_PER_ELEMENT);</div>
+<div class="line"><span class="lineno">  110</span>  }</div>
 <div class="ttc" id="agroup__Assertion_html_gae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdoc">Error-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00134">assert.hpp:134</a></div></div>
 <div class="ttc" id="agroup__Logging_html_gab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdoc">Logs a trace-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00090">logging.hpp:90</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a0010c667b7f7b0e30f07bc52480c83e0"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">irsol::protocol::internal::BinaryData::shape</a></div><div class="ttdeci">std::array&lt; uint64_t, dim &gt; shape</div><div class="ttdoc">Shape of the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00126">binary.hpp:126</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a2303ed783abe569323d95bd3c4b9b020"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a2303ed783abe569323d95bd3c4b9b020">irsol::protocol::internal::BinaryData::value_t_bytes</a></div><div class="ttdeci">static constexpr uint16_t value_t_bytes</div><div class="ttdoc">The number of bytes required to store a value of type T.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00082">binary.hpp:82</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a27e70a9bb695168deb2106a46e14fe82"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a27e70a9bb695168deb2106a46e14fe82">irsol::protocol::internal::BinaryData::attributes</a></div><div class="ttdeci">std::vector&lt; BinaryDataAttribute &gt; attributes</div><div class="ttdoc">Additional attributes associated with the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00132">binary.hpp:132</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a30390b71061b0c8e2c51a8df8dd942ab"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a30390b71061b0c8e2c51a8df8dd942ab">irsol::protocol::internal::BinaryData::toString</a></div><div class="ttdeci">std::string toString() const</div><div class="ttdoc">Converts the binary data to a string.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00138">binary.hpp:138</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a9ffb4cebd9bf40918454abd6233d33c1"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a9ffb4cebd9bf40918454abd6233d33c1">irsol::protocol::internal::BinaryData::numBytes</a></div><div class="ttdeci">uint64_t numBytes</div><div class="ttdoc">Number of bytes required to store the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00130">binary.hpp:130</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_ad189e0317f8937ca93181c9a6c528bf9"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">irsol::protocol::internal::BinaryData::data</a></div><div class="ttdeci">std::vector&lt; T &gt; data</div><div class="ttdoc">Binary data storage.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00124">binary.hpp:124</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_af155702ae1849ba35726097cd5d3bfb0"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#af155702ae1849ba35726097cd5d3bfb0">irsol::protocol::internal::BinaryData::numElements</a></div><div class="ttdeci">uint64_t numElements</div><div class="ttdoc">Number of elements in the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00128">binary.hpp:128</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a015f627e0747efa51f60263cd79bebea"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a015f627e0747efa51f60263cd79bebea">irsol::protocol::internal::BinaryData::attributes</a></div><div class="ttdeci">std::vector&lt; BinaryDataAttribute &gt; attributes</div><div class="ttdoc">Additional attributes associated with the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00135">binary.hpp:135</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a1ae5691746a264c8b428cf65745dd3c0"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">irsol::protocol::internal::BinaryData::data</a></div><div class="ttdeci">std::vector&lt; irsol::types::byte_t &gt; data</div><div class="ttdoc">Binary data storage.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00127">binary.hpp:127</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a36f3345a723d2550fe79c03291540b67"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">irsol::protocol::internal::BinaryData::shape</a></div><div class="ttdeci">std::array&lt; uint64_t, DIM &gt; shape</div><div class="ttdoc">Shape of the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00129">binary.hpp:129</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a65935a95e5fc19d0de34f1e3cceb36d6"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a65935a95e5fc19d0de34f1e3cceb36d6">irsol::protocol::internal::BinaryData::toString</a></div><div class="ttdeci">std::string toString() const</div><div class="ttdoc">Converts the binary data to a string.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00141">binary.hpp:141</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a83763113b9f2129088d458020fad6f41"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a83763113b9f2129088d458020fad6f41">irsol::protocol::internal::BinaryData::numElements</a></div><div class="ttdeci">uint64_t numElements</div><div class="ttdoc">Number of elements in the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00131">binary.hpp:131</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_ae303d8a90292cdb9e09ee0e0fa05c79b"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ae303d8a90292cdb9e09ee0e0fa05c79b">irsol::protocol::internal::BinaryData::numBytes</a></div><div class="ttdeci">uint64_t numBytes</div><div class="ttdoc">Number of bytes required to store the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00133">binary.hpp:133</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a39bac72031cc556eee132e8a94cfa14f" name="a39bac72031cc556eee132e8a94cfa14f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39bac72031cc556eee132e8a94cfa14f">&#9670;&#160;</a></span>BinaryData() <span class="overload">[2/3]</span></h2>
+<a id="aad34eaad5f29c2752b5e6c8a0bd78c71" name="aad34eaad5f29c2752b5e6c8a0bd78c71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad34eaad5f29c2752b5e6c8a0bd78c71">&#9670;&#160;</a></span>BinaryData() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::BinaryData </td>
+          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::BinaryData </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; T, N &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; NBytes, N &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -245,21 +248,21 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 
 </div>
 </div>
-<a id="a55699fbb3c3d47af537e3047138868c3" name="a55699fbb3c3d47af537e3047138868c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55699fbb3c3d47af537e3047138868c3">&#9670;&#160;</a></span>BinaryData() <span class="overload">[3/3]</span></h2>
+<a id="ac0a6a91903bb9bf98ddf80e456e88177" name="ac0a6a91903bb9bf98ddf80e456e88177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0a6a91903bb9bf98ddf80e456e88177">&#9670;&#160;</a></span>BinaryData() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::BinaryData </td>
+          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::BinaryData </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; T, N &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; NBytes, N &gt; &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -274,24 +277,24 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af195fd6445f4ae0324486186037a85d0" name="af195fd6445f4ae0324486186037a85d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af195fd6445f4ae0324486186037a85d0">&#9670;&#160;</a></span>IRSOL_STATIC_ASSERT()</h2>
+<a id="ad981bd3b5c05c441e12a08a28285c670" name="ad981bd3b5c05c441e12a08a28285c670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad981bd3b5c05c441e12a08a28285c670">&#9670;&#160;</a></span>IRSOL_STATIC_ASSERT() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::IRSOL_STATIC_ASSERT </td>
+          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::IRSOL_STATIC_ASSERT </td>
           <td>(</td>
-          <td class="paramtype">N &gt;=&#160;</td>
-          <td class="paramname"><em>1</em>, </td>
+          <td class="paramtype">(NBytes==1||NBytes==2)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&quot;Binary <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9">data</a> dimensionality must be at least 1&quot;&#160;</td>
+          <td class="paramtype">&quot;Binary <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a> element byte size must be 1 or 2&quot;&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -304,21 +307,51 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 
 </div>
 </div>
-<a id="a0ce7eac3556d3256d7b5aecb0de9dd8d" name="a0ce7eac3556d3256d7b5aecb0de9dd8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ce7eac3556d3256d7b5aecb0de9dd8d">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+<a id="aaf7d6e742d60b2785202bce12dd65b23" name="aaf7d6e742d60b2785202bce12dd65b23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf7d6e742d60b2785202bce12dd65b23">&#9670;&#160;</a></span>IRSOL_STATIC_ASSERT() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::IRSOL_STATIC_ASSERT </td>
+          <td>(</td>
+          <td class="paramtype">N &gt;=&#160;</td>
+          <td class="paramname"><em>1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Binary <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0">data</a> dimensionality must be at least 1&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88571b37f3ab5dcbd18bf837c18b48db" name="a88571b37f3ab5dcbd18bf837c18b48db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88571b37f3ab5dcbd18bf837c18b48db">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::operator= </td>
+          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; T, N &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; NBytes, N &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -332,21 +365,21 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 
 </div>
 </div>
-<a id="ad5823707f9ae2184baa45c5c9901c363" name="ad5823707f9ae2184baa45c5c9901c363"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5823707f9ae2184baa45c5c9901c363">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<a id="a2f3d09c5118568ffc24b52d87b40670f" name="a2f3d09c5118568ffc24b52d87b40670f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f3d09c5118568ffc24b52d87b40670f">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::operator= </td>
+          <td class="memname"><a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a> &amp; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; T, N &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">BinaryData</a>&lt; NBytes, N &gt; &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -360,19 +393,19 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 
 </div>
 </div>
-<a id="a30390b71061b0c8e2c51a8df8dd942ab" name="a30390b71061b0c8e2c51a8df8dd942ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30390b71061b0c8e2c51a8df8dd942ab">&#9670;&#160;</a></span>toString()</h2>
+<a id="a65935a95e5fc19d0de34f1e3cceb36d6" name="a65935a95e5fc19d0de34f1e3cceb36d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65935a95e5fc19d0de34f1e3cceb36d6">&#9670;&#160;</a></span>toString()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::toString </td>
+          <td class="memname">std::string <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::toString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -388,75 +421,105 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 <p>Converts the binary data to a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string representation of the binary data attribute. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  139</span>  {</div>
-<div class="line"><span class="lineno">  140</span>    std::stringstream ss;</div>
-<div class="line"><span class="lineno">  141</span>    ss &lt;&lt; BinaryDataBufferName&lt;N&gt;::name() &lt;&lt; <span class="stringliteral">&quot;[shape=(&quot;</span> &lt;&lt; std::to_string(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a>[0]);</div>
-<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">for</span>(uint8_t i = 1; i &lt; <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac29e34e342564a49a89b3d55966715bc">dim</a>; ++i) {</div>
-<div class="line"><span class="lineno">  143</span>      ss &lt;&lt; <span class="stringliteral">&quot;x&quot;</span> &lt;&lt; std::to_string(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0">shape</a>[i]);</div>
-<div class="line"><span class="lineno">  144</span>    }</div>
-<div class="line"><span class="lineno">  145</span>    ss &lt;&lt; <span class="stringliteral">&quot;)](&quot;</span> &lt;&lt; std::to_string(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a9ffb4cebd9bf40918454abd6233d33c1">numBytes</a>) &lt;&lt; <span class="stringliteral">&quot; bytes&quot;</span></div>
-<div class="line"><span class="lineno">  146</span>       &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> ss.str();</div>
-<div class="line"><span class="lineno">  148</span>  }</div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_ac29e34e342564a49a89b3d55966715bc"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac29e34e342564a49a89b3d55966715bc">irsol::protocol::internal::BinaryData::dim</a></div><div class="ttdeci">static constexpr uint8_t dim</div><div class="ttdoc">The dimensionality of the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00079">binary.hpp:79</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00141">141</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  142</span>  {</div>
+<div class="line"><span class="lineno">  143</span>    std::stringstream ss;</div>
+<div class="line"><span class="lineno">  144</span>    ss &lt;&lt; BinaryDataBufferName&lt;N&gt;::name() &lt;&lt; <span class="stringliteral">&quot;u&quot;</span> &lt;&lt; (<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a5311eb0a6e75ee184a0077784f719954">BYTES_PER_ELEMENT</a> == 1 ? <span class="stringliteral">&quot;8&quot;</span> : <span class="stringliteral">&quot;16&quot;</span>)</div>
+<div class="line"><span class="lineno">  145</span>       &lt;&lt; <span class="stringliteral">&quot;[shape=(&quot;</span> &lt;&lt; std::to_string(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a>[0]);</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">for</span>(uint8_t i = 1; i &lt; <a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ab0411f41f659ac20f5b7ccd8f975e4b6">DIM</a>; ++i) {</div>
+<div class="line"><span class="lineno">  147</span>      ss &lt;&lt; <span class="stringliteral">&quot;x&quot;</span> &lt;&lt; std::to_string(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67">shape</a>[i]);</div>
+<div class="line"><span class="lineno">  148</span>    }</div>
+<div class="line"><span class="lineno">  149</span>    ss &lt;&lt; <span class="stringliteral">&quot;)](&quot;</span> &lt;&lt; std::to_string(<a class="code hl_variable" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ae303d8a90292cdb9e09ee0e0fa05c79b">numBytes</a>) &lt;&lt; <span class="stringliteral">&quot; bytes&quot;</span></div>
+<div class="line"><span class="lineno">  150</span>       &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><span class="lineno">  152</span>  }</div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_a5311eb0a6e75ee184a0077784f719954"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a5311eb0a6e75ee184a0077784f719954">irsol::protocol::internal::BinaryData::BYTES_PER_ELEMENT</a></div><div class="ttdeci">static constexpr uint8_t BYTES_PER_ELEMENT</div><div class="ttdoc">The number of bytes per stored element.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00081">binary.hpp:81</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html_ab0411f41f659ac20f5b7ccd8f975e4b6"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ab0411f41f659ac20f5b7ccd8f975e4b6">irsol::protocol::internal::BinaryData::DIM</a></div><div class="ttdeci">static constexpr uint8_t DIM</div><div class="ttdoc">The dimensionality of the binary data.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00083">binary.hpp:83</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a27e70a9bb695168deb2106a46e14fe82" name="a27e70a9bb695168deb2106a46e14fe82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27e70a9bb695168deb2106a46e14fe82">&#9670;&#160;</a></span>attributes</h2>
+<a id="a015f627e0747efa51f60263cd79bebea" name="a015f627e0747efa51f60263cd79bebea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a015f627e0747efa51f60263cd79bebea">&#9670;&#160;</a></span>attributes</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html">BinaryDataAttribute</a>&gt; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::attributes</td>
+          <td class="memname">std::vector&lt;<a class="el" href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html">BinaryDataAttribute</a>&gt; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::attributes</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Additional attributes associated with the binary data. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00132">132</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00135">135</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad189e0317f8937ca93181c9a6c528bf9" name="ad189e0317f8937ca93181c9a6c528bf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad189e0317f8937ca93181c9a6c528bf9">&#9670;&#160;</a></span>data</h2>
+<a id="a5311eb0a6e75ee184a0077784f719954" name="a5311eb0a6e75ee184a0077784f719954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5311eb0a6e75ee184a0077784f719954">&#9670;&#160;</a></span>BYTES_PER_ELEMENT</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;T&gt; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::data</td>
+          <td class="memname">constexpr uint8_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::BYTES_PER_ELEMENT = NBytes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The number of bytes per stored element. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00081">81</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1ae5691746a264c8b428cf65745dd3c0" name="a1ae5691746a264c8b428cf65745dd3c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae5691746a264c8b428cf65745dd3c0">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>&gt; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::data</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Binary data storage. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac29e34e342564a49a89b3d55966715bc" name="ac29e34e342564a49a89b3d55966715bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac29e34e342564a49a89b3d55966715bc">&#9670;&#160;</a></span>dim</h2>
+<a id="ab0411f41f659ac20f5b7ccd8f975e4b6" name="ab0411f41f659ac20f5b7ccd8f975e4b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0411f41f659ac20f5b7ccd8f975e4b6">&#9670;&#160;</a></span>DIM</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr uint8_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::dim = N</td>
+          <td class="memname">constexpr uint8_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::DIM = N</td>
         </tr>
       </table>
   </td>
@@ -468,95 +531,67 @@ template&lt;typename T , std::uint8_t N&gt; </div>
 
 <p>The dimensionality of the binary data. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00079">79</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00083">83</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9ffb4cebd9bf40918454abd6233d33c1" name="a9ffb4cebd9bf40918454abd6233d33c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ffb4cebd9bf40918454abd6233d33c1">&#9670;&#160;</a></span>numBytes</h2>
+<a id="ae303d8a90292cdb9e09ee0e0fa05c79b" name="ae303d8a90292cdb9e09ee0e0fa05c79b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae303d8a90292cdb9e09ee0e0fa05c79b">&#9670;&#160;</a></span>numBytes</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::numBytes</td>
+          <td class="memname">uint64_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::numBytes</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Number of bytes required to store the binary data. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00130">130</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00133">133</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af155702ae1849ba35726097cd5d3bfb0" name="af155702ae1849ba35726097cd5d3bfb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af155702ae1849ba35726097cd5d3bfb0">&#9670;&#160;</a></span>numElements</h2>
+<a id="a83763113b9f2129088d458020fad6f41" name="a83763113b9f2129088d458020fad6f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83763113b9f2129088d458020fad6f41">&#9670;&#160;</a></span>numElements</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::numElements</td>
+          <td class="memname">uint64_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::numElements</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Number of elements in the binary data. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00128">128</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00131">131</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0010c667b7f7b0e30f07bc52480c83e0" name="a0010c667b7f7b0e30f07bc52480c83e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0010c667b7f7b0e30f07bc52480c83e0">&#9670;&#160;</a></span>shape</h2>
+<a id="a36f3345a723d2550fe79c03291540b67" name="a36f3345a723d2550fe79c03291540b67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f3345a723d2550fe79c03291540b67">&#9670;&#160;</a></span>shape</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
+template&lt;std::uint8_t NBytes, std::uint8_t N&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;uint64_t, <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac29e34e342564a49a89b3d55966715bc">dim</a>&gt; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::shape</td>
+          <td class="memname">std::array&lt;uint64_t, <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ab0411f41f659ac20f5b7ccd8f975e4b6">DIM</a>&gt; <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; NBytes, N &gt;::shape</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Shape of the binary data. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00126">126</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a2303ed783abe569323d95bd3c4b9b020" name="a2303ed783abe569323d95bd3c4b9b020"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2303ed783abe569323d95bd3c4b9b020">&#9670;&#160;</a></span>value_t_bytes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::uint8_t N&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr uint16_t <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a>&lt; T, N &gt;::value_t_bytes = sizeof(T)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The number of bytes required to store a value of type T. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00082">82</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00129">129</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
 
 </div>
 </div>

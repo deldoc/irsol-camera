@@ -14,9 +14,9 @@ var namespaceirsol_1_1protocol =
     [ "Parser", "d5/d35/classirsol_1_1protocol_1_1Parser.html", "d5/d35/classirsol_1_1protocol_1_1Parser" ],
     [ "Serializer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html", "d1/d6f/classirsol_1_1protocol_1_1Serializer" ],
     [ "Success", "d3/d7a/structirsol_1_1protocol_1_1Success.html", "d3/d7a/structirsol_1_1protocol_1_1Success" ],
-    [ "BinaryDataBuffer", "db/dff/namespaceirsol_1_1protocol.html#a9007fde1025a1c0cba261ac1deac5053", null ],
-    [ "ColorImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#a77550f1e67eaab92ac84d0397ebe7c1c", null ],
-    [ "ImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#a5803a93478c243e2c79dccb5f00f2817", null ],
+    [ "BinaryDataBuffer", "db/dff/namespaceirsol_1_1protocol.html#a992a6e524c2d605492fe732ffe5f1804", null ],
+    [ "ColorImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#aae127bdb175c2184b25e1c67a82e048f", null ],
+    [ "ImageBinaryData", "db/dff/namespaceirsol_1_1protocol.html#a92289652b6bf51da04bb8973e7dd5418", null ],
     [ "InMessage", "db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20", null ],
     [ "OutMessage", "db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66", null ],
     [ "InMessageKind", "db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e", [

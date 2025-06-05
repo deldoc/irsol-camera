@@ -105,6 +105,12 @@ Functions</h2></td></tr>
 <tr class="memitem:af2468710608c92085f4771001ea3a105" id="r_af2468710608c92085f4771001ea3a105"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#af2468710608c92085f4771001ea3a105">durationToString</a> (<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a0ed53497239b16c18f07550a1473a445">irsol::types::duration_t</a> dr)</td></tr>
 <tr class="memdesc:af2468710608c92085f4771001ea3a105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a duration to a human-readable string.  <br /></td></tr>
 <tr class="separator:af2468710608c92085f4771001ea3a105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbdc7b57c0440d4d3a811223e5dadaad" id="r_adbdc7b57c0440d4d3a811223e5dadaad"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#adbdc7b57c0440d4d3a811223e5dadaad">stringToBytes</a> (const std::string &amp;s)</td></tr>
+<tr class="memdesc:adbdc7b57c0440d4d3a811223e5dadaad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a std::string to a std::vector of <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>.  <br /></td></tr>
+<tr class="separator:adbdc7b57c0440d4d3a811223e5dadaad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46d984c92b1c3b4b5ef2a6d505436221" id="r_a46d984c92b1c3b4b5ef2a6d505436221"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a46d984c92b1c3b4b5ef2a6d505436221">bytesToString</a> (const std::vector&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> &gt; &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a84703f07f323f416cd4b531c1bbd59af">input</a>)</td></tr>
+<tr class="memdesc:a46d984c92b1c3b4b5ef2a6d505436221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a std::vector of <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> to a std::string.  <br /></td></tr>
+<tr class="separator:a46d984c92b1c3b4b5ef2a6d505436221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d88fe2852393ebd66302cf6f512c2ae" id="r_a1d88fe2852393ebd66302cf6f512c2ae"><td class="memItemLeft" align="right" valign="top">NeoAPI::Cam&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a1d88fe2852393ebd66302cf6f512c2ae">loadDefaultCamera</a> ()</td></tr>
 <tr class="memdesc:a1d88fe2852393ebd66302cf6f512c2ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the default camera device.  <br /></td></tr>
 <tr class="separator:a1d88fe2852393ebd66302cf6f512c2ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,6 +122,41 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Contains general utility functions used throughout the <code>irsol</code> library. </p>
 <p>This namespace provides helper functions for type conversions, string manipulations, timestamp formatting, and camera device management. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a46d984c92b1c3b4b5ef2a6d505436221" name="a46d984c92b1c3b4b5ef2a6d505436221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46d984c92b1c3b4b5ef2a6d505436221">&#9670;&#160;</a></span>bytesToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string irsol::utils::bytesToString </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a std::vector of <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> to a std::string. </p>
+<p>Each byte is reinterpreted as a character. This assumes that the bytes represent valid character data (e.g., UTF-8 or ASCII).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>The input <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> vector to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string A string constructed from the byte-wise content. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d06/utils_8cpp_source.html#l00189">189</a> of file <a class="el" href="../../de/d06/utils_8cpp_source.html">utils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  190</span>{</div>
+<div class="line"><span class="lineno">  191</span>  <span class="keyword">const</span> <span class="keyword">auto</span>* data = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a84703f07f323f416cd4b531c1bbd59af">input</a>.data());</div>
+<div class="line"><span class="lineno">  192</span>  <span class="keywordflow">return</span> std::string(data, data + <a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a84703f07f323f416cd4b531c1bbd59af">input</a>.size());</div>
+<div class="line"><span class="lineno">  193</span>}</div>
+<div class="ttc" id="atest__parser_8cpp_html_a84703f07f323f416cd4b531c1bbd59af"><div class="ttname"><a href="../../de/d08/test__parser_8cpp.html#a84703f07f323f416cd4b531c1bbd59af">input</a></div><div class="ttdeci">std::string input</div><div class="ttdef"><b>Definition</b> <a href="../../de/d08/test__parser_8cpp_source.html#l00082">test_parser.cpp:82</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a814b3f9106fa152137b4b7d2537ceaf0" name="a814b3f9106fa152137b4b7d2537ceaf0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a814b3f9106fa152137b4b7d2537ceaf0">&#9670;&#160;</a></span>discoverCameras()</h2>
 
@@ -135,15 +176,15 @@ Functions</h2></td></tr>
 <p>Uses NeoAPI to scan and retrieve information about all connected cameras. The returned reference remains valid until the next call to <code><a class="el" href="../../d8/d93/namespaceirsol_1_1utils.html#a814b3f9106fa152137b4b7d2537ceaf0" title="Discovers all cameras connected to the system.">discoverCameras()</a></code>.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to a list of all discovered cameras. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d06/utils_8cpp_source.html#l00202">202</a> of file <a class="el" href="../../de/d06/utils_8cpp_source.html">utils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  203</span>{</div>
-<div class="line"><span class="lineno">  204</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Discovering cameras&quot;</span>);</div>
-<div class="line"><span class="lineno">  205</span>  NeoAPI::CamInfoList&amp; infoList = NeoAPI::CamInfoList::Get();</div>
-<div class="line"><span class="lineno">  206</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Refreshing camera list&quot;</span>);</div>
-<div class="line"><span class="lineno">  207</span>  infoList.Refresh();</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span>  <span class="keywordflow">return</span> infoList;</div>
-<div class="line"><span class="lineno">  210</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../de/d06/utils_8cpp_source.html#l00216">216</a> of file <a class="el" href="../../de/d06/utils_8cpp_source.html">utils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  217</span>{</div>
+<div class="line"><span class="lineno">  218</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Discovering cameras&quot;</span>);</div>
+<div class="line"><span class="lineno">  219</span>  NeoAPI::CamInfoList&amp; infoList = NeoAPI::CamInfoList::Get();</div>
+<div class="line"><span class="lineno">  220</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Refreshing camera list&quot;</span>);</div>
+<div class="line"><span class="lineno">  221</span>  infoList.Refresh();</div>
+<div class="line"><span class="lineno">  222</span> </div>
+<div class="line"><span class="lineno">  223</span>  <span class="keywordflow">return</span> infoList;</div>
+<div class="line"><span class="lineno">  224</span>}</div>
 <div class="ttc" id="agroup__Logging_html_gab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdoc">Logs a trace-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00090">logging.hpp:90</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -251,24 +292,24 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A handle to the opened NeoAPI camera device. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d06/utils_8cpp_source.html#l00182">182</a> of file <a class="el" href="../../de/d06/utils_8cpp_source.html">utils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  183</span>{</div>
-<div class="line"><span class="lineno">  184</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Loading default camera&quot;</span>);</div>
-<div class="line"><span class="lineno">  185</span>  NeoAPI::Cam cam = NeoAPI::Cam();</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>  <span class="keyword">const</span> <span class="keyword">auto</span> cameraSerialNumber = internal::defaultCameraSerialNumber();</div>
-<div class="line"><span class="lineno">  188</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Trying to connect to default camera with SN &#39;{0:s}&#39;.&quot;</span>, cameraSerialNumber);</div>
-<div class="line"><span class="lineno">  189</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  190</span>    cam.Connect(cameraSerialNumber);</div>
-<div class="line"><span class="lineno">  191</span>  } <span class="keywordflow">catch</span>(NeoAPI::NotConnectedException&amp; e) {</div>
-<div class="line"><span class="lineno">  192</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gaf958644a54004617f89dda6854f5a14e">IRSOL_ASSERT_FATAL</a>(<span class="keyword">false</span>, <span class="stringliteral">&quot;Camera connection failed: %s&quot;</span>, e.GetDescription());</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">throw</span> e;</div>
-<div class="line"><span class="lineno">  194</span>  }</div>
-<div class="line"><span class="lineno">  195</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gaf958644a54004617f89dda6854f5a14e">IRSOL_ASSERT_FATAL</a>(cam.IsConnected(), <span class="stringliteral">&quot;Camera is not connected&quot;</span>);</div>
-<div class="line"><span class="lineno">  196</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Camera connection successful&quot;</span>);</div>
-<div class="line"><span class="lineno">  197</span> </div>
-<div class="line"><span class="lineno">  198</span>  <span class="keywordflow">return</span> cam;</div>
-<div class="line"><span class="lineno">  199</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../de/d06/utils_8cpp_source.html#l00196">196</a> of file <a class="el" href="../../de/d06/utils_8cpp_source.html">utils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  197</span>{</div>
+<div class="line"><span class="lineno">  198</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Loading default camera&quot;</span>);</div>
+<div class="line"><span class="lineno">  199</span>  NeoAPI::Cam cam = NeoAPI::Cam();</div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>  <span class="keyword">const</span> <span class="keyword">auto</span> cameraSerialNumber = internal::defaultCameraSerialNumber();</div>
+<div class="line"><span class="lineno">  202</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Trying to connect to default camera with SN &#39;{0:s}&#39;.&quot;</span>, cameraSerialNumber);</div>
+<div class="line"><span class="lineno">  203</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">  204</span>    cam.Connect(cameraSerialNumber);</div>
+<div class="line"><span class="lineno">  205</span>  } <span class="keywordflow">catch</span>(NeoAPI::NotConnectedException&amp; e) {</div>
+<div class="line"><span class="lineno">  206</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gaf958644a54004617f89dda6854f5a14e">IRSOL_ASSERT_FATAL</a>(<span class="keyword">false</span>, <span class="stringliteral">&quot;Camera connection failed: %s&quot;</span>, e.GetDescription());</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">throw</span> e;</div>
+<div class="line"><span class="lineno">  208</span>  }</div>
+<div class="line"><span class="lineno">  209</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gaf958644a54004617f89dda6854f5a14e">IRSOL_ASSERT_FATAL</a>(cam.IsConnected(), <span class="stringliteral">&quot;Camera is not connected&quot;</span>);</div>
+<div class="line"><span class="lineno">  210</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Camera connection successful&quot;</span>);</div>
+<div class="line"><span class="lineno">  211</span> </div>
+<div class="line"><span class="lineno">  212</span>  <span class="keywordflow">return</span> cam;</div>
+<div class="line"><span class="lineno">  213</span>}</div>
 <div class="ttc" id="agroup__Assertion_html_gaf958644a54004617f89dda6854f5a14e"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gaf958644a54004617f89dda6854f5a14e">IRSOL_ASSERT_FATAL</a></div><div class="ttdeci">#define IRSOL_ASSERT_FATAL</div><div class="ttdoc">Fatal-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00135">assert.hpp:135</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga85d5803f1f7fb99923cdac16d1dc2ee8"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_LOG_DEBUG(...)</div><div class="ttdoc">Logs a debug-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00091">logging.hpp:91</a></div></div>
 </div><!-- fragment -->
@@ -330,6 +371,41 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   66</span>  }</div>
 <div class="line"><span class="lineno">   67</span>  <span class="keywordflow">return</span> tokens;</div>
 <div class="line"><span class="lineno">   68</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adbdc7b57c0440d4d3a811223e5dadaad" name="adbdc7b57c0440d4d3a811223e5dadaad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbdc7b57c0440d4d3a811223e5dadaad">&#9670;&#160;</a></span>stringToBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> &gt; irsol::utils::stringToBytes </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a std::string to a std::vector of <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>. </p>
+<p>Each character in the input string is reinterpreted as a <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The input string to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the byte-wise representation of the string. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d06/utils_8cpp_source.html#l00182">182</a> of file <a class="el" href="../../de/d06/utils_8cpp_source.html">utils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  183</span>{</div>
+<div class="line"><span class="lineno">  184</span>  <span class="keyword">const</span> <span class="keyword">auto</span>* data = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>*<span class="keyword">&gt;</span>(s.data());</div>
+<div class="line"><span class="lineno">  185</span>  <span class="keywordflow">return</span> {data, data + s.size()};</div>
+<div class="line"><span class="lineno">  186</span>}</div>
+<div class="ttc" id="anamespaceirsol_1_1types_html_ae50d5e590e95d2c56f3ba94a4f07a1aa"><div class="ttname"><a href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a></div><div class="ttdeci">std::byte byte_t</div><div class="ttdoc">Alias for a single byte used in serialization or binary data handling.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/de3/types_8hpp_source.html#l00165">types.hpp:165</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

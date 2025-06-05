@@ -61,6 +61,7 @@ $(document).ready(function(){initNavTree('de/d66/opencv_8cpp.html','../../'); in
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d5/d2f/opencv_8hpp_source.html">irsol/opencv.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/d54/assert_8hpp_source.html">irsol/assert.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">irsol/camera/pixel_format.hpp</a>&quot;</code><br />
 <code>#include &lt;neoapi/neoapi.hpp&gt;</code><br />
 <code>#include &lt;opencv2/opencv.hpp&gt;</code><br />
 </div>
@@ -75,8 +76,9 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8d6e5acd61d6c330b3c491bd5ffeaeb7" id="r_a8d6e5acd61d6c330b3c491bd5ffeaeb7"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a8d6e5acd61d6c330b3c491bd5ffeaeb7">irsol::opencv::convertImageToMat</a> (const NeoAPI::Image &amp;image, <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e">ColorConversionMode</a> mode=<a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">ColorConversionMode::NONE</a>)</td></tr>
-<tr class="separator:a8d6e5acd61d6c330b3c491bd5ffeaeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8efdfe752e23362fb06b8c40a9747c8f" id="r_a8efdfe752e23362fb06b8c40a9747c8f"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a8efdfe752e23362fb06b8c40a9747c8f">irsol::opencv::convertNeoImageToCvMat</a> (const NeoAPI::Image &amp;image)</td></tr>
+<tr class="memdesc:a8efdfe752e23362fb06b8c40a9747c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a <code>NeoAPI::Image</code> (Mono12, non-packed) into an OpenCV <code>cv::Mat</code>.  <br /></td></tr>
+<tr class="separator:a8efdfe752e23362fb06b8c40a9747c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

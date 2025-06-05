@@ -7,7 +7,7 @@ var classirsol_1_1server_1_1frame__collector_1_1FrameCollector =
     [ "collectReadyClients", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a6230358201977df4fc63be18ed0719ac", null ],
     [ "deregisterClient", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a270f12597aa6816da16db8acf71a3bf1", null ],
     [ "deregisterClientNonThreadSafe", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a3a8dab8e90db2c693d5ddd528a3c851c", null ],
-    [ "grabImageData", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a3e8cfe244a5d2fb9dc01ad7900b41474", null ],
+    [ "grabImageData", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#adedefafaa21f9005668569913caaac0c", null ],
     [ "isBusy", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa1aad4f54c265bc5c2771ff9d79b6123", null ],
     [ "makeQueuePtr", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#af7b64373a4ab41a14089e39de5b40245", null ],
     [ "registerClient", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a82c78c2d8c59c360184a852b5b53f101", null ],

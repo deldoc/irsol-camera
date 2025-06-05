@@ -1,8 +1,10 @@
 var classirsol_1_1protocol_1_1Serializer =
 [
+    [ "SpecialBytes", "d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html", "d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes" ],
     [ "Serializer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a867db16121761b50004a3d3d4d0f1298", null ],
     [ "serialize", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7fe9f605fe5148e891c113073990a9e5", null ],
     [ "serialize", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a2d06cfbc0650cbc8f70e6ee15a50d7c0", null ],
+    [ "serializeBinaryDataAttribute", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a46bd15d36d8a7fce4e1c3f9c1fe09b64", null ],
     [ "serializeBinaryDataBuffer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a4afb488737f2c14522741e94d39bfbd2", null ],
     [ "serializeColorImageBinaryData", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7f46674fd767a374fbdc8f95decbc3f8", null ],
     [ "serializeError", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#acc4401759f7c11116cfc5fba17629b23", null ],

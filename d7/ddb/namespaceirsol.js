@@ -3,11 +3,7 @@ var namespaceirsol =
     [ "camera", "db/d23/namespaceirsol_1_1camera.html", "db/d23/namespaceirsol_1_1camera" ],
     [ "internal", "d4/d53/namespaceirsol_1_1internal.html", "d4/d53/namespaceirsol_1_1internal" ],
     [ "opencv", "d3/d22/namespaceirsol_1_1opencv.html", [
-      [ "ColorConversionMode", "d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e", [
-        [ "NONE", "d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693", null ],
-        [ "GRAY_TO_COLOR", "d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f", null ]
-      ] ],
-      [ "convertImageToMat", "d3/d22/namespaceirsol_1_1opencv.html#a8d6e5acd61d6c330b3c491bd5ffeaeb7", null ]
+      [ "convertNeoImageToCvMat", "d3/d22/namespaceirsol_1_1opencv.html#a8efdfe752e23362fb06b8c40a9747c8f", null ]
     ] ],
     [ "protocol", "db/dff/namespaceirsol_1_1protocol.html", "db/dff/namespaceirsol_1_1protocol" ],
     [ "server", "d1/d03/namespaceirsol_1_1server.html", "d1/d03/namespaceirsol_1_1server" ],

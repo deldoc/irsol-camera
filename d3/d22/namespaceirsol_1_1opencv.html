@@ -54,105 +54,83 @@ $(document).ready(function(){initNavTree('d3/d22/namespaceirsol_1_1opencv.html',
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">irsol::opencv Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a0a537439ae9779ac7b856050386a900e" id="r_a0a537439ae9779ac7b856050386a900e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e">ColorConversionMode</a> { <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">NONE</a> = 1
-, <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f">GRAY_TO_COLOR</a> = 2
- }</td></tr>
-<tr class="separator:a0a537439ae9779ac7b856050386a900e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8d6e5acd61d6c330b3c491bd5ffeaeb7" id="r_a8d6e5acd61d6c330b3c491bd5ffeaeb7"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a8d6e5acd61d6c330b3c491bd5ffeaeb7">convertImageToMat</a> (const NeoAPI::Image &amp;image, <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e">ColorConversionMode</a> mode=<a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">ColorConversionMode::NONE</a>)</td></tr>
-<tr class="separator:a8d6e5acd61d6c330b3c491bd5ffeaeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8efdfe752e23362fb06b8c40a9747c8f" id="r_a8efdfe752e23362fb06b8c40a9747c8f"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a8efdfe752e23362fb06b8c40a9747c8f">convertNeoImageToCvMat</a> (const NeoAPI::Image &amp;image)</td></tr>
+<tr class="memdesc:a8efdfe752e23362fb06b8c40a9747c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a <code>NeoAPI::Image</code> (Mono12, non-packed) into an OpenCV <code>cv::Mat</code>.  <br /></td></tr>
+<tr class="separator:a8efdfe752e23362fb06b8c40a9747c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a0a537439ae9779ac7b856050386a900e" name="a0a537439ae9779ac7b856050386a900e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a537439ae9779ac7b856050386a900e">&#9670;&#160;</a></span>ColorConversionMode</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e">irsol::opencv::ColorConversionMode</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693" name="a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f" name="a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f"></a>GRAY_TO_COLOR&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="../../d5/d2f/opencv_8hpp_source.html#l00011">11</a> of file <a class="el" href="../../d5/d2f/opencv_8hpp_source.html">opencv.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>{</div>
-<div class="line"><span class="lineno">   13</span>  <a class="code hl_enumvalue" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">NONE</a>          = 1,</div>
-<div class="line"><span class="lineno">   14</span>  <a class="code hl_enumvalue" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f">GRAY_TO_COLOR</a> = 2</div>
-<div class="line"><span class="lineno">   15</span>};</div>
-<div class="ttc" id="anamespaceirsol_1_1opencv_html_a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f"><div class="ttname"><a href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f">irsol::opencv::ColorConversionMode::GRAY_TO_COLOR</a></div><div class="ttdeci">@ GRAY_TO_COLOR</div></div>
-<div class="ttc" id="anamespaceirsol_1_1opencv_html_a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693"><div class="ttname"><a href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">irsol::opencv::ColorConversionMode::NONE</a></div><div class="ttdeci">@ NONE</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a8d6e5acd61d6c330b3c491bd5ffeaeb7" name="a8d6e5acd61d6c330b3c491bd5ffeaeb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d6e5acd61d6c330b3c491bd5ffeaeb7">&#9670;&#160;</a></span>convertImageToMat()</h2>
+<a id="a8efdfe752e23362fb06b8c40a9747c8f" name="a8efdfe752e23362fb06b8c40a9747c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8efdfe752e23362fb06b8c40a9747c8f">&#9670;&#160;</a></span>convertNeoImageToCvMat()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">cv::Mat irsol::opencv::convertImageToMat </td>
+          <td class="memname">cv::Mat irsol::opencv::convertNeoImageToCvMat </td>
           <td>(</td>
           <td class="paramtype">const NeoAPI::Image &amp;&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>image</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e">ColorConversionMode</a>&#160;</td>
-          <td class="paramname"><em>mode</em> = <code><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">ColorConversionMode::NONE</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/d66/opencv_8cpp_source.html#l00011">11</a> of file <a class="el" href="../../de/d66/opencv_8cpp_source.html">opencv.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>{</div>
-<div class="line"><span class="lineno">   13</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(image.GetImageData() != <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;Image data is null&quot;</span>);</div>
-<div class="line"><span class="lineno">   14</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
-<div class="line"><span class="lineno">   15</span>    image.GetWidth() &gt; 0 &amp;&amp; image.GetHeight() &gt; 0,</div>
-<div class="line"><span class="lineno">   16</span>    <span class="stringliteral">&quot;Invalid image dimensions: %lu x %lu&quot;</span>,</div>
-<div class="line"><span class="lineno">   17</span>    image.GetWidth(),</div>
-<div class="line"><span class="lineno">   18</span>    image.GetHeight());</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>  cv::Mat grayImage(image.GetHeight(), image.GetWidth(), CV_8UC1);</div>
-<div class="line"><span class="lineno">   21</span>  std::memcpy(grayImage.data, image.GetImageData(), image.GetSize());</div>
-<div class="line"><span class="lineno">   22</span>  <span class="keywordflow">if</span>(mode == ColorConversionMode::NONE) {</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> grayImage;</div>
-<div class="line"><span class="lineno">   24</span>  }</div>
-<div class="line"><span class="lineno">   25</span>  cv::Mat bgrImage;</div>
-<div class="line"><span class="lineno">   26</span>  cv::cvtColor(grayImage, bgrImage, cv::COLOR_GRAY2BGR);</div>
-<div class="line"><span class="lineno">   27</span>  <span class="keywordflow">return</span> bgrImage;</div>
-<div class="line"><span class="lineno">   28</span>}</div>
+<p>Converts a <code>NeoAPI::Image</code> (Mono12, non-packed) into an OpenCV <code>cv::Mat</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">image</td><td>The <code>NeoAPI::Image</code> to convert containing 12-bit grayscale pixel data. Must be in unpacked Mono12 format (2 bytes per pixel, little endian). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <code>cv::Mat</code> of type CV_16UC1 with pixel values in range [0, 65535] (pixel raw values from the NeoAPI::Image 12bit depth are rescaled, so that 0 maps to 0 and 2^12-1 (=4095) maps to 2^16-1 (=65535))</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function assumes the <code>NeoAPI::Image</code> is valid and has an appropriate pixel format compatible with OpenCV. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d66/opencv_8cpp_source.html#l00012">12</a> of file <a class="el" href="../../de/d66/opencv_8cpp_source.html">opencv.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>{</div>
+<div class="line"><span class="lineno">   14</span>  <span class="keyword">const</span> <span class="keywordtype">size_t</span> width     = image.GetWidth();</div>
+<div class="line"><span class="lineno">   15</span>  <span class="keyword">const</span> <span class="keywordtype">size_t</span> height    = image.GetHeight();</div>
+<div class="line"><span class="lineno">   16</span>  <span class="keyword">const</span> <span class="keywordtype">size_t</span> numPixels = width * height;</div>
+<div class="line"><span class="lineno">   17</span> </div>
+<div class="line"><span class="lineno">   18</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
+<div class="line"><span class="lineno">   19</span>    image.GetPixelFormat() == NeoAPI::NeoString(<span class="stringliteral">&quot;Mono12&quot;</span>),</div>
+<div class="line"><span class="lineno">   20</span>    <span class="stringliteral">&quot;Only &#39;Mono12&#39; pixel format are supported, got &#39;%s&#39;&quot;</span>,</div>
+<div class="line"><span class="lineno">   21</span>    image.GetPixelFormat().c_str());</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(image.GetImageData() != <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;Image data is null&quot;</span>);</div>
+<div class="line"><span class="lineno">   24</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(</div>
+<div class="line"><span class="lineno">   25</span>    image.GetSize() == numPixels * 2, <span class="stringliteral">&quot;Invalid image size for Mono12 unpacked format&quot;</span>);</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>  <span class="comment">// Raw image data as bytes</span></div>
+<div class="line"><span class="lineno">   28</span>  <span class="keyword">const</span> uint8_t* rawData = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t*<span class="keyword">&gt;</span>(image.GetImageData());</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>  <span class="comment">// Output Mat with 16-bit unsigned pixels</span></div>
+<div class="line"><span class="lineno">   31</span>  cv::Mat                                   output(height, width, CV_16UC1);</div>
+<div class="line"><span class="lineno">   32</span>  <a class="code hl_typedef" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html#a7260229207e07634affc7ad72d75dd6e">irsol::camera::Pixel&lt;16&gt;::representation</a>* outputPtr =</div>
+<div class="line"><span class="lineno">   33</span>    output.ptr&lt;<a class="code hl_typedef" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html#a7260229207e07634affc7ad72d75dd6e">irsol::camera::Pixel&lt;16&gt;::representation</a>&gt;();</div>
+<div class="line"><span class="lineno">   34</span>  <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; numPixels; ++i) {</div>
+<div class="line"><span class="lineno">   35</span>    <span class="comment">// Each pixel takes 2 bytes: LSB + MSB (little endian), we make sure to mask the top 4 bits,</span></div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">// even if the should already be 0</span></div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_typedef" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html#a7260229207e07634affc7ad72d75dd6e">irsol::camera::Pixel&lt;16&gt;::representation</a> <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a> =</div>
+<div class="line"><span class="lineno">   38</span>      (<span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html#a7260229207e07634affc7ad72d75dd6e">irsol::camera::Pixel&lt;16&gt;::representation</a><span class="keyword">&gt;</span>(rawData[2 * i]) |</div>
+<div class="line"><span class="lineno">   39</span>       (<span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html#a7260229207e07634affc7ad72d75dd6e">irsol::camera::Pixel&lt;16&gt;::representation</a><span class="keyword">&gt;</span>(rawData[2 * i + 1]) &lt;&lt; 8)) &amp;</div>
+<div class="line"><span class="lineno">   40</span>      0x0FFF;</div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">// rescale to map [0, 4095] → [0, 65535] from the 12bit depth to the 16bit depth representation</span></div>
+<div class="line"><span class="lineno">   42</span>    outputPtr[i] = <a class="code hl_function" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html#ae95b16233616b773c1b43c983d60a0e9">irsol::camera::PixelConversion&lt;12, 16&gt;::scale</a>(<a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>);</div>
+<div class="line"><span class="lineno">   43</span>  }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>  <span class="keywordflow">return</span> output;</div>
+<div class="line"><span class="lineno">   46</span>}</div>
 <div class="ttc" id="agroup__Assertion_html_gae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdoc">Error-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00134">assert.hpp:134</a></div></div>
+<div class="ttc" id="astructirsol_1_1camera_1_1PixelConversion_html_ae95b16233616b773c1b43c983d60a0e9"><div class="ttname"><a href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html#ae95b16233616b773c1b43c983d60a0e9">irsol::camera::PixelConversion::scale</a></div><div class="ttdeci">static Pixel&lt; TargetBitDepth &gt;::representation scale(typename Pixel&lt; SourceBitDepth &gt;::representation value)</div><div class="ttdoc">Scales a pixel value from source bit depth to target bit depth.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d8d/pixel__format_8hpp_source.html#l00134">pixel_format.hpp:134</a></div></div>
+<div class="ttc" id="astructirsol_1_1camera_1_1Pixel_html_a7260229207e07634affc7ad72d75dd6e"><div class="ttname"><a href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html#a7260229207e07634affc7ad72d75dd6e">irsol::camera::Pixel::representation</a></div><div class="ttdeci">typename PixelRepresentation&lt; BitDepth &gt;::type representation</div><div class="ttdoc">The integral type used to represent pixel values at this bit depth.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d8d/pixel__format_8hpp_source.html#l00077">pixel_format.hpp:77</a></div></div>
+<div class="ttc" id="atest__assignment_8cpp_html_a442505a4bcabcf16de33fdf0b96c02ce"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a></div><div class="ttdeci">auto value</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d3f/test__assignment_8cpp_source.html#l00031">test_assignment.cpp:31</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -55,11 +55,13 @@ $(document).ready(function(){initNavTree('d5/d2f/opencv_8hpp.html','../../'); in
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">opencv.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>OpenCV integration utilities for NeoAPI image handling.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;neoapi/neoapi.hpp&gt;</code><br />
 <code>#include &lt;opencv2/opencv.hpp&gt;</code><br />
 </div>
@@ -69,22 +71,24 @@ $(document).ready(function(){initNavTree('d5/d2f/opencv_8hpp.html','../../'); in
 Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d2/d05/namespaceopencv" id="r_d2/d05/namespaceopencv"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d05/namespaceopencv.html">opencv</a></td></tr>
+<tr class="memdesc:d2/d05/namespaceopencv"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides utilities for interoperability between NeoAPI and OpenCV. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d3/d22/namespaceirsol_1_1opencv" id="r_d3/d22/namespaceirsol_1_1opencv"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html">irsol::opencv</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a0a537439ae9779ac7b856050386a900e" id="r_a0a537439ae9779ac7b856050386a900e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e">irsol::opencv::ColorConversionMode</a> { <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">irsol::opencv::NONE</a> = 1
-, <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900ea45cff5e2085d1fd33c8c62c5bfbe913f">irsol::opencv::GRAY_TO_COLOR</a> = 2
- }</td></tr>
-<tr class="separator:a0a537439ae9779ac7b856050386a900e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8d6e5acd61d6c330b3c491bd5ffeaeb7" id="r_a8d6e5acd61d6c330b3c491bd5ffeaeb7"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a8d6e5acd61d6c330b3c491bd5ffeaeb7">irsol::opencv::convertImageToMat</a> (const NeoAPI::Image &amp;image, <a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900e">ColorConversionMode</a> mode=<a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a0a537439ae9779ac7b856050386a900eab50339a10e1de285ac99d4c3990b8693">ColorConversionMode::NONE</a>)</td></tr>
-<tr class="separator:a8d6e5acd61d6c330b3c491bd5ffeaeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8efdfe752e23362fb06b8c40a9747c8f" id="r_a8efdfe752e23362fb06b8c40a9747c8f"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d22/namespaceirsol_1_1opencv.html#a8efdfe752e23362fb06b8c40a9747c8f">irsol::opencv::convertNeoImageToCvMat</a> (const NeoAPI::Image &amp;image)</td></tr>
+<tr class="memdesc:a8efdfe752e23362fb06b8c40a9747c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a <code>NeoAPI::Image</code> (Mono12, non-packed) into an OpenCV <code>cv::Mat</code>.  <br /></td></tr>
+<tr class="separator:a8efdfe752e23362fb06b8c40a9747c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>OpenCV integration utilities for NeoAPI image handling. </p>
+<p>This header defines functions and types for converting Baumer NeoAPI image objects into OpenCV <code>cv::Mat</code> objects. These utilities are only available if OpenCV is detected by CMake at build time. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d5/d2f/opencv_8hpp_source.html">opencv.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

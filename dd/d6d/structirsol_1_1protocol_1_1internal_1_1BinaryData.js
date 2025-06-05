@@ -1,17 +1,18 @@
 var structirsol_1_1protocol_1_1internal_1_1BinaryData =
 [
-    [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0451e6edbfe289e09a7ac9eb1089283c", null ],
-    [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a39bac72031cc556eee132e8a94cfa14f", null ],
-    [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a55699fbb3c3d47af537e3047138868c3", null ],
-    [ "IRSOL_STATIC_ASSERT", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#af195fd6445f4ae0324486186037a85d0", null ],
-    [ "operator=", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0ce7eac3556d3256d7b5aecb0de9dd8d", null ],
-    [ "operator=", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad5823707f9ae2184baa45c5c9901c363", null ],
-    [ "toString", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a30390b71061b0c8e2c51a8df8dd942ab", null ],
-    [ "attributes", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a27e70a9bb695168deb2106a46e14fe82", null ],
-    [ "data", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad189e0317f8937ca93181c9a6c528bf9", null ],
-    [ "dim", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac29e34e342564a49a89b3d55966715bc", null ],
-    [ "numBytes", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a9ffb4cebd9bf40918454abd6233d33c1", null ],
-    [ "numElements", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#af155702ae1849ba35726097cd5d3bfb0", null ],
-    [ "shape", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a0010c667b7f7b0e30f07bc52480c83e0", null ],
-    [ "value_t_bytes", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a2303ed783abe569323d95bd3c4b9b020", null ]
+    [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a76471f04f725fb83e2e2b4ff66935889", null ],
+    [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#aad34eaad5f29c2752b5e6c8a0bd78c71", null ],
+    [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac0a6a91903bb9bf98ddf80e456e88177", null ],
+    [ "IRSOL_STATIC_ASSERT", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad981bd3b5c05c441e12a08a28285c670", null ],
+    [ "IRSOL_STATIC_ASSERT", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#aaf7d6e742d60b2785202bce12dd65b23", null ],
+    [ "operator=", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a88571b37f3ab5dcbd18bf837c18b48db", null ],
+    [ "operator=", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a2f3d09c5118568ffc24b52d87b40670f", null ],
+    [ "toString", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a65935a95e5fc19d0de34f1e3cceb36d6", null ],
+    [ "attributes", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a015f627e0747efa51f60263cd79bebea", null ],
+    [ "BYTES_PER_ELEMENT", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a5311eb0a6e75ee184a0077784f719954", null ],
+    [ "data", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0", null ],
+    [ "DIM", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ab0411f41f659ac20f5b7ccd8f975e4b6", null ],
+    [ "numBytes", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ae303d8a90292cdb9e09ee0e0fa05c79b", null ],
+    [ "numElements", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a83763113b9f2129088d458020fad6f41", null ],
+    [ "shape", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67", null ]
 ];
