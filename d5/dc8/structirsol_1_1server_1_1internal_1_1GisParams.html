@@ -56,11 +56,11 @@ $(document).ready(function(){initNavTree('d5/dc8/structirsol_1_1server_1_1intern
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../df/d8d/structirsol_1_1server_1_1internal_1_1GisParams-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::internal::GisParams Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::internal::GisParams Struct Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Per client parameters for Gis command.  
+<p>Per-client configuration parameters for the GIS (GetImageSequence) command.  
  <a href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>&gt;</code></p>
@@ -68,16 +68,20 @@ $(document).ready(function(){initNavTree('d5/dc8/structirsol_1_1server_1_1intern
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a39f65798d18dbe3d046ee52be426e136" id="r_a39f65798d18dbe3d046ee52be426e136"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#a39f65798d18dbe3d046ee52be426e136">inputSequenceLength</a> {16}</td></tr>
+<tr class="memdesc:a39f65798d18dbe3d046ee52be426e136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of frames the client expects in a sequence.  <br /></td></tr>
 <tr class="separator:a39f65798d18dbe3d046ee52be426e136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaf8398671013b9d844765de76373654" id="r_aaaf8398671013b9d844765de76373654"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#aaaf8398671013b9d844765de76373654">inputSequenceNumber</a> {0}</td></tr>
+<tr class="memdesc:aaaf8398671013b9d844765de76373654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current frame index in the sequence (automatically incremented).  <br /></td></tr>
 <tr class="separator:aaaf8398671013b9d844765de76373654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a550492a3e3b1e5f403e71a68f1bb4d5c" id="r_a550492a3e3b1e5f403e71a68f1bb4d5c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#a550492a3e3b1e5f403e71a68f1bb4d5c">frameRate</a> {4.0}</td></tr>
+<tr class="memdesc:a550492a3e3b1e5f403e71a68f1bb4d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desired frame rate for this client's stream.  <br /></td></tr>
 <tr class="separator:a550492a3e3b1e5f403e71a68f1bb4d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Per client parameters for Gis command. </p>
+<div class="textblock"><p>Per-client configuration parameters for the GIS (GetImageSequence) command. </p>
+<p>These values determine how many frames are sent, how they are sequenced, and at what frame rate. This structure is unique to each connected client. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00019">19</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00043">43</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a550492a3e3b1e5f403e71a68f1bb4d5c" name="a550492a3e3b1e5f403e71a68f1bb4d5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a550492a3e3b1e5f403e71a68f1bb4d5c">&#9670;&#160;</a></span>frameRate</h2>
@@ -91,8 +95,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00023">23</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>{4.0};</div>
+<p>Desired frame rate for this client's stream. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00052">52</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{4.0};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -108,8 +114,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00021">21</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>{16};</div>
+<p>Number of frames the client expects in a sequence. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00046">46</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{16};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -125,8 +133,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00022">22</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>{0};</div>
+<p>Current frame index in the sequence (automatically incremented). </p>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00049">49</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{0};</div>
 </div><!-- fragment -->
 </div>
 </div>

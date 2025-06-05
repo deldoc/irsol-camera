@@ -58,11 +58,11 @@ $(document).ready(function(){initNavTree('d2/d23/classirsol_1_1server_1_1ClientS
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../dd/d20/classirsol_1_1server_1_1ClientSession-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::ClientSession Class Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::ClientSession Class Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Represents a single connected client session in the server.  
+<p>Represents a single connected client session.  
  <a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>&gt;</code></p>
@@ -76,84 +76,86 @@ Inheritance diagram for irsol::server::ClientSession:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5d0151d9b765dda1d102f102dabe7ffb" id="r_a5d0151d9b765dda1d102f102dabe7ffb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a5d0151d9b765dda1d102f102dabe7ffb">ClientSession</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;<a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a3446e6a9a02cf8ffae35384da9df2ea7">id</a>, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&amp;sock, <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">App</a> &amp;<a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9b50294f90b43a0568958ded25e9e5c1">app</a>)</td></tr>
-<tr class="memdesc:a5d0151d9b765dda1d102f102dabe7ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session in the server.">ClientSession</a>.  <br /></td></tr>
+<tr class="memdesc:a5d0151d9b765dda1d102f102dabe7ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session.">ClientSession</a>.  <br /></td></tr>
 <tr class="separator:a5d0151d9b765dda1d102f102dabe7ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f28e87d07b922c5e29ca03924edd359" id="r_a1f28e87d07b922c5e29ca03924edd359"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a1f28e87d07b922c5e29ca03924edd359">run</a> ()</td></tr>
-<tr class="memdesc:a1f28e87d07b922c5e29ca03924edd359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point to start processing this client's lifecycle.  <br /></td></tr>
+<tr class="memdesc:a1f28e87d07b922c5e29ca03924edd359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the client's session logic.  <br /></td></tr>
 <tr class="separator:a1f28e87d07b922c5e29ca03924edd359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64c4423395f0f5a7606fd59c8f1d7f5b" id="r_a64c4423395f0f5a7606fd59c8f1d7f5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a64c4423395f0f5a7606fd59c8f1d7f5b">handleOutMessages</a> (std::vector&lt; <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">protocol::OutMessage</a> &gt; &amp;&amp;messages)</td></tr>
-<tr class="memdesc:a64c4423395f0f5a7606fd59c8f1d7f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle multiple message to send to the client.  <br /></td></tr>
+<tr class="memdesc:a64c4423395f0f5a7606fd59c8f1d7f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles multiple outbound messages to the client.  <br /></td></tr>
 <tr class="separator:a64c4423395f0f5a7606fd59c8f1d7f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a901942841e8bc23098736a7d5f31b627" id="r_a901942841e8bc23098736a7d5f31b627"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a901942841e8bc23098736a7d5f31b627">handleOutMessage</a> (<a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">protocol::OutMessage</a> &amp;&amp;message)</td></tr>
-<tr class="memdesc:a901942841e8bc23098736a7d5f31b627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a message to send to the client.  <br /></td></tr>
+<tr class="memdesc:a901942841e8bc23098736a7d5f31b627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles a single outbound message to the client.  <br /></td></tr>
 <tr class="separator:a901942841e8bc23098736a7d5f31b627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adff72e9cd2c34cff618b9a174ccd1e85" id="r_adff72e9cd2c34cff618b9a174ccd1e85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#adff72e9cd2c34cff618b9a174ccd1e85">handleSerializedMessage</a> (const <a class="el" href="../../d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html">protocol::internal::SerializedMessage</a> &amp;serializedMessage)</td></tr>
-<tr class="memdesc:adff72e9cd2c34cff618b9a174ccd1e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle an already serialized message and send it to the client.  <br /></td></tr>
+<tr class="memdesc:adff72e9cd2c34cff618b9a174ccd1e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an already-serialized message to the client.  <br /></td></tr>
 <tr class="separator:adff72e9cd2c34cff618b9a174ccd1e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b50294f90b43a0568958ded25e9e5c1" id="r_a9b50294f90b43a0568958ded25e9e5c1"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">App</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9b50294f90b43a0568958ded25e9e5c1">app</a> () const</td></tr>
-<tr class="memdesc:a9b50294f90b43a0568958ded25e9e5c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor for the immutable <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> reference.  <br /></td></tr>
+<tr class="memdesc:a9b50294f90b43a0568958ded25e9e5c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a const reference to the owning <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> instance.  <br /></td></tr>
 <tr class="separator:a9b50294f90b43a0568958ded25e9e5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8183372b39b0743bc4a63266a67075ae" id="r_a8183372b39b0743bc4a63266a67075ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">App</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a8183372b39b0743bc4a63266a67075ae">app</a> ()</td></tr>
-<tr class="memdesc:a8183372b39b0743bc4a63266a67075ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor for the mutable <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> reference.  <br /></td></tr>
+<tr class="memdesc:a8183372b39b0743bc4a63266a67075ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a mutable reference to the owning <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> instance.  <br /></td></tr>
 <tr class="separator:a8183372b39b0743bc4a63266a67075ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3446e6a9a02cf8ffae35384da9df2ea7" id="r_a3446e6a9a02cf8ffae35384da9df2ea7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a3446e6a9a02cf8ffae35384da9df2ea7">id</a> () const</td></tr>
-<tr class="memdesc:a3446e6a9a02cf8ffae35384da9df2ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unique client identifier.  <br /></td></tr>
+<tr class="memdesc:a3446e6a9a02cf8ffae35384da9df2ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the unique client identifier.  <br /></td></tr>
 <tr class="separator:a3446e6a9a02cf8ffae35384da9df2ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30ef1e04c1c6f44c067c400db4c20845" id="r_a30ef1e04c1c6f44c067c400db4c20845"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a30ef1e04c1c6f44c067c400db4c20845">socket</a> () const</td></tr>
-<tr class="memdesc:a30ef1e04c1c6f44c067c400db4c20845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immutable access to the client's socket.  <br /></td></tr>
+<tr class="memdesc:a30ef1e04c1c6f44c067c400db4c20845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a const reference to the client socket.  <br /></td></tr>
 <tr class="separator:a30ef1e04c1c6f44c067c400db4c20845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd0385cf5eb84bc8c9a238ce3e4052bf" id="r_abd0385cf5eb84bc8c9a238ce3e4052bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#abd0385cf5eb84bc8c9a238ce3e4052bf">socket</a> ()</td></tr>
-<tr class="memdesc:abd0385cf5eb84bc8c9a238ce3e4052bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutable access to the client's socket.  <br /></td></tr>
+<tr class="memdesc:abd0385cf5eb84bc8c9a238ce3e4052bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a mutable reference to the client socket.  <br /></td></tr>
 <tr class="separator:abd0385cf5eb84bc8c9a238ce3e4052bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a726fd77e112bdca539e38fdae66a63a5" id="r_a726fd77e112bdca539e38fdae66a63a5"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a726fd77e112bdca539e38fdae66a63a5">socketMutex</a> ()</td></tr>
-<tr class="memdesc:a726fd77e112bdca539e38fdae66a63a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the socket mutex.  <br /></td></tr>
+<tr class="memdesc:a726fd77e112bdca539e38fdae66a63a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the socket mutex used for synchronization.  <br /></td></tr>
 <tr class="separator:a726fd77e112bdca539e38fdae66a63a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8ea851cbbfb2a3d6de19261751051d0" id="r_ac8ea851cbbfb2a3d6de19261751051d0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html">irsol::server::internal::UserSessionData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#ac8ea851cbbfb2a3d6de19261751051d0">userData</a> () const</td></tr>
-<tr class="memdesc:ac8ea851cbbfb2a3d6de19261751051d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immutable access to this session's UserSessionData.  <br /></td></tr>
+<tr class="memdesc:ac8ea851cbbfb2a3d6de19261751051d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a const reference to client-specific session state.  <br /></td></tr>
 <tr class="separator:ac8ea851cbbfb2a3d6de19261751051d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe2d92360ca109a1c504a21ab73c884f" id="r_abe2d92360ca109a1c504a21ab73c884f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html">irsol::server::internal::UserSessionData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#abe2d92360ca109a1c504a21ab73c884f">userData</a> ()</td></tr>
-<tr class="memdesc:abe2d92360ca109a1c504a21ab73c884f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutable access to this session's UserSessionData.  <br /></td></tr>
+<tr class="memdesc:abe2d92360ca109a1c504a21ab73c884f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a mutable reference to client-specific session state.  <br /></td></tr>
 <tr class="separator:abe2d92360ca109a1c504a21ab73c884f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a749dc38a4f40bc4eb7110da1aed4c52e" id="r_a749dc38a4f40bc4eb7110da1aed4c52e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a749dc38a4f40bc4eb7110da1aed4c52e">processMessageBuffer</a> (std::string &amp;messageBuffer)</td></tr>
-<tr class="memdesc:a749dc38a4f40bc4eb7110da1aed4c52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process accumulated text commands in the message buffer.  <br /></td></tr>
-<tr class="separator:a749dc38a4f40bc4eb7110da1aed4c52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f682a7b706562193d595a3ec2fb3cce" id="r_a6f682a7b706562193d595a3ec2fb3cce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a6f682a7b706562193d595a3ec2fb3cce">processRawMessage</a> (const std::string &amp;rawMessage)</td></tr>
-<tr class="memdesc:a6f682a7b706562193d595a3ec2fb3cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a single complete raw message from the client.  <br /></td></tr>
-<tr class="separator:a6f682a7b706562193d595a3ec2fb3cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d233cfe0241e35751dfb6899caab548" id="r_a7d233cfe0241e35751dfb6899caab548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7d233cfe0241e35751dfb6899caab548">processInMessageBuffer</a> (std::string &amp;messageBuffer)</td></tr>
+<tr class="memdesc:a7d233cfe0241e35751dfb6899caab548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes accumulated raw data into complete protocol messages.  <br /></td></tr>
+<tr class="separator:a7d233cfe0241e35751dfb6899caab548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8fa0412ad04d6fdbe74d6f557546629" id="r_aa8fa0412ad04d6fdbe74d6f557546629"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aa8fa0412ad04d6fdbe74d6f557546629">processInRawMessage</a> (const std::string &amp;rawMessage)</td></tr>
+<tr class="memdesc:aa8fa0412ad04d6fdbe74d6f557546629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and processes a complete incoming raw message.  <br /></td></tr>
+<tr class="separator:aa8fa0412ad04d6fdbe74d6f557546629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef5811ff01e4382caa5c97cf4ab17690" id="r_aef5811ff01e4382caa5c97cf4ab17690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690">send</a> (const std::string &amp;message)</td></tr>
-<tr class="memdesc:aef5811ff01e4382caa5c97cf4ab17690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a text message to the client.  <br /></td></tr>
+<tr class="memdesc:aef5811ff01e4382caa5c97cf4ab17690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a text message over the socket to the client.  <br /></td></tr>
 <tr class="separator:aef5811ff01e4382caa5c97cf4ab17690"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfe5e5e9947f2565c7a7fb39e292928c" id="r_adfe5e5e9947f2565c7a7fb39e292928c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#adfe5e5e9947f2565c7a7fb39e292928c">send</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a> *const data, size_t size)</td></tr>
-<tr class="memdesc:adfe5e5e9947f2565c7a7fb39e292928c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send raw binary data to the client.  <br /></td></tr>
+<tr class="memdesc:adfe5e5e9947f2565c7a7fb39e292928c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends binary data over the socket.  <br /></td></tr>
 <tr class="separator:adfe5e5e9947f2565c7a7fb39e292928c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a7dfee4efe67df3e6796ac3fe2fbf159f" id="r_a7dfee4efe67df3e6796ac3fe2fbf159f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">m_id</a></td></tr>
-<tr class="memdesc:a7dfee4efe67df3e6796ac3fe2fbf159f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique identifier for this client session.  <br /></td></tr>
+<tr class="memdesc:a7dfee4efe67df3e6796ac3fe2fbf159f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique ID identifying this session (maps to client_id_t).  <br /></td></tr>
 <tr class="separator:a7dfee4efe67df3e6796ac3fe2fbf159f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60c990380c85389bdb7df62930a68320" id="r_a60c990380c85389bdb7df62930a68320"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">m_socket</a></td></tr>
-<tr class="memdesc:a60c990380c85389bdb7df62930a68320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the socket and mutex for this session.  <br /></td></tr>
+<tr class="memdesc:a60c990380c85389bdb7df62930a68320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Socket used for communication with the client.  <br /></td></tr>
 <tr class="separator:a60c990380c85389bdb7df62930a68320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9944829b5c1fcf1f93b1d283ab26bded" id="r_a9944829b5c1fcf1f93b1d283ab26bded"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9944829b5c1fcf1f93b1d283ab26bded">m_socketMutex</a> {}</td></tr>
-<tr class="memdesc:a9944829b5c1fcf1f93b1d283ab26bded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for managing access to the session's data.  <br /></td></tr>
+<tr class="memdesc:a9944829b5c1fcf1f93b1d283ab26bded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex to synchronize socket access from multiple threads.  <br /></td></tr>
 <tr class="separator:a9944829b5c1fcf1f93b1d283ab26bded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb4acc76d6b3c329e51e266714b80775" id="r_aeb4acc76d6b3c329e51e266714b80775"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html">irsol::server::internal::UserSessionData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775">m_sessionData</a> {}</td></tr>
-<tr class="memdesc:aeb4acc76d6b3c329e51e266714b80775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the socket, mutex, and frame streaming parameters.  <br /></td></tr>
+<tr class="memdesc:aeb4acc76d6b3c329e51e266714b80775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Session-specific data (e.g., stream rate, frame subscriptions).  <br /></td></tr>
 <tr class="separator:aeb4acc76d6b3c329e51e266714b80775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9eea3b21f1e7419369f79416c36b9696" id="r_a9eea3b21f1e7419369f79416c36b9696"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">App</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">m_app</a></td></tr>
-<tr class="memdesc:a9eea3b21f1e7419369f79416c36b9696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference back to the owning server application for callbacks and state.  <br /></td></tr>
+<tr class="memdesc:a9eea3b21f1e7419369f79416c36b9696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the central <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> instance for server-wide coordination.  <br /></td></tr>
 <tr class="separator:a9eea3b21f1e7419369f79416c36b9696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a single connected client session in the server. </p>
-<p>A <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session in the server.">ClientSession</a> instance encapsulates all state and operations related to one client's connection: reading incoming messages, sending data, and participating in frame streaming. It holds the client's unique identifier, the socket and session-specific data in UserSessionData, and a reference to the central <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> for routing messages and integrating with server-wide logic.</p>
-<p>std::enable_shared_from_this is used to allow safe creation of std::shared_ptr instances referring to *this. This enables passing shared ownership of the <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session in the server.">ClientSession</a> into asynchronous callbacks and threads without risking the object being destroyed while in use. </p>
+<div class="textblock"><p>Represents a single connected client session. </p>
+<p>Each instance of <code><a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session.">ClientSession</a></code> corresponds to <b>exactly one connected client</b>. It owns the socket connection, manages message transmission and reception, and encapsulates session-specific state (e.g., frame stream preferences).</p>
+<p>The class is responsible for all communication with the client: reading inbound messages from the socket, parsing and dispatching them, and sending outbound messages. All session-specific state is stored here, including a <a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html">irsol::server::internal::UserSessionData</a> structure.</p>
+<p>In addition, the session holds a reference to the central <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> instance, which enables it to interact with the global server context (e.g., for broadcasting).</p>
+<p>The class derives from <code>std::enable_shared_from_this</code> to allow safe creation of <code>std::shared_ptr</code> instances to itself. This is required for asynchronous operations and thread-safe lifetime management. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5d0151d9b765dda1d102f102dabe7ffb" name="a5d0151d9b765dda1d102f102dabe7ffb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d0151d9b765dda1d102f102dabe7ffb">&#9670;&#160;</a></span>ClientSession()</h2>
@@ -187,12 +189,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session in the server.">ClientSession</a>. </p>
+<p>Constructs a new <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session.">ClientSession</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>A unique identifier for this client (e.g., UUID or socket-based ID). </td></tr>
-    <tr><td class="paramname">sock</td><td>The TCP socket that is already connected to the client. </td></tr>
-    <tr><td class="paramname">app</td><td>Reference to the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> for which this session is associated. </td></tr>
+    <tr><td class="paramname">id</td><td>Unique client identifier (e.g., UUID or socket-derived). </td></tr>
+    <tr><td class="paramname">sock</td><td>Already-established TCP socket to the client. </td></tr>
+    <tr><td class="paramname">app</td><td>Reference to the server application instance. </td></tr>
   </table>
   </dd>
 </dl>
@@ -200,10 +202,10 @@ Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d9/d1a/session_8cpp_source.html#l00016">16</a> of file <a class="el" href="../../d9/d1a/session_8cpp_source.html">session.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   17</span>  : <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">m_id</a>(<span class="keywordtype">id</span>), <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">m_socket</a>(std::move(sock)), <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">m_app</a>(<a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9b50294f90b43a0568958ded25e9e5c1">app</a>)</div>
 <div class="line"><span class="lineno">   18</span>{}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a60c990380c85389bdb7df62930a68320"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">irsol::server::ClientSession::m_socket</a></div><div class="ttdeci">irsol::types::socket_t m_socket</div><div class="ttdoc">Holds the socket and mutex for this session.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00159">session.hpp:159</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a7dfee4efe67df3e6796ac3fe2fbf159f"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">irsol::server::ClientSession::m_id</a></div><div class="ttdeci">irsol::types::client_id_t m_id</div><div class="ttdoc">Unique identifier for this client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00156">session.hpp:156</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a9b50294f90b43a0568958ded25e9e5c1"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9b50294f90b43a0568958ded25e9e5c1">irsol::server::ClientSession::app</a></div><div class="ttdeci">const App &amp; app() const</div><div class="ttdoc">Accessor for the immutable App reference.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00074">session.hpp:74</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a9eea3b21f1e7419369f79416c36b9696"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">irsol::server::ClientSession::m_app</a></div><div class="ttdeci">App &amp; m_app</div><div class="ttdoc">Reference back to the owning server application for callbacks and state.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00168">session.hpp:168</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a60c990380c85389bdb7df62930a68320"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">irsol::server::ClientSession::m_socket</a></div><div class="ttdeci">irsol::types::socket_t m_socket</div><div class="ttdoc">Socket used for communication with the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00202">session.hpp:202</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a7dfee4efe67df3e6796ac3fe2fbf159f"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">irsol::server::ClientSession::m_id</a></div><div class="ttdeci">irsol::types::client_id_t m_id</div><div class="ttdoc">Unique ID identifying this session (maps to client_id_t).</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00199">session.hpp:199</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a9b50294f90b43a0568958ded25e9e5c1"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9b50294f90b43a0568958ded25e9e5c1">irsol::server::ClientSession::app</a></div><div class="ttdeci">const App &amp; app() const</div><div class="ttdoc">Returns a const reference to the owning App instance.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00108">session.hpp:108</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a9eea3b21f1e7419369f79416c36b9696"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">irsol::server::ClientSession::m_app</a></div><div class="ttdeci">App &amp; m_app</div><div class="ttdoc">Reference to the central App instance for server-wide coordination.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00211">session.hpp:211</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -231,12 +233,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Accessor for the mutable <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> reference. </p>
+<p>Returns a mutable reference to the owning <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00079">79</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>  {</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">m_app</a>;</div>
-<div class="line"><span class="lineno">   82</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00114">114</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>  {</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">m_app</a>;</div>
+<div class="line"><span class="lineno">  117</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -263,12 +265,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Accessor for the immutable <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> reference. </p>
+<p>Returns a const reference to the owning <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00074">74</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>  {</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">m_app</a>;</div>
-<div class="line"><span class="lineno">   77</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00108">108</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>  {</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696">m_app</a>;</div>
+<div class="line"><span class="lineno">  111</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -288,8 +290,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Handle a message to send to the client. </p>
-<dl class="section note"><dt>Note</dt><dd>This method is not thread safe. It's the user's responsibility to ensure the session </dd></dl>
+<p>Handles a single outbound message to the client. </p>
+<p>Serializes and sends one message through the socket.</p>
+<dl class="section note"><dt>Note</dt><dd>This method is not thread-safe; users must ensure mutual exclusion externally.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html" title="Serializes outgoing protocol messages and primitive values.">irsol::protocol::Serializer</a> </dd>
+<dd>
+<a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690" title="Sends a text message over the socket to the client.">ClientSession::send</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message to transmit. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d1a/session_8cpp_source.html#l00077">77</a> of file <a class="el" href="../../d9/d1a/session_8cpp_source.html">session.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
@@ -300,7 +312,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   83</span>  <a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#adff72e9cd2c34cff618b9a174ccd1e85">handleSerializedMessage</a>(serializedMessage);</div>
 <div class="line"><span class="lineno">   84</span>}</div>
 <div class="ttc" id="aclassirsol_1_1protocol_1_1Serializer_html_a7fe9f605fe5148e891c113073990a9e5"><div class="ttname"><a href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7fe9f605fe5148e891c113073990a9e5">irsol::protocol::Serializer::serialize</a></div><div class="ttdeci">static internal::SerializedMessage serialize(OutMessage &amp;&amp;msg)</div><div class="ttdoc">Serialize an irsol::protocol::OutMessage variant into a serialized protocol message.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d74/serializer_8cpp_source.html#l00013">serializer.cpp:13</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_adff72e9cd2c34cff618b9a174ccd1e85"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#adff72e9cd2c34cff618b9a174ccd1e85">irsol::server::ClientSession::handleSerializedMessage</a></div><div class="ttdeci">void handleSerializedMessage(const protocol::internal::SerializedMessage &amp;serializedMessage)</div><div class="ttdoc">Handle an already serialized message and send it to the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00087">session.cpp:87</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_adff72e9cd2c34cff618b9a174ccd1e85"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#adff72e9cd2c34cff618b9a174ccd1e85">irsol::server::ClientSession::handleSerializedMessage</a></div><div class="ttdeci">void handleSerializedMessage(const protocol::internal::SerializedMessage &amp;serializedMessage)</div><div class="ttdoc">Sends an already-serialized message to the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00087">session.cpp:87</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga57d5ed6ca38213a5cbb46950119a5f68"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_DEBUG(name,...)</div><div class="ttdoc">Logs a debug-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00174">logging.hpp:174</a></div></div>
 <div class="ttc" id="agroup__Protocol_html_gab7845b7ab1de991c2ee080dc19607f18"><div class="ttname"><a href="../../de/dca/group__Protocol.html#gab7845b7ab1de991c2ee080dc19607f18">irsol::protocol::toString</a></div><div class="ttdeci">std::string toString(const InMessage &amp;msg)</div><div class="ttdoc">Converts an incoming message variant to a human-readable string.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d87/variants_8cpp_source.html#l00019">variants.cpp:19</a></div></div>
 </div><!-- fragment -->
@@ -322,8 +334,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Handle multiple message to send to the client. </p>
-<dl class="section note"><dt>Note</dt><dd>This method is not thread safe. It's the user's responsibility to ensure the session </dd></dl>
+<p>Handles multiple outbound messages to the client. </p>
+<p>Serializes and sends a vector of outbound messages through the socket.</p>
+<dl class="section note"><dt>Note</dt><dd>This method is not thread-safe; users must ensure mutual exclusion externally.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html" title="Serializes outgoing protocol messages and primitive values.">irsol::protocol::Serializer</a> </dd>
+<dd>
+<a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690" title="Sends a text message over the socket to the client.">ClientSession::send</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messages</td><td>The list of messages to transmit. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d1a/session_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../d9/d1a/session_8cpp_source.html">session.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
@@ -332,7 +354,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   72</span>    <a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a901942841e8bc23098736a7d5f31b627">handleOutMessage</a>(std::move(message));</div>
 <div class="line"><span class="lineno">   73</span>  }</div>
 <div class="line"><span class="lineno">   74</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a901942841e8bc23098736a7d5f31b627"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a901942841e8bc23098736a7d5f31b627">irsol::server::ClientSession::handleOutMessage</a></div><div class="ttdeci">void handleOutMessage(protocol::OutMessage &amp;&amp;message)</div><div class="ttdoc">Handle a message to send to the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00077">session.cpp:77</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a901942841e8bc23098736a7d5f31b627"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a901942841e8bc23098736a7d5f31b627">irsol::server::ClientSession::handleOutMessage</a></div><div class="ttdeci">void handleOutMessage(protocol::OutMessage &amp;&amp;message)</div><div class="ttdoc">Handles a single outbound message to the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00077">session.cpp:77</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -352,8 +374,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Handle an already serialized message and send it to the client. </p>
-<dl class="section note"><dt>Note</dt><dd>This method is not thread safe. It's the user's responsibility to ensure the session </dd></dl>
+<p>Sends an already-serialized message to the client. </p>
+<dl class="section note"><dt>Note</dt><dd>This method is not thread-safe; users must ensure mutual exclusion externally.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html" title="Serializes outgoing protocol messages and primitive values.">irsol::protocol::Serializer</a> </dd>
+<dd>
+<a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690" title="Sends a text message over the socket to the client.">ClientSession::send</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serializedMessage</td><td>Message that is already serialized to text or binary form. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d1a/session_8cpp_source.html#l00087">87</a> of file <a class="el" href="../../d9/d1a/session_8cpp_source.html">session.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
@@ -365,7 +396,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   95</span>    <a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690">send</a>(serializedMessage.payload.data(), serializedMessage.payloadSize());</div>
 <div class="line"><span class="lineno">   96</span>  }</div>
 <div class="line"><span class="lineno">   97</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_aef5811ff01e4382caa5c97cf4ab17690"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690">irsol::server::ClientSession::send</a></div><div class="ttdeci">void send(const std::string &amp;message)</div><div class="ttdoc">Send a text message to the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00148">session.cpp:148</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_aef5811ff01e4382caa5c97cf4ab17690"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690">irsol::server::ClientSession::send</a></div><div class="ttdeci">void send(const std::string &amp;message)</div><div class="ttdoc">Sends a text message over the socket to the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00148">session.cpp:148</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -392,17 +423,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the unique client identifier. </p>
+<p>Returns the unique client identifier. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00085">85</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>  {</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">m_id</a>;</div>
-<div class="line"><span class="lineno">   88</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00120">120</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  121</span>  {</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">m_id</a>;</div>
+<div class="line"><span class="lineno">  123</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a749dc38a4f40bc4eb7110da1aed4c52e" name="a749dc38a4f40bc4eb7110da1aed4c52e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a749dc38a4f40bc4eb7110da1aed4c52e">&#9670;&#160;</a></span>processMessageBuffer()</h2>
+<a id="a7d233cfe0241e35751dfb6899caab548" name="a7d233cfe0241e35751dfb6899caab548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d233cfe0241e35751dfb6899caab548">&#9670;&#160;</a></span>processInMessageBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -411,7 +442,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void irsol::server::ClientSession::processMessageBuffer </td>
+          <td class="memname">void irsol::server::ClientSession::processInMessageBuffer </td>
           <td>(</td>
           <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>messageBuffer</em></td><td>)</td>
@@ -425,8 +456,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Process accumulated text commands in the message buffer. </p>
-<p>Splits the buffer into discrete messages and passes them to <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a6f682a7b706562193d595a3ec2fb3cce" title="Handle a single complete raw message from the client.">processRawMessage()</a>. </p>
+<p>Processes accumulated raw data into complete protocol messages. </p>
+<p>Splits the incoming input buffer into individual protocol messages and dispatches each one for parsing and handling.</p>
+<p>Invokes <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aa8fa0412ad04d6fdbe74d6f557546629">ClientSession::processInRawMessage</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messageBuffer</td><td>Text buffer containing raw data received from the client's socket. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d1a/session_8cpp_source.html#l00100">100</a> of file <a class="el" href="../../d9/d1a/session_8cpp_source.html">session.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
@@ -441,15 +479,15 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  110</span>    messageBuffer.erase(0, newlinePos + 1);</div>
 <div class="line"><span class="lineno">  111</span> </div>
 <div class="line"><span class="lineno">  112</span>    <span class="comment">// Process the extracted message</span></div>
-<div class="line"><span class="lineno">  113</span>    <a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a6f682a7b706562193d595a3ec2fb3cce">processRawMessage</a>(rawMessage);</div>
+<div class="line"><span class="lineno">  113</span>    <a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aa8fa0412ad04d6fdbe74d6f557546629">processInRawMessage</a>(rawMessage);</div>
 <div class="line"><span class="lineno">  114</span>  }</div>
 <div class="line"><span class="lineno">  115</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a6f682a7b706562193d595a3ec2fb3cce"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a6f682a7b706562193d595a3ec2fb3cce">irsol::server::ClientSession::processRawMessage</a></div><div class="ttdeci">void processRawMessage(const std::string &amp;rawMessage)</div><div class="ttdoc">Handle a single complete raw message from the client.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00118">session.cpp:118</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_aa8fa0412ad04d6fdbe74d6f557546629"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aa8fa0412ad04d6fdbe74d6f557546629">irsol::server::ClientSession::processInRawMessage</a></div><div class="ttdeci">void processInRawMessage(const std::string &amp;rawMessage)</div><div class="ttdoc">Parses and processes a complete incoming raw message.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00118">session.cpp:118</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6f682a7b706562193d595a3ec2fb3cce" name="a6f682a7b706562193d595a3ec2fb3cce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f682a7b706562193d595a3ec2fb3cce">&#9670;&#160;</a></span>processRawMessage()</h2>
+<a id="aa8fa0412ad04d6fdbe74d6f557546629" name="aa8fa0412ad04d6fdbe74d6f557546629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8fa0412ad04d6fdbe74d6f557546629">&#9670;&#160;</a></span>processInRawMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,7 +496,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void irsol::server::ClientSession::processRawMessage </td>
+          <td class="memname">void irsol::server::ClientSession::processInRawMessage </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>rawMessage</em></td><td>)</td>
@@ -472,11 +510,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Handle a single complete raw message from the client. </p>
-<p>Parses the message and triggers appropriate server actions.</p>
+<p>Parses and processes a complete incoming raw message. </p>
+<p>Invokes the registered message handler for the message type.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rawMessage</td><td>The protocol message payload. </td></tr>
+    <tr><td class="paramname">rawMessage</td><td>Complete raw protocol message string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -510,9 +548,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  144</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga57d5ed6ca38213a5cbb46950119a5f68">IRSOL_NAMED_LOG_DEBUG</a>(<a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">m_id</a>, <span class="stringliteral">&quot;Sent {} response(s) to client&quot;</span>, <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>.size());</div>
 <div class="line"><span class="lineno">  145</span>}</div>
 <div class="ttc" id="aclassirsol_1_1protocol_1_1Parser_html_a65dbc16ed132b179f771ac751a4d988e"><div class="ttname"><a href="../../d5/d35/classirsol_1_1protocol_1_1Parser.html#a65dbc16ed132b179f771ac751a4d988e">irsol::protocol::Parser::parse</a></div><div class="ttdeci">static std::optional&lt; InMessage &gt; parse(const std::string &amp;line)</div><div class="ttdoc">Attempts to parse a single protocol input line into a structured InMessage.</div><div class="ttdef"><b>Definition</b> <a href="../../dc/ddd/parser_8cpp_source.html#l00011">parser.cpp:11</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a488466726e84fb900a31d999986bc7a8"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">irsol::server::App::messageHandler</a></div><div class="ttdeci">const handlers::MessageHandler &amp; messageHandler() const</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00092">app.hpp:92</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a9944829b5c1fcf1f93b1d283ab26bded"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9944829b5c1fcf1f93b1d283ab26bded">irsol::server::ClientSession::m_socketMutex</a></div><div class="ttdeci">std::mutex m_socketMutex</div><div class="ttdoc">Mutex for managing access to the session's data.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00162">session.hpp:162</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a492b09b7157fc4eae892c6bd774362ee"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a492b09b7157fc4eae892c6bd774362ee">irsol::server::handlers::MessageHandler::handle</a></div><div class="ttdeci">handling_function_response_t handle(const irsol::types::client_id_t &amp;clientId, protocol::InMessage &amp;&amp;message) const</div><div class="ttdef"><b>Definition</b> <a href="../../d4/ddb/message__handler_8cpp_source.html#l00011">message_handler.cpp:11</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a488466726e84fb900a31d999986bc7a8"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">irsol::server::App::messageHandler</a></div><div class="ttdeci">const handlers::MessageHandler &amp; messageHandler() const</div><div class="ttdoc">Accessor for the message handler.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00114">app.hpp:114</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a9944829b5c1fcf1f93b1d283ab26bded"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9944829b5c1fcf1f93b1d283ab26bded">irsol::server::ClientSession::m_socketMutex</a></div><div class="ttdeci">std::mutex m_socketMutex</div><div class="ttdoc">Mutex to synchronize socket access from multiple threads.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00205">session.hpp:205</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a492b09b7157fc4eae892c6bd774362ee"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a492b09b7157fc4eae892c6bd774362ee">irsol::server::handlers::MessageHandler::handle</a></div><div class="ttdeci">handling_function_response_t handle(const irsol::types::client_id_t &amp;clientId, protocol::InMessage &amp;&amp;message) const</div><div class="ttdoc">Dispatches an incoming message to the correct user-defined handler.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/ddb/message__handler_8cpp_source.html#l00011">message_handler.cpp:11</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga9dcbe0777245e1775bd11f38bb38bf32"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga9dcbe0777245e1775bd11f38bb38bf32">IRSOL_NAMED_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_ERROR(name,...)</div><div class="ttdoc">Logs an error-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00180">logging.hpp:180</a></div></div>
 <div class="ttc" id="anamespaceirsol_1_1utils_html_a82a0213b2171991c9abc66878526c2de"><div class="ttname"><a href="../../d8/d93/namespaceirsol_1_1utils.html#a82a0213b2171991c9abc66878526c2de">irsol::utils::stripString</a></div><div class="ttdeci">std::string stripString(const std::string &amp;s, const std::string &amp;strippedString)</div><div class="ttdoc">Removes all occurrences of a specific substring from the start and end of a string.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d06/utils_8cpp_source.html#l00089">utils.cpp:89</a></div></div>
 <div class="ttc" id="atest__error_8cpp_html_aede94e5895960e8807719a1a1abf9f43"><div class="ttname"><a href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dbc/test__error_8cpp_source.html#l00017">test_error.cpp:17</a></div></div>
@@ -534,8 +572,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Entry point to start processing this client's lifecycle. </p>
-<p>Typically this will read from the socket, handle messages, and respond until the client disconnects. </p>
+<p>Starts the client's session logic. </p>
+<p>Initiates the processing loop for the session, including reading incoming messages from the socket and handling disconnections. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/d1a/session_8cpp_source.html#l00021">21</a> of file <a class="el" href="../../d9/d1a/session_8cpp_source.html">session.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   22</span>{</div>
@@ -570,7 +608,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   51</span>      messageBuffer.substr(messageBuffer.size() - bytesRead));</div>
 <div class="line"><span class="lineno">   52</span> </div>
 <div class="line"><span class="lineno">   53</span>    <span class="comment">// Process all complete messages in the buffer</span></div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a749dc38a4f40bc4eb7110da1aed4c52e">processMessageBuffer</a>(messageBuffer);</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_function" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7d233cfe0241e35751dfb6899caab548">processInMessageBuffer</a>(messageBuffer);</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>    <span class="comment">// Dynamically resize buffer if it was filled completely</span></div>
 <div class="line"><span class="lineno">   57</span>    <span class="keywordflow">if</span>(bytesRead == buffer.size()) {</div>
@@ -582,7 +620,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   63</span>  <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">m_socket</a>.close();</div>
 <div class="line"><span class="lineno">   64</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a>(<a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f">m_id</a>, <span class="stringliteral">&quot;Client session terminated&quot;</span>);</div>
 <div class="line"><span class="lineno">   65</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a749dc38a4f40bc4eb7110da1aed4c52e"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a749dc38a4f40bc4eb7110da1aed4c52e">irsol::server::ClientSession::processMessageBuffer</a></div><div class="ttdeci">void processMessageBuffer(std::string &amp;messageBuffer)</div><div class="ttdoc">Process accumulated text commands in the message buffer.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00100">session.cpp:100</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_a7d233cfe0241e35751dfb6899caab548"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a7d233cfe0241e35751dfb6899caab548">irsol::server::ClientSession::processInMessageBuffer</a></div><div class="ttdeci">void processInMessageBuffer(std::string &amp;messageBuffer)</div><div class="ttdoc">Processes accumulated raw data into complete protocol messages.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d1a/session_8cpp_source.html#l00100">session.cpp:100</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga30c2f8536dcd7ea3bb3a5bbc9f38a312"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_INFO(name,...)</div><div class="ttdoc">Logs an info-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00176">logging.hpp:176</a></div></div>
 <div class="ttc" id="agroup__Logging_html_gad8f84b5f52a7a7ae39e559a9c1ee0972"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gad8f84b5f52a7a7ae39e559a9c1ee0972">IRSOL_NAMED_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_TRACE(name,...)</div><div class="ttdoc">Logs a trace-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00172">logging.hpp:172</a></div></div>
 </div><!-- fragment -->
@@ -622,12 +660,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Send raw binary data to the client. </p>
-<dl class="section note"><dt>Note</dt><dd>This method is not thead safe. It's the user's responsibility to ensure the session mutex is held when calling this method.</dd></dl>
+<p>Sends binary data over the socket. </p>
+<dl class="section warning"><dt>Warning</dt><dd>This function is not thread-safe. Caller must lock <code>m_socketMutex</code>.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>Pointer to the buffer. </td></tr>
-    <tr><td class="paramname">size</td><td>Number of bytes to send. </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer to binary data buffer. </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the data in bytes. </td></tr>
   </table>
   </dd>
 </dl>
@@ -676,11 +714,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Send a text message to the client. </p>
-<dl class="section note"><dt>Note</dt><dd>This method is not thead safe. It's the user's responsibility to ensure the session mutex is held when calling this method.</dd></dl>
+<p>Sends a text message over the socket to the client. </p>
+<p>This is the way the server communicates to the client.</p>
+<dl class="section warning"><dt>Warning</dt><dd>This function is not thread-safe. Caller must lock <code>m_socketMutex</code>.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>String data to transmit. </td></tr>
+    <tr><td class="paramname">message</td><td>The message string to send. </td></tr>
   </table>
   </dd>
 </dl>
@@ -731,12 +770,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Mutable access to the client's socket. </p>
+<p>Returns a mutable reference to the client socket. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>  {</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">m_socket</a>;</div>
-<div class="line"><span class="lineno">   99</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00132">132</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>  {</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">m_socket</a>;</div>
+<div class="line"><span class="lineno">  135</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -763,12 +802,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Immutable access to the client's socket. </p>
+<p>Returns a const reference to the client socket. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>  {</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">m_socket</a>;</div>
-<div class="line"><span class="lineno">   94</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00126">126</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>  {</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320">m_socket</a>;</div>
+<div class="line"><span class="lineno">  129</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -795,12 +834,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the socket mutex. </p>
+<p>Returns a reference to the socket mutex used for synchronization. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00101">101</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>  {</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9944829b5c1fcf1f93b1d283ab26bded">m_socketMutex</a>;</div>
-<div class="line"><span class="lineno">  104</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>  {</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#a9944829b5c1fcf1f93b1d283ab26bded">m_socketMutex</a>;</div>
+<div class="line"><span class="lineno">  141</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -827,13 +866,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Mutable access to this session's UserSessionData. </p>
+<p>Returns a mutable reference to client-specific session state. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00112">112</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>  {</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775">m_sessionData</a>;</div>
-<div class="line"><span class="lineno">  115</span>  }</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_aeb4acc76d6b3c329e51e266714b80775"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775">irsol::server::ClientSession::m_sessionData</a></div><div class="ttdeci">irsol::server::internal::UserSessionData m_sessionData</div><div class="ttdoc">Holds the socket, mutex, and frame streaming parameters.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00165">session.hpp:165</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00150">150</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>  {</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775">m_sessionData</a>;</div>
+<div class="line"><span class="lineno">  153</span>  }</div>
+<div class="ttc" id="aclassirsol_1_1server_1_1ClientSession_html_aeb4acc76d6b3c329e51e266714b80775"><div class="ttname"><a href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775">irsol::server::ClientSession::m_sessionData</a></div><div class="ttdeci">irsol::server::internal::UserSessionData m_sessionData</div><div class="ttdoc">Session-specific data (e.g., stream rate, frame subscriptions).</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d5e/session_8hpp_source.html#l00208">session.hpp:208</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -860,12 +899,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Immutable access to this session's UserSessionData. </p>
+<p>Returns a const reference to client-specific session state. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00107">107</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  108</span>  {</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775">m_sessionData</a>;</div>
-<div class="line"><span class="lineno">  110</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00144">144</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  145</span>  {</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775">m_sessionData</a>;</div>
+<div class="line"><span class="lineno">  147</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -890,9 +929,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reference back to the owning server application for callbacks and state. </p>
+<p>Reference to the central <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> instance for server-wide coordination. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00168">168</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00211">211</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
 
 </div>
 </div>
@@ -916,9 +955,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Unique identifier for this client session. </p>
+<p>Unique ID identifying this session (maps to client_id_t). </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00156">156</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00199">199</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
 
 </div>
 </div>
@@ -942,10 +981,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Holds the socket, mutex, and frame streaming parameters. </p>
+<p>Session-specific data (e.g., stream rate, frame subscriptions). </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00165">165</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  165</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00208">208</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -969,9 +1008,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Holds the socket and mutex for this session. </p>
+<p>Socket used for communication with the client. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00159">159</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00202">202</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
 
 </div>
 </div>
@@ -995,10 +1034,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Mutex for managing access to the session's data. </p>
+<p>Mutex to synchronize socket access from multiple threads. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00162">162</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  162</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/d5e/session_8hpp_source.html#l00205">205</a> of file <a class="el" href="../../d4/d5e/session_8hpp_source.html">session.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  205</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

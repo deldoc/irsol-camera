@@ -48,7 +48,6 @@ var hierarchy =
       ] ],
       [ "irsol::server::handlers::internal::InquiryImgHandlerBase< InquiryCameraImageAttribute >", "d5/d91/classirsol_1_1server_1_1handlers_1_1internal_1_1InquiryImgHandlerBase.html", null ]
     ] ],
-    [ "irsol::server::internal::ImageData", "dd/d13/structirsol_1_1server_1_1internal_1_1ImageData.html", null ],
     [ "irsol::protocol::Inquiry", "d2/dc8/structirsol_1_1protocol_1_1Inquiry.html", null ],
     [ "irsol::server::handlers::internal::InquiryCameraImageAttributeHeight", "d4/d3a/structirsol_1_1server_1_1handlers_1_1internal_1_1InquiryCameraImageAttributeHeight.html", null ],
     [ "irsol::server::handlers::internal::InquiryCameraImageAttributeLeft", "db/d63/structirsol_1_1server_1_1handlers_1_1internal_1_1InquiryCameraImageAttributeLeft.html", null ],

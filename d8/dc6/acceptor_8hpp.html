@@ -57,9 +57,12 @@ $(document).ready(function(){initNavTree('d8/dc6/acceptor_8hpp.html','../../'); 
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a>  </div>
-  <div class="headertitle"><div class="title">acceptor.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">acceptor.hpp File Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Accepts and forwards incoming client connections to the session handler.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d4/d5e/session_8hpp_source.html">irsol/server/client/session.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">irsol/types.hpp</a>&quot;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
@@ -71,7 +74,7 @@ $(document).ready(function(){initNavTree('d8/dc6/acceptor_8hpp.html','../../'); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html">irsol::server::internal::ClientSessionAcceptor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accepts incoming TCP connections and creates forwards the underlying connection to the callback.  <a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accepts incoming TCP connections and triggers a callback for each new client.  <a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -79,17 +82,26 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d1/d03/namespaceirsol_1_1server" id="r_d1/d03/namespaceirsol_1_1server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d03/namespaceirsol_1_1server.html">irsol::server</a></td></tr>
+<tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:dd/d08/namespaceirsol_1_1server_1_1internal" id="r_dd/d08/namespaceirsol_1_1server_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html">irsol::server::internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a4d15ff25ca447e1cbb6e424f57a1beab" id="r_a4d15ff25ca447e1cbb6e424f57a1beab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html#a4d15ff25ca447e1cbb6e424f57a1beab">irsol::server::internal::OnNewClientCallback_t</a> = std::function&lt; void(<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&amp;)&gt;</td></tr>
-<tr class="memdesc:a4d15ff25ca447e1cbb6e424f57a1beab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for when a new client connection is established.  <br /></td></tr>
-<tr class="separator:a4d15ff25ca447e1cbb6e424f57a1beab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d15ff25ca447e1cbb6e424f57a1beab" id="r_ga4d15ff25ca447e1cbb6e424f57a1beab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d64/group__Server.html#ga4d15ff25ca447e1cbb6e424f57a1beab">irsol::server::internal::OnNewClientCallback_t</a> = std::function&lt; void(<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&amp;)&gt;</td></tr>
+<tr class="memdesc:ga4d15ff25ca447e1cbb6e424f57a1beab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for handling new client connections.  <br /></td></tr>
+<tr class="separator:ga4d15ff25ca447e1cbb6e424f57a1beab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Accepts and forwards incoming client connections to the session handler. </p>
+<p>This header defines the <a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html">irsol::server::internal::ClientSessionAcceptor</a> class, responsible for listening on a TCP port and invoking a callback for each new client connection. Typically, this is used to bootstrap a client session when a connection is made.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">irsol::server::App</a> </dd>
+<dd>
+<a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session.">irsol::server::ClientSession</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

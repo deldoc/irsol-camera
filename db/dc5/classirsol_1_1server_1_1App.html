@@ -59,7 +59,7 @@ $(document).ready(function(){initNavTree('db/dc5/classirsol_1_1server_1_1App.htm
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d1/d9d/classirsol_1_1server_1_1App-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::App Class Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::App Class Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -71,25 +71,28 @@ $(document).ready(function(){initNavTree('db/dc5/classirsol_1_1server_1_1App.htm
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abaf05e4cfe17f02daca2cd14ebde207c" id="r_abaf05e4cfe17f02daca2cd14ebde207c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#abaf05e4cfe17f02daca2cd14ebde207c">App</a> (<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a595cc75833b669dc425e067f776bee04">irsol::types::port_t</a> port)</td></tr>
-<tr class="memdesc:abaf05e4cfe17f02daca2cd14ebde207c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the server application bound to a given port.  <br /></td></tr>
+<tr class="memdesc:abaf05e4cfe17f02daca2cd14ebde207c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a>.  <br /></td></tr>
 <tr class="separator:abaf05e4cfe17f02daca2cd14ebde207c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fb6f6293e0934c50607bd4d3484ead6" id="r_a8fb6f6293e0934c50607bd4d3484ead6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a8fb6f6293e0934c50607bd4d3484ead6">start</a> ()</td></tr>
-<tr class="memdesc:a8fb6f6293e0934c50607bd4d3484ead6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the server: begins listening and accepting clients.  <br /></td></tr>
+<tr class="memdesc:a8fb6f6293e0934c50607bd4d3484ead6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the server.  <br /></td></tr>
 <tr class="separator:a8fb6f6293e0934c50607bd4d3484ead6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a7eab0392bb9b77fdaecf8cea61c771" id="r_a8a7eab0392bb9b77fdaecf8cea61c771"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a8a7eab0392bb9b77fdaecf8cea61c771">stop</a> ()</td></tr>
-<tr class="memdesc:a8a7eab0392bb9b77fdaecf8cea61c771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the server: shuts down accepting new clients and all active sessions.  <br /></td></tr>
+<tr class="memdesc:a8a7eab0392bb9b77fdaecf8cea61c771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the server.  <br /></td></tr>
 <tr class="separator:a8a7eab0392bb9b77fdaecf8cea61c771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77e659b496f5b52147e866441a9e79c0" id="r_a77e659b496f5b52147e866441a9e79c0"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a77e659b496f5b52147e866441a9e79c0">getClientSession</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;clientId)</td></tr>
-<tr class="memdesc:a77e659b496f5b52147e866441a9e79c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a client session by its unique identifier.  <br /></td></tr>
+<tr class="memdesc:a77e659b496f5b52147e866441a9e79c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves an active client session.  <br /></td></tr>
 <tr class="separator:a77e659b496f5b52147e866441a9e79c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82a57dc3845931c5545de504eac102e0" id="r_a82a57dc3845931c5545de504eac102e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a82a57dc3845931c5545de504eac102e0">broadcastMessage</a> (<a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">protocol::OutMessage</a> &amp;&amp;message, const std::optional&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &gt; &amp;excludeClient=std::nullopt)</td></tr>
-<tr class="memdesc:a82a57dc3845931c5545de504eac102e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broadcasts a message to all connected client sessions.  <br /></td></tr>
+<tr class="memdesc:a82a57dc3845931c5545de504eac102e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broadcasts a message to all connected clients.  <br /></td></tr>
 <tr class="separator:a82a57dc3845931c5545de504eac102e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d467f15aaac7fb128455f76e3aebf3b" id="r_a3d467f15aaac7fb128455f76e3aebf3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">camera::Interface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a3d467f15aaac7fb128455f76e3aebf3b">camera</a> ()</td></tr>
+<tr class="memdesc:a3d467f15aaac7fb128455f76e3aebf3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor for the camera interface.  <br /></td></tr>
 <tr class="separator:a3d467f15aaac7fb128455f76e3aebf3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a740cd3948f39494ec70ffe96f7814c87" id="r_a740cd3948f39494ec70ffe96f7814c87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html">frame_collector::FrameCollector</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a740cd3948f39494ec70ffe96f7814c87">frameCollector</a> ()</td></tr>
+<tr class="memdesc:a740cd3948f39494ec70ffe96f7814c87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor for the frame collector.  <br /></td></tr>
 <tr class="separator:a740cd3948f39494ec70ffe96f7814c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a488466726e84fb900a31d999986bc7a8" id="r_a488466726e84fb900a31d999986bc7a8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html">handlers::MessageHandler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> () const</td></tr>
+<tr class="memdesc:a488466726e84fb900a31d999986bc7a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor for the message handler.  <br /></td></tr>
 <tr class="separator:a488466726e84fb900a31d999986bc7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
@@ -100,55 +103,55 @@ Private Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a5e78a84334dc310a6012fc1288fb5e1d" id="r_a5e78a84334dc310a6012fc1288fb5e1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a5e78a84334dc310a6012fc1288fb5e1d">addClient</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;clientId, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&amp;sock)</td></tr>
-<tr class="memdesc:a5e78a84334dc310a6012fc1288fb5e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new client session.  <br /></td></tr>
+<tr class="memdesc:a5e78a84334dc310a6012fc1288fb5e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new client session.  <br /></td></tr>
 <tr class="separator:a5e78a84334dc310a6012fc1288fb5e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6b7241370a0cdb0074a1aec0fd03ee5" id="r_ac6b7241370a0cdb0074a1aec0fd03ee5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5">removeClient</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;clientId)</td></tr>
-<tr class="memdesc:ac6b7241370a0cdb0074a1aec0fd03ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregisters a disconnected client.  <br /></td></tr>
+<tr class="memdesc:ac6b7241370a0cdb0074a1aec0fd03ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a client session.  <br /></td></tr>
 <tr class="separator:ac6b7241370a0cdb0074a1aec0fd03ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a920eb334b2900034e980ed10e30e2e19" id="r_a920eb334b2900034e980ed10e30e2e19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19">registerMessageHandlers</a> ()</td></tr>
-<tr class="memdesc:a920eb334b2900034e980ed10e30e2e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers message handlers for the server.  <br /></td></tr>
+<tr class="memdesc:a920eb334b2900034e980ed10e30e2e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers standard message handlers.  <br /></td></tr>
 <tr class="separator:a920eb334b2900034e980ed10e30e2e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7daa71ab01c508418e0039f24e8016ed" id="r_a7daa71ab01c508418e0039f24e8016ed"><td class="memTemplParams" colspan="2">template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </td></tr>
 <tr class="memitem:a7daa71ab01c508418e0039f24e8016ed"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a7daa71ab01c508418e0039f24e8016ed">registerMessageHandler</a> (const std::string &amp;identifier, Args &amp;&amp;... args)</td></tr>
-<tr class="memdesc:a7daa71ab01c508418e0039f24e8016ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template function to register a message handler.  <br /></td></tr>
+<tr class="memdesc:a7daa71ab01c508418e0039f24e8016ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a message handler by type.  <br /></td></tr>
 <tr class="separator:a7daa71ab01c508418e0039f24e8016ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab769714cca25b178b08c7aaf554af602" id="r_ab769714cca25b178b08c7aaf554af602"><td class="memTemplParams" colspan="2">template&lt;typename InMessageT , typename LambdaT &gt; </td></tr>
 <tr class="memitem:ab769714cca25b178b08c7aaf554af602"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab769714cca25b178b08c7aaf554af602">registerLambdaHandler</a> (const std::string &amp;identifier, <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a> &amp;ctx, LambdaT &amp;&amp;lambda)</td></tr>
-<tr class="memdesc:ab769714cca25b178b08c7aaf554af602"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template function to register a lambda message handler.  <br /></td></tr>
+<tr class="memdesc:ab769714cca25b178b08c7aaf554af602"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a lambda-based message handler.  <br /></td></tr>
 <tr class="separator:ab769714cca25b178b08c7aaf554af602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec" id="r_a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a595cc75833b669dc425e067f776bee04">irsol::types::port_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">m_port</a></td></tr>
-<tr class="memdesc:a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP port on which the server listens for incoming connections.  <br /></td></tr>
+<tr class="memdesc:a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP port on which the server listens.  <br /></td></tr>
 <tr class="separator:a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fb7bb9c0a96f8585750770880181d12" id="r_a2fb7bb9c0a96f8585750770880181d12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html">irsol::server::internal::ClientSessionAcceptor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a></td></tr>
-<tr class="memdesc:a2fb7bb9c0a96f8585750770880181d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acceptor for new client connections.  <br /></td></tr>
+<tr class="memdesc:a2fb7bb9c0a96f8585750770880181d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acceptor that handles incoming client connections.  <br /></td></tr>
 <tr class="separator:a2fb7bb9c0a96f8585750770880181d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cde018a00938a5c940874d8469944be" id="r_a4cde018a00938a5c940874d8469944be"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">m_acceptThread</a></td></tr>
-<tr class="memdesc:a4cde018a00938a5c940874d8469944be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread that runs the acceptor for new clients.  <br /></td></tr>
+<tr class="memdesc:a4cde018a00938a5c940874d8469944be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread running the connection acceptor loop.  <br /></td></tr>
 <tr class="separator:a4cde018a00938a5c940874d8469944be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5f4d7bd76d883153b5e7435c10e4390" id="r_ad5f4d7bd76d883153b5e7435c10e4390"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a></td></tr>
-<tr class="memdesc:ad5f4d7bd76d883153b5e7435c10e4390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects concurrent access to the client sessions map.  <br /></td></tr>
+<tr class="memdesc:ad5f4d7bd76d883153b5e7435c10e4390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for protecting access to m_clients.  <br /></td></tr>
 <tr class="separator:ad5f4d7bd76d883153b5e7435c10e4390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab61e4a18c68ab29e90f79d2724b2511c" id="r_ab61e4a18c68ab29e90f79d2724b2511c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2ae5d9838d0487da826386234ff2f481">client_map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a></td></tr>
-<tr class="memdesc:ab61e4a18c68ab29e90f79d2724b2511c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps client IDs to their active <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session in the server.">ClientSession</a> instances.  <br /></td></tr>
+<tr class="memdesc:ab61e4a18c68ab29e90f79d2724b2511c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of connected clients.  <br /></td></tr>
 <tr class="separator:ab61e4a18c68ab29e90f79d2724b2511c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab72d585f1aacd9b927a204a0de2c049e" id="r_ab72d585f1aacd9b927a204a0de2c049e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d7/d37/classirsol_1_1camera_1_1Interface.html">camera::Interface</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab72d585f1aacd9b927a204a0de2c049e">m_cameraInterface</a></td></tr>
-<tr class="memdesc:ab72d585f1aacd9b927a204a0de2c049e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owned interface to the camera hardware.  <br /></td></tr>
+<tr class="memdesc:ab72d585f1aacd9b927a204a0de2c049e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface to the camera.  <br /></td></tr>
 <tr class="separator:ab72d585f1aacd9b927a204a0de2c049e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73d8272bb6c2ddd147d1a4e37e76df61" id="r_a73d8272bb6c2ddd147d1a4e37e76df61"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html">frame_collector::FrameCollector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">m_frameCollector</a></td></tr>
-<tr class="memdesc:a73d8272bb6c2ddd147d1a4e37e76df61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owned collector that captures frames and dispatches them to clients.  <br /></td></tr>
+<tr class="memdesc:a73d8272bb6c2ddd147d1a4e37e76df61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frame collector for capturing and broadcasting camera frames.  <br /></td></tr>
 <tr class="separator:a73d8272bb6c2ddd147d1a4e37e76df61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea70dd9a2207e836b59bd92c899d1d93" id="r_aea70dd9a2207e836b59bd92c899d1d93"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html">handlers::MessageHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a></td></tr>
-<tr class="memdesc:aea70dd9a2207e836b59bd92c899d1d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message handler for incoming messages.  <br /></td></tr>
+<tr class="memdesc:aea70dd9a2207e836b59bd92c899d1d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Central handler for processing protocol messages.  <br /></td></tr>
 <tr class="separator:aea70dd9a2207e836b59bd92c899d1d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main server application that manages client connections and camera streaming. </p>
-<p><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> listens for incoming TCP connections on a specified port, creates <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session in the server.">ClientSession</a> instances for each connected client, and orchestrates broadcasting of messages. It owns the camera interface and the FrameCollector, ensuring that captured frames are distributed to all active clients according to their needs. </p>
+<p>The <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a> class starts the TCP server, listens for new connections, instantiates a new <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> per client, and coordinates the camera interface, frame collection, and message dispatching. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00045">45</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a2ae5d9838d0487da826386234ff2f481" name="a2ae5d9838d0487da826386234ff2f481"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ae5d9838d0487da826386234ff2f481">&#9670;&#160;</a></span>client_map_t</h2>
@@ -170,7 +173,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00035">35</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -199,10 +202,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs the server application bound to a given port. </p>
+<p>Constructs the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html" title="Main server application that manages client connections and camera streaming.">App</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>TCP port to listen on for client connections. </td></tr>
+    <tr><td class="paramname">port</td><td>The TCP port on which the server will listen for client connections. </td></tr>
   </table>
   </dd>
 </dl>
@@ -220,13 +223,13 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   23</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;App ready to run on port {}&quot;</span>, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">m_port</a>);</div>
 <div class="line"><span class="lineno">   24</span>}</div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a2742473c3edfa1082bab15235e262bcc"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a2742473c3edfa1082bab15235e262bcc">irsol::camera::Interface::HalfResolution</a></div><div class="ttdeci">static Interface HalfResolution()</div><div class="ttdoc">Factory method to create a camera interface using half sensor resolution.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00063">interface.cpp:63</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">irsol::server::App::m_port</a></div><div class="ttdeci">const irsol::types::port_t m_port</div><div class="ttdoc">TCP port on which the server listens for incoming connections.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00099">app.hpp:99</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a2fb7bb9c0a96f8585750770880181d12"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">irsol::server::App::m_acceptor</a></div><div class="ttdeci">irsol::server::internal::ClientSessionAcceptor m_acceptor</div><div class="ttdoc">Acceptor for new client connections.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00102">app.hpp:102</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a5e78a84334dc310a6012fc1288fb5e1d"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a5e78a84334dc310a6012fc1288fb5e1d">irsol::server::App::addClient</a></div><div class="ttdeci">void addClient(const irsol::types::client_id_t &amp;clientId, irsol::types::socket_t &amp;&amp;sock)</div><div class="ttdoc">Registers a new client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00086">app.cpp:86</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a73d8272bb6c2ddd147d1a4e37e76df61"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">irsol::server::App::m_frameCollector</a></div><div class="ttdeci">std::unique_ptr&lt; frame_collector::FrameCollector &gt; m_frameCollector</div><div class="ttdoc">Owned collector that captures frames and dispatches them to clients.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00117">app.hpp:117</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a920eb334b2900034e980ed10e30e2e19"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19">irsol::server::App::registerMessageHandlers</a></div><div class="ttdeci">void registerMessageHandlers()</div><div class="ttdoc">Registers message handlers for the server.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00133">app.cpp:133</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ab72d585f1aacd9b927a204a0de2c049e"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ab72d585f1aacd9b927a204a0de2c049e">irsol::server::App::m_cameraInterface</a></div><div class="ttdeci">std::unique_ptr&lt; camera::Interface &gt; m_cameraInterface</div><div class="ttdoc">Owned interface to the camera hardware.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00114">app.hpp:114</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_aea70dd9a2207e836b59bd92c899d1d93"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">irsol::server::App::m_messageHandler</a></div><div class="ttdeci">std::unique_ptr&lt; handlers::MessageHandler &gt; m_messageHandler</div><div class="ttdoc">Message handler for incoming messages.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00120">app.hpp:120</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">irsol::server::App::m_port</a></div><div class="ttdeci">const irsol::types::port_t m_port</div><div class="ttdoc">TCP port on which the server listens.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00121">app.hpp:121</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a2fb7bb9c0a96f8585750770880181d12"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">irsol::server::App::m_acceptor</a></div><div class="ttdeci">irsol::server::internal::ClientSessionAcceptor m_acceptor</div><div class="ttdoc">Acceptor that handles incoming client connections.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00124">app.hpp:124</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a5e78a84334dc310a6012fc1288fb5e1d"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a5e78a84334dc310a6012fc1288fb5e1d">irsol::server::App::addClient</a></div><div class="ttdeci">void addClient(const irsol::types::client_id_t &amp;clientId, irsol::types::socket_t &amp;&amp;sock)</div><div class="ttdoc">Adds a new client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00086">app.cpp:86</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a73d8272bb6c2ddd147d1a4e37e76df61"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">irsol::server::App::m_frameCollector</a></div><div class="ttdeci">std::unique_ptr&lt; frame_collector::FrameCollector &gt; m_frameCollector</div><div class="ttdoc">Frame collector for capturing and broadcasting camera frames.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00139">app.hpp:139</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a920eb334b2900034e980ed10e30e2e19"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19">irsol::server::App::registerMessageHandlers</a></div><div class="ttdeci">void registerMessageHandlers()</div><div class="ttdoc">Registers standard message handlers.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00133">app.cpp:133</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ab72d585f1aacd9b927a204a0de2c049e"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ab72d585f1aacd9b927a204a0de2c049e">irsol::server::App::m_cameraInterface</a></div><div class="ttdeci">std::unique_ptr&lt; camera::Interface &gt; m_cameraInterface</div><div class="ttdoc">Interface to the camera.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00136">app.hpp:136</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_aea70dd9a2207e836b59bd92c899d1d93"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">irsol::server::App::m_messageHandler</a></div><div class="ttdeci">std::unique_ptr&lt; handlers::MessageHandler &gt; m_messageHandler</div><div class="ttdoc">Central handler for processing protocol messages.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00142">app.hpp:142</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga85d5803f1f7fb99923cdac16d1dc2ee8"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_LOG_DEBUG(...)</div><div class="ttdoc">Logs a debug-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00091">logging.hpp:91</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -266,16 +269,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Registers a new client session. </p>
-<p>Inserts the session into m_clients and starts its <a class="el" href="../../d7/da0/viewer__client__gi_8cpp.html#a8e59f5cc79a04a892b23dc84bcdd90f7">run()</a> method in a new thread..</p>
+<p>Adds a new client session. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clientId</td><td>Unique ID for the new client. </td></tr>
-    <tr><td class="paramname">sock</td><td>TCP socket for the new client. </td></tr>
+    <tr><td class="paramname">clientId</td><td>Unique ID for the client. </td></tr>
+    <tr><td class="paramname">sock</td><td>TCP socket for communication with the client.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This function is called from the accept loop thread. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The new session is started on a separate thread. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00086">86</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
@@ -306,9 +308,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  112</span>  })</div>
 <div class="line"><span class="lineno">  113</span>    .detach();</div>
 <div class="line"><span class="lineno">  114</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ab61e4a18c68ab29e90f79d2724b2511c"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">irsol::server::App::m_clients</a></div><div class="ttdeci">client_map_t m_clients</div><div class="ttdoc">Maps client IDs to their active ClientSession instances.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00111">app.hpp:111</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ac6b7241370a0cdb0074a1aec0fd03ee5"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5">irsol::server::App::removeClient</a></div><div class="ttdeci">void removeClient(const irsol::types::client_id_t &amp;clientId)</div><div class="ttdoc">Unregisters a disconnected client.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00117">app.cpp:117</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ad5f4d7bd76d883153b5e7435c10e4390"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">irsol::server::App::m_clientsMutex</a></div><div class="ttdeci">std::mutex m_clientsMutex</div><div class="ttdoc">Protects concurrent access to the client sessions map.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00108">app.hpp:108</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ab61e4a18c68ab29e90f79d2724b2511c"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">irsol::server::App::m_clients</a></div><div class="ttdeci">client_map_t m_clients</div><div class="ttdoc">Map of connected clients.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00133">app.hpp:133</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ac6b7241370a0cdb0074a1aec0fd03ee5"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5">irsol::server::App::removeClient</a></div><div class="ttdeci">void removeClient(const irsol::types::client_id_t &amp;clientId)</div><div class="ttdoc">Removes a client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00117">app.cpp:117</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ad5f4d7bd76d883153b5e7435c10e4390"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">irsol::server::App::m_clientsMutex</a></div><div class="ttdeci">std::mutex m_clientsMutex</div><div class="ttdoc">Mutex for protecting access to m_clients.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00130">app.hpp:130</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
 </div><!-- fragment -->
@@ -340,15 +342,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Broadcasts a message to all connected client sessions. </p>
-<p>This method acquires a lock on the client map to iterate over all active client sessions and sends the provided message directly to each of them.</p>
+<p>Broadcasts a message to all connected clients. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message to broadcast. </td></tr>
-    <tr><td class="paramname">excludeClient</td><td>Optional client ID to exclude from the broadcast (e.g., the sender). </td></tr>
+    <tr><td class="paramname">message</td><td>The message to send. </td></tr>
+    <tr><td class="paramname">excludeClient</td><td>Optional client to exclude (e.g., the sender).</td></tr>
   </table>
   </dd>
 </dl>
+<p>This method is thread-safe and will skip the excluded client if specified. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
@@ -398,10 +400,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00084">84</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>  {</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab72d585f1aacd9b927a204a0de2c049e">m_cameraInterface</a>;</div>
-<div class="line"><span class="lineno">   87</span>  };</div>
+<p>Accessor for the camera interface. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the owned camera interface. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>  {</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab72d585f1aacd9b927a204a0de2c049e">m_cameraInterface</a>;</div>
+<div class="line"><span class="lineno">   99</span>  };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -428,10 +433,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   89</span>  {</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">m_frameCollector</a>;</div>
-<div class="line"><span class="lineno">   91</span>  };</div>
+<p>Accessor for the frame collector. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the owned frame collector. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00105">105</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  106</span>  {</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">m_frameCollector</a>;</div>
+<div class="line"><span class="lineno">  108</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -451,14 +459,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves a client session by its unique identifier. </p>
+<p>Retrieves an active client session. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clientId</td><td>Unique identifier of the client. </td></tr>
+    <tr><td class="paramname">clientId</td><td>The unique ID of the client. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A shared pointer to the client session, or nullptr if not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the client session, or nullptr if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
@@ -492,10 +500,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>  {</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
-<div class="line"><span class="lineno">   95</span>  };</div>
+<p>Accessor for the message handler. </p>
+<dl class="section return"><dt>Returns</dt><dd>Const reference to the owned message handler. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00114">114</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>  {</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
+<div class="line"><span class="lineno">  117</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -541,43 +552,45 @@ template&lt;typename InMessageT , typename LambdaT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Template function to register a lambda message handler. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">identifier</td><td>Identifier for the message type </td></tr>
-    <tr><td class="paramname">ctx</td><td>Context for the lambda handler. </td></tr>
-    <tr><td class="paramname">lambda</td><td>Lambda function for the handler.</td></tr>
+<p>Registers a lambda-based message handler. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">InMessageT</td><td>Incoming message type. </td></tr>
+    <tr><td class="paramname">LambdaT</td><td>Type of the lambda handler. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This function is templated to handle different message types and lambda handlers. <div class="fragment"><div class="line">registerLambdaHandler&lt;protocol::Command&gt;(</div>
-<div class="line"> <span class="stringliteral">&quot;lambda_command&quot;</span>,</div>
-<div class="line"> ctx,</div>
-<div class="line">  [](</div>
-<div class="line">    <a class="code hl_struct" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a>&amp;                  ctx,</div>
-<div class="line">    <span class="keyword">const</span> <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp; clientId,</div>
-<div class="line">    <a class="code hl_struct" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a>&amp;&amp;                 cmd) -&gt; std::vector&lt;protocol::OutMessage&gt; {</div>
-<div class="line">       <span class="comment">// Handle the command</span></div>
-<div class="line">       <span class="keywordflow">return</span> {...};</div>
-<div class="line"> }</div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>Handler identifier. </td></tr>
+    <tr><td class="paramname">ctx</td><td>Handler context. </td></tr>
+    <tr><td class="paramname">lambda</td><td>Lambda function to invoke for the message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Example: </p><div class="fragment"><div class="line">registerLambdaHandler&lt;protocol::Command&gt;(</div>
+<div class="line">  <span class="stringliteral">&quot;custom_cmd&quot;</span>,</div>
+<div class="line">  ctx,</div>
+<div class="line">  [](<a class="code hl_struct" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a>&amp; ctx, <span class="keyword">const</span> <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp; clientId, <a class="code hl_struct" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a>&amp;&amp;</div>
+<div class="line">cmd) { <span class="keywordflow">return</span> std::vector&lt;protocol::OutMessage&gt;{...};</div>
+<div class="line">  }</div>
 <div class="line">);</div>
 <div class="ttc" id="anamespaceirsol_1_1types_html_a1e34241919e241ec2f3f6b8c236f40ae"><div class="ttname"><a href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a></div><div class="ttdeci">std::string client_id_t</div><div class="ttdoc">Represents a unique client identifier. Typically used to identify connected clients by string IDs.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/de3/types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
 <div class="ttc" id="astructirsol_1_1protocol_1_1Command_html"><div class="ttname"><a href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">irsol::protocol::Command</a></div><div class="ttdoc">Represents a command invocation in the protocol.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dc7/command_8hpp_source.html#l00032">command.hpp:33</a></div></div>
 <div class="ttc" id="astructirsol_1_1server_1_1handlers_1_1Context_html"><div class="ttname"><a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/da3/context_8hpp_source.html#l00014">context.hpp:15</a></div></div>
-</div><!-- fragment --> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00200">200</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  201</span>  {</div>
-<div class="line"><span class="lineno">  202</span>    <span class="keyword">auto</span>  handler = handlers::makeLambdaHandler&lt;InMessageT&gt;(ctx, std::forward&lt;LambdaT&gt;(lambda));</div>
-<div class="line"><span class="lineno">  203</span>    <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> = *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
-<div class="line"><span class="lineno">  204</span> </div>
-<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a>.template registerHandler&lt;InMessageT&gt;(identifier, handler)) {</div>
-<div class="line"><span class="lineno">  206</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a>(<span class="stringliteral">&quot;Failed to register lambda handler for identifier {}&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">  207</span>      <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><span class="lineno">  208</span>        <span class="stringliteral">&quot;Failed to register lambda handler for identifier &#39;&quot;</span> + identifier + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><span class="lineno">  209</span>    }</div>
-<div class="line"><span class="lineno">  210</span>  }</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a488466726e84fb900a31d999986bc7a8"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">irsol::server::App::messageHandler</a></div><div class="ttdeci">const handlers::MessageHandler &amp; messageHandler() const</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00092">app.hpp:92</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00214">214</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  215</span>  {</div>
+<div class="line"><span class="lineno">  216</span>    <span class="keyword">auto</span>  handler = handlers::makeLambdaHandler&lt;InMessageT&gt;(ctx, std::forward&lt;LambdaT&gt;(lambda));</div>
+<div class="line"><span class="lineno">  217</span>    <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> = *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a>.template registerHandler&lt;InMessageT&gt;(identifier, handler)) {</div>
+<div class="line"><span class="lineno">  220</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a>(<span class="stringliteral">&quot;Failed to register lambda handler for identifier {}&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  221</span>      <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><span class="lineno">  222</span>        <span class="stringliteral">&quot;Failed to register lambda handler for identifier &#39;&quot;</span> + identifier + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span>  }</div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a488466726e84fb900a31d999986bc7a8"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">irsol::server::App::messageHandler</a></div><div class="ttdeci">const handlers::MessageHandler &amp; messageHandler() const</div><div class="ttdoc">Accessor for the message handler.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00114">app.hpp:114</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga12a839278fd4290a53aa7b0f9f9263b5"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a></div><div class="ttdeci">#define IRSOL_LOG_FATAL(...)</div><div class="ttdoc">Logs a fatal (critical) message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00095">logging.hpp:95</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -618,28 +631,34 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Template function to register a message handler. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">identifier</td><td>Identifier for the message type </td></tr>
-    <tr><td class="paramname">args</td><td>Arguments for the handler constructor.</td></tr>
+<p>Registers a message handler by type. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">InMessageT</td><td>Incoming message type. </td></tr>
+    <tr><td class="paramname">HandlerT</td><td>Handler class for the message. </td></tr>
+    <tr><td class="paramname">Args</td><td>Constructor arguments for the handler. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This function is templated to handle different message types and handlers. <div class="fragment"><div class="line">registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryFRHandler&gt;(<span class="stringliteral">&quot;fr&quot;</span>, ctx);</div>
-<div class="line">registerMessageHandler&lt;protocol::Command, handlers::CommandFRHandler&gt;(<span class="stringliteral">&quot;fr&quot;</span>, ctx);</div>
-</div><!-- fragment --> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00165">165</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  166</span>  {</div>
-<div class="line"><span class="lineno">  167</span>    <span class="keyword">auto</span>  handler        = handlers::makeHandler&lt;HandlerT&gt;(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> = *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
-<div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a>.template registerHandler&lt;InMessageT&gt;(identifier, handler)) {</div>
-<div class="line"><span class="lineno">  171</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a>(<span class="stringliteral">&quot;Failed to register handler for identifier {}&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">  172</span>      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to register handler for identifier &#39;&quot;</span> + identifier + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><span class="lineno">  173</span>    }</div>
-<div class="line"><span class="lineno">  174</span>  }</div>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>Message handler identifier string. </td></tr>
+    <tr><td class="paramname">args</td><td>Arguments to construct the handler.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Example: </p><div class="fragment"><div class="line">registerMessageHandler&lt;protocol::Command, handlers::CommandFRHandler&gt;(<span class="stringliteral">&quot;fr&quot;</span>, ctx);</div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00182">182</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  183</span>  {</div>
+<div class="line"><span class="lineno">  184</span>    <span class="keyword">auto</span>  handler        = handlers::makeHandler&lt;HandlerT&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><span class="lineno">  185</span>    <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> = *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a>.template registerHandler&lt;InMessageT&gt;(identifier, handler)) {</div>
+<div class="line"><span class="lineno">  188</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a>(<span class="stringliteral">&quot;Failed to register handler for identifier {}&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  189</span>      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to register handler for identifier &#39;&quot;</span> + identifier + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">  190</span>    }</div>
+<div class="line"><span class="lineno">  191</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -666,8 +685,8 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Registers message handlers for the server. </p>
-<p>Sets up handlers for assignment, inquiry, and command messages. </p>
+<p>Registers standard message handlers. </p>
+<p>Sets up the message handler registry with known message-handler mappings. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00133">133</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
@@ -753,15 +772,14 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Unregisters a disconnected client. </p>
-<p>Removes the session from m_clients, notifies FrameCollector to stop streaming to that client, and cleans up resources.</p>
+<p>Removes a client session. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clientId</td><td>ID of the client to remove. </td></tr>
+    <tr><td class="paramname">clientId</td><td>ID of the client to disconnect and clean up.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This function is called as soon as the client connection is closed (e.g. when client disconnects). </dd></dl>
+<p>This is typically called automatically when the client disconnects or times out. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00117">117</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  118</span>{</div>
@@ -795,9 +813,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
       </table>
 </div><div class="memdoc">
 
-<p>Starts the server: begins listening and accepting clients. </p>
-<p>Spawns the accept loop thread. Returns true on successful startup.</p>
-<dl class="section return"><dt>Returns</dt><dd>true if the server started correctly, false otherwise. </dd></dl>
+<p>Starts the server. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the server starts successfully, false otherwise.</dd></dl>
+<p>This starts the acceptor thread, initializes camera and message handlers, and prepares the system for client interaction. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
@@ -810,10 +828,10 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 <div class="line"><span class="lineno">   35</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Server started successfully&quot;</span>);</div>
 <div class="line"><span class="lineno">   36</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   37</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a4cde018a00938a5c940874d8469944be"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">irsol::server::App::m_acceptThread</a></div><div class="ttdeci">std::thread m_acceptThread</div><div class="ttdoc">Thread that runs the acceptor for new clients.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00105">app.hpp:105</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ac34a488c77ed081884e301468d87d103"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">irsol::server::internal::ClientSessionAcceptor::isOpen</a></div><div class="ttdeci">bool isOpen() const</div><div class="ttdoc">Returns true if the acceptor is currently open.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00027">acceptor.cpp:27</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_acd091ae1e5721a30b70638d0af919908"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">irsol::server::internal::ClientSessionAcceptor::error</a></div><div class="ttdeci">std::string error() const</div><div class="ttdoc">Returns the error message if the acceptor is in error mode.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00020">acceptor.cpp:20</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ad6f5a0eba72fcf71da351c599ff402e3"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ad6f5a0eba72fcf71da351c599ff402e3">irsol::server::internal::ClientSessionAcceptor::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Starts the accept loop. This is usually called in a separate thread.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00044">acceptor.cpp:44</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a4cde018a00938a5c940874d8469944be"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">irsol::server::App::m_acceptThread</a></div><div class="ttdeci">std::thread m_acceptThread</div><div class="ttdoc">Thread running the connection acceptor loop.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00127">app.hpp:127</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ac34a488c77ed081884e301468d87d103"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">irsol::server::internal::ClientSessionAcceptor::isOpen</a></div><div class="ttdeci">bool isOpen() const</div><div class="ttdoc">Checks if the acceptor is actively listening.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00027">acceptor.cpp:27</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_acd091ae1e5721a30b70638d0af919908"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">irsol::server::internal::ClientSessionAcceptor::error</a></div><div class="ttdeci">std::string error() const</div><div class="ttdoc">Gets the current error message, if any.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00020">acceptor.cpp:20</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ad6f5a0eba72fcf71da351c599ff402e3"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ad6f5a0eba72fcf71da351c599ff402e3">irsol::server::internal::ClientSessionAcceptor::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Starts the accept loop.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00044">acceptor.cpp:44</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -832,8 +850,8 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
       </table>
 </div><div class="memdoc">
 
-<p>Stops the server: shuts down accepting new clients and all active sessions. </p>
-<p>Signals the accept loop to exit, stops the FrameCollector, closes all client sessions, and joins threads. </p>
+<p>Stops the server. </p>
+<p>Gracefully shuts down client sessions, stops the frame collector, and joins the acceptor thread. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
@@ -872,9 +890,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Acceptor for new client connections. </p>
+<p>Acceptor that handles incoming client connections. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00124">124</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -898,9 +916,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Thread that runs the acceptor for new clients. </p>
+<p>Thread running the connection acceptor loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00105">105</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -924,9 +942,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Owned interface to the camera hardware. </p>
+<p>Interface to the camera. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00114">114</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00136">136</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -950,9 +968,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Maps client IDs to their active <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html" title="Represents a single connected client session in the server.">ClientSession</a> instances. </p>
+<p>Map of connected clients. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00111">111</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00133">133</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -976,9 +994,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Protects concurrent access to the client sessions map. </p>
+<p>Mutex for protecting access to m_clients. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00108">108</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00130">130</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -1002,9 +1020,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Owned collector that captures frames and dispatches them to clients. </p>
+<p>Frame collector for capturing and broadcasting camera frames. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00139">139</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -1028,9 +1046,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Message handler for incoming messages. </p>
+<p>Central handler for processing protocol messages. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00120">120</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00142">142</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>
@@ -1054,9 +1072,9 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>TCP port on which the server listens for incoming connections. </p>
+<p>TCP port on which the server listens. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00099">99</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00121">121</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 
 </div>
 </div>

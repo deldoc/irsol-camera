@@ -63,52 +63,24 @@ $(document).ready(function(){initNavTree('dd/d08/namespaceirsol_1_1server_1_1int
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html">ClientSessionAcceptor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accepts incoming TCP connections and creates forwards the underlying connection to the callback.  <a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accepts incoming TCP connections and triggers a callback for each new client.  <a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html">FrameListeningState</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">State associated with the Session client and how it's listening to frames.  <a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls how a client listens for frames, including thread management and GIS parameters.  <a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html">GisParams</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per client parameters for Gis command.  <a href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d13/structirsol_1_1server_1_1internal_1_1ImageData.html">ImageData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-client configuration parameters for the GIS (GetImageSequence) command.  <a href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html">UserSessionData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulates all per-client data for managing a user session.  <a href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulates all per-client data used during a session's lifetime.  <a href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a4d15ff25ca447e1cbb6e424f57a1beab" id="r_a4d15ff25ca447e1cbb6e424f57a1beab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html#a4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a> = std::function&lt; void(<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&amp;)&gt;</td></tr>
-<tr class="memdesc:a4d15ff25ca447e1cbb6e424f57a1beab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for when a new client connection is established.  <br /></td></tr>
-<tr class="separator:a4d15ff25ca447e1cbb6e424f57a1beab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d15ff25ca447e1cbb6e424f57a1beab" id="r_ga4d15ff25ca447e1cbb6e424f57a1beab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d64/group__Server.html#ga4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a> = std::function&lt; void(<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a> &amp;&amp;)&gt;</td></tr>
+<tr class="memdesc:ga4d15ff25ca447e1cbb6e424f57a1beab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for handling new client connections.  <br /></td></tr>
+<tr class="separator:ga4d15ff25ca447e1cbb6e424f57a1beab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a4d15ff25ca447e1cbb6e424f57a1beab" name="a4d15ff25ca447e1cbb6e424f57a1beab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d15ff25ca447e1cbb6e424f57a1beab">&#9670;&#160;</a></span>OnNewClientCallback_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html#a4d15ff25ca447e1cbb6e424f57a1beab">irsol::server::internal::OnNewClientCallback_t</a> = typedef std::function&lt;void(<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#aa4bde0b5a91ffd9c2a272b8aebc64095">irsol::types::socket_t</a>&amp;&amp;)&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Callback function for when a new client connection is established. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">clientId</td><td>Unique identifier for the new client. </td></tr>
-    <tr><td class="paramname">sock</td><td>TCP socket for the new client. This is a move-only type. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00019">19</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

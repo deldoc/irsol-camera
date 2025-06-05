@@ -57,55 +57,56 @@ $(document).ready(function(){initNavTree('d4/db5/classirsol_1_1server_1_1interna
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../da/d8a/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::internal::ClientSessionAcceptor Class Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::internal::ClientSessionAcceptor Class Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Accepts incoming TCP connections and creates forwards the underlying connection to the callback.  
+<p>Accepts incoming TCP connections and triggers a callback for each new client.  
  <a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a40edb1b66d4be849ebcbb711277dcb53" id="r_a40edb1b66d4be849ebcbb711277dcb53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a40edb1b66d4be849ebcbb711277dcb53">ClientSessionAcceptor</a> (<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a595cc75833b669dc425e067f776bee04">irsol::types::port_t</a> port, <a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html#a4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a> onNewClientCallback)</td></tr>
-<tr class="memdesc:a40edb1b66d4be849ebcbb711277dcb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the acceptor for a given port and onNewClientCallback.  <br /></td></tr>
+<tr class="memitem:a40edb1b66d4be849ebcbb711277dcb53" id="r_a40edb1b66d4be849ebcbb711277dcb53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a40edb1b66d4be849ebcbb711277dcb53">ClientSessionAcceptor</a> (<a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a595cc75833b669dc425e067f776bee04">irsol::types::port_t</a> port, <a class="el" href="../../da/d64/group__Server.html#ga4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a> onNewClientCallback)</td></tr>
+<tr class="memdesc:a40edb1b66d4be849ebcbb711277dcb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the acceptor.  <br /></td></tr>
 <tr class="separator:a40edb1b66d4be849ebcbb711277dcb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6f5a0eba72fcf71da351c599ff402e3" id="r_ad6f5a0eba72fcf71da351c599ff402e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ad6f5a0eba72fcf71da351c599ff402e3">run</a> ()</td></tr>
-<tr class="memdesc:ad6f5a0eba72fcf71da351c599ff402e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the accept loop. This is usually called in a separate thread.  <br /></td></tr>
+<tr class="memdesc:ad6f5a0eba72fcf71da351c599ff402e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the accept loop.  <br /></td></tr>
 <tr class="separator:ad6f5a0eba72fcf71da351c599ff402e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94ef12568141ee0a5e1b8aed41ef3b8e" id="r_a94ef12568141ee0a5e1b8aed41ef3b8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a94ef12568141ee0a5e1b8aed41ef3b8e">stop</a> ()</td></tr>
 <tr class="memdesc:a94ef12568141ee0a5e1b8aed41ef3b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the accept loop.  <br /></td></tr>
 <tr class="separator:a94ef12568141ee0a5e1b8aed41ef3b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd091ae1e5721a30b70638d0af919908" id="r_acd091ae1e5721a30b70638d0af919908"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">error</a> () const</td></tr>
-<tr class="memdesc:acd091ae1e5721a30b70638d0af919908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the error message if the acceptor is in error mode.  <br /></td></tr>
+<tr class="memdesc:acd091ae1e5721a30b70638d0af919908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current error message, if any.  <br /></td></tr>
 <tr class="separator:acd091ae1e5721a30b70638d0af919908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac34a488c77ed081884e301468d87d103" id="r_ac34a488c77ed081884e301468d87d103"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">isOpen</a> () const</td></tr>
-<tr class="memdesc:ac34a488c77ed081884e301468d87d103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the acceptor is currently open.  <br /></td></tr>
+<tr class="memdesc:ac34a488c77ed081884e301468d87d103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the acceptor is actively listening.  <br /></td></tr>
 <tr class="separator:ac34a488c77ed081884e301468d87d103"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a871c0d18d00987bbece0ef49dab88d98" id="r_a871c0d18d00987bbece0ef49dab88d98"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a871c0d18d00987bbece0ef49dab88d98">m_running</a> {false}</td></tr>
-<tr class="memdesc:a871c0d18d00987bbece0ef49dab88d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic flag controlling the acceptor's running state.  <br /></td></tr>
+<tr class="memdesc:a871c0d18d00987bbece0ef49dab88d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether the acceptor should continue running.  <br /></td></tr>
 <tr class="separator:a871c0d18d00987bbece0ef49dab88d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a610da07afc754d692dc81d31bb9aa556" id="r_a610da07afc754d692dc81d31bb9aa556"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a595cc75833b669dc425e067f776bee04">irsol::types::port_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a610da07afc754d692dc81d31bb9aa556">m_port</a></td></tr>
-<tr class="memdesc:a610da07afc754d692dc81d31bb9aa556"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP port on which the acceptor listens for incoming connections.  <br /></td></tr>
+<tr class="memdesc:a610da07afc754d692dc81d31bb9aa556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port on which to accept incoming TCP connections.  <br /></td></tr>
 <tr class="separator:a610da07afc754d692dc81d31bb9aa556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c91f0bacbc646141dcca7a7f1216b79" id="r_a3c91f0bacbc646141dcca7a7f1216b79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html#a4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a3c91f0bacbc646141dcca7a7f1216b79">m_onNewClientCallback</a></td></tr>
-<tr class="memdesc:a3c91f0bacbc646141dcca7a7f1216b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function to be invoked when a new client connection is established.  <br /></td></tr>
+<tr class="memitem:a3c91f0bacbc646141dcca7a7f1216b79" id="r_a3c91f0bacbc646141dcca7a7f1216b79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d64/group__Server.html#ga4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a3c91f0bacbc646141dcca7a7f1216b79">m_onNewClientCallback</a></td></tr>
+<tr class="memdesc:a3c91f0bacbc646141dcca7a7f1216b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to handle accepted client connections.  <br /></td></tr>
 <tr class="separator:a3c91f0bacbc646141dcca7a7f1216b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a803b69ed25d93cae126e0192235ca5ba" id="r_a803b69ed25d93cae126e0192235ca5ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ac23a02a874aec33198f425816e963048">irsol::types::acceptor_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a803b69ed25d93cae126e0192235ca5ba">m_acceptor</a></td></tr>
-<tr class="memdesc:a803b69ed25d93cae126e0192235ca5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acceptor socket bound to m_port.  <br /></td></tr>
+<tr class="memdesc:a803b69ed25d93cae126e0192235ca5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP acceptor socket bound to m_port.  <br /></td></tr>
 <tr class="separator:a803b69ed25d93cae126e0192235ca5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20a5a589392f78c5c95a4dc75d777f5" id="r_ae20a5a589392f78c5c95a4dc75d777f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a29ac1eeb0d31bd505b9756c7b9db10bc">irsol::types::connection_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ae20a5a589392f78c5c95a4dc75d777f5">m_isOpen</a> {}</td></tr>
-<tr class="memdesc:ae20a5a589392f78c5c95a4dc75d777f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether the acceptor is currently open.  <br /></td></tr>
+<tr class="memdesc:ae20a5a589392f78c5c95a4dc75d777f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of attempting to bind and open the acceptor socket.  <br /></td></tr>
 <tr class="separator:ae20a5a589392f78c5c95a4dc75d777f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Accepts incoming TCP connections and creates forwards the underlying connection to the callback. </p>
+<div class="textblock"><p>Accepts incoming TCP connections and triggers a callback for each new client. </p>
+<p>The <a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html" title="Accepts incoming TCP connections and triggers a callback for each new client.">ClientSessionAcceptor</a> listens on a given TCP port and forwards each accepted socket to the provided callback, enabling session initialization for each client. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00026">26</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00048">48</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a40edb1b66d4be849ebcbb711277dcb53" name="a40edb1b66d4be849ebcbb711277dcb53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a40edb1b66d4be849ebcbb711277dcb53">&#9670;&#160;</a></span>ClientSessionAcceptor()</h2>
@@ -122,7 +123,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html#a4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../da/d64/group__Server.html#ga4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a>&#160;</td>
           <td class="paramname"><em>onNewClientCallback</em>&#160;</td>
         </tr>
         <tr>
@@ -133,11 +134,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs the acceptor for a given port and onNewClientCallback. </p>
+<p>Constructs the acceptor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">port</td><td>TCP port to listen on for client connections. </td></tr>
-    <tr><td class="paramname">onNewClientCallback</td><td>Callback function to be invoked when a new client connection is established. </td></tr>
+    <tr><td class="paramname">port</td><td>TCP port to bind and listen on. </td></tr>
+    <tr><td class="paramname">onNewClientCallback</td><td>Function to call when a new client connects. </td></tr>
   </table>
   </dd>
 </dl>
@@ -147,10 +148,10 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   15</span>{</div>
 <div class="line"><span class="lineno">   16</span>  <a class="code hl_variable" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ae20a5a589392f78c5c95a4dc75d777f5">m_isOpen</a> = <a class="code hl_variable" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a803b69ed25d93cae126e0192235ca5ba">m_acceptor</a>.open(<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a7c3368a8b82f0392db902b0f78bcc1ce">irsol::types::inet_address_t</a>(<a class="code hl_variable" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a610da07afc754d692dc81d31bb9aa556">m_port</a>));</div>
 <div class="line"><span class="lineno">   17</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a3c91f0bacbc646141dcca7a7f1216b79"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a3c91f0bacbc646141dcca7a7f1216b79">irsol::server::internal::ClientSessionAcceptor::m_onNewClientCallback</a></div><div class="ttdeci">OnNewClientCallback_t m_onNewClientCallback</div><div class="ttdoc">Callback function to be invoked when a new client connection is established.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00065">acceptor.hpp:65</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a610da07afc754d692dc81d31bb9aa556"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a610da07afc754d692dc81d31bb9aa556">irsol::server::internal::ClientSessionAcceptor::m_port</a></div><div class="ttdeci">const irsol::types::port_t m_port</div><div class="ttdoc">TCP port on which the acceptor listens for incoming connections.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00062">acceptor.hpp:62</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a803b69ed25d93cae126e0192235ca5ba"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a803b69ed25d93cae126e0192235ca5ba">irsol::server::internal::ClientSessionAcceptor::m_acceptor</a></div><div class="ttdeci">irsol::types::acceptor_t m_acceptor</div><div class="ttdoc">Acceptor socket bound to m_port.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00068">acceptor.hpp:68</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ae20a5a589392f78c5c95a4dc75d777f5"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ae20a5a589392f78c5c95a4dc75d777f5">irsol::server::internal::ClientSessionAcceptor::m_isOpen</a></div><div class="ttdeci">irsol::types::connection_result_t m_isOpen</div><div class="ttdoc">Flag indicating whether the acceptor is currently open.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00071">acceptor.hpp:71</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a3c91f0bacbc646141dcca7a7f1216b79"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a3c91f0bacbc646141dcca7a7f1216b79">irsol::server::internal::ClientSessionAcceptor::m_onNewClientCallback</a></div><div class="ttdeci">OnNewClientCallback_t m_onNewClientCallback</div><div class="ttdoc">Callback to handle accepted client connections.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00103">acceptor.hpp:103</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a610da07afc754d692dc81d31bb9aa556"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a610da07afc754d692dc81d31bb9aa556">irsol::server::internal::ClientSessionAcceptor::m_port</a></div><div class="ttdeci">const irsol::types::port_t m_port</div><div class="ttdoc">Port on which to accept incoming TCP connections.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00098">acceptor.hpp:98</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a803b69ed25d93cae126e0192235ca5ba"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a803b69ed25d93cae126e0192235ca5ba">irsol::server::internal::ClientSessionAcceptor::m_acceptor</a></div><div class="ttdeci">irsol::types::acceptor_t m_acceptor</div><div class="ttdoc">TCP acceptor socket bound to m_port.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00108">acceptor.hpp:108</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ae20a5a589392f78c5c95a4dc75d777f5"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ae20a5a589392f78c5c95a4dc75d777f5">irsol::server::internal::ClientSessionAcceptor::m_isOpen</a></div><div class="ttdeci">irsol::types::connection_result_t m_isOpen</div><div class="ttdoc">Result of attempting to bind and open the acceptor socket.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00113">acceptor.hpp:113</a></div></div>
 <div class="ttc" id="anamespaceirsol_1_1types_html_a7c3368a8b82f0392db902b0f78bcc1ce"><div class="ttname"><a href="../../d9/d2e/namespaceirsol_1_1types.html#a7c3368a8b82f0392db902b0f78bcc1ce">irsol::types::inet_address_t</a></div><div class="ttdeci">sockpp::inet_address inet_address_t</div><div class="ttdoc">Alias for an IPv4/IPv6 internet address.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/de3/types_8hpp_source.html#l00079">types.hpp:79</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -171,14 +172,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the error message if the acceptor is in error mode. </p>
+<p>Gets the current error message, if any. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string describing the most recent error that might have been raised while trying to bind to the TCP port. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">irsol::AssertionException</a></td><td>in case the acceptor it not in error mode. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html#l00020">20</a> of file <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html">acceptor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
 <div class="line"><span class="lineno">   22</span>  <a class="code hl_define" href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a>(!<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">isOpen</a>(), <span class="stringliteral">&quot;Acceptor is not in error mode&quot;</span>);</div>
 <div class="line"><span class="lineno">   23</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ae20a5a589392f78c5c95a4dc75d777f5">m_isOpen</a>.error().message();</div>
 <div class="line"><span class="lineno">   24</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ac34a488c77ed081884e301468d87d103"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">irsol::server::internal::ClientSessionAcceptor::isOpen</a></div><div class="ttdeci">bool isOpen() const</div><div class="ttdoc">Returns true if the acceptor is currently open.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00027">acceptor.cpp:27</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ac34a488c77ed081884e301468d87d103"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">irsol::server::internal::ClientSessionAcceptor::isOpen</a></div><div class="ttdeci">bool isOpen() const</div><div class="ttdoc">Checks if the acceptor is actively listening.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00027">acceptor.cpp:27</a></div></div>
 <div class="ttc" id="agroup__Assertion_html_gae503472051c488fb16db93a66e9bbb23"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gae503472051c488fb16db93a66e9bbb23">IRSOL_ASSERT_ERROR</a></div><div class="ttdeci">#define IRSOL_ASSERT_ERROR</div><div class="ttdoc">Error-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00134">assert.hpp:134</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -198,7 +206,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns true if the acceptor is currently open. </p>
+<p>Checks if the acceptor is actively listening. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the socket is open and accepting connections. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html">acceptor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
@@ -222,7 +231,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Starts the accept loop. This is usually called in a separate thread. </p>
+<p>Starts the accept loop. </p>
+<p>This method enters a blocking loop accepting client connections and invoking the callback for each. It is typically run in a dedicated thread. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html">acceptor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
@@ -276,8 +286,8 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   93</span>  }</div>
 <div class="line"><span class="lineno">   94</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Accept loop ended&quot;</span>);</div>
 <div class="line"><span class="lineno">   95</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a871c0d18d00987bbece0ef49dab88d98"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a871c0d18d00987bbece0ef49dab88d98">irsol::server::internal::ClientSessionAcceptor::m_running</a></div><div class="ttdeci">std::atomic&lt; bool &gt; m_running</div><div class="ttdoc">Atomic flag controlling the acceptor's running state.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00059">acceptor.hpp:59</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_acd091ae1e5721a30b70638d0af919908"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">irsol::server::internal::ClientSessionAcceptor::error</a></div><div class="ttdeci">std::string error() const</div><div class="ttdoc">Returns the error message if the acceptor is in error mode.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00020">acceptor.cpp:20</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a871c0d18d00987bbece0ef49dab88d98"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a871c0d18d00987bbece0ef49dab88d98">irsol::server::internal::ClientSessionAcceptor::m_running</a></div><div class="ttdeci">std::atomic&lt; bool &gt; m_running</div><div class="ttdoc">Flag indicating whether the acceptor should continue running.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dc6/acceptor_8hpp_source.html#l00093">acceptor.hpp:93</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_acd091ae1e5721a30b70638d0af919908"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">irsol::server::internal::ClientSessionAcceptor::error</a></div><div class="ttdeci">std::string error() const</div><div class="ttdoc">Gets the current error message, if any.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00020">acceptor.cpp:20</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga5ffc6d687ddca344c775b62c9d6e822f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_LOG_WARN(...)</div><div class="ttdoc">Logs a warning-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00093">logging.hpp:93</a></div></div>
@@ -303,6 +313,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Stops the accept loop. </p>
+<p>Calling this method will cause <code><a class="el" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ad6f5a0eba72fcf71da351c599ff402e3" title="Starts the accept loop.">run()</a></code> to return and stop accepting new connections. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html#l00033">33</a> of file <a class="el" href="../../d1/d7e/acceptor_8cpp_source.html">acceptor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
@@ -337,9 +348,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Acceptor socket bound to m_port. </p>
+<p>TCP acceptor socket bound to m_port. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00108">108</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
 
 </div>
 </div>
@@ -363,10 +374,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Flag indicating whether the acceptor is currently open. </p>
+<p>Result of attempting to bind and open the acceptor socket. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -380,7 +391,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html#a4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a> irsol::server::internal::ClientSessionAcceptor::m_onNewClientCallback</td>
+          <td class="memname"><a class="el" href="../../da/d64/group__Server.html#ga4d15ff25ca447e1cbb6e424f57a1beab">OnNewClientCallback_t</a> irsol::server::internal::ClientSessionAcceptor::m_onNewClientCallback</td>
         </tr>
       </table>
   </td>
@@ -390,9 +401,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Callback function to be invoked when a new client connection is established. </p>
+<p>Callback to handle accepted client connections. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
 
 </div>
 </div>
@@ -416,9 +427,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>TCP port on which the acceptor listens for incoming connections. </p>
+<p>Port on which to accept incoming TCP connections. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00062">62</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00098">98</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
 
 </div>
 </div>
@@ -442,10 +453,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Atomic flag controlling the acceptor's running state. </p>
+<p>Flag indicating whether the acceptor should continue running. </p>
+<dl class="section note"><dt>Note</dt><dd>This is usually set by the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> (or the main thread that manages the acceptor thread) for shut-down operations. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>{<span class="keyword">false</span>};</div>
+<p class="definition">Definition at line <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html#l00093">93</a> of file <a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">acceptor.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{<span class="keyword">false</span>};</div>
 </div><!-- fragment -->
 </div>
 </div>

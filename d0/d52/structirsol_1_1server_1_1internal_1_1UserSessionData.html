@@ -56,11 +56,11 @@ $(document).ready(function(){initNavTree('d0/d52/structirsol_1_1server_1_1intern
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../db/d66/structirsol_1_1server_1_1internal_1_1UserSessionData-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::internal::UserSessionData Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::internal::UserSessionData Struct Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Encapsulates all per-client data for managing a user session.  
+<p>Encapsulates all per-client data used during a session's lifetime.  
  <a href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>&gt;</code></p>
@@ -68,14 +68,18 @@ $(document).ready(function(){initNavTree('d0/d52/structirsol_1_1server_1_1intern
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:afa7827743f1cd0124597b7afb903abc2" id="r_afa7827743f1cd0124597b7afb903abc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html">FrameListeningState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html#afa7827743f1cd0124597b7afb903abc2">frameListeningState</a> {}</td></tr>
-<tr class="memdesc:afa7827743f1cd0124597b7afb903abc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls the client's state w.r.t listening to frames.  <br /></td></tr>
+<tr class="memdesc:afa7827743f1cd0124597b7afb903abc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client-specific state for image frame listening, including parameters and worker thread.  <br /></td></tr>
 <tr class="separator:afa7827743f1cd0124597b7afb903abc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Encapsulates all per-client data for managing a user session. </p>
-<p>A <a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html" title="Encapsulates all per-client data for managing a user session.">UserSessionData</a> object holds the networking socket for communication, synchronization primitives protecting concurrent access to the socket, and frame delivery parameters that control how images are streamed to the client. </p>
+<div class="textblock"><p>Encapsulates all per-client data used during a session's lifetime. </p>
+<p>This struct holds all session-specific state for a connected client, including:</p><ul>
+<li>Streaming control flags and parameters</li>
+<li>Thread state for frame delivery</li>
+</ul>
+<p>It is owned and accessed by the <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> class and should not be shared across sessions. All socket communication and dynamic client behavior is coordinated via this structure. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00161">161</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="afa7827743f1cd0124597b7afb903abc2" name="afa7827743f1cd0124597b7afb903abc2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa7827743f1cd0124597b7afb903abc2">&#9670;&#160;</a></span>frameListeningState</h2>
@@ -89,10 +93,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Controls the client's state w.r.t listening to frames. </p>
+<p>Client-specific state for image frame listening, including parameters and worker thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   96</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00164">164</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

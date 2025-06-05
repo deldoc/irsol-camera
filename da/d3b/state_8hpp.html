@@ -56,9 +56,12 @@ $(document).ready(function(){initNavTree('da/d3b/state_8hpp.html','../../'); ini
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">state.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">state.hpp File Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines session-specific internal state structures for connected clients.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/da9/logging_8hpp_source.html">irsol/logging.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">irsol/types.hpp</a>&quot;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
@@ -72,13 +75,13 @@ $(document).ready(function(){initNavTree('da/d3b/state_8hpp.html','../../'); ini
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html">irsol::server::internal::GisParams</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per client parameters for Gis command.  <a href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-client configuration parameters for the GIS (GetImageSequence) command.  <a href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html">irsol::server::internal::FrameListeningState</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">State associated with the Session client and how it's listening to frames.  <a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls how a client listens for frames, including thread management and GIS parameters.  <a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html">irsol::server::internal::UserSessionData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulates all per-client data for managing a user session.  <a href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulates all per-client data used during a session's lifetime.  <a href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -86,11 +89,19 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d1/d03/namespaceirsol_1_1server" id="r_d1/d03/namespaceirsol_1_1server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d03/namespaceirsol_1_1server.html">irsol::server</a></td></tr>
+<tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:dd/d08/namespaceirsol_1_1server_1_1internal" id="r_dd/d08/namespaceirsol_1_1server_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html">irsol::server::internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines session-specific internal state structures for connected clients. </p>
+<p>This file contains the definitions of data structures that encapsulate all private, per-client state for the server's session management. Every instance of a connected client is represented by a unique <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a>, and all client-specific state related to frame streaming, communication parameters, and threading is encapsulated in this module via <a class="el" href="../../d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html">irsol::server::internal::UserSessionData</a>.</p>
+<p>Communication over the socket, client-specific control logic, and thread-based streaming control are all coordinated using these internal structures.</p>
+<p>These structures are not intended to be accessed concurrently without external synchronization (e.g., session-level mutexes). Instead, they act as a container for client-local data and control flags that drive runtime behaviors like image frame streaming (GIS mode) or message throttling. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -63,14 +63,19 @@ $(document).ready(function(){initNavTree('d1/dbf/classirsol_1_1server_1_1handler
 </div><!--header-->
 <div class="contents">
 
+<p>Binds incoming protocol messages to the appropriate per-client logic.  
+ <a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a492b09b7157fc4eae892c6bd774362ee" id="r_a492b09b7157fc4eae892c6bd774362ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#af610878a43cf1bd83dbc63556adac80f">handling_function_response_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a492b09b7157fc4eae892c6bd774362ee">handle</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;clientId, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">protocol::InMessage</a> &amp;&amp;message) const</td></tr>
+<tr class="memdesc:a492b09b7157fc4eae892c6bd774362ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatches an incoming message to the correct user-defined handler.  <br /></td></tr>
 <tr class="separator:a492b09b7157fc4eae892c6bd774362ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6209db6d5bd9984dd16e3d128441dc4b" id="r_a6209db6d5bd9984dd16e3d128441dc4b"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, int &gt;  = 0&gt; </td></tr>
 <tr class="memitem:a6209db6d5bd9984dd16e3d128441dc4b"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a6209db6d5bd9984dd16e3d128441dc4b">registerHandler</a> (const std::string &amp;identifier, <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a0e5e763c0c877aa8b1aab4ceb0d4315b">handler_function_t</a>&lt; T &gt; handler)</td></tr>
+<tr class="memdesc:a6209db6d5bd9984dd16e3d128441dc4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a user-defined handler for a specific message type and identifier.  <br /></td></tr>
 <tr class="separator:a6209db6d5bd9984dd16e3d128441dc4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
@@ -103,23 +108,36 @@ Private Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a821f81748be4ee265fac3ba83fd1de28" id="r_a821f81748be4ee265fac3ba83fd1de28"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#aa0da14cd23cd1d50d5e7a22317111c09">any_handler_function_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a821f81748be4ee265fac3ba83fd1de28">findHandlerForMessage</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">protocol::InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) const</td></tr>
+<tr class="memdesc:a821f81748be4ee265fac3ba83fd1de28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locates a registered handler (of any message type) for a given message.  <br /></td></tr>
 <tr class="separator:a821f81748be4ee265fac3ba83fd1de28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cc3ac8acc9be44c20c10b529ab04abc" id="r_a5cc3ac8acc9be44c20c10b529ab04abc"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, int &gt;  = 0&gt; </td></tr>
 <tr class="memitem:a5cc3ac8acc9be44c20c10b529ab04abc"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a0e5e763c0c877aa8b1aab4ceb0d4315b">handler_function_t</a>&lt; T &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a5cc3ac8acc9be44c20c10b529ab04abc">findHandler</a> (const <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a629f292bc91d86ebf10500e46c82754a">handler_identifier_t</a> &amp;identifier) const</td></tr>
+<tr class="memdesc:a5cc3ac8acc9be44c20c10b529ab04abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locates a handler of a specific message type and identifier.  <br /></td></tr>
 <tr class="separator:a5cc3ac8acc9be44c20c10b529ab04abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a58a4a788223103a30bdbaf585b1bf0ef" id="r_a58a4a788223103a30bdbaf585b1bf0ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#ab03fcf7dacb970b1b9a9df4b5a223de7">assignment_message_handler_map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">m_assignmentMessageHandlers</a> {}</td></tr>
+<tr class="memdesc:a58a4a788223103a30bdbaf585b1bf0ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered handlers for <code>Assignment</code> messages, keyed by identifier.  <br /></td></tr>
 <tr class="separator:a58a4a788223103a30bdbaf585b1bf0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8703a8744db033ca1ad307759e0a4a83" id="r_a8703a8744db033ca1ad307759e0a4a83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#aa3477c6fbf17a367532490705f7e0144">inquiry_message_handler_map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">m_inquiryMessageHandlers</a> {}</td></tr>
+<tr class="memdesc:a8703a8744db033ca1ad307759e0a4a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered handlers for <code>Inquiry</code> messages, keyed by identifier.  <br /></td></tr>
 <tr class="separator:a8703a8744db033ca1ad307759e0a4a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a968bf9dd0266592c1e0229e62d2df41c" id="r_a968bf9dd0266592c1e0229e62d2df41c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#aa68e3ebcfd288e058dd52d9e47b47d9b">command_message_handler_map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">m_commandMessageHandlers</a> {}</td></tr>
+<tr class="memdesc:a968bf9dd0266592c1e0229e62d2df41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered handlers for <code>Command</code> messages, keyed by identifier.  <br /></td></tr>
 <tr class="separator:a968bf9dd0266592c1e0229e62d2df41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00018">18</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<div class="textblock"><p>Binds incoming protocol messages to the appropriate per-client logic. </p>
+<p>This class acts as a central dispatcher used by the application layer <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> to process structured incoming messages <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a>. Each message is handled by a user-registered callback function based on its type and identifier.</p>
+<p>Messages are categorized into three types:</p><ul>
+<li><a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html">irsol::protocol::Assignment</a> (e.g., parameter changes)</li>
+<li><a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html">irsol::protocol::Inquiry</a> (e.g., state queries)</li>
+<li><a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">irsol::protocol::Command</a> (e.g., actions or triggers)</li>
+</ul>
+<p>For each type, client-specific logic is registered using <code><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a6209db6d5bd9984dd16e3d128441dc4b" title="Registers a user-defined handler for a specific message type and identifier.">registerHandler()</a></code>. When a message arrives, <code><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a492b09b7157fc4eae892c6bd774362ee" title="Dispatches an incoming message to the correct user-defined handler.">handle()</a></code> invokes the matching callback and returns the generated response messages to be sent back to the client. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="aa0da14cd23cd1d50d5e7a22317111c09" name="aa0da14cd23cd1d50d5e7a22317111c09"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0da14cd23cd1d50d5e7a22317111c09">&#9670;&#160;</a></span>any_handler_function_t</h2>
@@ -141,7 +159,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00038">38</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00100">100</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -165,7 +183,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00027">27</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00089">89</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -189,7 +207,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00034">34</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -213,7 +231,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00029">29</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -237,7 +255,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00036">36</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00098">98</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -263,7 +281,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00024">24</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -287,7 +305,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00021">21</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00083">83</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -311,7 +329,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00020">20</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00082">82</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -335,7 +353,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00028">28</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00090">90</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -359,7 +377,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00035">35</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00097">97</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -385,7 +403,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00094">94</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
 
 </div>
 </div>
@@ -416,25 +434,40 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>  {</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Assignment&gt;) {</div>
-<div class="line"><span class="lineno">   95</span>      <span class="keyword">auto</span> it = <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">m_assignmentMessageHandlers</a>.find(identifier);</div>
-<div class="line"><span class="lineno">   96</span>      <span class="keywordflow">return</span> it == <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">m_assignmentMessageHandlers</a>.end() ? std::nullopt</div>
-<div class="line"><span class="lineno">   97</span>                                                     : std::make_optional(it-&gt;second);</div>
-<div class="line"><span class="lineno">   98</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Inquiry&gt;) {</div>
-<div class="line"><span class="lineno">   99</span>      <span class="keyword">auto</span> it = <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">m_inquiryMessageHandlers</a>.find(identifier);</div>
-<div class="line"><span class="lineno">  100</span>      <span class="keywordflow">return</span> it == <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">m_inquiryMessageHandlers</a>.end() ? std::nullopt : std::make_optional(it-&gt;second);</div>
-<div class="line"><span class="lineno">  101</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Command&gt;) {</div>
-<div class="line"><span class="lineno">  102</span>      <span class="keyword">auto</span> it = <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">m_commandMessageHandlers</a>.find(identifier);</div>
-<div class="line"><span class="lineno">  103</span>      <span class="keywordflow">return</span> it == <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">m_commandMessageHandlers</a>.end() ? std::nullopt : std::make_optional(it-&gt;second);</div>
-<div class="line"><span class="lineno">  104</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  105</span>      <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;findHandler()&quot;</span>);</div>
-<div class="line"><span class="lineno">  106</span>    }</div>
-<div class="line"><span class="lineno">  107</span>  }</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a58a4a788223103a30bdbaf585b1bf0ef"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">irsol::server::handlers::MessageHandler::m_assignmentMessageHandlers</a></div><div class="ttdeci">assignment_message_handler_map_t m_assignmentMessageHandlers</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00109">message_handler.hpp:109</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a8703a8744db033ca1ad307759e0a4a83"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">irsol::server::handlers::MessageHandler::m_inquiryMessageHandlers</a></div><div class="ttdeci">inquiry_message_handler_map_t m_inquiryMessageHandlers</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00110">message_handler.hpp:110</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a968bf9dd0266592c1e0229e62d2df41c"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">irsol::server::handlers::MessageHandler::m_commandMessageHandlers</a></div><div class="ttdeci">command_message_handler_map_t m_commandMessageHandlers</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00111">message_handler.hpp:111</a></div></div>
+<p>Locates a handler of a specific message type and identifier. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Message type (<code>Assignment</code>, <code>Inquiry</code>, or <code>Command</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>Identifier of the message to match. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A callable if found, or <code>std::nullopt</code> if no handler is registered. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00188">188</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>  {</div>
+<div class="line"><span class="lineno">  190</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Assignment&gt;) {</div>
+<div class="line"><span class="lineno">  191</span>      <span class="keyword">auto</span> it = <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">m_assignmentMessageHandlers</a>.find(identifier);</div>
+<div class="line"><span class="lineno">  192</span>      <span class="keywordflow">return</span> it == <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">m_assignmentMessageHandlers</a>.end() ? std::nullopt</div>
+<div class="line"><span class="lineno">  193</span>                                                     : std::make_optional(it-&gt;second);</div>
+<div class="line"><span class="lineno">  194</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Inquiry&gt;) {</div>
+<div class="line"><span class="lineno">  195</span>      <span class="keyword">auto</span> it = <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">m_inquiryMessageHandlers</a>.find(identifier);</div>
+<div class="line"><span class="lineno">  196</span>      <span class="keywordflow">return</span> it == <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">m_inquiryMessageHandlers</a>.end() ? std::nullopt : std::make_optional(it-&gt;second);</div>
+<div class="line"><span class="lineno">  197</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Command&gt;) {</div>
+<div class="line"><span class="lineno">  198</span>      <span class="keyword">auto</span> it = <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">m_commandMessageHandlers</a>.find(identifier);</div>
+<div class="line"><span class="lineno">  199</span>      <span class="keywordflow">return</span> it == <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">m_commandMessageHandlers</a>.end() ? std::nullopt : std::make_optional(it-&gt;second);</div>
+<div class="line"><span class="lineno">  200</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  201</span>      <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;findHandler()&quot;</span>);</div>
+<div class="line"><span class="lineno">  202</span>    }</div>
+<div class="line"><span class="lineno">  203</span>  }</div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a58a4a788223103a30bdbaf585b1bf0ef"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">irsol::server::handlers::MessageHandler::m_assignmentMessageHandlers</a></div><div class="ttdeci">assignment_message_handler_map_t m_assignmentMessageHandlers</div><div class="ttdoc">Registered handlers for Assignment messages, keyed by identifier.</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00206">message_handler.hpp:206</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a8703a8744db033ca1ad307759e0a4a83"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">irsol::server::handlers::MessageHandler::m_inquiryMessageHandlers</a></div><div class="ttdeci">inquiry_message_handler_map_t m_inquiryMessageHandlers</div><div class="ttdoc">Registered handlers for Inquiry messages, keyed by identifier.</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00209">message_handler.hpp:209</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a968bf9dd0266592c1e0229e62d2df41c"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">irsol::server::handlers::MessageHandler::m_commandMessageHandlers</a></div><div class="ttdeci">command_message_handler_map_t m_commandMessageHandlers</div><div class="ttdoc">Registered handlers for Command messages, keyed by identifier.</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00212">message_handler.hpp:212</a></div></div>
 <div class="ttc" id="amacros_8hpp_html_aa21d39bf4cd94d42dc192cf34803a5d9"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)</div><div class="ttdoc">Emits a compile-time error when no template specialization is available.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00173">macros.hpp:173</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -462,6 +495,15 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Locates a registered handler (of any message type) for a given message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message whose identifier and type are used for lookup. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A matching handler wrapped in a <code>std::variant</code>, or <code>std::nullopt</code> if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d4/ddb/message__handler_8cpp_source.html#l00042">42</a> of file <a class="el" href="../../d4/ddb/message__handler_8cpp_source.html">message_handler.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
@@ -507,6 +549,17 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
       </table>
 </div><div class="memdoc">
 
+<p>Dispatches an incoming message to the correct user-defined handler. </p>
+<p>This method extracts the message type and identifier from the parsed <code>InMessage</code>, then finds the corresponding callback registered via <code><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a6209db6d5bd9984dd16e3d128441dc4b" title="Registers a user-defined handler for a specific message type and identifier.">registerHandler()</a></code>. The appropriate handler is invoked with the <code>clientId</code> and the message payload.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientId</td><td>Unique identifier of the client sending the message. </td></tr>
+    <tr><td class="paramname">message</td><td>The parsed incoming message to handle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of <code>OutMessage</code> responses to be sent back to the client. </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="../../d4/ddb/message__handler_8cpp_source.html#l00011">11</a> of file <a class="el" href="../../d4/ddb/message__handler_8cpp_source.html">message_handler.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   13</span>{</div>
 <div class="line"><span class="lineno">   14</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Handling message: &#39;{}&#39; for client &#39;{}&#39;&quot;</span>, <a class="code hl_function" href="../../de/dca/group__Protocol.html#gab7845b7ab1de991c2ee080dc19607f18">protocol::toString</a>(message), clientId);</div>
@@ -535,9 +588,9 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 <div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> {};</div>
 <div class="line"><span class="lineno">   38</span>  }</div>
 <div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a0e5e763c0c877aa8b1aab4ceb0d4315b"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a0e5e763c0c877aa8b1aab4ceb0d4315b">irsol::server::handlers::MessageHandler::handler_function_t</a></div><div class="ttdeci">std::function&lt; handling_function_response_t(const irsol::types::client_id_t &amp;, T &amp;&amp;)&gt; handler_function_t</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00024">message_handler.hpp:25</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a821f81748be4ee265fac3ba83fd1de28"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a821f81748be4ee265fac3ba83fd1de28">irsol::server::handlers::MessageHandler::findHandlerForMessage</a></div><div class="ttdeci">std::optional&lt; any_handler_function_t &gt; findHandlerForMessage(const protocol::InMessage &amp;msg) const</div><div class="ttdef"><b>Definition</b> <a href="../../d4/ddb/message__handler_8cpp_source.html#l00042">message_handler.cpp:42</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_af610878a43cf1bd83dbc63556adac80f"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#af610878a43cf1bd83dbc63556adac80f">irsol::server::handlers::MessageHandler::handling_function_response_t</a></div><div class="ttdeci">std::vector&lt; protocol::OutMessage &gt; handling_function_response_t</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00020">message_handler.hpp:20</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a0e5e763c0c877aa8b1aab4ceb0d4315b"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a0e5e763c0c877aa8b1aab4ceb0d4315b">irsol::server::handlers::MessageHandler::handler_function_t</a></div><div class="ttdeci">std::function&lt; handling_function_response_t(const irsol::types::client_id_t &amp;, T &amp;&amp;)&gt; handler_function_t</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00086">message_handler.hpp:87</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_a821f81748be4ee265fac3ba83fd1de28"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a821f81748be4ee265fac3ba83fd1de28">irsol::server::handlers::MessageHandler::findHandlerForMessage</a></div><div class="ttdeci">std::optional&lt; any_handler_function_t &gt; findHandlerForMessage(const protocol::InMessage &amp;msg) const</div><div class="ttdoc">Locates a registered handler (of any message type) for a given message.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/ddb/message__handler_8cpp_source.html#l00042">message_handler.cpp:42</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1MessageHandler_html_af610878a43cf1bd83dbc63556adac80f"><div class="ttname"><a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#af610878a43cf1bd83dbc63556adac80f">irsol::server::handlers::MessageHandler::handling_function_response_t</a></div><div class="ttdeci">std::vector&lt; protocol::OutMessage &gt; handling_function_response_t</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d84/message__handler_8hpp_source.html#l00082">message_handler.hpp:82</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
 <div class="ttc" id="agroup__Logging_html_gab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdoc">Logs a trace-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00090">logging.hpp:90</a></div></div>
 <div class="ttc" id="agroup__Protocol_html_gab7845b7ab1de991c2ee080dc19607f18"><div class="ttname"><a href="../../de/dca/group__Protocol.html#gab7845b7ab1de991c2ee080dc19607f18">irsol::protocol::toString</a></div><div class="ttdeci">std::string toString(const InMessage &amp;msg)</div><div class="ttdoc">Converts an incoming message variant to a human-readable string.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d87/variants_8cpp_source.html#l00019">variants.cpp:19</a></div></div>
@@ -582,40 +635,57 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00050">50</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>  {</div>
-<div class="line"><span class="lineno">   52</span>    <span class="comment">// Make sure there&#39;s no duplicate handlers for the same message kind and identifier</span></div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span>(<span class="keyword">auto</span> existingHandler = findHandler&lt;T&gt;(identifier); existingHandler) {</div>
-<div class="line"><span class="lineno">   54</span>      <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Assignment&gt;) {</div>
-<div class="line"><span class="lineno">   55</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
-<div class="line"><span class="lineno">   56</span>          <span class="stringliteral">&quot;Duplicate handler registered for identifier &#39;{}&#39; and Assignment type&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">   57</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Inquiry&gt;) {</div>
-<div class="line"><span class="lineno">   58</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
-<div class="line"><span class="lineno">   59</span>          <span class="stringliteral">&quot;Duplicate handler registered for identifier &#39;{}&#39; and Inquiry type&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">   60</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Command&gt;) {</div>
-<div class="line"><span class="lineno">   61</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
-<div class="line"><span class="lineno">   62</span>          <span class="stringliteral">&quot;Duplicate handler registered for identifier &#39;{}&#39; and Command type&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">   63</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   64</span>        <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;registerHandler()&quot;</span>);</div>
-<div class="line"><span class="lineno">   65</span>      }</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Assignment&gt;) {</div>
-<div class="line"><span class="lineno">   71</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Registering handler for &#39;Assignment(\&quot;{}\&quot;)&#39;&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">   72</span>      <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">m_assignmentMessageHandlers</a>[identifier] = handler;</div>
-<div class="line"><span class="lineno">   73</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Inquiry&gt;) {</div>
-<div class="line"><span class="lineno">   74</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Registering handler for &#39;Inquiry(\&quot;{}\&quot;)&#39;&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">   75</span>      <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">m_inquiryMessageHandlers</a>[identifier] = handler;</div>
-<div class="line"><span class="lineno">   76</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Command&gt;) {</div>
-<div class="line"><span class="lineno">   77</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Registering handler for &#39;Command(\&quot;{}\&quot;)&#39;&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">   78</span>      <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">m_commandMessageHandlers</a>[identifier] = handler;</div>
-<div class="line"><span class="lineno">   79</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   80</span>      <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;registerHandler()&quot;</span>);</div>
-<div class="line"><span class="lineno">   81</span>    }</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   83</span>  }</div>
+<p>Registers a user-defined handler for a specific message type and identifier. </p>
+<p>Handlers must be registered per message identifier (e.g., <code>"start_stream"</code>, <code>"set_param"</code>), and per message kind (Assignment, Inquiry, Command). Duplicate registrations are rejected.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>One of <code><a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html" title="Represents an assignment operation in the protocol.">protocol::Assignment</a></code>, <code><a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html" title="Represents a value inquiry in the protocol.">protocol::Inquiry</a></code>, or <code><a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html" title="Represents a command invocation in the protocol.">protocol::Command</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>The string identifier of the message (e.g., the <code>name</code> field). </td></tr>
+    <tr><td class="paramname">handler</td><td>A callable accepting <code>(client_id_t, T&amp;&amp;)</code> and returning response messages. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the handler was successfully registered, <code>false</code> if a duplicate exists. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00134">134</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>  {</div>
+<div class="line"><span class="lineno">  136</span>    <span class="comment">// Make sure there&#39;s no duplicate handlers for the same message kind and identifier</span></div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span>(<span class="keyword">auto</span> existingHandler = findHandler&lt;T&gt;(identifier); existingHandler) {</div>
+<div class="line"><span class="lineno">  138</span>      <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Assignment&gt;) {</div>
+<div class="line"><span class="lineno">  139</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
+<div class="line"><span class="lineno">  140</span>          <span class="stringliteral">&quot;Duplicate handler registered for identifier &#39;{}&#39; and Assignment type&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  141</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Inquiry&gt;) {</div>
+<div class="line"><span class="lineno">  142</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
+<div class="line"><span class="lineno">  143</span>          <span class="stringliteral">&quot;Duplicate handler registered for identifier &#39;{}&#39; and Inquiry type&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  144</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Command&gt;) {</div>
+<div class="line"><span class="lineno">  145</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
+<div class="line"><span class="lineno">  146</span>          <span class="stringliteral">&quot;Duplicate handler registered for identifier &#39;{}&#39; and Command type&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  147</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  148</span>        <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;registerHandler()&quot;</span>);</div>
+<div class="line"><span class="lineno">  149</span>      }</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  152</span>    }</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Assignment&gt;) {</div>
+<div class="line"><span class="lineno">  155</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Registering handler for &#39;Assignment(\&quot;{}\&quot;)&#39;&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  156</span>      <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a58a4a788223103a30bdbaf585b1bf0ef">m_assignmentMessageHandlers</a>[identifier] = handler;</div>
+<div class="line"><span class="lineno">  157</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Inquiry&gt;) {</div>
+<div class="line"><span class="lineno">  158</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Registering handler for &#39;Inquiry(\&quot;{}\&quot;)&#39;&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  159</span>      <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a8703a8744db033ca1ad307759e0a4a83">m_inquiryMessageHandlers</a>[identifier] = handler;</div>
+<div class="line"><span class="lineno">  160</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, protocol::Command&gt;) {</div>
+<div class="line"><span class="lineno">  161</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Registering handler for &#39;Command(\&quot;{}\&quot;)&#39;&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  162</span>      <a class="code hl_variable" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a968bf9dd0266592c1e0229e62d2df41c">m_commandMessageHandlers</a>[identifier] = handler;</div>
+<div class="line"><span class="lineno">  163</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  164</span>      <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;registerHandler()&quot;</span>);</div>
+<div class="line"><span class="lineno">  165</span>    }</div>
+<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  167</span>  }</div>
 <div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -641,8 +711,10 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00109">109</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>{};</div>
+<p>Registered handlers for <code>Assignment</code> messages, keyed by identifier. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00206">206</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -666,8 +738,10 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00111">111</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>{};</div>
+<p>Registered handlers for <code>Command</code> messages, keyed by identifier. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00212">212</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  212</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -691,8 +765,10 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00110">110</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>{};</div>
+<p>Registered handlers for <code>Inquiry</code> messages, keyed by identifier. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/d84/message__handler_8hpp_source.html#l00209">209</a> of file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  209</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

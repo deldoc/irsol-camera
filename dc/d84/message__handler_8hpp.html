@@ -56,9 +56,12 @@ $(document).ready(function(){initNavTree('dc/d84/message__handler_8hpp.html','..
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">message_handler.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">message_handler.hpp File Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Message routing layer between protocol and application logic.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../db/dbe/macros_8hpp_source.html">irsol/macros.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d8/dd1/protocol_8hpp_source.html">irsol/protocol.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d73/traits_8hpp_source.html">irsol/traits.hpp</a>&quot;</code><br />
@@ -72,6 +75,7 @@ $(document).ready(function(){initNavTree('dc/d84/message__handler_8hpp.html','..
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html">irsol::server::handlers::MessageHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds incoming protocol messages to the appropriate per-client logic.  <a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -79,11 +83,24 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d1/d03/namespaceirsol_1_1server" id="r_d1/d03/namespaceirsol_1_1server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d03/namespaceirsol_1_1server.html">irsol::server</a></td></tr>
+<tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d9/da2/namespaceirsol_1_1server_1_1handlers" id="r_d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html">irsol::server::handlers</a></td></tr>
+<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains message dispatching logic and per-identifier handler implementations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Message routing layer between protocol and application logic. </p>
+<p>This file defines the <code>MessageHandler</code> class, which acts as the glue between parsed <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> protocol messages and application-defined logic callbacks.</p>
+<p>It allows registering handler functions for three categories of messages:</p><ul>
+<li>Assignments: Used for state updates (e.g., setting parameters).</li>
+<li>Inquiries: Used to query state or configuration.</li>
+<li>Commands: Used to trigger actions or behaviors.</li>
+</ul>
+<p>This class is used by the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> to delegate protocol message handling to specific client logic based on the message type and identifier. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../dc/d84/message__handler_8hpp_source.html">message_handler.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

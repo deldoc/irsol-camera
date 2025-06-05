@@ -58,9 +58,12 @@ $(document).ready(function(){initNavTree('d9/da2/namespaceirsol_1_1server_1_1han
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::handlers Namespace Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::handlers Namespace Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Contains message dispatching logic and per-identifier handler implementations.  
+<a href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -92,6 +95,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">LambdaHandler</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html">MessageHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds incoming protocol messages to the appropriate per-client logic.  <a href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -132,7 +136,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a8930c31fe665148fbba0460bb8a341fd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a8930c31fe665148fbba0460bb8a341fd">makeLambdaHandler</a> (<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> &amp;ctx, LambdaT &amp;&amp;lambda)</td></tr>
 <tr class="separator:a8930c31fe665148fbba0460bb8a341fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Contains message dispatching logic and per-identifier handler implementations. </p>
+<p>The <code>handlers</code> namespace groups all logic related to handling structured protocol messages.</p>
+<p>This includes:</p><ul>
+<li>The <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html">irsol::server::handlers::MessageHandler</a> class, responsible for routing parsed <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> instances to registered per-client logic.</li>
+<li>All handler functions that can be registered via <code><a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html#a6209db6d5bd9984dd16e3d128441dc4b" title="Registers a user-defined handler for a specific message type and identifier.">MessageHandler::registerHandler()</a></code>.</li>
+</ul>
+<p>This namespace acts as the glue between the protocol-level message parsing layer and the higher-level application logic. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html" title="Core protocol message types, serialization, parsing, and communication utilities for the irsol framew...">irsol::protocol</a> </dd></dl>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a15eb09171fb666f8acc884873ec03979" name="a15eb09171fb666f8acc884873ec03979"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15eb09171fb666f8acc884873ec03979">&#9670;&#160;</a></span>AssignmentHandler</h2>
 

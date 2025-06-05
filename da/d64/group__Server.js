@@ -1,0 +1,86 @@
+var group__Server =
+[
+    [ "acceptor.hpp", "d8/dc6/acceptor_8hpp.html", null ],
+    [ "app.hpp", "d6/d2c/app_8hpp.html", null ],
+    [ "session.hpp", "d4/d5e/session_8hpp.html", null ],
+    [ "state.hpp", "da/d3b/state_8hpp.html", null ],
+    [ "irsol::server", "d1/d03/namespaceirsol_1_1server.html", null ],
+    [ "irsol::server::internal::ClientSessionAcceptor", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html", [
+      [ "ClientSessionAcceptor", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a40edb1b66d4be849ebcbb711277dcb53", null ],
+      [ "error", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908", null ],
+      [ "isOpen", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103", null ],
+      [ "run", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ad6f5a0eba72fcf71da351c599ff402e3", null ],
+      [ "stop", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a94ef12568141ee0a5e1b8aed41ef3b8e", null ],
+      [ "m_acceptor", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a803b69ed25d93cae126e0192235ca5ba", null ],
+      [ "m_isOpen", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ae20a5a589392f78c5c95a4dc75d777f5", null ],
+      [ "m_onNewClientCallback", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a3c91f0bacbc646141dcca7a7f1216b79", null ],
+      [ "m_port", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a610da07afc754d692dc81d31bb9aa556", null ],
+      [ "m_running", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a871c0d18d00987bbece0ef49dab88d98", null ]
+    ] ],
+    [ "irsol::server::App", "db/dc5/classirsol_1_1server_1_1App.html", [
+      [ "client_map_t", "db/dc5/classirsol_1_1server_1_1App.html#a2ae5d9838d0487da826386234ff2f481", null ],
+      [ "App", "db/dc5/classirsol_1_1server_1_1App.html#abaf05e4cfe17f02daca2cd14ebde207c", null ],
+      [ "addClient", "db/dc5/classirsol_1_1server_1_1App.html#a5e78a84334dc310a6012fc1288fb5e1d", null ],
+      [ "broadcastMessage", "db/dc5/classirsol_1_1server_1_1App.html#a82a57dc3845931c5545de504eac102e0", null ],
+      [ "camera", "db/dc5/classirsol_1_1server_1_1App.html#a3d467f15aaac7fb128455f76e3aebf3b", null ],
+      [ "frameCollector", "db/dc5/classirsol_1_1server_1_1App.html#a740cd3948f39494ec70ffe96f7814c87", null ],
+      [ "getClientSession", "db/dc5/classirsol_1_1server_1_1App.html#a77e659b496f5b52147e866441a9e79c0", null ],
+      [ "messageHandler", "db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8", null ],
+      [ "registerLambdaHandler", "db/dc5/classirsol_1_1server_1_1App.html#ab769714cca25b178b08c7aaf554af602", null ],
+      [ "registerMessageHandler", "db/dc5/classirsol_1_1server_1_1App.html#a7daa71ab01c508418e0039f24e8016ed", null ],
+      [ "registerMessageHandlers", "db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19", null ],
+      [ "removeClient", "db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5", null ],
+      [ "start", "db/dc5/classirsol_1_1server_1_1App.html#a8fb6f6293e0934c50607bd4d3484ead6", null ],
+      [ "stop", "db/dc5/classirsol_1_1server_1_1App.html#a8a7eab0392bb9b77fdaecf8cea61c771", null ],
+      [ "m_acceptor", "db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12", null ],
+      [ "m_acceptThread", "db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be", null ],
+      [ "m_cameraInterface", "db/dc5/classirsol_1_1server_1_1App.html#ab72d585f1aacd9b927a204a0de2c049e", null ],
+      [ "m_clients", "db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c", null ],
+      [ "m_clientsMutex", "db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390", null ],
+      [ "m_frameCollector", "db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61", null ],
+      [ "m_messageHandler", "db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93", null ],
+      [ "m_port", "db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec", null ]
+    ] ],
+    [ "irsol::server::ClientSession", "d2/d23/classirsol_1_1server_1_1ClientSession.html", [
+      [ "ClientSession", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a5d0151d9b765dda1d102f102dabe7ffb", null ],
+      [ "app", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a8183372b39b0743bc4a63266a67075ae", null ],
+      [ "app", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a9b50294f90b43a0568958ded25e9e5c1", null ],
+      [ "handleOutMessage", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a901942841e8bc23098736a7d5f31b627", null ],
+      [ "handleOutMessages", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a64c4423395f0f5a7606fd59c8f1d7f5b", null ],
+      [ "handleSerializedMessage", "d2/d23/classirsol_1_1server_1_1ClientSession.html#adff72e9cd2c34cff618b9a174ccd1e85", null ],
+      [ "id", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a3446e6a9a02cf8ffae35384da9df2ea7", null ],
+      [ "processInMessageBuffer", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a7d233cfe0241e35751dfb6899caab548", null ],
+      [ "processInRawMessage", "d2/d23/classirsol_1_1server_1_1ClientSession.html#aa8fa0412ad04d6fdbe74d6f557546629", null ],
+      [ "run", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a1f28e87d07b922c5e29ca03924edd359", null ],
+      [ "send", "d2/d23/classirsol_1_1server_1_1ClientSession.html#adfe5e5e9947f2565c7a7fb39e292928c", null ],
+      [ "send", "d2/d23/classirsol_1_1server_1_1ClientSession.html#aef5811ff01e4382caa5c97cf4ab17690", null ],
+      [ "socket", "d2/d23/classirsol_1_1server_1_1ClientSession.html#abd0385cf5eb84bc8c9a238ce3e4052bf", null ],
+      [ "socket", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a30ef1e04c1c6f44c067c400db4c20845", null ],
+      [ "socketMutex", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a726fd77e112bdca539e38fdae66a63a5", null ],
+      [ "userData", "d2/d23/classirsol_1_1server_1_1ClientSession.html#abe2d92360ca109a1c504a21ab73c884f", null ],
+      [ "userData", "d2/d23/classirsol_1_1server_1_1ClientSession.html#ac8ea851cbbfb2a3d6de19261751051d0", null ],
+      [ "m_app", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a9eea3b21f1e7419369f79416c36b9696", null ],
+      [ "m_id", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a7dfee4efe67df3e6796ac3fe2fbf159f", null ],
+      [ "m_sessionData", "d2/d23/classirsol_1_1server_1_1ClientSession.html#aeb4acc76d6b3c329e51e266714b80775", null ],
+      [ "m_socket", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a60c990380c85389bdb7df62930a68320", null ],
+      [ "m_socketMutex", "d2/d23/classirsol_1_1server_1_1ClientSession.html#a9944829b5c1fcf1f93b1d283ab26bded", null ]
+    ] ],
+    [ "irsol::server::internal::GisParams", "d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html", [
+      [ "frameRate", "d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#a550492a3e3b1e5f403e71a68f1bb4d5c", null ],
+      [ "inputSequenceLength", "d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#a39f65798d18dbe3d046ee52be426e136", null ],
+      [ "inputSequenceNumber", "d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html#aaaf8398671013b9d844765de76373654", null ]
+    ] ],
+    [ "irsol::server::internal::FrameListeningState", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html", [
+      [ "running", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ae3fc3a6dac0d31ee2191848ca9f13412", null ],
+      [ "start", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a61c0959728c8374b977a5e18aa06131f", null ],
+      [ "stop", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a590f6fbb946c521f1fe84a36ffcf05d0", null ],
+      [ "gisParams", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a33aa27a562d364511bcec62227fda4ac", null ],
+      [ "m_running", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69", null ],
+      [ "m_stopRequested", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad", null ],
+      [ "m_threadMutex", "de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ac6d4864a106f00209de1942f2bf69cfb", null ]
+    ] ],
+    [ "irsol::server::internal::UserSessionData", "d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html", [
+      [ "frameListeningState", "d0/d52/structirsol_1_1server_1_1internal_1_1UserSessionData.html#afa7827743f1cd0124597b7afb903abc2", null ]
+    ] ],
+    [ "irsol::server::internal::OnNewClientCallback_t", "da/d64/group__Server.html#ga4d15ff25ca447e1cbb6e424f57a1beab", null ]
+];

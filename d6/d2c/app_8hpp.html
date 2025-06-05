@@ -56,9 +56,12 @@ $(document).ready(function(){initNavTree('d6/d2c/app_8hpp.html','../../'); initR
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">app.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">app.hpp File Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main server application managing client connections and camera streaming.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dd/d61/interface_8hpp_source.html">irsol/camera/interface.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d8/dc6/acceptor_8hpp_source.html">irsol/server/acceptor.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/dfe/client_8hpp_source.html">irsol/server/client.hpp</a>&quot;</code><br />
@@ -84,9 +87,21 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d1/d03/namespaceirsol_1_1server" id="r_d1/d03/namespaceirsol_1_1server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d03/namespaceirsol_1_1server.html">irsol::server</a></td></tr>
+<tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main server application managing client connections and camera streaming. </p>
+<p>Defines the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> class, which orchestrates the server-side infrastructure including:</p><ul>
+<li>Accepting client connections</li>
+<li>Managing client sessions</li>
+<li>Distributing captured frames from the camera</li>
+<li>Handling incoming protocol messages</li>
+</ul>
+<p>This class owns all components necessary to run a live server application. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

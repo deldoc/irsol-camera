@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IRSOL: src/irsol/include/irsol/server/image_data.hpp File Reference</title>
+<title>IRSOL: Handlers</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -48,43 +48,40 @@
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('dc/d24/image__data_8hpp.html','../../'); initResizable(); });
+$(document).ready(function(){initNavTree('df/de1/group__Handlers.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#files">Files</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">image_data.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">Handlers</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">irsol/types.hpp</a>&quot;</code><br />
-<code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-</div>
-<p><a href="../../dc/d24/image__data_8hpp_source.html">Go to the source code of this file.</a></p>
+
+<p>Maps incoming protocol messages to application logic. Implements message handling objects that are associated to specific <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a>. The <code>Handlers</code> group contains components responsible for interpreting incoming protocol messages and routing them to the appropriate logic. These handlers form the glue layer between low-level message parsing and the per-client application functionality. Classes in this group are typically used by the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> to centralize registration of command, assignment, and inquiry message handlers.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d13/structirsol_1_1server_1_1internal_1_1ImageData.html">irsol::server::internal::ImageData</a></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:dc/d84/message__handler_8hpp" id="r_dc/d84/message__handler_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/message__handler_8hpp.html">message_handler.hpp</a></td></tr>
+<tr class="memdesc:dc/d84/message__handler_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message routing layer between protocol and application logic. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:d1/d03/namespaceirsol_1_1server" id="r_d1/d03/namespaceirsol_1_1server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d03/namespaceirsol_1_1server.html">irsol::server</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:dd/d08/namespaceirsol_1_1server_1_1internal" id="r_dd/d08/namespaceirsol_1_1server_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d08/namespaceirsol_1_1server_1_1internal.html">irsol::server::internal</a></td></tr>
+<tr class="memitem:d9/da2/namespaceirsol_1_1server_1_1handlers" id="r_d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html">irsol::server::handlers</a></td></tr>
+<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains message dispatching logic and per-identifier handler implementations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Maps incoming protocol messages to application logic. Implements message handling objects that are associated to specific <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a>. The <code>Handlers</code> group contains components responsible for interpreting incoming protocol messages and routing them to the appropriate logic. These handlers form the glue layer between low-level message parsing and the per-client application functionality. Classes in this group are typically used by the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> to centralize registration of command, assignment, and inquiry message handlers. </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_f0310e0943ddf9a71358cfb4b74875a3.html">irsol</a></li><li class="navelem"><a class="el" href="../../dir_85f384b05d889954d3320038ff5be0c5.html">include</a></li><li class="navelem"><a class="el" href="../../dir_78c2a76cb1b766668ee13018a88c7d58.html">irsol</a></li><li class="navelem"><a class="el" href="../../dir_dbf09858c0a37a2c4bd8b7b5ffe01a10.html">server</a></li><li class="navelem"><a class="el" href="../../dc/d24/image__data_8hpp.html">image_data.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

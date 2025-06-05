@@ -58,11 +58,11 @@ $(document).ready(function(){initNavTree('de/d41/structirsol_1_1server_1_1intern
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d0/d0c/structirsol_1_1server_1_1internal_1_1FrameListeningState-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::internal::FrameListeningState Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::internal::FrameListeningState Struct Reference<div class="ingroups"><a class="el" href="../../da/d64/group__Server.html">Server</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>State associated with the Session client and how it's listening to frames.  
+<p>Controls how a client listens for frames, including thread management and GIS parameters.  
  <a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>&gt;</code></p>
@@ -70,36 +70,44 @@ $(document).ready(function(){initNavTree('de/d41/structirsol_1_1server_1_1intern
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae3fc3a6dac0d31ee2191848ca9f13412" id="r_ae3fc3a6dac0d31ee2191848ca9f13412"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ae3fc3a6dac0d31ee2191848ca9f13412">running</a> () const</td></tr>
-<tr class="memdesc:ae3fc3a6dac0d31ee2191848ca9f13412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the thread is running or not.  <br /></td></tr>
+<tr class="memdesc:ae3fc3a6dac0d31ee2191848ca9f13412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether a frame listening thread is currently active.  <br /></td></tr>
 <tr class="separator:ae3fc3a6dac0d31ee2191848ca9f13412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c0959728c8374b977a5e18aa06131f" id="r_a61c0959728c8374b977a5e18aa06131f"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
 <tr class="memitem:a61c0959728c8374b977a5e18aa06131f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a61c0959728c8374b977a5e18aa06131f">start</a> (Callable &amp;&amp;task, const std::string &amp;<a class="el" href="../../d8/dbc/test__error_8cpp.html#ac7732e6c3d72db61c684dfccc779937c">description</a>)</td></tr>
 <tr class="memdesc:a61c0959728c8374b977a5e18aa06131f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the passed lambda function in a background thread.  <br /></td></tr>
 <tr class="separator:a61c0959728c8374b977a5e18aa06131f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a590f6fbb946c521f1fe84a36ffcf05d0" id="r_a590f6fbb946c521f1fe84a36ffcf05d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a590f6fbb946c521f1fe84a36ffcf05d0">stop</a> ()</td></tr>
-<tr class="memdesc:a590f6fbb946c521f1fe84a36ffcf05d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the background thread by setting the stop flag.  <br /></td></tr>
+<tr class="memdesc:a590f6fbb946c521f1fe84a36ffcf05d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the active thread (if any) to stop by setting the stop flag.  <br /></td></tr>
 <tr class="separator:a590f6fbb946c521f1fe84a36ffcf05d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a33aa27a562d364511bcec62227fda4ac" id="r_a33aa27a562d364511bcec62227fda4ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html">GisParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a33aa27a562d364511bcec62227fda4ac">gisParams</a> {}</td></tr>
+<tr class="memdesc:a33aa27a562d364511bcec62227fda4ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for image streaming (GIS command).  <br /></td></tr>
 <tr class="separator:a33aa27a562d364511bcec62227fda4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9ecffb9d3fcd88487c19d7398c720b69" id="r_a9ecffb9d3fcd88487c19d7398c720b69"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a> {false}</td></tr>
+<tr class="memdesc:a9ecffb9d3fcd88487c19d7398c720b69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal flag indicating whether the thread is running.  <br /></td></tr>
 <tr class="separator:a9ecffb9d3fcd88487c19d7398c720b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6d4864a106f00209de1942f2bf69cfb" id="r_ac6d4864a106f00209de1942f2bf69cfb"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ac6d4864a106f00209de1942f2bf69cfb">m_threadMutex</a></td></tr>
-<tr class="memdesc:ac6d4864a106f00209de1942f2bf69cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex to synchronize thread lifecycle operations.  <br /></td></tr>
+<tr class="memdesc:ac6d4864a106f00209de1942f2bf69cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronization primitive to guard start/stop operations.  <br /></td></tr>
 <tr class="separator:ac6d4864a106f00209de1942f2bf69cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ab69a5c8b3b9a752948af763143f0ad" id="r_a6ab69a5c8b3b9a752948af763143f0ad"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; std::atomic&lt; bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad">m_stopRequested</a></td></tr>
-<tr class="memdesc:a6ab69a5c8b3b9a752948af763143f0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag passed into the thread for allowing main loop to stop the running thread.  <br /></td></tr>
+<tr class="memdesc:a6ab69a5c8b3b9a752948af763143f0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared stop token used to cancel the thread's task loop.  <br /></td></tr>
 <tr class="separator:a6ab69a5c8b3b9a752948af763143f0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>State associated with the Session client and how it's listening to frames. </p>
+<div class="textblock"><p>Controls how a client listens for frames, including thread management and GIS parameters. </p>
+<p>Each client that subscribes to frame streaming operates with its own <code><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html" title="Controls how a client listens for frames, including thread management and GIS parameters.">FrameListeningState</a></code> instance. This object handles:</p><ul>
+<li>Streaming parameters (GIS),</li>
+<li>Background thread lifecycle,</li>
+<li>Cancellation flags.</li>
+</ul>
+<p>Thread safety for start/stop is ensured using an internal mutex. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00030">30</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00067">67</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae3fc3a6dac0d31ee2191848ca9f13412" name="ae3fc3a6dac0d31ee2191848ca9f13412"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae3fc3a6dac0d31ee2191848ca9f13412">&#9670;&#160;</a></span>running()</h2>
@@ -116,13 +124,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Whether the thread is running or not. </p>
+<p>Returns whether a frame listening thread is currently active. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if a thread is running, <code>false</code> otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../da/da4/state_8cpp_source.html#l00008">8</a> of file <a class="el" href="../../da/da4/state_8cpp_source.html">state.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
 <div class="line"><span class="lineno">   10</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a>.load();</div>
 <div class="line"><span class="lineno">   11</span>}</div>
-<div class="ttc" id="astructirsol_1_1server_1_1internal_1_1FrameListeningState_html_a9ecffb9d3fcd88487c19d7398c720b69"><div class="ttname"><a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">irsol::server::internal::FrameListeningState::m_running</a></div><div class="ttdeci">std::atomic&lt; bool &gt; m_running</div><div class="ttdef"><b>Definition</b> <a href="../../da/d3b/state_8hpp_source.html#l00078">state.hpp:78</a></div></div>
+<div class="ttc" id="astructirsol_1_1server_1_1internal_1_1FrameListeningState_html_a9ecffb9d3fcd88487c19d7398c720b69"><div class="ttname"><a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">irsol::server::internal::FrameListeningState::m_running</a></div><div class="ttdeci">std::atomic&lt; bool &gt; m_running</div><div class="ttdoc">Internal flag indicating whether the thread is running.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d3b/state_8hpp_source.html#l00140">state.hpp:140</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -163,48 +172,63 @@ template&lt;typename Callable &gt; </div>
 </div><div class="memdoc">
 
 <p>Starts the passed lambda function in a background thread. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">task</td><td>Lambda function to execute within the thread. </td></tr>
-    <tr><td class="paramname">description</td><td>Description string used for logging in case of error executing the thread. </td></tr>
+<p>This method creates a detached thread that executes the user-provided task. The task receives a shared stop token that can be polled to determine when the thread should terminate.</p>
+<dl class="section warning"><dt>Warning</dt><dd>is responsibility of the function passed as argument to stop it's execution when the stop flag is set.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Callable</td><td>A callable accepting a <code>std::shared_ptr&lt;std::atomic&lt;bool&gt;&gt;</code> as stop flag. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>The 'm_running' state is automatically updated by this method. In order to cancel the background task, use the 'stop' method. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>The function to execute inside the background thread. </td></tr>
+    <tr><td class="paramname">description</td><td>A human-readable label for logging and error tracing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>if a thread is already running.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Thread lifecycle is managed internally. Use <code><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a590f6fbb946c521f1fe84a36ffcf05d0" title="Requests the active thread (if any) to stop by setting the stop flag.">stop()</a></code> to request termination. </dd>
+<dd>
+This feature is used by the <em>frame listening</em> mechanism, to allow a <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> to listen to frames to be sent back to the client, all while maintaining the capability to respond to new client's submitted messages. This is because the frame-listening process is pushed into the listening background thread. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00045">45</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>  {</div>
-<div class="line"><span class="lineno">   47</span>    std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ac6d4864a106f00209de1942f2bf69cfb">m_threadMutex</a>);</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a>.load()) {</div>
-<div class="line"><span class="lineno">   49</span>      <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Thread already running&quot;</span>);</div>
-<div class="line"><span class="lineno">   50</span>    }</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Locking the running of the thread&quot;</span>);</div>
-<div class="line"><span class="lineno">   53</span>    <span class="comment">// Reset stop flag and mark as running</span></div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad">m_stopRequested</a> = std::make_shared&lt;std::atomic&lt;bool&gt;&gt;(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a>.store(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>    std::thread([<span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">   58</span>                 stopRequested = <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad">m_stopRequested</a>,</div>
-<div class="line"><span class="lineno">   59</span>                 task          = std::forward&lt;Callable&gt;(task),</div>
-<div class="line"><span class="lineno">   60</span>                 <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#ac7732e6c3d72db61c684dfccc779937c">description</a>]() <span class="keyword">mutable</span> {</div>
-<div class="line"><span class="lineno">   61</span>      <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   62</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;INside thread&quot;</span>);</div>
-<div class="line"><span class="lineno">   63</span>        task(stopRequested);  <span class="comment">// Run the actual user-provided task by passing in the stop-request</span></div>
-<div class="line"><span class="lineno">   64</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Inside thread, after task execution&quot;</span>);</div>
-<div class="line"><span class="lineno">   65</span>      } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><span class="lineno">   66</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Background thread for task &#39;{}&#39; failed running.&quot;</span>, <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#ac7732e6c3d72db61c684dfccc779937c">description</a>);</div>
-<div class="line"><span class="lineno">   67</span>      }</div>
-<div class="line"><span class="lineno">   68</span>      <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a>.store(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   69</span>    })</div>
-<div class="line"><span class="lineno">   70</span>      .detach();</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Thread started&quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00101">101</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>  {</div>
+<div class="line"><span class="lineno">  103</span>    std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ac6d4864a106f00209de1942f2bf69cfb">m_threadMutex</a>);</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a>.load()) {</div>
+<div class="line"><span class="lineno">  105</span>      <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Thread already running&quot;</span>);</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Locking the running of the thread&quot;</span>);</div>
+<div class="line"><span class="lineno">  109</span>    <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad">m_stopRequested</a> = std::make_shared&lt;std::atomic&lt;bool&gt;&gt;(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  110</span>    <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a>.store(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>    std::thread([<span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  113</span>                 stopRequested = <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad">m_stopRequested</a>,</div>
+<div class="line"><span class="lineno">  114</span>                 task          = std::forward&lt;Callable&gt;(task),</div>
+<div class="line"><span class="lineno">  115</span>                 <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#ac7732e6c3d72db61c684dfccc779937c">description</a>]() <span class="keyword">mutable</span> {</div>
+<div class="line"><span class="lineno">  116</span>      <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">  117</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Inside thread&quot;</span>);</div>
+<div class="line"><span class="lineno">  118</span>        task(stopRequested);</div>
+<div class="line"><span class="lineno">  119</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Inside thread, after task execution&quot;</span>);</div>
+<div class="line"><span class="lineno">  120</span>      } <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><span class="lineno">  121</span>        <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Background thread for task &#39;{}&#39; failed running.&quot;</span>, <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#ac7732e6c3d72db61c684dfccc779937c">description</a>);</div>
+<div class="line"><span class="lineno">  122</span>      }</div>
+<div class="line"><span class="lineno">  123</span>      <a class="code hl_variable" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a9ecffb9d3fcd88487c19d7398c720b69">m_running</a>.store(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  124</span>    })</div>
+<div class="line"><span class="lineno">  125</span>      .detach();</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Thread started&quot;</span>);</div>
+<div class="line"><span class="lineno">  128</span>  }</div>
 <div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
-<div class="ttc" id="astructirsol_1_1server_1_1internal_1_1FrameListeningState_html_a6ab69a5c8b3b9a752948af763143f0ad"><div class="ttname"><a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad">irsol::server::internal::FrameListeningState::m_stopRequested</a></div><div class="ttdeci">std::shared_ptr&lt; std::atomic&lt; bool &gt; &gt; m_stopRequested</div><div class="ttdoc">Flag passed into the thread for allowing main loop to stop the running thread.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d3b/state_8hpp_source.html#l00082">state.hpp:82</a></div></div>
-<div class="ttc" id="astructirsol_1_1server_1_1internal_1_1FrameListeningState_html_ac6d4864a106f00209de1942f2bf69cfb"><div class="ttname"><a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ac6d4864a106f00209de1942f2bf69cfb">irsol::server::internal::FrameListeningState::m_threadMutex</a></div><div class="ttdeci">std::mutex m_threadMutex</div><div class="ttdoc">Mutex to synchronize thread lifecycle operations.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d3b/state_8hpp_source.html#l00080">state.hpp:80</a></div></div>
+<div class="ttc" id="astructirsol_1_1server_1_1internal_1_1FrameListeningState_html_a6ab69a5c8b3b9a752948af763143f0ad"><div class="ttname"><a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a6ab69a5c8b3b9a752948af763143f0ad">irsol::server::internal::FrameListeningState::m_stopRequested</a></div><div class="ttdeci">std::shared_ptr&lt; std::atomic&lt; bool &gt; &gt; m_stopRequested</div><div class="ttdoc">Shared stop token used to cancel the thread's task loop.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d3b/state_8hpp_source.html#l00146">state.hpp:146</a></div></div>
+<div class="ttc" id="astructirsol_1_1server_1_1internal_1_1FrameListeningState_html_ac6d4864a106f00209de1942f2bf69cfb"><div class="ttname"><a href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#ac6d4864a106f00209de1942f2bf69cfb">irsol::server::internal::FrameListeningState::m_threadMutex</a></div><div class="ttdeci">std::mutex m_threadMutex</div><div class="ttdoc">Synchronization primitive to guard start/stop operations.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d3b/state_8hpp_source.html#l00143">state.hpp:143</a></div></div>
 <div class="ttc" id="atest__error_8cpp_html_ac7732e6c3d72db61c684dfccc779937c"><div class="ttname"><a href="../../d8/dbc/test__error_8cpp.html#ac7732e6c3d72db61c684dfccc779937c">description</a></div><div class="ttdeci">auto description</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dbc/test__error_8cpp_source.html#l00010">test_error.cpp:10</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -224,7 +248,8 @@ template&lt;typename Callable &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Stops the background thread by setting the stop flag. </p>
+<p>Requests the active thread (if any) to stop by setting the stop flag. </p>
+<p>This does not join the thread (which is detached), but signals the loop to exit if the user task respects the stop token. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../da/da4/state_8cpp_source.html#l00014">14</a> of file <a class="el" href="../../da/da4/state_8cpp_source.html">state.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   15</span>{</div>
@@ -249,8 +274,10 @@ template&lt;typename Callable &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{};</div>
+<p>Parameters for image streaming (GIS command). </p>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -274,8 +301,10 @@ template&lt;typename Callable &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00078">78</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>{<span class="keyword">false</span>};</div>
+<p>Internal flag indicating whether the thread is running. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  140</span>{<span class="keyword">false</span>};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -299,9 +328,9 @@ template&lt;typename Callable &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Flag passed into the thread for allowing main loop to stop the running thread. </p>
+<p>Shared stop token used to cancel the thread's task loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00082">82</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00146">146</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
 
 </div>
 </div>
@@ -325,9 +354,9 @@ template&lt;typename Callable &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Mutex to synchronize thread lifecycle operations. </p>
+<p>Synchronization primitive to guard start/stop operations. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/d3b/state_8hpp_source.html#l00143">143</a> of file <a class="el" href="../../da/d3b/state_8hpp_source.html">state.hpp</a>.</p>
 
 </div>
 </div>
