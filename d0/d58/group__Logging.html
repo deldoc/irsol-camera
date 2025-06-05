@@ -141,9 +141,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga927b1133d116e470d4f4e88d7f1af16a" id="r_ga927b1133d116e470d4f4e88d7f1af16a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d58/group__Logging.html#ga927b1133d116e470d4f4e88d7f1af16a">irsol::setLoggerName</a> (const char *name)</td></tr>
 <tr class="memdesc:ga927b1133d116e470d4f4e88d7f1af16a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the name of the default logger.  <br /></td></tr>
 <tr class="separator:ga927b1133d116e470d4f4e88d7f1af16a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9edc662d7e9504e7fec2018bb7542e6c" id="r_ga9edc662d7e9504e7fec2018bb7542e6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a> (const char *fileSinkFilename=&quot;log/irsol.log&quot;, std::optional&lt; spdlog::level::level_enum &gt; minLogLevel=std::nullopt)</td></tr>
-<tr class="memdesc:ga9edc662d7e9504e7fec2018bb7542e6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <code>irsol</code> logging system.  <br /></td></tr>
-<tr class="separator:ga9edc662d7e9504e7fec2018bb7542e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade8b16d7f4dd9e9fd32c8b28beeb96aa" id="r_gade8b16d7f4dd9e9fd32c8b28beeb96aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d58/group__Logging.html#gade8b16d7f4dd9e9fd32c8b28beeb96aa">irsol::initLogging</a> (const char *fileSinkFilename=&quot;logs/irsol.log&quot;, std::optional&lt; spdlog::level::level_enum &gt; minLogLevel=std::nullopt)</td></tr>
+<tr class="memdesc:gade8b16d7f4dd9e9fd32c8b28beeb96aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <code>irsol</code> logging system.  <br /></td></tr>
+<tr class="separator:gade8b16d7f4dd9e9fd32c8b28beeb96aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -333,8 +333,8 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  222</span> </div>
 <div class="line"><span class="lineno">  232</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d58/group__Logging.html#ga927b1133d116e470d4f4e88d7f1af16a">setLoggerName</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name);</div>
 <div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  244</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c">initLogging</a>(</div>
-<div class="line"><span class="lineno">  245</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>*                              fileSinkFilename = <span class="stringliteral">&quot;log/irsol.log&quot;</span>,</div>
+<div class="line"><span class="lineno">  244</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d58/group__Logging.html#gade8b16d7f4dd9e9fd32c8b28beeb96aa">initLogging</a>(</div>
+<div class="line"><span class="lineno">  245</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>*                              fileSinkFilename = <span class="stringliteral">&quot;logs/irsol.log&quot;</span>,</div>
 <div class="line"><span class="lineno">  246</span>  std::optional&lt;spdlog::level::level_enum&gt; minLogLevel      = std::nullopt);</div>
 <div class="line"><span class="lineno">  247</span> </div>
 <div class="line"><span class="lineno">  254</span><span class="keyword">inline</span> <span class="keyword">const</span> std::unordered_map&lt;std::string, spdlog::level::level_enum&gt; <a class="code hl_variable" href="../../d0/d58/group__Logging.html#gafee7f615a535f4925dff419282f8751b">levelNameToLevelMap</a> = {</div>
@@ -349,7 +349,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="agroup__Logging_html_ga6f554654dd3a9dc2edef60e54e0686e5"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga6f554654dd3a9dc2edef60e54e0686e5">irsol::LoggingFormat</a></div><div class="ttdeci">LoggingFormat</div><div class="ttdoc">Enum representing supported logging output formats.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00191">logging.hpp:192</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga8b1f3df76eae7b91dad77b42e10cc205"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga8b1f3df76eae7b91dad77b42e10cc205">irsol::setSinkLoggingFormat</a></div><div class="ttdeci">void setSinkLoggingFormat(LoggingFormat format, std::shared_ptr&lt; spdlog::sinks::sink &gt; sink)</div><div class="ttdoc">Sets the logging format for a specific sink.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/daf/logging_8cpp_source.html#l00092">logging.cpp:92</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga927b1133d116e470d4f4e88d7f1af16a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga927b1133d116e470d4f4e88d7f1af16a">irsol::setLoggerName</a></div><div class="ttdeci">void setLoggerName(const char *name)</div><div class="ttdoc">Sets the name of the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/daf/logging_8cpp_source.html#l00077">logging.cpp:77</a></div></div>
-<div class="ttc" id="agroup__Logging_html_ga9edc662d7e9504e7fec2018bb7542e6c"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c">irsol::initLogging</a></div><div class="ttdeci">void initLogging(const char *fileSinkFilename=&quot;log/irsol.log&quot;, std::optional&lt; spdlog::level::level_enum &gt; minLogLevel=std::nullopt)</div><div class="ttdoc">Initializes the irsol logging system.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/daf/logging_8cpp_source.html#l00108">logging.cpp:108</a></div></div>
+<div class="ttc" id="agroup__Logging_html_gade8b16d7f4dd9e9fd32c8b28beeb96aa"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gade8b16d7f4dd9e9fd32c8b28beeb96aa">irsol::initLogging</a></div><div class="ttdeci">void initLogging(const char *fileSinkFilename=&quot;logs/irsol.log&quot;, std::optional&lt; spdlog::level::level_enum &gt; minLogLevel=std::nullopt)</div><div class="ttdoc">Initializes the irsol logging system.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/daf/logging_8cpp_source.html#l00108">logging.cpp:108</a></div></div>
 <div class="ttc" id="agroup__Logging_html_gafc865ca3a39b2e5721fa59986853fca7"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gafc865ca3a39b2e5721fa59986853fca7">irsol::setLoggingFormat</a></div><div class="ttdeci">void setLoggingFormat(LoggingFormat format=LoggingFormat::FILE, std::optional&lt; std::shared_ptr&lt; spdlog::logger &gt; &gt; logger=std::nullopt)</div><div class="ttdoc">Sets the global logging format.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/daf/logging_8cpp_source.html#l00084">logging.cpp:84</a></div></div>
 <div class="ttc" id="agroup__Logging_html_gafee7f615a535f4925dff419282f8751b"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gafee7f615a535f4925dff419282f8751b">irsol::levelNameToLevelMap</a></div><div class="ttdeci">const std::unordered_map&lt; std::string, spdlog::level::level_enum &gt; levelNameToLevelMap</div><div class="ttdoc">Runtime map from string names to spdlog log levels.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00254">logging.hpp:254</a></div></div>
 <div class="ttc" id="agroup__Logging_html_gga6f554654dd3a9dc2edef60e54e0686e5a4695859f52d337ca3d7020b2c8f7882a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gga6f554654dd3a9dc2edef60e54e0686e5a4695859f52d337ca3d7020b2c8f7882a">irsol::LoggingFormat::CONSOLE</a></div><div class="ttdeci">@ CONSOLE</div><div class="ttdoc">Human-readable format for terminal output.</div></div>
@@ -559,8 +559,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga9edc662d7e9504e7fec2018bb7542e6c" name="ga9edc662d7e9504e7fec2018bb7542e6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9edc662d7e9504e7fec2018bb7542e6c">&#9670;&#160;</a></span>initLogging()</h2>
+<a id="gade8b16d7f4dd9e9fd32c8b28beeb96aa" name="gade8b16d7f4dd9e9fd32c8b28beeb96aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gade8b16d7f4dd9e9fd32c8b28beeb96aa">&#9670;&#160;</a></span>initLogging()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -572,7 +572,7 @@ Variables</h2></td></tr>
           <td class="memname">void irsol::initLogging </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>fileSinkFilename</em> = <code>&quot;log/irsol.log&quot;</code>, </td>
+          <td class="paramname"><em>fileSinkFilename</em> = <code>&quot;logs/irsol.log&quot;</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

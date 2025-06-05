@@ -31,7 +31,7 @@ var namespaceirsol =
       [ "UNIT_TESTS", "d0/d58/group__Logging.html#gga6f554654dd3a9dc2edef60e54e0686e5a58bf978729c99bdbaa85a521933c4b4f", null ]
     ] ],
     [ "initAssertHandler", "d0/df0/group__Assertion.html#gaf1acf306d50866d76243d3db3686e0a7", null ],
-    [ "initLogging", "d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c", null ],
+    [ "initLogging", "d0/d58/group__Logging.html#gade8b16d7f4dd9e9fd32c8b28beeb96aa", null ],
     [ "setAssertHandler", "d0/df0/group__Assertion.html#ga52706d854fd90190ff7d1d878f0cc9a6", null ],
     [ "setAssertHandler", "d7/ddb/namespaceirsol.html#a91f95e1635fe994847e8c11497ba1310", null ],
     [ "setLoggerName", "d0/d58/group__Logging.html#ga927b1133d116e470d4f4e88d7f1af16a", null ],

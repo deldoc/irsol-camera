@@ -26,7 +26,7 @@ var group__Logging =
       [ "irsol::LoggingFormat::FILE", "d0/d58/group__Logging.html#gga6f554654dd3a9dc2edef60e54e0686e5a9fc5887c030f7a3e19821ebec457e719", null ],
       [ "irsol::LoggingFormat::UNIT_TESTS", "d0/d58/group__Logging.html#gga6f554654dd3a9dc2edef60e54e0686e5a58bf978729c99bdbaa85a521933c4b4f", null ]
     ] ],
-    [ "irsol::initLogging", "d0/d58/group__Logging.html#ga9edc662d7e9504e7fec2018bb7542e6c", null ],
+    [ "irsol::initLogging", "d0/d58/group__Logging.html#gade8b16d7f4dd9e9fd32c8b28beeb96aa", null ],
     [ "irsol::setLoggerName", "d0/d58/group__Logging.html#ga927b1133d116e470d4f4e88d7f1af16a", null ],
     [ "irsol::setLoggingFormat", "d0/d58/group__Logging.html#gafc865ca3a39b2e5721fa59986853fca7", null ],
     [ "irsol::setSinkLoggingFormat", "d0/d58/group__Logging.html#ga8b1f3df76eae7b91dad77b42e10cc205", null ],

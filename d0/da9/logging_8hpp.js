@@ -18,7 +18,7 @@ var logging_8hpp =
       [ "FILE", "d0/da9/logging_8hpp.html#gga6f554654dd3a9dc2edef60e54e0686e5a9fc5887c030f7a3e19821ebec457e719", null ],
       [ "UNIT_TESTS", "d0/da9/logging_8hpp.html#gga6f554654dd3a9dc2edef60e54e0686e5a58bf978729c99bdbaa85a521933c4b4f", null ]
     ] ],
-    [ "initLogging", "d0/da9/logging_8hpp.html#ga9edc662d7e9504e7fec2018bb7542e6c", null ],
+    [ "initLogging", "d0/da9/logging_8hpp.html#gade8b16d7f4dd9e9fd32c8b28beeb96aa", null ],
     [ "setLoggerName", "d0/da9/logging_8hpp.html#ga927b1133d116e470d4f4e88d7f1af16a", null ],
     [ "setLoggingFormat", "d0/da9/logging_8hpp.html#gafc865ca3a39b2e5721fa59986853fca7", null ],
     [ "setSinkLoggingFormat", "d0/da9/logging_8hpp.html#ga8b1f3df76eae7b91dad77b42e10cc205", null ],
