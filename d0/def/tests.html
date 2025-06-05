@@ -59,13 +59,34 @@ $(document).ready(function(){initNavTree('d0/def/tests.html','../../'); initResi
 <div class="textblock"><p>This directory contains the test suite for the <code>irsol</code> library.</p>
 <h1>Unit tests</h1>
 <h2>Structure</h2>
-<p>The <a href="../.././unit"><code>unit</code></a> folder structure closely mirrors the organization of the main <code>irsol</code> library <a href="../../../irsol/">source code</a>. <br  />
+<p>The <code>unit/</code> folder structure closely mirrors the organization of the main <code>irsol</code> library source code. <br  />
  This helps to keep tests well-organized and easy to navigate in relation to the corresponding library components.</p>
 <h2>Testing Framework</h2>
 <p>All tests are implemented using <a href="https://github.com/catchorg/Catch2">Catch2</a>, a modern, header-only C++ testing framework. <br  />
  Catch2 provides expressive test cases, rich assertions, and powerful test organization capabilities, making it a great choice for our project.</p>
 <h2>Running Tests</h2>
-<p>Build and run the tests according to <a href="../../../../docs/development-environmnet-configuration/README.md#building-steps">these</a> instructions. The tests will automatically execute and report results using Catch2's reporting style. </p>
+<p>Build and run the tests according to <a class="el" href="../../d9/d88/development_environment_configuration.html">Development Environment Configuration</a> instructions. The tests will automatically execute and report results using Catch2's reporting style.</p>
+<h2>Writing new Tests</h2>
+<p>Feel free to create new tests in existing <code>test_...cpp</code> files, or creating new test files. If creating new test files, make sure to add them into the corresponding <code>CMakeLists.txt</code> file for compilation.</p>
+<p>The structure of a test file is: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="../../d0/d52/irsol_8hpp.html">irsol/irsol.hpp</a>&quot;</span>  <span class="comment">// or whatever headers you need</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;catch2/catch_all.hpp&gt;</span>  <span class="comment">// include the testing framework</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_function" href="../../d6/de2/test__pixel__format_8cpp.html#a78f1af5999465ed6277f7abfe21e9f0d">TEST_CASE</a>(<span class="stringliteral">&quot;MyTestCaseName&quot;</span>, <span class="stringliteral">&quot;[Tag1][Tag2]&quot;</span>)</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> i = 1;</div>
+<div class="line">  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(i == 1);</div>
+<div class="line">  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a6617a9d7b33aeafc910f8332b4850e94">CHECK_FALSE</a>(i &lt; 1);</div>
+<div class="line">}</div>
+<div class="ttc" id="airsol_8hpp_html"><div class="ttname"><a href="../../d0/d52/irsol_8hpp.html">irsol.hpp</a></div></div>
+<div class="ttc" id="atest__assignment_8cpp_html_a4f9796adeb2f54486732d0b1e9a5e0dc"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a></div><div class="ttdeci">CHECK(m.identifier==identifier)</div></div>
+<div class="ttc" id="atest__assignment_8cpp_html_a6617a9d7b33aeafc910f8332b4850e94"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a6617a9d7b33aeafc910f8332b4850e94">CHECK_FALSE</a></div><div class="ttdeci">CHECK_FALSE(m.hasDouble())</div></div>
+<div class="ttc" id="atest__pixel__format_8cpp_html_a78f1af5999465ed6277f7abfe21e9f0d"><div class="ttname"><a href="../../d6/de2/test__pixel__format_8cpp.html#a78f1af5999465ed6277f7abfe21e9f0d">TEST_CASE</a></div><div class="ttdeci">TEST_CASE(&quot;Pixel&lt;T&gt;::max())&quot;, &quot;[PixelFormat]&quot;)</div><div class="ttdef"><b>Definition</b> <a href="../../d6/de2/test__pixel__format_8cpp_source.html#l00005">test_pixel_format.cpp:5</a></div></div>
+</div><!-- fragment --><p> Where:</p><ul>
+<li><code>"MyTestCaseName"</code> is a string describing the test you're running. Ideally this should be short and representative</li>
+<li><code>"[Tag1][Tag2]"</code> is a string with formed by 0 or more <code>[tagname]</code> elements. This allows to run all testcases that are tagged with a specific tag easily via the command line.</li>
+</ul>
+<p>More details are to be found on the <a href="https://github.com/catchorg/Catch2">Catch2</a> documentation. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
