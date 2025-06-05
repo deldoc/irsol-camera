@@ -59,11 +59,11 @@ $(document).ready(function(){initNavTree('d4/d3a/structirsol_1_1protocol_1_1Erro
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="../../d3/dfe/structirsol_1_1protocol_1_1Error-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::protocol::Error Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::protocol::Error Struct Reference<div class="ingroups"><a class="el" href="../../de/dca/group__Protocol.html">Protocol</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Represents an error message in the protocol.  
+<p>Represents an error response message from the server.  
  <a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>&gt;</code></p>
@@ -76,33 +76,37 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aa2d0a316e8cc3a12dde3e01e6731b078" id="r_aa2d0a316e8cc3a12dde3e01e6731b078"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:aa2d0a316e8cc3a12dde3e01e6731b078" id="r_aa2d0a316e8cc3a12dde3e01e6731b078"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
 <tr class="memitem:aa2d0a316e8cc3a12dde3e01e6731b078"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#aa2d0a316e8cc3a12dde3e01e6731b078">from</a> (const T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>, const std::string &amp;<a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>)</td></tr>
+<tr class="memdesc:aa2d0a316e8cc3a12dde3e01e6731b078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an error from a specific incoming message type.  <br /></td></tr>
 <tr class="separator:aa2d0a316e8cc3a12dde3e01e6731b078"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a88b26b91504a8003c96446b8f0cc25" id="r_a6a88b26b91504a8003c96446b8f0cc25"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6a88b26b91504a8003c96446b8f0cc25">from</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;message, const std::string &amp;<a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>)</td></tr>
+<tr class="memitem:a6a88b26b91504a8003c96446b8f0cc25" id="r_a6a88b26b91504a8003c96446b8f0cc25"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6a88b26b91504a8003c96446b8f0cc25">from</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;message, const std::string &amp;<a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>)</td></tr>
+<tr class="memdesc:a6a88b26b91504a8003c96446b8f0cc25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an error from a generic InMessage variant.  <br /></td></tr>
 <tr class="separator:a6a88b26b91504a8003c96446b8f0cc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a7d41c47eca0aa0581b1e15e24c86082b" id="r_a7d41c47eca0aa0581b1e15e24c86082b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">identifier</a></td></tr>
+<tr class="memdesc:a7d41c47eca0aa0581b1e15e24c86082b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The identifier related to the failed operation (e.g., the variable or command name).  <br /></td></tr>
 <tr class="separator:a7d41c47eca0aa0581b1e15e24c86082b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d3931f1de4d94362b8dd514b0e443be" id="r_a7d3931f1de4d94362b8dd514b0e443be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a></td></tr>
-<tr class="memdesc:a7d3931f1de4d94362b8dd514b0e443be"><td class="mdescLeft">&#160;</td><td class="mdescRight">The kind of the incoming message that generated this error.  <br /></td></tr>
+<tr class="memitem:a7d3931f1de4d94362b8dd514b0e443be" id="r_a7d3931f1de4d94362b8dd514b0e443be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a></td></tr>
+<tr class="memdesc:a7d3931f1de4d94362b8dd514b0e443be"><td class="mdescLeft">&#160;</td><td class="mdescRight">The kind of input message that triggered the error.  <br /></td></tr>
 <tr class="separator:a7d3931f1de4d94362b8dd514b0e443be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dece09dbbb308268599046b0aac8bf9" id="r_a8dece09dbbb308268599046b0aac8bf9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a></td></tr>
-<tr class="memdesc:a8dece09dbbb308268599046b0aac8bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human-readable error description.  <br /></td></tr>
+<tr class="memdesc:a8dece09dbbb308268599046b0aac8bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A descriptive message explaining the cause of the error.  <br /></td></tr>
 <tr class="separator:a8dece09dbbb308268599046b0aac8bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a6f1a46a5fd1a155ce1169800a5433b3a" id="r_a6f1a46a5fd1a155ce1169800a5433b3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a> (const std::string &amp;<a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">identifier</a>, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a>, const std::string &amp;<a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>)</td></tr>
+<tr class="memitem:a6f1a46a5fd1a155ce1169800a5433b3a" id="r_a6f1a46a5fd1a155ce1169800a5433b3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a> (const std::string &amp;<a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">identifier</a>, <a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a>, const std::string &amp;<a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>)</td></tr>
 <tr class="separator:a6f1a46a5fd1a155ce1169800a5433b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents an error message in the protocol. </p>
-<p>Used to convey problems such as parsing failures or invalid commands. </p>
+<div class="textblock"><p>Represents an error response message from the server. </p>
+<p>An <code><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error response message from the server.">Error</a></code> message is generated when a protocol input message fails to be parsed, interpreted, or executed correctly. It includes a reference identifier (if available), the type of message that caused the error, and a human-readable description of the issue.</p>
+<p>Can be stored in a <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> variant. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00019">19</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00035">35</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6f1a46a5fd1a155ce1169800a5433b3a" name="a6f1a46a5fd1a155ce1169800a5433b3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f1a46a5fd1a155ce1169800a5433b3a">&#9670;&#160;</a></span>Error()</h2>
@@ -122,7 +126,7 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td>
           <td class="paramname"><em>source</em>, </td>
         </tr>
         <tr>
@@ -147,10 +151,10 @@ Private Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../dd/db1/error_8cpp_source.html#l00010">10</a> of file <a class="el" href="../../dd/db1/error_8cpp_source.html">error.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>  : <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">identifier</a>(<a class="code hl_function" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">utils::validateIdentifier</a>(<a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">identifier</a>)), <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a>(<a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a>), <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>(<a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>)</div>
 <div class="line"><span class="lineno">   12</span>{}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00022">utils.hpp:22</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_a7d3931f1de4d94362b8dd514b0e443be"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">irsol::protocol::Error::source</a></div><div class="ttdeci">InMessageKind source</div><div class="ttdoc">The kind of the incoming message that generated this error.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00026">error.hpp:26</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_a7d41c47eca0aa0581b1e15e24c86082b"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">irsol::protocol::Error::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00023">error.hpp:23</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_a8dece09dbbb308268599046b0aac8bf9"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">irsol::protocol::Error::description</a></div><div class="ttdeci">std::string description</div><div class="ttdoc">Human-readable error description.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00029">error.hpp:29</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdoc">Validate that a string is a valid protocol identifier.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00055">utils.hpp:55</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_a7d3931f1de4d94362b8dd514b0e443be"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">irsol::protocol::Error::source</a></div><div class="ttdeci">InMessageKind source</div><div class="ttdoc">The kind of input message that triggered the error.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00041">error.hpp:41</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_a7d41c47eca0aa0581b1e15e24c86082b"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">irsol::protocol::Error::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdoc">The identifier related to the failed operation (e.g., the variable or command name).</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00038">error.hpp:38</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_a8dece09dbbb308268599046b0aac8bf9"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">irsol::protocol::Error::description</a></div><div class="ttdeci">std::string description</div><div class="ttdoc">A descriptive message explaining the cause of the error.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00044">error.hpp:44</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -167,7 +171,7 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a> irsol::protocol::Error::from </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
@@ -189,6 +193,16 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Creates an error from a generic InMessage variant. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The original message variant. </td></tr>
+    <tr><td class="paramname">description</td><td>The explanation of the error. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error response message from the server.">Error</a> instance describing the issue. </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="../../dd/db1/error_8cpp_source.html#l00025">25</a> of file <a class="el" href="../../dd/db1/error_8cpp_source.html">error.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   26</span>{</div>
 <div class="line"><span class="lineno">   27</span>  <span class="keywordflow">return</span> std::visit(</div>
@@ -208,7 +222,7 @@ Private Member Functions</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </div>
+template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -238,22 +252,39 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00038">38</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>  {</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Assignment&gt;) {</div>
-<div class="line"><span class="lineno">   41</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>.identifier, <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">InMessageKind::ASSIGNMENT</a>, <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>);</div>
-<div class="line"><span class="lineno">   42</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Inquiry&gt;) {</div>
-<div class="line"><span class="lineno">   43</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>.identifier, <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">InMessageKind::INQUIRY</a>, <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>);</div>
-<div class="line"><span class="lineno">   44</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Command&gt;) {</div>
-<div class="line"><span class="lineno">   45</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>.identifier, <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">InMessageKind::COMMAND</a>, <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>);</div>
-<div class="line"><span class="lineno">   46</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   47</span>      <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;Error::from&lt;T&gt;()&quot;</span>);</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span>  }</div>
+<p>Creates an error from a specific incoming message type. </p>
+<p>This templated overload supports <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html">Assignment</a>, <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">Command</a>, and <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html">Inquiry</a> input types.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The incoming message type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message that caused the error. </td></tr>
+    <tr><td class="paramname">description</td><td>The explanation of the error. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error response message from the server.">Error</a> instance describing the issue. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00063">63</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>  {</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Assignment&gt;) {</div>
+<div class="line"><span class="lineno">   66</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>.identifier, <a class="code hl_enumvalue" href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">InMessageKind::ASSIGNMENT</a>, <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>);</div>
+<div class="line"><span class="lineno">   67</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Inquiry&gt;) {</div>
+<div class="line"><span class="lineno">   68</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>.identifier, <a class="code hl_enumvalue" href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">InMessageKind::INQUIRY</a>, <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>);</div>
+<div class="line"><span class="lineno">   69</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Command&gt;) {</div>
+<div class="line"><span class="lineno">   70</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">Error</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>.identifier, <a class="code hl_enumvalue" href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">InMessageKind::COMMAND</a>, <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a>);</div>
+<div class="line"><span class="lineno">   71</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   72</span>      <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;Error::from&lt;T&gt;()&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+<div class="line"><span class="lineno">   74</span>  }</div>
+<div class="ttc" id="agroup__Protocol_html_ggaa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1"><div class="ttname"><a href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">irsol::protocol::InMessageKind::COMMAND</a></div><div class="ttdeci">@ COMMAND</div></div>
+<div class="ttc" id="agroup__Protocol_html_ggaa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83"><div class="ttname"><a href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">irsol::protocol::InMessageKind::ASSIGNMENT</a></div><div class="ttdeci">@ ASSIGNMENT</div></div>
+<div class="ttc" id="agroup__Protocol_html_ggaa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632"><div class="ttname"><a href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">irsol::protocol::InMessageKind::INQUIRY</a></div><div class="ttdeci">@ INQUIRY</div></div>
 <div class="ttc" id="amacros_8hpp_html_aa21d39bf4cd94d42dc192cf34803a5d9"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)</div><div class="ttdoc">Emits a compile-time error when no template specialization is available.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00173">macros.hpp:173</a></div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">irsol::protocol::InMessageKind::COMMAND</a></div><div class="ttdeci">@ COMMAND</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">irsol::protocol::InMessageKind::ASSIGNMENT</a></div><div class="ttdeci">@ ASSIGNMENT</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">irsol::protocol::InMessageKind::INQUIRY</a></div><div class="ttdeci">@ INQUIRY</div></div>
 <div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_a6f1a46a5fd1a155ce1169800a5433b3a"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a">irsol::protocol::Error::Error</a></div><div class="ttdeci">Error(const std::string &amp;identifier, InMessageKind source, const std::string &amp;description)</div><div class="ttdef"><b>Definition</b> <a href="../../dd/db1/error_8cpp_source.html#l00010">error.cpp:10</a></div></div>
 <div class="ttc" id="atest__parser_8cpp_html_a79750f20a308d13607bec2b6cefa0fc8"><div class="ttname"><a href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a></div><div class="ttdeci">auto msg</div><div class="ttdef"><b>Definition</b> <a href="../../de/d08/test__parser_8cpp_source.html#l00085">test_parser.cpp:85</a></div></div>
 </div><!-- fragment -->
@@ -275,17 +306,17 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 </div><div class="memdoc">
 
 <p>Converts the error to a human-readable string. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the error message. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the error. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/db1/error_8cpp_source.html#l00015">15</a> of file <a class="el" href="../../dd/db1/error_8cpp_source.html">error.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
 <div class="line"><span class="lineno">   17</span>  std::ostringstream oss;</div>
 <div class="line"><span class="lineno">   18</span>  oss &lt;&lt; <span class="stringliteral">&quot;Error{&quot;</span></div>
-<div class="line"><span class="lineno">   19</span>      &lt;&lt; <span class="stringliteral">&quot;identifier: &#39;&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">identifier</a> &lt;&lt; <span class="stringliteral">&quot;&#39;, source: &quot;</span> &lt;&lt; <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#a97f85648f00c021779fb639f05dfa117">InMessageKindToString</a>(<a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a>)</div>
+<div class="line"><span class="lineno">   19</span>      &lt;&lt; <span class="stringliteral">&quot;identifier: &#39;&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b">identifier</a> &lt;&lt; <span class="stringliteral">&quot;&#39;, source: &quot;</span> &lt;&lt; <a class="code hl_function" href="../../de/dca/group__Protocol.html#ga97f85648f00c021779fb639f05dfa117">InMessageKindToString</a>(<a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be">source</a>)</div>
 <div class="line"><span class="lineno">   20</span>      &lt;&lt; <span class="stringliteral">&quot;, description: &#39;&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9">description</a> &lt;&lt; <span class="stringliteral">&quot;&#39;}&quot;</span>;</div>
 <div class="line"><span class="lineno">   21</span>  <span class="keywordflow">return</span> oss.str();</div>
 <div class="line"><span class="lineno">   22</span>}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a97f85648f00c021779fb639f05dfa117"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a97f85648f00c021779fb639f05dfa117">irsol::protocol::InMessageKindToString</a></div><div class="ttdeci">constexpr const char * InMessageKindToString(InMessageKind kind)</div><div class="ttdoc">Converts an InMessageKind to a human-readable string.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00032">variants.hpp:32</a></div></div>
+<div class="ttc" id="agroup__Protocol_html_ga97f85648f00c021779fb639f05dfa117"><div class="ttname"><a href="../../de/dca/group__Protocol.html#ga97f85648f00c021779fb639f05dfa117">irsol::protocol::InMessageKindToString</a></div><div class="ttdeci">constexpr const char * InMessageKindToString(InMessageKind kind)</div><div class="ttdoc">Converts an InMessageKind enum to a human-readable string.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00059">variants.hpp:59</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -302,9 +333,9 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
       </table>
 </div><div class="memdoc">
 
-<p>Human-readable error description. </p>
+<p>A descriptive message explaining the cause of the error. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00029">29</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00044">44</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -319,9 +350,10 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Identifier related to the error (e.g., the failed command). Must start with a character, followed by alphanumeric characters and underscores. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00023">23</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
+<p>The identifier related to the failed operation (e.g., the variable or command name). </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00038">38</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>
@@ -332,14 +364,14 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> irsol::protocol::Error::source</td>
+          <td class="memname"><a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> irsol::protocol::Error::source</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The kind of the incoming message that generated this error. </p>
+<p>The kind of input message that triggered the error. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00026">26</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d99/error_8hpp_source.html#l00041">41</a> of file <a class="el" href="../../d9/d99/error_8hpp_source.html">error.hpp</a>.</p>
 
 </div>
 </div>

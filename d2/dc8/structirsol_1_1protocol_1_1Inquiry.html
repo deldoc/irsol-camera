@@ -57,11 +57,11 @@ $(document).ready(function(){initNavTree('d2/dc8/structirsol_1_1protocol_1_1Inqu
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../d2/dd5/structirsol_1_1protocol_1_1Inquiry-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::protocol::Inquiry Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::protocol::Inquiry Struct Reference<div class="ingroups"><a class="el" href="../../de/dca/group__Protocol.html">Protocol</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Represents a value inquiry for a specific identifier.  
+<p>Represents a value inquiry in the protocol.  
  <a href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d6/d4b/inquiry_8hpp_source.html">inquiry.hpp</a>&gt;</code></p>
@@ -69,6 +69,7 @@ $(document).ready(function(){initNavTree('d2/dc8/structirsol_1_1protocol_1_1Inqu
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c6a657d0cd92e4071161f79a2a0d955" id="r_a7c6a657d0cd92e4071161f79a2a0d955"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#a7c6a657d0cd92e4071161f79a2a0d955">Inquiry</a> (const std::string &amp;<a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#acc8bb05446dd4c8199447041e2f84a4e">identifier</a>)</td></tr>
+<tr class="memdesc:a7c6a657d0cd92e4071161f79a2a0d955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html" title="Represents a value inquiry in the protocol.">Inquiry</a>.  <br /></td></tr>
 <tr class="separator:a7c6a657d0cd92e4071161f79a2a0d955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeb218c35b796a3245803285f54e6fac" id="r_abeb218c35b796a3245803285f54e6fac"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#abeb218c35b796a3245803285f54e6fac">toString</a> () const</td></tr>
 <tr class="memdesc:abeb218c35b796a3245803285f54e6fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the inquiry to a human-readable string.  <br /></td></tr>
@@ -77,13 +78,15 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:acc8bb05446dd4c8199447041e2f84a4e" id="r_acc8bb05446dd4c8199447041e2f84a4e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#acc8bb05446dd4c8199447041e2f84a4e">identifier</a></td></tr>
+<tr class="memdesc:acc8bb05446dd4c8199447041e2f84a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The identifier whose value is being requested.  <br /></td></tr>
 <tr class="separator:acc8bb05446dd4c8199447041e2f84a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a value inquiry for a specific identifier. </p>
-<p>Typically corresponds to input like <code>x?</code> to query the current value of <code>x</code>. </p>
+<div class="textblock"><p>Represents a value inquiry in the protocol. </p>
+<p>An inquiry consists of an identifier and is used to request the current value associated with that identifier. Typically corresponds to input like <code>x?</code>.</p>
+<p>Can be stored in a <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> variant. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html#l00016">16</a> of file <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html">inquiry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html#l00031">31</a> of file <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html">inquiry.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7c6a657d0cd92e4071161f79a2a0d955" name="a7c6a657d0cd92e4071161f79a2a0d955"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c6a657d0cd92e4071161f79a2a0d955">&#9670;&#160;</a></span>Inquiry()</h2>
@@ -101,11 +104,19 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructs an <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html" title="Represents a value inquiry in the protocol.">Inquiry</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>The identifier string; must start with a character and contain alphanumeric characters or underscores. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="../../dd/d80/inquiry_8cpp_source.html#l00009">9</a> of file <a class="el" href="../../dd/d80/inquiry_8cpp_source.html">inquiry.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>                                           : <a class="code hl_variable" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#acc8bb05446dd4c8199447041e2f84a4e">identifier</a>(<a class="code hl_function" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">utils::validateIdentifier</a>(<a class="code hl_variable" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#acc8bb05446dd4c8199447041e2f84a4e">identifier</a>))</div>
 <div class="line"><span class="lineno">   10</span>{}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00022">utils.hpp:22</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Inquiry_html_acc8bb05446dd4c8199447041e2f84a4e"><div class="ttname"><a href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#acc8bb05446dd4c8199447041e2f84a4e">irsol::protocol::Inquiry::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d4b/inquiry_8hpp_source.html#l00022">inquiry.hpp:22</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdoc">Validate that a string is a valid protocol identifier.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00055">utils.hpp:55</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Inquiry_html_acc8bb05446dd4c8199447041e2f84a4e"><div class="ttname"><a href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#acc8bb05446dd4c8199447041e2f84a4e">irsol::protocol::Inquiry::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdoc">The identifier whose value is being requested.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d4b/inquiry_8hpp_source.html#l00041">inquiry.hpp:41</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -126,7 +137,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Converts the inquiry to a human-readable string. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the inquiry (e.g., "x?"). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the inquiry. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../dd/d80/inquiry_8cpp_source.html#l00013">13</a> of file <a class="el" href="../../dd/d80/inquiry_8cpp_source.html">inquiry.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
@@ -150,9 +161,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The identifier whose value is being requested. Must start with a character, followed by alphanumeric characters and underscores. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html#l00022">22</a> of file <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html">inquiry.hpp</a>.</p>
+<p>The identifier whose value is being requested. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html#l00041">41</a> of file <a class="el" href="../../d6/d4b/inquiry_8hpp_source.html">inquiry.hpp</a>.</p>
 
 </div>
 </div>

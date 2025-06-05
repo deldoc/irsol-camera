@@ -57,7 +57,7 @@ $(document).ready(function(){initNavTree('d9/db8/structirsol_1_1protocol_1_1Assi
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../d8/dc9/structirsol_1_1protocol_1_1Assignment-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::protocol::Assignment Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::protocol::Assignment Struct Reference<div class="ingroups"><a class="el" href="../../de/dca/group__Protocol.html">Protocol</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -69,6 +69,7 @@ $(document).ready(function(){initNavTree('d9/db8/structirsol_1_1protocol_1_1Assi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab5a60da1bfeb7d99b7bb9689b264afef" id="r_ab5a60da1bfeb7d99b7bb9689b264afef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#ab5a60da1bfeb7d99b7bb9689b264afef">Assignment</a> (const std::string &amp;<a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#aedb0361c73aacb49ce89a9811bc62ae5">identifier</a>, <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ab454b5a69dd79a0330f0ca47bf48db87">irsol::types::protocol_value_t</a> <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#adb7f8a846cac0f6607bf7fa98aca9d55">value</a>)</td></tr>
+<tr class="memdesc:ab5a60da1bfeb7d99b7bb9689b264afef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html" title="Represents an assignment operation in the protocol.">Assignment</a>.  <br /></td></tr>
 <tr class="separator:ab5a60da1bfeb7d99b7bb9689b264afef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b897cdc85ba2e206ba6c5e3ec8a3247" id="r_a2b897cdc85ba2e206ba6c5e3ec8a3247"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#a2b897cdc85ba2e206ba6c5e3ec8a3247">toString</a> () const</td></tr>
 <tr class="memdesc:a2b897cdc85ba2e206ba6c5e3ec8a3247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the assignment to a human-readable string.  <br /></td></tr>
@@ -83,6 +84,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aedb0361c73aacb49ce89a9811bc62ae5" id="r_aedb0361c73aacb49ce89a9811bc62ae5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#aedb0361c73aacb49ce89a9811bc62ae5">identifier</a></td></tr>
+<tr class="memdesc:aedb0361c73aacb49ce89a9811bc62ae5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The variable or parameter name being assigned.  <br /></td></tr>
 <tr class="separator:aedb0361c73aacb49ce89a9811bc62ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb7f8a846cac0f6607bf7fa98aca9d55" id="r_adb7f8a846cac0f6607bf7fa98aca9d55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ab454b5a69dd79a0330f0ca47bf48db87">irsol::types::protocol_value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#adb7f8a846cac0f6607bf7fa98aca9d55">value</a></td></tr>
 <tr class="memdesc:adb7f8a846cac0f6607bf7fa98aca9d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value assigned to the identifier (int, double, or string).  <br /></td></tr>
@@ -90,9 +92,10 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an assignment operation in the protocol. </p>
-<p>An assignment consists of an identifier and a value, which can be an integer, double, or string. Typically corresponds to input like <code>x=42</code>. </p>
+<p>An assignment consists of an identifier and a value, which can be an integer, double, or string. Typically corresponds to input like <code>x=42</code>.</p>
+<p>Can be stored in a <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> variant. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d16/assignment_8hpp_source.html#l00017">17</a> of file <a class="el" href="../../d7/d16/assignment_8hpp_source.html">assignment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d16/assignment_8hpp_source.html#l00031">31</a> of file <a class="el" href="../../d7/d16/assignment_8hpp_source.html">assignment.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab5a60da1bfeb7d99b7bb9689b264afef" name="ab5a60da1bfeb7d99b7bb9689b264afef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5a60da1bfeb7d99b7bb9689b264afef">&#9670;&#160;</a></span>Assignment()</h2>
@@ -120,12 +123,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructs an <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html" title="Represents an assignment operation in the protocol.">Assignment</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>The identifier string; must start with a character and contain alphanumeric characters or underscores. </td></tr>
+    <tr><td class="paramname">value</td><td>The value to assign (int, double, or string). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="../../d6/d02/assignment_8cpp_source.html#l00011">11</a> of file <a class="el" href="../../d6/d02/assignment_8cpp_source.html">assignment.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   12</span>  : <a class="code hl_variable" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#aedb0361c73aacb49ce89a9811bc62ae5">identifier</a>(<a class="code hl_function" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">utils::validateIdentifier</a>(<a class="code hl_variable" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#aedb0361c73aacb49ce89a9811bc62ae5">identifier</a>)), <a class="code hl_variable" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#adb7f8a846cac0f6607bf7fa98aca9d55">value</a>(<a class="code hl_variable" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#adb7f8a846cac0f6607bf7fa98aca9d55">value</a>)</div>
 <div class="line"><span class="lineno">   13</span>{}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00022">utils.hpp:22</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Assignment_html_adb7f8a846cac0f6607bf7fa98aca9d55"><div class="ttname"><a href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#adb7f8a846cac0f6607bf7fa98aca9d55">irsol::protocol::Assignment::value</a></div><div class="ttdeci">irsol::types::protocol_value_t value</div><div class="ttdoc">The value assigned to the identifier (int, double, or string).</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d16/assignment_8hpp_source.html#l00026">assignment.hpp:26</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Assignment_html_aedb0361c73aacb49ce89a9811bc62ae5"><div class="ttname"><a href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#aedb0361c73aacb49ce89a9811bc62ae5">irsol::protocol::Assignment::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d16/assignment_8hpp_source.html#l00023">assignment.hpp:23</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdoc">Validate that a string is a valid protocol identifier.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00055">utils.hpp:55</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Assignment_html_adb7f8a846cac0f6607bf7fa98aca9d55"><div class="ttname"><a href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#adb7f8a846cac0f6607bf7fa98aca9d55">irsol::protocol::Assignment::value</a></div><div class="ttdeci">irsol::types::protocol_value_t value</div><div class="ttdoc">The value assigned to the identifier (int, double, or string).</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d16/assignment_8hpp_source.html#l00045">assignment.hpp:45</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Assignment_html_aedb0361c73aacb49ce89a9811bc62ae5"><div class="ttname"><a href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#aedb0361c73aacb49ce89a9811bc62ae5">irsol::protocol::Assignment::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdoc">The variable or parameter name being assigned.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d16/assignment_8hpp_source.html#l00042">assignment.hpp:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -215,7 +227,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Converts the assignment to a human-readable string. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the assignment (e.g., "x=42"). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the assignment. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d6/d02/assignment_8cpp_source.html#l00016">16</a> of file <a class="el" href="../../d6/d02/assignment_8cpp_source.html">assignment.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
@@ -254,9 +266,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The variable or parameter name being assigned. Must start with a character, followed by alphanumeric characters and underscores. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d16/assignment_8hpp_source.html#l00023">23</a> of file <a class="el" href="../../d7/d16/assignment_8hpp_source.html">assignment.hpp</a>.</p>
+<p>The variable or parameter name being assigned. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/d16/assignment_8hpp_source.html#l00042">42</a> of file <a class="el" href="../../d7/d16/assignment_8hpp_source.html">assignment.hpp</a>.</p>
 
 </div>
 </div>
@@ -274,7 +287,7 @@ Public Attributes</h2></td></tr>
 
 <p>The value assigned to the identifier (int, double, or string). </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d16/assignment_8hpp_source.html#l00026">26</a> of file <a class="el" href="../../d7/d16/assignment_8hpp_source.html">assignment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d16/assignment_8hpp_source.html#l00045">45</a> of file <a class="el" href="../../d7/d16/assignment_8hpp_source.html">assignment.hpp</a>.</p>
 
 </div>
 </div>

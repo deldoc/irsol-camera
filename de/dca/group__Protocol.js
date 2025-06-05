@@ -1,0 +1,176 @@
+var group__Protocol =
+[
+    [ "assignment.hpp", "d7/d16/assignment_8hpp.html", null ],
+    [ "binary.hpp", "db/d2e/binary_8hpp.html", null ],
+    [ "command.hpp", "d7/dc7/command_8hpp.html", null ],
+    [ "error.hpp", "d9/d99/error_8hpp.html", null ],
+    [ "inquiry.hpp", "d6/d4b/inquiry_8hpp.html", null ],
+    [ "success.hpp", "da/da4/success_8hpp.html", null ],
+    [ "variants.hpp", "df/d55/variants_8hpp.html", null ],
+    [ "parser.hpp", "d1/d46/parser_8hpp.html", null ],
+    [ "parser_result.hpp", "d9/dab/parser__result_8hpp.html", null ],
+    [ "serialized_message.hpp", "d6/d8b/serialized__message_8hpp.html", null ],
+    [ "serializer.hpp", "db/d1c/serializer_8hpp.html", null ],
+    [ "irsol::protocol", "db/dff/namespaceirsol_1_1protocol.html", null ],
+    [ "irsol::protocol::Assignment", "d9/db8/structirsol_1_1protocol_1_1Assignment.html", [
+      [ "Assignment", "d9/db8/structirsol_1_1protocol_1_1Assignment.html#ab5a60da1bfeb7d99b7bb9689b264afef", null ],
+      [ "hasDouble", "d9/db8/structirsol_1_1protocol_1_1Assignment.html#ab62dc7a5a06ebd82fa4dbcbb75963129", null ],
+      [ "hasInt", "d9/db8/structirsol_1_1protocol_1_1Assignment.html#a654b0c68e9e7f387376e675965531e00", null ],
+      [ "hasString", "d9/db8/structirsol_1_1protocol_1_1Assignment.html#aaf71e2ac22c1a9e70047f5df85dbbcd0", null ],
+      [ "toString", "d9/db8/structirsol_1_1protocol_1_1Assignment.html#a2b897cdc85ba2e206ba6c5e3ec8a3247", null ],
+      [ "identifier", "d9/db8/structirsol_1_1protocol_1_1Assignment.html#aedb0361c73aacb49ce89a9811bc62ae5", null ],
+      [ "value", "d9/db8/structirsol_1_1protocol_1_1Assignment.html#adb7f8a846cac0f6607bf7fa98aca9d55", null ]
+    ] ],
+    [ "irsol::protocol::BinaryDataAttribute", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html", [
+      [ "BinaryDataAttribute", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#a4f4e7a20e0a68ab493258b15393b50f7", null ],
+      [ "hasDouble", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#ad63bf96e2b70b559aef12cf0e25fc3b7", null ],
+      [ "hasInt", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#a92e86febfb1eb285ea4acab0b62ac32e", null ],
+      [ "hasString", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#ad1cc4d1bd3529416341754ec34ca9031", null ],
+      [ "toString", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#a429b469cd658ce3c2f625319df9ed0ad", null ],
+      [ "identifier", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#a018bdc08f5ca4ece1fd05e7cac75c8e1", null ],
+      [ "value", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#a47c9d01090441d73f0ec56218c8eb3f3", null ]
+    ] ],
+    [ "irsol::protocol::internal::BinaryDataBufferName< N >", "d6/df0/structirsol_1_1protocol_1_1internal_1_1BinaryDataBufferName.html", [
+      [ "name", "d6/df0/structirsol_1_1protocol_1_1internal_1_1BinaryDataBufferName.html#a03af1e8e6fbbda644f6690134a80488d", null ]
+    ] ],
+    [ "irsol::protocol::internal::BinaryData< NBytes, N >", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html", [
+      [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a76471f04f725fb83e2e2b4ff66935889", null ],
+      [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#aad34eaad5f29c2752b5e6c8a0bd78c71", null ],
+      [ "BinaryData", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ac0a6a91903bb9bf98ddf80e456e88177", null ],
+      [ "IRSOL_STATIC_ASSERT", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ad981bd3b5c05c441e12a08a28285c670", null ],
+      [ "IRSOL_STATIC_ASSERT", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#aaf7d6e742d60b2785202bce12dd65b23", null ],
+      [ "operator=", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a88571b37f3ab5dcbd18bf837c18b48db", null ],
+      [ "operator=", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a2f3d09c5118568ffc24b52d87b40670f", null ],
+      [ "toString", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a65935a95e5fc19d0de34f1e3cceb36d6", null ],
+      [ "attributes", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a015f627e0747efa51f60263cd79bebea", null ],
+      [ "BYTES_PER_ELEMENT", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a5311eb0a6e75ee184a0077784f719954", null ],
+      [ "data", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a1ae5691746a264c8b428cf65745dd3c0", null ],
+      [ "DIM", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ab0411f41f659ac20f5b7ccd8f975e4b6", null ],
+      [ "numBytes", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#ae303d8a90292cdb9e09ee0e0fa05c79b", null ],
+      [ "numElements", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a83763113b9f2129088d458020fad6f41", null ],
+      [ "shape", "dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html#a36f3345a723d2550fe79c03291540b67", null ]
+    ] ],
+    [ "irsol::protocol::Command", "d2/d10/structirsol_1_1protocol_1_1Command.html", [
+      [ "Command", "d2/d10/structirsol_1_1protocol_1_1Command.html#a7b2dbd33d0fe8fe525ff5394fdd60d15", null ],
+      [ "toString", "d2/d10/structirsol_1_1protocol_1_1Command.html#a013ec0c9f9df9869880eb1dc8fe7396d", null ],
+      [ "identifier", "d2/d10/structirsol_1_1protocol_1_1Command.html#a9e3bc2dc2a5420d6a9dd340a3faf4a84", null ]
+    ] ],
+    [ "irsol::protocol::Error", "d4/d3a/structirsol_1_1protocol_1_1Error.html", [
+      [ "Error", "d4/d3a/structirsol_1_1protocol_1_1Error.html#a6f1a46a5fd1a155ce1169800a5433b3a", null ],
+      [ "from", "d4/d3a/structirsol_1_1protocol_1_1Error.html#a6a88b26b91504a8003c96446b8f0cc25", null ],
+      [ "from", "d4/d3a/structirsol_1_1protocol_1_1Error.html#aa2d0a316e8cc3a12dde3e01e6731b078", null ],
+      [ "toString", "d4/d3a/structirsol_1_1protocol_1_1Error.html#afd9edb58cc0f9e444bfef039e1218778", null ],
+      [ "description", "d4/d3a/structirsol_1_1protocol_1_1Error.html#a8dece09dbbb308268599046b0aac8bf9", null ],
+      [ "identifier", "d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d41c47eca0aa0581b1e15e24c86082b", null ],
+      [ "source", "d4/d3a/structirsol_1_1protocol_1_1Error.html#a7d3931f1de4d94362b8dd514b0e443be", null ]
+    ] ],
+    [ "irsol::protocol::Inquiry", "d2/dc8/structirsol_1_1protocol_1_1Inquiry.html", [
+      [ "Inquiry", "d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#a7c6a657d0cd92e4071161f79a2a0d955", null ],
+      [ "toString", "d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#abeb218c35b796a3245803285f54e6fac", null ],
+      [ "identifier", "d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#acc8bb05446dd4c8199447041e2f84a4e", null ]
+    ] ],
+    [ "irsol::protocol::Success", "d3/d7a/structirsol_1_1protocol_1_1Success.html", [
+      [ "Success", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a643f03e8943004f618feb6ca01f130c7", null ],
+      [ "asStatus", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a3face434d1f4ca6616974cf0587ef912", null ],
+      [ "from", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a001fe6bb3a1e9155151e76fe7e1640da", null ],
+      [ "from", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a89ebdb18f853d9b5f57a3dd97fe07973", null ],
+      [ "from", "d3/d7a/structirsol_1_1protocol_1_1Success.html#afa961c34e1b4b4246abb34517293d0ad", null ],
+      [ "hasBody", "d3/d7a/structirsol_1_1protocol_1_1Success.html#abfeb087b4e962e9c253d519446dc4bc2", null ],
+      [ "hasDouble", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a162881fe4178b941fa5f84de603d0aa1", null ],
+      [ "hasInt", "d3/d7a/structirsol_1_1protocol_1_1Success.html#addc6c66a2cf4986c5d45cab9823a4543", null ],
+      [ "hasString", "d3/d7a/structirsol_1_1protocol_1_1Success.html#aebdc9cd140c425a316cb3045ae52b3fb", null ],
+      [ "toString", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a96b7e4cd935434a83f944ca7d21df7b2", null ],
+      [ "body", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a9939aa869dc423880f80a6bbfaeb48c9", null ],
+      [ "identifier", "d3/d7a/structirsol_1_1protocol_1_1Success.html#a29dbfa77eff35a0615b526c2fa78ee42", null ],
+      [ "source", "d3/d7a/structirsol_1_1protocol_1_1Success.html#ac9a3c5fe63b526f25ca3c1ae37f82637", null ]
+    ] ],
+    [ "irsol::protocol::Parser", "d5/d35/classirsol_1_1protocol_1_1Parser.html", [
+      [ "parse", "d5/d35/classirsol_1_1protocol_1_1Parser.html#a65dbc16ed132b179f771ac751a4d988e", null ],
+      [ "parseAssignment", "d5/d35/classirsol_1_1protocol_1_1Parser.html#aee7fc4a76ac809fe9fed96a4376a3c82", null ],
+      [ "parseCommand", "d5/d35/classirsol_1_1protocol_1_1Parser.html#af95cd48a3b5d07f148e3256dd2fd39d2", null ],
+      [ "parseInquiry", "d5/d35/classirsol_1_1protocol_1_1Parser.html#a174e88bc679d7ef422d7e1c9c899779d", null ],
+      [ "parseValue", "d5/d35/classirsol_1_1protocol_1_1Parser.html#a2d72a1240714a3d0ba16e39a1dcce8c8", null ]
+    ] ],
+    [ "irsol::protocol::internal::ParserResult< T, >", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html", [
+      [ "error_type", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a290067ae2fdffc888705d0650e7794a0", null ],
+      [ "message_type", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a24b58f96a80f2542655492ba2ff4f45c", null ],
+      [ "result_type", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a05e5df2d4ba3f0f389da5a141f6d3aa1", null ],
+      [ "ParserResult", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a500c0d8913e2237c3f32addfe39c0a61", null ],
+      [ "ParserResult", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#afa99111877056524c2fa5d1d95733945", null ],
+      [ "ParserResult", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a666ee5f47776b0ef9e25358274f70213", null ],
+      [ "getError", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a22cd4b26b9ace31a4c18464ac3a4516d", null ],
+      [ "getMessage", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a0a28540c476e1630fa5496552393a517", null ],
+      [ "isError", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a87518a7d4612360cb4c38ad5956ca240", null ],
+      [ "isMessage", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a8f733f59519bcd3892c761fc5b555880", null ],
+      [ "operator bool", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a2c119c2449d0fde3db20af23873e4190", null ],
+      [ "operator=", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#ae060be5cc6d81d11959c8aa4a7c22b77", null ],
+      [ "operator=", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a23a4708540a0eac3591b9dcdc3183a85", null ],
+      [ "toString", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#ae71400556ebc5d379de56d3e7f1e0202", null ],
+      [ "_messageOrError", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html#a551b037941c81a7b047e5f8c96361bdf", null ]
+    ] ],
+    [ "irsol::protocol::internal::SerializedMessage", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html", [
+      [ "SerializedMessage", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#acc8d936b334dc7e04d2006eb2fdad1ee", null ],
+      [ "SerializedMessage", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#a8734b56b91cddcc8cae4bac9ae7044bc", null ],
+      [ "SerializedMessage", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#a8351f9c1857a82e9580b49ee8af7a7d1", null ],
+      [ "hasHeader", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#a770e18cb06a0feac11c52638951e00e4", null ],
+      [ "hasPayload", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#aa486afd1270641f0ae0af80985e4976f", null ],
+      [ "operator=", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#adddeb6c0baef28498e6bf65e6f87fbce", null ],
+      [ "operator=", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#ab3245bbd7f11f0442f11c18ae92aac8f", null ],
+      [ "payloadSize", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#aa27f6f0e8f5b5ce12d21dad73eb77e10", null ],
+      [ "toString", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#a7d426186b430c3d3f32b2f8bed8bd060", null ],
+      [ "header", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#a0516d7680ff1734bfd379523629351c0", null ],
+      [ "payload", "d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html#a007f47b97e0dbc0ecce324b94518bfe9", null ]
+    ] ],
+    [ "irsol::protocol::Serializer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html", [
+      [ "SpecialBytes", "d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html", [
+        [ "ETX", "d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#ae98b6d7a1c09d13a1875e2048b018268", null ],
+        [ "SOH", "d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#a3ecea76a68c94c76a14b456c05f0ecd7", null ],
+        [ "STX", "d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#a9ab3dc40319c7c01b18bd6bad4b3ade1", null ]
+      ] ],
+      [ "Serializer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a867db16121761b50004a3d3d4d0f1298", null ],
+      [ "serialize", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7fe9f605fe5148e891c113073990a9e5", null ],
+      [ "serialize", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a2d06cfbc0650cbc8f70e6ee15a50d7c0", null ],
+      [ "serializeBinaryDataAttribute", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a46bd15d36d8a7fce4e1c3f9c1fe09b64", null ],
+      [ "serializeBinaryDataBuffer", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a4afb488737f2c14522741e94d39bfbd2", null ],
+      [ "serializeColorImageBinaryData", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7f46674fd767a374fbdc8f95decbc3f8", null ],
+      [ "serializeError", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#acc4401759f7c11116cfc5fba17629b23", null ],
+      [ "serializeImageBinaryData", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a75edde47044ed71c7a74ed551b4cd144", null ],
+      [ "serializeSuccess", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#ae257a5fca1b45708fb2d77fe6c52bb1b", null ],
+      [ "serializeValue", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7a60fbac209063914f02f756eaac19a0", null ],
+      [ "serializeValue", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a35161b42c41f778b1d68da2fd164082a", null ],
+      [ "message_termination", "d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7988f24a87857d3ef407b13a471f4ba2", null ]
+    ] ],
+    [ "irsol::protocol::BinaryDataBuffer", "de/dca/group__Protocol.html#ga992a6e524c2d605492fe732ffe5f1804", null ],
+    [ "irsol::protocol::ColorImageBinaryData", "de/dca/group__Protocol.html#gaae127bdb175c2184b25e1c67a82e048f", null ],
+    [ "irsol::protocol::ImageBinaryData", "de/dca/group__Protocol.html#ga92289652b6bf51da04bb8973e7dd5418", null ],
+    [ "irsol::protocol::InMessage", "de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20", null ],
+    [ "irsol::protocol::OutMessage", "de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66", null ],
+    [ "irsol::protocol::InMessageKind", "de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e", [
+      [ "irsol::protocol::InMessageKind::ASSIGNMENT", "de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83", null ],
+      [ "irsol::protocol::InMessageKind::INQUIRY", "de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632", null ],
+      [ "irsol::protocol::InMessageKind::COMMAND", "de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1", null ]
+    ] ],
+    [ "irsol::protocol::OutMessageKind", "de/dca/group__Protocol.html#ga3e8b1cf7a0b0c58d02347e4843f35b76", [
+      [ "irsol::protocol::OutMessageKind::SUCCESS", "de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c", null ],
+      [ "irsol::protocol::OutMessageKind::BINARY_BUFFER", "de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac", null ],
+      [ "irsol::protocol::OutMessageKind::BW_IMAGE", "de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b", null ],
+      [ "irsol::protocol::OutMessageKind::COLOR_IMAGE", "de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368", null ],
+      [ "irsol::protocol::OutMessageKind::ERROR", "de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5", null ]
+    ] ],
+    [ "irsol::protocol::getInMessageKind", "de/dca/group__Protocol.html#ga285d565d14d7e2b1f819dea6df5071bf", null ],
+    [ "irsol::protocol::getInMessageKind", "de/dca/group__Protocol.html#gac3d8f329dffa946327c1995e003ffea1", null ],
+    [ "irsol::protocol::getOutMessageKind", "de/dca/group__Protocol.html#ga8f79326346fdf0b375edc7392952d7c4", null ],
+    [ "irsol::protocol::getOutMessageKind", "de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b", null ],
+    [ "irsol::protocol::InMessageKindToString", "de/dca/group__Protocol.html#ga97f85648f00c021779fb639f05dfa117", null ],
+    [ "irsol::protocol::isAssignment", "de/dca/group__Protocol.html#ga817302d5beb155df4f2af463df914e00", null ],
+    [ "irsol::protocol::isBinaryDataBuffer", "de/dca/group__Protocol.html#ga6492bc2cfd4e79d171005658b3a9638c", null ],
+    [ "irsol::protocol::isColorImageBinaryData", "de/dca/group__Protocol.html#ga33a30e7f71550687929a92c1e92ef409", null ],
+    [ "irsol::protocol::isCommand", "de/dca/group__Protocol.html#ga1f883807efffb2c29c3c2aedba5bbd91", null ],
+    [ "irsol::protocol::isError", "de/dca/group__Protocol.html#ga0628de419ed14b7c32cf90aa10b991f1", null ],
+    [ "irsol::protocol::isImageBinaryData", "de/dca/group__Protocol.html#ga8ee439b33b0db1135b97a8b401e291a1", null ],
+    [ "irsol::protocol::isInquiry", "de/dca/group__Protocol.html#ga5f0f7d479cf592fd244fa3972e262d79", null ],
+    [ "irsol::protocol::isSuccess", "de/dca/group__Protocol.html#ga2e5772c1be28241255eae4e752dbb1ad", null ],
+    [ "irsol::protocol::OutMessageKindToString", "de/dca/group__Protocol.html#ga2604466640c53333fe2bb2a2d249da51", null ],
+    [ "irsol::protocol::toString", "de/dca/group__Protocol.html#gab7845b7ab1de991c2ee080dc19607f18", null ],
+    [ "irsol::protocol::toString", "de/dca/group__Protocol.html#ga8912bc5f8301fdb1c0804634f5eaadfb", null ]
+];

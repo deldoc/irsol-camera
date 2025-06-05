@@ -57,7 +57,7 @@ $(document).ready(function(){initNavTree('d2/d10/structirsol_1_1protocol_1_1Comm
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../d9/ddd/structirsol_1_1protocol_1_1Command-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::protocol::Command Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::protocol::Command Struct Reference<div class="ingroups"><a class="el" href="../../de/dca/group__Protocol.html">Protocol</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -69,6 +69,7 @@ $(document).ready(function(){initNavTree('d2/d10/structirsol_1_1protocol_1_1Comm
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b2dbd33d0fe8fe525ff5394fdd60d15" id="r_a7b2dbd33d0fe8fe525ff5394fdd60d15"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a7b2dbd33d0fe8fe525ff5394fdd60d15">Command</a> (const std::string &amp;<a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a9e3bc2dc2a5420d6a9dd340a3faf4a84">identifier</a>)</td></tr>
+<tr class="memdesc:a7b2dbd33d0fe8fe525ff5394fdd60d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html" title="Represents a command invocation in the protocol.">Command</a>.  <br /></td></tr>
 <tr class="separator:a7b2dbd33d0fe8fe525ff5394fdd60d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a013ec0c9f9df9869880eb1dc8fe7396d" id="r_a013ec0c9f9df9869880eb1dc8fe7396d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a013ec0c9f9df9869880eb1dc8fe7396d">toString</a> () const</td></tr>
 <tr class="memdesc:a013ec0c9f9df9869880eb1dc8fe7396d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the command to a human-readable string.  <br /></td></tr>
@@ -77,13 +78,15 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a9e3bc2dc2a5420d6a9dd340a3faf4a84" id="r_a9e3bc2dc2a5420d6a9dd340a3faf4a84"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a9e3bc2dc2a5420d6a9dd340a3faf4a84">identifier</a></td></tr>
+<tr class="memdesc:a9e3bc2dc2a5420d6a9dd340a3faf4a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the command to execute.  <br /></td></tr>
 <tr class="separator:a9e3bc2dc2a5420d6a9dd340a3faf4a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a command invocation in the protocol. </p>
-<p>A command typically has no associated value but may trigger a predefined action. </p>
+<p>A command consists of a valid identifier and typically does not carry a value. It is used to trigger predefined actions such as "start", "stop", or "reset".</p>
+<p>Can be stored in a <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> variant. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dc7/command_8hpp_source.html#l00016">16</a> of file <a class="el" href="../../d7/dc7/command_8hpp_source.html">command.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dc7/command_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../d7/dc7/command_8hpp_source.html">command.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7b2dbd33d0fe8fe525ff5394fdd60d15" name="a7b2dbd33d0fe8fe525ff5394fdd60d15"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b2dbd33d0fe8fe525ff5394fdd60d15">&#9670;&#160;</a></span>Command()</h2>
@@ -101,11 +104,19 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructs a <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html" title="Represents a command invocation in the protocol.">Command</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>The command name; must start with a character and contain alphanumeric characters or underscores. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="../../d1/d81/command_8cpp_source.html#l00009">9</a> of file <a class="el" href="../../d1/d81/command_8cpp_source.html">command.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>                                           : <a class="code hl_variable" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a9e3bc2dc2a5420d6a9dd340a3faf4a84">identifier</a>(<a class="code hl_function" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">utils::validateIdentifier</a>(<a class="code hl_variable" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a9e3bc2dc2a5420d6a9dd340a3faf4a84">identifier</a>))</div>
 <div class="line"><span class="lineno">   10</span>{}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00022">utils.hpp:22</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Command_html_a9e3bc2dc2a5420d6a9dd340a3faf4a84"><div class="ttname"><a href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a9e3bc2dc2a5420d6a9dd340a3faf4a84">irsol::protocol::Command::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dc7/command_8hpp_source.html#l00022">command.hpp:22</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1protocol_1_1utils_html_a354f3a48ed7357e0502a4a535af6114b"><div class="ttname"><a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a></div><div class="ttdeci">std::string validateIdentifier(const std::string &amp;identifier)</div><div class="ttdoc">Validate that a string is a valid protocol identifier.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00055">utils.hpp:55</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Command_html_a9e3bc2dc2a5420d6a9dd340a3faf4a84"><div class="ttname"><a href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#a9e3bc2dc2a5420d6a9dd340a3faf4a84">irsol::protocol::Command::identifier</a></div><div class="ttdeci">std::string identifier</div><div class="ttdoc">The name of the command to execute.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dc7/command_8hpp_source.html#l00042">command.hpp:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -126,7 +137,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Converts the command to a human-readable string. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the command (e.g., "reset"). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the command. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/d81/command_8cpp_source.html#l00013">13</a> of file <a class="el" href="../../d1/d81/command_8cpp_source.html">command.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
@@ -150,9 +161,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The name of the command to execute. Must start with a character, followed by alphanumeric characters and underscores. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dc7/command_8hpp_source.html#l00022">22</a> of file <a class="el" href="../../d7/dc7/command_8hpp_source.html">command.hpp</a>.</p>
+<p>The name of the command to execute. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dc7/command_8hpp_source.html#l00042">42</a> of file <a class="el" href="../../d7/dc7/command_8hpp_source.html">command.hpp</a>.</p>
 
 </div>
 </div>

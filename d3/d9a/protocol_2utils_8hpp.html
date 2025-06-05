@@ -59,6 +59,9 @@ $(document).ready(function(){initNavTree('d3/d9a/protocol_2utils_8hpp.html','../
   <div class="headertitle"><div class="title">utils.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Utility functions for protocol string handling and validation in the irsol library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/da9/logging_8hpp_source.html">irsol/logging.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/dbe/macros_8hpp_source.html">irsol/macros.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">irsol/types.hpp</a>&quot;</code><br />
@@ -74,21 +77,36 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:db/dff/namespaceirsol_1_1protocol" id="r_db/dff/namespaceirsol_1_1protocol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html">irsol::protocol</a></td></tr>
+<tr class="memdesc:db/dff/namespaceirsol_1_1protocol"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core protocol message types, serialization, parsing, and communication utilities for the irsol framework. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d3/d80/namespaceirsol_1_1protocol_1_1utils" id="r_d3/d80/namespaceirsol_1_1protocol_1_1utils"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html">irsol::protocol::utils</a></td></tr>
+<tr class="memdesc:d3/d80/namespaceirsol_1_1protocol_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions for string manipulation and validation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a354f3a48ed7357e0502a4a535af6114b" id="r_a354f3a48ed7357e0502a4a535af6114b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">irsol::protocol::utils::validateIdentifier</a> (const std::string &amp;identifier)</td></tr>
+<tr class="memdesc:a354f3a48ed7357e0502a4a535af6114b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate that a string is a valid protocol identifier.  <br /></td></tr>
 <tr class="separator:a354f3a48ed7357e0502a4a535af6114b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae99c5b6009b1e0ebba0fde3a11852f6a" id="r_ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#ae99c5b6009b1e0ebba0fde3a11852f6a">irsol::protocol::utils::fromString</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a string to a value of type T.  <br /></td></tr>
 <tr class="separator:ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac689e3cc52a5b80c6bac87ed6dafb09d" id="r_ac689e3cc52a5b80c6bac87ed6dafb09d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#ac689e3cc52a5b80c6bac87ed6dafb09d">irsol::protocol::utils::trim</a> (const std::string &amp;s)</td></tr>
+<tr class="memdesc:ac689e3cc52a5b80c6bac87ed6dafb09d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove leading and trailing whitespace from a string.  <br /></td></tr>
 <tr class="separator:ac689e3cc52a5b80c6bac87ed6dafb09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utility functions for protocol string handling and validation in the irsol library. </p>
+<p>This header provides helper functions for string processing and validation commonly used in the <code><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html" title="Core protocol message types, serialization, parsing, and communication utilities for the irsol framew...">irsol::protocol</a></code> subsystem. These include:</p><ul>
+<li>Validating identifiers against protocol naming rules.</li>
+<li>Converting strings to typed values (integers, floating point, strings).</li>
+<li>Trimming whitespace from strings.</li>
+</ul>
+<p>These utilities facilitate safe parsing and validation of protocol messages and parameters. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html">utils.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

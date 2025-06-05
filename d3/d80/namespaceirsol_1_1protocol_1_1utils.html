@@ -58,18 +58,27 @@ $(document).ready(function(){initNavTree('d3/d80/namespaceirsol_1_1protocol_1_1u
   <div class="headertitle"><div class="title">irsol::protocol::utils Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Utility functions for string manipulation and validation.  
+<a href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a354f3a48ed7357e0502a4a535af6114b" id="r_a354f3a48ed7357e0502a4a535af6114b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#a354f3a48ed7357e0502a4a535af6114b">validateIdentifier</a> (const std::string &amp;identifier)</td></tr>
+<tr class="memdesc:a354f3a48ed7357e0502a4a535af6114b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate that a string is a valid protocol identifier.  <br /></td></tr>
 <tr class="separator:a354f3a48ed7357e0502a4a535af6114b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae99c5b6009b1e0ebba0fde3a11852f6a" id="r_ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#ae99c5b6009b1e0ebba0fde3a11852f6a">fromString</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a string to a value of type T.  <br /></td></tr>
 <tr class="separator:ae99c5b6009b1e0ebba0fde3a11852f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac689e3cc52a5b80c6bac87ed6dafb09d" id="r_ac689e3cc52a5b80c6bac87ed6dafb09d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html#ac689e3cc52a5b80c6bac87ed6dafb09d">trim</a> (const std::string &amp;s)</td></tr>
+<tr class="memdesc:ac689e3cc52a5b80c6bac87ed6dafb09d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove leading and trailing whitespace from a string.  <br /></td></tr>
 <tr class="separator:ac689e3cc52a5b80c6bac87ed6dafb09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utility functions for string manipulation and validation. </p>
+<p>Provides low-level helpers for validating protocol identifiers, converting strings to typed values, and trimming whitespace. These functions underpin the protocol parsing logic and ensure consistent input validation and error handling. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ae99c5b6009b1e0ebba0fde3a11852f6a" name="ae99c5b6009b1e0ebba0fde3a11852f6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae99c5b6009b1e0ebba0fde3a11852f6a">&#9670;&#160;</a></span>fromString()</h2>
 
@@ -88,28 +97,56 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00035">35</a> of file <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html">utils.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
-<div class="line"><span class="lineno">   37</span>  std::size_t pos = 0;</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_integral_v&lt;T&gt;) {</div>
-<div class="line"><span class="lineno">   40</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to integer&quot;</span>, str);</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordtype">int</span> res = std::stoi(str, &amp;pos);</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span>(pos != str.length())</div>
-<div class="line"><span class="lineno">   43</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Extra characters after integer&quot;</span>);</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">   45</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_floating_point_v&lt;T&gt;) {</div>
-<div class="line"><span class="lineno">   46</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to double&quot;</span>, str);</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordtype">double</span> res = std::stod(str, &amp;pos);</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span>(pos != str.length())</div>
-<div class="line"><span class="lineno">   49</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Extra characters after double&quot;</span>);</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">   51</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, std::string&gt;) {</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> str;</div>
-<div class="line"><span class="lineno">   53</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;utils::fromString()&quot;</span>);</div>
-<div class="line"><span class="lineno">   55</span>  }</div>
-<div class="line"><span class="lineno">   56</span>}</div>
+<p>Convert a string to a value of type T. </p>
+<p>Parses the input string <code>str</code> and converts it to the requested type <code>T</code>. Supported types:</p><ul>
+<li>Integral types (e.g., int, long)</li>
+<li>Floating point types (e.g., double, float)</li>
+<li>std::string (returns the string as-is)</li>
+</ul>
+<p>Throws <code>std::invalid_argument</code> if the string contains extraneous characters after the parsed value or if conversion fails.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The desired output type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The parsed value of type T. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>on parsing errors.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Requires explicit template specializations for unsupported types. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00087">87</a> of file <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html">utils.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
+<div class="line"><span class="lineno">   89</span>  std::size_t pos = 0;</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_integral_v&lt;T&gt;) {</div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to integer&quot;</span>, str);</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordtype">int</span> res = std::stoi(str, &amp;pos);</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span>(pos != str.length())</div>
+<div class="line"><span class="lineno">   95</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Extra characters after integer&quot;</span>);</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">   97</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_floating_point_v&lt;T&gt;) {</div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a>(<span class="stringliteral">&quot;Converting string &#39;{}&#39; to double&quot;</span>, str);</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordtype">double</span> res = std::stod(str, &amp;pos);</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">if</span>(pos != str.length())</div>
+<div class="line"><span class="lineno">  101</span>      <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Extra characters after double&quot;</span>);</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  103</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, std::string&gt;) {</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> str;</div>
+<div class="line"><span class="lineno">  105</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;utils::fromString()&quot;</span>);</div>
+<div class="line"><span class="lineno">  107</span>  }</div>
+<div class="line"><span class="lineno">  108</span>}</div>
 <div class="ttc" id="agroup__Logging_html_gab9b1a2fbfbdd434c70bb2b7f169ea989"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gab9b1a2fbfbdd434c70bb2b7f169ea989">IRSOL_LOG_TRACE</a></div><div class="ttdeci">#define IRSOL_LOG_TRACE(...)</div><div class="ttdoc">Logs a trace-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00090">logging.hpp:90</a></div></div>
 <div class="ttc" id="amacros_8hpp_html_aa21d39bf4cd94d42dc192cf34803a5d9"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)</div><div class="ttdoc">Emits a compile-time error when no template specialization is available.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00173">macros.hpp:173</a></div></div>
 </div><!-- fragment -->
@@ -139,12 +176,23 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html">utils.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>{</div>
-<div class="line"><span class="lineno">   61</span>  <span class="keywordtype">size_t</span> start = s.find_first_not_of(<span class="stringliteral">&quot; \t\r\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   62</span>  <span class="keywordtype">size_t</span> end   = s.find_last_not_of(<span class="stringliteral">&quot; \t\r\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   63</span>  <span class="keywordflow">return</span> (start == std::string::npos) ? <span class="stringliteral">&quot;&quot;</span> : s.substr(start, end - start + 1);</div>
-<div class="line"><span class="lineno">   64</span>}</div>
+<p>Remove leading and trailing whitespace from a string. </p>
+<p>Trims spaces, tabs, carriage returns, and newline characters from both ends of the input string <code>s</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The input string to trim. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A copy of <code>s</code> with leading and trailing whitespace removed.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Does not modify the original string. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00122">122</a> of file <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html">utils.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>  <span class="keywordtype">size_t</span> start = s.find_first_not_of(<span class="stringliteral">&quot; \t\r\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  125</span>  <span class="keywordtype">size_t</span> end   = s.find_last_not_of(<span class="stringliteral">&quot; \t\r\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  126</span>  <span class="keywordflow">return</span> (start == std::string::npos) ? <span class="stringliteral">&quot;&quot;</span> : s.substr(start, end - start + 1);</div>
+<div class="line"><span class="lineno">  127</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -171,21 +219,38 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Validate that the given string is a valid identifier according to the following rules:</p><ul>
-<li>Starts with an alphabetic character or underscore.</li>
-<li>Contains only alphanumeric characters, underscores, and optionally square brackets for array indexing. </li>
-</ul>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00022">22</a> of file <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html">utils.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>{</div>
-<div class="line"><span class="lineno">   24</span>  <span class="keyword">static</span> <span class="keyword">const</span> std::regex re(R<span class="stringliteral">&quot;(^[a-zA-Z_][a-zA-Z0-9_]*(?:\[\d+\])*$)&quot;);</span></div>
-<div class="line"><span class="lineno">   25</span><span class="stringliteral">  std::smatch             <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a>;</span></div>
-<div class="line"><span class="lineno">   26</span><span class="stringliteral">  </span><span class="keywordflow">if</span>(!std::regex_match(identifier, <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a>, re)) {</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Invalid identifier &#39;{}&#39;&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Invalid identifier&quot;</span>);</div>
-<div class="line"><span class="lineno">   29</span>  }</div>
-<div class="line"><span class="lineno">   30</span>  <span class="keywordflow">return</span> identifier;</div>
-<div class="line"><span class="lineno">   31</span>}</div>
+<p>Validate that a string is a valid protocol identifier. </p>
+<p>Checks that the given <code>identifier</code> string meets the following rules:</p><ul>
+<li>Starts with an alphabetic character (a-z, A-Z) or underscore (_).</li>
+<li>Contains only alphanumeric characters, underscores (_), and optionally array indexing expressions of the form <code>[number]</code> (e.g., <code>param[0]</code>).</li>
+</ul>
+<p>If validation fails, logs an error and throws <code>std::invalid_argument</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>The string to validate as an identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The validated identifier string. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if the string is not a valid identifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function is intended for validating parameter or field names in protocol messages. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../d3/d9a/protocol_2utils_8hpp_source.html">utils.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keyword">static</span> <span class="keyword">const</span> std::regex re(R<span class="stringliteral">&quot;(^[a-zA-Z_][a-zA-Z0-9_]*(?:\[\d+\])*$)&quot;);</span></div>
+<div class="line"><span class="lineno">   58</span><span class="stringliteral">  std::smatch             <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a>;</span></div>
+<div class="line"><span class="lineno">   59</span><span class="stringliteral">  </span><span class="keywordflow">if</span>(!std::regex_match(identifier, <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a>, re)) {</div>
+<div class="line"><span class="lineno">   60</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Invalid identifier &#39;{}&#39;&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Invalid identifier&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span>  }</div>
+<div class="line"><span class="lineno">   63</span>  <span class="keywordflow">return</span> identifier;</div>
+<div class="line"><span class="lineno">   64</span>}</div>
 <div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
 <div class="ttc" id="atest__assignment_8cpp_html_aa1c45ce7a42f7c3aa5c1a10328c2473a"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#aa1c45ce7a42f7c3aa5c1a10328c2473a">m</a></div><div class="ttdeci">irsol::protocol::Assignment m(identifier, value)</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d3f/test__assignment_8cpp_source.html#l00033">test_assignment.cpp:33</a></div></div>
 </div><!-- fragment -->

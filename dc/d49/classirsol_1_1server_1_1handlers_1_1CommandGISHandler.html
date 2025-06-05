@@ -86,7 +86,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:abde66abd5b1711f6f02c5227b757ec03" id="r_abde66abd5b1711f6f02c5227b757ec03"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#abde66abd5b1711f6f02c5227b757ec03">validate</a> (const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;message, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session) const override</td></tr>
+<tr class="memitem:abde66abd5b1711f6f02c5227b757ec03" id="r_abde66abd5b1711f6f02c5227b757ec03"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#abde66abd5b1711f6f02c5227b757ec03">validate</a> (const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;message, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session) const override</td></tr>
 <tr class="separator:abde66abd5b1711f6f02c5227b757ec03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa06150878f85e598abc106557bf2da73" id="r_aa06150878f85e598abc106557bf2da73"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#aa06150878f85e598abc106557bf2da73">getInputSequenceLength</a> (const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;message, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session) const override</td></tr>
 <tr class="separator:aa06150878f85e598abc106557bf2da73"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,7 +236,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> &gt; irsol::server::handlers::CommandGISHandler::validate </td>
+          <td class="memname">std::vector&lt; <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> &gt; irsol::server::handlers::CommandGISHandler::validate </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;&#160;</td>
           <td class="paramname"><em>message</em>, </td>
@@ -259,7 +259,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Override to validate parameters before starting listener thread. Return vector of <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error message in the protocol.">protocol::Error</a> messages (empty if no error). </p>
+<p>Override to validate parameters before starting listener thread. Return vector of <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error response message from the server.">protocol::Error</a> messages (empty if no error). </p>
 
 <p>Implements <a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a38d872ce307e829274537109cb5e1f87">irsol::server::handlers::internal::CommandGIBaseHandler</a>.</p>
 
@@ -284,7 +284,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   32</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
 <div class="line"><span class="lineno">   33</span>}</div>
 <div class="ttc" id="agroup__Logging_html_gacab2ed396a15b61c949f1054a6a5aae4"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gacab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_WARN(name,...)</div><div class="ttdoc">Logs a warning-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00178">logging.hpp:178</a></div></div>
-<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_aa2d0a316e8cc3a12dde3e01e6731b078"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#aa2d0a316e8cc3a12dde3e01e6731b078">irsol::protocol::Error::from</a></div><div class="ttdeci">static Error from(const T &amp;msg, const std::string &amp;description)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00038">error.hpp:38</a></div></div>
+<div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_aa2d0a316e8cc3a12dde3e01e6731b078"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#aa2d0a316e8cc3a12dde3e01e6731b078">irsol::protocol::Error::from</a></div><div class="ttdeci">static Error from(const T &amp;msg, const std::string &amp;description)</div><div class="ttdoc">Creates an error from a specific incoming message type.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00063">error.hpp:63</a></div></div>
 <div class="ttc" id="atest__error_8cpp_html_aede94e5895960e8807719a1a1abf9f43"><div class="ttname"><a href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dbc/test__error_8cpp_source.html#l00017">test_error.cpp:17</a></div></div>
 </div><!-- fragment -->
 </div>

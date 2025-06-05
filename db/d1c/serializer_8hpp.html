@@ -56,9 +56,12 @@ $(document).ready(function(){initNavTree('db/d1c/serializer_8hpp.html','../../')
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">serializer.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">serializer.hpp File Reference<div class="ingroups"><a class="el" href="../../de/dca/group__Protocol.html">Protocol</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Serialization utilities for protocol messages and primitive values.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../db/dbe/macros_8hpp_source.html">irsol/macros.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d5/d8c/message_8hpp_source.html">irsol/protocol/message.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d6/d8b/serialized__message_8hpp_source.html">irsol/protocol/serialization/serialized_message.hpp</a>&quot;</code><br />
@@ -71,9 +74,10 @@ $(document).ready(function(){initNavTree('db/d1c/serializer_8hpp.html','../../')
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html">irsol::protocol::Serializer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes outgoing protocol messages and primitive values.  <a href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html">irsol::protocol::Serializer::SpecialBytes</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility enumerators defining special bytes used by the Simple Communication Protocol.  <a href="../../d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Special byte constants used in the Simple Communication Protocol.  <a href="../../d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -81,9 +85,16 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/ddb/namespaceirsol" id="r_d7/ddb/namespaceirsol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/ddb/namespaceirsol.html">irsol</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:db/dff/namespaceirsol_1_1protocol" id="r_db/dff/namespaceirsol_1_1protocol"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html">irsol::protocol</a></td></tr>
+<tr class="memdesc:db/dff/namespaceirsol_1_1protocol"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core protocol message types, serialization, parsing, and communication utilities for the irsol framework. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Serialization utilities for protocol messages and primitive values. </p>
+<p>This file defines the <code>Serializer</code> class that provides static methods to convert protocol outgoing messages (<a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> variants) and primitive protocol values into serialized string representations (<a class="el" href="../../d4/d4f/structirsol_1_1protocol_1_1internal_1_1SerializedMessage.html">irsol::protocol::internal::SerializedMessage</a>).</p>
+<p>The serialization format follows the Simple Communication Protocol used in irsol, with special byte markers and terminators as defined in this class. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

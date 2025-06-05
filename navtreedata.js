@@ -33,7 +33,8 @@ var NAVTREE =
       [ "Examples", "d4/de9/examples.html", [
         [ "00-logging-and-asserting", "d8/d93/logging_and_asserting.html", null ],
         [ "01-loading-images", "d9/d45/loading_images.html", null ],
-        [ "02-interacting-with-camera-features", "d6/dca/interacting_with_camera_features.html", null ]
+        [ "02-interacting-with-camera-features", "d6/dca/interacting_with_camera_features.html", null ],
+        [ "03-message-protocols", "db/d19/message_protocols.html", null ]
       ] ],
       [ "Tests", "d0/def/tests.html", null ]
     ] ],
@@ -78,12 +79,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#abeb218c35b796a3245803285f54e6fac",
-"d5/d11/structirsol_1_1server_1_1frame__collector_1_1ClientCollectionParams.html#ab7567e733775d9bce73656a664dd2050",
-"d8/d12/namespaceirsol_1_1utils_1_1internal.html#a91c1d3ea6f34a2f19f099c08318fc393",
-"db/dc5/classirsol_1_1server_1_1App.html#a5e78a84334dc310a6012fc1288fb5e1d",
-"dd/de3/types_8hpp.html#a29ac1eeb0d31bd505b9756c7b9db10bc",
-"dir_c6ecc7e49dff086caebc6f61ec04c60c.html"
+"d3/d7a/structirsol_1_1protocol_1_1Success.html#a3face434d1f4ca6616974cf0587ef912",
+"d5/ddd/inquiry__image__size_8hpp.html#a51ae0468be4d7aa482f9693a8f9a2573",
+"d9/d67/out__messages_8hpp_source.html",
+"dc/d49/classirsol_1_1utils_1_1SafeQueue.html#ac7066e1a4252b9b8ee64df8e04eafaeb",
+"de/dca/group__Protocol.html#ga8ee439b33b0db1135b97a8b401e291a1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

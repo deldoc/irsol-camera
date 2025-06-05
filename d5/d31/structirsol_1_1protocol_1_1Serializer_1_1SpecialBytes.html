@@ -60,7 +60,7 @@ $(document).ready(function(){initNavTree('d5/d31/structirsol_1_1protocol_1_1Seri
 </div><!--header-->
 <div class="contents">
 
-<p>Utility enumerators defining special bytes used by the Simple Communication Protocol.  
+<p>Special byte constants used in the Simple Communication Protocol.  
  <a href="../../d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>&gt;</code></p>
@@ -68,16 +68,20 @@ $(document).ready(function(){initNavTree('d5/d31/structirsol_1_1protocol_1_1Seri
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a3ecea76a68c94c76a14b456c05f0ecd7" id="r_a3ecea76a68c94c76a14b456c05f0ecd7"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#a3ecea76a68c94c76a14b456c05f0ecd7">SOH</a> {0x01}</td></tr>
+<tr class="memdesc:a3ecea76a68c94c76a14b456c05f0ecd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start of Header (SOH) byte: 0x01.  <br /></td></tr>
 <tr class="separator:a3ecea76a68c94c76a14b456c05f0ecd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ab3dc40319c7c01b18bd6bad4b3ade1" id="r_a9ab3dc40319c7c01b18bd6bad4b3ade1"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#a9ab3dc40319c7c01b18bd6bad4b3ade1">STX</a> {0x02}</td></tr>
+<tr class="memdesc:a9ab3dc40319c7c01b18bd6bad4b3ade1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start of Text (STX) byte: 0x02.  <br /></td></tr>
 <tr class="separator:a9ab3dc40319c7c01b18bd6bad4b3ade1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98b6d7a1c09d13a1875e2048b018268" id="r_ae98b6d7a1c09d13a1875e2048b018268"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d31/structirsol_1_1protocol_1_1Serializer_1_1SpecialBytes.html#ae98b6d7a1c09d13a1875e2048b018268">ETX</a> {0x03}</td></tr>
+<tr class="memdesc:ae98b6d7a1c09d13a1875e2048b018268"><td class="mdescLeft">&#160;</td><td class="mdescRight">End of Text (ETX) byte: 0x03.  <br /></td></tr>
 <tr class="separator:ae98b6d7a1c09d13a1875e2048b018268"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Utility enumerators defining special bytes used by the Simple Communication Protocol. </p>
+<div class="textblock"><p>Special byte constants used in the Simple Communication Protocol. </p>
+<p>These bytes mark the start of header, start of text, and end of text in binary protocol messages. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00027">27</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00054">54</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae98b6d7a1c09d13a1875e2048b018268" name="ae98b6d7a1c09d13a1875e2048b018268"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae98b6d7a1c09d13a1875e2048b018268">&#9670;&#160;</a></span>ETX</h2>
@@ -99,8 +103,10 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00031">31</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{0x03};</div>
+<p>End of Text (ETX) byte: 0x03. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00061">61</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>{0x03};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -124,8 +130,10 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00029">29</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{0x01};</div>
+<p>Start of Header (SOH) byte: 0x01. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00057">57</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>{0x01};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -149,8 +157,10 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00030">30</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{0x02};</div>
+<p>Start of Text (STX) byte: 0x02. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d1c/serializer_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../db/d1c/serializer_8hpp_source.html">serializer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{0x02};</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -59,15 +59,19 @@ $(document).ready(function(){initNavTree('db/dff/namespaceirsol_1_1protocol.html
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">irsol::protocol Namespace Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::protocol Namespace Reference<div class="ingroups"><a class="el" href="../../de/dca/group__Protocol.html">Protocol</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Core protocol message types, serialization, parsing, and communication utilities for the irsol framework.  
+<a href="../../db/dff/namespaceirsol_1_1protocol.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d1/d2d/namespaceirsol_1_1protocol_1_1internal" id="r_d1/d2d/namespaceirsol_1_1protocol_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2d/namespaceirsol_1_1protocol_1_1internal.html">internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d3/d80/namespaceirsol_1_1protocol_1_1utils" id="r_d3/d80/namespaceirsol_1_1protocol_1_1utils"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d80/namespaceirsol_1_1protocol_1_1utils.html">utils</a></td></tr>
+<tr class="memdesc:d3/d80/namespaceirsol_1_1protocol_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions for string manipulation and validation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -76,544 +80,161 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an assignment operation in the protocol.  <a href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html">BinaryDataAttribute</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a binary data attribute in the protocol.  <a href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single binary data attribute within the protocol.  <a href="../../d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">Command</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a command invocation in the protocol.  <a href="../../d2/d10/structirsol_1_1protocol_1_1Command.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error message in the protocol.  <a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error response message from the server.  <a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html">Inquiry</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a value inquiry for a specific identifier.  <a href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a value inquiry in the protocol.  <a href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d35/classirsol_1_1protocol_1_1Parser.html">Parser</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses raw input strings into structured <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> instances.  <a href="../../d5/d35/classirsol_1_1protocol_1_1Parser.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html">Serializer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes outgoing protocol messages and primitive values.  <a href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7a/structirsol_1_1protocol_1_1Success.html">Success</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a response status message from the protocol.  <a href="../../d3/d7a/structirsol_1_1protocol_1_1Success.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a success response message from the server.  <a href="../../d3/d7a/structirsol_1_1protocol_1_1Success.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a992a6e524c2d605492fe732ffe5f1804" id="r_a992a6e524c2d605492fe732ffe5f1804"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a992a6e524c2d605492fe732ffe5f1804">BinaryDataBuffer</a> = <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt; 2, 1 &gt;</td></tr>
-<tr class="memdesc:a992a6e524c2d605492fe732ffe5f1804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with 1 dimensions.  <br /></td></tr>
-<tr class="separator:a992a6e524c2d605492fe732ffe5f1804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92289652b6bf51da04bb8973e7dd5418" id="r_a92289652b6bf51da04bb8973e7dd5418"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a92289652b6bf51da04bb8973e7dd5418">ImageBinaryData</a> = <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt; 2, 2 &gt;</td></tr>
-<tr class="memdesc:a92289652b6bf51da04bb8973e7dd5418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with 2 dimensions.  <br /></td></tr>
-<tr class="separator:a92289652b6bf51da04bb8973e7dd5418"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae127bdb175c2184b25e1c67a82e048f" id="r_aae127bdb175c2184b25e1c67a82e048f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aae127bdb175c2184b25e1c67a82e048f">ColorImageBinaryData</a> = <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt; 2, 3 &gt;</td></tr>
-<tr class="memdesc:aae127bdb175c2184b25e1c67a82e048f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with 3 dimensions.  <br /></td></tr>
-<tr class="separator:aae127bdb175c2184b25e1c67a82e048f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06cc2345b811a67a8ad4ffd7c04c1e20" id="r_a06cc2345b811a67a8ad4ffd7c04c1e20"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> = std::variant&lt; <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html">Assignment</a>, <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html">Inquiry</a>, <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">Command</a> &gt;</td></tr>
-<tr class="memdesc:a06cc2345b811a67a8ad4ffd7c04c1e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents any incoming message type that can be parsed.  <br /></td></tr>
-<tr class="separator:a06cc2345b811a67a8ad4ffd7c04c1e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f9e0d98cc4cf09baf10d9a0f6e06f66" id="r_a9f9e0d98cc4cf09baf10d9a0f6e06f66"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> = std::variant&lt; <a class="el" href="../../d3/d7a/structirsol_1_1protocol_1_1Success.html">Success</a>, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a992a6e524c2d605492fe732ffe5f1804">BinaryDataBuffer</a>, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a92289652b6bf51da04bb8973e7dd5418">ImageBinaryData</a>, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aae127bdb175c2184b25e1c67a82e048f">ColorImageBinaryData</a>, <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a> &gt;</td></tr>
-<tr class="memdesc:a9f9e0d98cc4cf09baf10d9a0f6e06f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents any outgoing message type sent in response.  <br /></td></tr>
-<tr class="separator:a9f9e0d98cc4cf09baf10d9a0f6e06f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga992a6e524c2d605492fe732ffe5f1804" id="r_ga992a6e524c2d605492fe732ffe5f1804"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga992a6e524c2d605492fe732ffe5f1804">BinaryDataBuffer</a> = <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt; 2, 1 &gt;</td></tr>
+<tr class="memdesc:ga992a6e524c2d605492fe732ffe5f1804"><td class="mdescLeft">&#160;</td><td class="mdescRight">1-dimensional binary data buffer with 2 bytes per element.  <br /></td></tr>
+<tr class="separator:ga992a6e524c2d605492fe732ffe5f1804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92289652b6bf51da04bb8973e7dd5418" id="r_ga92289652b6bf51da04bb8973e7dd5418"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga92289652b6bf51da04bb8973e7dd5418">ImageBinaryData</a> = <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt; 2, 2 &gt;</td></tr>
+<tr class="memdesc:ga92289652b6bf51da04bb8973e7dd5418"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-dimensional binary data buffer with 2 bytes per element (e.g., grayscale images).  <br /></td></tr>
+<tr class="separator:ga92289652b6bf51da04bb8973e7dd5418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae127bdb175c2184b25e1c67a82e048f" id="r_gaae127bdb175c2184b25e1c67a82e048f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#gaae127bdb175c2184b25e1c67a82e048f">ColorImageBinaryData</a> = <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt; 2, 3 &gt;</td></tr>
+<tr class="memdesc:gaae127bdb175c2184b25e1c67a82e048f"><td class="mdescLeft">&#160;</td><td class="mdescRight">3-dimensional binary data buffer with 2 bytes per element (e.g., color images).  <br /></td></tr>
+<tr class="separator:gaae127bdb175c2184b25e1c67a82e048f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06cc2345b811a67a8ad4ffd7c04c1e20" id="r_ga06cc2345b811a67a8ad4ffd7c04c1e20"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> = std::variant&lt; <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html">Assignment</a>, <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html">Inquiry</a>, <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">Command</a> &gt;</td></tr>
+<tr class="memdesc:ga06cc2345b811a67a8ad4ffd7c04c1e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type representing any incoming message.  <br /></td></tr>
+<tr class="separator:ga06cc2345b811a67a8ad4ffd7c04c1e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f9e0d98cc4cf09baf10d9a0f6e06f66" id="r_ga9f9e0d98cc4cf09baf10d9a0f6e06f66"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> = std::variant&lt; <a class="el" href="../../d3/d7a/structirsol_1_1protocol_1_1Success.html">Success</a>, <a class="el" href="../../de/dca/group__Protocol.html#ga992a6e524c2d605492fe732ffe5f1804">BinaryDataBuffer</a>, <a class="el" href="../../de/dca/group__Protocol.html#ga92289652b6bf51da04bb8973e7dd5418">ImageBinaryData</a>, <a class="el" href="../../de/dca/group__Protocol.html#gaae127bdb175c2184b25e1c67a82e048f">ColorImageBinaryData</a>, <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a> &gt;</td></tr>
+<tr class="memdesc:ga9f9e0d98cc4cf09baf10d9a0f6e06f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type representing any outgoing message.  <br /></td></tr>
+<tr class="separator:ga9f9e0d98cc4cf09baf10d9a0f6e06f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:aa3aad57cc51c013aff68a76c2398742e" id="r_aa3aad57cc51c013aff68a76c2398742e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> { <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">ASSIGNMENT</a>
-, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">INQUIRY</a>
-, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">COMMAND</a>
+<tr class="memitem:gaa3aad57cc51c013aff68a76c2398742e" id="r_gaa3aad57cc51c013aff68a76c2398742e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> { <a class="el" href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">InMessageKind::ASSIGNMENT</a>
+, <a class="el" href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">InMessageKind::INQUIRY</a>
+, <a class="el" href="../../de/dca/group__Protocol.html#ggaa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">InMessageKind::COMMAND</a>
  }</td></tr>
-<tr class="memdesc:aa3aad57cc51c013aff68a76c2398742e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the type of an incoming message.  <a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">More...</a><br /></td></tr>
-<tr class="separator:aa3aad57cc51c013aff68a76c2398742e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e8b1cf7a0b0c58d02347e4843f35b76" id="r_a3e8b1cf7a0b0c58d02347e4843f35b76"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a> { <br />
-&#160;&#160;<a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c">SUCCESS</a>
-, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac">BINARY_BUFFER</a>
-, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b">BW_IMAGE</a>
-, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368">COLOR_IMAGE</a>
+<tr class="memdesc:gaa3aad57cc51c013aff68a76c2398742e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the type of an incoming message.  <a href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">More...</a><br /></td></tr>
+<tr class="separator:gaa3aad57cc51c013aff68a76c2398742e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3e8b1cf7a0b0c58d02347e4843f35b76" id="r_ga3e8b1cf7a0b0c58d02347e4843f35b76"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a> { <br />
+&#160;&#160;<a class="el" href="../../de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c">OutMessageKind::SUCCESS</a>
+, <a class="el" href="../../de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac">OutMessageKind::BINARY_BUFFER</a>
+, <a class="el" href="../../de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b">OutMessageKind::BW_IMAGE</a>
+, <a class="el" href="../../de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368">OutMessageKind::COLOR_IMAGE</a>
 , <br />
-&#160;&#160;<a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5">ERROR</a>
+&#160;&#160;<a class="el" href="../../de/dca/group__Protocol.html#gga3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5">OutMessageKind::ERROR</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a3e8b1cf7a0b0c58d02347e4843f35b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the type of an outgoing message.  <a href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">More...</a><br /></td></tr>
-<tr class="separator:a3e8b1cf7a0b0c58d02347e4843f35b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga3e8b1cf7a0b0c58d02347e4843f35b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the type of an outgoing message.  <a href="../../de/dca/group__Protocol.html#ga3e8b1cf7a0b0c58d02347e4843f35b76">More...</a><br /></td></tr>
+<tr class="separator:ga3e8b1cf7a0b0c58d02347e4843f35b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a97f85648f00c021779fb639f05dfa117" id="r_a97f85648f00c021779fb639f05dfa117"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a97f85648f00c021779fb639f05dfa117">InMessageKindToString</a> (<a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> kind)</td></tr>
-<tr class="memdesc:a97f85648f00c021779fb639f05dfa117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an InMessageKind to a human-readable string.  <br /></td></tr>
-<tr class="separator:a97f85648f00c021779fb639f05dfa117"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2604466640c53333fe2bb2a2d249da51" id="r_a2604466640c53333fe2bb2a2d249da51"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a2604466640c53333fe2bb2a2d249da51">OutMessageKindToString</a> (<a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a> kind)</td></tr>
-<tr class="memdesc:a2604466640c53333fe2bb2a2d249da51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an OutMessageKind to a human-readable string.  <br /></td></tr>
-<tr class="separator:a2604466640c53333fe2bb2a2d249da51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7845b7ab1de991c2ee080dc19607f18" id="r_ab7845b7ab1de991c2ee080dc19607f18"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ab7845b7ab1de991c2ee080dc19607f18">toString</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
-<tr class="memdesc:ab7845b7ab1de991c2ee080dc19607f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transform the InMessage variant into a string.  <br /></td></tr>
-<tr class="separator:ab7845b7ab1de991c2ee080dc19607f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8912bc5f8301fdb1c0804634f5eaadfb" id="r_a8912bc5f8301fdb1c0804634f5eaadfb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a8912bc5f8301fdb1c0804634f5eaadfb">toString</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
-<tr class="memdesc:a8912bc5f8301fdb1c0804634f5eaadfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transform the OutMessage variant into a string.  <br /></td></tr>
-<tr class="separator:a8912bc5f8301fdb1c0804634f5eaadfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3d8f329dffa946327c1995e003ffea1" id="r_ac3d8f329dffa946327c1995e003ffea1"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:ac3d8f329dffa946327c1995e003ffea1"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> const T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
-<tr class="memdesc:ac3d8f329dffa946327c1995e003ffea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the kind of the given InMessage concrete type.  <br /></td></tr>
-<tr class="separator:ac3d8f329dffa946327c1995e003ffea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a285d565d14d7e2b1f819dea6df5071bf" id="r_a285d565d14d7e2b1f819dea6df5071bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a285d565d14d7e2b1f819dea6df5071bf">getInMessageKind</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
-<tr class="memdesc:a285d565d14d7e2b1f819dea6df5071bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the kind of the given InMessage.  <br /></td></tr>
-<tr class="separator:a285d565d14d7e2b1f819dea6df5071bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6c0a592e943d401acda96d2b9bc606a" id="r_aa6c0a592e943d401acda96d2b9bc606a"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:aa6c0a592e943d401acda96d2b9bc606a"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa6c0a592e943d401acda96d2b9bc606a">isAssignment</a> (const T &amp;)</td></tr>
-<tr class="separator:aa6c0a592e943d401acda96d2b9bc606a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8301adc17dd20284a1b7fac2eaa1775" id="r_ad8301adc17dd20284a1b7fac2eaa1775"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ad8301adc17dd20284a1b7fac2eaa1775">isAssignment</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga97f85648f00c021779fb639f05dfa117" id="r_ga97f85648f00c021779fb639f05dfa117"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga97f85648f00c021779fb639f05dfa117">InMessageKindToString</a> (<a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> kind)</td></tr>
+<tr class="memdesc:ga97f85648f00c021779fb639f05dfa117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an InMessageKind enum to a human-readable string.  <br /></td></tr>
+<tr class="separator:ga97f85648f00c021779fb639f05dfa117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2604466640c53333fe2bb2a2d249da51" id="r_ga2604466640c53333fe2bb2a2d249da51"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga2604466640c53333fe2bb2a2d249da51">OutMessageKindToString</a> (<a class="el" href="../../de/dca/group__Protocol.html#ga3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a> kind)</td></tr>
+<tr class="memdesc:ga2604466640c53333fe2bb2a2d249da51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an OutMessageKind enum to a human-readable string.  <br /></td></tr>
+<tr class="separator:ga2604466640c53333fe2bb2a2d249da51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7845b7ab1de991c2ee080dc19607f18" id="r_gab7845b7ab1de991c2ee080dc19607f18"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#gab7845b7ab1de991c2ee080dc19607f18">toString</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:gab7845b7ab1de991c2ee080dc19607f18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an incoming message variant to a human-readable string.  <br /></td></tr>
+<tr class="separator:gab7845b7ab1de991c2ee080dc19607f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8912bc5f8301fdb1c0804634f5eaadfb" id="r_ga8912bc5f8301fdb1c0804634f5eaadfb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga8912bc5f8301fdb1c0804634f5eaadfb">toString</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga8912bc5f8301fdb1c0804634f5eaadfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an outgoing message variant to a human-readable string.  <br /></td></tr>
+<tr class="separator:ga8912bc5f8301fdb1c0804634f5eaadfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3d8f329dffa946327c1995e003ffea1" id="r_gac3d8f329dffa946327c1995e003ffea1"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:gac3d8f329dffa946327c1995e003ffea1"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#gac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> const T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:gac3d8f329dffa946327c1995e003ffea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the InMessageKind enum value corresponding to a given incoming message type.  <br /></td></tr>
+<tr class="separator:gac3d8f329dffa946327c1995e003ffea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga285d565d14d7e2b1f819dea6df5071bf" id="r_ga285d565d14d7e2b1f819dea6df5071bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/dca/group__Protocol.html#gaa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga285d565d14d7e2b1f819dea6df5071bf">getInMessageKind</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga285d565d14d7e2b1f819dea6df5071bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the InMessageKind enum value for a given incoming message variant.  <br /></td></tr>
+<tr class="separator:ga285d565d14d7e2b1f819dea6df5071bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga817302d5beb155df4f2af463df914e00" id="r_ga817302d5beb155df4f2af463df914e00"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga817302d5beb155df4f2af463df914e00"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga817302d5beb155df4f2af463df914e00">isAssignment</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga817302d5beb155df4f2af463df914e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given incoming message type is an <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html" title="Represents an assignment operation in the protocol.">Assignment</a>.  <br /></td></tr>
+<tr class="separator:ga817302d5beb155df4f2af463df914e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8301adc17dd20284a1b7fac2eaa1775" id="r_ad8301adc17dd20284a1b7fac2eaa1775"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ad8301adc17dd20284a1b7fac2eaa1775">isAssignment</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:ad8301adc17dd20284a1b7fac2eaa1775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e53835e2017f1f8dfde9f33977d6f4f" id="r_a5e53835e2017f1f8dfde9f33977d6f4f"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:a5e53835e2017f1f8dfde9f33977d6f4f"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a5e53835e2017f1f8dfde9f33977d6f4f">isInquiry</a> (const T &amp;)</td></tr>
-<tr class="separator:a5e53835e2017f1f8dfde9f33977d6f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ea1091ec0a2ca9de4a394e2322f82c8" id="r_a4ea1091ec0a2ca9de4a394e2322f82c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a4ea1091ec0a2ca9de4a394e2322f82c8">isInquiry</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga5f0f7d479cf592fd244fa3972e262d79" id="r_ga5f0f7d479cf592fd244fa3972e262d79"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga5f0f7d479cf592fd244fa3972e262d79"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga5f0f7d479cf592fd244fa3972e262d79">isInquiry</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga5f0f7d479cf592fd244fa3972e262d79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given incoming message type is an <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html" title="Represents a value inquiry in the protocol.">Inquiry</a>.  <br /></td></tr>
+<tr class="separator:ga5f0f7d479cf592fd244fa3972e262d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ea1091ec0a2ca9de4a394e2322f82c8" id="r_a4ea1091ec0a2ca9de4a394e2322f82c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a4ea1091ec0a2ca9de4a394e2322f82c8">isInquiry</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:a4ea1091ec0a2ca9de4a394e2322f82c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e14cc03ea3bf92a9b790f3afa2c8473" id="r_a9e14cc03ea3bf92a9b790f3afa2c8473"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:a9e14cc03ea3bf92a9b790f3afa2c8473"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9e14cc03ea3bf92a9b790f3afa2c8473">isCommand</a> (const T &amp;)</td></tr>
-<tr class="separator:a9e14cc03ea3bf92a9b790f3afa2c8473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac01a1187b377182759ebcd762d39815b" id="r_ac01a1187b377182759ebcd762d39815b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ac01a1187b377182759ebcd762d39815b">isCommand</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga1f883807efffb2c29c3c2aedba5bbd91" id="r_ga1f883807efffb2c29c3c2aedba5bbd91"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga1f883807efffb2c29c3c2aedba5bbd91"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga1f883807efffb2c29c3c2aedba5bbd91">isCommand</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga1f883807efffb2c29c3c2aedba5bbd91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given incoming message type is a <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html" title="Represents a command invocation in the protocol.">Command</a>.  <br /></td></tr>
+<tr class="separator:ga1f883807efffb2c29c3c2aedba5bbd91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac01a1187b377182759ebcd762d39815b" id="r_ac01a1187b377182759ebcd762d39815b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ac01a1187b377182759ebcd762d39815b">isCommand</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:ac01a1187b377182759ebcd762d39815b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a112bb0b572cb77ac28ac3e9bde7c5f1b" id="r_a112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:a112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> const T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
-<tr class="memdesc:a112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the kind of the given OutMessage concrete type.  <br /></td></tr>
-<tr class="separator:a112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f79326346fdf0b375edc7392952d7c4" id="r_a8f79326346fdf0b375edc7392952d7c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a8f79326346fdf0b375edc7392952d7c4">getOutMessageKind</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
-<tr class="memdesc:a8f79326346fdf0b375edc7392952d7c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the kind of the given OutMessage.  <br /></td></tr>
-<tr class="separator:a8f79326346fdf0b375edc7392952d7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad78014b3305995029d99473cc98e6f8" id="r_aad78014b3305995029d99473cc98e6f8"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:aad78014b3305995029d99473cc98e6f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aad78014b3305995029d99473cc98e6f8">isSuccess</a> (const T &amp;)</td></tr>
-<tr class="separator:aad78014b3305995029d99473cc98e6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b53384450859d5018d1bcea980f730f" id="r_a6b53384450859d5018d1bcea980f730f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a6b53384450859d5018d1bcea980f730f">isSuccess</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga112bb0b572cb77ac28ac3e9bde7c5f1b" id="r_ga112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="../../de/dca/group__Protocol.html#ga3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> const T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the OutMessageKind enum value corresponding to a given outgoing message type.  <br /></td></tr>
+<tr class="separator:ga112bb0b572cb77ac28ac3e9bde7c5f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f79326346fdf0b375edc7392952d7c4" id="r_ga8f79326346fdf0b375edc7392952d7c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/dca/group__Protocol.html#ga3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga8f79326346fdf0b375edc7392952d7c4">getOutMessageKind</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga8f79326346fdf0b375edc7392952d7c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the OutMessageKind enum value for a given outgoing message variant.  <br /></td></tr>
+<tr class="separator:ga8f79326346fdf0b375edc7392952d7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e5772c1be28241255eae4e752dbb1ad" id="r_ga2e5772c1be28241255eae4e752dbb1ad"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga2e5772c1be28241255eae4e752dbb1ad"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga2e5772c1be28241255eae4e752dbb1ad">isSuccess</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga2e5772c1be28241255eae4e752dbb1ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given outgoing message type is <a class="el" href="../../d3/d7a/structirsol_1_1protocol_1_1Success.html" title="Represents a success response message from the server.">Success</a>.  <br /></td></tr>
+<tr class="separator:ga2e5772c1be28241255eae4e752dbb1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b53384450859d5018d1bcea980f730f" id="r_a6b53384450859d5018d1bcea980f730f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a6b53384450859d5018d1bcea980f730f">isSuccess</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:a6b53384450859d5018d1bcea980f730f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7af85cf752e4ae006eae4dca54fc6473" id="r_a7af85cf752e4ae006eae4dca54fc6473"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:a7af85cf752e4ae006eae4dca54fc6473"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a7af85cf752e4ae006eae4dca54fc6473">isBinaryDataBuffer</a> (const T &amp;)</td></tr>
-<tr class="separator:a7af85cf752e4ae006eae4dca54fc6473"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6528be164ac7227b68ec468f9f6ee64" id="r_ae6528be164ac7227b68ec468f9f6ee64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ae6528be164ac7227b68ec468f9f6ee64">isBinaryDataBuffer</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga6492bc2cfd4e79d171005658b3a9638c" id="r_ga6492bc2cfd4e79d171005658b3a9638c"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga6492bc2cfd4e79d171005658b3a9638c"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga6492bc2cfd4e79d171005658b3a9638c">isBinaryDataBuffer</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga6492bc2cfd4e79d171005658b3a9638c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given outgoing message type is BinaryDataBuffer.  <br /></td></tr>
+<tr class="separator:ga6492bc2cfd4e79d171005658b3a9638c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6528be164ac7227b68ec468f9f6ee64" id="r_ae6528be164ac7227b68ec468f9f6ee64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ae6528be164ac7227b68ec468f9f6ee64">isBinaryDataBuffer</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:ae6528be164ac7227b68ec468f9f6ee64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26f91a55cba3166b17b32b8edc8ce16b" id="r_a26f91a55cba3166b17b32b8edc8ce16b"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:a26f91a55cba3166b17b32b8edc8ce16b"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a26f91a55cba3166b17b32b8edc8ce16b">isImageBinaryData</a> (const T &amp;)</td></tr>
-<tr class="separator:a26f91a55cba3166b17b32b8edc8ce16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e8a8a08aa0204c14caad7c2addbc509" id="r_a8e8a8a08aa0204c14caad7c2addbc509"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a8e8a8a08aa0204c14caad7c2addbc509">isImageBinaryData</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga8ee439b33b0db1135b97a8b401e291a1" id="r_ga8ee439b33b0db1135b97a8b401e291a1"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga8ee439b33b0db1135b97a8b401e291a1"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga8ee439b33b0db1135b97a8b401e291a1">isImageBinaryData</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga8ee439b33b0db1135b97a8b401e291a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given outgoing message type is ImageBinaryData (black &amp; white).  <br /></td></tr>
+<tr class="separator:ga8ee439b33b0db1135b97a8b401e291a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e8a8a08aa0204c14caad7c2addbc509" id="r_a8e8a8a08aa0204c14caad7c2addbc509"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a8e8a8a08aa0204c14caad7c2addbc509">isImageBinaryData</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:a8e8a8a08aa0204c14caad7c2addbc509"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad704e7dcaeca25501f27f5d4b9f24681" id="r_ad704e7dcaeca25501f27f5d4b9f24681"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:ad704e7dcaeca25501f27f5d4b9f24681"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ad704e7dcaeca25501f27f5d4b9f24681">isColorImageBinaryData</a> (const T &amp;)</td></tr>
-<tr class="separator:ad704e7dcaeca25501f27f5d4b9f24681"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4c73213641eba018e40945f682b953d" id="r_af4c73213641eba018e40945f682b953d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#af4c73213641eba018e40945f682b953d">isColorImageBinaryData</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga33a30e7f71550687929a92c1e92ef409" id="r_ga33a30e7f71550687929a92c1e92ef409"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga33a30e7f71550687929a92c1e92ef409"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga33a30e7f71550687929a92c1e92ef409">isColorImageBinaryData</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga33a30e7f71550687929a92c1e92ef409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given outgoing message type is ColorImageBinaryData.  <br /></td></tr>
+<tr class="separator:ga33a30e7f71550687929a92c1e92ef409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4c73213641eba018e40945f682b953d" id="r_af4c73213641eba018e40945f682b953d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#af4c73213641eba018e40945f682b953d">isColorImageBinaryData</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:af4c73213641eba018e40945f682b953d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dec070ec3aca99d63912ea3ed43184d" id="r_a6dec070ec3aca99d63912ea3ed43184d"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
-<tr class="memitem:a6dec070ec3aca99d63912ea3ed43184d"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a6dec070ec3aca99d63912ea3ed43184d">isError</a> (const T &amp;)</td></tr>
-<tr class="separator:a6dec070ec3aca99d63912ea3ed43184d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae34c36e2fffbed838e1297d7568ac213" id="r_ae34c36e2fffbed838e1297d7568ac213"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ae34c36e2fffbed838e1297d7568ac213">isError</a> (const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memitem:ga0628de419ed14b7c32cf90aa10b991f1" id="r_ga0628de419ed14b7c32cf90aa10b991f1"><td class="memTemplParams" colspan="2">template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ga0628de419ed14b7c32cf90aa10b991f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/dca/group__Protocol.html#ga0628de419ed14b7c32cf90aa10b991f1">isError</a> (<a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> T &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
+<tr class="memdesc:ga0628de419ed14b7c32cf90aa10b991f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given outgoing message type is <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error response message from the server.">Error</a>.  <br /></td></tr>
+<tr class="separator:ga0628de419ed14b7c32cf90aa10b991f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae34c36e2fffbed838e1297d7568ac213" id="r_ae34c36e2fffbed838e1297d7568ac213"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#ae34c36e2fffbed838e1297d7568ac213">isError</a> (const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;<a class="el" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)</td></tr>
 <tr class="separator:ae34c36e2fffbed838e1297d7568ac213"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a992a6e524c2d605492fe732ffe5f1804" name="a992a6e524c2d605492fe732ffe5f1804"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a992a6e524c2d605492fe732ffe5f1804">&#9670;&#160;</a></span>BinaryDataBuffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a992a6e524c2d605492fe732ffe5f1804">irsol::protocol::BinaryDataBuffer</a> = typedef <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt;2, 1&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with 1 dimensions. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00160">160</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aae127bdb175c2184b25e1c67a82e048f" name="aae127bdb175c2184b25e1c67a82e048f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae127bdb175c2184b25e1c67a82e048f">&#9670;&#160;</a></span>ColorImageBinaryData</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aae127bdb175c2184b25e1c67a82e048f">irsol::protocol::ColorImageBinaryData</a> = typedef <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt;2, 3&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with 3 dimensions. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00170">170</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a92289652b6bf51da04bb8973e7dd5418" name="a92289652b6bf51da04bb8973e7dd5418"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92289652b6bf51da04bb8973e7dd5418">&#9670;&#160;</a></span>ImageBinaryData</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a92289652b6bf51da04bb8973e7dd5418">irsol::protocol::ImageBinaryData</a> = typedef <a class="el" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">internal::BinaryData</a>&lt;2, 2&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a binary data buffer using 2bytes per pixel in the protocol owning bytes, with 2 dimensions. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d2e/binary_8hpp_source.html#l00165">165</a> of file <a class="el" href="../../db/d2e/binary_8hpp_source.html">binary.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a06cc2345b811a67a8ad4ffd7c04c1e20" name="a06cc2345b811a67a8ad4ffd7c04c1e20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06cc2345b811a67a8ad4ffd7c04c1e20">&#9670;&#160;</a></span>InMessage</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> = typedef std::variant&lt;<a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html">Assignment</a>, <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html">Inquiry</a>, <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">Command</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents any incoming message type that can be parsed. </p>
-<p>This includes assignments, inquiries, and commands. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a9f9e0d98cc4cf09baf10d9a0f6e06f66" name="a9f9e0d98cc4cf09baf10d9a0f6e06f66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f9e0d98cc4cf09baf10d9a0f6e06f66">&#9670;&#160;</a></span>OutMessage</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> = typedef std::variant&lt;<a class="el" href="../../d3/d7a/structirsol_1_1protocol_1_1Success.html">Success</a>, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a992a6e524c2d605492fe732ffe5f1804">BinaryDataBuffer</a>, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a92289652b6bf51da04bb8973e7dd5418">ImageBinaryData</a>, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aae127bdb175c2184b25e1c67a82e048f">ColorImageBinaryData</a>, <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html">Error</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents any outgoing message type sent in response. </p>
-<p>This includes success messages, binary data responses and error messages. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00103">103</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="aa3aad57cc51c013aff68a76c2398742e" name="aa3aad57cc51c013aff68a76c2398742e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3aad57cc51c013aff68a76c2398742e">&#9670;&#160;</a></span>InMessageKind</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">irsol::protocol::InMessageKind</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Represents the type of an incoming message. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83" name="aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83"></a>ASSIGNMENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632" name="aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632"></a>INQUIRY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1" name="aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1"></a>COMMAND&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00017">17</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
-<div class="line"><span class="lineno">   19</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">ASSIGNMENT</a>,</div>
-<div class="line"><span class="lineno">   20</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">INQUIRY</a>,</div>
-<div class="line"><span class="lineno">   21</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">COMMAND</a></div>
-<div class="line"><span class="lineno">   22</span>};</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea26097a57f572fe88a7cdf80543422cb1">irsol::protocol::InMessageKind::COMMAND</a></div><div class="ttdeci">@ COMMAND</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742ea791ff9f35e0ac7dbbf3a564c6ef98c83">irsol::protocol::InMessageKind::ASSIGNMENT</a></div><div class="ttdeci">@ ASSIGNMENT</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742eaa5f95e484a5da3732b8655ba7ce1f632">irsol::protocol::InMessageKind::INQUIRY</a></div><div class="ttdeci">@ INQUIRY</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a3e8b1cf7a0b0c58d02347e4843f35b76" name="a3e8b1cf7a0b0c58d02347e4843f35b76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e8b1cf7a0b0c58d02347e4843f35b76">&#9670;&#160;</a></span>OutMessageKind</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">irsol::protocol::OutMessageKind</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Represents the type of an outgoing message. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c" name="a3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c"></a>SUCCESS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac" name="a3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac"></a>BINARY_BUFFER&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b" name="a3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b"></a>BW_IMAGE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368" name="a3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368"></a>COLOR_IMAGE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5" name="a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5"></a>ERROR&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00060">60</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c">SUCCESS</a>,</div>
-<div class="line"><span class="lineno">   63</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac">BINARY_BUFFER</a>,</div>
-<div class="line"><span class="lineno">   64</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b">BW_IMAGE</a>,</div>
-<div class="line"><span class="lineno">   65</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368">COLOR_IMAGE</a>,</div>
-<div class="line"><span class="lineno">   66</span>  <a class="code hl_enumvalue" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5">ERROR</a></div>
-<div class="line"><span class="lineno">   67</span>};</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a5912e81451090b7ba558d33ecf7327ac">irsol::protocol::OutMessageKind::BINARY_BUFFER</a></div><div class="ttdeci">@ BINARY_BUFFER</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76a8e3856b92e920364e1dd88c05912e55b">irsol::protocol::OutMessageKind::BW_IMAGE</a></div><div class="ttdeci">@ BW_IMAGE</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76aba215f413212e839a97c13b061ef8368">irsol::protocol::OutMessageKind::COLOR_IMAGE</a></div><div class="ttdeci">@ COLOR_IMAGE</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76abb1ca97ec761fc37101737ba0aa2e7c5">irsol::protocol::OutMessageKind::ERROR</a></div><div class="ttdeci">@ ERROR</div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76ad0749aaba8b833466dfcbb0428e4f89c">irsol::protocol::OutMessageKind::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a285d565d14d7e2b1f819dea6df5071bf" name="a285d565d14d7e2b1f819dea6df5071bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a285d565d14d7e2b1f819dea6df5071bf">&#9670;&#160;</a></span>getInMessageKind() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> irsol::protocol::getInMessageKind </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the kind of the given InMessage. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>The incoming message variant. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The InMessageKind enum value representing the actual type. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
-<div class="line"><span class="lineno">   55</span>  <span class="keywordflow">return</span> std::visit(</div>
-<div class="line"><span class="lineno">   56</span>    [](<span class="keyword">auto</span>&amp;&amp; <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>) -&gt; <a class="code hl_enumeration" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> {</div>
-<div class="line"><span class="lineno">   57</span>      <span class="keyword">using </span>T = std::decay_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>)&gt;;</div>
-<div class="line"><span class="lineno">   58</span>      <span class="keywordflow">return</span> getInMessageKind&lt;T&gt;(<a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>);</div>
-<div class="line"><span class="lineno">   59</span>    },</div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>);</div>
-<div class="line"><span class="lineno">   61</span>}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa3aad57cc51c013aff68a76c2398742e"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">irsol::protocol::InMessageKind</a></div><div class="ttdeci">InMessageKind</div><div class="ttdoc">Represents the type of an incoming message.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00017">variants.hpp:18</a></div></div>
-<div class="ttc" id="atest__assignment_8cpp_html_a442505a4bcabcf16de33fdf0b96c02ce"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a></div><div class="ttdeci">auto value</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d3f/test__assignment_8cpp_source.html#l00031">test_assignment.cpp:31</a></div></div>
-<div class="ttc" id="atest__parser_8cpp_html_a79750f20a308d13607bec2b6cefa0fc8"><div class="ttname"><a href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a></div><div class="ttdeci">auto msg</div><div class="ttdef"><b>Definition</b> <a href="../../de/d08/test__parser_8cpp_source.html#l00085">test_parser.cpp:85</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ac3d8f329dffa946327c1995e003ffea1" name="ac3d8f329dffa946327c1995e003ffea1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3d8f329dffa946327c1995e003ffea1">&#9670;&#160;</a></span>getInMessageKind() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a> irsol::protocol::getInMessageKind </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> const T &amp;&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the kind of the given InMessage concrete type. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>The incoming message concrete type. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The InMessageKind enum value representing the actual type. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  128</span>{</div>
-<div class="line"><span class="lineno">  129</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Assignment&gt;)</div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> InMessageKind::ASSIGNMENT;</div>
-<div class="line"><span class="lineno">  131</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Inquiry&gt;)</div>
-<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">return</span> InMessageKind::INQUIRY;</div>
-<div class="line"><span class="lineno">  133</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Command&gt;)</div>
-<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">return</span> InMessageKind::COMMAND;</div>
-<div class="line"><span class="lineno">  135</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  136</span>    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;getInMessageKind()&quot;</span>);</div>
-<div class="line"><span class="lineno">  137</span>}</div>
-<div class="ttc" id="amacros_8hpp_html_aa21d39bf4cd94d42dc192cf34803a5d9"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a></div><div class="ttdeci">#define IRSOL_MISSING_TEMPLATE_SPECIALIZATION(T, funcNameLiteral)</div><div class="ttdoc">Emits a compile-time error when no template specialization is available.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00173">macros.hpp:173</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a8f79326346fdf0b375edc7392952d7c4" name="a8f79326346fdf0b375edc7392952d7c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f79326346fdf0b375edc7392952d7c4">&#9670;&#160;</a></span>getOutMessageKind() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a> irsol::protocol::getOutMessageKind </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the kind of the given OutMessage. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>The outgoing message variant. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The OutMessageKind enum value representing the actual type. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00082">82</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
-<div class="line"><span class="lineno">   84</span>  <span class="keywordflow">return</span> std::visit(</div>
-<div class="line"><span class="lineno">   85</span>    [](<span class="keyword">auto</span>&amp;&amp; <a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>) -&gt; <a class="code hl_enumeration" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a> {</div>
-<div class="line"><span class="lineno">   86</span>      <span class="keyword">using </span>T = std::decay_t&lt;<span class="keyword">decltype</span>(<a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>)&gt;;</div>
-<div class="line"><span class="lineno">   87</span>      <span class="keywordflow">return</span> getOutMessageKind&lt;T&gt;(<a class="code hl_variable" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">value</a>);</div>
-<div class="line"><span class="lineno">   88</span>    },</div>
-<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>);</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a3e8b1cf7a0b0c58d02347e4843f35b76"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">irsol::protocol::OutMessageKind</a></div><div class="ttdeci">OutMessageKind</div><div class="ttdoc">Represents the type of an outgoing message.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00060">variants.hpp:61</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a112bb0b572cb77ac28ac3e9bde7c5f1b" name="a112bb0b572cb77ac28ac3e9bde7c5f1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a112bb0b572cb77ac28ac3e9bde7c5f1b">&#9670;&#160;</a></span>getOutMessageKind() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a> irsol::protocol::getOutMessageKind </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/dbe/macros_8hpp.html#ae833d90a9ab85f62810d95e34478a8ac">IRSOL_MAYBE_UNUSED</a> const T &amp;&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the kind of the given OutMessage concrete type. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>The outgoing message concrete type. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The OutMessageKind enum value representing the actual type. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00177">177</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  178</span>{</div>
-<div class="line"><span class="lineno">  179</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Success&gt;)</div>
-<div class="line"><span class="lineno">  180</span>    <span class="keywordflow">return</span> OutMessageKind::SUCCESS;</div>
-<div class="line"><span class="lineno">  181</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, Error&gt;)</div>
-<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">return</span> OutMessageKind::ERROR;</div>
-<div class="line"><span class="lineno">  183</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, BinaryDataBuffer&gt;)</div>
-<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">return</span> OutMessageKind::BINARY_BUFFER;</div>
-<div class="line"><span class="lineno">  185</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, ImageBinaryData&gt;)</div>
-<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">return</span> OutMessageKind::BW_IMAGE;</div>
-<div class="line"><span class="lineno">  187</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(std::is_same_v&lt;T, ColorImageBinaryData&gt;)</div>
-<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">return</span> OutMessageKind::COLOR_IMAGE;</div>
-<div class="line"><span class="lineno">  189</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  190</span>    <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#aa21d39bf4cd94d42dc192cf34803a5d9">IRSOL_MISSING_TEMPLATE_SPECIALIZATION</a>(T, <span class="stringliteral">&quot;getOutMessageKind()&quot;</span>);</div>
-<div class="line"><span class="lineno">  191</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a97f85648f00c021779fb639f05dfa117" name="a97f85648f00c021779fb639f05dfa117"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97f85648f00c021779fb639f05dfa117">&#9670;&#160;</a></span>InMessageKindToString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr const char * irsol::protocol::InMessageKindToString </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#aa3aad57cc51c013aff68a76c2398742e">InMessageKind</a>&#160;</td>
-          <td class="paramname"><em>kind</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Converts an InMessageKind to a human-readable string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">kind</td><td>The InMessageKind to convert. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the InMessageKind. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This function might be used as a compile-time expression, but can also act as a runtime function. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
-<div class="line"><span class="lineno">   34</span>  <span class="keywordflow">switch</span>(kind) {</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">case</span> InMessageKind::ASSIGNMENT:</div>
-<div class="line"><span class="lineno">   36</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;ASSIGNMENT&quot;</span>;</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">case</span> InMessageKind::INQUIRY:</div>
-<div class="line"><span class="lineno">   38</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;INQUIRY&quot;</span>;</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">case</span> InMessageKind::COMMAND:</div>
-<div class="line"><span class="lineno">   40</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;COMMAND&quot;</span>;</div>
-<div class="line"><span class="lineno">   41</span>  }</div>
-<div class="line"><span class="lineno">   42</span>  <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a>();</div>
-<div class="line"><span class="lineno">   43</span>}</div>
-<div class="ttc" id="amacros_8hpp_html_a5f990b958465d0ddf7357b5fa09fb58c"><div class="ttname"><a href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a></div><div class="ttdeci">#define IRSOL_UNREACHABLE()</div><div class="ttdoc">Indicates unreachable code to the compiler.</div><div class="ttdef"><b>Definition</b> <a href="../../db/dbe/macros_8hpp_source.html#l00107">macros.hpp:107</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Core protocol message types, serialization, parsing, and communication utilities for the irsol framework. </p>
+<p>The <code><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html" title="Core protocol message types, serialization, parsing, and communication utilities for the irsol framew...">irsol::protocol</a></code> namespace encapsulates all components related to the structured communication protocol between clients and servers within the irsol ecosystem.</p>
+<p>Key responsibilities and features include:</p>
+<ul>
+<li><b>Message Representations</b>: Defines strongly typed C++ structures representing protocol messages, including incoming commands, outgoing responses, errors, and data payloads.</li>
+<li><b>Tagged Variants</b>: Groups related message types using <code>std::variant</code> or similar tagged unions to enable type-safe polymorphism for incoming and outgoing messages.</li>
+<li><b>Serialization and Deserialization</b>: Provides classes and functions to serialize protocol messages and primitive protocol values into wire-format strings or binary buffers, and to parse raw input into strongly typed message instances.</li>
+<li><b>Protocol Traits and Type Introspection</b>: Supplies compile-time traits to check if a type is part of a message variant, facilitating generic programming and template dispatch.</li>
+<li><b>Parsing Utilities</b>: Implements parsers that consume raw input data, producing parse trees or structured message objects, supporting validation and error reporting.</li>
+<li><b>Communication Primitives</b>: Defines low-level constructs such as special byte constants (e.g., SOH, STX, ETX), message delimiters, and framing conventions consistent with the Simple Communication Protocol employed by irsol.</li>
+<li><b>Logging and Debugging Support</b>: Converts protocol messages and events into human-readable string representations for logging, diagnostics, and tracing.</li>
+<li><b>Extensibility and Maintenance</b>: Designed with clear separation of concerns and compile-time safety to allow future protocol message extensions, new message types, or serialization formats without compromising existing codebases.</li>
+</ul>
+<p>Together, these features enable robust, efficient, and maintainable communication handling in client-server interactions, ensuring interoperability and clear semantics across the irsol system.</p>
+<dl class="section note"><dt>Note</dt><dd>Most message and utility types are contained in sub-namespaces such as <code>internal</code> for implementation details, and <code>traits</code> for type traits. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ad8301adc17dd20284a1b7fac2eaa1775" name="ad8301adc17dd20284a1b7fac2eaa1775"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8301adc17dd20284a1b7fac2eaa1775">&#9670;&#160;</a></span>isAssignment() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8301adc17dd20284a1b7fac2eaa1775">&#9670;&#160;</a></span>isAssignment()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -621,7 +242,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isAssignment </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -630,47 +251,15 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00064">64</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
-<div class="line"><span class="lineno">   66</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#ac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == InMessageKind::ASSIGNMENT;</div>
+<div class="line"><span class="lineno">   66</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#gac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == InMessageKind::ASSIGNMENT;</div>
 <div class="line"><span class="lineno">   67</span>}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_ac3d8f329dffa946327c1995e003ffea1"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#ac3d8f329dffa946327c1995e003ffea1">irsol::protocol::getInMessageKind</a></div><div class="ttdeci">constexpr InMessageKind getInMessageKind(IRSOL_MAYBE_UNUSED const T &amp;msg)</div><div class="ttdoc">Returns the kind of the given InMessage concrete type.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00127">variants.hpp:127</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aa6c0a592e943d401acda96d2b9bc606a" name="aa6c0a592e943d401acda96d2b9bc606a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6c0a592e943d401acda96d2b9bc606a">&#9670;&#160;</a></span>isAssignment() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isAssignment </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00148">148</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
-<div class="line"><span class="lineno">  150</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, Assignment&gt;;</div>
-<div class="line"><span class="lineno">  151</span>}</div>
+<div class="ttc" id="agroup__Protocol_html_gac3d8f329dffa946327c1995e003ffea1"><div class="ttname"><a href="../../de/dca/group__Protocol.html#gac3d8f329dffa946327c1995e003ffea1">irsol::protocol::getInMessageKind</a></div><div class="ttdeci">constexpr InMessageKind getInMessageKind(IRSOL_MAYBE_UNUSED const T &amp;msg)</div><div class="ttdoc">Returns the InMessageKind enum value corresponding to a given incoming message type.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00178">variants.hpp:178</a></div></div>
+<div class="ttc" id="atest__parser_8cpp_html_a79750f20a308d13607bec2b6cefa0fc8"><div class="ttname"><a href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a></div><div class="ttdeci">auto msg</div><div class="ttdef"><b>Definition</b> <a href="../../de/d08/test__parser_8cpp_source.html#l00085">test_parser.cpp:85</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="ae6528be164ac7227b68ec468f9f6ee64" name="ae6528be164ac7227b68ec468f9f6ee64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6528be164ac7227b68ec468f9f6ee64">&#9670;&#160;</a></span>isBinaryDataBuffer() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6528be164ac7227b68ec468f9f6ee64">&#9670;&#160;</a></span>isBinaryDataBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -678,7 +267,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isBinaryDataBuffer </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -687,47 +276,14 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00099">99</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  100</span>{</div>
-<div class="line"><span class="lineno">  101</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::BINARY_BUFFER;</div>
+<div class="line"><span class="lineno">  101</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::BINARY_BUFFER;</div>
 <div class="line"><span class="lineno">  102</span>}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a112bb0b572cb77ac28ac3e9bde7c5f1b"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b">irsol::protocol::getOutMessageKind</a></div><div class="ttdeci">constexpr OutMessageKind getOutMessageKind(IRSOL_MAYBE_UNUSED const T &amp;msg)</div><div class="ttdoc">Returns the kind of the given OutMessage concrete type.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00177">variants.hpp:177</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a7af85cf752e4ae006eae4dca54fc6473" name="a7af85cf752e4ae006eae4dca54fc6473"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7af85cf752e4ae006eae4dca54fc6473">&#9670;&#160;</a></span>isBinaryDataBuffer() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isBinaryDataBuffer </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00209">209</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  210</span>{</div>
-<div class="line"><span class="lineno">  211</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, BinaryDataBuffer&gt;;</div>
-<div class="line"><span class="lineno">  212</span>}</div>
+<div class="ttc" id="agroup__Protocol_html_ga112bb0b572cb77ac28ac3e9bde7c5f1b"><div class="ttname"><a href="../../de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b">irsol::protocol::getOutMessageKind</a></div><div class="ttdeci">constexpr OutMessageKind getOutMessageKind(IRSOL_MAYBE_UNUSED const T &amp;msg)</div><div class="ttdoc">Returns the OutMessageKind enum value corresponding to a given outgoing message type.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00254">variants.hpp:254</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="af4c73213641eba018e40945f682b953d" name="af4c73213641eba018e40945f682b953d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4c73213641eba018e40945f682b953d">&#9670;&#160;</a></span>isColorImageBinaryData() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af4c73213641eba018e40945f682b953d">&#9670;&#160;</a></span>isColorImageBinaryData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -735,7 +291,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isColorImageBinaryData </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -744,46 +300,13 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00111">111</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
-<div class="line"><span class="lineno">  113</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::COLOR_IMAGE;</div>
+<div class="line"><span class="lineno">  113</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::COLOR_IMAGE;</div>
 <div class="line"><span class="lineno">  114</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ad704e7dcaeca25501f27f5d4b9f24681" name="ad704e7dcaeca25501f27f5d4b9f24681"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad704e7dcaeca25501f27f5d4b9f24681">&#9670;&#160;</a></span>isColorImageBinaryData() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isColorImageBinaryData </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00225">225</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  226</span>{</div>
-<div class="line"><span class="lineno">  227</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, ColorImageBinaryData&gt;;</div>
-<div class="line"><span class="lineno">  228</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ac01a1187b377182759ebcd762d39815b" name="ac01a1187b377182759ebcd762d39815b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac01a1187b377182759ebcd762d39815b">&#9670;&#160;</a></span>isCommand() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac01a1187b377182759ebcd762d39815b">&#9670;&#160;</a></span>isCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -791,7 +314,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isCommand </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -800,46 +323,13 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
-<div class="line"><span class="lineno">   78</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#ac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == InMessageKind::COMMAND;</div>
+<div class="line"><span class="lineno">   78</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#gac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == InMessageKind::COMMAND;</div>
 <div class="line"><span class="lineno">   79</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a9e14cc03ea3bf92a9b790f3afa2c8473" name="a9e14cc03ea3bf92a9b790f3afa2c8473"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e14cc03ea3bf92a9b790f3afa2c8473">&#9670;&#160;</a></span>isCommand() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isCommand </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00164">164</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
-<div class="line"><span class="lineno">  166</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, Command&gt;;</div>
-<div class="line"><span class="lineno">  167</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ae34c36e2fffbed838e1297d7568ac213" name="ae34c36e2fffbed838e1297d7568ac213"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae34c36e2fffbed838e1297d7568ac213">&#9670;&#160;</a></span>isError() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae34c36e2fffbed838e1297d7568ac213">&#9670;&#160;</a></span>isError()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -847,7 +337,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isError </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -856,46 +346,13 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
-<div class="line"><span class="lineno">  118</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::ERROR;</div>
+<div class="line"><span class="lineno">  118</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::ERROR;</div>
 <div class="line"><span class="lineno">  119</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6dec070ec3aca99d63912ea3ed43184d" name="a6dec070ec3aca99d63912ea3ed43184d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dec070ec3aca99d63912ea3ed43184d">&#9670;&#160;</a></span>isError() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isError </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00233">233</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  234</span>{</div>
-<div class="line"><span class="lineno">  235</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, Error&gt;;</div>
-<div class="line"><span class="lineno">  236</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a8e8a8a08aa0204c14caad7c2addbc509" name="a8e8a8a08aa0204c14caad7c2addbc509"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e8a8a08aa0204c14caad7c2addbc509">&#9670;&#160;</a></span>isImageBinaryData() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e8a8a08aa0204c14caad7c2addbc509">&#9670;&#160;</a></span>isImageBinaryData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -903,7 +360,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isImageBinaryData </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -912,46 +369,13 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00105">105</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  106</span>{</div>
-<div class="line"><span class="lineno">  107</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::BW_IMAGE;</div>
+<div class="line"><span class="lineno">  107</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::BW_IMAGE;</div>
 <div class="line"><span class="lineno">  108</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a26f91a55cba3166b17b32b8edc8ce16b" name="a26f91a55cba3166b17b32b8edc8ce16b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26f91a55cba3166b17b32b8edc8ce16b">&#9670;&#160;</a></span>isImageBinaryData() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isImageBinaryData </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00217">217</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  218</span>{</div>
-<div class="line"><span class="lineno">  219</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, ImageBinaryData&gt;;</div>
-<div class="line"><span class="lineno">  220</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a4ea1091ec0a2ca9de4a394e2322f82c8" name="a4ea1091ec0a2ca9de4a394e2322f82c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ea1091ec0a2ca9de4a394e2322f82c8">&#9670;&#160;</a></span>isInquiry() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ea1091ec0a2ca9de4a394e2322f82c8">&#9670;&#160;</a></span>isInquiry()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -959,7 +383,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isInquiry </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -968,46 +392,13 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00070">70</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#ac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == InMessageKind::INQUIRY;</div>
+<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#gac3d8f329dffa946327c1995e003ffea1">getInMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == InMessageKind::INQUIRY;</div>
 <div class="line"><span class="lineno">   73</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a5e53835e2017f1f8dfde9f33977d6f4f" name="a5e53835e2017f1f8dfde9f33977d6f4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e53835e2017f1f8dfde9f33977d6f4f">&#9670;&#160;</a></span>isInquiry() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isInquiry </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00156">156</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  157</span>{</div>
-<div class="line"><span class="lineno">  158</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, Inquiry&gt;;</div>
-<div class="line"><span class="lineno">  159</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a6b53384450859d5018d1bcea980f730f" name="a6b53384450859d5018d1bcea980f730f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b53384450859d5018d1bcea980f730f">&#9670;&#160;</a></span>isSuccess() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b53384450859d5018d1bcea980f730f">&#9670;&#160;</a></span>isSuccess()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1015,7 +406,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
         <tr>
           <td class="memname">bool irsol::protocol::isSuccess </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1024,185 +415,8 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/g
 
 <p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00093">93</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
-<div class="line"><span class="lineno">   95</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#a112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::SUCCESS;</div>
+<div class="line"><span class="lineno">   95</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dca/group__Protocol.html#ga112bb0b572cb77ac28ac3e9bde7c5f1b">getOutMessageKind</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>) == OutMessageKind::SUCCESS;</div>
 <div class="line"><span class="lineno">   96</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aad78014b3305995029d99473cc98e6f8" name="aad78014b3305995029d99473cc98e6f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad78014b3305995029d99473cc98e6f8">&#9670;&#160;</a></span>isSuccess() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d0/d85/group__Metaprogramming.html#ga580de058c72dc53e2335f2319037408a">irsol::traits::is_type_in_variant_v</a>&lt; T, <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &gt;, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool irsol::protocol::isSuccess </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00201">201</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  202</span>{</div>
-<div class="line"><span class="lineno">  203</span>  <span class="keywordflow">return</span> std::is_same_v&lt;T, Success&gt;;</div>
-<div class="line"><span class="lineno">  204</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a2604466640c53333fe2bb2a2d249da51" name="a2604466640c53333fe2bb2a2d249da51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2604466640c53333fe2bb2a2d249da51">&#9670;&#160;</a></span>OutMessageKindToString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr const char * irsol::protocol::OutMessageKindToString </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a3e8b1cf7a0b0c58d02347e4843f35b76">OutMessageKind</a>&#160;</td>
-          <td class="paramname"><em>kind</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Converts an OutMessageKind to a human-readable string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">kind</td><td>The OutMessageKind to convert. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the OutMessageKind. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This function might be used as a compile-time expression, but can also act as a runtime function. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d55/variants_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../df/d55/variants_8hpp_source.html">variants.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
-<div class="line"><span class="lineno">   79</span>  <span class="keywordflow">switch</span>(kind) {</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">case</span> OutMessageKind::SUCCESS:</div>
-<div class="line"><span class="lineno">   81</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;SUCCESS&quot;</span>;</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">case</span> OutMessageKind::BINARY_BUFFER:</div>
-<div class="line"><span class="lineno">   83</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;BINARY_BUFFER&quot;</span>;</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">case</span> OutMessageKind::BW_IMAGE:</div>
-<div class="line"><span class="lineno">   85</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;BW_IMAGE&quot;</span>;</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">case</span> OutMessageKind::COLOR_IMAGE:</div>
-<div class="line"><span class="lineno">   87</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;COLOR_IMAGE&quot;</span>;</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">case</span> OutMessageKind::ERROR:</div>
-<div class="line"><span class="lineno">   89</span>      <span class="keywordflow">return</span> <span class="stringliteral">&quot;ERROR&quot;</span>;</div>
-<div class="line"><span class="lineno">   90</span>  }</div>
-<div class="line"><span class="lineno">   91</span>  <a class="code hl_define" href="../../db/dbe/macros_8hpp.html#a5f990b958465d0ddf7357b5fa09fb58c">IRSOL_UNREACHABLE</a>();</div>
-<div class="line"><span class="lineno">   92</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ab7845b7ab1de991c2ee080dc19607f18" name="ab7845b7ab1de991c2ee080dc19607f18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7845b7ab1de991c2ee080dc19607f18">&#9670;&#160;</a></span>toString() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string irsol::protocol::toString </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a06cc2345b811a67a8ad4ffd7c04c1e20">InMessage</a> &amp;&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Transform the InMessage variant into a string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>The incoming message. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the incoming message. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00019">19</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
-<div class="line"><span class="lineno">   21</span>  <span class="keywordflow">if</span>(<a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#aa6c0a592e943d401acda96d2b9bc606a">isAssignment</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">return</span> std::get&lt;Assignment&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   23</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(isInquiry(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> std::get&lt;Inquiry&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   25</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(isCommand(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> std::get&lt;Command&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   27</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#ga950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a>(<span class="stringliteral">&quot;Unknown in message type&quot;</span>);</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Unknown in message type&quot;</span>);</div>
-<div class="line"><span class="lineno">   30</span>  }</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-<div class="ttc" id="agroup__Assertion_html_ga950707f2fdcd0dcfb828202a22634444"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#ga950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a></div><div class="ttdeci">#define IRSOL_ASSERT_FALSE(message)</div><div class="ttdoc">Assertion macro that always fails fatally.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00136">assert.hpp:136</a></div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aa6c0a592e943d401acda96d2b9bc606a"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aa6c0a592e943d401acda96d2b9bc606a">irsol::protocol::isAssignment</a></div><div class="ttdeci">constexpr bool isAssignment(const T &amp;)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00148">variants.hpp:148</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a8912bc5f8301fdb1c0804634f5eaadfb" name="a8912bc5f8301fdb1c0804634f5eaadfb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8912bc5f8301fdb1c0804634f5eaadfb">&#9670;&#160;</a></span>toString() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string irsol::protocol::toString </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html#a9f9e0d98cc4cf09baf10d9a0f6e06f66">OutMessage</a> &amp;&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Transform the OutMessage variant into a string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>The outgoing message. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the outgoing message. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../da/d87/variants_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../da/d87/variants_8cpp_source.html">variants.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
-<div class="line"><span class="lineno">   36</span>  <span class="keywordflow">if</span>(<a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#aad78014b3305995029d99473cc98e6f8">isSuccess</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> std::get&lt;Success&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   38</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(isError(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> std::get&lt;Error&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   40</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(isBinaryDataBuffer(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> std::get&lt;BinaryDataBuffer&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   42</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#a26f91a55cba3166b17b32b8edc8ce16b">isImageBinaryData</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">return</span> std::get&lt;ImageBinaryData&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   44</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code hl_function" href="../../db/dff/namespaceirsol_1_1protocol.html#ad704e7dcaeca25501f27f5d4b9f24681">isColorImageBinaryData</a>(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>)) {</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> std::get&lt;ColorImageBinaryData&gt;(<a class="code hl_variable" href="../../de/d08/test__parser_8cpp.html#a79750f20a308d13607bec2b6cefa0fc8">msg</a>).toString();</div>
-<div class="line"><span class="lineno">   46</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   47</span>    <a class="code hl_define" href="../../d0/df0/group__Assertion.html#ga950707f2fdcd0dcfb828202a22634444">IRSOL_ASSERT_FALSE</a>(<span class="stringliteral">&quot;Unknown out message type&quot;</span>);</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Unknown out message type&quot;</span>);</div>
-<div class="line"><span class="lineno">   49</span>  }</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_a26f91a55cba3166b17b32b8edc8ce16b"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#a26f91a55cba3166b17b32b8edc8ce16b">irsol::protocol::isImageBinaryData</a></div><div class="ttdeci">constexpr bool isImageBinaryData(const T &amp;)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00217">variants.hpp:217</a></div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_aad78014b3305995029d99473cc98e6f8"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#aad78014b3305995029d99473cc98e6f8">irsol::protocol::isSuccess</a></div><div class="ttdeci">constexpr bool isSuccess(const T &amp;)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00201">variants.hpp:201</a></div></div>
-<div class="ttc" id="anamespaceirsol_1_1protocol_html_ad704e7dcaeca25501f27f5d4b9f24681"><div class="ttname"><a href="../../db/dff/namespaceirsol_1_1protocol.html#ad704e7dcaeca25501f27f5d4b9f24681">irsol::protocol::isColorImageBinaryData</a></div><div class="ttdeci">constexpr bool isColorImageBinaryData(const T &amp;)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d55/variants_8hpp_source.html#l00225">variants.hpp:225</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
