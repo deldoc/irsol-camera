@@ -295,27 +295,32 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  143</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;\n{}&quot;</span>, cameraInterface.cameraInfoAsString());</div>
 <div class="line"><span class="lineno">  144</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;\n{}&quot;</span>, cameraInterface.cameraStatusAsString());</div>
 <div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span>  <span class="comment">// Capture and log a sequence of frames</span></div>
-<div class="line"><span class="lineno">  147</span>  <span class="keyword">auto</span>       lastTick = irsol::types::clock_t::now();</div>
-<div class="line"><span class="lineno">  148</span>  <span class="keyword">const</span> <span class="keyword">auto</span> desiredDt =</div>
-<div class="line"><span class="lineno">  149</span>    params.fps &gt; 0.0 ? std::chrono::microseconds(<span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(1000000.0 / params.fps))</div>
-<div class="line"><span class="lineno">  150</span>                     : std::chrono::microseconds(0);</div>
-<div class="line"><span class="lineno">  151</span>  <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; params.numFrames; ++i) {</div>
-<div class="line"><span class="lineno">  152</span>    <span class="keyword">const</span> <span class="keyword">auto</span> t0 = irsol::types::clock_t::now();</div>
-<div class="line"><span class="lineno">  153</span>    <a class="code hl_function" href="../../d2/dc8/main-opencv_8cpp.html#aad088a5f7d0c206ad2d6b98c4f34ee20">runCapture</a>(cameraInterface);</div>
-<div class="line"><span class="lineno">  154</span>    <span class="keyword">const</span> <span class="keyword">auto</span> nextTick = lastTick + desiredDt;</div>
-<div class="line"><span class="lineno">  155</span>    lastTick            = nextTick;</div>
-<div class="line"><span class="lineno">  156</span>    std::this_thread::sleep_until(nextTick);</div>
-<div class="line"><span class="lineno">  157</span>    <span class="keyword">const</span> <span class="keyword">auto</span> loopDuration = irsol::types::clock_t::now() - t0;</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keyword">const</span> <span class="keyword">auto</span> measuredFps =</div>
-<div class="line"><span class="lineno">  159</span>      1000000.0 / std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(loopDuration).count();</div>
-<div class="line"><span class="lineno">  160</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Desired FPS: {:.4f}, measured FPS: {:.4f}&quot;</span>, params.fps, measuredFps);</div>
-<div class="line"><span class="lineno">  161</span>  }</div>
-<div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  164</span>}</div>
+<div class="line"><span class="lineno">  146</span>  <span class="comment">// Start a monitoring thread to log camera status</span></div>
+<div class="line"><span class="lineno">  147</span>  <a class="code hl_class" href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html">irsol::camera::StatusMonitor</a> monitor(cameraInterface, std::chrono::milliseconds(500));</div>
+<div class="line"><span class="lineno">  148</span>  monitor.start();</div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>  <span class="comment">// Capture and log a sequence of frames</span></div>
+<div class="line"><span class="lineno">  151</span>  <span class="keyword">auto</span>       lastTick = irsol::types::clock_t::now();</div>
+<div class="line"><span class="lineno">  152</span>  <span class="keyword">const</span> <span class="keyword">auto</span> desiredDt =</div>
+<div class="line"><span class="lineno">  153</span>    params.fps &gt; 0.0 ? std::chrono::microseconds(<span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(1000000.0 / params.fps))</div>
+<div class="line"><span class="lineno">  154</span>                     : std::chrono::microseconds(0);</div>
+<div class="line"><span class="lineno">  155</span>  <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; params.numFrames; ++i) {</div>
+<div class="line"><span class="lineno">  156</span>    <span class="keyword">const</span> <span class="keyword">auto</span> t0 = irsol::types::clock_t::now();</div>
+<div class="line"><span class="lineno">  157</span>    <a class="code hl_function" href="../../d2/dc8/main-opencv_8cpp.html#aad088a5f7d0c206ad2d6b98c4f34ee20">runCapture</a>(cameraInterface);</div>
+<div class="line"><span class="lineno">  158</span>    <span class="keyword">const</span> <span class="keyword">auto</span> nextTick = lastTick + desiredDt;</div>
+<div class="line"><span class="lineno">  159</span>    lastTick            = nextTick;</div>
+<div class="line"><span class="lineno">  160</span>    std::this_thread::sleep_until(nextTick);</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keyword">const</span> <span class="keyword">auto</span> loopDuration = irsol::types::clock_t::now() - t0;</div>
+<div class="line"><span class="lineno">  162</span>    <span class="keyword">const</span> <span class="keyword">auto</span> measuredFps =</div>
+<div class="line"><span class="lineno">  163</span>      1000000.0 / std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(loopDuration).count();</div>
+<div class="line"><span class="lineno">  164</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Desired FPS: {:.4f}, measured FPS: {:.4f}&quot;</span>, params.fps, measuredFps);</div>
+<div class="line"><span class="lineno">  165</span>  }</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  168</span>}</div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a2742473c3edfa1082bab15235e262bcc"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a2742473c3edfa1082bab15235e262bcc">irsol::camera::Interface::HalfResolution</a></div><div class="ttdeci">static Interface HalfResolution()</div><div class="ttdoc">Factory method to create a camera interface using half sensor resolution.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00063">interface.cpp:63</a></div></div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_ac9c480114cbaf80e22048c5a3cb9bf80"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#ac9c480114cbaf80e22048c5a3cb9bf80">irsol::camera::Interface::FullResolution</a></div><div class="ttdeci">static Interface FullResolution()</div><div class="ttdoc">Factory method to create a camera interface using full sensor resolution.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00049">interface.cpp:49</a></div></div>
+<div class="ttc" id="aclassirsol_1_1camera_1_1StatusMonitor_html"><div class="ttname"><a href="../../d7/d00/classirsol_1_1camera_1_1StatusMonitor.html">irsol::camera::StatusMonitor</a></div><div class="ttdoc">Class that offers an easy way to run a background monitorin thread that periodically inspects and rep...</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d96/monitor_8hpp_source.html#l00043">monitor.hpp:44</a></div></div>
 <div class="ttc" id="agroup__Assertion_html_gaf1acf306d50866d76243d3db3686e0a7"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gaf1acf306d50866d76243d3db3686e0a7">irsol::initAssertHandler</a></div><div class="ttdeci">void initAssertHandler()</div><div class="ttdoc">Initializes the assertion handler system.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dfd/assert_8cpp_source.html#l00014">assert.cpp:14</a></div></div>
 <div class="ttc" id="agroup__Assertion_html_gaf958644a54004617f89dda6854f5a14e"><div class="ttname"><a href="../../d0/df0/group__Assertion.html#gaf958644a54004617f89dda6854f5a14e">IRSOL_ASSERT_FATAL</a></div><div class="ttdeci">#define IRSOL_ASSERT_FATAL</div><div class="ttdoc">Fatal-level assertion macro.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00135">assert.hpp:135</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
