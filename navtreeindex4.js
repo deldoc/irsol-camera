@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a3a8dab8e90db2c693d5ddd528a3c851c":[4,0,0,4,0,2,6],
 "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a4b75eeab69b857b5a55261117b733205":[5,0,0,3,0,2,18],
 "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a4b75eeab69b857b5a55261117b733205":[4,0,0,4,0,2,18],
 "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a6230358201977df4fc63be18ed0719ac":[5,0,0,3,0,2,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "namespacemembers_func.html":[4,1,1],
 "namespacemembers_type.html":[4,1,3],
 "namespacemembers_vars.html":[4,1,2],
-"namespaces.html":[4,0],
-"pages.html":[]
+"namespaces.html":[4,0]
 };

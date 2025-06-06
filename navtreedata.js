@@ -30,6 +30,7 @@ var NAVTREE =
         [ "The gevipconfig-tool", "de/d17/gevipconfig.html", null ]
       ] ],
       [ "Development Environment Configuration", "d9/d88/development_environment_configuration.html", null ],
+      [ "Image Data format", "d0/d2f/note_on_image_data.html", null ],
       [ "Examples", "d4/de9/examples.html", [
         [ "00-logging-and-asserting", "d8/d93/logging_and_asserting.html", null ],
         [ "01-loading-images", "d9/d45/loading_images.html", null ],
@@ -81,11 +82,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions.html",
+"d3/ddb/factory_camera_features.html",
 "d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ac3eab2c91a585599b7c5d006bd5900b9",
-"da/d87/variants_8cpp.html#ad8301adc17dd20284a1b7fac2eaa1775",
-"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a4b75eeab69b857b5a55261117b733205",
-"topics.html"
+"da/d87/variants_8cpp.html#ac01a1187b377182759ebcd762d39815b",
+"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a3a8dab8e90db2c693d5ddd528a3c851c",
+"pages.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
