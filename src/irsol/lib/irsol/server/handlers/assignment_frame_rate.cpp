@@ -6,7 +6,9 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-AssignmentFrameRateHandler::AssignmentFrameRateHandler(Context ctx): AssignmentHandler(ctx) {}
+AssignmentFrameRateHandler::AssignmentFrameRateHandler(std::shared_ptr<Context> ctx)
+  : AssignmentHandler(ctx)
+{}
 
 std::vector<out_message_t>
 AssignmentFrameRateHandler::process(

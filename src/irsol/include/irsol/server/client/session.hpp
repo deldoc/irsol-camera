@@ -39,12 +39,8 @@ class App;
  *
  * In addition, the session holds a reference to the central @ref irsol::server::App instance,
  * which enables it to interact with the global server context (e.g., for broadcasting).
- *
- * The class derives from `std::enable_shared_from_this` to allow safe
- * creation of `std::shared_ptr` instances to itself. This is required for
- * asynchronous operations and thread-safe lifetime management.
  */
-class ClientSession : public std::enable_shared_from_this<ClientSession>
+class ClientSession
 {
 public:
   /**

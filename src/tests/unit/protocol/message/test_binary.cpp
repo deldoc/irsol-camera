@@ -17,7 +17,7 @@ TEST_CASE("BinaryDataBuffer::BinaryDataBuffer()", "[Protocol][Protocol::Message]
     STATIC_CHECK(m.DIM == 1);
     STATIC_CHECK(m.BYTES_PER_ELEMENT == 2);  // We work with image data with 16bits depth always.
     CHECK(m.numElements == size);
-    CHECK(m.numBytes == size);
+    CHECK(m.numBytes == size * irsol::protocol::BinaryDataBuffer::BYTES_PER_ELEMENT);
   }
 }
 
@@ -37,7 +37,7 @@ TEST_CASE("ImageBinaryData::ImageBinaryData()", "[Protocol][Protocol::Message]")
     STATIC_CHECK(m.DIM == 2);
     STATIC_CHECK(m.BYTES_PER_ELEMENT == 2);  // We work with image data with 16bits depth always.
     CHECK(m.numElements == sizeData.first);
-    CHECK(m.numBytes == sizeData.first);
+    CHECK(m.numBytes == sizeData.first * irsol::protocol::BinaryDataBuffer::BYTES_PER_ELEMENT);
   }
 }
 
@@ -59,6 +59,6 @@ TEST_CASE("ColorImageBinaryData::ColorImageBinaryData()", "[Protocol][Protocol::
     STATIC_CHECK(m.DIM == 3);
     STATIC_CHECK(m.BYTES_PER_ELEMENT == 2);  // We work with image data with 16bits depth always.
     CHECK(m.numElements == sizeData.first);
-    CHECK(m.numBytes == sizeData.first);
+    CHECK(m.numBytes == sizeData.first * irsol::protocol::BinaryDataBuffer::BYTES_PER_ELEMENT);
   }
 }

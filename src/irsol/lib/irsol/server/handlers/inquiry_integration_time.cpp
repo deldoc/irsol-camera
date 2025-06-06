@@ -8,7 +8,9 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-InquiryIntegrationTimeHandler::InquiryIntegrationTimeHandler(Context ctx): InquiryHandler(ctx) {}
+InquiryIntegrationTimeHandler::InquiryIntegrationTimeHandler(std::shared_ptr<Context> ctx)
+  : InquiryHandler(ctx)
+{}
 
 std::vector<out_message_t>
 InquiryIntegrationTimeHandler::process(

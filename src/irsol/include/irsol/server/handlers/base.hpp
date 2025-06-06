@@ -47,10 +47,12 @@ public:
    * @note This method is invoked by the @ref irsol::server::handlers::MessageHandler::handle
    * method.
    */
-  std::vector<out_message_t> operator()(const irsol::types::client_id_t& clientId, T&& message)
+  virtual std::vector<out_message_t> operator()(
+    const irsol::types::client_id_t& clientId,
+    T&&                              message)
   {
     // Retrieve the current session using the client ID
-    auto session = ctx.getSession(clientId);
+    auto session = ctx->getSession(clientId);
     if(!session) {
       IRSOL_LOG_ERROR("No session found for client {}", clientId);
       return {};
@@ -63,7 +65,7 @@ protected:
    * @brief Constructs the handler base.
    * @param ctx Handler context.
    */
-  HandlerBase(Context ctx): ctx(ctx){};
+  HandlerBase(std::shared_ptr<Context> ctx): ctx(ctx){};
 
   /**
    * @brief Processes the protocol message for the given session.
@@ -76,7 +78,7 @@ protected:
     T&&                                           message) = 0;
 
   /// Handler context (provides access to app and utilities).
-  Context ctx;
+  std::shared_ptr<Context> ctx;
 };
 }
 

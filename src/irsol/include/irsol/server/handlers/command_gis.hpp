@@ -28,7 +28,7 @@ public:
    * @brief Constructs the CommandGISHandler.
    * @param ctx Handler context.
    */
-  CommandGISHandler(Context ctx);
+  CommandGISHandler(std::shared_ptr<Context> ctx);
 
 private:
   /**

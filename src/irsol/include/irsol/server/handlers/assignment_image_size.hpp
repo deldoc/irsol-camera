@@ -70,7 +70,7 @@ public:
    * @brief Constructs the handler.
    * @param ctx Handler context.
    */
-  AssignmentImgHandlerBase(Context ctx): AssignmentHandler(ctx) {}
+  AssignmentImgHandlerBase(std::shared_ptr<Context> ctx): AssignmentHandler(ctx) {}
 
 protected:
   /**
@@ -83,7 +83,7 @@ protected:
     IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::ClientSession> session,
     protocol::Assignment&&                                           message) final override
   {
-    auto& cam      = ctx.app.camera();
+    auto& cam      = ctx->app.camera();
     auto  resValue = cam.setParam(std::string(name), irsol::utils::toInt(message.value));
     std::vector<out_message_t> result;
 
@@ -91,7 +91,7 @@ protected:
     // In this way, the resulting value is included in the response message that we broadcast to all
     // clients.
     message.value = irsol::types::protocol_value_t{resValue};
-    ctx.broadcastMessage(protocol::Success::from(message));
+    ctx->broadcastMessage(protocol::Success::from(message));
     return {};
   }
 };

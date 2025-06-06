@@ -29,7 +29,7 @@ public:
    * @brief Constructs the AssignmentInputSequenceLengthHandler.
    * @param ctx Handler context.
    */
-  AssignmentInputSequenceLengthHandler(Context ctx);
+  AssignmentInputSequenceLengthHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**

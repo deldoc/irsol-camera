@@ -27,7 +27,7 @@ public:
    * @brief Constructs the InquiryFrameRateHandler.
    * @param ctx Handler context.
    */
-  InquiryFrameRateHandler(Context ctx);
+  InquiryFrameRateHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**

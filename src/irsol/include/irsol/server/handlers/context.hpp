@@ -33,7 +33,8 @@ namespace handlers {
  */
 struct Context
 {
-  /// Reference to the application instance.
+  Context(App& app): app(app) {}
+  /// Reference to application instance.
   App& app;
 
   /**
@@ -41,7 +42,7 @@ struct Context
    * @param clientId The client identifier.
    * @return Shared pointer to the client session, or nullptr if not found.
    */
-  std::shared_ptr<irsol::server::ClientSession> getSession(
+  virtual std::shared_ptr<irsol::server::ClientSession> getSession(
     const irsol::types::client_id_t& clientId);
 
   /**

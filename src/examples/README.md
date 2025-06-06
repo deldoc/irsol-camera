@@ -18,3 +18,6 @@ These examples serve as practical references to help you get started and underst
 * @subpage message_protocols
   Covers the topic of how messages are parsed, processed and serialized back to the client in the client-server architecture implemented in the `irsol` project.
 
+* @subpage message_handlers
+  Covers the topic of how to implement and use message handlers in the `irsol` framework, including the @ref irsol::server::handlers::MessageHandler class and lambda handlers for rapid prototyping.
+

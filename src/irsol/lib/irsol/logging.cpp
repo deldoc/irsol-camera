@@ -109,7 +109,7 @@ initLogging(const char* logFilePath, std::optional<spdlog::level::level_enum> mi
 {
 #ifdef DEBUG
   // Set the logging level to debug if in debug mode
-  const auto defaultConsoleLevel  = spdlog::level::debug;
+  const auto defaultConsoleLevel  = spdlog::level::trace;
   const auto defaultFileSinkLevel = spdlog::level::trace;
 #else
   // Set the logging level to info if not in debug mode

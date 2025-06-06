@@ -28,7 +28,7 @@ public:
    * @brief Constructs the InquiryInputSequenceLengthHandler.
    * @param ctx Handler context.
    */
-  InquiryInputSequenceLengthHandler(Context ctx);
+  InquiryInputSequenceLengthHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**

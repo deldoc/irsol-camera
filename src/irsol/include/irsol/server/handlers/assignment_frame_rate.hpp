@@ -28,7 +28,7 @@ public:
    * @brief Constructs the AssignmentFrameRateHandler.
    * @param ctx Handler context.
    */
-  AssignmentFrameRateHandler(Context ctx);
+  AssignmentFrameRateHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**

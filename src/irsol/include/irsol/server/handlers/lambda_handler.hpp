@@ -23,7 +23,7 @@
  *
  * Example usage:
  * ```cpp
- * ctx.registerLambdaHandler<protocol::Command>(
+ * ctx->registerLambdaHandler<protocol::Command>(
  *   "my_custom_cmd",
  *   ctx,
  *   [](handlers::Context& ctx, const irsol::types::client_id_t& clientId, protocol::Command&& cmd)
@@ -53,7 +53,7 @@ namespace handlers {
  * LambdaHandler enables protocol message handlers to be implemented as lambda functions or
  * other callable objects, rather than requiring a dedicated handler class.
  *
- * The lambda receives the handler context, the client ID, and the protocol message.
+ * The lambda receives the handler context, the client session pointer, and the protocol message.
  */
 template<
   typename T,
@@ -61,16 +61,16 @@ template<
     0>
 class LambdaHandler : public internal::HandlerBase<T>
 {
-  using lambda_function_t =
-    std::function<std::vector<out_message_t>(Context&, const irsol::types::client_id_t&, T&&)>;
-
 public:
+  using lambda_function_t = std::function<std::vector<
+    out_message_t>(std::shared_ptr<Context>, std::shared_ptr<irsol::server::ClientSession>, T&&)>;
+
   /**
    * @brief Constructs a LambdaHandler with the given context and callback.
    * @param ctx Handler context.
    * @param callback Lambda or callable to invoke for each message.
    */
-  LambdaHandler(irsol::server::handlers::Context ctx, lambda_function_t callback)
+  LambdaHandler(std::shared_ptr<irsol::server::handlers::Context> ctx, lambda_function_t callback)
     : internal::HandlerBase<T>(ctx), m_callback(callback)
   {}
 
@@ -85,7 +85,7 @@ protected:
     std::shared_ptr<irsol::server::ClientSession> session,
     T&&                                           message) final override
   {
-    return m_callback(this->ctx, session->id(), std::move(message));
+    return m_callback(this->ctx, session, std::move(message));
   }
 
 private:

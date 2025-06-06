@@ -76,7 +76,7 @@ Different sinks are configured to have a different _runtime_ log level by defaul
 
 | Compilation mode | Debug   | Release |
 | ---------------- | ------- | ------- |
-| Console logger   | `debug` | `info`  |
+| Console logger   | `trace` | `info`  |
 | File logger      | `trace` | `info`  |
 
 

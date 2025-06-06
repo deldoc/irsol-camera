@@ -36,7 +36,7 @@ public:
    * @brief Constructs the CommandGIBaseHandler.
    * @param ctx Handler context.
    */
-  CommandGIBaseHandler(Context ctx);
+  CommandGIBaseHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**

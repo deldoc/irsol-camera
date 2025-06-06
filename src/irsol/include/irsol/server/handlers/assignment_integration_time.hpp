@@ -28,7 +28,7 @@ public:
    * @brief Constructs the AssignmentIntegrationTimeHandler.
    * @param ctx Handler context.
    */
-  AssignmentIntegrationTimeHandler(Context ctx);
+  AssignmentIntegrationTimeHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**

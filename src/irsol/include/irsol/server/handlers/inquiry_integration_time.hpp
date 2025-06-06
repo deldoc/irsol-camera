@@ -28,7 +28,7 @@ public:
    * @brief Constructs the InquiryIntegrationTimeHandler.
    * @param ctx Handler context.
    */
-  InquiryIntegrationTimeHandler(Context ctx);
+  InquiryIntegrationTimeHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**

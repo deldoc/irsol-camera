@@ -25,7 +25,7 @@ namespace handlers {
  */
 template<typename HandlerT, typename... Args>
 constexpr auto
-makeHandler(Context& ctx, Args&&... args)
+makeHandler(std::shared_ptr<Context> ctx, Args&&... args)
 {
   return HandlerT(ctx, std::forward<Args>(args)...);
 }
@@ -40,12 +40,13 @@ makeHandler(Context& ctx, Args&&... args)
  */
 template<typename InMessageT, typename LambdaT>
 constexpr auto
-makeLambdaHandler(Context& ctx, LambdaT&& lambda)
+makeLambdaHandler(std::shared_ptr<Context> ctx, LambdaT&& lambda)
 {
   return LambdaHandler<InMessageT>{
     ctx,
     std::function<std::vector<protocol::OutMessage>(
-      Context&, const irsol::types::client_id_t&, InMessageT&&)>(std::forward<LambdaT>(lambda))};
+      std::shared_ptr<Context>, std::shared_ptr<irsol::server::ClientSession>, InMessageT &&)>(
+      std::forward<LambdaT>(lambda))};
 }
 }
 }

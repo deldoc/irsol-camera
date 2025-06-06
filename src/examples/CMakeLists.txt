@@ -16,6 +16,7 @@ add_subdirectory(00-logging-and-asserting)
 add_subdirectory(01-loading-images)
 add_subdirectory(02-interacting-with-camera-features)
 add_subdirectory(03-message-protocols)
+add_subdirectory(04-message-handlers)
 add_subdirectory(simple)
 add_subdirectory(camera_socket)
 

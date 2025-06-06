@@ -20,7 +20,6 @@ App::App(irsol::types::port_t port)
   , m_messageHandler(std::make_unique<handlers::MessageHandler>())
 {
   registerMessageHandlers();
-  IRSOL_LOG_DEBUG("App ready to run on port {}", m_port);
 }
 
 bool
@@ -133,7 +132,7 @@ void
 App::registerMessageHandlers()
 {
   // Build a context to pass to all handlers
-  handlers::Context ctx{*this};
+  auto ctx = std::make_shared<irsol::server::handlers::Context>(*this);
 
   // Register message handlers for specific message types
   registerMessageHandler<protocol::Inquiry, handlers::InquiryFrameRateHandler>("fr", ctx);
@@ -160,14 +159,16 @@ App::registerMessageHandlers()
   registerLambdaHandler<protocol::Command>(
     "image_data",
     ctx,
-    [](handlers::Context& ctx, const irsol::types::client_id_t& clientId, protocol::Command&& cmd)
-      -> std::vector<protocol::OutMessage> {
+    [](
+      std::shared_ptr<handlers::Context>            ctx,
+      std::shared_ptr<irsol::server::ClientSession> client,
+      protocol::Command&&                           cmd) -> std::vector<protocol::OutMessage> {
       std::vector<protocol::OutMessage> result;
-      auto&                             cam = ctx.app.camera();
+      auto&                             cam = ctx->app.camera();
       auto                              img = cam.captureImage(std::chrono::milliseconds(10000));
 
       if(img.IsEmpty()) {
-        IRSOL_NAMED_LOG_ERROR(clientId, "Failed to capture image.");
+        IRSOL_NAMED_LOG_ERROR(client->id(), "Failed to capture image.");
         result.emplace_back(irsol::protocol::Error::from(cmd, "Failed to capture image"));
         return result;
       }

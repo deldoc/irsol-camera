@@ -6,7 +6,7 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-CommandAbortHandler::CommandAbortHandler(Context ctx): CommandHandler(ctx) {}
+CommandAbortHandler::CommandAbortHandler(std::shared_ptr<Context> ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
 CommandAbortHandler::process(

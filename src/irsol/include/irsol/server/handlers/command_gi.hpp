@@ -28,7 +28,7 @@ public:
    * @brief Constructs the CommandGIHandler.
    * @param ctx Handler context.
    */
-  CommandGIHandler(Context ctx);
+  CommandGIHandler(std::shared_ptr<Context> ctx);
 
 private:
   /**

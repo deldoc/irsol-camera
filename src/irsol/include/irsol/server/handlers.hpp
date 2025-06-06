@@ -38,6 +38,9 @@
  * @see irsol::server::handlers::MessageHandler
  */
 
+namespace irsol {
+namespace server {
+
 /**
  * @namespace irsol::server::handlers
  * @brief Contains all logic for dispatching and implementing protocol message handlers.
@@ -61,8 +64,6 @@
  * @see irsol::server::handlers::MessageHandler
  * @see irsol::protocol
  */
-namespace irsol {
-namespace server {
 namespace handlers {}
 }
 }

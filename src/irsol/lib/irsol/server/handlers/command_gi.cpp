@@ -10,7 +10,9 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-CommandGIHandler::CommandGIHandler(Context ctx): internal::CommandGIBaseHandler(ctx) {}
+CommandGIHandler::CommandGIHandler(std::shared_ptr<Context> ctx)
+  : internal::CommandGIBaseHandler(ctx)
+{}
 
 std::vector<irsol::protocol::OutMessage>
 CommandGIHandler::validate(

@@ -6,7 +6,8 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-AssignmentInputSequenceLengthHandler::AssignmentInputSequenceLengthHandler(Context ctx)
+AssignmentInputSequenceLengthHandler::AssignmentInputSequenceLengthHandler(
+  std::shared_ptr<Context> ctx)
   : AssignmentHandler(ctx)
 {}
 

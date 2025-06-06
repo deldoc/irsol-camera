@@ -8,7 +8,8 @@ namespace irsol {
 namespace server {
 namespace handlers {
 
-InquiryFrameRateHandler::InquiryFrameRateHandler(Context ctx): InquiryHandler(ctx) {}
+InquiryFrameRateHandler::InquiryFrameRateHandler(std::shared_ptr<Context> ctx): InquiryHandler(ctx)
+{}
 
 std::vector<out_message_t>
 InquiryFrameRateHandler::process(

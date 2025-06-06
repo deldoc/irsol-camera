@@ -203,15 +203,17 @@ private:
    * registerLambdaHandler<protocol::Command>(
    *   "custom_cmd",
    *   ctx,
-   *   [](handlers::Context& ctx, const irsol::types::client_id_t& clientId, protocol::Command&&
-   * cmd) { return std::vector<protocol::OutMessage>{...};
+   *   [](std::shared_ptr<handlers::Context> ctx, const irsol::types::client_id_t& clientId,
+   * protocol::Command&& cmd) { return std::vector<protocol::OutMessage>{...};
    *   }
    * );
    * ```
    */
   template<typename InMessageT, typename LambdaT>
-  void
-  registerLambdaHandler(const std::string& identifier, handlers::Context& ctx, LambdaT&& lambda)
+  void registerLambdaHandler(
+    const std::string&                 identifier,
+    std::shared_ptr<handlers::Context> ctx,
+    LambdaT&&                          lambda)
   {
     auto  handler = handlers::makeLambdaHandler<InMessageT>(ctx, std::forward<LambdaT>(lambda));
     auto& messageHandler = *m_messageHandler;

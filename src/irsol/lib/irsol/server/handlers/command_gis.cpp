@@ -6,7 +6,9 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-CommandGISHandler::CommandGISHandler(Context ctx): internal::CommandGIBaseHandler(ctx) {}
+CommandGISHandler::CommandGISHandler(std::shared_ptr<Context> ctx)
+  : internal::CommandGIBaseHandler(ctx)
+{}
 
 std::vector<irsol::protocol::OutMessage>
 CommandGISHandler::validate(

@@ -18,7 +18,7 @@ namespace server {
 namespace handlers {
 namespace internal {
 
-CommandGIBaseHandler::CommandGIBaseHandler(Context ctx): CommandHandler(ctx) {}
+CommandGIBaseHandler::CommandGIBaseHandler(std::shared_ptr<Context> ctx): CommandHandler(ctx) {}
 
 std::vector<out_message_t>
 CommandGIBaseHandler::process(
@@ -26,7 +26,7 @@ CommandGIBaseHandler::process(
   IRSOL_MAYBE_UNUSED protocol::Command&& message)
 {
 
-  auto& collector = this->ctx.app.frameCollector();
+  auto& collector = ctx->app.frameCollector();
   auto& state     = session->userData().frameListeningState;
 
   if(state.running()) {

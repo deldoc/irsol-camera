@@ -7,7 +7,7 @@
 namespace irsol {
 namespace server {
 namespace handlers {
-AssignmentIntegrationTimeHandler::AssignmentIntegrationTimeHandler(Context ctx)
+AssignmentIntegrationTimeHandler::AssignmentIntegrationTimeHandler(std::shared_ptr<Context> ctx)
   : AssignmentHandler(ctx)
 {}
 
@@ -44,7 +44,7 @@ AssignmentIntegrationTimeHandler::process(
     1.0 * std::chrono::duration_cast<std::chrono::microseconds>(resultingExposure).count() / 1000);
 
   // Broadcast the new integration time to all clients
-  ctx.broadcastMessage(irsol::protocol::Success::from(message, {resultingExposureMs}));
+  ctx->broadcastMessage(irsol::protocol::Success::from(message, {resultingExposureMs}));
 
   // Don't return anything to the current client, as the client is automatically notified via the
   // above broadcast

@@ -68,7 +68,7 @@ public:
    * @brief Constructs the handler.
    * @param ctx Handler context.
    */
-  InquiryImgHandlerBase(Context ctx): InquiryHandler(ctx) {}
+  InquiryImgHandlerBase(std::shared_ptr<Context> ctx): InquiryHandler(ctx) {}
 
 protected:
   /**
@@ -81,7 +81,7 @@ protected:
     IRSOL_MAYBE_UNUSED std::shared_ptr<irsol::server::ClientSession> session,
     protocol::Inquiry&&                                              message) final override
   {
-    auto&                      cam   = ctx.app.camera();
+    auto&                      cam   = ctx->app.camera();
     int                        value = cam.getParam<int>(std::string(name));
     std::vector<out_message_t> result;
     result.emplace_back(protocol::Success::from(message, irsol::types::protocol_value_t{value}));

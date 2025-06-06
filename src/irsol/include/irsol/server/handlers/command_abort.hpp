@@ -26,7 +26,7 @@ public:
    * @brief Constructs the CommandAbortHandler.
    * @param ctx Handler context.
    */
-  CommandAbortHandler(Context ctx);
+  CommandAbortHandler(std::shared_ptr<Context> ctx);
 
 protected:
   /**
