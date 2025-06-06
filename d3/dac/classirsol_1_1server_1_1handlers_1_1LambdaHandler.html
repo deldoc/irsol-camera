@@ -54,9 +54,9 @@ $(document).ready(function(){initNavTree('d3/dac/classirsol_1_1server_1_1handler
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../de/d22/classirsol_1_1server_1_1handlers_1_1LambdaHandler-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">irsol::server::handlers::LambdaHandler&lt; T, &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
@@ -77,46 +77,46 @@ Inheritance diagram for irsol::server::handlers::LambdaHandler&lt; T, &gt;:</div
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aafdfd4baf7ebe36bb45068c6dc8a3947" id="r_aafdfd4baf7ebe36bb45068c6dc8a3947"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#aafdfd4baf7ebe36bb45068c6dc8a3947">lambda_function_t</a> = std::function&lt; std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;(std::shared_ptr&lt; <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> &gt;, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt;, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> &amp;&amp;)&gt;</td></tr>
+<tr class="separator:aafdfd4baf7ebe36bb45068c6dc8a3947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a228303841f779426b5abffb4c4efcaa6" id="r_a228303841f779426b5abffb4c4efcaa6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#a228303841f779426b5abffb4c4efcaa6">LambdaHandler</a> (<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a> <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a>, <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#a5aa68b6d0e3f641bb6ae17e538bb7a4c">lambda_function_t</a> callback)</td></tr>
-<tr class="memdesc:a228303841f779426b5abffb4c4efcaa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html" title="Handler class that delegates protocol message processing to a lambda or callable.">LambdaHandler</a> with the given context and callback.  <br /></td></tr>
-<tr class="separator:a228303841f779426b5abffb4c4efcaa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab10a5b02d85a8088e44645d082cdece" id="r_aab10a5b02d85a8088e44645d082cdece"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#aab10a5b02d85a8088e44645d082cdece">LambdaHandler</a> (std::shared_ptr&lt; <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a> &gt; <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4ddeb1c993134acc81cfb23885c5bf5b">ctx</a>, <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#aafdfd4baf7ebe36bb45068c6dc8a3947">lambda_function_t</a> <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">callback</a>)</td></tr>
+<tr class="memdesc:aab10a5b02d85a8088e44645d082cdece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html" title="Handler class that delegates protocol message processing to a lambda or callable.">LambdaHandler</a> with the given context and callback.  <br /></td></tr>
+<tr class="separator:aab10a5b02d85a8088e44645d082cdece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
-<tr class="memitem:af1283189ab99ed4b39b48aeb6048b7b5 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_af1283189ab99ed4b39b48aeb6048b7b5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#af1283189ab99ed4b39b48aeb6048b7b5">operator()</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;clientId, T &amp;&amp;message)</td></tr>
-<tr class="memdesc:af1283189ab99ed4b39b48aeb6048b7b5 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the handler for a given client and message.  <br /></td></tr>
-<tr class="separator:af1283189ab99ed4b39b48aeb6048b7b5 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a690aac5bf6015f21f24811fd617fc1 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_a4a690aac5bf6015f21f24811fd617fc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">virtual</a> std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4a690aac5bf6015f21f24811fd617fc1">operator()</a> (<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">const</a> <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">clientId</a>, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> &amp;&amp;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">message</a>)</td></tr>
+<tr class="memdesc:a4a690aac5bf6015f21f24811fd617fc1 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the handler for a given client and message.  <br /></td></tr>
+<tr class="separator:a4a690aac5bf6015f21f24811fd617fc1 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab4654ce959d7cfb830411431d048d2ad" id="r_ab4654ce959d7cfb830411431d048d2ad"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#ab4654ce959d7cfb830411431d048d2ad">process</a> (std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session, T &amp;&amp;message) final override</td></tr>
+<tr class="memitem:ab4654ce959d7cfb830411431d048d2ad" id="r_ab4654ce959d7cfb830411431d048d2ad"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#ab4654ce959d7cfb830411431d048d2ad">process</a> (std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">session</a>, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> &amp;&amp;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">message</a>) <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">final</a> <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">override</a></td></tr>
 <tr class="memdesc:ab4654ce959d7cfb830411431d048d2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the protocol message by invoking the stored lambda/callable.  <br /></td></tr>
 <tr class="separator:ab4654ce959d7cfb830411431d048d2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
-<tr class="memitem:a60d7d5051418067aca296dfd9a1dbacf inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_a60d7d5051418067aca296dfd9a1dbacf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a60d7d5051418067aca296dfd9a1dbacf">HandlerBase</a> (<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a>)</td></tr>
-<tr class="memdesc:a60d7d5051418067aca296dfd9a1dbacf inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the handler base.  <br /></td></tr>
-<tr class="separator:a60d7d5051418067aca296dfd9a1dbacf inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
-Private Types</h2></td></tr>
-<tr class="memitem:a5aa68b6d0e3f641bb6ae17e538bb7a4c" id="r_a5aa68b6d0e3f641bb6ae17e538bb7a4c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#a5aa68b6d0e3f641bb6ae17e538bb7a4c">lambda_function_t</a> = std::function&lt; std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;(<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> &amp;, const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;, T &amp;&amp;)&gt;</td></tr>
-<tr class="separator:a5aa68b6d0e3f641bb6ae17e538bb7a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dd6aa0ff895bfae4ae0b045ecfaa46a inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_a7dd6aa0ff895bfae4ae0b045ecfaa46a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a7dd6aa0ff895bfae4ae0b045ecfaa46a">HandlerBase</a> (std::shared_ptr&lt; <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> &gt; <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4ddeb1c993134acc81cfb23885c5bf5b">ctx</a>)</td></tr>
+<tr class="memdesc:a7dd6aa0ff895bfae4ae0b045ecfaa46a inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the handler base.  <br /></td></tr>
+<tr class="separator:a7dd6aa0ff895bfae4ae0b045ecfaa46a inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:af7072963603a28a61ce88019a04f7962" id="r_af7072963603a28a61ce88019a04f7962"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#a5aa68b6d0e3f641bb6ae17e538bb7a4c">lambda_function_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#af7072963603a28a61ce88019a04f7962">m_callback</a></td></tr>
+<tr class="memitem:af7072963603a28a61ce88019a04f7962" id="r_af7072963603a28a61ce88019a04f7962"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#aafdfd4baf7ebe36bb45068c6dc8a3947">lambda_function_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#af7072963603a28a61ce88019a04f7962">m_callback</a></td></tr>
 <tr class="memdesc:af7072963603a28a61ce88019a04f7962"><td class="mdescLeft">&#160;</td><td class="mdescRight">The lambda or callable to invoke for each message.  <br /></td></tr>
 <tr class="separator:af7072963603a28a61ce88019a04f7962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase')"><img src="../../closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
-<tr class="memitem:ac36b4a8df8e40904185648d259995dc2 inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_ac36b4a8df8e40904185648d259995dc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a></td></tr>
-<tr class="memdesc:ac36b4a8df8e40904185648d259995dc2 inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler context (provides access to app and utilities).  <br /></td></tr>
-<tr class="separator:ac36b4a8df8e40904185648d259995dc2 inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ddeb1c993134acc81cfb23885c5bf5b inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_a4ddeb1c993134acc81cfb23885c5bf5b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4ddeb1c993134acc81cfb23885c5bf5b">ctx</a></td></tr>
+<tr class="memdesc:a4ddeb1c993134acc81cfb23885c5bf5b inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler context (provides access to app and utilities).  <br /></td></tr>
+<tr class="separator:a4ddeb1c993134acc81cfb23885c5bf5b inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, int &gt; = 0&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">typename</a> <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">int</a> &gt; = 0&gt;<br />
 class irsol::server::handlers::LambdaHandler&lt; T, &gt;</div><p>Handler class that delegates protocol message processing to a lambda or callable. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -125,58 +125,50 @@ class irsol::server::handlers::LambdaHandler&lt; T, &gt;</div><p>Handler class t
   </dd>
 </dl>
 <p><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html" title="Handler class that delegates protocol message processing to a lambda or callable.">LambdaHandler</a> enables protocol message handlers to be implemented as lambda functions or other callable objects, rather than requiring a dedicated handler class.</p>
-<p>The lambda receives the handler context, the client ID, and the protocol message. </p>
+<p>The lambda receives the handler context, the client session pointer, and the protocol message. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html#l00062">62</a> of file <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html">lambda_handler.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a5aa68b6d0e3f641bb6ae17e538bb7a4c" name="a5aa68b6d0e3f641bb6ae17e538bb7a4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5aa68b6d0e3f641bb6ae17e538bb7a4c">&#9670;&#160;</a></span>lambda_function_t</h2>
+<a id="aafdfd4baf7ebe36bb45068c6dc8a3947" name="aafdfd4baf7ebe36bb45068c6dc8a3947"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafdfd4baf7ebe36bb45068c6dc8a3947">&#9670;&#160;</a></span>lambda_function_t</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, int &gt;  = 0&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">typename</a> <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">int</a> &gt;  = 0&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; T, &gt;::lambda_function_t =  std::function&lt;std::vector&lt;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a>&gt;(<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a>&amp;, const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp;, T&amp;&amp;)&gt;</td>
+          <td class="memname"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">using</a> <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, &gt;::lambda_function_t =  std::function&lt;std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a>&gt;(std::shared_ptr&lt;<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a>&gt;, std::shared_ptr&lt;<a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a>&gt;, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>&amp;&amp;)&gt;</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html#l00064">64</a> of file <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html">lambda_handler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html">lambda_handler.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a228303841f779426b5abffb4c4efcaa6" name="a228303841f779426b5abffb4c4efcaa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a228303841f779426b5abffb4c4efcaa6">&#9670;&#160;</a></span>LambdaHandler()</h2>
+<a id="aab10a5b02d85a8088e44645d082cdece" name="aab10a5b02d85a8088e44645d082cdece"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab10a5b02d85a8088e44645d082cdece">&#9670;&#160;</a></span>LambdaHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, int &gt;  = 0&gt; </div>
+template&lt;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">typename</a> <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">int</a> &gt;  = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; T, &gt;::LambdaHandler </td>
+          <td class="memname"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, &gt;::LambdaHandler </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a>&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a> &gt;&#160;</td>
           <td class="paramname"><em>ctx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#a5aa68b6d0e3f641bb6ae17e538bb7a4c">lambda_function_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#aafdfd4baf7ebe36bb45068c6dc8a3947">lambda_function_t</a>&#160;</td>
           <td class="paramname"><em>callback</em>&#160;</td>
         </tr>
         <tr>
@@ -202,10 +194,11 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html#l00073">73</a> of file <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html">lambda_handler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>    : internal::HandlerBase&lt;T&gt;(<a class="code hl_variable" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a>), <a class="code hl_variable" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#af7072963603a28a61ce88019a04f7962">m_callback</a>(callback)</div>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>    : internal::HandlerBase&lt;T&gt;(<a class="code hl_variable" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4ddeb1c993134acc81cfb23885c5bf5b">ctx</a>), <a class="code hl_variable" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#af7072963603a28a61ce88019a04f7962">m_callback</a>(<a class="code hl_function" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">callback</a>)</div>
 <div class="line"><span class="lineno">   75</span>  {}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1LambdaHandler_html_af7072963603a28a61ce88019a04f7962"><div class="ttname"><a href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#af7072963603a28a61ce88019a04f7962">irsol::server::handlers::LambdaHandler::m_callback</a></div><div class="ttdeci">lambda_function_t m_callback</div><div class="ttdoc">The lambda or callable to invoke for each message.</div><div class="ttdef"><b>Definition</b> <a href="../../da/dc5/lambda__handler_8hpp_source.html#l00093">lambda_handler.hpp:93</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase_html_ac36b4a8df8e40904185648d259995dc2"><div class="ttname"><a href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">irsol::server::handlers::internal::HandlerBase::ctx</a></div><div class="ttdeci">Context ctx</div><div class="ttdoc">Handler context (provides access to app and utilities).</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d3c/base_8hpp_source.html#l00079">base.hpp:79</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase_html_a4ddeb1c993134acc81cfb23885c5bf5b"><div class="ttname"><a href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4ddeb1c993134acc81cfb23885c5bf5b">irsol::server::handlers::internal::HandlerBase::ctx</a></div><div class="ttdeci">std::shared_ptr&lt; Context &gt; ctx</div><div class="ttdoc">Handler context (provides access to app and utilities).</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d3c/base_8hpp_source.html#l00081">base.hpp:81</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1server_1_1handlers_html_a713fd41e924dce65decbd5f2b6284279"><div class="ttname"><a href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">irsol::server::handlers::makeHandler</a></div><div class="ttdeci">constexpr auto makeHandler(std::shared_ptr&lt; Context &gt; ctx, Args &amp;&amp;... args)</div><div class="ttdoc">Constructs a handler instance of the given type.</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d2d/factory_8hpp_source.html#l00028">factory.hpp:28</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -216,13 +209,13 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, int &gt;  = 0&gt; </div>
+template&lt;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">typename</a> <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">int</a> &gt;  = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt; <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; T, &gt;::process </td>
+          <td class="memname">std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt; <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, &gt;::process </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt;&#160;</td>
           <td class="paramname"><em>session</em>, </td>
@@ -230,7 +223,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>message</em>&#160;</td>
         </tr>
         <tr>
@@ -260,7 +253,7 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 
 <p class="definition">Definition at line <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html#l00084">84</a> of file <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html">lambda_handler.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   87</span>  {</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#af7072963603a28a61ce88019a04f7962">m_callback</a>(this-&gt;<a class="code hl_variable" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a>, session-&gt;id(), std::move(message));</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#af7072963603a28a61ce88019a04f7962">m_callback</a>(this-&gt;<a class="code hl_variable" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4ddeb1c993134acc81cfb23885c5bf5b">ctx</a>, <a class="code hl_function" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">session</a>, std::move(<a class="code hl_function" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">message</a>));</div>
 <div class="line"><span class="lineno">   89</span>  }</div>
 </div><!-- fragment -->
 </div>
@@ -272,13 +265,13 @@ template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/s
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; T, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, int &gt;  = 0&gt; </div>
+template&lt;<a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">typename</a> <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a> , std::enable_if_t&lt; <a class="el" href="../../d9/d97/structirsol_1_1traits_1_1is__type__in__variant.html">irsol::traits::is_type_in_variant</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a> &gt;<a class="el" href="../../d6/d3f/test__assignment_8cpp.html#a442505a4bcabcf16de33fdf0b96c02ce">::value</a>, <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">int</a> &gt;  = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#a5aa68b6d0e3f641bb6ae17e538bb7a4c">lambda_function_t</a> <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; T, &gt;::m_callback</td>
+          <td class="memname"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#aafdfd4baf7ebe36bb45068c6dc8a3947">lambda_function_t</a> <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a>&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">T</a>, &gt;::m_callback</td>
         </tr>
       </table>
   </td>

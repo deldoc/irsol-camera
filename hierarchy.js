@@ -10,14 +10,12 @@ var hierarchy =
     [ "irsol::protocol::BinaryDataAttribute", "d4/d7a/structirsol_1_1protocol_1_1BinaryDataAttribute.html", null ],
     [ "irsol::protocol::internal::BinaryDataBufferName< N >", "d6/df0/structirsol_1_1protocol_1_1internal_1_1BinaryDataBufferName.html", null ],
     [ "irsol::server::frame_collector::ClientCollectionParams", "d5/d11/structirsol_1_1server_1_1frame__collector_1_1ClientCollectionParams.html", null ],
+    [ "irsol::server::ClientSession", "d2/d23/classirsol_1_1server_1_1ClientSession.html", null ],
     [ "irsol::server::internal::ClientSessionAcceptor", "d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html", null ],
     [ "irsol::protocol::Command", "d2/d10/structirsol_1_1protocol_1_1Command.html", null ],
     [ "irsol::server::handlers::Context", "d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html", null ],
     [ "std::disjunction", null, [
       [ "irsol::traits::is_type_in_variant< T, std::variant< VariantClassesT... > >", "dd/dc5/structirsol_1_1traits_1_1is__type__in__variant_3_01T_00_01std_1_1variant_3_01VariantClassesT_8_8_8_01_4_01_4.html", null ]
-    ] ],
-    [ "std::enable_shared_from_this", null, [
-      [ "irsol::server::ClientSession", "d2/d23/classirsol_1_1server_1_1ClientSession.html", null ]
     ] ],
     [ "irsol::protocol::Error", "d4/d3a/structirsol_1_1protocol_1_1Error.html", null ],
     [ "Catch::EventListenerBase", null, [
@@ -33,6 +31,7 @@ var hierarchy =
     [ "irsol::server::frame_collector::FrameMetadata", "da/d77/structirsol_1_1server_1_1frame__collector_1_1FrameMetadata.html", null ],
     [ "irsol::server::internal::GisParams", "d5/dc8/structirsol_1_1server_1_1internal_1_1GisParams.html", null ],
     [ "irsol::server::handlers::internal::HandlerBase< T, >", "d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html", [
+      [ "MyAssignmentHandler", "d5/d9b/classMyAssignmentHandler.html", null ],
       [ "irsol::server::handlers::AssignmentFrameRateHandler", "d4/d6d/classirsol_1_1server_1_1handlers_1_1AssignmentFrameRateHandler.html", null ],
       [ "irsol::server::handlers::AssignmentInputSequenceLengthHandler", "d1/d04/classirsol_1_1server_1_1handlers_1_1AssignmentInputSequenceLengthHandler.html", null ],
       [ "irsol::server::handlers::AssignmentIntegrationTimeHandler", "d3/d30/classirsol_1_1server_1_1handlers_1_1AssignmentIntegrationTimeHandler.html", null ],

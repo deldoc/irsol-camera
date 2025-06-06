@@ -8,7 +8,7 @@ var classirsol_1_1server_1_1App =
     [ "frameCollector", "db/dc5/classirsol_1_1server_1_1App.html#a740cd3948f39494ec70ffe96f7814c87", null ],
     [ "getClientSession", "db/dc5/classirsol_1_1server_1_1App.html#a77e659b496f5b52147e866441a9e79c0", null ],
     [ "messageHandler", "db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8", null ],
-    [ "registerLambdaHandler", "db/dc5/classirsol_1_1server_1_1App.html#ab769714cca25b178b08c7aaf554af602", null ],
+    [ "registerLambdaHandler", "db/dc5/classirsol_1_1server_1_1App.html#acdda9ba4c2ae2a73e64fe3ec1fb528e6", null ],
     [ "registerMessageHandler", "db/dc5/classirsol_1_1server_1_1App.html#a7daa71ab01c508418e0039f24e8016ed", null ],
     [ "registerMessageHandlers", "db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19", null ],
     [ "removeClient", "db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5", null ],

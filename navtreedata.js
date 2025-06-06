@@ -34,7 +34,8 @@ var NAVTREE =
         [ "00-logging-and-asserting", "d8/d93/logging_and_asserting.html", null ],
         [ "01-loading-images", "d9/d45/loading_images.html", null ],
         [ "02-interacting-with-camera-features", "d6/dca/interacting_with_camera_features.html", null ],
-        [ "03-message-protocols", "db/d19/message_protocols.html", null ]
+        [ "03-message-protocols", "db/d19/message_protocols.html", null ],
+        [ "04-message-handlers", "d6/deb/message_handlers.html", null ]
       ] ],
       [ "Tests", "d0/def/tests.html", null ]
     ] ],
@@ -80,9 +81,9 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions.html#a73a430614f23fc59159d394043f1207d",
-"d7/d37/classirsol_1_1camera_1_1Interface.html#a15edd2bb784934662bb00de65197db94",
-"db/d1c/serializer_8hpp.html",
-"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa1aad4f54c265bc5c2771ff9d79b6123"
+"d7/d37/classirsol_1_1camera_1_1Interface.html",
+"da/d87/variants_8cpp_source.html",
+"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a705254fa30d424a01adb204078c00b2d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -115,10 +115,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a7daa71ab01c508418e0039f24e8016ed"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#a7daa71ab01c508418e0039f24e8016ed">registerMessageHandler</a> (const std::string &amp;identifier, Args &amp;&amp;... args)</td></tr>
 <tr class="memdesc:a7daa71ab01c508418e0039f24e8016ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a message handler by type.  <br /></td></tr>
 <tr class="separator:a7daa71ab01c508418e0039f24e8016ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab769714cca25b178b08c7aaf554af602" id="r_ab769714cca25b178b08c7aaf554af602"><td class="memTemplParams" colspan="2">template&lt;typename InMessageT , typename LambdaT &gt; </td></tr>
-<tr class="memitem:ab769714cca25b178b08c7aaf554af602"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab769714cca25b178b08c7aaf554af602">registerLambdaHandler</a> (const std::string &amp;identifier, <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a> &amp;ctx, LambdaT &amp;&amp;lambda)</td></tr>
-<tr class="memdesc:ab769714cca25b178b08c7aaf554af602"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a lambda-based message handler.  <br /></td></tr>
-<tr class="separator:ab769714cca25b178b08c7aaf554af602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdda9ba4c2ae2a73e64fe3ec1fb528e6" id="r_acdda9ba4c2ae2a73e64fe3ec1fb528e6"><td class="memTemplParams" colspan="2">template&lt;typename InMessageT , typename LambdaT &gt; </td></tr>
+<tr class="memitem:acdda9ba4c2ae2a73e64fe3ec1fb528e6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html#acdda9ba4c2ae2a73e64fe3ec1fb528e6">registerLambdaHandler</a> (const std::string &amp;identifier, std::shared_ptr&lt; <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a> &gt; ctx, LambdaT &amp;&amp;lambda)</td></tr>
+<tr class="memdesc:acdda9ba4c2ae2a73e64fe3ec1fb528e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a lambda-based message handler.  <br /></td></tr>
+<tr class="separator:acdda9ba4c2ae2a73e64fe3ec1fb528e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -220,17 +220,15 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   20</span>  , <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>(std::make_unique&lt;handlers::MessageHandler&gt;())</div>
 <div class="line"><span class="lineno">   21</span>{</div>
 <div class="line"><span class="lineno">   22</span>  <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19">registerMessageHandlers</a>();</div>
-<div class="line"><span class="lineno">   23</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;App ready to run on port {}&quot;</span>, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">m_port</a>);</div>
-<div class="line"><span class="lineno">   24</span>}</div>
+<div class="line"><span class="lineno">   23</span>}</div>
 <div class="ttc" id="aclassirsol_1_1camera_1_1Interface_html_a2742473c3edfa1082bab15235e262bcc"><div class="ttname"><a href="../../d7/d37/classirsol_1_1camera_1_1Interface.html#a2742473c3edfa1082bab15235e262bcc">irsol::camera::Interface::HalfResolution</a></div><div class="ttdeci">static Interface HalfResolution()</div><div class="ttdoc">Factory method to create a camera interface using half sensor resolution.</div><div class="ttdef"><b>Definition</b> <a href="../../db/db7/interface_8cpp_source.html#l00063">interface.cpp:63</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">irsol::server::App::m_port</a></div><div class="ttdeci">const irsol::types::port_t m_port</div><div class="ttdoc">TCP port on which the server listens.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00121">app.hpp:121</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_a2fb7bb9c0a96f8585750770880181d12"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">irsol::server::App::m_acceptor</a></div><div class="ttdeci">irsol::server::internal::ClientSessionAcceptor m_acceptor</div><div class="ttdoc">Acceptor that handles incoming client connections.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00124">app.hpp:124</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a5e78a84334dc310a6012fc1288fb5e1d"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a5e78a84334dc310a6012fc1288fb5e1d">irsol::server::App::addClient</a></div><div class="ttdeci">void addClient(const irsol::types::client_id_t &amp;clientId, irsol::types::socket_t &amp;&amp;sock)</div><div class="ttdoc">Adds a new client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00086">app.cpp:86</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a5e78a84334dc310a6012fc1288fb5e1d"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a5e78a84334dc310a6012fc1288fb5e1d">irsol::server::App::addClient</a></div><div class="ttdeci">void addClient(const irsol::types::client_id_t &amp;clientId, irsol::types::socket_t &amp;&amp;sock)</div><div class="ttdoc">Adds a new client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00085">app.cpp:85</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_a73d8272bb6c2ddd147d1a4e37e76df61"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">irsol::server::App::m_frameCollector</a></div><div class="ttdeci">std::unique_ptr&lt; frame_collector::FrameCollector &gt; m_frameCollector</div><div class="ttdoc">Frame collector for capturing and broadcasting camera frames.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00139">app.hpp:139</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a920eb334b2900034e980ed10e30e2e19"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19">irsol::server::App::registerMessageHandlers</a></div><div class="ttdeci">void registerMessageHandlers()</div><div class="ttdoc">Registers standard message handlers.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00133">app.cpp:133</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_a920eb334b2900034e980ed10e30e2e19"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a920eb334b2900034e980ed10e30e2e19">irsol::server::App::registerMessageHandlers</a></div><div class="ttdeci">void registerMessageHandlers()</div><div class="ttdoc">Registers standard message handlers.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00132">app.cpp:132</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_ab72d585f1aacd9b927a204a0de2c049e"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ab72d585f1aacd9b927a204a0de2c049e">irsol::server::App::m_cameraInterface</a></div><div class="ttdeci">std::unique_ptr&lt; camera::Interface &gt; m_cameraInterface</div><div class="ttdoc">Interface to the camera.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00136">app.hpp:136</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_aea70dd9a2207e836b59bd92c899d1d93"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">irsol::server::App::m_messageHandler</a></div><div class="ttdeci">std::unique_ptr&lt; handlers::MessageHandler &gt; m_messageHandler</div><div class="ttdoc">Central handler for processing protocol messages.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00142">app.hpp:142</a></div></div>
-<div class="ttc" id="agroup__Logging_html_ga85d5803f1f7fb99923cdac16d1dc2ee8"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_LOG_DEBUG(...)</div><div class="ttdoc">Logs a debug-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00091">logging.hpp:91</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -279,40 +277,41 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>The new session is started on a separate thread. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00086">86</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
-<div class="line"><span class="lineno">   88</span>  <span class="keyword">auto</span> session = std::make_shared&lt;ClientSession&gt;(clientId, std::move(sock), *<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   89</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
-<div class="line"><span class="lineno">   90</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(</div>
-<div class="line"><span class="lineno">   91</span>    <span class="stringliteral">&quot;Registering new client connection from {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">   92</span>    session-&gt;socket().address().to_string(),</div>
-<div class="line"><span class="lineno">   93</span>    clientId);</div>
-<div class="line"><span class="lineno">   94</span>  {</div>
-<div class="line"><span class="lineno">   95</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.insert({clientId, session});</div>
-<div class="line"><span class="lineno">   96</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
-<div class="line"><span class="lineno">   97</span>      <span class="stringliteral">&quot;Client {} added to session list, total clients: {}&quot;</span>, clientId, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.size());</div>
-<div class="line"><span class="lineno">   98</span>  }</div>
-<div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Starting client session thread for client with id {}&quot;</span>, clientId);</div>
-<div class="line"><span class="lineno">  101</span>  std::thread([session, <span class="keyword">this</span>]() {</div>
-<div class="line"><span class="lineno">  102</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Thread for client with ID {} started&quot;</span>, session-&gt;id());</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  105</span>      session-&gt;run();</div>
-<div class="line"><span class="lineno">  106</span>    } <span class="keywordflow">catch</span>(std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">  107</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
-<div class="line"><span class="lineno">  108</span>        <span class="stringliteral">&quot;Error in client session thread for client with id {}: {}&quot;</span>, session-&gt;id(), e.what());</div>
-<div class="line"><span class="lineno">  109</span>    }</div>
-<div class="line"><span class="lineno">  110</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Thread for client with ID {} finished&quot;</span>, session-&gt;id());</div>
-<div class="line"><span class="lineno">  111</span>    <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5">removeClient</a>(session-&gt;id());</div>
-<div class="line"><span class="lineno">  112</span>  })</div>
-<div class="line"><span class="lineno">  113</span>    .detach();</div>
-<div class="line"><span class="lineno">  114</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00085">85</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>  <span class="keyword">auto</span> session = std::make_shared&lt;ClientSession&gt;(clientId, std::move(sock), *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   88</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
+<div class="line"><span class="lineno">   89</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(</div>
+<div class="line"><span class="lineno">   90</span>    <span class="stringliteral">&quot;Registering new client connection from {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   91</span>    session-&gt;socket().address().to_string(),</div>
+<div class="line"><span class="lineno">   92</span>    clientId);</div>
+<div class="line"><span class="lineno">   93</span>  {</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.insert({clientId, session});</div>
+<div class="line"><span class="lineno">   95</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">   96</span>      <span class="stringliteral">&quot;Client {} added to session list, total clients: {}&quot;</span>, clientId, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.size());</div>
+<div class="line"><span class="lineno">   97</span>  }</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Starting client session thread for client with id {}&quot;</span>, clientId);</div>
+<div class="line"><span class="lineno">  100</span>  std::thread([session, <span class="keyword">this</span>]() {</div>
+<div class="line"><span class="lineno">  101</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Thread for client with ID {} started&quot;</span>, session-&gt;id());</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">  104</span>      session-&gt;run();</div>
+<div class="line"><span class="lineno">  105</span>    } <span class="keywordflow">catch</span>(std::exception&amp; e) {</div>
+<div class="line"><span class="lineno">  106</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(</div>
+<div class="line"><span class="lineno">  107</span>        <span class="stringliteral">&quot;Error in client session thread for client with id {}: {}&quot;</span>, session-&gt;id(), e.what());</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+<div class="line"><span class="lineno">  109</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Thread for client with ID {} finished&quot;</span>, session-&gt;id());</div>
+<div class="line"><span class="lineno">  110</span>    <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5">removeClient</a>(session-&gt;id());</div>
+<div class="line"><span class="lineno">  111</span>  })</div>
+<div class="line"><span class="lineno">  112</span>    .detach();</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_ab61e4a18c68ab29e90f79d2724b2511c"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">irsol::server::App::m_clients</a></div><div class="ttdeci">client_map_t m_clients</div><div class="ttdoc">Map of connected clients.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00133">app.hpp:133</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ac6b7241370a0cdb0074a1aec0fd03ee5"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5">irsol::server::App::removeClient</a></div><div class="ttdeci">void removeClient(const irsol::types::client_id_t &amp;clientId)</div><div class="ttdoc">Removes a client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00117">app.cpp:117</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1App_html_ac6b7241370a0cdb0074a1aec0fd03ee5"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ac6b7241370a0cdb0074a1aec0fd03ee5">irsol::server::App::removeClient</a></div><div class="ttdeci">void removeClient(const irsol::types::client_id_t &amp;clientId)</div><div class="ttdoc">Removes a client session.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00116">app.cpp:116</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_ad5f4d7bd76d883153b5e7435c10e4390"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">irsol::server::App::m_clientsMutex</a></div><div class="ttdeci">std::mutex m_clientsMutex</div><div class="ttdoc">Mutex for protecting access to m_clients.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00130">app.hpp:130</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga2c8ae9f0bc88357231bbe3c8e885103f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_LOG_INFO(...)</div><div class="ttdoc">Logs an info-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00092">logging.hpp:92</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga5e2b978c0669a28cf95a8f91a667674a"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a></div><div class="ttdeci">#define IRSOL_LOG_ERROR(...)</div><div class="ttdoc">Logs an error-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00094">logging.hpp:94</a></div></div>
+<div class="ttc" id="agroup__Logging_html_ga85d5803f1f7fb99923cdac16d1dc2ee8"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a></div><div class="ttdeci">#define IRSOL_LOG_DEBUG(...)</div><div class="ttdoc">Logs a debug-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00091">logging.hpp:91</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -352,26 +351,26 @@ Private Attributes</h2></td></tr>
 </dl>
 <p>This method is thread-safe and will skip the excluded client if specified. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
-<div class="line"><span class="lineno">   66</span>  <span class="comment">// Serialize the message only once, and distribute to all clients</span></div>
-<div class="line"><span class="lineno">   67</span>  <span class="keyword">auto</span> serializedMessage = <a class="code hl_function" href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7fe9f605fe5148e891c113073990a9e5">irsol::protocol::Serializer::serialize</a>(std::move(message));</div>
-<div class="line"><span class="lineno">   68</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Broadcasting serialized message {}&quot;</span>, serializedMessage.toString());</div>
-<div class="line"><span class="lineno">   69</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [clientId, session] : <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>) {</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">if</span>(excludeClient &amp;&amp; clientId == *excludeClient) {</div>
-<div class="line"><span class="lineno">   73</span>      <span class="keywordflow">continue</span>;  <span class="comment">// Skip the sender if specified</span></div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   76</span>      std::scoped_lock&lt;std::mutex&gt; sessionLock(session-&gt;socketMutex());</div>
-<div class="line"><span class="lineno">   77</span>      session-&gt;handleSerializedMessage(serializedMessage);</div>
-<div class="line"><span class="lineno">   78</span>    } <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::exception&amp; ex) {</div>
-<div class="line"><span class="lineno">   79</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a>(<span class="stringliteral">&quot;Failed to send broadcast to client {}: {}&quot;</span>, clientId, ex.what());</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
-<div class="line"><span class="lineno">   81</span>  }</div>
-<div class="line"><span class="lineno">   82</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Broadcasting complete.&quot;</span>);</div>
-<div class="line"><span class="lineno">   83</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{</div>
+<div class="line"><span class="lineno">   65</span>  <span class="comment">// Serialize the message only once, and distribute to all clients</span></div>
+<div class="line"><span class="lineno">   66</span>  <span class="keyword">auto</span> serializedMessage = <a class="code hl_function" href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7fe9f605fe5148e891c113073990a9e5">irsol::protocol::Serializer::serialize</a>(std::move(message));</div>
+<div class="line"><span class="lineno">   67</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Broadcasting serialized message {}&quot;</span>, serializedMessage.toString());</div>
+<div class="line"><span class="lineno">   68</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [clientId, session] : <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>) {</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span>(excludeClient &amp;&amp; clientId == *excludeClient) {</div>
+<div class="line"><span class="lineno">   72</span>      <span class="keywordflow">continue</span>;  <span class="comment">// Skip the sender if specified</span></div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   75</span>      std::scoped_lock&lt;std::mutex&gt; sessionLock(session-&gt;socketMutex());</div>
+<div class="line"><span class="lineno">   76</span>      session-&gt;handleSerializedMessage(serializedMessage);</div>
+<div class="line"><span class="lineno">   77</span>    } <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::exception&amp; ex) {</div>
+<div class="line"><span class="lineno">   78</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a>(<span class="stringliteral">&quot;Failed to send broadcast to client {}: {}&quot;</span>, clientId, ex.what());</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span>  }</div>
+<div class="line"><span class="lineno">   81</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Broadcasting complete.&quot;</span>);</div>
+<div class="line"><span class="lineno">   82</span>}</div>
 <div class="ttc" id="aclassirsol_1_1protocol_1_1Serializer_html_a7fe9f605fe5148e891c113073990a9e5"><div class="ttname"><a href="../../d1/d6f/classirsol_1_1protocol_1_1Serializer.html#a7fe9f605fe5148e891c113073990a9e5">irsol::protocol::Serializer::serialize</a></div><div class="ttdeci">static internal::SerializedMessage serialize(OutMessage &amp;&amp;msg)</div><div class="ttdoc">Serialize an irsol::protocol::OutMessage variant into a serialized protocol message.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d74/serializer_8cpp_source.html#l00013">serializer.cpp:13</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga5ffc6d687ddca344c775b62c9d6e822f"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga5ffc6d687ddca344c775b62c9d6e822f">IRSOL_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_LOG_WARN(...)</div><div class="ttdoc">Logs a warning-level message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00093">logging.hpp:93</a></div></div>
 </div><!-- fragment -->
@@ -468,12 +467,12 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Shared pointer to the client session, or nullptr if not found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keyword">auto</span>                         it = <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.find(clientId);</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keywordflow">return</span> it != <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.end() ? it-&gt;second : <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   59</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
+<div class="line"><span class="lineno">   55</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keyword">auto</span>                         it = <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.find(clientId);</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> it != <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.end() ? it-&gt;second : <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   58</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -510,8 +509,8 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab769714cca25b178b08c7aaf554af602" name="ab769714cca25b178b08c7aaf554af602"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab769714cca25b178b08c7aaf554af602">&#9670;&#160;</a></span>registerLambdaHandler()</h2>
+<a id="acdda9ba4c2ae2a73e64fe3ec1fb528e6" name="acdda9ba4c2ae2a73e64fe3ec1fb528e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdda9ba4c2ae2a73e64fe3ec1fb528e6">&#9670;&#160;</a></span>registerLambdaHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -530,7 +529,7 @@ template&lt;typename InMessageT , typename LambdaT &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a> &amp;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a> &gt;&#160;</td>
           <td class="paramname"><em>ctx</em>, </td>
         </tr>
         <tr>
@@ -571,27 +570,27 @@ template&lt;typename InMessageT , typename LambdaT &gt; </div>
 <p>Example: </p><div class="fragment"><div class="line">registerLambdaHandler&lt;protocol::Command&gt;(</div>
 <div class="line">  <span class="stringliteral">&quot;custom_cmd&quot;</span>,</div>
 <div class="line">  ctx,</div>
-<div class="line">  [](<a class="code hl_struct" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">handlers::Context</a>&amp; ctx, <span class="keyword">const</span> <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp; clientId, <a class="code hl_struct" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a>&amp;&amp;</div>
-<div class="line">cmd) { <span class="keywordflow">return</span> std::vector&lt;protocol::OutMessage&gt;{...};</div>
+<div class="line">  [](std::shared_ptr&lt;handlers::Context&gt; ctx, <span class="keyword">const</span> <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp; clientId,</div>
+<div class="line"><a class="code hl_struct" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a>&amp;&amp; cmd) { <span class="keywordflow">return</span> std::vector&lt;protocol::OutMessage&gt;{...};</div>
 <div class="line">  }</div>
 <div class="line">);</div>
 <div class="ttc" id="anamespaceirsol_1_1types_html_a1e34241919e241ec2f3f6b8c236f40ae"><div class="ttname"><a href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a></div><div class="ttdeci">std::string client_id_t</div><div class="ttdoc">Represents a unique client identifier. Typically used to identify connected clients by string IDs.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/de3/types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
 <div class="ttc" id="astructirsol_1_1protocol_1_1Command_html"><div class="ttname"><a href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">irsol::protocol::Command</a></div><div class="ttdoc">Represents a command invocation in the protocol.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dc7/command_8hpp_source.html#l00032">command.hpp:33</a></div></div>
-<div class="ttc" id="astructirsol_1_1server_1_1handlers_1_1Context_html"><div class="ttname"><a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a></div><div class="ttdoc">Context object passed to all handler classes.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/da3/context_8hpp_source.html#l00034">context.hpp:35</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00214">214</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  215</span>  {</div>
-<div class="line"><span class="lineno">  216</span>    <span class="keyword">auto</span>  handler = handlers::makeLambdaHandler&lt;InMessageT&gt;(ctx, std::forward&lt;LambdaT&gt;(lambda));</div>
-<div class="line"><span class="lineno">  217</span>    <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> = *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
-<div class="line"><span class="lineno">  218</span> </div>
-<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a>.template registerHandler&lt;InMessageT&gt;(identifier, handler)) {</div>
-<div class="line"><span class="lineno">  220</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a>(<span class="stringliteral">&quot;Failed to register lambda handler for identifier {}&quot;</span>, identifier);</div>
-<div class="line"><span class="lineno">  221</span>      <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><span class="lineno">  222</span>        <span class="stringliteral">&quot;Failed to register lambda handler for identifier &#39;&quot;</span> + identifier + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><span class="lineno">  223</span>    }</div>
-<div class="line"><span class="lineno">  224</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00213">213</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  217</span>  {</div>
+<div class="line"><span class="lineno">  218</span>    <span class="keyword">auto</span>  handler = <a class="code hl_function" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">handlers::makeLambdaHandler&lt;InMessageT&gt;</a>(ctx, std::forward&lt;LambdaT&gt;(lambda));</div>
+<div class="line"><span class="lineno">  219</span>    <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> = *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
+<div class="line"><span class="lineno">  220</span> </div>
+<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a>.template registerHandler&lt;InMessageT&gt;(identifier, handler)) {</div>
+<div class="line"><span class="lineno">  222</span>      <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a>(<span class="stringliteral">&quot;Failed to register lambda handler for identifier {}&quot;</span>, identifier);</div>
+<div class="line"><span class="lineno">  223</span>      <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><span class="lineno">  224</span>        <span class="stringliteral">&quot;Failed to register lambda handler for identifier &#39;&quot;</span> + identifier + <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">  225</span>    }</div>
+<div class="line"><span class="lineno">  226</span>  }</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_a488466726e84fb900a31d999986bc7a8"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">irsol::server::App::messageHandler</a></div><div class="ttdeci">const handlers::MessageHandler &amp; messageHandler() const</div><div class="ttdoc">Accessor for the message handler.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00114">app.hpp:114</a></div></div>
 <div class="ttc" id="agroup__Logging_html_ga12a839278fd4290a53aa7b0f9f9263b5"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga12a839278fd4290a53aa7b0f9f9263b5">IRSOL_LOG_FATAL</a></div><div class="ttdeci">#define IRSOL_LOG_FATAL(...)</div><div class="ttdoc">Logs a fatal (critical) message using the default logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00095">logging.hpp:95</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1server_1_1handlers_html_a713fd41e924dce65decbd5f2b6284279"><div class="ttname"><a href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">irsol::server::handlers::makeHandler</a></div><div class="ttdeci">constexpr auto makeHandler(std::shared_ptr&lt; Context &gt; ctx, Args &amp;&amp;... args)</div><div class="ttdoc">Constructs a handler instance of the given type.</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d2d/factory_8hpp_source.html#l00028">factory.hpp:28</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -651,7 +650,7 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="../../d6/d2c/app_8hpp_source.html#l00182">182</a> of file <a class="el" href="../../d6/d2c/app_8hpp_source.html">app.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  183</span>  {</div>
-<div class="line"><span class="lineno">  184</span>    <span class="keyword">auto</span>  handler        = handlers::makeHandler&lt;HandlerT&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><span class="lineno">  184</span>    <span class="keyword">auto</span>  handler        = <a class="code hl_function" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279">handlers::makeHandler&lt;HandlerT&gt;</a>(std::forward&lt;Args&gt;(args)...);</div>
 <div class="line"><span class="lineno">  185</span>    <span class="keyword">auto</span>&amp; <a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a> = *<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#aea70dd9a2207e836b59bd92c899d1d93">m_messageHandler</a>;</div>
 <div class="line"><span class="lineno">  186</span> </div>
 <div class="line"><span class="lineno">  187</span>    <span class="keywordflow">if</span>(!<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a488466726e84fb900a31d999986bc7a8">messageHandler</a>.template registerHandler&lt;InMessageT&gt;(identifier, handler)) {</div>
@@ -688,61 +687,63 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 <p>Registers standard message handlers. </p>
 <p>Sets up the message handler registry with known message-handler mappings. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00133">133</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
-<div class="line"><span class="lineno">  135</span>  <span class="comment">// Build a context to pass to all handlers</span></div>
-<div class="line"><span class="lineno">  136</span>  handlers::Context ctx{*<span class="keyword">this</span>};</div>
-<div class="line"><span class="lineno">  137</span> </div>
-<div class="line"><span class="lineno">  138</span>  <span class="comment">// Register message handlers for specific message types</span></div>
-<div class="line"><span class="lineno">  139</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryFrameRateHandler&gt;(<span class="stringliteral">&quot;fr&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  140</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentFrameRateHandler&gt;(<span class="stringliteral">&quot;fr&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  141</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentInputSequenceLengthHandler&gt;(</div>
-<div class="line"><span class="lineno">  142</span>    <span class="stringliteral">&quot;isl&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  143</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentIntegrationTimeHandler&gt;(</div>
-<div class="line"><span class="lineno">  144</span>    <span class="stringliteral">&quot;it&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  145</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryIntegrationTimeHandler&gt;(<span class="stringliteral">&quot;it&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  146</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryInputSequenceLengthHandler&gt;(</div>
-<div class="line"><span class="lineno">  147</span>    <span class="stringliteral">&quot;isl&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  148</span>  registerMessageHandler&lt;protocol::Command, handlers::CommandAbortHandler&gt;(<span class="stringliteral">&quot;abort&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  149</span>  registerMessageHandler&lt;protocol::Command, handlers::CommandGIHandler&gt;(<span class="stringliteral">&quot;gi&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  150</span>  registerMessageHandler&lt;protocol::Command, handlers::CommandGISHandler&gt;(<span class="stringliteral">&quot;gis&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  151</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgLeftHandler&gt;(<span class="stringliteral">&quot;img_l&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  152</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgTopHandler&gt;(<span class="stringliteral">&quot;img_t&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  153</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgWidthHandler&gt;(<span class="stringliteral">&quot;img_w&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  154</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgHeightHandler&gt;(<span class="stringliteral">&quot;img_h&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  155</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgLeftHandler&gt;(<span class="stringliteral">&quot;img_l&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  156</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgTopHandler&gt;(<span class="stringliteral">&quot;img_t&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  157</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgWidthHandler&gt;(<span class="stringliteral">&quot;img_w&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  158</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgHeightHandler&gt;(<span class="stringliteral">&quot;img_h&quot;</span>, ctx);</div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>  registerLambdaHandler&lt;protocol::Command&gt;(</div>
-<div class="line"><span class="lineno">  161</span>    <span class="stringliteral">&quot;image_data&quot;</span>,</div>
-<div class="line"><span class="lineno">  162</span>    ctx,</div>
-<div class="line"><span class="lineno">  163</span>    [](handlers::Context&amp; ctx, <span class="keyword">const</span> <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp; clientId, protocol::Command&amp;&amp; cmd)</div>
-<div class="line"><span class="lineno">  164</span>      -&gt; std::vector&lt;protocol::OutMessage&gt; {</div>
-<div class="line"><span class="lineno">  165</span>      std::vector&lt;protocol::OutMessage&gt; <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
-<div class="line"><span class="lineno">  166</span>      <span class="keyword">auto</span>&amp;                             cam = ctx.app.camera();</div>
-<div class="line"><span class="lineno">  167</span>      <span class="keyword">auto</span>                              img = cam.captureImage(std::chrono::milliseconds(10000));</div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>      <span class="keywordflow">if</span>(img.IsEmpty()) {</div>
-<div class="line"><span class="lineno">  170</span>        IRSOL_NAMED_LOG_ERROR(clientId, <span class="stringliteral">&quot;Failed to capture image.&quot;</span>);</div>
-<div class="line"><span class="lineno">  171</span>        result.emplace_back(irsol::protocol::Error::from(cmd, <span class="stringliteral">&quot;Failed to capture image&quot;</span>));</div>
-<div class="line"><span class="lineno">  172</span>        return result;</div>
-<div class="line"><span class="lineno">  173</span>      }</div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>      uint32_t width    = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(img.GetWidth());</div>
-<div class="line"><span class="lineno">  176</span>      uint32_t height   = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(img.GetHeight());</div>
-<div class="line"><span class="lineno">  177</span>      <span class="keywordtype">size_t</span>   dataSize = img.GetSize();</div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>      <span class="keyword">const</span> <span class="keywordtype">void</span>*                       imageBuffer = img.GetImageData();</div>
-<div class="line"><span class="lineno">  180</span>      std::vector&lt;irsol::types::byte_t&gt; rawData(dataSize);</div>
-<div class="line"><span class="lineno">  181</span>      memcpy(rawData.data(), imageBuffer, dataSize);</div>
-<div class="line"><span class="lineno">  182</span> </div>
-<div class="line"><span class="lineno">  183</span>      <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>.emplace_back(</div>
-<div class="line"><span class="lineno">  184</span>        <a class="code hl_struct" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::ImageBinaryData</a>(std::move(rawData), {height, width}, {}));</div>
-<div class="line"><span class="lineno">  185</span>      <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
-<div class="line"><span class="lineno">  186</span>    });</div>
-<div class="line"><span class="lineno">  187</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00132">132</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>{</div>
+<div class="line"><span class="lineno">  134</span>  <span class="comment">// Build a context to pass to all handlers</span></div>
+<div class="line"><span class="lineno">  135</span>  <span class="keyword">auto</span> ctx = std::make_shared&lt;irsol::server::handlers::Context&gt;(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>  <span class="comment">// Register message handlers for specific message types</span></div>
+<div class="line"><span class="lineno">  138</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryFrameRateHandler&gt;(<span class="stringliteral">&quot;fr&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  139</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentFrameRateHandler&gt;(<span class="stringliteral">&quot;fr&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  140</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentInputSequenceLengthHandler&gt;(</div>
+<div class="line"><span class="lineno">  141</span>    <span class="stringliteral">&quot;isl&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  142</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentIntegrationTimeHandler&gt;(</div>
+<div class="line"><span class="lineno">  143</span>    <span class="stringliteral">&quot;it&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  144</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryIntegrationTimeHandler&gt;(<span class="stringliteral">&quot;it&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  145</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryInputSequenceLengthHandler&gt;(</div>
+<div class="line"><span class="lineno">  146</span>    <span class="stringliteral">&quot;isl&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  147</span>  registerMessageHandler&lt;protocol::Command, handlers::CommandAbortHandler&gt;(<span class="stringliteral">&quot;abort&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  148</span>  registerMessageHandler&lt;protocol::Command, handlers::CommandGIHandler&gt;(<span class="stringliteral">&quot;gi&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  149</span>  registerMessageHandler&lt;protocol::Command, handlers::CommandGISHandler&gt;(<span class="stringliteral">&quot;gis&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  150</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgLeftHandler&gt;(<span class="stringliteral">&quot;img_l&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  151</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgTopHandler&gt;(<span class="stringliteral">&quot;img_t&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  152</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgWidthHandler&gt;(<span class="stringliteral">&quot;img_w&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  153</span>  registerMessageHandler&lt;protocol::Inquiry, handlers::InquiryImgHeightHandler&gt;(<span class="stringliteral">&quot;img_h&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  154</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgLeftHandler&gt;(<span class="stringliteral">&quot;img_l&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  155</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgTopHandler&gt;(<span class="stringliteral">&quot;img_t&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  156</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgWidthHandler&gt;(<span class="stringliteral">&quot;img_w&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  157</span>  registerMessageHandler&lt;protocol::Assignment, handlers::AssignmentImgHeightHandler&gt;(<span class="stringliteral">&quot;img_h&quot;</span>, ctx);</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span>  registerLambdaHandler&lt;protocol::Command&gt;(</div>
+<div class="line"><span class="lineno">  160</span>    <span class="stringliteral">&quot;image_data&quot;</span>,</div>
+<div class="line"><span class="lineno">  161</span>    ctx,</div>
+<div class="line"><span class="lineno">  162</span>    [](</div>
+<div class="line"><span class="lineno">  163</span>      std::shared_ptr&lt;handlers::Context&gt;            ctx,</div>
+<div class="line"><span class="lineno">  164</span>      std::shared_ptr&lt;irsol::server::ClientSession&gt; client,</div>
+<div class="line"><span class="lineno">  165</span>      protocol::Command&amp;&amp;                           cmd) -&gt; std::vector&lt;protocol::OutMessage&gt; {</div>
+<div class="line"><span class="lineno">  166</span>      std::vector&lt;protocol::OutMessage&gt; <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
+<div class="line"><span class="lineno">  167</span>      <span class="keyword">auto</span>&amp;                             cam = ctx-&gt;app.camera();</div>
+<div class="line"><span class="lineno">  168</span>      <span class="keyword">auto</span>                              img = cam.captureImage(std::chrono::milliseconds(10000));</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>      <span class="keywordflow">if</span>(img.IsEmpty()) {</div>
+<div class="line"><span class="lineno">  171</span>        IRSOL_NAMED_LOG_ERROR(client-&gt;id(), <span class="stringliteral">&quot;Failed to capture image.&quot;</span>);</div>
+<div class="line"><span class="lineno">  172</span>        result.emplace_back(irsol::protocol::Error::from(cmd, <span class="stringliteral">&quot;Failed to capture image&quot;</span>));</div>
+<div class="line"><span class="lineno">  173</span>        return result;</div>
+<div class="line"><span class="lineno">  174</span>      }</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>      uint32_t width    = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(img.GetWidth());</div>
+<div class="line"><span class="lineno">  177</span>      uint32_t height   = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(img.GetHeight());</div>
+<div class="line"><span class="lineno">  178</span>      <span class="keywordtype">size_t</span>   dataSize = img.GetSize();</div>
+<div class="line"><span class="lineno">  179</span> </div>
+<div class="line"><span class="lineno">  180</span>      <span class="keyword">const</span> <span class="keywordtype">void</span>*                       imageBuffer = img.GetImageData();</div>
+<div class="line"><span class="lineno">  181</span>      std::vector&lt;irsol::types::byte_t&gt; rawData(dataSize);</div>
+<div class="line"><span class="lineno">  182</span>      memcpy(rawData.data(), imageBuffer, dataSize);</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>      <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>.emplace_back(</div>
+<div class="line"><span class="lineno">  185</span>        <a class="code hl_struct" href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::ImageBinaryData</a>(std::move(rawData), {height, width}, {}));</div>
+<div class="line"><span class="lineno">  186</span>      <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
+<div class="line"><span class="lineno">  187</span>    });</div>
+<div class="line"><span class="lineno">  188</span>}</div>
 <div class="ttc" id="astructirsol_1_1protocol_1_1internal_1_1BinaryData_html"><div class="ttname"><a href="../../dd/d6d/structirsol_1_1protocol_1_1internal_1_1BinaryData.html">irsol::protocol::internal::BinaryData</a></div><div class="ttdoc">Represents a binary data object within the protocol.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d2e/binary_8hpp_source.html#l00106">binary.hpp:107</a></div></div>
 <div class="ttc" id="atest__error_8cpp_html_aede94e5895960e8807719a1a1abf9f43"><div class="ttname"><a href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dbc/test__error_8cpp_source.html#l00017">test_error.cpp:17</a></div></div>
 </div><!-- fragment -->
@@ -781,20 +782,20 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 </dl>
 <p>This is typically called automatically when the client disconnects or times out. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00117">117</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  118</span>{</div>
-<div class="line"><span class="lineno">  119</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
-<div class="line"><span class="lineno">  120</span>  <span class="keyword">auto</span>                         clientIt = <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.find(clientId);</div>
-<div class="line"><span class="lineno">  121</span>  <span class="keywordflow">if</span>(clientIt == <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.end()) {</div>
-<div class="line"><span class="lineno">  122</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Client &#39;{}&#39; not found in session list&quot;</span>, clientId);</div>
-<div class="line"><span class="lineno">  123</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  124</span>    <span class="keyword">auto</span> client = clientIt-&gt;second;</div>
-<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">m_frameCollector</a>-&gt;deregisterClient(client-&gt;id());</div>
-<div class="line"><span class="lineno">  126</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.erase(clientIt);</div>
-<div class="line"><span class="lineno">  127</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
-<div class="line"><span class="lineno">  128</span>      <span class="stringliteral">&quot;Client {} removed from session list, remaining clients: {}&quot;</span>, clientId, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.size());</div>
-<div class="line"><span class="lineno">  129</span>  }</div>
-<div class="line"><span class="lineno">  130</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>  std::scoped_lock&lt;std::mutex&gt; lock(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ad5f4d7bd76d883153b5e7435c10e4390">m_clientsMutex</a>);</div>
+<div class="line"><span class="lineno">  119</span>  <span class="keyword">auto</span>                         clientIt = <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.find(clientId);</div>
+<div class="line"><span class="lineno">  120</span>  <span class="keywordflow">if</span>(clientIt == <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.end()) {</div>
+<div class="line"><span class="lineno">  121</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Client &#39;{}&#39; not found in session list&quot;</span>, clientId);</div>
+<div class="line"><span class="lineno">  122</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  123</span>    <span class="keyword">auto</span> client = clientIt-&gt;second;</div>
+<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">m_frameCollector</a>-&gt;deregisterClient(client-&gt;id());</div>
+<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.erase(clientIt);</div>
+<div class="line"><span class="lineno">  126</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(</div>
+<div class="line"><span class="lineno">  127</span>      <span class="stringliteral">&quot;Client {} removed from session list, remaining clients: {}&quot;</span>, clientId, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#ab61e4a18c68ab29e90f79d2724b2511c">m_clients</a>.size());</div>
+<div class="line"><span class="lineno">  128</span>  }</div>
+<div class="line"><span class="lineno">  129</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -817,17 +818,17 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 <dl class="section return"><dt>Returns</dt><dd>True if the server starts successfully, false otherwise.</dd></dl>
 <p>This starts the acceptor thread, initializes camera and message handlers, and prepares the system for client interaction. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
-<div class="line"><span class="lineno">   29</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>.<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">isOpen</a>()) {</div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to open acceptor on port {}: {}&quot;</span>, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">m_port</a>, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>.<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">error</a>());</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   32</span>  }</div>
-<div class="line"><span class="lineno">   33</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Starting accept thread&quot;</span>);</div>
-<div class="line"><span class="lineno">   34</span>  <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">m_acceptThread</a> = std::thread(&amp;<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ad6f5a0eba72fcf71da351c599ff402e3">internal::ClientSessionAcceptor::run</a>, &amp;<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>);</div>
-<div class="line"><span class="lineno">   35</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Server started successfully&quot;</span>);</div>
-<div class="line"><span class="lineno">   36</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   37</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>  <span class="keywordflow">if</span>(!<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>.<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">isOpen</a>()) {</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga5e2b978c0669a28cf95a8f91a667674a">IRSOL_LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to open acceptor on port {}: {}&quot;</span>, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a0a3ef4871e7ab1b9a5a1ad6ed61ee0ec">m_port</a>, <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>.<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">error</a>());</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   31</span>  }</div>
+<div class="line"><span class="lineno">   32</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Starting accept thread&quot;</span>);</div>
+<div class="line"><span class="lineno">   33</span>  <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">m_acceptThread</a> = std::thread(&amp;<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ad6f5a0eba72fcf71da351c599ff402e3">internal::ClientSessionAcceptor::run</a>, &amp;<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>);</div>
+<div class="line"><span class="lineno">   34</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Server started successfully&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   36</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_a4cde018a00938a5c940874d8469944be"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">irsol::server::App::m_acceptThread</a></div><div class="ttdeci">std::thread m_acceptThread</div><div class="ttdoc">Thread running the connection acceptor loop.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00127">app.hpp:127</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_ac34a488c77ed081884e301468d87d103"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#ac34a488c77ed081884e301468d87d103">irsol::server::internal::ClientSessionAcceptor::isOpen</a></div><div class="ttdeci">bool isOpen() const</div><div class="ttdoc">Checks if the acceptor is actively listening.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00027">acceptor.cpp:27</a></div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_acd091ae1e5721a30b70638d0af919908"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#acd091ae1e5721a30b70638d0af919908">irsol::server::internal::ClientSessionAcceptor::error</a></div><div class="ttdeci">std::string error() const</div><div class="ttdoc">Gets the current error message, if any.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00020">acceptor.cpp:20</a></div></div>
@@ -853,18 +854,18 @@ template&lt;typename InMessageT , typename HandlerT , typename... Args&gt; </div
 <p>Stops the server. </p>
 <p>Gracefully shuts down client sessions, stops the frame collector, and joins the acceptor thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
-<div class="line"><span class="lineno">   42</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Stopping server&quot;</span>);</div>
-<div class="line"><span class="lineno">   43</span>  <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>.<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a94ef12568141ee0a5e1b8aed41ef3b8e">stop</a>();</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">m_acceptThread</a>.joinable()) {</div>
-<div class="line"><span class="lineno">   46</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Joining accept thread&quot;</span>);</div>
-<div class="line"><span class="lineno">   47</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">m_acceptThread</a>.join();</div>
-<div class="line"><span class="lineno">   48</span>  }</div>
-<div class="line"><span class="lineno">   49</span>  <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">m_frameCollector</a>-&gt;stop();</div>
-<div class="line"><span class="lineno">   50</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Server stopped&quot;</span>);</div>
-<div class="line"><span class="lineno">   51</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d5/df2/app_8cpp_source.html#l00039">39</a> of file <a class="el" href="../../d5/df2/app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Stopping server&quot;</span>);</div>
+<div class="line"><span class="lineno">   42</span>  <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a2fb7bb9c0a96f8585750770880181d12">m_acceptor</a>.<a class="code hl_function" href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a94ef12568141ee0a5e1b8aed41ef3b8e">stop</a>();</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>  <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">m_acceptThread</a>.joinable()) {</div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga85d5803f1f7fb99923cdac16d1dc2ee8">IRSOL_LOG_DEBUG</a>(<span class="stringliteral">&quot;Joining accept thread&quot;</span>);</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a4cde018a00938a5c940874d8469944be">m_acceptThread</a>.join();</div>
+<div class="line"><span class="lineno">   47</span>  }</div>
+<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="../../db/dc5/classirsol_1_1server_1_1App.html#a73d8272bb6c2ddd147d1a4e37e76df61">m_frameCollector</a>-&gt;stop();</div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_define" href="../../d0/d58/group__Logging.html#ga2c8ae9f0bc88357231bbe3c8e885103f">IRSOL_LOG_INFO</a>(<span class="stringliteral">&quot;Server stopped&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1internal_1_1ClientSessionAcceptor_html_a94ef12568141ee0a5e1b8aed41ef3b8e"><div class="ttname"><a href="../../d4/db5/classirsol_1_1server_1_1internal_1_1ClientSessionAcceptor.html#a94ef12568141ee0a5e1b8aed41ef3b8e">irsol::server::internal::ClientSessionAcceptor::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops the accept loop.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d7e/acceptor_8cpp_source.html#l00033">acceptor.cpp:33</a></div></div>
 </div><!-- fragment -->
 </div>

@@ -26,6 +26,6 @@ var namespaceirsol_1_1server_1_1handlers =
     [ "InquiryImgTopHandler", "d9/da2/namespaceirsol_1_1server_1_1handlers.html#afcc99cc935b381022c0bba24141dec64", null ],
     [ "InquiryImgWidthHandler", "d9/da2/namespaceirsol_1_1server_1_1handlers.html#a51ae0468be4d7aa482f9693a8f9a2573", null ],
     [ "out_message_t", "d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d", null ],
-    [ "makeHandler", "d9/da2/namespaceirsol_1_1server_1_1handlers.html#a537a231d55a358298c52f340e42b4f8d", null ],
-    [ "makeLambdaHandler", "d9/da2/namespaceirsol_1_1server_1_1handlers.html#a8930c31fe665148fbba0460bb8a341fd", null ]
+    [ "makeHandler", "d9/da2/namespaceirsol_1_1server_1_1handlers.html#a713fd41e924dce65decbd5f2b6284279", null ],
+    [ "makeLambdaHandler", "d9/da2/namespaceirsol_1_1server_1_1handlers.html#a164c9dd5bcacd4fd6dba57b2ba59cacb", null ]
 ];

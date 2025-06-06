@@ -88,5 +88,6 @@ var annotated_dup =
       ] ]
     ] ],
     [ "LoggingListener", "dc/d24/classLoggingListener.html", "dc/d24/classLoggingListener" ],
+    [ "MyAssignmentHandler", "d5/d9b/classMyAssignmentHandler.html", "d5/d9b/classMyAssignmentHandler" ],
     [ "Params", "de/db8/structParams.html", "de/db8/structParams" ]
 ];

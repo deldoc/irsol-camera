@@ -100,7 +100,7 @@ Namespaces</h2></td></tr>
 <li>Unit/integration testing with mock handlers.</li>
 <li>Reducing boilerplate for trivial handlers.</li>
 </ul>
-<p>Example usage: </p><div class="fragment"><div class="line">ctx.registerLambdaHandler&lt;protocol::Command&gt;(</div>
+<p>Example usage: </p><div class="fragment"><div class="line">ctx-&gt;registerLambdaHandler&lt;protocol::Command&gt;(</div>
 <div class="line">  <span class="stringliteral">&quot;my_custom_cmd&quot;</span>,</div>
 <div class="line">  ctx,</div>
 <div class="line">  [](handlers::Context&amp; ctx, <span class="keyword">const</span> <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp; clientId, protocol::Command&amp;&amp; cmd)</div>
