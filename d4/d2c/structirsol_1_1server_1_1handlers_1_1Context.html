@@ -57,27 +57,35 @@ $(document).ready(function(){initNavTree('d4/d2c/structirsol_1_1server_1_1handle
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../d2/db4/structirsol_1_1server_1_1handlers_1_1Context-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::handlers::Context Struct Reference</div></div>
+  <div class="headertitle"><div class="title">irsol::server::handlers::Context Struct Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html" title="Context object passed to all handler classes.">Context</a> object passed to all handler classes.  
+ <a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a55a332202e0d22fbf58e582907f40021" id="r_a55a332202e0d22fbf58e582907f40021"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#a55a332202e0d22fbf58e582907f40021">getSession</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;clientId)</td></tr>
+<tr class="memdesc:a55a332202e0d22fbf58e582907f40021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the client's session associated with the given clientId.  <br /></td></tr>
 <tr class="separator:a55a332202e0d22fbf58e582907f40021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3265dc79f8c68854119c6a2303be373d" id="r_a3265dc79f8c68854119c6a2303be373d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#a3265dc79f8c68854119c6a2303be373d">broadcastMessage</a> (<a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">protocol::OutMessage</a> &amp;&amp;message, const std::optional&lt; <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &gt; &amp;excludeClient=std::nullopt)</td></tr>
+<tr class="memdesc:a3265dc79f8c68854119c6a2303be373d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broadcasts a message to all clients.  <br /></td></tr>
 <tr class="separator:a3265dc79f8c68854119c6a2303be373d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:af2df79ce2c7e7220c379d48608b92fb5" id="r_af2df79ce2c7e7220c379d48608b92fb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">App</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#af2df79ce2c7e7220c379d48608b92fb5">app</a></td></tr>
+<tr class="memdesc:af2df79ce2c7e7220c379d48608b92fb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the application instance.  <br /></td></tr>
 <tr class="separator:af2df79ce2c7e7220c379d48608b92fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00014">14</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+<div class="textblock"><p><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html" title="Context object passed to all handler classes.">Context</a> object passed to all handler classes. </p>
+<p>Provides access to the application instance and utility methods for retrieving client sessions and broadcasting messages. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00034">34</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3265dc79f8c68854119c6a2303be373d" name="a3265dc79f8c68854119c6a2303be373d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3265dc79f8c68854119c6a2303be373d">&#9670;&#160;</a></span>broadcastMessage()</h2>
@@ -104,14 +112,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Utility method to broadcast a message to all clients. Optionally disable the broadcasting to a specific client. </p>
+
+<p>Broadcasts a message to all clients. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The outbound message to broadcast. </td></tr>
+    <tr><td class="paramname">excludeClient</td><td>Optional client to exclude from the broadcast. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/de4/base_8cpp_source.html#l00015">15</a> of file <a class="el" href="../../d5/de4/base_8cpp_source.html">base.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
 <div class="line"><span class="lineno">   19</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#af2df79ce2c7e7220c379d48608b92fb5">app</a>.<a class="code hl_function" href="../../db/dc5/classirsol_1_1server_1_1App.html#a82a57dc3845931c5545de504eac102e0">broadcastMessage</a>(std::move(message), excludeClient);</div>
 <div class="line"><span class="lineno">   20</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_a82a57dc3845931c5545de504eac102e0"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a82a57dc3845931c5545de504eac102e0">irsol::server::App::broadcastMessage</a></div><div class="ttdeci">void broadcastMessage(protocol::OutMessage &amp;&amp;message, const std::optional&lt; irsol::types::client_id_t &gt; &amp;excludeClient=std::nullopt)</div><div class="ttdoc">Broadcasts a message to all connected clients.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/df2/app_8cpp_source.html#l00062">app.cpp:62</a></div></div>
-<div class="ttc" id="astructirsol_1_1server_1_1handlers_1_1Context_html_af2df79ce2c7e7220c379d48608b92fb5"><div class="ttname"><a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#af2df79ce2c7e7220c379d48608b92fb5">irsol::server::handlers::Context::app</a></div><div class="ttdeci">App &amp; app</div><div class="ttdef"><b>Definition</b> <a href="../../d2/da3/context_8hpp_source.html#l00016">context.hpp:16</a></div></div>
+<div class="ttc" id="astructirsol_1_1server_1_1handlers_1_1Context_html_af2df79ce2c7e7220c379d48608b92fb5"><div class="ttname"><a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#af2df79ce2c7e7220c379d48608b92fb5">irsol::server::handlers::Context::app</a></div><div class="ttdeci">App &amp; app</div><div class="ttdoc">Reference to the application instance.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/da3/context_8hpp_source.html#l00037">context.hpp:37</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -130,7 +146,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Utility method to retrieve the client's session associated with the clientId passed as argument. </p>
+
+<p>Retrieves the client's session associated with the given clientId. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientId</td><td>The client identifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the client session, or nullptr if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/de4/base_8cpp_source.html#l00009">9</a> of file <a class="el" href="../../d5/de4/base_8cpp_source.html">base.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   10</span>{</div>
@@ -153,7 +177,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00016">16</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+<p>Reference to the application instance. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/da3/context_8hpp_source.html#l00037">37</a> of file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
 
 </div>
 </div>

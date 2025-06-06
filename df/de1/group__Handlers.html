@@ -55,16 +55,65 @@ $(document).ready(function(){initNavTree('df/de1/group__Handlers.html','../../')
 <div class="header">
   <div class="summary">
 <a href="#files">Files</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">Handlers</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Maps incoming protocol messages to application logic. Implements message handling objects that are associated to specific <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a>. The <code>Handlers</code> group contains components responsible for interpreting incoming protocol messages and routing them to the appropriate logic. These handlers form the glue layer between low-level message parsing and the per-client application functionality. Classes in this group are typically used by the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> to centralize registration of command, assignment, and inquiry message handlers.  
+<p>Provides the mapping between incoming protocol messages and application logic.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
 Files</h2></td></tr>
+<tr class="memitem:d1/dba/assignment__frame__rate_8hpp" id="r_d1/dba/assignment__frame__rate_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dba/assignment__frame__rate_8hpp.html">assignment_frame_rate.hpp</a></td></tr>
+<tr class="memdesc:d1/dba/assignment__frame__rate_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the AssignmentFrameRateHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d9/d4b/assignment__image__size_8hpp" id="r_d9/d4b/assignment__image__size_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d4b/assignment__image__size_8hpp.html">assignment_image_size.hpp</a></td></tr>
+<tr class="memdesc:d9/d4b/assignment__image__size_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of handlers for assigning camera image size and offset parameters. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d3/dbd/assignment__input__sequence__length_8hpp" id="r_d3/dbd/assignment__input__sequence__length_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbd/assignment__input__sequence__length_8hpp.html">assignment_input_sequence_length.hpp</a></td></tr>
+<tr class="memdesc:d3/dbd/assignment__input__sequence__length_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the AssignmentInputSequenceLengthHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dd/dd8/assignment__integration__time_8hpp" id="r_dd/dd8/assignment__integration__time_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dd8/assignment__integration__time_8hpp.html">assignment_integration_time.hpp</a></td></tr>
+<tr class="memdesc:dd/dd8/assignment__integration__time_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the AssignmentIntegrationTimeHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dd/d3c/base_8hpp" id="r_dd/d3c/base_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d3c/base_8hpp.html">base.hpp</a></td></tr>
+<tr class="memdesc:dd/d3c/base_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base handler templates for protocol message processing. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d6/da2/command__abort_8hpp" id="r_d6/da2/command__abort_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/da2/command__abort_8hpp.html">command_abort.hpp</a></td></tr>
+<tr class="memdesc:d6/da2/command__abort_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the CommandAbortHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:da/d77/command__gi_8hpp" id="r_da/d77/command__gi_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d77/command__gi_8hpp.html">command_gi.hpp</a></td></tr>
+<tr class="memdesc:da/d77/command__gi_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the CommandGIHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d6/d94/command__gi__base_8hpp" id="r_d6/d94/command__gi__base_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d94/command__gi__base_8hpp.html">command_gi_base.hpp</a></td></tr>
+<tr class="memdesc:d6/d94/command__gi__base_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the CommandGIBaseHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dc/d9e/command__gis_8hpp" id="r_dc/d9e/command__gis_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d9e/command__gis_8hpp.html">command_gis.hpp</a></td></tr>
+<tr class="memdesc:dc/d9e/command__gis_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the CommandGISHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d2/da3/context_8hpp" id="r_d2/da3/context_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/da3/context_8hpp.html">context.hpp</a></td></tr>
+<tr class="memdesc:d2/da3/context_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the handler context struct. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dc/d2d/factory_8hpp" id="r_dc/d2d/factory_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d2d/factory_8hpp.html">factory.hpp</a></td></tr>
+<tr class="memdesc:dc/d2d/factory_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory utilities for constructing handler instances. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:de/da3/inquiry__frame__rate_8hpp" id="r_de/da3/inquiry__frame__rate_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da3/inquiry__frame__rate_8hpp.html">inquiry_frame_rate.hpp</a></td></tr>
+<tr class="memdesc:de/da3/inquiry__frame__rate_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the InquiryFrameRateHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d5/ddd/inquiry__image__size_8hpp" id="r_d5/ddd/inquiry__image__size_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/ddd/inquiry__image__size_8hpp.html">inquiry_image_size.hpp</a></td></tr>
+<tr class="memdesc:d5/ddd/inquiry__image__size_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of handlers for inquiring camera image size and offset parameters. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:df/dde/inquiry__input__sequence__length_8hpp" id="r_df/dde/inquiry__input__sequence__length_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dde/inquiry__input__sequence__length_8hpp.html">inquiry_input_sequence_length.hpp</a></td></tr>
+<tr class="memdesc:df/dde/inquiry__input__sequence__length_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the InquiryInputSequenceLengthHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:df/dd1/inquiry__integration__time_8hpp" id="r_df/dd1/inquiry__integration__time_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd1/inquiry__integration__time_8hpp.html">inquiry_integration_time.hpp</a></td></tr>
+<tr class="memdesc:df/dd1/inquiry__integration__time_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the InquiryIntegrationTimeHandler class. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:da/dc5/lambda__handler_8hpp" id="r_da/dc5/lambda__handler_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/lambda__handler_8hpp.html">lambda_handler.hpp</a></td></tr>
+<tr class="memdesc:da/dc5/lambda__handler_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of the LambdaHandler class for protocol message handling. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:dc/d84/message__handler_8hpp" id="r_dc/d84/message__handler_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d84/message__handler_8hpp.html">message_handler.hpp</a></td></tr>
 <tr class="memdesc:dc/d84/message__handler_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message routing layer between protocol and application logic. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -72,11 +121,71 @@ Files</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d9/da2/namespaceirsol_1_1server_1_1handlers" id="r_d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html">irsol::server::handlers</a></td></tr>
-<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains message dispatching logic and per-identifier handler implementations. <br /></td></tr>
+<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all logic for dispatching and implementing protocol message handlers. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d6d/classirsol_1_1server_1_1handlers_1_1AssignmentFrameRateHandler.html">irsol::server::handlers::AssignmentFrameRateHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for assignment of the frame rate parameter.  <a href="../../d4/d6d/classirsol_1_1server_1_1handlers_1_1AssignmentFrameRateHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dff/classirsol_1_1server_1_1handlers_1_1internal_1_1AssignmentImgHandlerBase.html">irsol::server::handlers::internal::AssignmentImgHandlerBase&lt; AssignmentCameraImageAttribute &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base handler template for assigning a camera image region parameter.  <a href="../../d6/dff/classirsol_1_1server_1_1handlers_1_1internal_1_1AssignmentImgHandlerBase.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d04/classirsol_1_1server_1_1handlers_1_1AssignmentInputSequenceLengthHandler.html">irsol::server::handlers::AssignmentInputSequenceLengthHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for assignment of the input sequence length parameter <code>isl</code>.  <a href="../../d1/d04/classirsol_1_1server_1_1handlers_1_1AssignmentInputSequenceLengthHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d30/classirsol_1_1server_1_1handlers_1_1AssignmentIntegrationTimeHandler.html">irsol::server::handlers::AssignmentIntegrationTimeHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for assignment of the camera integration time (exposure).  <a href="../../d3/d30/classirsol_1_1server_1_1handlers_1_1AssignmentIntegrationTimeHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic handler base class for protocol messages.  <a href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/ddb/classirsol_1_1server_1_1handlers_1_1CommandAbortHandler.html">irsol::server::handlers::CommandAbortHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for aborting ongoing operations for a client session.  <a href="../../de/ddb/classirsol_1_1server_1_1handlers_1_1CommandAbortHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html">irsol::server::handlers::CommandGIHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for the <code>gi</code> command (single frame acquisition).  <a href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html">irsol::server::handlers::internal::CommandGIBaseHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base handler for frame acquisition commands (<code>gi</code>, <code>gis</code>).  <a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html">irsol::server::handlers::CommandGISHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for the <code>gis</code> command (sequence frame acquisition).  <a href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html" title="Context object passed to all handler classes.">Context</a> object passed to all handler classes.  <a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dfa/classirsol_1_1server_1_1handlers_1_1InquiryFrameRateHandler.html">irsol::server::handlers::InquiryFrameRateHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for inquiry of the current frame rate parameter.  <a href="../../d6/dfa/classirsol_1_1server_1_1handlers_1_1InquiryFrameRateHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d91/classirsol_1_1server_1_1handlers_1_1internal_1_1InquiryImgHandlerBase.html">irsol::server::handlers::internal::InquiryImgHandlerBase&lt; InquiryCameraImageAttribute &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base handler template for inquiring a camera image region parameter.  <a href="../../d5/d91/classirsol_1_1server_1_1handlers_1_1internal_1_1InquiryImgHandlerBase.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/ddf/classirsol_1_1server_1_1handlers_1_1InquiryInputSequenceLengthHandler.html">irsol::server::handlers::InquiryInputSequenceLengthHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for inquiry of the input sequence length parameter.  <a href="../../d8/ddf/classirsol_1_1server_1_1handlers_1_1InquiryInputSequenceLengthHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d75/classirsol_1_1server_1_1handlers_1_1InquiryIntegrationTimeHandler.html">irsol::server::handlers::InquiryIntegrationTimeHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler for inquiry of the camera integration time (exposure).  <a href="../../dd/d75/classirsol_1_1server_1_1handlers_1_1InquiryIntegrationTimeHandler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler&lt; T, &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler class that delegates protocol message processing to a lambda or callable.  <a href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Maps incoming protocol messages to application logic. Implements message handling objects that are associated to specific <a class="el" href="../../de/dca/group__Protocol.html#ga06cc2345b811a67a8ad4ffd7c04c1e20">irsol::protocol::InMessage</a>. The <code>Handlers</code> group contains components responsible for interpreting incoming protocol messages and routing them to the appropriate logic. These handlers form the glue layer between low-level message parsing and the per-client application functionality. Classes in this group are typically used by the <a class="el" href="../../db/dc5/classirsol_1_1server_1_1App.html">irsol::server::App</a> to centralize registration of command, assignment, and inquiry message handlers. </p>
+<p>Provides the mapping between incoming protocol messages and application logic. </p>
+<p>The <code>Handlers</code> group contains all components responsible for interpreting, validating, and executing actions in response to protocol messages received from clients.</p>
+<p>Handlers are the core mechanism by which the server translates protocol-level messages (such as assignments, inquiries, and commands) into concrete operations on the application, including camera control, frame acquisition, and session management.</p>
+<p>This group includes:</p><ul>
+<li>Handler base classes and templates for assignment, inquiry, and command messages.</li>
+<li>Concrete handler implementations for all supported protocol message types.</li>
+<li>LambdaHandler for rapid prototyping or dynamic handler registration.</li>
+<li>Factory utilities for handler construction.</li>
+</ul>
+<p>Handlers are typically registered with the <a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html">irsol::server::handlers::MessageHandler</a>, which dispatches parsed protocol messages to the appropriate handler based on message type and identifier. This design enables modular, extensible, and testable message processing.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../db/dff/namespaceirsol_1_1protocol.html" title="Core protocol message types, serialization, parsing, and communication utilities for the irsol framew...">irsol::protocol</a> </dd>
+<dd>
+<a class="el" href="../../d1/dbf/classirsol_1_1server_1_1handlers_1_1MessageHandler.html" title="Binds incoming protocol messages to the appropriate per-client logic.">irsol::server::handlers::MessageHandler</a> </dd></dl>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

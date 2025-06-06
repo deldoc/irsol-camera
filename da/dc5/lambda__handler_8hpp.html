@@ -56,9 +56,12 @@ $(document).ready(function(){initNavTree('da/dc5/lambda__handler_8hpp.html','../
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">lambda_handler.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">lambda_handler.hpp File Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Declaration of the LambdaHandler class for protocol message handling.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dd/d3c/base_8hpp_source.html">irsol/server/handlers/base.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d73/traits_8hpp_source.html">irsol/traits.hpp</a>&quot;</code><br />
 </div>
@@ -67,6 +70,7 @@ $(document).ready(function(){initNavTree('da/dc5/lambda__handler_8hpp.html','../
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler&lt; T, &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler class that delegates protocol message processing to a lambda or callable.  <a href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -77,10 +81,40 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d9/da2/namespaceirsol_1_1server_1_1handlers" id="r_d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html">irsol::server::handlers</a></td></tr>
-<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains message dispatching logic and per-identifier handler implementations. <br /></td></tr>
+<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all logic for dispatching and implementing protocol message handlers. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Declaration of the LambdaHandler class for protocol message handling. </p>
+<p>Defines the <a class="el" href="../../d3/dac/classirsol_1_1server_1_1handlers_1_1LambdaHandler.html">irsol::server::handlers::LambdaHandler</a> class, which allows protocol message handlers to be implemented as lambda functions or other callable objects.</p>
+<h2>When to use LambdaHandler</h2>
+<p>LambdaHandler is ideal for situations where:</p><ul>
+<li>You want to quickly implement a handler for a protocol message without creating a new class.</li>
+<li>The handler logic is simple, stateless, or only used in a specific context.</li>
+<li>You want to register handlers dynamically at runtime, e.g., for testing, scripting, or plugin systems.</li>
+<li>You wish to encapsulate handler logic inline, close to where the handler is registered.</li>
+</ul>
+<p>LambdaHandler is especially useful for:</p><ul>
+<li>Prototyping new protocol features.</li>
+<li>Writing one-off or ad-hoc handlers for custom commands.</li>
+<li>Unit/integration testing with mock handlers.</li>
+<li>Reducing boilerplate for trivial handlers.</li>
+</ul>
+<p>Example usage: </p><div class="fragment"><div class="line">ctx.registerLambdaHandler&lt;protocol::Command&gt;(</div>
+<div class="line">  <span class="stringliteral">&quot;my_custom_cmd&quot;</span>,</div>
+<div class="line">  ctx,</div>
+<div class="line">  [](handlers::Context&amp; ctx, <span class="keyword">const</span> <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a>&amp; clientId, protocol::Command&amp;&amp; cmd)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// Custom logic here</span></div>
+<div class="line">    std::vector&lt;out_message_t&gt; <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
+<div class="line">    <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>.emplace_back(protocol::Success::from(cmd));</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a>;</div>
+<div class="line">);</div>
+<div class="ttc" id="anamespaceirsol_1_1types_html_a1e34241919e241ec2f3f6b8c236f40ae"><div class="ttname"><a href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a></div><div class="ttdeci">std::string client_id_t</div><div class="ttdoc">Represents a unique client identifier. Typically used to identify connected clients by string IDs.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/de3/types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
+<div class="ttc" id="atest__error_8cpp_html_aede94e5895960e8807719a1a1abf9f43"><div class="ttname"><a href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dbc/test__error_8cpp_source.html#l00017">test_error.cpp:17</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition in file <a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html">lambda_handler.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

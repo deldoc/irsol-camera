@@ -56,9 +56,12 @@ $(document).ready(function(){initNavTree('dc/d2d/factory_8hpp.html','../../'); i
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">factory.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">factory.hpp File Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Factory utilities for constructing handler instances.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d2/da3/context_8hpp_source.html">irsol/server/handlers/context.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../da/dc5/lambda__handler_8hpp_source.html">irsol/server/handlers/lambda_handler.hpp</a>&quot;</code><br />
 </div>
@@ -72,19 +75,26 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d9/da2/namespaceirsol_1_1server_1_1handlers" id="r_d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html">irsol::server::handlers</a></td></tr>
-<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains message dispatching logic and per-identifier handler implementations. <br /></td></tr>
+<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all logic for dispatching and implementing protocol message handlers. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a537a231d55a358298c52f340e42b4f8d" id="r_a537a231d55a358298c52f340e42b4f8d"><td class="memTemplParams" colspan="2">template&lt;typename HandlerT , typename... Args&gt; </td></tr>
 <tr class="memitem:a537a231d55a358298c52f340e42b4f8d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a537a231d55a358298c52f340e42b4f8d">irsol::server::handlers::makeHandler</a> (<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> &amp;ctx, Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a537a231d55a358298c52f340e42b4f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a handler instance of the given type.  <br /></td></tr>
 <tr class="separator:a537a231d55a358298c52f340e42b4f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8930c31fe665148fbba0460bb8a341fd" id="r_a8930c31fe665148fbba0460bb8a341fd"><td class="memTemplParams" colspan="2">template&lt;typename InMessageT , typename LambdaT &gt; </td></tr>
 <tr class="memitem:a8930c31fe665148fbba0460bb8a341fd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a8930c31fe665148fbba0460bb8a341fd">irsol::server::handlers::makeLambdaHandler</a> (<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> &amp;ctx, LambdaT &amp;&amp;lambda)</td></tr>
+<tr class="memdesc:a8930c31fe665148fbba0460bb8a341fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a lambda handler for the specified message type.  <br /></td></tr>
 <tr class="separator:a8930c31fe665148fbba0460bb8a341fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Factory utilities for constructing handler instances. </p>
+<p>Provides helper functions for creating handler and lambda handler instances. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../dc/d2d/factory_8hpp_source.html">factory.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

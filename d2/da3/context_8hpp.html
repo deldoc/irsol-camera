@@ -56,9 +56,12 @@ $(document).ready(function(){initNavTree('d2/da3/context_8hpp.html','../../'); i
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">context.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">context.hpp File Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Declaration of the handler context struct.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">irsol/types.hpp</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 </div>
@@ -67,6 +70,7 @@ $(document).ready(function(){initNavTree('d2/da3/context_8hpp.html','../../'); i
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html" title="Context object passed to all handler classes.">Context</a> object passed to all handler classes.  <a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -77,10 +81,16 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d9/da2/namespaceirsol_1_1server_1_1handlers" id="r_d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html">irsol::server::handlers</a></td></tr>
-<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains message dispatching logic and per-identifier handler implementations. <br /></td></tr>
+<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all logic for dispatching and implementing protocol message handlers. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Declaration of the handler context struct. </p>
+<p>Defines the <a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">irsol::server::handlers::Context</a> struct, which provides utility methods and access to the application instance for handler classes.</p>
+<p>This context is passed to all handler classes and provides methods to retrieve client sessions and broadcast messages to clients. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

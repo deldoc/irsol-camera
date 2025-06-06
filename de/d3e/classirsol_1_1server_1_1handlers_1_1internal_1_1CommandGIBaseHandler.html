@@ -58,9 +58,12 @@ $(document).ready(function(){initNavTree('de/d3e/classirsol_1_1server_1_1handler
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="../../d4/d5f/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">irsol::server::handlers::internal::CommandGIBaseHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">irsol::server::handlers::internal::CommandGIBaseHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span><div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base handler for frame acquisition commands (<code>gi</code>, <code>gis</code>).  
+ <a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d6/d94/command__gi__base_8hpp_source.html">command_gi_base.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -69,53 +72,68 @@ Inheritance diagram for irsol::server::handlers::internal::CommandGIBaseHandler:
  <div class="center">
   <img src="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.png" usemap="#irsol::server::handlers::internal::CommandGIBaseHandler_map" alt=""/>
   <map id="irsol::server::handlers::internal::CommandGIBaseHandler_map" name="irsol::server::handlers::internal::CommandGIBaseHandler_map">
-<area href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html" alt="irsol::server::handlers::internal::HandlerBase&lt; T, &gt;" shape="rect" coords="169,0,497,24"/>
-<area href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html" alt="irsol::server::handlers::CommandGIHandler" shape="rect" coords="0,112,328,136"/>
-<area href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html" alt="irsol::server::handlers::CommandGISHandler" shape="rect" coords="338,112,666,136"/>
+<area href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html" title="Generic handler base class for protocol messages." alt="irsol::server::handlers::internal::HandlerBase&lt; T, &gt;" shape="rect" coords="169,0,497,24"/>
+<area href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html" title="Handler for the gi command (single frame acquisition)." alt="irsol::server::handlers::CommandGIHandler" shape="rect" coords="0,112,328,136"/>
+<area href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html" title="Handler for the gis command (sequence frame acquisition)." alt="irsol::server::handlers::CommandGISHandler" shape="rect" coords="338,112,666,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6a9f5c5e6a40c933aadd83fbad38eac7" id="r_a6a9f5c5e6a40c933aadd83fbad38eac7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a6a9f5c5e6a40c933aadd83fbad38eac7">CommandGIBaseHandler</a> (<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a>)</td></tr>
+<tr class="memdesc:a6a9f5c5e6a40c933aadd83fbad38eac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html" title="Base handler for frame acquisition commands (gi, gis).">CommandGIBaseHandler</a>.  <br /></td></tr>
 <tr class="separator:a6a9f5c5e6a40c933aadd83fbad38eac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
 <tr class="memitem:af1283189ab99ed4b39b48aeb6048b7b5 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_af1283189ab99ed4b39b48aeb6048b7b5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#af1283189ab99ed4b39b48aeb6048b7b5">operator()</a> (const <a class="el" href="../../d9/d2e/namespaceirsol_1_1types.html#a1e34241919e241ec2f3f6b8c236f40ae">irsol::types::client_id_t</a> &amp;clientId, T &amp;&amp;message)</td></tr>
+<tr class="memdesc:af1283189ab99ed4b39b48aeb6048b7b5 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the handler for a given client and message.  <br /></td></tr>
 <tr class="separator:af1283189ab99ed4b39b48aeb6048b7b5 inherit pub_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a19f6bdcc71d315605b2b27aa90574775" id="r_a19f6bdcc71d315605b2b27aa90574775"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a19f6bdcc71d315605b2b27aa90574775">process</a> (std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session, <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;&amp;message) final override</td></tr>
+<tr class="memdesc:a19f6bdcc71d315605b2b27aa90574775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a frame acquisition command, starting the frame collection thread.  <br /></td></tr>
 <tr class="separator:a19f6bdcc71d315605b2b27aa90574775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
 <tr class="memitem:a60d7d5051418067aca296dfd9a1dbacf inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_a60d7d5051418067aca296dfd9a1dbacf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a60d7d5051418067aca296dfd9a1dbacf">HandlerBase</a> (<a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a> <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a>)</td></tr>
+<tr class="memdesc:a60d7d5051418067aca296dfd9a1dbacf inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the handler base.  <br /></td></tr>
 <tr class="separator:a60d7d5051418067aca296dfd9a1dbacf inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c96a9f23015027cf90ffae554ae8a31 inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_a4c96a9f23015027cf90ffae554ae8a31"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">out_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#a4c96a9f23015027cf90ffae554ae8a31">process</a> (std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session, T &amp;&amp;message)=0</td></tr>
+<tr class="memdesc:a4c96a9f23015027cf90ffae554ae8a31 inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes the protocol message for the given session.  <br /></td></tr>
 <tr class="separator:a4c96a9f23015027cf90ffae554ae8a31 inherit pro_methods_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a7288a82a3d797b27792802baaf1b4f29" id="r_a7288a82a3d797b27792802baaf1b4f29"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a7288a82a3d797b27792802baaf1b4f29">getDescription</a> (const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;message, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session) const</td></tr>
+<tr class="memdesc:a7288a82a3d797b27792802baaf1b4f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a description string for the command execution.  <br /></td></tr>
 <tr class="separator:a7288a82a3d797b27792802baaf1b4f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38d872ce307e829274537109cb5e1f87" id="r_a38d872ce307e829274537109cb5e1f87"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">irsol::protocol::OutMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a38d872ce307e829274537109cb5e1f87">validate</a> (const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;message, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session) const =0</td></tr>
+<tr class="memdesc:a38d872ce307e829274537109cb5e1f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates parameters before starting listener thread.  <br /></td></tr>
 <tr class="separator:a38d872ce307e829274537109cb5e1f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dba835a5ace96e2a9e2e05407ef0f66" id="r_a7dba835a5ace96e2a9e2e05407ef0f66"><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a7dba835a5ace96e2a9e2e05407ef0f66">getInputSequenceLength</a> (const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;message, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session) const =0</td></tr>
+<tr class="memdesc:a7dba835a5ace96e2a9e2e05407ef0f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the input sequence length to use to start the listening.  <br /></td></tr>
 <tr class="separator:a7dba835a5ace96e2a9e2e05407ef0f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53045a0cc3fe9978f6a57659c6576203" id="r_a53045a0cc3fe9978f6a57659c6576203"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a53045a0cc3fe9978f6a57659c6576203">getFrameRate</a> (const <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;message, std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session) const =0</td></tr>
 <tr class="memdesc:a53045a0cc3fe9978f6a57659c6576203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the frame rate to use to start the listening.  <br /></td></tr>
 <tr class="separator:a53045a0cc3fe9978f6a57659c6576203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37c9739e449fb75efc61c849617763f4" id="r_a37c9739e449fb75efc61c849617763f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a37c9739e449fb75efc61c849617763f4">startListeningThread</a> (std::shared_ptr&lt; <a class="el" href="../../d2/d23/classirsol_1_1server_1_1ClientSession.html">irsol::server::ClientSession</a> &gt; session, std::shared_ptr&lt; <a class="el" href="../../de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a8c8cef36ff52c80e1f28197618817491">irsol::server::frame_collector::FrameCollector::frame_queue_t</a> &gt; queue, <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &amp;&amp;command, const std::string &amp;<a class="el" href="../../d8/dbc/test__error_8cpp.html#ac7732e6c3d72db61c684dfccc779937c">description</a>)</td></tr>
+<tr class="memdesc:a37c9739e449fb75efc61c849617763f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the frame listening thread for the client session.  <br /></td></tr>
 <tr class="separator:a37c9739e449fb75efc61c849617763f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase')"><img src="../../closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
 <tr class="memitem:ac36b4a8df8e40904185648d259995dc2 inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase" id="r_ac36b4a8df8e40904185648d259995dc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html">Context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a></td></tr>
+<tr class="memdesc:ac36b4a8df8e40904185648d259995dc2 inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler context (provides access to app and utilities).  <br /></td></tr>
 <tr class="separator:ac36b4a8df8e40904185648d259995dc2 inherit pro_attribs_classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d6/d94/command__gi__base_8hpp_source.html#l00010">10</a> of file <a class="el" href="../../d6/d94/command__gi__base_8hpp_source.html">command_gi_base.hpp</a>.</p>
+<div class="textblock"><p>Base handler for frame acquisition commands (<code>gi</code>, <code>gis</code>). </p>
+<p>Provides common logic for starting frame collection and managing client registration.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html" title="Handler for the gi command (single frame acquisition).">irsol::server::handlers::CommandGIHandler</a> </dd>
+<dd>
+<a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html" title="Handler for the gis command (sequence frame acquisition).">irsol::server::handlers::CommandGISHandler</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d94/command__gi__base_8hpp_source.html#l00032">32</a> of file <a class="el" href="../../d6/d94/command__gi__base_8hpp_source.html">command_gi_base.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6a9f5c5e6a40c933aadd83fbad38eac7" name="a6a9f5c5e6a40c933aadd83fbad38eac7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a9f5c5e6a40c933aadd83fbad38eac7">&#9670;&#160;</a></span>CommandGIBaseHandler()</h2>
@@ -133,10 +151,18 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructs the <a class="el" href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html" title="Base handler for frame acquisition commands (gi, gis).">CommandGIBaseHandler</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>Handler context. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html#l00021">21</a> of file <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html">command_gi_base.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   21</span>: <a class="code hl_typedef" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a37256d6fd5c1f57060ccccd5199add08">CommandHandler</a>(<a class="code hl_variable" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">ctx</a>) {}</div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase_html_ac36b4a8df8e40904185648d259995dc2"><div class="ttname"><a href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">irsol::server::handlers::internal::HandlerBase::ctx</a></div><div class="ttdeci">Context ctx</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d3c/base_8hpp_source.html#l00043">base.hpp:43</a></div></div>
-<div class="ttc" id="anamespaceirsol_1_1server_1_1handlers_html_a37256d6fd5c1f57060ccccd5199add08"><div class="ttname"><a href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a37256d6fd5c1f57060ccccd5199add08">irsol::server::handlers::CommandHandler</a></div><div class="ttdeci">internal::HandlerBase&lt; protocol::Command &gt; CommandHandler</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d3c/base_8hpp_source.html#l00049">base.hpp:49</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase_html_ac36b4a8df8e40904185648d259995dc2"><div class="ttname"><a href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#ac36b4a8df8e40904185648d259995dc2">irsol::server::handlers::internal::HandlerBase::ctx</a></div><div class="ttdeci">Context ctx</div><div class="ttdoc">Handler context (provides access to app and utilities).</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d3c/base_8hpp_source.html#l00079">base.hpp:79</a></div></div>
+<div class="ttc" id="anamespaceirsol_1_1server_1_1handlers_html_a37256d6fd5c1f57060ccccd5199add08"><div class="ttname"><a href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a37256d6fd5c1f57060ccccd5199add08">irsol::server::handlers::CommandHandler</a></div><div class="ttdeci">internal::HandlerBase&lt; protocol::Command &gt; CommandHandler</div><div class="ttdoc">Handler type for command messages.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d3c/base_8hpp_source.html#l00094">base.hpp:94</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,6 +200,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Generates a description string for the command execution. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The command message. </td></tr>
+    <tr><td class="paramname">session</td><td>The client session. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Description string. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html">command_gi_base.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
@@ -219,6 +255,18 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieves the frame rate to use to start the listening. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The command message. </td></tr>
+    <tr><td class="paramname">session</td><td>The client session. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Frame rate for acquisition. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method must be implemented by derived classes to provide specific frame rate logic. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html#a57e873e9ef478a770d3c4cb602f42988" title="Returns the frame rate for the gi command.">irsol::server::handlers::CommandGIHandler::getFrameRate</a> </dd>
+<dd>
+<a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#a81e5154d035d94271b1b69df30c290c6" title="Returns the frame rate for the gis command.">irsol::server::handlers::CommandGISHandler::getFrameRate</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html#a57e873e9ef478a770d3c4cb602f42988">irsol::server::handlers::CommandGIHandler</a>, and <a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#a81e5154d035d94271b1b69df30c290c6">irsol::server::handlers::CommandGISHandler</a>.</p>
 
@@ -257,7 +305,20 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Retrieves a description for the current execution of the command Retrieves the input sequence length to use to start the listening </p>
+
+<p>Retrieves the input sequence length to use to start the listening. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The command message. </td></tr>
+    <tr><td class="paramname">session</td><td>The client session. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of frames to acquire. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method must be implemented by derived classes to provide specific sequence length logic. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html#aea5053a72ec710a4a0a1c0cdd49e538b" title="Returns the input sequence length for the gi command (always 1).">irsol::server::handlers::CommandGIHandler::getInputSequenceLength</a> </dd>
+<dd>
+<a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#aa06150878f85e598abc106557bf2da73" title="Returns the input sequence length for the gis command.">irsol::server::handlers::CommandGISHandler::getInputSequenceLength</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html#aea5053a72ec710a4a0a1c0cdd49e538b">irsol::server::handlers::CommandGIHandler</a>, and <a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#aa06150878f85e598abc106557bf2da73">irsol::server::handlers::CommandGISHandler</a>.</p>
 
@@ -297,6 +358,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Processes a frame acquisition command, starting the frame collection thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>The client session. </td></tr>
+    <tr><td class="paramname">message</td><td>The command message. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of outbound messages (success or error). </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html#l00024">24</a> of file <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html">command_gi_base.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
 <div class="line"><span class="lineno">   28</span> </div>
@@ -325,15 +396,15 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   51</span>  <span class="keywordflow">return</span> {};</div>
 <div class="line"><span class="lineno">   52</span>}</div>
 <div class="ttc" id="aclassirsol_1_1server_1_1App_html_a740cd3948f39494ec70ffe96f7814c87"><div class="ttname"><a href="../../db/dc5/classirsol_1_1server_1_1App.html#a740cd3948f39494ec70ffe96f7814c87">irsol::server::App::frameCollector</a></div><div class="ttdeci">frame_collector::FrameCollector &amp; frameCollector()</div><div class="ttdoc">Accessor for the frame collector.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d2c/app_8hpp_source.html#l00105">app.hpp:105</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a37c9739e449fb75efc61c849617763f4"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a37c9739e449fb75efc61c849617763f4">irsol::server::handlers::internal::CommandGIBaseHandler::startListeningThread</a></div><div class="ttdeci">void startListeningThread(std::shared_ptr&lt; irsol::server::ClientSession &gt; session, std::shared_ptr&lt; irsol::server::frame_collector::FrameCollector::frame_queue_t &gt; queue, protocol::Command &amp;&amp;command, const std::string &amp;description)</div><div class="ttdef"><b>Definition</b> <a href="../../db/d89/command__gi__base_8cpp_source.html#l00065">command_gi_base.cpp:65</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a38d872ce307e829274537109cb5e1f87"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a38d872ce307e829274537109cb5e1f87">irsol::server::handlers::internal::CommandGIBaseHandler::validate</a></div><div class="ttdeci">virtual std::vector&lt; irsol::protocol::OutMessage &gt; validate(const protocol::Command &amp;message, std::shared_ptr&lt; irsol::server::ClientSession &gt; session) const =0</div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a37c9739e449fb75efc61c849617763f4"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a37c9739e449fb75efc61c849617763f4">irsol::server::handlers::internal::CommandGIBaseHandler::startListeningThread</a></div><div class="ttdeci">void startListeningThread(std::shared_ptr&lt; irsol::server::ClientSession &gt; session, std::shared_ptr&lt; irsol::server::frame_collector::FrameCollector::frame_queue_t &gt; queue, protocol::Command &amp;&amp;command, const std::string &amp;description)</div><div class="ttdoc">Starts the frame listening thread for the client session.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d89/command__gi__base_8cpp_source.html#l00065">command_gi_base.cpp:65</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a38d872ce307e829274537109cb5e1f87"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a38d872ce307e829274537109cb5e1f87">irsol::server::handlers::internal::CommandGIBaseHandler::validate</a></div><div class="ttdeci">virtual std::vector&lt; irsol::protocol::OutMessage &gt; validate(const protocol::Command &amp;message, std::shared_ptr&lt; irsol::server::ClientSession &gt; session) const =0</div><div class="ttdoc">Validates parameters before starting listener thread.</div></div>
 <div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a53045a0cc3fe9978f6a57659c6576203"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a53045a0cc3fe9978f6a57659c6576203">irsol::server::handlers::internal::CommandGIBaseHandler::getFrameRate</a></div><div class="ttdeci">virtual double getFrameRate(const protocol::Command &amp;message, std::shared_ptr&lt; irsol::server::ClientSession &gt; session) const =0</div><div class="ttdoc">Retrieves the frame rate to use to start the listening.</div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a7288a82a3d797b27792802baaf1b4f29"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a7288a82a3d797b27792802baaf1b4f29">irsol::server::handlers::internal::CommandGIBaseHandler::getDescription</a></div><div class="ttdeci">std::string getDescription(const protocol::Command &amp;message, std::shared_ptr&lt; irsol::server::ClientSession &gt; session) const</div><div class="ttdef"><b>Definition</b> <a href="../../db/d89/command__gi__base_8cpp_source.html#l00055">command_gi_base.cpp:55</a></div></div>
-<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a7dba835a5ace96e2a9e2e05407ef0f66"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a7dba835a5ace96e2a9e2e05407ef0f66">irsol::server::handlers::internal::CommandGIBaseHandler::getInputSequenceLength</a></div><div class="ttdeci">virtual uint64_t getInputSequenceLength(const protocol::Command &amp;message, std::shared_ptr&lt; irsol::server::ClientSession &gt; session) const =0</div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a7288a82a3d797b27792802baaf1b4f29"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a7288a82a3d797b27792802baaf1b4f29">irsol::server::handlers::internal::CommandGIBaseHandler::getDescription</a></div><div class="ttdeci">std::string getDescription(const protocol::Command &amp;message, std::shared_ptr&lt; irsol::server::ClientSession &gt; session) const</div><div class="ttdoc">Generates a description string for the command execution.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d89/command__gi__base_8cpp_source.html#l00055">command_gi_base.cpp:55</a></div></div>
+<div class="ttc" id="aclassirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler_html_a7dba835a5ace96e2a9e2e05407ef0f66"><div class="ttname"><a href="../../de/d3e/classirsol_1_1server_1_1handlers_1_1internal_1_1CommandGIBaseHandler.html#a7dba835a5ace96e2a9e2e05407ef0f66">irsol::server::handlers::internal::CommandGIBaseHandler::getInputSequenceLength</a></div><div class="ttdeci">virtual uint64_t getInputSequenceLength(const protocol::Command &amp;message, std::shared_ptr&lt; irsol::server::ClientSession &gt; session) const =0</div><div class="ttdoc">Retrieves the input sequence length to use to start the listening.</div></div>
 <div class="ttc" id="agroup__Logging_html_ga30c2f8536dcd7ea3bb3a5bbc9f38a312"><div class="ttname"><a href="../../d0/d58/group__Logging.html#ga30c2f8536dcd7ea3bb3a5bbc9f38a312">IRSOL_NAMED_LOG_INFO</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_INFO(name,...)</div><div class="ttdoc">Logs an info-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00176">logging.hpp:176</a></div></div>
 <div class="ttc" id="agroup__Logging_html_gacab2ed396a15b61c949f1054a6a5aae4"><div class="ttname"><a href="../../d0/d58/group__Logging.html#gacab2ed396a15b61c949f1054a6a5aae4">IRSOL_NAMED_LOG_WARN</a></div><div class="ttdeci">#define IRSOL_NAMED_LOG_WARN(name,...)</div><div class="ttdoc">Logs a warning-level message using a named logger.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/da9/logging_8hpp_source.html#l00178">logging.hpp:178</a></div></div>
 <div class="ttc" id="astructirsol_1_1protocol_1_1Error_html_aa2d0a316e8cc3a12dde3e01e6731b078"><div class="ttname"><a href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html#aa2d0a316e8cc3a12dde3e01e6731b078">irsol::protocol::Error::from</a></div><div class="ttdeci">static Error from(const T &amp;msg, const std::string &amp;description)</div><div class="ttdoc">Creates an error from a specific incoming message type.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d99/error_8hpp_source.html#l00063">error.hpp:63</a></div></div>
-<div class="ttc" id="astructirsol_1_1server_1_1handlers_1_1Context_html_af2df79ce2c7e7220c379d48608b92fb5"><div class="ttname"><a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#af2df79ce2c7e7220c379d48608b92fb5">irsol::server::handlers::Context::app</a></div><div class="ttdeci">App &amp; app</div><div class="ttdef"><b>Definition</b> <a href="../../d2/da3/context_8hpp_source.html#l00016">context.hpp:16</a></div></div>
+<div class="ttc" id="astructirsol_1_1server_1_1handlers_1_1Context_html_af2df79ce2c7e7220c379d48608b92fb5"><div class="ttname"><a href="../../d4/d2c/structirsol_1_1server_1_1handlers_1_1Context.html#af2df79ce2c7e7220c379d48608b92fb5">irsol::server::handlers::Context::app</a></div><div class="ttdeci">App &amp; app</div><div class="ttdoc">Reference to the application instance.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/da3/context_8hpp_source.html#l00037">context.hpp:37</a></div></div>
 <div class="ttc" id="atest__error_8cpp_html_aede94e5895960e8807719a1a1abf9f43"><div class="ttname"><a href="../../d8/dbc/test__error_8cpp.html#aede94e5895960e8807719a1a1abf9f43">result</a></div><div class="ttdeci">auto result</div><div class="ttdef"><b>Definition</b> <a href="../../d8/dbc/test__error_8cpp_source.html#l00017">test_error.cpp:17</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -383,6 +454,18 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Starts the frame listening thread for the client session. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>The client session. </td></tr>
+    <tr><td class="paramname">queue</td><td>The frame queue for collected frames. </td></tr>
+    <tr><td class="paramname">command</td><td>The command message. </td></tr>
+    <tr><td class="paramname">description</td><td>Description string for logging. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../de/d41/structirsol_1_1server_1_1internal_1_1FrameListeningState.html#a61c0959728c8374b977a5e18aa06131f" title="Starts the passed lambda function in a background thread.">irsol::server::internal::FrameListeningState::start</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html#l00065">65</a> of file <a class="el" href="../../db/d89/command__gi__base_8cpp_source.html">command_gi_base.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
@@ -476,7 +559,20 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Override to validate parameters before starting listener thread. Return vector of <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error response message from the server.">protocol::Error</a> messages (empty if no error). </p>
+
+<p>Validates parameters before starting listener thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The command message. </td></tr>
+    <tr><td class="paramname">session</td><td>The client session. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of <a class="el" href="../../d4/d3a/structirsol_1_1protocol_1_1Error.html" title="Represents an error response message from the server.">protocol::Error</a> messages (empty if no error). </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method must be implemented by derived classes to provide specific validation logic. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html#a896a7c201aa4d77d5ca2ac982b3d3c33" title="Validates the gi command parameters.">irsol::server::handlers::CommandGIHandler::validate</a> </dd>
+<dd>
+<a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#abde66abd5b1711f6f02c5227b757ec03" title="Validates the gis command parameters.">irsol::server::handlers::CommandGISHandler::validate</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="../../dd/da2/classirsol_1_1server_1_1handlers_1_1CommandGIHandler.html#a896a7c201aa4d77d5ca2ac982b3d3c33">irsol::server::handlers::CommandGIHandler</a>, and <a class="el" href="../../dc/d49/classirsol_1_1server_1_1handlers_1_1CommandGISHandler.html#abde66abd5b1711f6f02c5227b757ec03">irsol::server::handlers::CommandGISHandler</a>.</p>
 

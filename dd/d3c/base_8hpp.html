@@ -57,9 +57,12 @@ $(document).ready(function(){initNavTree('dd/d3c/base_8hpp.html','../../'); init
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a>  </div>
-  <div class="headertitle"><div class="title">base.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">base.hpp File Reference<div class="ingroups"><a class="el" href="../../df/de1/group__Handlers.html">Handlers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base handler templates for protocol message processing.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d8/dd1/protocol_8hpp_source.html">irsol/protocol.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/da3/context_8hpp_source.html">irsol/server/handlers/context.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d73/traits_8hpp_source.html">irsol/traits.hpp</a>&quot;</code><br />
@@ -70,6 +73,7 @@ $(document).ready(function(){initNavTree('dd/d3c/base_8hpp.html','../../'); init
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">irsol::server::handlers::internal::HandlerBase&lt; T, &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic handler base class for protocol messages.  <a href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -80,7 +84,7 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:d1/d03/namespaceirsol_1_1server"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core server features. TOBE DEFINED FURTHER. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d9/da2/namespaceirsol_1_1server_1_1handlers" id="r_d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html">irsol::server::handlers</a></td></tr>
-<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains message dispatching logic and per-identifier handler implementations. <br /></td></tr>
+<tr class="memdesc:d9/da2/namespaceirsol_1_1server_1_1handlers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all logic for dispatching and implementing protocol message handlers. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d7/de5/namespaceirsol_1_1server_1_1handlers_1_1internal" id="r_d7/de5/namespaceirsol_1_1server_1_1handlers_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/de5/namespaceirsol_1_1server_1_1handlers_1_1internal.html">irsol::server::handlers::internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,13 +96,21 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a6077d386fa793d48c806c4f694b16d8d" id="r_a6077d386fa793d48c806c4f694b16d8d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a6077d386fa793d48c806c4f694b16d8d">irsol::server::handlers::out_message_t</a> = <a class="el" href="../../de/dca/group__Protocol.html#ga9f9e0d98cc4cf09baf10d9a0f6e06f66">protocol::OutMessage</a></td></tr>
 <tr class="separator:a6077d386fa793d48c806c4f694b16d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15eb09171fb666f8acc884873ec03979" id="r_a15eb09171fb666f8acc884873ec03979"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a15eb09171fb666f8acc884873ec03979">irsol::server::handlers::AssignmentHandler</a> = <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">internal::HandlerBase</a>&lt; <a class="el" href="../../d9/db8/structirsol_1_1protocol_1_1Assignment.html">protocol::Assignment</a> &gt;</td></tr>
+<tr class="memdesc:a15eb09171fb666f8acc884873ec03979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler type for assignment messages.  <br /></td></tr>
 <tr class="separator:a15eb09171fb666f8acc884873ec03979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ceef412ce543cc5334b2ee8d18905ed" id="r_a2ceef412ce543cc5334b2ee8d18905ed"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a2ceef412ce543cc5334b2ee8d18905ed">irsol::server::handlers::InquiryHandler</a> = <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">internal::HandlerBase</a>&lt; <a class="el" href="../../d2/dc8/structirsol_1_1protocol_1_1Inquiry.html">protocol::Inquiry</a> &gt;</td></tr>
+<tr class="memdesc:a2ceef412ce543cc5334b2ee8d18905ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler type for inquiry messages.  <br /></td></tr>
 <tr class="separator:a2ceef412ce543cc5334b2ee8d18905ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37256d6fd5c1f57060ccccd5199add08" id="r_a37256d6fd5c1f57060ccccd5199add08"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/namespaceirsol_1_1server_1_1handlers.html#a37256d6fd5c1f57060ccccd5199add08">irsol::server::handlers::CommandHandler</a> = <a class="el" href="../../d5/d80/classirsol_1_1server_1_1handlers_1_1internal_1_1HandlerBase.html">internal::HandlerBase</a>&lt; <a class="el" href="../../d2/d10/structirsol_1_1protocol_1_1Command.html">protocol::Command</a> &gt;</td></tr>
+<tr class="memdesc:a37256d6fd5c1f57060ccccd5199add08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler type for command messages.  <br /></td></tr>
 <tr class="separator:a37256d6fd5c1f57060ccccd5199add08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base handler templates for protocol message processing. </p>
+<p>Defines generic handler base classes for assignment, inquiry, and command messages, as well as type aliases for common handler types. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../dd/d3c/base_8hpp_source.html">base.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
