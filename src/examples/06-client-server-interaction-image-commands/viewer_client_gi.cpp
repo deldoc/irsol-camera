@@ -1,3 +1,21 @@
+/**
+ * @file examples/06-client-server-interaction-image-commands/viewer_client_gi.cpp
+ * @brief Example client that repeatedly sends `gi` (get image) commands to the camera server.
+ *
+ * This executable connects to the camera server and requests single image frames using the `gi`
+ * command. Each received image is displayed using OpenCV, and the measured FPS is annotated on the
+ * image.
+ *
+ * Command-line options:
+ *   -f, --fps <fps>   Set the polling frequency (default: 0.5 FPS)
+ *
+ * Usage:
+ *   ./06-client-server-interaction-image-commands-viewer-gi [-f <fps>]
+ *
+ * The client can be interrupted with Ctrl+C or by pressing 'q' in the OpenCV window.
+ * All logging is written to logs/viewer-client-gi.log.
+ */
+
 #include "irsol/args.hpp"
 #include "irsol/irsol.hpp"
 
@@ -265,7 +283,7 @@ run(double inFps)
 int
 main(int argc, char** argv)
 {
-  irsol::initLogging("logs/viewer-client-poll.log");
+  irsol::initLogging("logs/viewer-client-gi.log");
   irsol::initAssertHandler();
 
   // Register signal handler

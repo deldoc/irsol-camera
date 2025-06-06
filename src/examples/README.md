@@ -24,3 +24,5 @@ These examples serve as practical references to help you get started and underst
 * @subpage client_server_interaction
   Covers the topic of how the `irsol` server and client interact, including how to connect to the server, send messages, and receive responses.
 
+* @subpage client_server_interaction_image_commands
+  Covers the topic of how the `irsol` server and client interact with image commands, including how to request single images and streams of images from the server.

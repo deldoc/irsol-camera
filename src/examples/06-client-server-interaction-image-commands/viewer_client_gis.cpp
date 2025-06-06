@@ -1,3 +1,22 @@
+/**
+ * @file examples/06-client-server-interaction-image-commands/viewer_client_gis.cpp
+ * @brief Example client that sends `gis` (get images) commands to the camera server.
+ *
+ * This executable connects to the camera server and requests a stream of images using the `gis`
+ * command, specifying the desired frame rate and sequence length. Each received image is displayed
+ * using OpenCV, with annotations for image ID and index.
+ *
+ * Command-line options:
+ *   -f, --fps <fps>   Set the requested stream FPS (default: 0.5 FPS)
+ *   -i, --isl <isl>   Set the input sequence length (default: 10)
+ *
+ * Usage:
+ *   ./06-client-server-interaction-image-commands-viewer-gis [-f <fps>] [-i <isl>]
+ *
+ * The client can be interrupted with Ctrl+C or by pressing 'q' in the OpenCV window.
+ * All logging is written to logs/viewer-client-gis.log.
+ */
+
 #include "irsol/args.hpp"
 #include "irsol/irsol.hpp"
 
@@ -337,7 +356,7 @@ run(double inFps, uint64_t sequenceLength)
 int
 main(int argc, char** argv)
 {
-  irsol::initLogging("logs/viewer-client-poll.log");
+  irsol::initLogging("logs/viewer-client-gis.log");
   irsol::initAssertHandler();
 
   // Register signal handler

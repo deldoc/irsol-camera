@@ -1,3 +1,19 @@
+/**
+ * @file examples/06-client-server-interaction-image-commands/server.cpp
+ * @brief Example camera server for client-server interaction with image commands.
+ *
+ * This executable launches a TCP camera server using the IRSOL framework.
+ * It listens for incoming client connections and processes image acquisition commands,
+ * such as `gi` (get image) and `gis` (get image stream), distributing frames to clients as
+ * requested.
+ *
+ * Usage:
+ *   ./06-client-server-interaction-image-commands-server
+ *
+ * The server runs until the user presses 'q' in the terminal, at which point it shuts down
+ * gracefully. All logging is written to logs/camera-server.log.
+ */
+
 #include "irsol/irsol.hpp"
 
 #include <string>
