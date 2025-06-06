@@ -29,35 +29,7 @@
 
 namespace irsol {
 namespace server {
-/**
- * @defgroup Handlers Handlers
- * @brief Maps incoming protocol messages to application logic. Implements message handling objects
- * that are associated to specific @ref irsol::protocol::InMessage.
- * The `Handlers` group contains components responsible for interpreting incoming protocol
- * messages and routing them to the appropriate logic. These handlers form the glue layer
- * between low-level message parsing and the per-client application functionality.
- * Classes in this group are typically used by the @ref irsol::server::App to centralize
- * registration of command, assignment, and inquiry message handlers.
- */
 
-/**
- * @namespace irsol::server::handlers
- * @brief Contains message dispatching logic and per-identifier handler implementations.
- * @ingroup Handlers
- *
- * @details
- * The `handlers` namespace groups all logic related to handling structured protocol messages.
- *
- * This includes:
- * - The @ref irsol::server::handlers::MessageHandler class, responsible for routing parsed
- * @ref irsol::protocol::InMessage instances to registered per-client logic.
- * - All handler functions that can be registered via `MessageHandler::registerHandler()`.
- *
- *
- * This namespace acts as the glue between the protocol-level message parsing layer and the
- * higher-level application logic.
- * @see irsol::protocol
- */
 namespace handlers {
 
 /**
