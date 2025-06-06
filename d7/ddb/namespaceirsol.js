@@ -3,7 +3,8 @@ var namespaceirsol =
     [ "camera", "db/d23/namespaceirsol_1_1camera.html", "db/d23/namespaceirsol_1_1camera" ],
     [ "internal", "d4/d53/namespaceirsol_1_1internal.html", "d4/d53/namespaceirsol_1_1internal" ],
     [ "opencv", "d3/d22/namespaceirsol_1_1opencv.html", [
-      [ "convertNeoImageToCvMat", "d3/d22/namespaceirsol_1_1opencv.html#a8efdfe752e23362fb06b8c40a9747c8f", null ]
+      [ "convertNeoImageToCvMat", "d4/d9f/group__opencv__integration.html#ga8efdfe752e23362fb06b8c40a9747c8f", null ],
+      [ "createCvMatFromIrsolServerBuffer", "d4/d9f/group__opencv__integration.html#ga11a701f7809cd7c7b431ada4cfeb75fa", null ]
     ] ],
     [ "protocol", "db/dff/namespaceirsol_1_1protocol.html", "db/dff/namespaceirsol_1_1protocol" ],
     [ "server", "d1/d03/namespaceirsol_1_1server.html", "d1/d03/namespaceirsol_1_1server" ],

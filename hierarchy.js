@@ -61,6 +61,8 @@ var hierarchy =
     [ "irsol::protocol::Parser", "d5/d35/classirsol_1_1protocol_1_1Parser.html", null ],
     [ "irsol::protocol::internal::ParserResult< T, >", "da/d1f/classirsol_1_1protocol_1_1internal_1_1ParserResult.html", null ],
     [ "irsol::camera::Pixel< BitDepth >", "d4/d0c/structirsol_1_1camera_1_1Pixel.html", null ],
+    [ "irsol::camera::PixelByteSwapper< swap >", "d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html", null ],
+    [ "irsol::camera::PixelByteSwapper< true >", "dd/d83/structirsol_1_1camera_1_1PixelByteSwapper_3_01true_01_4.html", null ],
     [ "irsol::camera::PixelConversion< SourceBitDepth, TargetBitDepth >", "d2/d9a/structirsol_1_1camera_1_1PixelConversion.html", null ],
     [ "irsol::camera::PixelRepresentation< BitDepth >", "d1/da5/structirsol_1_1camera_1_1PixelRepresentation.html", null ],
     [ "irsol::camera::PixelRepresentation< 12 >", "de/d46/structirsol_1_1camera_1_1PixelRepresentation_3_0112_01_4.html", null ],

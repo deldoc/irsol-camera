@@ -60,6 +60,7 @@ $(document).ready(function(){initNavTree('d6/de2/test__pixel__format_8cpp.html',
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">irsol/camera/pixel_format.hpp</a>&quot;</code><br />
 <code>#include &lt;catch2/catch_all.hpp&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div>
 <p><a href="../../d6/de2/test__pixel__format_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -69,10 +70,14 @@ Functions</h2></td></tr>
 <tr class="separator:a78f1af5999465ed6277f7abfe21e9f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08e0e2367ffe3f02e99cf56e3de94dee" id="r_a08e0e2367ffe3f02e99cf56e3de94dee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de2/test__pixel__format_8cpp.html#a08e0e2367ffe3f02e99cf56e3de94dee">TEST_CASE</a> (&quot;PixelConversion&lt;&gt;::scale&lt;T&gt;())&quot;, &quot;[PixelFormat]&quot;)</td></tr>
 <tr class="separator:a08e0e2367ffe3f02e99cf56e3de94dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690ffabe4db6cdd5e8c4eaf40fc5b6e7" id="r_a690ffabe4db6cdd5e8c4eaf40fc5b6e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de2/test__pixel__format_8cpp.html#a690ffabe4db6cdd5e8c4eaf40fc5b6e7">TEST_CASE</a> (&quot;PixelByteSwapper&lt;true&gt;-swaps-bytes-<a class="el" href="../../d4/dfd/test__utils_8cpp.html#a77f8aa12ac4b75e6cc18d26610639192">for</a>-16-bit-data&quot;, &quot;[PixelFormat]&quot;)</td></tr>
+<tr class="separator:a690ffabe4db6cdd5e8c4eaf40fc5b6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21bd15005b99e2cdd094e3740760feb5" id="r_a21bd15005b99e2cdd094e3740760feb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de2/test__pixel__format_8cpp.html#a21bd15005b99e2cdd094e3740760feb5">TEST_CASE</a> (&quot;PixelByteSwapper&lt;false&gt;-is-no-op&quot;, &quot;[PixelFormat]&quot;)</td></tr>
+<tr class="separator:a21bd15005b99e2cdd094e3740760feb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a78f1af5999465ed6277f7abfe21e9f0d" name="a78f1af5999465ed6277f7abfe21e9f0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78f1af5999465ed6277f7abfe21e9f0d">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a78f1af5999465ed6277f7abfe21e9f0d">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -87,19 +92,184 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html#l00005">5</a> of file <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html">test_pixel_format.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>{</div>
-<div class="line"><span class="lineno">    7</span>  <a class="code hl_function" href="../../d0/d3f/test__binary_8cpp.html#aec3d38915d287e5e5e848d07ef584806">STATIC_CHECK</a>(<a class="code hl_struct" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel&lt;8&gt;::max</a>() == 255);</div>
-<div class="line"><span class="lineno">    8</span>  <a class="code hl_function" href="../../d0/d3f/test__binary_8cpp.html#aec3d38915d287e5e5e848d07ef584806">STATIC_CHECK</a>(<a class="code hl_struct" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel&lt;12&gt;::max</a>() == 4095);</div>
-<div class="line"><span class="lineno">    9</span>  <a class="code hl_function" href="../../d0/d3f/test__binary_8cpp.html#aec3d38915d287e5e5e848d07ef584806">STATIC_CHECK</a>(<a class="code hl_struct" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel&lt;16&gt;::max</a>() == 65535);</div>
-<div class="line"><span class="lineno">   10</span>}</div>
-<div class="ttc" id="astructirsol_1_1camera_1_1Pixel_html"><div class="ttname"><a href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel</a></div><div class="ttdoc">Represents a pixel with a given bit depth.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d8d/pixel__format_8hpp_source.html#l00074">pixel_format.hpp:75</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html#l00006">6</a> of file <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html">test_pixel_format.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>{</div>
+<div class="line"><span class="lineno">    8</span>  <a class="code hl_function" href="../../d0/d3f/test__binary_8cpp.html#aec3d38915d287e5e5e848d07ef584806">STATIC_CHECK</a>(<a class="code hl_struct" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel&lt;8&gt;::max</a>() == 255);</div>
+<div class="line"><span class="lineno">    9</span>  <a class="code hl_function" href="../../d0/d3f/test__binary_8cpp.html#aec3d38915d287e5e5e848d07ef584806">STATIC_CHECK</a>(<a class="code hl_struct" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel&lt;12&gt;::max</a>() == 4095);</div>
+<div class="line"><span class="lineno">   10</span>  <a class="code hl_function" href="../../d0/d3f/test__binary_8cpp.html#aec3d38915d287e5e5e848d07ef584806">STATIC_CHECK</a>(<a class="code hl_struct" href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel&lt;16&gt;::max</a>() == 65535);</div>
+<div class="line"><span class="lineno">   11</span>}</div>
+<div class="ttc" id="astructirsol_1_1camera_1_1Pixel_html"><div class="ttname"><a href="../../d4/d0c/structirsol_1_1camera_1_1Pixel.html">irsol::camera::Pixel</a></div><div class="ttdoc">Represents a pixel with a given bit depth.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d8d/pixel__format_8hpp_source.html#l00077">pixel_format.hpp:78</a></div></div>
 <div class="ttc" id="atest__binary_8cpp_html_aec3d38915d287e5e5e848d07ef584806"><div class="ttname"><a href="../../d0/d3f/test__binary_8cpp.html#aec3d38915d287e5e5e848d07ef584806">STATIC_CHECK</a></div><div class="ttdeci">STATIC_CHECK(m.DIM==1)</div></div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a21bd15005b99e2cdd094e3740760feb5" name="a21bd15005b99e2cdd094e3740760feb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21bd15005b99e2cdd094e3740760feb5">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST_CASE </td>
+          <td>(</td>
+          <td class="paramtype">&quot;PixelByteSwapper&lt;false&gt;-is-no-op&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">[PixelFormat]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html#l00102">102</a> of file <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html">test_pixel_format.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>  SECTION(<span class="stringliteral">&quot;No-op on empty vector&quot;</span>)</div>
+<div class="line"><span class="lineno">  106</span>  {</div>
+<div class="line"><span class="lineno">  107</span>    std::vector&lt;irsol::types::byte_t&gt; v;</div>
+<div class="line"><span class="lineno">  108</span>    <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;false&gt;</a>()(v.begin(), v.end());</div>
+<div class="line"><span class="lineno">  109</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(v.empty());</div>
+<div class="line"><span class="lineno">  110</span>  }</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>  SECTION(<span class="stringliteral">&quot;No-op on non-empty vector&quot;</span>)</div>
+<div class="line"><span class="lineno">  113</span>  {</div>
+<div class="line"><span class="lineno">  114</span>    std::vector&lt;irsol::types::byte_t&gt; v = {<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01},</div>
+<div class="line"><span class="lineno">  115</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02},</div>
+<div class="line"><span class="lineno">  116</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03},</div>
+<div class="line"><span class="lineno">  117</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x04}};</div>
+<div class="line"><span class="lineno">  118</span>    <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;false&gt;</a>()(v.begin(), v.end());</div>
+<div class="line"><span class="lineno">  119</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(</div>
+<div class="line"><span class="lineno">  120</span>      v == std::vector&lt;irsol::types::byte_t&gt;{<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01},</div>
+<div class="line"><span class="lineno">  121</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02},</div>
+<div class="line"><span class="lineno">  122</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03},</div>
+<div class="line"><span class="lineno">  123</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x04}});</div>
+<div class="line"><span class="lineno">  124</span>  }</div>
+<div class="line"><span class="lineno">  125</span>}</div>
+<div class="ttc" id="anamespaceirsol_1_1types_html_ae50d5e590e95d2c56f3ba94a4f07a1aa"><div class="ttname"><a href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a></div><div class="ttdeci">std::byte byte_t</div><div class="ttdoc">Alias for a single byte used in serialization or binary data handling.</div><div class="ttdef"><b>Definition</b> <a href="../../dd/de3/types_8hpp_source.html#l00165">types.hpp:165</a></div></div>
+<div class="ttc" id="astructirsol_1_1camera_1_1PixelByteSwapper_html"><div class="ttname"><a href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper</a></div><div class="ttdoc">Utility for swapping pixel bytes in a buffer.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d8d/pixel__format_8hpp_source.html#l00157">pixel_format.hpp:158</a></div></div>
+<div class="ttc" id="atest__assignment_8cpp_html_a4f9796adeb2f54486732d0b1e9a5e0dc"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a></div><div class="ttdeci">CHECK(m.identifier==identifier)</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a690ffabe4db6cdd5e8c4eaf40fc5b6e7" name="a690ffabe4db6cdd5e8c4eaf40fc5b6e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a690ffabe4db6cdd5e8c4eaf40fc5b6e7">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST_CASE </td>
+          <td>(</td>
+          <td class="paramtype">&quot;PixelByteSwapper&lt;true&gt;-swaps-bytes-<a class="el" href="../../d4/dfd/test__utils_8cpp.html#a77f8aa12ac4b75e6cc18d26610639192">for</a>-16-bit-data&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">[PixelFormat]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html#l00023">23</a> of file <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html">test_pixel_format.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>{</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>  SECTION(<span class="stringliteral">&quot;Empty range does nothing&quot;</span>)</div>
+<div class="line"><span class="lineno">   27</span>  {</div>
+<div class="line"><span class="lineno">   28</span>    std::vector&lt;irsol::types::byte_t&gt; v;</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;true&gt;</a>()(v.begin(), v.end());</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(v.empty());</div>
+<div class="line"><span class="lineno">   31</span>  }</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>  SECTION(<span class="stringliteral">&quot;Begin after end raises an assertion&quot;</span>)</div>
+<div class="line"><span class="lineno">   34</span>  {</div>
+<div class="line"><span class="lineno">   35</span>    std::vector&lt;irsol::types::byte_t&gt; v = {<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01}, <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02}};</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#afaef37c6c7945d9bf5c2b3d8e827f1a7">CHECK_THROWS_AS</a>(</div>
+<div class="line"><span class="lineno">   37</span>      <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;true&gt;</a>()(v.end(), v.begin()), <a class="code hl_typedef" href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">irsol::AssertionException</a>);</div>
+<div class="line"><span class="lineno">   38</span>  }</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>  SECTION(<span class="stringliteral">&quot;Even number of bytes swaps pairs&quot;</span>)</div>
+<div class="line"><span class="lineno">   41</span>  {</div>
+<div class="line"><span class="lineno">   42</span>    std::vector&lt;irsol::types::byte_t&gt; v = {<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01},</div>
+<div class="line"><span class="lineno">   43</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02},</div>
+<div class="line"><span class="lineno">   44</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03},</div>
+<div class="line"><span class="lineno">   45</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x04}};</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;true&gt;</a>()(v.begin(), v.end());</div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(</div>
+<div class="line"><span class="lineno">   48</span>      v == std::vector&lt;irsol::types::byte_t&gt;{<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02},</div>
+<div class="line"><span class="lineno">   49</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01},</div>
+<div class="line"><span class="lineno">   50</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x04},</div>
+<div class="line"><span class="lineno">   51</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03}});</div>
+<div class="line"><span class="lineno">   52</span>  }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  SECTION(<span class="stringliteral">&quot;Odd number of bytes swaps pairs, last byte untouched&quot;</span>)</div>
+<div class="line"><span class="lineno">   55</span>  {</div>
+<div class="line"><span class="lineno">   56</span>    std::vector&lt;irsol::types::byte_t&gt; v = {</div>
+<div class="line"><span class="lineno">   57</span>      <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01}, <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02}, <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03}};</div>
+<div class="line"><span class="lineno">   58</span>    <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;true&gt;</a>()(v.begin(), v.end());</div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(</div>
+<div class="line"><span class="lineno">   60</span>      v == std::vector&lt;irsol::types::byte_t&gt;{</div>
+<div class="line"><span class="lineno">   61</span>             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02}, <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01}, <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03}});</div>
+<div class="line"><span class="lineno">   62</span>  }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  SECTION(<span class="stringliteral">&quot;Single byte does nothing&quot;</span>)</div>
+<div class="line"><span class="lineno">   65</span>  {</div>
+<div class="line"><span class="lineno">   66</span>    std::vector&lt;irsol::types::byte_t&gt; v = {<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0xAA}};</div>
+<div class="line"><span class="lineno">   67</span>    <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;true&gt;</a>()(v.begin(), v.end());</div>
+<div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(v == std::vector&lt;irsol::types::byte_t&gt;{<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0xAA}});</div>
+<div class="line"><span class="lineno">   69</span>  }</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  SECTION(<span class="stringliteral">&quot;Longer vector swaps all pairs correctly&quot;</span>)</div>
+<div class="line"><span class="lineno">   72</span>  {</div>
+<div class="line"><span class="lineno">   73</span>    std::vector&lt;irsol::types::byte_t&gt; v = {<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01},</div>
+<div class="line"><span class="lineno">   74</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02},</div>
+<div class="line"><span class="lineno">   75</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03},</div>
+<div class="line"><span class="lineno">   76</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x04},</div>
+<div class="line"><span class="lineno">   77</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x05},</div>
+<div class="line"><span class="lineno">   78</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x06},</div>
+<div class="line"><span class="lineno">   79</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x07},</div>
+<div class="line"><span class="lineno">   80</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x08},</div>
+<div class="line"><span class="lineno">   81</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x09},</div>
+<div class="line"><span class="lineno">   82</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x0A},</div>
+<div class="line"><span class="lineno">   83</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x0B},</div>
+<div class="line"><span class="lineno">   84</span>                                           <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x0C}};</div>
+<div class="line"><span class="lineno">   85</span>    <a class="code hl_struct" href="../../d1/da5/structirsol_1_1camera_1_1PixelByteSwapper.html">irsol::camera::PixelByteSwapper&lt;true&gt;</a>()(v.begin(), v.end());</div>
+<div class="line"><span class="lineno">   86</span>    <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(</div>
+<div class="line"><span class="lineno">   87</span>      v == std::vector&lt;irsol::types::byte_t&gt;{<a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x02},</div>
+<div class="line"><span class="lineno">   88</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x01},</div>
+<div class="line"><span class="lineno">   89</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x04},</div>
+<div class="line"><span class="lineno">   90</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x03},</div>
+<div class="line"><span class="lineno">   91</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x06},</div>
+<div class="line"><span class="lineno">   92</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x05},</div>
+<div class="line"><span class="lineno">   93</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x08},</div>
+<div class="line"><span class="lineno">   94</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x07},</div>
+<div class="line"><span class="lineno">   95</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x0A},</div>
+<div class="line"><span class="lineno">   96</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x09},</div>
+<div class="line"><span class="lineno">   97</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x0C},</div>
+<div class="line"><span class="lineno">   98</span>                                             <a class="code hl_typedef" href="../../d9/d2e/namespaceirsol_1_1types.html#ae50d5e590e95d2c56f3ba94a4f07a1aa">irsol::types::byte_t</a>{0x0B}});</div>
+<div class="line"><span class="lineno">   99</span>  }</div>
+<div class="line"><span class="lineno">  100</span>}</div>
+<div class="ttc" id="anamespaceirsol_html_a1fd93a626ce3f0888f763f800ae35cb7"><div class="ttname"><a href="../../d7/ddb/namespaceirsol.html#a1fd93a626ce3f0888f763f800ae35cb7">irsol::AssertionException</a></div><div class="ttdeci">ppk::assert::AssertionException AssertionException</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d54/assert_8hpp_source.html#l00149">assert.hpp:149</a></div></div>
+<div class="ttc" id="atest__assignment_8cpp_html_afaef37c6c7945d9bf5c2b3d8e827f1a7"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#afaef37c6c7945d9bf5c2b3d8e827f1a7">CHECK_THROWS_AS</a></div><div class="ttdeci">CHECK_THROWS_AS(irsol::protocol::Assignment(identifier, value), std::invalid_argument)</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a08e0e2367ffe3f02e99cf56e3de94dee" name="a08e0e2367ffe3f02e99cf56e3de94dee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08e0e2367ffe3f02e99cf56e3de94dee">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a08e0e2367ffe3f02e99cf56e3de94dee">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -114,17 +284,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html#l00012">12</a> of file <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html">test_pixel_format.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>{</div>
-<div class="line"><span class="lineno">   14</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;8, 12&gt;::scale</a>(255) == 4095);</div>
-<div class="line"><span class="lineno">   15</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;8, 16&gt;::scale</a>(255) == 65535);</div>
-<div class="line"><span class="lineno">   16</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;12, 16&gt;::scale</a>(4095) == 65535);</div>
-<div class="line"><span class="lineno">   17</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;12, 8&gt;::scale</a>(4095) == 255);</div>
-<div class="line"><span class="lineno">   18</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;16, 8&gt;::scale</a>(65535) == 255);</div>
-<div class="line"><span class="lineno">   19</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;16, 12&gt;::scale</a>(65535) == 4095);</div>
-<div class="line"><span class="lineno">   20</span>}</div>
-<div class="ttc" id="astructirsol_1_1camera_1_1PixelConversion_html"><div class="ttname"><a href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion</a></div><div class="ttdoc">Helper to convert pixel values from one bit depth to another with scaling.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d8d/pixel__format_8hpp_source.html#l00119">pixel_format.hpp:120</a></div></div>
-<div class="ttc" id="atest__assignment_8cpp_html_a4f9796adeb2f54486732d0b1e9a5e0dc"><div class="ttname"><a href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a></div><div class="ttdeci">CHECK(m.identifier==identifier)</div></div>
+<p class="definition">Definition at line <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html#l00013">13</a> of file <a class="el" href="../../d6/de2/test__pixel__format_8cpp_source.html">test_pixel_format.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
+<div class="line"><span class="lineno">   15</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;8, 12&gt;::scale</a>(255) == 4095);</div>
+<div class="line"><span class="lineno">   16</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;8, 16&gt;::scale</a>(255) == 65535);</div>
+<div class="line"><span class="lineno">   17</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;12, 16&gt;::scale</a>(4095) == 65535);</div>
+<div class="line"><span class="lineno">   18</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;12, 8&gt;::scale</a>(4095) == 255);</div>
+<div class="line"><span class="lineno">   19</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;16, 8&gt;::scale</a>(65535) == 255);</div>
+<div class="line"><span class="lineno">   20</span>  <a class="code hl_function" href="../../d6/d3f/test__assignment_8cpp.html#a4f9796adeb2f54486732d0b1e9a5e0dc">CHECK</a>(<a class="code hl_struct" href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion&lt;16, 12&gt;::scale</a>(65535) == 4095);</div>
+<div class="line"><span class="lineno">   21</span>}</div>
+<div class="ttc" id="astructirsol_1_1camera_1_1PixelConversion_html"><div class="ttname"><a href="../../d2/d9a/structirsol_1_1camera_1_1PixelConversion.html">irsol::camera::PixelConversion</a></div><div class="ttdoc">Helper to convert pixel values from one bit depth to another with scaling.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d8d/pixel__format_8hpp_source.html#l00122">pixel_format.hpp:123</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -92,7 +92,7 @@ struct irsol::camera::Pixel&lt; BitDepth &gt;</div><p>Represents a pixel with a 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00074">74</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a7260229207e07634affc7ad72d75dd6e" name="a7260229207e07634affc7ad72d75dd6e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7260229207e07634affc7ad72d75dd6e">&#9670;&#160;</a></span>representation</h2>
@@ -110,7 +110,7 @@ template&lt;uint8_t BitDepth&gt; </div>
 
 <p>The integral type used to represent pixel values at this bit depth. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
 
 </div>
 </div>
@@ -144,10 +144,10 @@ template&lt;uint8_t BitDepth&gt; </div>
 <p>Computed as (2^BitDepth) - 1.</p>
 <dl class="section return"><dt>Returns</dt><dd>Maximum pixel value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   87</span>  {</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> (1ULL &lt;&lt; BitDepth) - 1;</div>
-<div class="line"><span class="lineno">   89</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00089">89</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span>  {</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> (1ULL &lt;&lt; BitDepth) - 1;</div>
+<div class="line"><span class="lineno">   92</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -179,10 +179,10 @@ template&lt;uint8_t BitDepth&gt; </div>
 <p>Returns the minimum representable pixel value (always zero). </p>
 <dl class="section return"><dt>Returns</dt><dd>Minimum pixel value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>  {</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   99</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html#l00099">99</a> of file <a class="el" href="../../d2/d8d/pixel__format_8hpp_source.html">pixel_format.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  100</span>  {</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  102</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>

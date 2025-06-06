@@ -1,7 +1,6 @@
 var viewer__client__gi_8cpp =
 [
     [ "createConnectionWithRetry", "d7/da0/viewer__client__gi_8cpp.html#a00d2ff259bd8a226ef9b7fe015795b99", null ],
-    [ "createMat", "d7/da0/viewer__client__gi_8cpp.html#a46e13da6987ead68f3309ade3ed9d45d", null ],
     [ "main", "d7/da0/viewer__client__gi_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627", null ],
     [ "queryImage", "d7/da0/viewer__client__gi_8cpp.html#a872877f58408a3e6861685eb3f25caf8", null ],
     [ "run", "d7/da0/viewer__client__gi_8cpp.html#a8e59f5cc79a04a892b23dc84bcdd90f7", null ],
