@@ -36,7 +36,8 @@ var NAVTREE =
         [ "01-loading-images", "d9/d45/loading_images.html", null ],
         [ "02-interacting-with-camera-features", "d6/dca/interacting_with_camera_features.html", null ],
         [ "03-message-protocols", "db/d19/message_protocols.html", null ],
-        [ "04-message-handlers", "d6/deb/message_handlers.html", null ]
+        [ "04-message-handlers", "d6/deb/message_handlers.html", null ],
+        [ "05-client-server-interaction", "dc/dd0/client_server_interaction.html", null ]
       ] ],
       [ "Tests", "d0/def/tests.html", null ]
     ] ],
@@ -83,10 +84,10 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d3/ddb/factory_camera_features.html",
-"d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#ac3eab2c91a585599b7c5d006bd5900b9",
-"da/d87/variants_8cpp.html#ac01a1187b377182759ebcd762d39815b",
-"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a3a8dab8e90db2c693d5ddd528a3c851c",
-"pages.html"
+"d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a5bbd56931184567a45921d5d71b3c179",
+"da/d77/structirsol_1_1server_1_1frame__collector_1_1FrameMetadata.html#a2829b17018752631a606fd7651dafdbe",
+"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html",
+"globals.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
