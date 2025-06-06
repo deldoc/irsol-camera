@@ -85,6 +85,9 @@ public:
    * @tparam T The specific @ref irsol::protocol::OutMessage type to serialize.
    * @param msg The message to serialize.
    * @return A @ref irsol::protocol::internal::SerializedMessage containing the serialized message.
+   *
+   * @warning The input @p msg is consumed by this function and is left in a valid but unspecified
+   * state after the call.
    */
   template<
     typename T,
@@ -155,10 +158,69 @@ private:
 
   // Specialized serialization methods for each OutMessage type:
 
+  /**
+   * @brief Serializes a @ref irsol::protocol::Success message to a binary protocol message.
+   *
+   * @param msg The Success message to serialize.
+   * @return A SerializedMessage containing the serialized Success message.
+   *
+   * @warning The input @p msg is consumed by this function and is left in a valid but unspecified
+   * state after the call.
+   */
   static internal::SerializedMessage serializeSuccess(Success&& msg);
+
+  /**
+   * @brief Serializes a @ref irsol::protocol::BinaryDataBuffer message to a binary protocol
+   * message.
+   *
+   * @param msg The BinaryDataBuffer message to serialize.
+   * @return A SerializedMessage containing the serialized binary data buffer.
+   *
+   * @warning The input @p msg is consumed by this function and is left in a valid but unspecified
+   * state after the call.
+   */
   static internal::SerializedMessage serializeBinaryDataBuffer(BinaryDataBuffer&& msg);
+
+  /**
+   * @brief Serializes a @ref irsol::protocol::ImageBinaryData message to a binary protocol message.
+   *
+   * This method serializes the image data into a binary buffer suitable for transmission.
+   * The image data is assumed to be in unpacked Mono12 format (2 bytes per pixel).
+   * During serialization, the bytes for each pixel are swapped (i.e., the order of the two bytes
+   * for each pixel is reversed) to match the IRSOL server protocol requirements.
+   * The resulting buffer contains the image data with swapped bytes, ready for network transfer.
+   *
+   * @param msg The ImageBinaryData message to serialize.
+   * @return A SerializedMessage containing the serialized image data with swapped bytes.
+   *
+   * @note The byte swapping is required so that the client can reconstruct the image correctly
+   * using @ref irsol::camera::PixelByteSwapper and related utilities.
+   * @warning The input @p msg is consumed by this function and is left in a valid but unspecified
+   * state after the call.
+   */
   static internal::SerializedMessage serializeImageBinaryData(ImageBinaryData&& msg);
+
+  /**
+   * @brief Serializes a @ref irsol::protocol::ColorImageBinaryData message to a binary protocol
+   * message.
+   *
+   * @param msg The ColorImageBinaryData message to serialize.
+   * @return A SerializedMessage containing the serialized color image data.
+   *
+   * @warning The input @p msg is consumed by this function and is left in a valid but unspecified
+   * state after the call.
+   */
   static internal::SerializedMessage serializeColorImageBinaryData(ColorImageBinaryData&& msg);
+
+  /**
+   * @brief Serializes a @ref irsol::protocol::Error message to a binary protocol message.
+   *
+   * @param msg The Error message to serialize.
+   * @return A SerializedMessage containing the serialized error message.
+   *
+   * @warning The input @p msg is consumed by this function and is left in a valid but unspecified
+   * state after the call.
+   */
   static internal::SerializedMessage serializeError(Error&& msg);
 };
 

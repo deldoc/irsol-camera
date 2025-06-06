@@ -19,17 +19,6 @@ signalHandler(int signal)
   }
 }
 
-cv::Mat
-createMat(unsigned char* data, int rows, int cols)
-{
-  // Create Mat from buffer
-  cv::Mat mat(rows, cols, CV_16UC1);
-  memcpy(mat.data, data, rows * cols * 2);
-  // Scale the values from the 12-bit depth to 16-bit depth
-  mat *= irsol::camera::PixelConversion<12, 16>::factor;
-  return mat;
-}
-
 std::optional<std::pair<size_t, cv::Mat>>
 queryImage(irsol::types::connector_t& conn)
 {
@@ -61,8 +50,11 @@ queryImage(irsol::types::connector_t& conn)
     } else if(headerTitle == "img") {
       IRSOL_LOG_INFO("Received 'img' header");
 
+      // --- Parse image metadata ---
       uint32_t imageHeight{0};
       uint32_t imageWidth{0};
+
+      // Wait for SOH (start of header) byte
       while(true) {
         auto res = conn.read(&ch, 1);
         if(res.value() <= 0) {
@@ -70,36 +62,38 @@ queryImage(irsol::types::connector_t& conn)
           return std::nullopt;
         }
         if(ch == irsol::utils::bytesToString({irsol::protocol::Serializer::SpecialBytes::SOH})[0]) {
-          // Parse the image shape
-          while(ch != '[') {
-            conn.read(&ch, 1);
-          }
-          std::string heightStr;
-          while(ch != ',') {
-            conn.read(&ch, 1);
-            heightStr.insert(heightStr.end(), ch);
-          }
-          imageHeight = std::stol(heightStr);
-          std::string widthStr;
-          while(ch != ']') {
-            conn.read(&ch, 1);
-            widthStr.insert(widthStr.end(), ch);
-          }
-          imageWidth = std::stol(widthStr);
-          // Here we start the image attributes, skip them
-          while(ch !=
-                irsol::utils::bytesToString({irsol::protocol::Serializer::SpecialBytes::STX})[0]) {
-            conn.read(&ch, 1);
-          }
           break;
         }
       }
 
-      // Now we can read the image bytes
+      // Parse image shape: [height,width]
+      while(ch != '[') {
+        conn.read(&ch, 1);
+      }
+      std::string heightStr;
+      while(ch != ',') {
+        conn.read(&ch, 1);
+        heightStr.insert(heightStr.end(), ch);
+      }
+      imageHeight = std::stol(heightStr);
+
+      std::string widthStr;
+      while(ch != ']') {
+        conn.read(&ch, 1);
+        widthStr.insert(widthStr.end(), ch);
+      }
+      imageWidth = std::stol(widthStr);
+
+      // Skip image attributes until STX (start of text) byte
+      while(ch !=
+            irsol::utils::bytesToString({irsol::protocol::Serializer::SpecialBytes::STX})[0]) {
+        conn.read(&ch, 1);
+      }
+
+      // --- Read image data ---
       uint64_t             expectedSize = imageHeight * imageWidth * 2;  // 2 bytes per pixel
       std::vector<uint8_t> buffer(expectedSize);
 
-      // Step 3: Read image data
       size_t totalRead = 0;
       while(totalRead < expectedSize) {
         auto res = conn.read(buffer.data() + totalRead, expectedSize - totalRead);
@@ -109,8 +103,10 @@ queryImage(irsol::types::connector_t& conn)
         }
         totalRead += res.value();
       }
-      // Step 5: Convert image data to OpenCV Mat
-      return std::make_pair(1, createMat(buffer.data(), imageHeight, imageWidth));
+
+      // --- Convert image data to OpenCV Mat ---
+      return std::make_pair(
+        1, irsol::opencv::createCvMatFromIrsolServerBuffer(buffer.data(), imageHeight, imageWidth));
     } else {
 
       IRSOL_LOG_WARN("Skipping unknown header: '{}'", headerTitle);
@@ -220,7 +216,9 @@ run(double inFps)
       {20, 80},
       cv::FONT_HERSHEY_COMPLEX,
       1.0,
-      {65535, 65535, 65535},
+      {irsol::camera::Pixel<16>::max(),
+       irsol::camera::Pixel<16>::max(),
+       irsol::camera::Pixel<16>::max()},
       1,
       cv::LINE_AA);
 
@@ -237,7 +235,9 @@ run(double inFps)
       {20, 160},
       cv::FONT_HERSHEY_COMPLEX,
       1.0,
-      {65535, 65535, 65535},
+      {irsol::camera::Pixel<16>::max(),
+       irsol::camera::Pixel<16>::max(),
+       irsol::camera::Pixel<16>::max()},
       1,
       cv::LINE_AA);
 

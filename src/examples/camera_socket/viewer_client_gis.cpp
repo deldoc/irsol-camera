@@ -20,15 +20,6 @@ signalHandler(int signal)
   }
 }
 
-cv::Mat
-createMat(unsigned char* data, int rows, int cols, int chs = 1)
-{
-  // Create Mat from buffer
-  cv::Mat mat(rows, cols, CV_MAKETYPE(cv::DataType<unsigned char>::type, chs));
-  memcpy(mat.data, data, rows * cols * chs * sizeof(unsigned char));
-  return mat;
-}
-
 bool
 configureGis(irsol::types::connector_t& conn, double fps, uint64_t isl)
 {
@@ -92,7 +83,6 @@ queryImages(irsol::types::connector_t& conn)
   std::vector<std::pair<size_t, cv::Mat>> result;
 
   while(true) {
-    // Read header title until ':' or '\n'
     std::string headerTitle;
     char        ch;
     while(true) {
@@ -101,7 +91,7 @@ queryImages(irsol::types::connector_t& conn)
         IRSOL_LOG_ERROR("Failed to read header title");
         return std::nullopt;
       }
-      if(ch == ':' || ch == '\n')
+      if(ch == '\n' || ch == '=')
         break;
       headerTitle += ch;
     }
@@ -109,56 +99,61 @@ queryImages(irsol::types::connector_t& conn)
     if(headerTitle == "gis;") {
       IRSOL_LOG_INFO("Received completion signal from server");
       break;  // Done
-    }
-
-    static const std::regex reForIsn(R"(^isn=(\d+)$)");
-    std::smatch             m;
-    std::string             errorMessage;
-    if(std::regex_match(headerTitle, m, reForIsn)) {
-      try {
-        uint64_t isn = std::stoull(m[1]);
-        IRSOL_LOG_INFO("Received frame at input sequence number {}", isn);
-      } catch(const std::exception& e) {
-        IRSOL_LOG_ERROR("Failed to parse isn: {}", e.what());
+    } else if(headerTitle == "isn") {
+      std::string isnStr;
+      while(ch != '\n') {
+        conn.read(&ch, 1);
+        isnStr.insert(isnStr.end(), ch);
       }
-    } else if(headerTitle == "image_data") {
+      uint64_t isn = std::stoull(isnStr);
+      IRSOL_LOG_INFO("Received input sequence number {}", isn);
+    } else if(headerTitle == "img") {
+      IRSOL_LOG_INFO("Received 'img' header");
 
-      IRSOL_LOG_INFO("Received 'image_data' header");
+      // --- Parse image metadata ---
+      uint32_t imageHeight{0};
+      uint32_t imageWidth{0};
 
-      // Read image metadata after "image_data:"
-      std::string header;
+      // Wait for SOH (start of header) byte
       while(true) {
         auto res = conn.read(&ch, 1);
         if(res.value() <= 0) {
           IRSOL_LOG_ERROR("Failed to read image metadata");
           return std::nullopt;
         }
-        if(ch == ':')
+        if(ch == irsol::utils::bytesToString({irsol::protocol::Serializer::SpecialBytes::SOH})[0]) {
           break;
-        header += ch;
+        }
       }
 
-      IRSOL_LOG_DEBUG("Image header: {}", header);
+      // Parse image shape: [height,width]
+      while(ch != '[') {
+        conn.read(&ch, 1);
+      }
+      std::string heightStr;
+      while(ch != ',') {
+        conn.read(&ch, 1);
+        heightStr.insert(heightStr.end(), ch);
+      }
+      imageHeight = std::stol(heightStr);
 
-      // Parse metadata
-      int    width = 0, height = 0, channels = 0;
-      size_t imageId = 0;
-      if(sscanf(header.c_str(), "%lux%dx%dx%d", &imageId, &width, &height, &channels) != 4) {
-        IRSOL_LOG_ERROR("Invalid image header: {}", header);
-        return std::nullopt;
+      std::string widthStr;
+      while(ch != ']') {
+        conn.read(&ch, 1);
+        widthStr.insert(widthStr.end(), ch);
+      }
+      imageWidth = std::stol(widthStr);
+
+      // Skip image attributes until STX (start of text) byte
+      while(ch !=
+            irsol::utils::bytesToString({irsol::protocol::Serializer::SpecialBytes::STX})[0]) {
+        conn.read(&ch, 1);
       }
 
-      int type =
-        (channels == 1) ? CV_8UC1 : (channels == 3) ? CV_8UC3 : (channels == 4) ? CV_8UC4 : -1;
-      if(type == -1) {
-        IRSOL_LOG_ERROR("Unsupported channel count: {}", channels);
-        return std::nullopt;
-      }
-
-      size_t               expectedSize = width * height * channels;
+      // --- Read image data ---
+      uint64_t             expectedSize = imageHeight * imageWidth * 2;  // 2 bytes per pixel
       std::vector<uint8_t> buffer(expectedSize);
 
-      // Read image bytes
       size_t totalRead = 0;
       while(totalRead < expectedSize) {
         auto res = conn.read(buffer.data() + totalRead, expectedSize - totalRead);
@@ -170,8 +165,9 @@ queryImages(irsol::types::connector_t& conn)
       }
 
       retrieveTimes.push_back(irsol::types::clock_t::now());
-      cv::Mat img = createMat(buffer.data(), height, width, channels);
-      result.emplace_back(imageId, std::move(img));
+      cv::Mat img =
+        irsol::opencv::createCvMatFromIrsolServerBuffer(buffer.data(), imageHeight, imageWidth);
+      result.emplace_back(result.size(), std::move(img));
     } else {
       IRSOL_LOG_WARN("Skipping unknown header: {}", headerTitle);
       // Skip the rest of the line
@@ -302,7 +298,9 @@ run(double inFps, uint64_t sequenceLength)
         {20, 80},
         cv::FONT_HERSHEY_COMPLEX,
         1.0,
-        {0, 255, 0},
+        {irsol::camera::Pixel<16>::max(),
+         irsol::camera::Pixel<16>::max(),
+         irsol::camera::Pixel<16>::max()},
         1,
         cv::LINE_AA);
 
@@ -312,7 +310,9 @@ run(double inFps, uint64_t sequenceLength)
         {20, 140},
         cv::FONT_HERSHEY_COMPLEX,
         1.0,
-        {0, 255, 0},
+        {irsol::camera::Pixel<16>::max(),
+         irsol::camera::Pixel<16>::max(),
+         irsol::camera::Pixel<16>::max()},
         1,
         cv::LINE_AA);
 

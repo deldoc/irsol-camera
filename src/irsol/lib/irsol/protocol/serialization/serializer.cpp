@@ -1,5 +1,6 @@
 #include "irsol/protocol/serialization/serializer.hpp"
 
+#include "irsol/camera/pixel_format.hpp"
 #include "irsol/logging.hpp"
 #include "irsol/protocol/utils.hpp"
 #include "irsol/utils.hpp"
@@ -72,7 +73,8 @@ Serializer::serializeImageBinaryData(ImageBinaryData&& msg)
   IRSOL_LOG_TRACE("Serializing image binary data: {}", msg.toString());
 
   std::vector<irsol::types::byte_t> payload;
-  payload.reserve(msg.data.size());
+  payload.reserve(msg.data.size() + 128);  // Reserve extra for header/meta
+
   {
     std::string imagePrefix        = "img=";
     auto        imagePrefixAsBytes = irsol::utils::stringToBytes(imagePrefix);
@@ -93,7 +95,17 @@ Serializer::serializeImageBinaryData(ImageBinaryData&& msg)
     payload.insert(payload.end(), attributesStringAsBytes.begin(), attributesStringAsBytes.end());
   }
   payload.emplace_back(Serializer::SpecialBytes::STX);
-  std::move(msg.data.begin(), msg.data.end(), std::back_inserter(payload));
+
+  // Copy image data to the end of the payload buffer
+  size_t dataOffset = payload.size();
+  payload.resize(payload.size() + msg.data.size());
+  std::memcpy(&payload[dataOffset], msg.data.data(), msg.data.size());
+
+  // Swap bytes in-place for 16-bit data (assume always 16-bit)
+  // This swaps each pair of bytes in the image data region of the payload.
+  irsol::camera::PixelByteSwapper<true>()(
+    payload.begin() + static_cast<std::ptrdiff_t>(dataOffset), payload.end());
+
   payload.emplace_back(Serializer::SpecialBytes::ETX);
 
   auto message = internal::SerializedMessage("", std::move(payload));

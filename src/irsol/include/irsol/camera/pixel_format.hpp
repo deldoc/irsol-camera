@@ -5,6 +5,9 @@
 
 #pragma once
 
+#include "irsol/assert.hpp"
+#include "irsol/macros.hpp"
+
 #include <algorithm>
 #include <stdint.h>
 
@@ -137,6 +140,47 @@ struct PixelConversion
     auto rawScale = factor * value;
     return static_cast<typename Pixel<TargetBitDepth>::representation>(
       std::min(rawScale, static_cast<decltype(rawScale)>(Pixel<TargetBitDepth>::max())));
+  }
+};
+
+/**
+ * @brief Utility for swapping pixel bytes in a buffer.
+ *
+ * The default (swap=false) does nothing. The specialization for swap=true
+ * swaps bytes for 16-bit data (i.e., swaps each pair of bytes in the range).
+ *
+ * Usage:
+ *   PixelByteSwapper<true>()(vec.begin(), vec.end()); // swaps bytes in-place
+ *   PixelByteSwapper<false>()(vec.begin(), vec.end()); // no-op
+ */
+template<bool swap>
+struct PixelByteSwapper
+{
+  template<typename Iterator>
+  void operator()(IRSOL_MAYBE_UNUSED Iterator begin, IRSOL_MAYBE_UNUSED Iterator end) const
+  {
+    IRSOL_ASSERT_ERROR(
+      begin <= end, "PixelByteSwapper: begin iterator must not be after end iterator");
+    // No-op for swap == false
+  }
+};
+
+template<>
+struct PixelByteSwapper<true>
+{
+  template<typename Iterator>
+  void operator()(Iterator begin, Iterator end) const
+  {
+    IRSOL_ASSERT_ERROR(
+      begin <= end, "PixelByteSwapper: begin iterator must not be after end iterator");
+    // Assumes 16-bit data: swap each pair of bytes in-place
+    for(auto it = begin; it != end; ++it) {
+      auto next = std::next(it);
+      if(next == end)
+        break;
+      std::iter_swap(it, next);
+      ++it;
+    }
   }
 };
 
