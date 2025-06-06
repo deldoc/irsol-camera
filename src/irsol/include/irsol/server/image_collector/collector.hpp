@@ -167,7 +167,8 @@ private:
   std::condition_variable m_scheduleCondition;  ///< Signals when a new client is scheduled.
   std::thread             m_distributorThread;  ///< Thread responsible for frame distribution.
 
-  std::atomic<bool> m_stop{false};  ///< Indicates whether the collector is stopping.
+  std::atomic<bool> m_stop{
+    false};  ///< Indicates whether the collector is stopping due to an external request.
 };
 
 }  // namespace frame_collector

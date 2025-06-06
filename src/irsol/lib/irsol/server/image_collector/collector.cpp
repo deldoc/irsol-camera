@@ -32,22 +32,16 @@ void
 FrameCollector::start()
 {
   if(m_stop.load()) {
-    IRSOL_NAMED_LOG_ERROR(
-      "frame_collector", "Collector is already running, ignoring duplicate start request");
+    IRSOL_NAMED_LOG_WARN(
+      "frame_collector", "Collector was requested to stop already. Ignoring re-start request");
     return;
   }
-  m_stop.store(false);
   m_distributorThread = std::thread(&FrameCollector::run, this);
 }
 
 void
 FrameCollector::stop()
 {
-  if(!m_stop.load()) {
-    IRSOL_NAMED_LOG_ERROR(
-      "frame_collector", "Collector was not running, ignoring duplicate stop request");
-    return;
-  }
   m_stop.store(true);
   m_scheduleCondition.notify_all();
   if(m_distributorThread.joinable())

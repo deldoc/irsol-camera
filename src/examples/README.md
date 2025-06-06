@@ -21,3 +21,6 @@ These examples serve as practical references to help you get started and underst
 * @subpage message_handlers
   Covers the topic of how to implement and use message handlers in the `irsol` framework, including the @ref irsol::server::handlers::MessageHandler class and lambda handlers for rapid prototyping.
 
+* @subpage client_server_interaction
+  Covers the topic of how the `irsol` server and client interact, including how to connect to the server, send messages, and receive responses.
+
