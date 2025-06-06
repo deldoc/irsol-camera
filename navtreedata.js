@@ -39,6 +39,7 @@ var NAVTREE =
       ] ],
       [ "Tests", "d0/def/tests.html", null ]
     ] ],
+    [ "Server Architecture", "de/d8a/server_architecture.html", null ],
     [ "Resources", "d9/d3b/resources.html", [
       [ "Factory Camera features", "d3/ddb/factory_camera_features.html", null ]
     ] ],
