@@ -6,5 +6,6 @@ var topics =
     [ "Protocol", "de/dca/group__Protocol.html", "de/dca/group__Protocol" ],
     [ "Server", "da/d64/group__Server.html", "da/d64/group__Server" ],
     [ "Handlers", "df/de1/group__Handlers.html", "df/de1/group__Handlers" ],
+    [ "FrameCollector", "de/dd4/group__FrameCollector.html", "de/dd4/group__FrameCollector" ],
     [ "Metaprogramming", "d0/d85/group__Metaprogramming.html", "d0/d85/group__Metaprogramming" ]
 ];

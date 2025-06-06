@@ -1,0 +1,28 @@
+var group__FrameCollector =
+[
+    [ "irsol::server::frame_collector::FrameCollector", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html", [
+      [ "frame_queue_t", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a8c8cef36ff52c80e1f28197618817491", null ],
+      [ "FrameCollector", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a8be6ebec2ed0d3f0a78b001c810c4108", null ],
+      [ "~FrameCollector", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a6cf04e668547b974523bc0b43bcb9298", null ],
+      [ "cleanUpSchedule", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#afa8ed51e3c3dbcbb7395f8a78ecd0c4a", null ],
+      [ "collectReadyClients", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a6230358201977df4fc63be18ed0719ac", null ],
+      [ "deregisterClient", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a270f12597aa6816da16db8acf71a3bf1", null ],
+      [ "deregisterClientNonThreadSafe", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a3a8dab8e90db2c693d5ddd528a3c851c", null ],
+      [ "grabImageData", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#adedefafaa21f9005668569913caaac0c", null ],
+      [ "isBusy", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa1aad4f54c265bc5c2771ff9d79b6123", null ],
+      [ "makeQueuePtr", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#af7b64373a4ab41a14089e39de5b40245", null ],
+      [ "registerClient", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a82c78c2d8c59c360184a852b5b53f101", null ],
+      [ "run", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a128380895ffbc5b1d34db2dcdd5cecb0", null ],
+      [ "schedule", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a9e2cbc309a05bf63f708e0df24134500", null ],
+      [ "start", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a2eda10c577b209e3635abd108b69318d", null ],
+      [ "stop", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#ae06173b3a37b853384004250cbdc2a16", null ],
+      [ "m_cam", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a89aff071a1e8bb9c5775575c6ec963b8", null ],
+      [ "m_clients", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aa625ad14ab3b7d73d535adc4339aead0", null ],
+      [ "m_clientsMutex", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#aed68d05a46f603193623ac19015033b6", null ],
+      [ "m_distributorThread", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a4b75eeab69b857b5a55261117b733205", null ],
+      [ "m_scheduleCondition", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a705254fa30d424a01adb204078c00b2d", null ],
+      [ "m_scheduleMap", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a65026725325000ef733111870bef4ea4", null ],
+      [ "m_stop", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a01788beed29fbd39b3c7c6fd799dea1c", null ],
+      [ "SLACK", "de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#ad7ab4acc72d3fad2bf71f6aa79b47a97", null ]
+    ] ]
+];

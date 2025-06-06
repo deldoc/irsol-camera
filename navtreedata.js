@@ -86,8 +86,7 @@ var NAVTREEINDEX =
 "d3/ddb/factory_camera_features.html",
 "d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a5bbd56931184567a45921d5d71b3c179",
 "da/d77/structirsol_1_1server_1_1frame__collector_1_1FrameMetadata.html#a2829b17018752631a606fd7651dafdbe",
-"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html",
-"globals.html"
+"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
