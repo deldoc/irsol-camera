@@ -37,7 +37,8 @@ var NAVTREE =
         [ "02-interacting-with-camera-features", "d6/dca/interacting_with_camera_features.html", null ],
         [ "03-message-protocols", "db/d19/message_protocols.html", null ],
         [ "04-message-handlers", "d6/deb/message_handlers.html", null ],
-        [ "05-client-server-interaction", "dc/dd0/client_server_interaction.html", null ]
+        [ "05-client-server-interaction", "dc/dd0/client_server_interaction.html", null ],
+        [ "06-client-server-interaction-image-commands", "d4/dfa/client_server_interaction_image_commands.html", null ]
       ] ],
       [ "Tests", "d0/def/tests.html", null ]
     ] ],
@@ -83,10 +84,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/ddb/factory_camera_features.html",
-"d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a5bbd56931184567a45921d5d71b3c179",
-"da/d77/structirsol_1_1server_1_1frame__collector_1_1FrameMetadata.html#a2829b17018752631a606fd7651dafdbe",
-"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html"
+"d3/ded/structirsol_1_1camera_1_1internal_1_1FeaturePermissions.html#a73a430614f23fc59159d394043f1207d",
+"d7/d00/classirsol_1_1camera_1_1StatusMonitor.html#a659d329e6b6bc9c4eff0e006f12590a9",
+"da/d87/variants_8cpp.html#a8e8a8a08aa0204c14caad7c2addbc509",
+"de/d26/classirsol_1_1server_1_1frame__collector_1_1FrameCollector.html#a6cf04e668547b974523bc0b43bcb9298"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
